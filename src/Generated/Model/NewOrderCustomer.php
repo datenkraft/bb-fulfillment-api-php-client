@@ -1,0 +1,304 @@
+<?php
+
+namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
+
+class NewOrderCustomer
+{
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $email;
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $firstname;
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $lastname;
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $gender;
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $title;
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $phone;
+    /**
+     * The language code for any customer communications (ISO 639-1)
+     *
+     * @var string
+     */
+    protected $languageCode;
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $company;
+    /**
+     * Company vat number
+     *
+     * @var string
+     */
+    protected $companyVatNumber;
+    /**
+     * 
+     *
+     * @var OrderCustomerInvoiceAddress
+     */
+    protected $invoiceAddress;
+    /**
+     * 
+     *
+     * @var OrderCustomerDeliveryAddress
+     */
+    protected $deliveryAddress;
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getEmail() : string
+    {
+        return $this->email;
+    }
+    /**
+     * 
+     *
+     * @param string $email
+     *
+     * @return self
+     */
+    public function setEmail(string $email) : self
+    {
+        $this->email = $email;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getFirstname() : string
+    {
+        return $this->firstname;
+    }
+    /**
+     * 
+     *
+     * @param string $firstname
+     *
+     * @return self
+     */
+    public function setFirstname(string $firstname) : self
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getLastname() : string
+    {
+        return $this->lastname;
+    }
+    /**
+     * 
+     *
+     * @param string $lastname
+     *
+     * @return self
+     */
+    public function setLastname(string $lastname) : self
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getGender() : string
+    {
+        return $this->gender;
+    }
+    /**
+     * 
+     *
+     * @param string $gender
+     *
+     * @return self
+     */
+    public function setGender(string $gender) : self
+    {
+        $this->gender = $gender;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getTitle() : string
+    {
+        return $this->title;
+    }
+    /**
+     * 
+     *
+     * @param string $title
+     *
+     * @return self
+     */
+    public function setTitle(string $title) : self
+    {
+        $this->title = $title;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getPhone() : string
+    {
+        return $this->phone;
+    }
+    /**
+     * 
+     *
+     * @param string $phone
+     *
+     * @return self
+     */
+    public function setPhone(string $phone) : self
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+    /**
+     * The language code for any customer communications (ISO 639-1)
+     *
+     * @return string
+     */
+    public function getLanguageCode() : string
+    {
+        return $this->languageCode;
+    }
+    /**
+     * The language code for any customer communications (ISO 639-1)
+     *
+     * @param string $languageCode
+     *
+     * @return self
+     */
+    public function setLanguageCode(string $languageCode) : self
+    {
+        $this->languageCode = $languageCode;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getCompany() : string
+    {
+        return $this->company;
+    }
+    /**
+     * 
+     *
+     * @param string $company
+     *
+     * @return self
+     */
+    public function setCompany(string $company) : self
+    {
+        $this->company = $company;
+        return $this;
+    }
+    /**
+     * Company vat number
+     *
+     * @return string
+     */
+    public function getCompanyVatNumber() : string
+    {
+        return $this->companyVatNumber;
+    }
+    /**
+     * Company vat number
+     *
+     * @param string $companyVatNumber
+     *
+     * @return self
+     */
+    public function setCompanyVatNumber(string $companyVatNumber) : self
+    {
+        $this->companyVatNumber = $companyVatNumber;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return OrderCustomerInvoiceAddress
+     */
+    public function getInvoiceAddress() : OrderCustomerInvoiceAddress
+    {
+        return $this->invoiceAddress;
+    }
+    /**
+     * 
+     *
+     * @param OrderCustomerInvoiceAddress $invoiceAddress
+     *
+     * @return self
+     */
+    public function setInvoiceAddress(OrderCustomerInvoiceAddress $invoiceAddress) : self
+    {
+        $this->invoiceAddress = $invoiceAddress;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return OrderCustomerDeliveryAddress
+     */
+    public function getDeliveryAddress() : OrderCustomerDeliveryAddress
+    {
+        return $this->deliveryAddress;
+    }
+    /**
+     * 
+     *
+     * @param OrderCustomerDeliveryAddress $deliveryAddress
+     *
+     * @return self
+     */
+    public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress) : self
+    {
+        $this->deliveryAddress = $deliveryAddress;
+        return $this;
+    }
+}

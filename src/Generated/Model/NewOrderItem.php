@@ -1,0 +1,142 @@
+<?php
+
+namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
+
+class NewOrderItem
+{
+    /**
+     * 
+     *
+     * @var string
+     */
+    protected $productNumber;
+    /**
+     * Item title (optional)
+     *
+     * @var string
+     */
+    protected $title;
+    /**
+     * Positive number of items to order
+     *
+     * @var int
+     */
+    protected $count;
+    /**
+     * 
+     *
+     * @var OrderItemPrice
+     */
+    protected $price;
+    /**
+     * Additional options (optional, TBD)
+     *
+     * @var mixed
+     */
+    protected $options;
+    /**
+     * 
+     *
+     * @return string
+     */
+    public function getProductNumber() : string
+    {
+        return $this->productNumber;
+    }
+    /**
+     * 
+     *
+     * @param string $productNumber
+     *
+     * @return self
+     */
+    public function setProductNumber(string $productNumber) : self
+    {
+        $this->productNumber = $productNumber;
+        return $this;
+    }
+    /**
+     * Item title (optional)
+     *
+     * @return string
+     */
+    public function getTitle() : string
+    {
+        return $this->title;
+    }
+    /**
+     * Item title (optional)
+     *
+     * @param string $title
+     *
+     * @return self
+     */
+    public function setTitle(string $title) : self
+    {
+        $this->title = $title;
+        return $this;
+    }
+    /**
+     * Positive number of items to order
+     *
+     * @return int
+     */
+    public function getCount() : int
+    {
+        return $this->count;
+    }
+    /**
+     * Positive number of items to order
+     *
+     * @param int $count
+     *
+     * @return self
+     */
+    public function setCount(int $count) : self
+    {
+        $this->count = $count;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return OrderItemPrice
+     */
+    public function getPrice() : OrderItemPrice
+    {
+        return $this->price;
+    }
+    /**
+     * 
+     *
+     * @param OrderItemPrice $price
+     *
+     * @return self
+     */
+    public function setPrice(OrderItemPrice $price) : self
+    {
+        $this->price = $price;
+        return $this;
+    }
+    /**
+     * Additional options (optional, TBD)
+     *
+     * @return mixed
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+    /**
+     * Additional options (optional, TBD)
+     *
+     * @param mixed $options
+     *
+     * @return self
+     */
+    public function setOptions($options) : self
+    {
+        $this->options = $options;
+        return $this;
+    }
+}

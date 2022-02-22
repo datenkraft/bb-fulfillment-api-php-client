@@ -2,16 +2,16 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Fulfillment API",
-        "description": "Fulfillment API",
+        "description": "\r\nAll data is transferred in UTF-8 encoding.\\\r\nThe API uses stateless HTTP. No cookies have to be kept.\\\r\nAuthentication via OAuth2 client credentials flow.",
         "version": "1.0.0"
     },
     "servers": [
         {
-            "url": "UNDEFINED",
+            "url": "https://fulfillment-api.conqore.niceshops.com/v1",
             "description": "Production server"
         },
         {
-            "url": "UNDEFINED",
+            "url": "https://fulfillment-api.staging.backbone.datenkraft.info/v1",
             "description": "Staging server"
         },
         {
@@ -347,6 +347,205 @@
                 }
             }
         },
+        "/delivery/{deliveryNumber}": {
+            "get": {
+                "tags": [
+                    "delivery"
+                ],
+                "summary": "Get the delivery with the given deliveryNumber.",
+                "description": "Get the delivery with the given deliveryNumber.",
+                "operationId": "getDelivery",
+                "parameters": [
+                    {
+                        "name": "deliveryNumber",
+                        "in": "path",
+                        "description": "delivery number",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/delivery"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
+        "/delivery": {
+            "get": {
+                "tags": [
+                    "delivery"
+                ],
+                "summary": "Get deliveries filtered by orderNumbers.",
+                "description": "Get deliveries filtered by orderNumbers.",
+                "operationId": "getDeliveryCollection",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page to read. Default is the first page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum size per page is 100. Default is 100.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "filter[orderNumber]",
+                        "in": "query",
+                        "description": "A filter with the orderNumber as given during the creation of the order.",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/deliveryCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
         "/docs": {
             "get": {
                 "tags": [
@@ -390,6 +589,319 @@
                         "description": "OK"
                     }
                 }
+            }
+        },
+        "/order/{orderNumber}": {
+            "get": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Get an order by order number.",
+                "description": "Get an order by order number.",
+                "operationId": "getOrder",
+                "parameters": [
+                    {
+                        "name": "orderNumber",
+                        "in": "path",
+                        "description": "The order number as defined during the creation of the order.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/order"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Add a new order.",
+                "description": "Add a new order referenced by the given orderNumber.",
+                "operationId": "postOrder",
+                "parameters": [
+                    {
+                        "name": "orderNumber",
+                        "in": "path",
+                        "description": "The number the order should be refered by. This number is user defined, must be unique and is maximum 59 chars long.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 59
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/newOrder"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/order"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
+        "/stock": {
+            "get": {
+                "tags": [
+                    "stock"
+                ],
+                "summary": "Get the stock for all products or for a specific product.",
+                "description": "Get the stock for all products or for a specific product.",
+                "operationId": "getStockCollection",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page to read. Default is the first page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum size per page is 100. Default is 20.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "filter[productNumber]",
+                        "in": "query",
+                        "description": "product number",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/stockCollection"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
             }
         }
     },
@@ -492,6 +1004,593 @@
                 "items": {
                     "$ref": "#/components/schemas/authRoleIdentityResource"
                 }
+            },
+            "collection": {
+                "title": "collection",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/collectionPagination"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "collectionPagination": {
+                "title": "collectionPagination",
+                "description": "Class AbstractPaginatedResourceCollection",
+                "properties": {
+                    "page": {
+                        "description": "The page contained in this collection.",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "description": "The page size used for reading the collection.",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "type": "object"
+            },
+            "delivery": {
+                "description": "A delivery of the order",
+                "properties": {
+                    "number": {
+                        "description": "Number",
+                        "type": "string"
+                    },
+                    "orderNumber": {
+                        "description": "The order number. Note: This can be null if the delivery has no associated order.",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "description": "Status of the delivery.\r\n- in_progress: The delivery is in the process of being packaged.\r\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "type": "string",
+                        "enum": [
+                            "in_progress",
+                            "delivered"
+                        ]
+                    },
+                    "shipments": {
+                        "description": "List of shipments (= package, parcel, pallet, ...)",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/shipment"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "shipment": {
+                "description": "A shipments defines a single delivered entity (package, parcel, pallet, ...)",
+                "properties": {
+                    "number": {
+                        "description": "The delivery number",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Status of the delivery.\r\n- in_progress: The delivery is in the process of being packaged.\r\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "type": "string",
+                        "enum": [
+                            "post_at",
+                            "dhl",
+                            "dachser"
+                        ]
+                    },
+                    "deliveryService": {
+                        "description": "The delivery service used to send this delivery",
+                        "type": "string",
+                        "enum": [
+                            "in_progress",
+                            "delivered"
+                        ]
+                    },
+                    "code": {
+                        "description": "Carrier specific tracking code",
+                        "type": "string"
+                    },
+                    "link": {
+                        "description": "Link to the carrier's tracking site",
+                        "type": "string"
+                    },
+                    "weight": {
+                        "description": "Weight",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "weightUnit": {
+                        "description": "Weight unit",
+                        "type": "string"
+                    },
+                    "shipmentLines": {
+                        "description": "Shipment lines",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/shipmentLine"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "shipmentLine": {
+                "description": "One piece of content in a shipment",
+                "properties": {
+                    "productNumber": {
+                        "description": "product number",
+                        "type": "string"
+                    },
+                    "count": {
+                        "description": "Number of items contained in the delivery",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "unit": {
+                        "description": "product unit",
+                        "type": "string"
+                    },
+                    "serialNumbers": {
+                        "description": "serial numbers",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "deliveryCollection": {
+                "title": "deliveryCollection",
+                "description": "A collection of deliveries",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/collection"
+                    },
+                    {
+                        "properties": {
+                            "data": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/delivery"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "baseOrder": {
+                "title": "baseOrder",
+                "description": "Data to represent an order",
+                "required": [
+                    "customer",
+                    "orderItems",
+                    "payment"
+                ],
+                "properties": {
+                    "customer": {
+                        "$ref": "#/components/schemas/baseOrderCustomer"
+                    },
+                    "orderItems": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/orderItem"
+                        }
+                    },
+                    "payment": {
+                        "$ref": "#/components/schemas/orderPayment"
+                    },
+                    "shipping": {
+                        "$ref": "#/components/schemas/orderShipping"
+                    },
+                    "options": {
+                        "description": "Additional options (optional, TBD)",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "newOrder": {
+                "title": "newOrder",
+                "description": "Data to create a new order",
+                "required": [
+                    "customer",
+                    "orderItems",
+                    "payment"
+                ],
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/baseOrder"
+                    },
+                    {
+                        "properties": {
+                            "customer": {
+                                "$ref": "#/components/schemas/newOrderCustomer"
+                            },
+                            "orderItems": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/newOrderItem"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "order": {
+                "title": "order",
+                "description": "Data to represent an order",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/baseOrder"
+                    },
+                    {
+                        "properties": {
+                            "customer": {
+                                "$ref": "#/components/schemas/orderCustomer"
+                            },
+                            "status": {
+                                "description": "The current status of the order.\r\n- new: The order was created but not every required information was given. The order can not be processed without manual intervention.\r\n- processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.\r\n- delivered: The orders shipments have all been transferred to the delivery agent.\r\n- deleted: The order has been cancelled.\r\n- locked: The order is locked. The order can not be processed without manual intervention.\r\n- examination: The order has been manually locked.  The order can not be processed without manual intervention.\r\n",
+                                "type": "string",
+                                "enum": [
+                                    "new",
+                                    "processing",
+                                    "delivered",
+                                    "deleted",
+                                    "locked",
+                                    "examination"
+                                ]
+                            },
+                            "orderDate": {
+                                "description": "The create date for the order. Default is the current date. Format in ISO 8601",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2020-04-24T12:27:00+02:00"
+                            },
+                            "delivery": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/orderDelivery"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "orderItem": {
+                "title": "orderItem",
+                "required": [
+                    "productNumber",
+                    "count"
+                ],
+                "properties": {
+                    "productNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "Item title (optional)",
+                        "type": "string"
+                    },
+                    "count": {
+                        "description": "Positive number of items to order",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "price": {
+                        "$ref": "#/components/schemas/orderItemPrice"
+                    },
+                    "options": {
+                        "description": "Additional options (optional, TBD)",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "newOrderItem": {
+                "title": "newOrderItem",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/orderItem"
+                    }
+                ]
+            },
+            "orderItemPrice": {
+                "title": "orderItemPrice",
+                "required": [
+                    "value",
+                    "type",
+                    "vat",
+                    "currencyCode"
+                ],
+                "properties": {
+                    "value": {
+                        "description": "The price value rounded to 2 decimals, dot as separator",
+                        "type": "number",
+                        "format": "float",
+                        "example": "10.99"
+                    },
+                    "type": {
+                        "description": "The price type",
+                        "type": "string",
+                        "enum": [
+                            "net",
+                            "gross"
+                        ],
+                        "example": "gross"
+                    },
+                    "vat": {
+                        "description": "The VAT in percent",
+                        "type": "number",
+                        "format": "float",
+                        "example": "20"
+                    },
+                    "currencyCode": {
+                        "description": "The currency code (ISO 4217)",
+                        "type": "string",
+                        "example": "EUR"
+                    }
+                },
+                "type": "object"
+            },
+            "baseOrderCustomer": {
+                "title": "baseOrderCustomer",
+                "required": [
+                    "email",
+                    "firstname",
+                    "lastname",
+                    "gender",
+                    "languageCode",
+                    "invoiceAddress"
+                ],
+                "properties": {
+                    "email": {
+                        "description": "",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "firstname": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "gender": {
+                        "description": "",
+                        "type": "string",
+                        "enum": [
+                            "male",
+                            "female",
+                            "unknown"
+                        ]
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "languageCode": {
+                        "description": "The language code for any customer communications (ISO 639-1)",
+                        "type": "string"
+                    },
+                    "company": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "companyVatNumber": {
+                        "description": "Company vat number",
+                        "type": "string"
+                    },
+                    "invoiceAddress": {
+                        "$ref": "#/components/schemas/orderCustomerInvoiceAddress"
+                    },
+                    "deliveryAddress": {
+                        "$ref": "#/components/schemas/orderCustomerDeliveryAddress"
+                    }
+                },
+                "type": "object"
+            },
+            "newOrderCustomer": {
+                "title": "newOrderCustomer",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/baseOrderCustomer"
+                    }
+                ]
+            },
+            "orderCustomer": {
+                "title": "orderCustomer",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/baseOrderCustomer"
+                    },
+                    {
+                        "properties": {
+                            "number": {
+                                "description": "Customer number if an existing account should be used for the order",
+                                "type": "string"
+                            },
+                            "type": {
+                                "description": "The customer type",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "orderCustomerAddress": {
+                "title": "orderCustomerAddress",
+                "required": [
+                    "street",
+                    "streetNumber",
+                    "zipCode",
+                    "city",
+                    "countryCode"
+                ],
+                "properties": {
+                    "street": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "streetNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "zipCode": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "district": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "city": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "provinceCode": {
+                        "description": "Province code (ISO 3166-2)",
+                        "type": "string"
+                    },
+                    "countryCode": {
+                        "description": "Country code (ISO 3166-1 alpha-2)",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "orderCustomerDeliveryAddress": {
+                "title": "orderCustomerDeliveryAddress",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/orderCustomerAddress"
+                    },
+                    {
+                        "required": [
+                            "nameLine1"
+                        ],
+                        "properties": {
+                            "nameLine1": {
+                                "description": "",
+                                "type": "string"
+                            },
+                            "nameLine2": {
+                                "description": "",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "orderCustomerInvoiceAddress": {
+                "title": "orderCustomerInvoiceAddress",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/orderCustomerAddress"
+                    }
+                ]
+            },
+            "orderPayment": {
+                "title": "orderPayment",
+                "description": "Options regarding the payment of the order",
+                "required": [
+                    "type"
+                ],
+                "properties": {
+                    "type": {
+                        "description": "The payment method",
+                        "type": "string",
+                        "enum": [
+                            "invoice"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "orderShipping": {
+                "title": "orderShipping",
+                "description": "Options regarding the shipping of the order",
+                "required": [
+                    "deliveryService"
+                ],
+                "properties": {
+                    "deliveryService": {
+                        "description": "The delivery service to recommend for usage.",
+                        "type": "string",
+                        "enum": [
+                            "post_at",
+                            "dhl",
+                            "dachser"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "orderDelivery": {
+                "title": "orderDelivery",
+                "description": "The delivery for the order. Details can be read by GET /delivery/.",
+                "properties": {
+                    "number": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Status code of the delivery",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "stock": {
+                "description": "Class StockResource",
+                "properties": {
+                    "productNumber": {
+                        "description": "The product number the stock is available for",
+                        "type": "string"
+                    },
+                    "stock": {
+                        "description": "The available stock",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "stockCollection": {
+                "title": "stockCollection",
+                "description": "A collection of stocks",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/collection"
+                    },
+                    {
+                        "properties": {
+                            "data": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/stock"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
             }
         },
         "securitySchemes": {
@@ -500,7 +1599,7 @@
                 "description": "OAuth2 Authorization",
                 "flows": {
                     "clientCredentials": {
-                        "tokenUrl": "https://localhost:30500/oauth/token",
+                        "tokenUrl": "https://authentication-api.conqore.niceshops.com/oauth/token",
                         "refreshUrl": "UNDEFINED",
                         "scopes": {}
                     }
