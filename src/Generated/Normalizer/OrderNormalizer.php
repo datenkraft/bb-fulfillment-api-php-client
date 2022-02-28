@@ -52,8 +52,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('shipping', $data)) {
             $object->setShipping($this->denormalizer->denormalize($data['shipping'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderShipping', 'json', $context));
         }
-        if (\array_key_exists('options', $data)) {
+        if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($data['options']);
+        }
+        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
+            $object->setOptions(null);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
@@ -61,12 +64,15 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('orderDate', $data)) {
             $object->setOrderDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['orderDate']));
         }
-        if (\array_key_exists('delivery', $data)) {
+        if (\array_key_exists('delivery', $data) && $data['delivery'] !== null) {
             $values_1 = array();
             foreach ($data['delivery'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDelivery', 'json', $context);
             }
             $object->setDelivery($values_1);
+        }
+        elseif (\array_key_exists('delivery', $data) && $data['delivery'] === null) {
+            $object->setDelivery(null);
         }
         return $object;
     }

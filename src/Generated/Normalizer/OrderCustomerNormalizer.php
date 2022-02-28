@@ -48,20 +48,32 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('gender', $data)) {
             $object->setGender($data['gender']);
         }
-        if (\array_key_exists('title', $data)) {
+        if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
         }
-        if (\array_key_exists('phone', $data)) {
+        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+            $object->setTitle(null);
+        }
+        if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
             $object->setPhone($data['phone']);
+        }
+        elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
+            $object->setPhone(null);
         }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
-        if (\array_key_exists('company', $data)) {
+        if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
         }
-        if (\array_key_exists('companyVatNumber', $data)) {
+        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+            $object->setCompany(null);
+        }
+        if (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] !== null) {
             $object->setCompanyVatNumber($data['companyVatNumber']);
+        }
+        elseif (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] === null) {
+            $object->setCompanyVatNumber(null);
         }
         if (\array_key_exists('invoiceAddress', $data)) {
             $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerInvoiceAddress', 'json', $context));
@@ -69,11 +81,17 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('deliveryAddress', $data)) {
             $object->setDeliveryAddress($this->denormalizer->denormalize($data['deliveryAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress', 'json', $context));
         }
-        if (\array_key_exists('number', $data)) {
+        if (\array_key_exists('number', $data) && $data['number'] !== null) {
             $object->setNumber($data['number']);
         }
-        if (\array_key_exists('type', $data)) {
+        elseif (\array_key_exists('number', $data) && $data['number'] === null) {
+            $object->setNumber(null);
+        }
+        if (\array_key_exists('type', $data) && $data['type'] !== null) {
             $object->setType($data['type']);
+        }
+        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
+            $object->setType(null);
         }
         return $object;
     }

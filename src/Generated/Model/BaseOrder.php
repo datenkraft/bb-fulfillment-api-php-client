@@ -31,7 +31,7 @@ class BaseOrder
     /**
      * Additional options (optional, TBD)
      *
-     * @var mixed
+     * @var mixed|null
      */
     protected $options;
     /**

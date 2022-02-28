@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Fulfillment API",
-        "description": "\r\nAll data is transferred in UTF-8 encoding.\\\r\nThe API uses stateless HTTP. No cookies have to be kept.\\\r\nAuthentication via OAuth2 client credentials flow.",
+        "description": "\nAll data is transferred in UTF-8 encoding.\\\nThe API uses stateless HTTP. No cookies have to be kept.\\\nAuthentication via OAuth2 client credentials flow.",
         "version": "1.0.0"
     },
     "servers": [
@@ -20,6 +20,256 @@
         }
     ],
     "paths": {
+        "/docs": {
+            "get": {
+                "tags": [
+                    "docs"
+                ],
+                "summary": "Get the openapi documentation as json",
+                "description": "Get the openapi documentation as json",
+                "operationId": "getOpenApi",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/docs/openapi.{format}": {
+            "get": {
+                "tags": [
+                    "docs"
+                ],
+                "summary": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
+                "description": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
+                "operationId": "getOpenApiInFormat",
+                "parameters": [
+                    {
+                        "name": "format",
+                        "in": "path",
+                        "description": "Openapi file format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "yaml",
+                                "json"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/order/{orderNumber}": {
+            "get": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Get an order by order number.",
+                "description": "Get an order by order number.",
+                "operationId": "getOrder",
+                "parameters": [
+                    {
+                        "name": "orderNumber",
+                        "in": "path",
+                        "description": "The order number as defined during the creation of the order.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/order"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "order"
+                ],
+                "summary": "Add a new order.",
+                "description": "Add a new order referenced by the given orderNumber.",
+                "operationId": "postOrder",
+                "parameters": [
+                    {
+                        "name": "orderNumber",
+                        "in": "path",
+                        "description": "The number the order should be refered by. This number is user defined, must be unique and is maximum 59 chars long.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 59
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/newOrder"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/order"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
         "/auth/role": {
             "get": {
                 "tags": [
@@ -347,6 +597,114 @@
                 }
             }
         },
+        "/stock": {
+            "get": {
+                "tags": [
+                    "stock"
+                ],
+                "summary": "Get the stock for all products or for a specific product.",
+                "description": "Get the stock for all products or for a specific product.",
+                "operationId": "getStockCollection",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page to read. Default is the first page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum size per page is 100. Default is 20.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "filter[productNumber]",
+                        "in": "query",
+                        "description": "product number",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/stockCollection"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
         "/delivery/{deliveryNumber}": {
             "get": {
                 "tags": [
@@ -545,466 +903,10 @@
                     }
                 ]
             }
-        },
-        "/docs": {
-            "get": {
-                "tags": [
-                    "docs"
-                ],
-                "summary": "Get the openapi documentation as json",
-                "description": "Get the openapi documentation as json",
-                "operationId": "getOpenApi",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/docs/openapi.{format}": {
-            "get": {
-                "tags": [
-                    "docs"
-                ],
-                "summary": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
-                "description": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
-                "operationId": "getOpenApiInFormat",
-                "parameters": [
-                    {
-                        "name": "format",
-                        "in": "path",
-                        "description": "Openapi file format",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "yaml",
-                                "json"
-                            ]
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/order/{orderNumber}": {
-            "get": {
-                "tags": [
-                    "order"
-                ],
-                "summary": "Get an order by order number.",
-                "description": "Get an order by order number.",
-                "operationId": "getOrder",
-                "parameters": [
-                    {
-                        "name": "orderNumber",
-                        "in": "path",
-                        "description": "The order number as defined during the creation of the order.",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/order"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "oAuthAuthorization": []
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "order"
-                ],
-                "summary": "Add a new order.",
-                "description": "Add a new order referenced by the given orderNumber.",
-                "operationId": "postOrder",
-                "parameters": [
-                    {
-                        "name": "orderNumber",
-                        "in": "path",
-                        "description": "The number the order should be refered by. This number is user defined, must be unique and is maximum 59 chars long.",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "maxLength": 59
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/newOrder"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/order"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable Entity",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "oAuthAuthorization": []
-                    }
-                ]
-            }
-        },
-        "/stock": {
-            "get": {
-                "tags": [
-                    "stock"
-                ],
-                "summary": "Get the stock for all products or for a specific product.",
-                "description": "Get the stock for all products or for a specific product.",
-                "operationId": "getStockCollection",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "The page to read. Default is the first page.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "The maximum size per page is 100. Default is 20.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    },
-                    {
-                        "name": "filter[productNumber]",
-                        "in": "query",
-                        "description": "product number",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/stockCollection"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "oAuthAuthorization": []
-                    }
-                ]
-            }
         }
     },
     "components": {
         "schemas": {
-            "errorResponse": {
-                "properties": {
-                    "errors": {
-                        "description": "errors",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/error"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "error": {
-                "required": [
-                    "code",
-                    "message"
-                ],
-                "properties": {
-                    "code": {
-                        "description": "Code",
-                        "type": "string"
-                    },
-                    "message": {
-                        "description": "Message",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "authPermissionResource": {
-                "required": [
-                    "permissionCode",
-                    "name"
-                ],
-                "properties": {
-                    "permissionCode": {
-                        "description": "Permission Code",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Name",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "getAuthPermissionCollectionResponse": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authPermissionResource"
-                }
-            },
-            "authRoleResource": {
-                "required": [
-                    "roleCode",
-                    "name"
-                ],
-                "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Name",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "authRoleCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleResource"
-                }
-            },
-            "authRoleIdentityResource": {
-                "required": [
-                    "roleCode",
-                    "identityId"
-                ],
-                "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
-                        "type": "string"
-                    },
-                    "identityId": {
-                        "description": "Identity ID",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "authRoleIdentityCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleIdentityResource"
-                }
-            },
             "collection": {
                 "title": "collection",
                 "properties": {
@@ -1048,7 +950,7 @@
                         "nullable": true
                     },
                     "status": {
-                        "description": "Status of the delivery.\r\n- in_progress: The delivery is in the process of being packaged.\r\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
                         "type": "string",
                         "enum": [
                             "in_progress",
@@ -1073,7 +975,7 @@
                         "type": "string"
                     },
                     "status": {
-                        "description": "Status of the delivery.\r\n- in_progress: The delivery is in the process of being packaged.\r\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
                         "type": "string",
                         "enum": [
                             "post_at",
@@ -1130,7 +1032,8 @@
                     },
                     "unit": {
                         "description": "product unit",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "serialNumbers": {
                         "description": "serial numbers",
@@ -1140,7 +1043,8 @@
                         }
                     }
                 },
-                "type": "object"
+                "type": "object",
+                "nullable": true
             },
             "deliveryCollection": {
                 "title": "deliveryCollection",
@@ -1162,6 +1066,75 @@
                         "type": "object"
                     }
                 ]
+            },
+            "authRoleResource": {
+                "required": [
+                    "roleCode",
+                    "name"
+                ],
+                "properties": {
+                    "roleCode": {
+                        "description": "Role Code",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authRoleResource"
+                }
+            },
+            "getAuthPermissionCollectionResponse": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authPermissionResource"
+                }
+            },
+            "authPermissionResource": {
+                "required": [
+                    "permissionCode",
+                    "name"
+                ],
+                "properties": {
+                    "permissionCode": {
+                        "description": "Permission Code",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleIdentityCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authRoleIdentityResource"
+                }
+            },
+            "authRoleIdentityResource": {
+                "required": [
+                    "roleCode",
+                    "identityId"
+                ],
+                "properties": {
+                    "roleCode": {
+                        "description": "Role Code",
+                        "type": "string"
+                    },
+                    "identityId": {
+                        "description": "Identity ID",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
             },
             "baseOrder": {
                 "title": "baseOrder",
@@ -1190,7 +1163,8 @@
                     },
                     "options": {
                         "description": "Additional options (optional, TBD)",
-                        "type": "object"
+                        "type": "object",
+                        "nullable": true
                     }
                 },
                 "type": "object"
@@ -1237,7 +1211,7 @@
                                 "$ref": "#/components/schemas/orderCustomer"
                             },
                             "status": {
-                                "description": "The current status of the order.\r\n- new: The order was created but not every required information was given. The order can not be processed without manual intervention.\r\n- processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.\r\n- delivered: The orders shipments have all been transferred to the delivery agent.\r\n- deleted: The order has been cancelled.\r\n- locked: The order is locked. The order can not be processed without manual intervention.\r\n- examination: The order has been manually locked.  The order can not be processed without manual intervention.\r\n",
+                                "description": "The current status of the order.\n- new: The order was created but not every required information was given. The order can not be processed without manual intervention.\n- processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.\n- delivered: The orders shipments have all been transferred to the delivery agent.\n- deleted: The order has been cancelled.\n- locked: The order is locked. The order can not be processed without manual intervention.\n- examination: The order has been manually locked.  The order can not be processed without manual intervention.\n",
                                 "type": "string",
                                 "enum": [
                                     "new",
@@ -1259,7 +1233,8 @@
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/orderDelivery"
-                                }
+                                },
+                                "nullable": true
                             }
                         },
                         "type": "object"
@@ -1279,7 +1254,8 @@
                     },
                     "title": {
                         "description": "Item title (optional)",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "count": {
                         "description": "Positive number of items to order",
@@ -1291,7 +1267,8 @@
                     },
                     "options": {
                         "description": "Additional options (optional, TBD)",
-                        "type": "object"
+                        "type": "object",
+                        "nullable": true
                     }
                 },
                 "type": "object"
@@ -1377,11 +1354,13 @@
                     },
                     "title": {
                         "description": "",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "phone": {
                         "description": "",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "languageCode": {
                         "description": "The language code for any customer communications (ISO 639-1)",
@@ -1389,11 +1368,13 @@
                     },
                     "company": {
                         "description": "",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "companyVatNumber": {
                         "description": "Company vat number",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "invoiceAddress": {
                         "$ref": "#/components/schemas/orderCustomerInvoiceAddress"
@@ -1422,11 +1403,13 @@
                         "properties": {
                             "number": {
                                 "description": "Customer number if an existing account should be used for the order",
-                                "type": "string"
+                                "type": "string",
+                                "nullable": true
                             },
                             "type": {
                                 "description": "The customer type",
-                                "type": "string"
+                                "type": "string",
+                                "nullable": true
                             }
                         },
                         "type": "object"
@@ -1457,7 +1440,8 @@
                     },
                     "district": {
                         "description": "",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "city": {
                         "description": "",
@@ -1465,7 +1449,8 @@
                     },
                     "provinceCode": {
                         "description": "Province code (ISO 3166-2)",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "countryCode": {
                         "description": "Country code (ISO 3166-1 alpha-2)",
@@ -1491,7 +1476,8 @@
                             },
                             "nameLine2": {
                                 "description": "",
-                                "type": "string"
+                                "type": "string",
+                                "nullable": true
                             }
                         },
                         "type": "object"
@@ -1591,6 +1577,35 @@
                         "type": "object"
                     }
                 ]
+            },
+            "errorResponse": {
+                "properties": {
+                    "errors": {
+                        "description": "errors",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/error"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "error": {
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "description": "Code",
+                        "type": "string"
+                    },
+                    "message": {
+                        "description": "Message",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
             }
         },
         "securitySchemes": {

@@ -25,7 +25,7 @@ class OrderCustomerAddress
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $district;
     /**
@@ -37,7 +37,7 @@ class OrderCustomerAddress
     /**
      * Province code (ISO 3166-2)
      *
-     * @var string
+     * @var string|null
      */
     protected $provinceCode;
     /**
@@ -112,20 +112,20 @@ class OrderCustomerAddress
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getDistrict() : string
+    public function getDistrict() : ?string
     {
         return $this->district;
     }
     /**
      * 
      *
-     * @param string $district
+     * @param string|null $district
      *
      * @return self
      */
-    public function setDistrict(string $district) : self
+    public function setDistrict(?string $district) : self
     {
         $this->district = $district;
         return $this;
@@ -154,20 +154,20 @@ class OrderCustomerAddress
     /**
      * Province code (ISO 3166-2)
      *
-     * @return string
+     * @return string|null
      */
-    public function getProvinceCode() : string
+    public function getProvinceCode() : ?string
     {
         return $this->provinceCode;
     }
     /**
      * Province code (ISO 3166-2)
      *
-     * @param string $provinceCode
+     * @param string|null $provinceCode
      *
      * @return self
      */
-    public function setProvinceCode(string $provinceCode) : self
+    public function setProvinceCode(?string $provinceCode) : self
     {
         $this->provinceCode = $provinceCode;
         return $this;

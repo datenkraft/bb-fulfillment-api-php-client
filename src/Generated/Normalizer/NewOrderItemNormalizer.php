@@ -39,8 +39,11 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
         }
-        if (\array_key_exists('title', $data)) {
+        if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
+        }
+        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+            $object->setTitle(null);
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
@@ -48,8 +51,11 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('price', $data)) {
             $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice', 'json', $context));
         }
-        if (\array_key_exists('options', $data)) {
+        if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($data['options']);
+        }
+        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
+            $object->setOptions(null);
         }
         return $object;
     }

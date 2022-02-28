@@ -19,7 +19,7 @@ class ShipmentLine
     /**
      * product unit
      *
-     * @var string
+     * @var string|null
      */
     protected $unit;
     /**
@@ -73,20 +73,20 @@ class ShipmentLine
     /**
      * product unit
      *
-     * @return string
+     * @return string|null
      */
-    public function getUnit() : string
+    public function getUnit() : ?string
     {
         return $this->unit;
     }
     /**
      * product unit
      *
-     * @param string $unit
+     * @param string|null $unit
      *
      * @return self
      */
-    public function setUnit(string $unit) : self
+    public function setUnit(?string $unit) : self
     {
         $this->unit = $unit;
         return $this;

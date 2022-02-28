@@ -48,20 +48,32 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('gender', $data)) {
             $object->setGender($data['gender']);
         }
-        if (\array_key_exists('title', $data)) {
+        if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
         }
-        if (\array_key_exists('phone', $data)) {
+        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+            $object->setTitle(null);
+        }
+        if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
             $object->setPhone($data['phone']);
+        }
+        elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
+            $object->setPhone(null);
         }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
-        if (\array_key_exists('company', $data)) {
+        if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
         }
-        if (\array_key_exists('companyVatNumber', $data)) {
+        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+            $object->setCompany(null);
+        }
+        if (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] !== null) {
             $object->setCompanyVatNumber($data['companyVatNumber']);
+        }
+        elseif (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] === null) {
+            $object->setCompanyVatNumber(null);
         }
         if (\array_key_exists('invoiceAddress', $data)) {
             $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerInvoiceAddress', 'json', $context));

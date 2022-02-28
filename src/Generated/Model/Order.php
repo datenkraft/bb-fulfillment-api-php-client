@@ -31,7 +31,7 @@ class Order
     /**
      * Additional options (optional, TBD)
      *
-     * @var mixed
+     * @var mixed|null
      */
     protected $options;
     /**
@@ -56,7 +56,7 @@ class Order
     /**
      * 
      *
-     * @var OrderDelivery[]
+     * @var OrderDelivery[]|null
      */
     protected $delivery;
     /**
@@ -223,20 +223,20 @@ class Order
     /**
      * 
      *
-     * @return OrderDelivery[]
+     * @return OrderDelivery[]|null
      */
-    public function getDelivery() : array
+    public function getDelivery() : ?array
     {
         return $this->delivery;
     }
     /**
      * 
      *
-     * @param OrderDelivery[] $delivery
+     * @param OrderDelivery[]|null $delivery
      *
      * @return self
      */
-    public function setDelivery(array $delivery) : self
+    public function setDelivery(?array $delivery) : self
     {
         $this->delivery = $delivery;
         return $this;

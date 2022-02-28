@@ -45,14 +45,20 @@ class OrderCustomerDeliveryAddressNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('zipCode', $data)) {
             $object->setZipCode($data['zipCode']);
         }
-        if (\array_key_exists('district', $data)) {
+        if (\array_key_exists('district', $data) && $data['district'] !== null) {
             $object->setDistrict($data['district']);
+        }
+        elseif (\array_key_exists('district', $data) && $data['district'] === null) {
+            $object->setDistrict(null);
         }
         if (\array_key_exists('city', $data)) {
             $object->setCity($data['city']);
         }
-        if (\array_key_exists('provinceCode', $data)) {
+        if (\array_key_exists('provinceCode', $data) && $data['provinceCode'] !== null) {
             $object->setProvinceCode($data['provinceCode']);
+        }
+        elseif (\array_key_exists('provinceCode', $data) && $data['provinceCode'] === null) {
+            $object->setProvinceCode(null);
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
@@ -60,8 +66,11 @@ class OrderCustomerDeliveryAddressNormalizer implements DenormalizerInterface, N
         if (\array_key_exists('nameLine1', $data)) {
             $object->setNameLine1($data['nameLine1']);
         }
-        if (\array_key_exists('nameLine2', $data)) {
+        if (\array_key_exists('nameLine2', $data) && $data['nameLine2'] !== null) {
             $object->setNameLine2($data['nameLine2']);
+        }
+        elseif (\array_key_exists('nameLine2', $data) && $data['nameLine2'] === null) {
+            $object->setNameLine2(null);
         }
         return $object;
     }
