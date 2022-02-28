@@ -42,8 +42,11 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
         }
-        if (\array_key_exists('unit', $data)) {
+        if (\array_key_exists('unit', $data) && $data['unit'] !== null) {
             $object->setUnit($data['unit']);
+        }
+        elseif (\array_key_exists('unit', $data) && $data['unit'] === null) {
+            $object->setUnit(null);
         }
         if (\array_key_exists('serialNumbers', $data)) {
             $values = array();

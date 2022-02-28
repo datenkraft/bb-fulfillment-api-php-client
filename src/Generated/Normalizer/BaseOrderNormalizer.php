@@ -52,8 +52,11 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (\array_key_exists('shipping', $data)) {
             $object->setShipping($this->denormalizer->denormalize($data['shipping'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderShipping', 'json', $context));
         }
-        if (\array_key_exists('options', $data)) {
+        if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($data['options']);
+        }
+        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
+            $object->setOptions(null);
         }
         return $object;
     }

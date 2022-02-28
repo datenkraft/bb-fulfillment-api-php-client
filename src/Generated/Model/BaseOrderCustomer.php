@@ -31,13 +31,13 @@ class BaseOrderCustomer
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $phone;
     /**
@@ -49,13 +49,13 @@ class BaseOrderCustomer
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $company;
     /**
      * Company vat number
      *
-     * @var string
+     * @var string|null
      */
     protected $companyVatNumber;
     /**
@@ -157,20 +157,20 @@ class BaseOrderCustomer
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getTitle() : string
+    public function getTitle() : ?string
     {
         return $this->title;
     }
     /**
      * 
      *
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
-    public function setTitle(string $title) : self
+    public function setTitle(?string $title) : self
     {
         $this->title = $title;
         return $this;
@@ -178,20 +178,20 @@ class BaseOrderCustomer
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getPhone() : string
+    public function getPhone() : ?string
     {
         return $this->phone;
     }
     /**
      * 
      *
-     * @param string $phone
+     * @param string|null $phone
      *
      * @return self
      */
-    public function setPhone(string $phone) : self
+    public function setPhone(?string $phone) : self
     {
         $this->phone = $phone;
         return $this;
@@ -220,20 +220,20 @@ class BaseOrderCustomer
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getCompany() : string
+    public function getCompany() : ?string
     {
         return $this->company;
     }
     /**
      * 
      *
-     * @param string $company
+     * @param string|null $company
      *
      * @return self
      */
-    public function setCompany(string $company) : self
+    public function setCompany(?string $company) : self
     {
         $this->company = $company;
         return $this;
@@ -241,20 +241,20 @@ class BaseOrderCustomer
     /**
      * Company vat number
      *
-     * @return string
+     * @return string|null
      */
-    public function getCompanyVatNumber() : string
+    public function getCompanyVatNumber() : ?string
     {
         return $this->companyVatNumber;
     }
     /**
      * Company vat number
      *
-     * @param string $companyVatNumber
+     * @param string|null $companyVatNumber
      *
      * @return self
      */
-    public function setCompanyVatNumber(string $companyVatNumber) : self
+    public function setCompanyVatNumber(?string $companyVatNumber) : self
     {
         $this->companyVatNumber = $companyVatNumber;
         return $this;

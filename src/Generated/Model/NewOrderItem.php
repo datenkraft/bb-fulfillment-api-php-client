@@ -13,7 +13,7 @@ class NewOrderItem
     /**
      * Item title (optional)
      *
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
@@ -31,7 +31,7 @@ class NewOrderItem
     /**
      * Additional options (optional, TBD)
      *
-     * @var mixed
+     * @var mixed|null
      */
     protected $options;
     /**
@@ -58,20 +58,20 @@ class NewOrderItem
     /**
      * Item title (optional)
      *
-     * @return string
+     * @return string|null
      */
-    public function getTitle() : string
+    public function getTitle() : ?string
     {
         return $this->title;
     }
     /**
      * Item title (optional)
      *
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
-    public function setTitle(string $title) : self
+    public function setTitle(?string $title) : self
     {
         $this->title = $title;
         return $this;

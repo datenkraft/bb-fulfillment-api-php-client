@@ -25,7 +25,7 @@ class OrderCustomerDeliveryAddress
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $district;
     /**
@@ -37,7 +37,7 @@ class OrderCustomerDeliveryAddress
     /**
      * Province code (ISO 3166-2)
      *
-     * @var string
+     * @var string|null
      */
     protected $provinceCode;
     /**
@@ -55,7 +55,7 @@ class OrderCustomerDeliveryAddress
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $nameLine2;
     /**
@@ -124,20 +124,20 @@ class OrderCustomerDeliveryAddress
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getDistrict() : string
+    public function getDistrict() : ?string
     {
         return $this->district;
     }
     /**
      * 
      *
-     * @param string $district
+     * @param string|null $district
      *
      * @return self
      */
-    public function setDistrict(string $district) : self
+    public function setDistrict(?string $district) : self
     {
         $this->district = $district;
         return $this;
@@ -166,20 +166,20 @@ class OrderCustomerDeliveryAddress
     /**
      * Province code (ISO 3166-2)
      *
-     * @return string
+     * @return string|null
      */
-    public function getProvinceCode() : string
+    public function getProvinceCode() : ?string
     {
         return $this->provinceCode;
     }
     /**
      * Province code (ISO 3166-2)
      *
-     * @param string $provinceCode
+     * @param string|null $provinceCode
      *
      * @return self
      */
-    public function setProvinceCode(string $provinceCode) : self
+    public function setProvinceCode(?string $provinceCode) : self
     {
         $this->provinceCode = $provinceCode;
         return $this;
@@ -229,20 +229,20 @@ class OrderCustomerDeliveryAddress
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getNameLine2() : string
+    public function getNameLine2() : ?string
     {
         return $this->nameLine2;
     }
     /**
      * 
      *
-     * @param string $nameLine2
+     * @param string|null $nameLine2
      *
      * @return self
      */
-    public function setNameLine2(string $nameLine2) : self
+    public function setNameLine2(?string $nameLine2) : self
     {
         $this->nameLine2 = $nameLine2;
         return $this;

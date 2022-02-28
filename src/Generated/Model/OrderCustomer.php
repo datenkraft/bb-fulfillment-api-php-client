@@ -31,13 +31,13 @@ class OrderCustomer
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $phone;
     /**
@@ -49,13 +49,13 @@ class OrderCustomer
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $company;
     /**
      * Company vat number
      *
-     * @var string
+     * @var string|null
      */
     protected $companyVatNumber;
     /**
@@ -73,13 +73,13 @@ class OrderCustomer
     /**
      * Customer number if an existing account should be used for the order
      *
-     * @var string
+     * @var string|null
      */
     protected $number;
     /**
      * The customer type
      *
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
@@ -169,20 +169,20 @@ class OrderCustomer
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getTitle() : string
+    public function getTitle() : ?string
     {
         return $this->title;
     }
     /**
      * 
      *
-     * @param string $title
+     * @param string|null $title
      *
      * @return self
      */
-    public function setTitle(string $title) : self
+    public function setTitle(?string $title) : self
     {
         $this->title = $title;
         return $this;
@@ -190,20 +190,20 @@ class OrderCustomer
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getPhone() : string
+    public function getPhone() : ?string
     {
         return $this->phone;
     }
     /**
      * 
      *
-     * @param string $phone
+     * @param string|null $phone
      *
      * @return self
      */
-    public function setPhone(string $phone) : self
+    public function setPhone(?string $phone) : self
     {
         $this->phone = $phone;
         return $this;
@@ -232,20 +232,20 @@ class OrderCustomer
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getCompany() : string
+    public function getCompany() : ?string
     {
         return $this->company;
     }
     /**
      * 
      *
-     * @param string $company
+     * @param string|null $company
      *
      * @return self
      */
-    public function setCompany(string $company) : self
+    public function setCompany(?string $company) : self
     {
         $this->company = $company;
         return $this;
@@ -253,20 +253,20 @@ class OrderCustomer
     /**
      * Company vat number
      *
-     * @return string
+     * @return string|null
      */
-    public function getCompanyVatNumber() : string
+    public function getCompanyVatNumber() : ?string
     {
         return $this->companyVatNumber;
     }
     /**
      * Company vat number
      *
-     * @param string $companyVatNumber
+     * @param string|null $companyVatNumber
      *
      * @return self
      */
-    public function setCompanyVatNumber(string $companyVatNumber) : self
+    public function setCompanyVatNumber(?string $companyVatNumber) : self
     {
         $this->companyVatNumber = $companyVatNumber;
         return $this;
@@ -316,20 +316,20 @@ class OrderCustomer
     /**
      * Customer number if an existing account should be used for the order
      *
-     * @return string
+     * @return string|null
      */
-    public function getNumber() : string
+    public function getNumber() : ?string
     {
         return $this->number;
     }
     /**
      * Customer number if an existing account should be used for the order
      *
-     * @param string $number
+     * @param string|null $number
      *
      * @return self
      */
-    public function setNumber(string $number) : self
+    public function setNumber(?string $number) : self
     {
         $this->number = $number;
         return $this;
@@ -337,20 +337,20 @@ class OrderCustomer
     /**
      * The customer type
      *
-     * @return string
+     * @return string|null
      */
-    public function getType() : string
+    public function getType() : ?string
     {
         return $this->type;
     }
     /**
      * The customer type
      *
-     * @param string $type
+     * @param string|null $type
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(?string $type) : self
     {
         $this->type = $type;
         return $this;
