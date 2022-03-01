@@ -21,7 +21,7 @@ class Shipment
     /**
      * The delivery service used to send this delivery
      *
-     * @var string
+     * @var string|null
      */
     protected $deliveryService;
     /**
@@ -103,20 +103,20 @@ class Shipment
     /**
      * The delivery service used to send this delivery
      *
-     * @return string
+     * @return string|null
      */
-    public function getDeliveryService() : string
+    public function getDeliveryService() : ?string
     {
         return $this->deliveryService;
     }
     /**
      * The delivery service used to send this delivery
      *
-     * @param string $deliveryService
+     * @param string|null $deliveryService
      *
      * @return self
      */
-    public function setDeliveryService(string $deliveryService) : self
+    public function setDeliveryService(?string $deliveryService) : self
     {
         $this->deliveryService = $deliveryService;
         return $this;
