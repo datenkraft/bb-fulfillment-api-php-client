@@ -989,7 +989,8 @@
                         "enum": [
                             "in_progress",
                             "delivered"
-                        ]
+                        ],
+                        "nullable": true
                     },
                     "code": {
                         "description": "Carrier specific tracking code",

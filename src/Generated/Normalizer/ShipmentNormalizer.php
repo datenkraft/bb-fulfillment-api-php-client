@@ -42,8 +42,11 @@ class ShipmentNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
         }
-        if (\array_key_exists('deliveryService', $data)) {
+        if (\array_key_exists('deliveryService', $data) && $data['deliveryService'] !== null) {
             $object->setDeliveryService($data['deliveryService']);
+        }
+        elseif (\array_key_exists('deliveryService', $data) && $data['deliveryService'] === null) {
+            $object->setDeliveryService(null);
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
