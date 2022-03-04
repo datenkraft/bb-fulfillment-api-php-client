@@ -9,10 +9,14 @@ class GetOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runt
      * Get an order by order number.
      *
      * @param string $orderNumber The order number as defined during the creation of the order.
+     * @param array $queryParameters {
+     *     @var string $shopCode The shopCode used in DISCO (optional).
+     * }
      */
-    public function __construct(string $orderNumber)
+    public function __construct(string $orderNumber, array $queryParameters = array())
     {
         $this->orderNumber = $orderNumber;
+        $this->queryParameters = $queryParameters;
     }
     use \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -31,6 +35,15 @@ class GetOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runt
     {
         return array('Accept' => array('application/json'));
     }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('shopCode'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->setAllowedTypes('shopCode', array('string'));
+        return $optionsResolver;
+    }
     /**
      * {@inheritdoc}
      *
@@ -38,6 +51,7 @@ class GetOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runt
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderForbiddenException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderNotFoundException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
@@ -59,6 +73,9 @@ class GetOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runt
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderNotFoundException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));
+        }
+        if (is_null($contentType) === false && (422 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderUnprocessableEntityException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderInternalServerErrorException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));

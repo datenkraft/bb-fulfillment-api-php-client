@@ -35,6 +35,12 @@ class NewOrder
      */
     protected $options;
     /**
+     * The shopCode used in DISCO (optional).
+     *
+     * @var string|null
+     */
+    protected $shopCode;
+    /**
      * 
      *
      * @return NewOrderCustomer
@@ -137,6 +143,27 @@ class NewOrder
     public function setOptions($options) : self
     {
         $this->options = $options;
+        return $this;
+    }
+    /**
+     * The shopCode used in DISCO (optional).
+     *
+     * @return string|null
+     */
+    public function getShopCode() : ?string
+    {
+        return $this->shopCode;
+    }
+    /**
+     * The shopCode used in DISCO (optional).
+     *
+     * @param string|null $shopCode
+     *
+     * @return self
+     */
+    public function setShopCode(?string $shopCode) : self
+    {
+        $this->shopCode = $shopCode;
         return $this;
     }
 }
