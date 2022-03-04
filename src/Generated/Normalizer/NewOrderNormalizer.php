@@ -58,6 +58,12 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
         }
+        if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
+            $object->setShopCode($data['shopCode']);
+        }
+        elseif (\array_key_exists('shopCode', $data) && $data['shopCode'] === null) {
+            $object->setShopCode(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -79,6 +85,9 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $object->getOptions();
+        }
+        if (null !== $object->getShopCode()) {
+            $data['shopCode'] = $object->getShopCode();
         }
         return $data;
     }

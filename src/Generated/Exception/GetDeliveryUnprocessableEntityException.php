@@ -2,12 +2,12 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetDeliveryCollectionNotFoundException extends NotFoundException
+class GetDeliveryUnprocessableEntityException extends UnprocessableEntityException
 {
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Not Found', 404);
+        parent::__construct('Unprocessable Entity', 422);
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse()
