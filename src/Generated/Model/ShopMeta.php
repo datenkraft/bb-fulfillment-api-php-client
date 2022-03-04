@@ -5,13 +5,13 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class ShopMeta extends \ArrayObject
 {
     /**
-     * Domain of the Shopify shop.
+     * Hostname of the Shopify shop.
      *
      * @var string|null
      */
     protected $shopifyShopDomain;
     /**
-     * Domain of the Shopify shop.
+     * Hostname of the Shopify shop.
      *
      * @return string|null
      */
@@ -20,7 +20,7 @@ class ShopMeta extends \ArrayObject
         return $this->shopifyShopDomain;
     }
     /**
-     * Domain of the Shopify shop.
+     * Hostname of the Shopify shop.
      *
      * @param string|null $shopifyShopDomain
      *
