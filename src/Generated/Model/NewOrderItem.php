@@ -25,7 +25,7 @@ class NewOrderItem
     /**
      * 
      *
-     * @var OrderItemPrice
+     * @var mixed|null
      */
     protected $price;
     /**
@@ -100,20 +100,20 @@ class NewOrderItem
     /**
      * 
      *
-     * @return OrderItemPrice
+     * @return mixed
      */
-    public function getPrice() : OrderItemPrice
+    public function getPrice()
     {
         return $this->price;
     }
     /**
      * 
      *
-     * @param OrderItemPrice $price
+     * @param mixed $price
      *
      * @return self
      */
-    public function setPrice(OrderItemPrice $price) : self
+    public function setPrice($price) : self
     {
         $this->price = $price;
         return $this;

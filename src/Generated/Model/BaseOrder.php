@@ -23,9 +23,9 @@ class BaseOrder
      */
     protected $payment;
     /**
-     * Options regarding the shipping of the order
+     * 
      *
-     * @var OrderShipping
+     * @var mixed|null
      */
     protected $shipping;
     /**
@@ -98,22 +98,22 @@ class BaseOrder
         return $this;
     }
     /**
-     * Options regarding the shipping of the order
+     * 
      *
-     * @return OrderShipping
+     * @return mixed
      */
-    public function getShipping() : OrderShipping
+    public function getShipping()
     {
         return $this->shipping;
     }
     /**
-     * Options regarding the shipping of the order
+     * 
      *
-     * @param OrderShipping $shipping
+     * @param mixed $shipping
      *
      * @return self
      */
-    public function setShipping(OrderShipping $shipping) : self
+    public function setShipping($shipping) : self
     {
         $this->shipping = $shipping;
         return $this;
