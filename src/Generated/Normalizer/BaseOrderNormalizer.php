@@ -36,6 +36,12 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
+            $object->setShopCode($data['shopCode']);
+        }
+        elseif (\array_key_exists('shopCode', $data) && $data['shopCode'] === null) {
+            $object->setShopCode(null);
+        }
         if (\array_key_exists('customer', $data)) {
             $object->setCustomer($this->denormalizer->denormalize($data['customer'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomer', 'json', $context));
         }
@@ -66,6 +72,9 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getShopCode()) {
+            $data['shopCode'] = $object->getShopCode();
+        }
         $data['customer'] = $this->normalizer->normalize($object->getCustomer(), 'json', $context);
         $values = array();
         foreach ($object->getOrderItems() as $value) {

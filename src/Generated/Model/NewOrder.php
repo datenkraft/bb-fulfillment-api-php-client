@@ -5,6 +5,12 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class NewOrder
 {
     /**
+     * The shopCode used in DISCO.
+     *
+     * @var string|null
+     */
+    protected $shopCode;
+    /**
      * 
      *
      * @var NewOrderCustomer
@@ -35,11 +41,26 @@ class NewOrder
      */
     protected $options;
     /**
-     * The shopCode used in DISCO (optional).
+     * The shopCode used in DISCO.
      *
-     * @var string|null
+     * @return string|null
      */
-    protected $shopCode;
+    public function getShopCode() : ?string
+    {
+        return $this->shopCode;
+    }
+    /**
+     * The shopCode used in DISCO.
+     *
+     * @param string|null $shopCode
+     *
+     * @return self
+     */
+    public function setShopCode(?string $shopCode) : self
+    {
+        $this->shopCode = $shopCode;
+        return $this;
+    }
     /**
      * 
      *
@@ -143,27 +164,6 @@ class NewOrder
     public function setOptions($options) : self
     {
         $this->options = $options;
-        return $this;
-    }
-    /**
-     * The shopCode used in DISCO (optional).
-     *
-     * @return string|null
-     */
-    public function getShopCode() : ?string
-    {
-        return $this->shopCode;
-    }
-    /**
-     * The shopCode used in DISCO (optional).
-     *
-     * @param string|null $shopCode
-     *
-     * @return self
-     */
-    public function setShopCode(?string $shopCode) : self
-    {
-        $this->shopCode = $shopCode;
         return $this;
     }
 }
