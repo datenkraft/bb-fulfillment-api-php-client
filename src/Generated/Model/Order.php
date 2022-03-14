@@ -5,6 +5,12 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class Order
 {
     /**
+     * The shopCode used in DISCO.
+     *
+     * @var string|null
+     */
+    protected $shopCode;
+    /**
      * 
      *
      * @var OrderCustomer
@@ -59,6 +65,27 @@ class Order
      * @var OrderDelivery[]|null
      */
     protected $delivery;
+    /**
+     * The shopCode used in DISCO.
+     *
+     * @return string|null
+     */
+    public function getShopCode() : ?string
+    {
+        return $this->shopCode;
+    }
+    /**
+     * The shopCode used in DISCO.
+     *
+     * @param string|null $shopCode
+     *
+     * @return self
+     */
+    public function setShopCode(?string $shopCode) : self
+    {
+        $this->shopCode = $shopCode;
+        return $this;
+    }
     /**
      * 
      *
