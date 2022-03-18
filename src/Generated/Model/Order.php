@@ -17,7 +17,7 @@ class Order
      */
     protected $customer;
     /**
-     * 
+     * Note: canceled orderItems are NOT included.
      *
      * @var OrderItem[]
      */
@@ -108,7 +108,7 @@ class Order
         return $this;
     }
     /**
-     * 
+     * Note: canceled orderItems are NOT included.
      *
      * @return OrderItem[]
      */
@@ -117,7 +117,7 @@ class Order
         return $this->orderItems;
     }
     /**
-     * 
+     * Note: canceled orderItems are NOT included.
      *
      * @param OrderItem[] $orderItems
      *

@@ -178,7 +178,8 @@
                         "description": "The order number as defined during the creation of the order.",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "maxLength": 59
                         }
                     },
                     {
@@ -290,7 +291,7 @@
                     {
                         "name": "orderNumber",
                         "in": "path",
-                        "description": "The number the order should be refered by. This number is user defined, must be unique and is maximum 59 chars long.",
+                        "description": "The number the order should be refered by. This number is user defined, must be unique and has a maximum length (check maxLength field).",
                         "required": true,
                         "schema": {
                             "type": "string",
@@ -399,7 +400,7 @@
                     {
                         "name": "orderNumber",
                         "in": "path",
-                        "description": "The number the order is refered by (maximum length of 59 chars).",
+                        "description": "The number the order is refered by.",
                         "required": true,
                         "schema": {
                             "type": "string",
@@ -468,7 +469,7 @@
                         }
                     },
                     "409": {
-                        "description": "Conflict",
+                        "description": "Conflict\n\nAvailable message codes:\n- ORDER_NOT_CANCELABLE: The order could not be canceled anymore\n- ORDER_ALREADY_CANCELED: The order is already canceled\n- ORDER_CANCELLATION_ALREADY_EXISTS: An order cancellation request already exists, which needs manual approval",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1111,7 +1112,8 @@
                         "description": "A filter with the orderNumber as given during the creation of the order.",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "maxLength": 59
                         }
                     },
                     {
@@ -1494,7 +1496,8 @@
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/newOrderItem"
-                                }
+                                },
+                                "maxItems": 1000
                             }
                         },
                         "type": "object"
@@ -1510,6 +1513,13 @@
                     },
                     {
                         "properties": {
+                            "orderItems": {
+                                "description": "Note: canceled orderItems are NOT included.",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/orderItem"
+                                }
+                            },
                             "customer": {
                                 "$ref": "#/components/schemas/orderCustomer"
                             },
@@ -1633,27 +1643,11 @@
             "baseOrderCustomer": {
                 "title": "baseOrderCustomer",
                 "required": [
-                    "email",
-                    "firstname",
-                    "lastname",
                     "gender",
                     "languageCode",
-                    "invoiceAddress"
+                    "deliveryAddress"
                 ],
                 "properties": {
-                    "email": {
-                        "description": "",
-                        "type": "string",
-                        "format": "email"
-                    },
-                    "firstname": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "lastname": {
-                        "description": "",
-                        "type": "string"
-                    },
                     "gender": {
                         "description": "",
                         "type": "string",
@@ -1663,32 +1657,9 @@
                             "unknown"
                         ]
                     },
-                    "title": {
-                        "description": "",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "phone": {
-                        "description": "",
-                        "type": "string",
-                        "nullable": true
-                    },
                     "languageCode": {
                         "description": "The language code for any customer communications (ISO 639-1)",
                         "type": "string"
-                    },
-                    "company": {
-                        "description": "",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "companyVatNumber": {
-                        "description": "Company vat number",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "invoiceAddress": {
-                        "$ref": "#/components/schemas/orderCustomerInvoiceAddress"
                     },
                     "deliveryAddress": {
                         "$ref": "#/components/schemas/orderCustomerDeliveryAddress"

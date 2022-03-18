@@ -72,7 +72,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
      * Add a new order referenced by the given orderNumber.
      *
-     * @param string $orderNumber The number the order should be refered by. This number is user defined, must be unique and is maximum 59 chars long.
+     * @param string $orderNumber The number the order should be refered by. This number is user defined, must be unique and has a maximum length (check maxLength field).
      * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderBadRequestException
@@ -91,7 +91,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
      * Cancel the order specified by the given order number (set in param orderNumber).
      *
-     * @param string $orderNumber The number the order is refered by (maximum length of 59 chars).
+     * @param string $orderNumber The number the order is refered by.
      * @param array $queryParameters {
      *     @var string $shopCode The shopCode used in DISCO (optional).
      * }
