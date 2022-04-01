@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class NewOrderCustomer
 {
     /**
-     * 
+     * The provided data is used to generate a unique email with orderNumber and shopCode, which must result in a valid email.
      *
      * @var string
      */
@@ -71,7 +71,7 @@ class NewOrderCustomer
      */
     protected $deliveryAddress;
     /**
-     * 
+     * The provided data is used to generate a unique email with orderNumber and shopCode, which must result in a valid email.
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class NewOrderCustomer
         return $this->email;
     }
     /**
-     * 
+     * The provided data is used to generate a unique email with orderNumber and shopCode, which must result in a valid email.
      *
      * @param string $email
      *

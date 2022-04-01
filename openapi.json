@@ -20,59 +20,121 @@
         }
     ],
     "paths": {
-        "/docs": {
+        "/delivery/{deliveryNumber}": {
             "get": {
                 "tags": [
-                    "docs"
+                    "delivery"
                 ],
-                "summary": "Get the openapi documentation as json",
-                "description": "Get the openapi documentation as json",
-                "operationId": "getOpenApi",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/docs/openapi.{format}": {
-            "get": {
-                "tags": [
-                    "docs"
-                ],
-                "summary": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
-                "description": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
-                "operationId": "getOpenApiInFormat",
+                "summary": "Get the delivery with the given deliveryNumber.",
+                "description": "Get the delivery with the given deliveryNumber.",
+                "operationId": "getDelivery",
                 "parameters": [
                     {
-                        "name": "format",
+                        "name": "deliveryNumber",
                         "in": "path",
-                        "description": "Openapi file format",
+                        "description": "delivery number",
                         "required": true,
                         "schema": {
-                            "type": "string",
-                            "enum": [
-                                "yaml",
-                                "json"
-                            ]
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "shopCode",
+                        "in": "query",
+                        "description": "The shopCode used in DISCO (optional).",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/delivery"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
             }
         },
-        "/shop": {
+        "/delivery": {
             "get": {
                 "tags": [
-                    "shop"
+                    "delivery"
                 ],
-                "summary": "Get a list of shops.",
-                "description": "Get a list of shops.",
-                "operationId": "getShopCollection",
+                "summary": "Get deliveries filtered by orderNumber.",
+                "description": "Get deliveries filtered by orderNumber.",
+                "operationId": "getDeliveryCollection",
                 "parameters": [
                     {
                         "name": "page",
@@ -95,9 +157,19 @@
                         "example": 20
                     },
                     {
-                        "name": "filter[meta][shopifyShopDomain]",
+                        "name": "filter[orderNumber]",
                         "in": "query",
-                        "description": "A filter for the Shopify hostname of the shop.",
+                        "description": "A filter with the orderNumber as given during the creation of the order.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 59
+                        }
+                    },
+                    {
+                        "name": "shopCode",
+                        "in": "query",
+                        "description": "The shopCode used in DISCO (optional).",
                         "required": false,
                         "schema": {
                             "type": "string"
@@ -110,7 +182,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/shopCollection"
+                                    "$ref": "#/components/schemas/deliveryCollection"
                                 }
                             }
                         }
@@ -127,6 +199,16 @@
                     },
                     "403": {
                         "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -178,7 +260,8 @@
                         "description": "The order number as defined during the creation of the order.",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "maxLength": 59
                         }
                     },
                     {
@@ -290,7 +373,7 @@
                     {
                         "name": "orderNumber",
                         "in": "path",
-                        "description": "The number the order should be refered by. This number is user defined, must be unique and is maximum 59 chars long.",
+                        "description": "The number the order should be refered by. This number is user defined, must be unique and has a maximum length (check maxLength field).",
                         "required": true,
                         "schema": {
                             "type": "string",
@@ -399,7 +482,7 @@
                     {
                         "name": "orderNumber",
                         "in": "path",
-                        "description": "The number the order is refered by (maximum length of 59 chars).",
+                        "description": "The number the order is refered by.",
                         "required": true,
                         "schema": {
                             "type": "string",
@@ -468,7 +551,7 @@
                         }
                     },
                     "409": {
-                        "description": "Conflict",
+                        "description": "Conflict\n\nAvailable message codes:\n- ORDER_NOT_CANCELABLE: The order could not be canceled anymore\n- ORDER_ALREADY_CANCELED: The order is already canceled\n- ORDER_CANCELLATION_ALREADY_EXISTS: An order cancellation request already exists, which needs manual approval",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -479,6 +562,231 @@
                     },
                     "422": {
                         "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
+        "/stock": {
+            "get": {
+                "tags": [
+                    "stock"
+                ],
+                "summary": "Get the stock for all products or for a specific product.",
+                "description": "Get the stock for all products or for a specific product.",
+                "operationId": "getStockCollection",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page to read. Default is the first page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum size per page is 100. Default is 20.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "filter[productNumber]",
+                        "in": "query",
+                        "description": "product number",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "filter[shopCode]",
+                        "in": "query",
+                        "description": "The shopCode used in DISCO (optional).",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/stockCollection"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
+        "/shop": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Get a list of shops.",
+                "description": "Get a list of shops.",
+                "operationId": "getShopCollection",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page to read. Default is the first page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum size per page is 100. Default is 100.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "filter[meta][shopifyShopDomain]",
+                        "in": "query",
+                        "description": "A filter for the Shopify hostname of the shop.",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/shopCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -696,16 +1004,6 @@
                             }
                         }
                     },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
                     "409": {
                         "description": "Conflict",
                         "content": {
@@ -842,360 +1140,83 @@
                 }
             }
         },
-        "/stock": {
+        "/docs": {
             "get": {
                 "tags": [
-                    "stock"
+                    "docs"
                 ],
-                "summary": "Get the stock for all products or for a specific product.",
-                "description": "Get the stock for all products or for a specific product.",
-                "operationId": "getStockCollection",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "The page to read. Default is the first page.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "The maximum size per page is 100. Default is 20.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    },
-                    {
-                        "name": "filter[productNumber]",
-                        "in": "query",
-                        "description": "product number",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "filter[shopCode]",
-                        "in": "query",
-                        "description": "The shopCode used in DISCO (optional).",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
+                "summary": "Get the openapi documentation as json",
+                "description": "Get the openapi documentation as json",
+                "operationId": "getOpenApi",
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/stockCollection"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable Entity",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
-                },
-                "security": [
-                    {
-                        "oAuthAuthorization": []
-                    }
-                ]
+                }
             }
         },
-        "/delivery/{deliveryNumber}": {
+        "/docs/openapi.{format}": {
             "get": {
                 "tags": [
-                    "delivery"
+                    "docs"
                 ],
-                "summary": "Get the delivery with the given deliveryNumber.",
-                "description": "Get the delivery with the given deliveryNumber.",
-                "operationId": "getDelivery",
+                "summary": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
+                "description": "Get the openapi documentation in the specified format (yaml or json, fallback is json)",
+                "operationId": "getOpenApiInFormat",
                 "parameters": [
                     {
-                        "name": "deliveryNumber",
+                        "name": "format",
                         "in": "path",
-                        "description": "delivery number",
+                        "description": "Openapi file format",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "shopCode",
-                        "in": "query",
-                        "description": "The shopCode used in DISCO (optional).",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "enum": [
+                                "yaml",
+                                "json"
+                            ]
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/delivery"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable Entity",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
+                        "description": "OK"
                     }
-                },
-                "security": [
-                    {
-                        "oAuthAuthorization": []
-                    }
-                ]
-            }
-        },
-        "/delivery": {
-            "get": {
-                "tags": [
-                    "delivery"
-                ],
-                "summary": "Get deliveries filtered by orderNumber.",
-                "description": "Get deliveries filtered by orderNumber.",
-                "operationId": "getDeliveryCollection",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "The page to read. Default is the first page.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "The maximum size per page is 100. Default is 100.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    },
-                    {
-                        "name": "filter[orderNumber]",
-                        "in": "query",
-                        "description": "A filter with the orderNumber as given during the creation of the order.",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "shopCode",
-                        "in": "query",
-                        "description": "The shopCode used in DISCO (optional).",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/deliveryCollection"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable Entity",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "oAuthAuthorization": []
-                    }
-                ]
+                }
             }
         }
     },
     "components": {
         "schemas": {
+            "errorResponse": {
+                "properties": {
+                    "errors": {
+                        "description": "errors",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/error"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "error": {
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "description": "Code",
+                        "type": "string"
+                    },
+                    "message": {
+                        "description": "Message",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "collection": {
                 "title": "collection",
                 "properties": {
@@ -1226,119 +1247,44 @@
                 },
                 "type": "object"
             },
-            "delivery": {
-                "description": "A delivery of the order",
+            "shop": {
+                "description": "Data to represent a shop",
                 "properties": {
-                    "number": {
-                        "description": "Number",
+                    "id": {
+                        "description": "Id",
                         "type": "string"
                     },
-                    "orderNumber": {
-                        "description": "The order number. Note: This can be null if the delivery has no associated order.",
-                        "type": "string",
-                        "nullable": true
+                    "discoShopCode": {
+                        "description": "The shopCode used in DISCO.",
+                        "type": "string"
                     },
-                    "status": {
-                        "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
-                        "type": "string",
-                        "enum": [
-                            "in_progress",
-                            "delivered"
-                        ]
+                    "discoOrderReferencePrefix": {
+                        "description": "The prefix to the order reference in DISCO.",
+                        "type": "string"
                     },
-                    "shipments": {
-                        "description": "List of shipments (= package, parcel, pallet, ...)",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/shipment"
-                        }
+                    "email": {
+                        "description": "The email used in DISCO.",
+                        "type": "string"
+                    },
+                    "meta": {
+                        "description": "Meta data of the shop.",
+                        "properties": {
+                            "shopifyShopDomain": {
+                                "description": "Domain of the Shopify shop.",
+                                "type": "string",
+                                "nullable": true
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true,
+                        "additionalProperties": true
                     }
                 },
                 "type": "object"
             },
-            "shipment": {
-                "description": "A shipments defines a single delivered entity (package, parcel, pallet, ...)",
-                "properties": {
-                    "number": {
-                        "description": "The delivery number",
-                        "type": "string"
-                    },
-                    "status": {
-                        "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
-                        "type": "string",
-                        "enum": [
-                            "post_at",
-                            "dhl",
-                            "dachser"
-                        ]
-                    },
-                    "deliveryService": {
-                        "description": "The delivery service used to send this delivery",
-                        "type": "string",
-                        "enum": [
-                            "in_progress",
-                            "delivered"
-                        ],
-                        "nullable": true
-                    },
-                    "code": {
-                        "description": "Carrier specific tracking code",
-                        "type": "string"
-                    },
-                    "link": {
-                        "description": "Link to the carrier's tracking site",
-                        "type": "string"
-                    },
-                    "weight": {
-                        "description": "Weight",
-                        "type": "number",
-                        "format": "float"
-                    },
-                    "weightUnit": {
-                        "description": "Weight unit",
-                        "type": "string"
-                    },
-                    "shipmentLines": {
-                        "description": "Shipment lines",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/shipmentLine"
-                        }
-                    }
-                },
-                "type": "object"
-            },
-            "shipmentLine": {
-                "description": "One piece of content in a shipment",
-                "properties": {
-                    "productNumber": {
-                        "description": "product number",
-                        "type": "string"
-                    },
-                    "count": {
-                        "description": "Number of items contained in the delivery",
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "unit": {
-                        "description": "product unit",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "serialNumbers": {
-                        "description": "serial numbers",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "type": "object",
-                "nullable": true
-            },
-            "deliveryCollection": {
-                "title": "deliveryCollection",
-                "description": "A collection of deliveries",
+            "shopCollection": {
+                "title": "shopCollection",
+                "description": "A collection of shops",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/collection"
@@ -1349,82 +1295,54 @@
                                 "description": "",
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/delivery"
+                                    "$ref": "#/components/schemas/shop"
                                 }
                             }
                         },
                         "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/collectionPagination"
                     }
                 ]
             },
-            "authRoleResource": {
-                "required": [
-                    "roleCode",
-                    "name"
-                ],
+            "stock": {
+                "description": "Class StockResource",
                 "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
+                    "productNumber": {
+                        "description": "The product number the stock is available for",
                         "type": "string"
                     },
-                    "name": {
-                        "description": "Name",
-                        "type": "string"
+                    "stock": {
+                        "description": "The available stock",
+                        "type": "integer"
                     }
                 },
                 "type": "object"
             },
-            "authRoleCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleResource"
-                }
-            },
-            "getAuthPermissionCollectionResponse": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authPermissionResource"
-                }
-            },
-            "authPermissionResource": {
-                "required": [
-                    "permissionCode",
-                    "name"
-                ],
-                "properties": {
-                    "permissionCode": {
-                        "description": "Permission Code",
-                        "type": "string"
+            "stockCollection": {
+                "title": "stockCollection",
+                "description": "A collection of stocks",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/collection"
                     },
-                    "name": {
-                        "description": "Name",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "authRoleIdentityCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleIdentityResource"
-                }
-            },
-            "authRoleIdentityResource": {
-                "required": [
-                    "roleCode",
-                    "identityId"
-                ],
-                "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
-                        "type": "string"
+                    {
+                        "properties": {
+                            "data": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/stock"
+                                }
+                            }
+                        },
+                        "type": "object"
                     },
-                    "identityId": {
-                        "description": "Identity ID",
-                        "type": "string"
+                    {
+                        "$ref": "#/components/schemas/collectionPagination"
                     }
-                },
-                "type": "object"
+                ]
             },
             "baseOrder": {
                 "title": "baseOrder",
@@ -1494,7 +1412,8 @@
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/newOrderItem"
-                                }
+                                },
+                                "maxItems": 1000
                             }
                         },
                         "type": "object"
@@ -1510,6 +1429,13 @@
                     },
                     {
                         "properties": {
+                            "orderItems": {
+                                "description": "Note: canceled orderItems are NOT included.",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/orderItem"
+                                }
+                            },
                             "customer": {
                                 "$ref": "#/components/schemas/orderCustomer"
                             },
@@ -1701,6 +1627,16 @@
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/baseOrderCustomer"
+                    },
+                    {
+                        "properties": {
+                            "email": {
+                                "description": "The provided data is used to generate a unique email with orderNumber and shopCode, which must result in a valid email.",
+                                "type": "string",
+                                "format": "email"
+                            }
+                        },
+                        "type": "object"
                     }
                 ]
             },
@@ -1854,9 +1790,9 @@
                 },
                 "type": "object"
             },
-            "shopCollection": {
-                "title": "shopCollection",
-                "description": "A collection of shops",
+            "deliveryCollection": {
+                "title": "deliveryCollection",
+                "description": "A collection of deliveries",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/collection"
@@ -1867,108 +1803,195 @@
                                 "description": "",
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/shop"
+                                    "$ref": "#/components/schemas/delivery"
                                 }
                             }
                         },
                         "type": "object"
+                    },
+                    {
+                        "$ref": "#/components/schemas/collectionPagination"
                     }
                 ]
             },
-            "shop": {
-                "description": "Data to represent a shop",
+            "delivery": {
+                "description": "A delivery of the order",
                 "properties": {
-                    "id": {
-                        "description": "Id",
+                    "number": {
+                        "description": "Number",
                         "type": "string"
                     },
-                    "discoShopCode": {
-                        "description": "The shopCode used in DISCO.",
-                        "type": "string"
+                    "orderNumber": {
+                        "description": "The order number. Note: This can be null if the delivery has no associated order.",
+                        "type": "string",
+                        "nullable": true
                     },
-                    "discoOrderReferencePrefix": {
-                        "description": "The prefix to the order reference in DISCO.",
-                        "type": "string"
+                    "status": {
+                        "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "type": "string",
+                        "enum": [
+                            "in_progress",
+                            "delivered"
+                        ]
                     },
-                    "meta": {
-                        "description": "Meta data of the shop.",
-                        "properties": {
-                            "shopifyShopDomain": {
-                                "description": "Domain of the Shopify shop.",
-                                "type": "string",
-                                "nullable": true
-                            }
-                        },
-                        "type": "object",
-                        "nullable": true,
-                        "additionalProperties": true
-                    }
-                },
-                "type": "object"
-            },
-            "stock": {
-                "description": "Class StockResource",
-                "properties": {
-                    "productNumber": {
-                        "description": "The product number the stock is available for",
-                        "type": "string"
-                    },
-                    "stock": {
-                        "description": "The available stock",
-                        "type": "integer"
-                    }
-                },
-                "type": "object"
-            },
-            "stockCollection": {
-                "title": "stockCollection",
-                "description": "A collection of stocks",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/collection"
-                    },
-                    {
-                        "properties": {
-                            "data": {
-                                "description": "",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/stock"
-                                }
-                            }
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "errorResponse": {
-                "properties": {
-                    "errors": {
-                        "description": "errors",
+                    "shipments": {
+                        "description": "List of shipments (= package, parcel, pallet, ...)",
                         "type": "array",
                         "items": {
-                            "$ref": "#/components/schemas/error"
+                            "$ref": "#/components/schemas/shipment"
                         }
                     }
                 },
                 "type": "object"
             },
-            "error": {
-                "required": [
-                    "code",
-                    "message"
-                ],
+            "shipment": {
+                "description": "A shipments defines a single delivered entity (package, parcel, pallet, ...)",
                 "properties": {
-                    "code": {
-                        "description": "Code",
+                    "number": {
+                        "description": "The delivery number",
                         "type": "string"
                     },
-                    "message": {
-                        "description": "Message",
+                    "status": {
+                        "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "type": "string",
+                        "enum": [
+                            "post_at",
+                            "dhl",
+                            "dachser"
+                        ]
+                    },
+                    "deliveryService": {
+                        "description": "The delivery service used to send this delivery",
+                        "type": "string",
+                        "enum": [
+                            "in_progress",
+                            "delivered"
+                        ],
+                        "nullable": true
+                    },
+                    "code": {
+                        "description": "Carrier specific tracking code",
+                        "type": "string"
+                    },
+                    "link": {
+                        "description": "Link to the carrier's tracking site",
+                        "type": "string"
+                    },
+                    "weight": {
+                        "description": "Weight",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "weightUnit": {
+                        "description": "Weight unit",
+                        "type": "string"
+                    },
+                    "shipmentLines": {
+                        "description": "Shipment lines",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/shipmentLine"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "shipmentLine": {
+                "description": "One piece of content in a shipment",
+                "properties": {
+                    "productNumber": {
+                        "description": "product number",
+                        "type": "string"
+                    },
+                    "count": {
+                        "description": "Number of items contained in the delivery",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "unit": {
+                        "description": "product unit",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "serialNumbers": {
+                        "description": "serial numbers",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object",
+                "nullable": true
+            },
+            "authPermissionResource": {
+                "required": [
+                    "permissionCode",
+                    "name"
+                ],
+                "properties": {
+                    "permissionCode": {
+                        "description": "Permission Code",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name",
                         "type": "string"
                     }
                 },
                 "type": "object"
+            },
+            "getAuthPermissionCollectionResponse": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authPermissionResource"
+                }
+            },
+            "authRoleIdentityResource": {
+                "required": [
+                    "roleCode",
+                    "identityId"
+                ],
+                "properties": {
+                    "roleCode": {
+                        "description": "Role Code",
+                        "type": "string"
+                    },
+                    "identityId": {
+                        "description": "Identity ID",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleIdentityCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authRoleIdentityResource"
+                }
+            },
+            "authRoleResource": {
+                "required": [
+                    "roleCode",
+                    "name"
+                ],
+                "properties": {
+                    "roleCode": {
+                        "description": "Role Code",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleCollection": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authRoleResource"
+                }
             }
         },
         "securitySchemes": {
