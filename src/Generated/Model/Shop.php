@@ -23,6 +23,12 @@ class Shop
      */
     protected $discoOrderReferencePrefix;
     /**
+     * The email used in DISCO.
+     *
+     * @var string
+     */
+    protected $email;
+    /**
      * Meta data of the shop.
      *
      * @var ShopMeta|null
@@ -89,6 +95,27 @@ class Shop
     public function setDiscoOrderReferencePrefix(string $discoOrderReferencePrefix) : self
     {
         $this->discoOrderReferencePrefix = $discoOrderReferencePrefix;
+        return $this;
+    }
+    /**
+     * The email used in DISCO.
+     *
+     * @return string
+     */
+    public function getEmail() : string
+    {
+        return $this->email;
+    }
+    /**
+     * The email used in DISCO.
+     *
+     * @param string $email
+     *
+     * @return self
+     */
+    public function setEmail(string $email) : self
+    {
+        $this->email = $email;
         return $this;
     }
     /**

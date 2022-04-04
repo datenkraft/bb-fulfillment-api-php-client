@@ -94,11 +94,13 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getCustomer()) {
             $data['customer'] = $this->normalizer->normalize($object->getCustomer(), 'json', $context);
         }
-        $values = array();
-        foreach ($object->getOrderItems() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        if (null !== $object->getOrderItems()) {
+            $values = array();
+            foreach ($object->getOrderItems() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['orderItems'] = $values;
         }
-        $data['orderItems'] = $values;
         $data['payment'] = $this->normalizer->normalize($object->getPayment(), 'json', $context);
         if (null !== $object->getShipping()) {
             $data['shipping'] = $object->getShipping();
