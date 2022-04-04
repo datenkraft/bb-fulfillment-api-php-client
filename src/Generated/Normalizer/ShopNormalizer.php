@@ -45,6 +45,9 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('discoOrderReferencePrefix', $data)) {
             $object->setDiscoOrderReferencePrefix($data['discoOrderReferencePrefix']);
         }
+        if (\array_key_exists('email', $data)) {
+            $object->setEmail($data['email']);
+        }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShopMeta', 'json', $context));
         }
@@ -64,6 +67,9 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if (null !== $object->getDiscoOrderReferencePrefix()) {
             $data['discoOrderReferencePrefix'] = $object->getDiscoOrderReferencePrefix();
+        }
+        if (null !== $object->getEmail()) {
+            $data['email'] = $object->getEmail();
         }
         if (null !== $object->getMeta()) {
             $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
