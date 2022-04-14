@@ -42,8 +42,8 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('discoShopCode', $data)) {
             $object->setDiscoShopCode($data['discoShopCode']);
         }
-        if (\array_key_exists('discoOrderReferencePrefix', $data)) {
-            $object->setDiscoOrderReferencePrefix($data['discoOrderReferencePrefix']);
+        if (\array_key_exists('discoReferencePrefix', $data)) {
+            $object->setDiscoReferencePrefix($data['discoReferencePrefix']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
@@ -65,8 +65,8 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getDiscoShopCode()) {
             $data['discoShopCode'] = $object->getDiscoShopCode();
         }
-        if (null !== $object->getDiscoOrderReferencePrefix()) {
-            $data['discoOrderReferencePrefix'] = $object->getDiscoOrderReferencePrefix();
+        if (null !== $object->getDiscoReferencePrefix()) {
+            $data['discoReferencePrefix'] = $object->getDiscoReferencePrefix();
         }
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
