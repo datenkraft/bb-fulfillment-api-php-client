@@ -17,11 +17,11 @@ class Shop
      */
     protected $discoShopCode;
     /**
-     * The prefix to the order reference in DISCO.
+     * The prefix to the references in DISCO.
      *
      * @var string
      */
-    protected $discoOrderReferencePrefix;
+    protected $discoReferencePrefix;
     /**
      * The email used in DISCO.
      *
@@ -77,24 +77,24 @@ class Shop
         return $this;
     }
     /**
-     * The prefix to the order reference in DISCO.
+     * The prefix to the references in DISCO.
      *
      * @return string
      */
-    public function getDiscoOrderReferencePrefix() : string
+    public function getDiscoReferencePrefix() : string
     {
-        return $this->discoOrderReferencePrefix;
+        return $this->discoReferencePrefix;
     }
     /**
-     * The prefix to the order reference in DISCO.
+     * The prefix to the references in DISCO.
      *
-     * @param string $discoOrderReferencePrefix
+     * @param string $discoReferencePrefix
      *
      * @return self
      */
-    public function setDiscoOrderReferencePrefix(string $discoOrderReferencePrefix) : self
+    public function setDiscoReferencePrefix(string $discoReferencePrefix) : self
     {
-        $this->discoOrderReferencePrefix = $discoOrderReferencePrefix;
+        $this->discoReferencePrefix = $discoReferencePrefix;
         return $this;
     }
     /**
