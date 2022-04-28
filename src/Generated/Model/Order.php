@@ -23,18 +23,6 @@ class Order
      */
     protected $orderItems;
     /**
-     * Options regarding the payment of the order
-     *
-     * @var OrderPayment
-     */
-    protected $payment;
-    /**
-     * 
-     *
-     * @var mixed|null
-     */
-    protected $shipping;
-    /**
      * Additional options (optional, TBD)
      *
      * @var mixed|null
@@ -126,48 +114,6 @@ class Order
     public function setOrderItems(array $orderItems) : self
     {
         $this->orderItems = $orderItems;
-        return $this;
-    }
-    /**
-     * Options regarding the payment of the order
-     *
-     * @return OrderPayment
-     */
-    public function getPayment() : OrderPayment
-    {
-        return $this->payment;
-    }
-    /**
-     * Options regarding the payment of the order
-     *
-     * @param OrderPayment $payment
-     *
-     * @return self
-     */
-    public function setPayment(OrderPayment $payment) : self
-    {
-        $this->payment = $payment;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return mixed
-     */
-    public function getShipping()
-    {
-        return $this->shipping;
-    }
-    /**
-     * 
-     *
-     * @param mixed $shipping
-     *
-     * @return self
-     */
-    public function setShipping($shipping) : self
-    {
-        $this->shipping = $shipping;
         return $this;
     }
     /**
