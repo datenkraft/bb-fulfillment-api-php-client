@@ -26,8 +26,7 @@ jobs:
             touch ~/.ssh/known_hosts
             ssh-keyscan -H github.com >> ~/.ssh/known_hosts
             git remote add github git@github.com:datenkraft/bb-fulfillment-api-php-client.git
-            git checkout v1
-            git push -u github v1
+            git push github --mirror
             git push github --tags
 workflows:
   version: 2
@@ -36,7 +35,5 @@ workflows:
       - *job-name-mirror :
           context: *context-cloud
           filters:
-            branches:
-              ignore: /.*/
             tags:
               only: /^(v)(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
