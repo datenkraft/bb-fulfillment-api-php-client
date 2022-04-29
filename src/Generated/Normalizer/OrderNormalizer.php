@@ -74,6 +74,12 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('delivery', $data) && $data['delivery'] === null) {
             $object->setDelivery(null);
         }
+        if (\array_key_exists('payment', $data)) {
+            $object->setPayment($this->denormalizer->denormalize($data['payment'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderPayment', 'json', $context));
+        }
+        if (\array_key_exists('shipping', $data)) {
+            $object->setShipping($this->denormalizer->denormalize($data['shipping'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderShipping', 'json', $context));
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -107,6 +113,12 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['delivery'] = $values_1;
+        }
+        if (null !== $object->getPayment()) {
+            $data['payment'] = $this->normalizer->normalize($object->getPayment(), 'json', $context);
+        }
+        if (null !== $object->getShipping()) {
+            $data['shipping'] = $this->normalizer->normalize($object->getShipping(), 'json', $context);
         }
         return $data;
     }

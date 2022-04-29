@@ -19,10 +19,11 @@ class Shipment
     */
     protected $status;
     /**
-     * The delivery service used to send this delivery
-     *
-     * @var string|null
-     */
+    * The delivery service used to send this delivery.
+    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
+    *
+    * @var string|null
+    */
     protected $deliveryService;
     /**
      * Carrier specific tracking code
@@ -101,21 +102,23 @@ class Shipment
         return $this;
     }
     /**
-     * The delivery service used to send this delivery
-     *
-     * @return string|null
-     */
+    * The delivery service used to send this delivery.
+    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
+    *
+    * @return string|null
+    */
     public function getDeliveryService() : ?string
     {
         return $this->deliveryService;
     }
     /**
-     * The delivery service used to send this delivery
-     *
-     * @param string|null $deliveryService
-     *
-     * @return self
-     */
+    * The delivery service used to send this delivery.
+    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
+    *
+    * @param string|null $deliveryService
+    *
+    * @return self
+    */
     public function setDeliveryService(?string $deliveryService) : self
     {
         $this->deliveryService = $deliveryService;
