@@ -29,6 +29,12 @@ class Order
      */
     protected $options;
     /**
+     * The order number. Note: This can be null if the order as not created via the API.
+     *
+     * @var string
+     */
+    protected $orderNumber;
+    /**
     * The current status of the order.
     - new: The order was created but not every required information was given. The order can not be processed without manual intervention.
     - processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.
@@ -147,6 +153,27 @@ class Order
     public function setOptions($options) : self
     {
         $this->options = $options;
+        return $this;
+    }
+    /**
+     * The order number. Note: This can be null if the order as not created via the API.
+     *
+     * @return string
+     */
+    public function getOrderNumber() : string
+    {
+        return $this->orderNumber;
+    }
+    /**
+     * The order number. Note: This can be null if the order as not created via the API.
+     *
+     * @param string $orderNumber
+     *
+     * @return self
+     */
+    public function setOrderNumber(string $orderNumber) : self
+    {
+        $this->orderNumber = $orderNumber;
         return $this;
     }
     /**
