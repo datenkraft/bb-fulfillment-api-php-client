@@ -71,7 +71,7 @@ class OrderCustomer
      */
     protected $deliveryAddress;
     /**
-     * Customer number if an existing account should be used for the order
+     * 
      *
      * @var string|null
      */
@@ -314,7 +314,7 @@ class OrderCustomer
         return $this;
     }
     /**
-     * Customer number if an existing account should be used for the order
+     * 
      *
      * @return string|null
      */
@@ -323,7 +323,7 @@ class OrderCustomer
         return $this->number;
     }
     /**
-     * Customer number if an existing account should be used for the order
+     * 
      *
      * @param string|null $number
      *
