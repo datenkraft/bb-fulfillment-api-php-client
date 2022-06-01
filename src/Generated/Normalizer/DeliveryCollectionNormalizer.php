@@ -46,12 +46,6 @@ class DeliveryCollectionNormalizer implements DenormalizerInterface, NormalizerI
             }
             $object->setData($values);
         }
-        if (\array_key_exists('page', $data)) {
-            $object->setPage($data['page']);
-        }
-        if (\array_key_exists('pageSize', $data)) {
-            $object->setPageSize($data['pageSize']);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -66,12 +60,6 @@ class DeliveryCollectionNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['data'] = $values;
-        }
-        if (null !== $object->getPage()) {
-            $data['page'] = $object->getPage();
-        }
-        if (null !== $object->getPageSize()) {
-            $data['pageSize'] = $object->getPageSize();
         }
         return $data;
     }
