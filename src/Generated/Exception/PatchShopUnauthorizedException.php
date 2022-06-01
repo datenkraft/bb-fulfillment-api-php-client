@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GETInboundDeliveryInboundDeliveryNumberAppHttpControllersV2InboundDeliveryControllerGetInboundDeliveryUnauthorizedException extends UnauthorizedException
+class PatchShopUnauthorizedException extends UnauthorizedException
 {
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)

@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShopMeta';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShopMeta';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,28 +32,15 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopMeta();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] !== null) {
             $object->setShopifyShopDomain($data['shopifyShopDomain']);
-            unset($data['shopifyShopDomain']);
         }
         elseif (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] === null) {
             $object->setShopifyShopDomain(null);
-        }
-        if (\array_key_exists('testShop', $data) && $data['testShop'] !== null) {
-            $object->setTestShop($data['testShop']);
-            unset($data['testShop']);
-        }
-        elseif (\array_key_exists('testShop', $data) && $data['testShop'] === null) {
-            $object->setTestShop(null);
-        }
-        foreach ($data as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
-            }
         }
         return $object;
     }
@@ -62,14 +49,6 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data = array();
         if (null !== $object->getShopifyShopDomain()) {
             $data['shopifyShopDomain'] = $object->getShopifyShopDomain();
-        }
-        if (null !== $object->getTestShop()) {
-            $data['testShop'] = $object->getTestShop();
-        }
-        foreach ($object as $key => $value) {
-            if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
-            }
         }
         return $data;
     }

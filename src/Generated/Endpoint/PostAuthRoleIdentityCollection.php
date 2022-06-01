@@ -76,6 +76,6 @@ class PostAuthRoleIdentityCollection extends \Datenkraft\Backbone\Client\Fulfill
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return array('oAuthAuthorization');
     }
 }
