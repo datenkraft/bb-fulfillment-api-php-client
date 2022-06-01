@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class SupplierCollection
+class InboundDeliveryCollection
 {
     /**
      * 
@@ -13,7 +13,7 @@ class SupplierCollection
     /**
      * 
      *
-     * @var Supplier[]
+     * @var InboundDelivery[]
      */
     protected $data;
     /**
@@ -40,7 +40,7 @@ class SupplierCollection
     /**
      * 
      *
-     * @return Supplier[]
+     * @return InboundDelivery[]
      */
     public function getData() : array
     {
@@ -49,7 +49,7 @@ class SupplierCollection
     /**
      * 
      *
-     * @param Supplier[] $data
+     * @param InboundDelivery[] $data
      *
      * @return self
      */

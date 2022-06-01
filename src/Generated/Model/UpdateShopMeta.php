@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ShopMeta extends \ArrayObject
+class UpdateShopMeta
 {
     /**
      * Domain of the Shopify shop.
@@ -10,12 +10,6 @@ class ShopMeta extends \ArrayObject
      * @var string|null
      */
     protected $shopifyShopDomain;
-    /**
-     * Flag to mark a shop used for testing.
-     *
-     * @var bool|null
-     */
-    protected $testShop = false;
     /**
      * Domain of the Shopify shop.
      *
@@ -35,27 +29,6 @@ class ShopMeta extends \ArrayObject
     public function setShopifyShopDomain(?string $shopifyShopDomain) : self
     {
         $this->shopifyShopDomain = $shopifyShopDomain;
-        return $this;
-    }
-    /**
-     * Flag to mark a shop used for testing.
-     *
-     * @return bool|null
-     */
-    public function getTestShop() : ?bool
-    {
-        return $this->testShop;
-    }
-    /**
-     * Flag to mark a shop used for testing.
-     *
-     * @param bool|null $testShop
-     *
-     * @return self
-     */
-    public function setTestShop(?bool $testShop) : self
-    {
-        $this->testShop = $testShop;
         return $this;
     }
 }

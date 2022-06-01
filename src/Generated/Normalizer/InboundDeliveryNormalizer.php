@@ -52,6 +52,18 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('inboundDeliveryNumber', $data)) {
             $object->setInboundDeliveryNumber($data['inboundDeliveryNumber']);
         }
+        if (\array_key_exists('shopWAWIDeliveryId', $data)) {
+            $object->setShopWAWIDeliveryId($data['shopWAWIDeliveryId']);
+        }
+        if (\array_key_exists('status', $data)) {
+            $object->setStatus($data['status']);
+        }
+        if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
+            $object->setShopCode($data['shopCode']);
+        }
+        elseif (\array_key_exists('shopCode', $data) && $data['shopCode'] === null) {
+            $object->setShopCode(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -66,6 +78,15 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         $data['products'] = $values;
         if (null !== $object->getInboundDeliveryNumber()) {
             $data['inboundDeliveryNumber'] = $object->getInboundDeliveryNumber();
+        }
+        if (null !== $object->getShopWAWIDeliveryId()) {
+            $data['shopWAWIDeliveryId'] = $object->getShopWAWIDeliveryId();
+        }
+        if (null !== $object->getStatus()) {
+            $data['status'] = $object->getStatus();
+        }
+        if (null !== $object->getShopCode()) {
+            $data['shopCode'] = $object->getShopCode();
         }
         return $data;
     }

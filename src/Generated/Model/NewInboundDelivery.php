@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class NewInboundDelivery
 {
     /**
-     * Number of the supplier
+     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
      * @var string
      */
@@ -23,7 +23,7 @@ class NewInboundDelivery
      */
     protected $products;
     /**
-     * Number of the supplier
+     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
      * @return string
      */
@@ -32,7 +32,7 @@ class NewInboundDelivery
         return $this->supplierNumber;
     }
     /**
-     * Number of the supplier
+     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
      * @param string $supplierNumber
      *

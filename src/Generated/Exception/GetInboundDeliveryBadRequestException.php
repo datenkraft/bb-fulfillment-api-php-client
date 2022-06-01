@@ -2,12 +2,12 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GETInboundDeliveryInboundDeliveryNumberAppHttpControllersV2InboundDeliveryControllerGetInboundDeliveryNotFoundException extends NotFoundException
+class GetInboundDeliveryBadRequestException extends BadRequestException
 {
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Not Found', 404);
+        parent::__construct('Bad Request', 400);
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse()

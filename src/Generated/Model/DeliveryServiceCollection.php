@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class DeliveryServiceCollection
 {
     /**
-     * Class AbstractPaginatedResourceCollection
+     * 
      *
      * @var CollectionPagination
      */
@@ -17,7 +17,7 @@ class DeliveryServiceCollection
      */
     protected $data;
     /**
-     * Class AbstractPaginatedResourceCollection
+     * 
      *
      * @return CollectionPagination
      */
@@ -26,7 +26,7 @@ class DeliveryServiceCollection
         return $this->pagination;
     }
     /**
-     * Class AbstractPaginatedResourceCollection
+     * 
      *
      * @param CollectionPagination $pagination
      *
