@@ -43,6 +43,13 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] === null) {
             $object->setShopifyShopDomain(null);
         }
+        if (\array_key_exists('testShop', $data) && $data['testShop'] !== null) {
+            $object->setTestShop($data['testShop']);
+            unset($data['testShop']);
+        }
+        elseif (\array_key_exists('testShop', $data) && $data['testShop'] === null) {
+            $object->setTestShop(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -55,6 +62,9 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         $data = array();
         if (null !== $object->getShopifyShopDomain()) {
             $data['shopifyShopDomain'] = $object->getShopifyShopDomain();
+        }
+        if (null !== $object->getTestShop()) {
+            $data['testShop'] = $object->getTestShop();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

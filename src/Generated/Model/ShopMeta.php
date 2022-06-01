@@ -11,6 +11,12 @@ class ShopMeta extends \ArrayObject
      */
     protected $shopifyShopDomain;
     /**
+     * Flag to mark a shop used for testing.
+     *
+     * @var bool|null
+     */
+    protected $testShop = false;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -29,6 +35,27 @@ class ShopMeta extends \ArrayObject
     public function setShopifyShopDomain(?string $shopifyShopDomain) : self
     {
         $this->shopifyShopDomain = $shopifyShopDomain;
+        return $this;
+    }
+    /**
+     * Flag to mark a shop used for testing.
+     *
+     * @return bool|null
+     */
+    public function getTestShop() : ?bool
+    {
+        return $this->testShop;
+    }
+    /**
+     * Flag to mark a shop used for testing.
+     *
+     * @param bool|null $testShop
+     *
+     * @return self
+     */
+    public function setTestShop(?bool $testShop) : self
+    {
+        $this->testShop = $testShop;
         return $this;
     }
 }
