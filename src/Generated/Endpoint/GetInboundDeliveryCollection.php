@@ -5,14 +5,21 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get a list of inbound deliveries.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page to read. Default is the first page.
-     *     @var int $pageSize The maximum size per page is 100. Default is 100.
-     *     @var string $filter[shopCode] The shopCode used in DISCO (optional).
-     * }
-     */
+    * Get a list of inbound deliveries.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $filter[status] Status of the inbound delivery (optional).
+    
+    The status for not yet completed is subject to change. you may poll for changes.
+    - open: The inbound delivery has not yet been delivered.
+    - in_progress: The inbound delivery is being processed in our warehouse.
+    - completed: The inbound delivery has been processed in our warehouse.
+    - deleted: The inbound delivery has been deleted.
+    *     @var string $filter[shopCode] The shopCode used in DISCO (optional).
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -37,11 +44,12 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[status]', 'filter[shopCode]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('filter[status]', array('string'));
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
         return $optionsResolver;
     }
