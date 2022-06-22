@@ -25,7 +25,7 @@ class NewOrder
     /**
      * Additional optional options for a new order.
      *
-     * @var NewOrderOptions
+     * @var NewOrderOptions|null
      */
     protected $options;
     /**
@@ -94,20 +94,20 @@ class NewOrder
     /**
      * Additional optional options for a new order.
      *
-     * @return NewOrderOptions
+     * @return NewOrderOptions|null
      */
-    public function getOptions() : NewOrderOptions
+    public function getOptions() : ?NewOrderOptions
     {
         return $this->options;
     }
     /**
      * Additional optional options for a new order.
      *
-     * @param NewOrderOptions $options
+     * @param NewOrderOptions|null $options
      *
      * @return self
      */
-    public function setOptions(NewOrderOptions $options) : self
+    public function setOptions(?NewOrderOptions $options) : self
     {
         $this->options = $options;
         return $this;

@@ -52,8 +52,11 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->setOrderItems($values);
         }
-        if (\array_key_exists('options', $data)) {
+        if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions', 'json', $context));
+        }
+        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
+            $object->setOptions(null);
         }
         return $object;
     }
