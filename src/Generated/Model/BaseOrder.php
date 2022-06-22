@@ -23,7 +23,7 @@ class BaseOrder
      */
     protected $orderItems;
     /**
-     * Additional options (optional, TBD)
+     * Additional optional options for the order.
      *
      * @var mixed|null
      */
@@ -92,7 +92,7 @@ class BaseOrder
         return $this;
     }
     /**
-     * Additional options (optional, TBD)
+     * Additional optional options for the order.
      *
      * @return mixed
      */
@@ -101,7 +101,7 @@ class BaseOrder
         return $this->options;
     }
     /**
-     * Additional options (optional, TBD)
+     * Additional optional options for the order.
      *
      * @param mixed $options
      *
