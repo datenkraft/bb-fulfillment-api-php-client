@@ -52,11 +52,8 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->setOrderItems($values);
         }
-        if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $object->setOptions($data['options']);
-        }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
+        if (\array_key_exists('options', $data)) {
+            $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions', 'json', $context));
         }
         return $object;
     }
@@ -77,7 +74,7 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['orderItems'] = $values;
         }
         if (null !== $object->getOptions()) {
-            $data['options'] = $object->getOptions();
+            $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
         }
         return $data;
     }
