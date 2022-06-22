@@ -23,9 +23,9 @@ class NewOrder
      */
     protected $orderItems;
     /**
-     * Additional options (optional, TBD)
+     * Additional optional options for a new order.
      *
-     * @var mixed|null
+     * @var NewOrderOptions
      */
     protected $options;
     /**
@@ -92,22 +92,22 @@ class NewOrder
         return $this;
     }
     /**
-     * Additional options (optional, TBD)
+     * Additional optional options for a new order.
      *
-     * @return mixed
+     * @return NewOrderOptions
      */
-    public function getOptions()
+    public function getOptions() : NewOrderOptions
     {
         return $this->options;
     }
     /**
-     * Additional options (optional, TBD)
+     * Additional optional options for a new order.
      *
-     * @param mixed $options
+     * @param NewOrderOptions $options
      *
      * @return self
      */
-    public function setOptions($options) : self
+    public function setOptions(NewOrderOptions $options) : self
     {
         $this->options = $options;
         return $this;
