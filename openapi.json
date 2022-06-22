@@ -442,6 +442,104 @@
                 ]
             }
         },
+        "/shop": {
+            "get": {
+                "tags": [
+                    "shop"
+                ],
+                "summary": "Get a list of shops.",
+                "description": "Get a list of shops.",
+                "operationId": "getShopCollection",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The page to read. Default is the first page.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "The maximum size per page is 100. Default is 100.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 20
+                    },
+                    {
+                        "name": "filter[meta][shopifyShopDomain]",
+                        "in": "query",
+                        "description": "A filter for the Shopify hostname of the shop.",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/shopCollection"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    }
+                ]
+            }
+        },
         "/delivery/{deliveryNumber}": {
             "get": {
                 "tags": [
@@ -1146,112 +1244,60 @@
                     }
                 ]
             }
-        },
-        "/shop": {
-            "get": {
-                "tags": [
-                    "shop"
-                ],
-                "summary": "Get a list of shops.",
-                "description": "Get a list of shops.",
-                "operationId": "getShopCollection",
-                "parameters": [
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "The page to read. Default is the first page.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 1
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "The maximum size per page is 100. Default is 100.",
-                        "required": false,
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "example": 20
-                    },
-                    {
-                        "name": "filter[meta][shopifyShopDomain]",
-                        "in": "query",
-                        "description": "A filter for the Shopify hostname of the shop.",
-                        "required": false,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/shopCollection"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Forbidden",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/errorResponse"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "oAuthAuthorization": []
-                    }
-                ]
-            }
         }
     },
     "components": {
         "schemas": {
-            "getAuthPermissionCollectionResponse": {
+            "collection": {
+                "title": "collection",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/collectionPagination"
+                    },
+                    "data": {
+                        "description": "",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "collectionPagination": {
+                "title": "collectionPagination",
+                "properties": {
+                    "page": {
+                        "description": "The page contained in this collection.",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "description": "The page size used for reading the collection.",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleIdentityResource": {
+                "required": [
+                    "roleCode",
+                    "identityId"
+                ],
+                "properties": {
+                    "roleCode": {
+                        "description": "Role Code",
+                        "type": "string"
+                    },
+                    "identityId": {
+                        "description": "Identity ID",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "authRoleIdentityCollection": {
                 "type": "array",
                 "items": {
-                    "$ref": "#/components/schemas/authPermissionResource"
+                    "$ref": "#/components/schemas/authRoleIdentityResource"
                 }
             },
             "authPermissionResource": {
@@ -1270,6 +1316,12 @@
                     }
                 },
                 "type": "object"
+            },
+            "getAuthPermissionCollectionResponse": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/authPermissionResource"
+                }
             },
             "authRoleCollection": {
                 "type": "array",
@@ -1294,468 +1346,9 @@
                 },
                 "type": "object"
             },
-            "authRoleIdentityCollection": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/authRoleIdentityResource"
-                }
-            },
-            "authRoleIdentityResource": {
-                "required": [
-                    "roleCode",
-                    "identityId"
-                ],
-                "properties": {
-                    "roleCode": {
-                        "description": "Role Code",
-                        "type": "string"
-                    },
-                    "identityId": {
-                        "description": "Identity ID",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "baseOrder": {
-                "title": "baseOrder",
-                "description": "Data to represent an order",
-                "required": [
-                    "customer",
-                    "orderItems",
-                    "payment"
-                ],
-                "properties": {
-                    "shopCode": {
-                        "description": "The shopCode used in DISCO.",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "customer": {
-                        "$ref": "#/components/schemas/baseOrderCustomer"
-                    },
-                    "orderItems": {
-                        "description": "",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/orderItem"
-                        }
-                    },
-                    "options": {
-                        "description": "Additional options (optional, TBD)",
-                        "type": "object",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
-            },
-            "newOrder": {
-                "title": "newOrder",
-                "description": "Data to create a new order",
-                "required": [
-                    "customer",
-                    "orderItems",
-                    "payment"
-                ],
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/baseOrder"
-                    },
-                    {
-                        "properties": {
-                            "customer": {
-                                "$ref": "#/components/schemas/newOrderCustomer"
-                            },
-                            "orderItems": {
-                                "description": "",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/newOrderItem"
-                                },
-                                "maxItems": 1000
-                            }
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "order": {
-                "title": "order",
-                "description": "Data to represent an order",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/baseOrder"
-                    },
-                    {
-                        "properties": {
-                            "orderNumber": {
-                                "description": "The order number. Note: This can be null if the order as not created via the API.",
-                                "type": "string"
-                            },
-                            "orderItems": {
-                                "description": "Note: canceled orderItems are NOT included.",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/orderItem"
-                                }
-                            },
-                            "customer": {
-                                "$ref": "#/components/schemas/orderCustomer"
-                            },
-                            "status": {
-                                "description": "The current status of the order.\n- new: The order was created but not every required information was given. The order can not be processed without manual intervention.\n- processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.\n- delivered: The orders shipments have all been transferred to the delivery agent.\n- deleted: The order has been cancelled.\n- locked: The order is locked. The order can not be processed without manual intervention.\n- examination: The order has been manually locked.  The order can not be processed without manual intervention.\n",
-                                "type": "string",
-                                "enum": [
-                                    "new",
-                                    "processing",
-                                    "delivered",
-                                    "deleted",
-                                    "locked",
-                                    "examination"
-                                ]
-                            },
-                            "orderDate": {
-                                "description": "The create date for the order. Default is the current date. Format in ISO 8601",
-                                "type": "string",
-                                "format": "date-time",
-                                "example": "2020-04-24T12:27:00+02:00"
-                            },
-                            "delivery": {
-                                "description": "",
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/components/schemas/orderDelivery"
-                                },
-                                "nullable": true
-                            },
-                            "payment": {
-                                "$ref": "#/components/schemas/orderPayment"
-                            },
-                            "shipping": {
-                                "$ref": "#/components/schemas/orderShipping"
-                            }
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "orderItem": {
-                "title": "orderItem",
-                "required": [
-                    "productNumber",
-                    "count"
-                ],
-                "properties": {
-                    "productNumber": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "title": {
-                        "description": "Item title (optional)",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "count": {
-                        "description": "Positive number of items to order",
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "price": {
-                        "type": "object",
-                        "nullable": true,
-                        "oneOf": [
-                            {
-                                "type": "null"
-                            },
-                            {
-                                "$ref": "#/components/schemas/orderItemPrice"
-                            }
-                        ]
-                    },
-                    "options": {
-                        "description": "Additional options (optional, TBD)",
-                        "type": "object",
-                        "nullable": true
-                    }
-                },
-                "type": "object"
-            },
-            "newOrderItem": {
-                "title": "newOrderItem",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/orderItem"
-                    }
-                ]
-            },
-            "orderItemPrice": {
-                "title": "orderItemPrice",
-                "required": [
-                    "value",
-                    "type",
-                    "vat",
-                    "currencyCode"
-                ],
-                "properties": {
-                    "value": {
-                        "description": "The price value rounded to 2 decimals, dot as separator",
-                        "type": "number",
-                        "format": "float",
-                        "example": "10.99"
-                    },
-                    "type": {
-                        "description": "The price type",
-                        "type": "string",
-                        "enum": [
-                            "net",
-                            "gross"
-                        ],
-                        "example": "gross"
-                    },
-                    "vat": {
-                        "description": "The VAT in percent",
-                        "type": "number",
-                        "format": "float",
-                        "example": "20"
-                    },
-                    "currencyCode": {
-                        "description": "The currency code (ISO 4217)",
-                        "type": "string",
-                        "example": "EUR"
-                    }
-                },
-                "type": "object"
-            },
-            "baseOrderCustomer": {
-                "title": "baseOrderCustomer",
-                "required": [
-                    "email",
-                    "firstname",
-                    "lastname",
-                    "gender",
-                    "languageCode",
-                    "invoiceAddress"
-                ],
-                "properties": {
-                    "email": {
-                        "description": "",
-                        "type": "string",
-                        "format": "email"
-                    },
-                    "firstname": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "lastname": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "gender": {
-                        "description": "",
-                        "type": "string",
-                        "enum": [
-                            "male",
-                            "female",
-                            "unknown"
-                        ]
-                    },
-                    "title": {
-                        "description": "",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "phone": {
-                        "description": "",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "languageCode": {
-                        "description": "The language code for any customer communications (ISO 639-1)",
-                        "type": "string"
-                    },
-                    "company": {
-                        "description": "",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "companyVatNumber": {
-                        "description": "Company vat number",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "invoiceAddress": {
-                        "$ref": "#/components/schemas/orderCustomerInvoiceAddress"
-                    },
-                    "deliveryAddress": {
-                        "$ref": "#/components/schemas/orderCustomerDeliveryAddress"
-                    }
-                },
-                "type": "object"
-            },
-            "newOrderCustomer": {
-                "title": "newOrderCustomer",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/baseOrderCustomer"
-                    }
-                ]
-            },
-            "orderCustomer": {
-                "title": "orderCustomer",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/baseOrderCustomer"
-                    },
-                    {
-                        "properties": {
-                            "number": {
-                                "description": "",
-                                "type": "string",
-                                "nullable": true
-                            },
-                            "type": {
-                                "description": "The customer type",
-                                "type": "string",
-                                "nullable": true
-                            }
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "orderCustomerAddress": {
-                "title": "orderCustomerAddress",
-                "required": [
-                    "street",
-                    "streetNumber",
-                    "zipCode",
-                    "city",
-                    "countryCode"
-                ],
-                "properties": {
-                    "street": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "streetNumber": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "zipCode": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "district": {
-                        "description": "",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "city": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "provinceCode": {
-                        "description": "Province code (ISO 3166-2)",
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "countryCode": {
-                        "description": "Country code (ISO 3166-1 alpha-2)",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "orderCustomerDeliveryAddress": {
-                "title": "orderCustomerDeliveryAddress",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/orderCustomerAddress"
-                    },
-                    {
-                        "required": [
-                            "nameLine1"
-                        ],
-                        "properties": {
-                            "nameLine1": {
-                                "description": "",
-                                "type": "string"
-                            },
-                            "nameLine2": {
-                                "description": "",
-                                "type": "string",
-                                "nullable": true
-                            }
-                        },
-                        "type": "object"
-                    }
-                ]
-            },
-            "orderCustomerInvoiceAddress": {
-                "title": "orderCustomerInvoiceAddress",
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/orderCustomerAddress"
-                    }
-                ]
-            },
-            "orderPayment": {
-                "title": "orderPayment",
-                "description": "Options regarding the payment of the order",
-                "required": [
-                    "type"
-                ],
-                "properties": {
-                    "type": {
-                        "description": "The payment method",
-                        "type": "string",
-                        "enum": [
-                            "invoice"
-                        ]
-                    }
-                },
-                "type": "object"
-            },
-            "orderShipping": {
-                "title": "orderShipping",
-                "description": "Options regarding the shipping of the order",
-                "required": [
-                    "deliveryService"
-                ],
-                "properties": {
-                    "deliveryService": {
-                        "description": "The delivery service to recommend for usage.\nThe codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "orderDelivery": {
-                "title": "orderDelivery",
-                "description": "The delivery for the order. Details can be read by GET /delivery/.",
-                "properties": {
-                    "number": {
-                        "description": "",
-                        "type": "string"
-                    },
-                    "status": {
-                        "description": "Status code of the delivery",
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
             "deliveryCollection": {
                 "title": "deliveryCollection",
                 "description": "A collection of deliveries",
-                "type": "object",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/collection"
@@ -1879,6 +1472,61 @@
                 "type": "object",
                 "nullable": true
             },
+            "stock": {
+                "properties": {
+                    "productNumber": {
+                        "description": "The product number the stock is available for",
+                        "type": "string"
+                    },
+                    "stock": {
+                        "description": "The available stock",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "stockCollection": {
+                "title": "stockCollection",
+                "description": "A collection of stocks",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/collection"
+                    },
+                    {
+                        "properties": {
+                            "data": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/stock"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "shopCollection": {
+                "title": "shopCollection",
+                "description": "A collection of shops",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/collection"
+                    },
+                    {
+                        "properties": {
+                            "data": {
+                                "description": "",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/shop"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
             "shop": {
                 "description": "Data to represent a shop",
                 "properties": {
@@ -1920,59 +1568,429 @@
                 },
                 "type": "object"
             },
-            "shopCollection": {
-                "title": "shopCollection",
-                "description": "A collection of shops",
-                "type": "object",
+            "baseOrder": {
+                "title": "baseOrder",
+                "description": "Data to represent an order",
+                "required": [
+                    "customer",
+                    "orderItems",
+                    "payment"
+                ],
+                "properties": {
+                    "shopCode": {
+                        "description": "The shopCode used in DISCO.",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "customer": {
+                        "$ref": "#/components/schemas/baseOrderCustomer"
+                    },
+                    "orderItems": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/orderItem"
+                        }
+                    },
+                    "options": {
+                        "description": "Additional options (optional, TBD)",
+                        "type": "object",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "newOrder": {
+                "title": "newOrder",
+                "description": "Data to create a new order",
+                "required": [
+                    "customer",
+                    "orderItems",
+                    "payment"
+                ],
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/collection"
+                        "$ref": "#/components/schemas/baseOrder"
                     },
                     {
                         "properties": {
-                            "data": {
+                            "customer": {
+                                "$ref": "#/components/schemas/newOrderCustomer"
+                            },
+                            "orderItems": {
                                 "description": "",
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/shop"
-                                }
+                                    "$ref": "#/components/schemas/newOrderItem"
+                                },
+                                "maxItems": 1000
                             }
                         },
                         "type": "object"
                     }
                 ]
             },
-            "stockCollection": {
-                "title": "stockCollection",
-                "description": "A collection of stocks",
-                "type": "object",
+            "order": {
+                "title": "order",
+                "description": "Data to represent an order",
                 "allOf": [
                     {
-                        "$ref": "#/components/schemas/collection"
+                        "$ref": "#/components/schemas/baseOrder"
                     },
                     {
                         "properties": {
-                            "data": {
+                            "orderNumber": {
+                                "description": "The order number. Note: This can be null if the order as not created via the API.",
+                                "type": "string"
+                            },
+                            "orderItems": {
+                                "description": "Note: canceled orderItems are NOT included.",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/orderItem"
+                                }
+                            },
+                            "customer": {
+                                "$ref": "#/components/schemas/orderCustomer"
+                            },
+                            "status": {
+                                "description": "The current status of the order.\n- new: The order was created but not every required information was given. The order can not be processed without manual intervention.\n- processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.\n- delivered: The orders shipments have all been transferred to the delivery agent.\n- deleted: The order has been cancelled.\n- locked: The order is locked. The order can not be processed without manual intervention.\n- examination: The order has been manually locked.  The order can not be processed without manual intervention.\n",
+                                "type": "string",
+                                "enum": [
+                                    "new",
+                                    "processing",
+                                    "delivered",
+                                    "deleted",
+                                    "locked",
+                                    "examination"
+                                ]
+                            },
+                            "orderDate": {
+                                "description": "The create date for the order. Default is the current date. Format in ISO 8601",
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2020-04-24T12:27:00+02:00"
+                            },
+                            "delivery": {
                                 "description": "",
                                 "type": "array",
                                 "items": {
-                                    "$ref": "#/components/schemas/stock"
-                                }
+                                    "$ref": "#/components/schemas/orderDelivery"
+                                },
+                                "nullable": true
+                            },
+                            "payment": {
+                                "$ref": "#/components/schemas/orderPayment"
+                            },
+                            "shipping": {
+                                "$ref": "#/components/schemas/orderShipping"
                             }
                         },
                         "type": "object"
                     }
                 ]
             },
-            "stock": {
+            "orderItem": {
+                "title": "orderItem",
+                "required": [
+                    "productNumber",
+                    "count"
+                ],
                 "properties": {
                     "productNumber": {
-                        "description": "The product number the stock is available for",
+                        "description": "",
                         "type": "string"
                     },
-                    "stock": {
-                        "description": "The available stock",
-                        "type": "integer"
+                    "title": {
+                        "description": "Item title (optional)",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "count": {
+                        "description": "Positive number of items to order",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "price": {
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "type": "null"
+                            },
+                            {
+                                "$ref": "#/components/schemas/orderItemPrice"
+                            }
+                        ]
+                    },
+                    "options": {
+                        "description": "Additional options (optional, TBD)",
+                        "type": "object",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "newOrderItem": {
+                "title": "newOrderItem",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/orderItem"
+                    }
+                ]
+            },
+            "orderItemPrice": {
+                "title": "orderItemPrice",
+                "required": [
+                    "value",
+                    "type",
+                    "vat",
+                    "currencyCode"
+                ],
+                "properties": {
+                    "value": {
+                        "description": "The price value rounded to 2 decimals, dot as separator",
+                        "type": "number",
+                        "format": "float",
+                        "example": "10.99"
+                    },
+                    "type": {
+                        "description": "The price type",
+                        "type": "string",
+                        "enum": [
+                            "net",
+                            "gross"
+                        ],
+                        "example": "gross"
+                    },
+                    "vat": {
+                        "description": "The VAT in percent",
+                        "type": "number",
+                        "format": "float",
+                        "example": "20"
+                    },
+                    "currencyCode": {
+                        "description": "The currency code (ISO 4217)",
+                        "type": "string",
+                        "example": "EUR"
+                    }
+                },
+                "type": "object"
+            },
+            "baseOrderCustomer": {
+                "title": "baseOrderCustomer",
+                "required": [
+                    "email",
+                    "firstname",
+                    "lastname",
+                    "gender",
+                    "languageCode",
+                    "invoiceAddress"
+                ],
+                "properties": {
+                    "email": {
+                        "description": "",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "firstname": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "gender": {
+                        "description": "",
+                        "type": "string",
+                        "enum": [
+                            "male",
+                            "female",
+                            "unknown"
+                        ]
+                    },
+                    "title": {
+                        "description": "",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "phone": {
+                        "description": "",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "languageCode": {
+                        "description": "The language code for any customer communications (ISO 639-1)",
+                        "type": "string"
+                    },
+                    "company": {
+                        "description": "",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "companyVatNumber": {
+                        "description": "Company vat number",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "invoiceAddress": {
+                        "$ref": "#/components/schemas/orderCustomerInvoiceAddress"
+                    },
+                    "deliveryAddress": {
+                        "$ref": "#/components/schemas/orderCustomerDeliveryAddress"
+                    }
+                },
+                "type": "object"
+            },
+            "newOrderCustomer": {
+                "title": "newOrderCustomer",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/baseOrderCustomer"
+                    }
+                ]
+            },
+            "orderCustomer": {
+                "title": "orderCustomer",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/baseOrderCustomer"
+                    },
+                    {
+                        "properties": {
+                            "number": {
+                                "description": "",
+                                "type": "string",
+                                "nullable": true
+                            },
+                            "type": {
+                                "description": "The customer type",
+                                "type": "string",
+                                "nullable": true
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "orderCustomerAddress": {
+                "title": "orderCustomerAddress",
+                "required": [
+                    "street",
+                    "streetNumber",
+                    "zipCode",
+                    "city",
+                    "countryCode"
+                ],
+                "properties": {
+                    "street": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "streetNumber": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "zipCode": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "district": {
+                        "description": "",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "city": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "provinceCode": {
+                        "description": "Province code (ISO 3166-2)",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "countryCode": {
+                        "description": "Country code (ISO 3166-1 alpha-2)",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "orderCustomerDeliveryAddress": {
+                "title": "orderCustomerDeliveryAddress",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/orderCustomerAddress"
+                    },
+                    {
+                        "required": [
+                            "nameLine1"
+                        ],
+                        "properties": {
+                            "nameLine1": {
+                                "description": "",
+                                "type": "string"
+                            },
+                            "nameLine2": {
+                                "description": "",
+                                "type": "string",
+                                "nullable": true
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "orderCustomerInvoiceAddress": {
+                "title": "orderCustomerInvoiceAddress",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/orderCustomerAddress"
+                    }
+                ]
+            },
+            "orderPayment": {
+                "title": "orderPayment",
+                "description": "Options regarding the payment of the order",
+                "required": [
+                    "type"
+                ],
+                "properties": {
+                    "type": {
+                        "description": "The payment method",
+                        "type": "string",
+                        "enum": [
+                            "invoice"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "orderShipping": {
+                "title": "orderShipping",
+                "description": "Options regarding the shipping of the order",
+                "required": [
+                    "deliveryService"
+                ],
+                "properties": {
+                    "deliveryService": {
+                        "description": "The delivery service to recommend for usage.\nThe codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "orderDelivery": {
+                "title": "orderDelivery",
+                "description": "The delivery for the order. Details can be read by GET /delivery/.",
+                "properties": {
+                    "number": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Status code of the delivery",
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -1991,7 +2009,6 @@
             "deliveryServiceCollection": {
                 "title": "deliveryServiceCollection",
                 "description": "A collection of delivery services",
-                "type": "object",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/collection"
@@ -2009,35 +2026,6 @@
                         "type": "object"
                     }
                 ]
-            },
-            "collection": {
-                "title": "collection",
-                "properties": {
-                    "pagination": {
-                        "$ref": "#/components/schemas/collectionPagination"
-                    },
-                    "data": {
-                        "description": "",
-                        "type": "object"
-                    }
-                },
-                "type": "object"
-            },
-            "collectionPagination": {
-                "title": "collectionPagination",
-                "properties": {
-                    "page": {
-                        "description": "The page contained in this collection.",
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "pageSize": {
-                        "description": "The page size used for reading the collection.",
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                },
-                "type": "object"
             },
             "errorResponse": {
                 "properties": {
