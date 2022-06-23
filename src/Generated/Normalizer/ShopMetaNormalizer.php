@@ -50,6 +50,13 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('testShop', $data) && $data['testShop'] === null) {
             $object->setTestShop(null);
         }
+        if (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] !== null) {
+            $object->setTestShopResetNotBefore(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['testShopResetNotBefore']));
+            unset($data['testShopResetNotBefore']);
+        }
+        elseif (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] === null) {
+            $object->setTestShopResetNotBefore(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -65,6 +72,9 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getTestShop()) {
             $data['testShop'] = $object->getTestShop();
+        }
+        if (null !== $object->getTestShopResetNotBefore()) {
+            $data['testShopResetNotBefore'] = $object->getTestShopResetNotBefore()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
