@@ -42,6 +42,12 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] === null) {
             $object->setShopifyShopDomain(null);
         }
+        if (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] !== null) {
+            $object->setTestShopResetNotBefore(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['testShopResetNotBefore']));
+        }
+        elseif (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] === null) {
+            $object->setTestShopResetNotBefore(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -49,6 +55,9 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         $data = array();
         if (null !== $object->getShopifyShopDomain()) {
             $data['shopifyShopDomain'] = $object->getShopifyShopDomain();
+        }
+        if (null !== $object->getTestShopResetNotBefore()) {
+            $data['testShopResetNotBefore'] = $object->getTestShopResetNotBefore()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }

@@ -2782,6 +2782,12 @@
                 "type": "boolean",
                 "default": false,
                 "nullable": true
+              },
+              "testShopResetNotBefore": {
+                "description": "Date time to indicate that the test shop will not be reset before this time.",
+                "type": "string",
+                "format": "date-time",
+                "nullable": true
               }
             },
             "type": "object",
@@ -2800,6 +2806,12 @@
               "shopifyShopDomain": {
                 "description": "Domain of the Shopify shop.",
                 "type": "string",
+                "nullable": true
+              },
+              "testShopResetNotBefore": {
+                "description": "Date time to indicate that the test shop will not be reset before this time.",
+                "type": "string",
+                "format": "date-time",
                 "nullable": true
               }
             },

@@ -17,6 +17,12 @@ class ShopMeta extends \ArrayObject
      */
     protected $testShop = false;
     /**
+     * Date time to indicate that the test shop will not be reset before this time.
+     *
+     * @var \DateTime|null
+     */
+    protected $testShopResetNotBefore;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -56,6 +62,27 @@ class ShopMeta extends \ArrayObject
     public function setTestShop(?bool $testShop) : self
     {
         $this->testShop = $testShop;
+        return $this;
+    }
+    /**
+     * Date time to indicate that the test shop will not be reset before this time.
+     *
+     * @return \DateTime|null
+     */
+    public function getTestShopResetNotBefore() : ?\DateTime
+    {
+        return $this->testShopResetNotBefore;
+    }
+    /**
+     * Date time to indicate that the test shop will not be reset before this time.
+     *
+     * @param \DateTime|null $testShopResetNotBefore
+     *
+     * @return self
+     */
+    public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore) : self
+    {
+        $this->testShopResetNotBefore = $testShopResetNotBefore;
         return $this;
     }
 }
