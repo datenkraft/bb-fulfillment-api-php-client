@@ -19,7 +19,7 @@ class NewInboundDelivery
     /**
      * Products in the inbound delivery
      *
-     * @var InboundDeliveryProduct[]
+     * @var NewInboundDeliveryProduct[]
      */
     protected $products;
     /**
@@ -67,7 +67,7 @@ class NewInboundDelivery
     /**
      * Products in the inbound delivery
      *
-     * @return InboundDeliveryProduct[]
+     * @return NewInboundDeliveryProduct[]
      */
     public function getProducts() : array
     {
@@ -76,7 +76,7 @@ class NewInboundDelivery
     /**
      * Products in the inbound delivery
      *
-     * @param InboundDeliveryProduct[] $products
+     * @param NewInboundDeliveryProduct[] $products
      *
      * @return self
      */

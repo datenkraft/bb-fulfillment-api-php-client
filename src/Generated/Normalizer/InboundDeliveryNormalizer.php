@@ -49,8 +49,11 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
             }
             $object->setProducts($values);
         }
-        if (\array_key_exists('inboundDeliveryNumber', $data)) {
+        if (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] !== null) {
             $object->setInboundDeliveryNumber($data['inboundDeliveryNumber']);
+        }
+        elseif (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] === null) {
+            $object->setInboundDeliveryNumber(null);
         }
         if (\array_key_exists('shopWAWIDeliveryId', $data)) {
             $object->setShopWAWIDeliveryId($data['shopWAWIDeliveryId']);
@@ -64,6 +67,18 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('shopCode', $data) && $data['shopCode'] === null) {
             $object->setShopCode(null);
         }
+        if (\array_key_exists('startDate', $data) && $data['startDate'] !== null) {
+            $object->setStartDate(\DateTime::createFromFormat('Y-m-d', $data['startDate'])->setTime(0, 0, 0));
+        }
+        elseif (\array_key_exists('startDate', $data) && $data['startDate'] === null) {
+            $object->setStartDate(null);
+        }
+        if (\array_key_exists('endDate', $data) && $data['endDate'] !== null) {
+            $object->setEndDate(\DateTime::createFromFormat('Y-m-d', $data['endDate'])->setTime(0, 0, 0));
+        }
+        elseif (\array_key_exists('endDate', $data) && $data['endDate'] === null) {
+            $object->setEndDate(null);
+        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -71,11 +86,13 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         $data['supplierNumber'] = $object->getSupplierNumber();
         $data['expectedDeliveryDate'] = $object->getExpectedDeliveryDate()->format('Y-m-d');
-        $values = array();
-        foreach ($object->getProducts() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        if (null !== $object->getProducts()) {
+            $values = array();
+            foreach ($object->getProducts() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['products'] = $values;
         }
-        $data['products'] = $values;
         if (null !== $object->getInboundDeliveryNumber()) {
             $data['inboundDeliveryNumber'] = $object->getInboundDeliveryNumber();
         }
@@ -87,6 +104,12 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getShopCode()) {
             $data['shopCode'] = $object->getShopCode();
+        }
+        if (null !== $object->getStartDate()) {
+            $data['startDate'] = $object->getStartDate()->format('Y-m-d');
+        }
+        if (null !== $object->getEndDate()) {
+            $data['endDate'] = $object->getEndDate()->format('Y-m-d');
         }
         return $data;
     }

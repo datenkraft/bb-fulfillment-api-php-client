@@ -11,11 +11,29 @@ class InboundDeliveryProduct
      */
     protected $productNumber;
     /**
-     * Number of products in the inbound delivery
+     * Number of announced products in the inbound delivery
      *
      * @var int
      */
-    protected $count;
+    protected $announcedCount;
+    /**
+     * Title of the product
+     *
+     * @var string
+     */
+    protected $productTitle;
+    /**
+     * Product number of the manufactor
+     *
+     * @var string
+     */
+    protected $productNumberManufacturer;
+    /**
+     * Number of actual delivered products in the inbound delivery
+     *
+     * @var int
+     */
+    protected $deliveredCount;
     /**
      * Product number
      *
@@ -38,24 +56,87 @@ class InboundDeliveryProduct
         return $this;
     }
     /**
-     * Number of products in the inbound delivery
+     * Number of announced products in the inbound delivery
      *
      * @return int
      */
-    public function getCount() : int
+    public function getAnnouncedCount() : int
     {
-        return $this->count;
+        return $this->announcedCount;
     }
     /**
-     * Number of products in the inbound delivery
+     * Number of announced products in the inbound delivery
      *
-     * @param int $count
+     * @param int $announcedCount
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setAnnouncedCount(int $announcedCount) : self
     {
-        $this->count = $count;
+        $this->announcedCount = $announcedCount;
+        return $this;
+    }
+    /**
+     * Title of the product
+     *
+     * @return string
+     */
+    public function getProductTitle() : string
+    {
+        return $this->productTitle;
+    }
+    /**
+     * Title of the product
+     *
+     * @param string $productTitle
+     *
+     * @return self
+     */
+    public function setProductTitle(string $productTitle) : self
+    {
+        $this->productTitle = $productTitle;
+        return $this;
+    }
+    /**
+     * Product number of the manufactor
+     *
+     * @return string
+     */
+    public function getProductNumberManufacturer() : string
+    {
+        return $this->productNumberManufacturer;
+    }
+    /**
+     * Product number of the manufactor
+     *
+     * @param string $productNumberManufacturer
+     *
+     * @return self
+     */
+    public function setProductNumberManufacturer(string $productNumberManufacturer) : self
+    {
+        $this->productNumberManufacturer = $productNumberManufacturer;
+        return $this;
+    }
+    /**
+     * Number of actual delivered products in the inbound delivery
+     *
+     * @return int
+     */
+    public function getDeliveredCount() : int
+    {
+        return $this->deliveredCount;
+    }
+    /**
+     * Number of actual delivered products in the inbound delivery
+     *
+     * @param int $deliveredCount
+     *
+     * @return self
+     */
+    public function setDeliveredCount(int $deliveredCount) : self
+    {
+        $this->deliveredCount = $deliveredCount;
         return $this;
     }
 }

@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class InboundDeliveryProductNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class NewInboundDeliveryProductNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null)
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryProduct';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDeliveryProduct';
     }
     public function supportsNormalization($data, $format = null)
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryProduct';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDeliveryProduct';
     }
     public function denormalize($data, $class, $format = null, array $context = array())
     {
@@ -32,7 +32,7 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryProduct();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -42,15 +42,6 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('announcedCount', $data)) {
             $object->setAnnouncedCount($data['announcedCount']);
         }
-        if (\array_key_exists('productTitle', $data)) {
-            $object->setProductTitle($data['productTitle']);
-        }
-        if (\array_key_exists('productNumberManufacturer', $data)) {
-            $object->setProductNumberManufacturer($data['productNumberManufacturer']);
-        }
-        if (\array_key_exists('deliveredCount', $data)) {
-            $object->setDeliveredCount($data['deliveredCount']);
-        }
         return $object;
     }
     public function normalize($object, $format = null, array $context = array())
@@ -58,15 +49,6 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
         $data = array();
         $data['productNumber'] = $object->getProductNumber();
         $data['announcedCount'] = $object->getAnnouncedCount();
-        if (null !== $object->getProductTitle()) {
-            $data['productTitle'] = $object->getProductTitle();
-        }
-        if (null !== $object->getProductNumberManufacturer()) {
-            $data['productNumberManufacturer'] = $object->getProductNumberManufacturer();
-        }
-        if (null !== $object->getDeliveredCount()) {
-            $data['deliveredCount'] = $object->getDeliveredCount();
-        }
         return $data;
     }
 }
