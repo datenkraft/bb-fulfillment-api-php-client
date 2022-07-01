@@ -84,6 +84,6 @@ class GetSupplierCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

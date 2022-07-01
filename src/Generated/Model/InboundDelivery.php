@@ -25,7 +25,7 @@ class InboundDelivery
     /**
      * 
      *
-     * @var string
+     * @var string|null
      */
     protected $inboundDeliveryNumber;
     /**
@@ -51,6 +51,18 @@ class InboundDelivery
      * @var string|null
      */
     protected $shopCode;
+    /**
+     * Start date of the delivery
+     *
+     * @var \DateTime|null
+     */
+    protected $startDate;
+    /**
+     * End date of the delivery
+     *
+     * @var \DateTime|null
+     */
+    protected $endDate;
     /**
      * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
@@ -117,20 +129,20 @@ class InboundDelivery
     /**
      * 
      *
-     * @return string
+     * @return string|null
      */
-    public function getInboundDeliveryNumber() : string
+    public function getInboundDeliveryNumber() : ?string
     {
         return $this->inboundDeliveryNumber;
     }
     /**
      * 
      *
-     * @param string $inboundDeliveryNumber
+     * @param string|null $inboundDeliveryNumber
      *
      * @return self
      */
-    public function setInboundDeliveryNumber(string $inboundDeliveryNumber) : self
+    public function setInboundDeliveryNumber(?string $inboundDeliveryNumber) : self
     {
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
         return $this;
@@ -206,6 +218,48 @@ class InboundDelivery
     public function setShopCode(?string $shopCode) : self
     {
         $this->shopCode = $shopCode;
+        return $this;
+    }
+    /**
+     * Start date of the delivery
+     *
+     * @return \DateTime|null
+     */
+    public function getStartDate() : ?\DateTime
+    {
+        return $this->startDate;
+    }
+    /**
+     * Start date of the delivery
+     *
+     * @param \DateTime|null $startDate
+     *
+     * @return self
+     */
+    public function setStartDate(?\DateTime $startDate) : self
+    {
+        $this->startDate = $startDate;
+        return $this;
+    }
+    /**
+     * End date of the delivery
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDate() : ?\DateTime
+    {
+        return $this->endDate;
+    }
+    /**
+     * End date of the delivery
+     *
+     * @param \DateTime|null $endDate
+     *
+     * @return self
+     */
+    public function setEndDate(?\DateTime $endDate) : self
+    {
+        $this->endDate = $endDate;
         return $this;
     }
 }

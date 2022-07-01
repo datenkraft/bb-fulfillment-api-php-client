@@ -45,7 +45,7 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('products', $data)) {
             $values = array();
             foreach ($data['products'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryProduct', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDeliveryProduct', 'json', $context);
             }
             $object->setProducts($values);
         }

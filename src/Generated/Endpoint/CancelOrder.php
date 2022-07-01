@@ -91,6 +91,6 @@ class CancelOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

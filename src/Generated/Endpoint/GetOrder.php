@@ -87,6 +87,6 @@ class GetOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runt
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

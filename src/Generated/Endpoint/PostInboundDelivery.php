@@ -88,6 +88,6 @@ class PostInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\Gen
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }
