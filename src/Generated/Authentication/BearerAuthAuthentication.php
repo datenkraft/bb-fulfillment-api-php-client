@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Authentication;
 
-class BearerAuthAuthentication implements \Jane\OpenApiRuntime\Client\AuthenticationPlugin
+class BearerAuthAuthentication implements \Jane\Component\OpenApiRuntime\Client\AuthenticationPlugin
 {
     private $token;
     public function __construct(string $token)

@@ -4,13 +4,16 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
 class PatchShopConflictException extends ConflictException
 {
+    /**
+     * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
+     */
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Conflict', 409);
+        parent::__construct('Conflict');
         $this->errorResponse = $errorResponse;
     }
-    public function getErrorResponse()
+    public function getErrorResponse() : \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
     {
         return $this->errorResponse;
     }
