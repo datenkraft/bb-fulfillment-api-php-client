@@ -59,6 +59,6 @@ class GetDeliveryServiceCollection extends \Datenkraft\Backbone\Client\Fulfillme
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

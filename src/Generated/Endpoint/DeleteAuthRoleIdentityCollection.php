@@ -64,6 +64,6 @@ class DeleteAuthRoleIdentityCollection extends \Datenkraft\Backbone\Client\Fulfi
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

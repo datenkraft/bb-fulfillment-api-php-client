@@ -75,6 +75,6 @@ class PostOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Run
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

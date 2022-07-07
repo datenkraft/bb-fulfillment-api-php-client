@@ -76,6 +76,6 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

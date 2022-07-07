@@ -86,6 +86,6 @@ class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }
