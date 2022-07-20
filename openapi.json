@@ -2939,7 +2939,8 @@
             "enum": [
               "enabled",
               "enabled_external_only"
-            ]
+            ],
+            "nullable": true
           },
           "articleShortDescription": {
             "description": "Short description of the article",
@@ -2951,7 +2952,8 @@
           },
           "articleVariantTitle": {
             "description": "The title of the article variant. \\\nMust not be set when the articleVariantType is 'standard_autotitle'.",
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "articleVariantType": {
             "description": "The type of the article variant ('standard_autotitle' if no value is provided). \\\nThe articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'",
@@ -2961,7 +2963,8 @@
               "standard",
               "standard_autotitle",
               "personalized"
-            ]
+            ],
+            "nullable": true
           },
           "articleStatus": {
             "description": "Status of the article regarding visibility ('active' if no value is provided)",
@@ -2973,28 +2976,33 @@
               "preparation_inactive",
               "inactive_but_visible",
               "inactive"
-            ]
+            ],
+            "nullable": true
           },
           "contentsAmount": {
             "description": "Amount of the product contents (1 if no value is provided)",
             "type": "number",
             "format": "float",
-            "default": "1"
+            "default": "1",
+            "nullable": true
           },
           "contentsUnit": {
             "description": "Unit of the product contents ('stk' if no value is provided).",
             "type": "string",
-            "default": "stk"
+            "default": "stk",
+            "nullable": true
           },
           "contentsWeightGram": {
             "description": "Weight of the product contents in gram",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "weightGram": {
             "description": "Total weight of the product in gram",
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "variantGroup": {
             "description": "The variant group of the product",
@@ -3010,7 +3018,8 @@
           },
           "ean": {
             "description": "The EAN of the product",
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "taricCode": {
             "description": "The TARIC code of the product",
@@ -3024,7 +3033,8 @@
           "suggestedRetailPriceEUR": {
             "description": "The suggested retail price for the product in EUR",
             "type": "number",
-            "format": "float"
+            "format": "float",
+            "nullable": true
           },
           "taxCode": {
             "description": "One of the available tax codes.\n- std: Standard tax rate (AT 20%)\n- spc: 1st tax rate (AT 13%)\n- erm: 2nd tax rate (AT 10%)\n- erm3: 3rd tax rate (AT 5%)\n- nsp: not taxable (0%)",
@@ -3042,7 +3052,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/productPurchasePrice"
-            }
+            },
+            "nullable": true
           },
           "manufacturerNumber": {
             "description": "Number of the manufacturer.",
@@ -3051,7 +3062,8 @@
           "manufacturerCountryCode": {
             "description": "Country code of the manufacturer (ISO 3166-1 alpha-2)",
             "type": "string",
-            "default": "AT"
+            "default": "AT",
+            "nullable": true
           },
           "supplierNumber": {
             "description": "Number of the supplier",

@@ -25,7 +25,7 @@ class NewProduct
     /**
      * Status of the product regarding sales ('enabled' if no value is provided)
      *
-     * @var string
+     * @var string|null
      */
     protected $productStatus = 'enabled';
     /**
@@ -44,44 +44,44 @@ class NewProduct
     * The title of the article variant. \
     Must not be set when the articleVariantType is 'standard_autotitle'.
     *
-    * @var string
+    * @var string|null
     */
     protected $articleVariantTitle;
     /**
     * The type of the article variant ('standard_autotitle' if no value is provided). \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
-    * @var string
+    * @var string|null
     */
     protected $articleVariantType = 'standard_autotitle';
     /**
      * Status of the article regarding visibility ('active' if no value is provided)
      *
-     * @var string
+     * @var string|null
      */
     protected $articleStatus = 'active';
     /**
      * Amount of the product contents (1 if no value is provided)
      *
-     * @var float
+     * @var float|null
      */
     protected $contentsAmount = '1';
     /**
      * Unit of the product contents ('stk' if no value is provided).
      *
-     * @var string
+     * @var string|null
      */
     protected $contentsUnit = 'stk';
     /**
      * Weight of the product contents in gram
      *
-     * @var int
+     * @var int|null
      */
     protected $contentsWeightGram;
     /**
      * Total weight of the product in gram
      *
-     * @var int
+     * @var int|null
      */
     protected $weightGram;
     /**
@@ -93,7 +93,7 @@ class NewProduct
     /**
      * The EAN of the product
      *
-     * @var string
+     * @var string|null
      */
     protected $ean;
     /**
@@ -111,7 +111,7 @@ class NewProduct
     /**
      * The suggested retail price for the product in EUR
      *
-     * @var float
+     * @var float|null
      */
     protected $suggestedRetailPriceEUR;
     /**
@@ -128,7 +128,7 @@ class NewProduct
     /**
      * 
      *
-     * @var ProductPurchasePrice[]
+     * @var ProductPurchasePrice[]|null
      */
     protected $purchasePrices;
     /**
@@ -140,7 +140,7 @@ class NewProduct
     /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
-     * @var string
+     * @var string|null
      */
     protected $manufacturerCountryCode = 'AT';
     /**
@@ -221,20 +221,20 @@ class NewProduct
     /**
      * Status of the product regarding sales ('enabled' if no value is provided)
      *
-     * @return string
+     * @return string|null
      */
-    public function getProductStatus() : string
+    public function getProductStatus() : ?string
     {
         return $this->productStatus;
     }
     /**
      * Status of the product regarding sales ('enabled' if no value is provided)
      *
-     * @param string $productStatus
+     * @param string|null $productStatus
      *
      * @return self
      */
-    public function setProductStatus(string $productStatus) : self
+    public function setProductStatus(?string $productStatus) : self
     {
         $this->productStatus = $productStatus;
         return $this;
@@ -285,9 +285,9 @@ class NewProduct
     * The title of the article variant. \
     Must not be set when the articleVariantType is 'standard_autotitle'.
     *
-    * @return string
+    * @return string|null
     */
-    public function getArticleVariantTitle() : string
+    public function getArticleVariantTitle() : ?string
     {
         return $this->articleVariantTitle;
     }
@@ -295,11 +295,11 @@ class NewProduct
     * The title of the article variant. \
     Must not be set when the articleVariantType is 'standard_autotitle'.
     *
-    * @param string $articleVariantTitle
+    * @param string|null $articleVariantTitle
     *
     * @return self
     */
-    public function setArticleVariantTitle(string $articleVariantTitle) : self
+    public function setArticleVariantTitle(?string $articleVariantTitle) : self
     {
         $this->articleVariantTitle = $articleVariantTitle;
         return $this;
@@ -308,9 +308,9 @@ class NewProduct
     * The type of the article variant ('standard_autotitle' if no value is provided). \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
-    * @return string
+    * @return string|null
     */
-    public function getArticleVariantType() : string
+    public function getArticleVariantType() : ?string
     {
         return $this->articleVariantType;
     }
@@ -318,11 +318,11 @@ class NewProduct
     * The type of the article variant ('standard_autotitle' if no value is provided). \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
-    * @param string $articleVariantType
+    * @param string|null $articleVariantType
     *
     * @return self
     */
-    public function setArticleVariantType(string $articleVariantType) : self
+    public function setArticleVariantType(?string $articleVariantType) : self
     {
         $this->articleVariantType = $articleVariantType;
         return $this;
@@ -330,20 +330,20 @@ class NewProduct
     /**
      * Status of the article regarding visibility ('active' if no value is provided)
      *
-     * @return string
+     * @return string|null
      */
-    public function getArticleStatus() : string
+    public function getArticleStatus() : ?string
     {
         return $this->articleStatus;
     }
     /**
      * Status of the article regarding visibility ('active' if no value is provided)
      *
-     * @param string $articleStatus
+     * @param string|null $articleStatus
      *
      * @return self
      */
-    public function setArticleStatus(string $articleStatus) : self
+    public function setArticleStatus(?string $articleStatus) : self
     {
         $this->articleStatus = $articleStatus;
         return $this;
@@ -351,20 +351,20 @@ class NewProduct
     /**
      * Amount of the product contents (1 if no value is provided)
      *
-     * @return float
+     * @return float|null
      */
-    public function getContentsAmount() : float
+    public function getContentsAmount() : ?float
     {
         return $this->contentsAmount;
     }
     /**
      * Amount of the product contents (1 if no value is provided)
      *
-     * @param float $contentsAmount
+     * @param float|null $contentsAmount
      *
      * @return self
      */
-    public function setContentsAmount(float $contentsAmount) : self
+    public function setContentsAmount(?float $contentsAmount) : self
     {
         $this->contentsAmount = $contentsAmount;
         return $this;
@@ -372,20 +372,20 @@ class NewProduct
     /**
      * Unit of the product contents ('stk' if no value is provided).
      *
-     * @return string
+     * @return string|null
      */
-    public function getContentsUnit() : string
+    public function getContentsUnit() : ?string
     {
         return $this->contentsUnit;
     }
     /**
      * Unit of the product contents ('stk' if no value is provided).
      *
-     * @param string $contentsUnit
+     * @param string|null $contentsUnit
      *
      * @return self
      */
-    public function setContentsUnit(string $contentsUnit) : self
+    public function setContentsUnit(?string $contentsUnit) : self
     {
         $this->contentsUnit = $contentsUnit;
         return $this;
@@ -393,20 +393,20 @@ class NewProduct
     /**
      * Weight of the product contents in gram
      *
-     * @return int
+     * @return int|null
      */
-    public function getContentsWeightGram() : int
+    public function getContentsWeightGram() : ?int
     {
         return $this->contentsWeightGram;
     }
     /**
      * Weight of the product contents in gram
      *
-     * @param int $contentsWeightGram
+     * @param int|null $contentsWeightGram
      *
      * @return self
      */
-    public function setContentsWeightGram(int $contentsWeightGram) : self
+    public function setContentsWeightGram(?int $contentsWeightGram) : self
     {
         $this->contentsWeightGram = $contentsWeightGram;
         return $this;
@@ -414,20 +414,20 @@ class NewProduct
     /**
      * Total weight of the product in gram
      *
-     * @return int
+     * @return int|null
      */
-    public function getWeightGram() : int
+    public function getWeightGram() : ?int
     {
         return $this->weightGram;
     }
     /**
      * Total weight of the product in gram
      *
-     * @param int $weightGram
+     * @param int|null $weightGram
      *
      * @return self
      */
-    public function setWeightGram(int $weightGram) : self
+    public function setWeightGram(?int $weightGram) : self
     {
         $this->weightGram = $weightGram;
         return $this;
@@ -456,20 +456,20 @@ class NewProduct
     /**
      * The EAN of the product
      *
-     * @return string
+     * @return string|null
      */
-    public function getEan() : string
+    public function getEan() : ?string
     {
         return $this->ean;
     }
     /**
      * The EAN of the product
      *
-     * @param string $ean
+     * @param string|null $ean
      *
      * @return self
      */
-    public function setEan(string $ean) : self
+    public function setEan(?string $ean) : self
     {
         $this->ean = $ean;
         return $this;
@@ -519,20 +519,20 @@ class NewProduct
     /**
      * The suggested retail price for the product in EUR
      *
-     * @return float
+     * @return float|null
      */
-    public function getSuggestedRetailPriceEUR() : float
+    public function getSuggestedRetailPriceEUR() : ?float
     {
         return $this->suggestedRetailPriceEUR;
     }
     /**
      * The suggested retail price for the product in EUR
      *
-     * @param float $suggestedRetailPriceEUR
+     * @param float|null $suggestedRetailPriceEUR
      *
      * @return self
      */
-    public function setSuggestedRetailPriceEUR(float $suggestedRetailPriceEUR) : self
+    public function setSuggestedRetailPriceEUR(?float $suggestedRetailPriceEUR) : self
     {
         $this->suggestedRetailPriceEUR = $suggestedRetailPriceEUR;
         return $this;
@@ -571,20 +571,20 @@ class NewProduct
     /**
      * 
      *
-     * @return ProductPurchasePrice[]
+     * @return ProductPurchasePrice[]|null
      */
-    public function getPurchasePrices() : array
+    public function getPurchasePrices() : ?array
     {
         return $this->purchasePrices;
     }
     /**
      * 
      *
-     * @param ProductPurchasePrice[] $purchasePrices
+     * @param ProductPurchasePrice[]|null $purchasePrices
      *
      * @return self
      */
-    public function setPurchasePrices(array $purchasePrices) : self
+    public function setPurchasePrices(?array $purchasePrices) : self
     {
         $this->purchasePrices = $purchasePrices;
         return $this;
@@ -613,20 +613,20 @@ class NewProduct
     /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
-     * @return string
+     * @return string|null
      */
-    public function getManufacturerCountryCode() : string
+    public function getManufacturerCountryCode() : ?string
     {
         return $this->manufacturerCountryCode;
     }
     /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
-     * @param string $manufacturerCountryCode
+     * @param string|null $manufacturerCountryCode
      *
      * @return self
      */
-    public function setManufacturerCountryCode(string $manufacturerCountryCode) : self
+    public function setManufacturerCountryCode(?string $manufacturerCountryCode) : self
     {
         $this->manufacturerCountryCode = $manufacturerCountryCode;
         return $this;

@@ -48,8 +48,11 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('productTitleOriginal', $data)) {
             $object->setProductTitleOriginal($data['productTitleOriginal']);
         }
-        if (\array_key_exists('productStatus', $data)) {
+        if (\array_key_exists('productStatus', $data) && $data['productStatus'] !== null) {
             $object->setProductStatus($data['productStatus']);
+        }
+        elseif (\array_key_exists('productStatus', $data) && $data['productStatus'] === null) {
+            $object->setProductStatus(null);
         }
         if (\array_key_exists('articleShortDescription', $data)) {
             $object->setArticleShortDescription($data['articleShortDescription']);
@@ -57,32 +60,56 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('articleLongDescription', $data)) {
             $object->setArticleLongDescription($data['articleLongDescription']);
         }
-        if (\array_key_exists('articleVariantTitle', $data)) {
+        if (\array_key_exists('articleVariantTitle', $data) && $data['articleVariantTitle'] !== null) {
             $object->setArticleVariantTitle($data['articleVariantTitle']);
         }
-        if (\array_key_exists('articleVariantType', $data)) {
+        elseif (\array_key_exists('articleVariantTitle', $data) && $data['articleVariantTitle'] === null) {
+            $object->setArticleVariantTitle(null);
+        }
+        if (\array_key_exists('articleVariantType', $data) && $data['articleVariantType'] !== null) {
             $object->setArticleVariantType($data['articleVariantType']);
         }
-        if (\array_key_exists('articleStatus', $data)) {
+        elseif (\array_key_exists('articleVariantType', $data) && $data['articleVariantType'] === null) {
+            $object->setArticleVariantType(null);
+        }
+        if (\array_key_exists('articleStatus', $data) && $data['articleStatus'] !== null) {
             $object->setArticleStatus($data['articleStatus']);
         }
-        if (\array_key_exists('contentsAmount', $data)) {
+        elseif (\array_key_exists('articleStatus', $data) && $data['articleStatus'] === null) {
+            $object->setArticleStatus(null);
+        }
+        if (\array_key_exists('contentsAmount', $data) && $data['contentsAmount'] !== null) {
             $object->setContentsAmount($data['contentsAmount']);
         }
-        if (\array_key_exists('contentsUnit', $data)) {
+        elseif (\array_key_exists('contentsAmount', $data) && $data['contentsAmount'] === null) {
+            $object->setContentsAmount(null);
+        }
+        if (\array_key_exists('contentsUnit', $data) && $data['contentsUnit'] !== null) {
             $object->setContentsUnit($data['contentsUnit']);
         }
-        if (\array_key_exists('contentsWeightGram', $data)) {
+        elseif (\array_key_exists('contentsUnit', $data) && $data['contentsUnit'] === null) {
+            $object->setContentsUnit(null);
+        }
+        if (\array_key_exists('contentsWeightGram', $data) && $data['contentsWeightGram'] !== null) {
             $object->setContentsWeightGram($data['contentsWeightGram']);
         }
-        if (\array_key_exists('weightGram', $data)) {
+        elseif (\array_key_exists('contentsWeightGram', $data) && $data['contentsWeightGram'] === null) {
+            $object->setContentsWeightGram(null);
+        }
+        if (\array_key_exists('weightGram', $data) && $data['weightGram'] !== null) {
             $object->setWeightGram($data['weightGram']);
+        }
+        elseif (\array_key_exists('weightGram', $data) && $data['weightGram'] === null) {
+            $object->setWeightGram(null);
         }
         if (\array_key_exists('variantGroup', $data)) {
             $object->setVariantGroup($data['variantGroup']);
         }
-        if (\array_key_exists('ean', $data)) {
+        if (\array_key_exists('ean', $data) && $data['ean'] !== null) {
             $object->setEan($data['ean']);
+        }
+        elseif (\array_key_exists('ean', $data) && $data['ean'] === null) {
+            $object->setEan(null);
         }
         if (\array_key_exists('taricCode', $data)) {
             $object->setTaricCode($data['taricCode']);
@@ -90,24 +117,33 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('listPriceEUR', $data)) {
             $object->setListPriceEUR($data['listPriceEUR']);
         }
-        if (\array_key_exists('suggestedRetailPriceEUR', $data)) {
+        if (\array_key_exists('suggestedRetailPriceEUR', $data) && $data['suggestedRetailPriceEUR'] !== null) {
             $object->setSuggestedRetailPriceEUR($data['suggestedRetailPriceEUR']);
+        }
+        elseif (\array_key_exists('suggestedRetailPriceEUR', $data) && $data['suggestedRetailPriceEUR'] === null) {
+            $object->setSuggestedRetailPriceEUR(null);
         }
         if (\array_key_exists('taxCode', $data)) {
             $object->setTaxCode($data['taxCode']);
         }
-        if (\array_key_exists('purchasePrices', $data)) {
+        if (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] !== null) {
             $values = array();
             foreach ($data['purchasePrices'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductPurchasePrice', 'json', $context);
             }
             $object->setPurchasePrices($values);
         }
+        elseif (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] === null) {
+            $object->setPurchasePrices(null);
+        }
         if (\array_key_exists('manufacturerNumber', $data)) {
             $object->setManufacturerNumber($data['manufacturerNumber']);
         }
-        if (\array_key_exists('manufacturerCountryCode', $data)) {
+        if (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] !== null) {
             $object->setManufacturerCountryCode($data['manufacturerCountryCode']);
+        }
+        elseif (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] === null) {
+            $object->setManufacturerCountryCode(null);
         }
         if (\array_key_exists('supplierNumber', $data)) {
             $object->setSupplierNumber($data['supplierNumber']);
