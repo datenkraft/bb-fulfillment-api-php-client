@@ -48,9 +48,6 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
         if (\array_key_exists('productTitle', $data)) {
             $object->setProductTitle($data['productTitle']);
         }
-        if (\array_key_exists('productNumberManufacturer', $data)) {
-            $object->setProductNumberManufacturer($data['productNumberManufacturer']);
-        }
         if (\array_key_exists('deliveredCount', $data)) {
             $object->setDeliveredCount($data['deliveredCount']);
         }
@@ -66,9 +63,6 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
         $data['announcedCount'] = $object->getAnnouncedCount();
         if (null !== $object->getProductTitle()) {
             $data['productTitle'] = $object->getProductTitle();
-        }
-        if (null !== $object->getProductNumberManufacturer()) {
-            $data['productNumberManufacturer'] = $object->getProductNumberManufacturer();
         }
         if (null !== $object->getDeliveredCount()) {
             $data['deliveredCount'] = $object->getDeliveredCount();

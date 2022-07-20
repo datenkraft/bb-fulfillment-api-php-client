@@ -23,12 +23,6 @@ class InboundDeliveryProduct
      */
     protected $productTitle;
     /**
-     * Product number of the manufactor
-     *
-     * @var string
-     */
-    protected $productNumberManufacturer;
-    /**
      * Number of actual delivered products in the inbound delivery
      *
      * @var int
@@ -95,27 +89,6 @@ class InboundDeliveryProduct
     public function setProductTitle(string $productTitle) : self
     {
         $this->productTitle = $productTitle;
-        return $this;
-    }
-    /**
-     * Product number of the manufactor
-     *
-     * @return string
-     */
-    public function getProductNumberManufacturer() : string
-    {
-        return $this->productNumberManufacturer;
-    }
-    /**
-     * Product number of the manufactor
-     *
-     * @param string $productNumberManufacturer
-     *
-     * @return self
-     */
-    public function setProductNumberManufacturer(string $productNumberManufacturer) : self
-    {
-        $this->productNumberManufacturer = $productNumberManufacturer;
         return $this;
     }
     /**
