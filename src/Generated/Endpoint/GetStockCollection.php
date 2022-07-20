@@ -5,15 +5,19 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get the stock for all products or for a specific product.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page to read. Default is the first page.
-     *     @var int $pageSize The maximum size per page is 100. Default is 20.
-     *     @var string $filter[productNumber] product number
-     *     @var string $filter[shopCode] The shopCode used in DISCO (optional).
-     * }
-     */
+    * Get the stock for all (per default only valid) products or for a specific product.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $filter[productNumber] product number
+    *     @var string $filter[shopCode] The shopCode used in DISCO (optional).
+    *     @var string $filter[productStatus] filter for productStatus\
+    By default, only valid products (available or in stock) are returned.\
+    Use '_all' to return all products (also invalid products)\
+    Use '_invalid' to specifically return invalid products (not available and out of stock)
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -38,13 +42,14 @@ class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[productNumber]', 'filter[shopCode]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[productNumber]', 'filter[shopCode]', 'filter[productStatus]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
         $optionsResolver->setAllowedTypes('filter[productNumber]', array('string'));
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[productStatus]', array('string'));
         return $optionsResolver;
     }
     /**
