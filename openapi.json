@@ -3301,10 +3301,6 @@
             "description": "Title of the product",
             "type": "string"
           },
-          "productNumberManufacturer": {
-            "description": "Product number of the manufactor",
-            "type": "string"
-          },
           "deliveredCount": {
             "description": "Number of actual delivered products in the inbound delivery",
             "type": "integer",
