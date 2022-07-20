@@ -8,7 +8,7 @@ class GetInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     /**
      * Get an inbound delivery by inbound delivery number.
      *
-     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the order.
+     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
      * @param array $queryParameters {
      *     @var string $shopCode The shopCode used in DISCO (optional).
      * }
