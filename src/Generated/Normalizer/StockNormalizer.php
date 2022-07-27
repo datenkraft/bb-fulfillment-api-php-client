@@ -42,8 +42,14 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
         }
-        if (\array_key_exists('stock', $data)) {
-            $object->setStock($data['stock']);
+        if (\array_key_exists('stocked', $data)) {
+            $object->setStocked($data['stocked']);
+        }
+        if (\array_key_exists('reserved', $data)) {
+            $object->setReserved($data['reserved']);
+        }
+        if (\array_key_exists('available', $data)) {
+            $object->setAvailable($data['available']);
         }
         return $object;
     }
@@ -56,8 +62,14 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (null !== $object->getProductNumber()) {
             $data['productNumber'] = $object->getProductNumber();
         }
-        if (null !== $object->getStock()) {
-            $data['stock'] = $object->getStock();
+        if (null !== $object->getStocked()) {
+            $data['stocked'] = $object->getStocked();
+        }
+        if (null !== $object->getReserved()) {
+            $data['reserved'] = $object->getReserved();
+        }
+        if (null !== $object->getAvailable()) {
+            $data['available'] = $object->getAvailable();
         }
         return $data;
     }
