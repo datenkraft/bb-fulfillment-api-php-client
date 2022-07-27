@@ -5,19 +5,31 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class Stock
 {
     /**
-     * The product number the stock is available for
+     * Product number
      *
      * @var string
      */
     protected $productNumber;
     /**
-     * The available stock
+     * Amount stocked in the warehouse - without considering the reserved amount for ongoing orders
      *
      * @var int
      */
-    protected $stock;
+    protected $stocked;
     /**
-     * The product number the stock is available for
+     * Amount reserved for ongoing orders
+     *
+     * @var int
+     */
+    protected $reserved;
+    /**
+     * Amount available for orders - with the reserved amount for ongoing orders taken into account
+     *
+     * @var int
+     */
+    protected $available;
+    /**
+     * Product number
      *
      * @return string
      */
@@ -26,7 +38,7 @@ class Stock
         return $this->productNumber;
     }
     /**
-     * The product number the stock is available for
+     * Product number
      *
      * @param string $productNumber
      *
@@ -38,24 +50,66 @@ class Stock
         return $this;
     }
     /**
-     * The available stock
+     * Amount stocked in the warehouse - without considering the reserved amount for ongoing orders
      *
      * @return int
      */
-    public function getStock() : int
+    public function getStocked() : int
     {
-        return $this->stock;
+        return $this->stocked;
     }
     /**
-     * The available stock
+     * Amount stocked in the warehouse - without considering the reserved amount for ongoing orders
      *
-     * @param int $stock
+     * @param int $stocked
      *
      * @return self
      */
-    public function setStock(int $stock) : self
+    public function setStocked(int $stocked) : self
     {
-        $this->stock = $stock;
+        $this->stocked = $stocked;
+        return $this;
+    }
+    /**
+     * Amount reserved for ongoing orders
+     *
+     * @return int
+     */
+    public function getReserved() : int
+    {
+        return $this->reserved;
+    }
+    /**
+     * Amount reserved for ongoing orders
+     *
+     * @param int $reserved
+     *
+     * @return self
+     */
+    public function setReserved(int $reserved) : self
+    {
+        $this->reserved = $reserved;
+        return $this;
+    }
+    /**
+     * Amount available for orders - with the reserved amount for ongoing orders taken into account
+     *
+     * @return int
+     */
+    public function getAvailable() : int
+    {
+        return $this->available;
+    }
+    /**
+     * Amount available for orders - with the reserved amount for ongoing orders taken into account
+     *
+     * @param int $available
+     *
+     * @return self
+     */
+    public function setAvailable(int $available) : self
+    {
+        $this->available = $available;
         return $this;
     }
 }
