@@ -2529,6 +2529,9 @@
         "security": [
           {
             "oAuthAuthorization": []
+          },
+          {
+            "bearerAuth": []
           }
         ]
       },
@@ -3811,22 +3814,9 @@
           }
         ]
       },
-      "newProduct": {
-        "title": "newProduct",
-        "description": "Data to create a new product",
-        "required": [
-          "productTitle",
-          "productTitleOriginal",
-          "articleShortDescription",
-          "articleLongDescription",
-          "variantGroup",
-          "taricCode",
-          "listPriceEUR",
-          "taxCode",
-          "manufacturerNumber",
-          "supplierNumber",
-          "languageCode"
-        ],
+      "baseProduct": {
+        "title": "baseProduct",
+        "description": "Data to represent a product",
         "properties": {
           "productType": {
             "description": "Type of the product ('standard' if no value is provided)",
@@ -3866,10 +3856,6 @@
               "enabled_external_only"
             ],
             "nullable": true
-          },
-          "articleShortDescription": {
-            "description": "Short description of the article",
-            "type": "string"
           },
           "articleLongDescription": {
             "description": "Long description of the article",
@@ -4002,15 +3988,51 @@
         },
         "type": "object"
       },
+      "newProduct": {
+        "title": "newProduct",
+        "description": "Data to create a new product",
+        "required": [
+          "productTitle",
+          "productTitleOriginal",
+          "articleShortDescription",
+          "articleLongDescription",
+          "variantGroup",
+          "taricCode",
+          "listPriceEUR",
+          "taxCode",
+          "manufacturerNumber",
+          "supplierNumber",
+          "languageCode"
+        ],
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/baseProduct"
+          },
+          {
+            "properties": {
+              "articleShortDescription": {
+                "description": "Short description of the article.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
       "product": {
         "title": "product",
         "description": "Data to represent a product",
         "allOf": [
           {
-            "$ref": "#/components/schemas/newProduct"
+            "$ref": "#/components/schemas/baseProduct"
           },
           {
             "properties": {
+              "articleShortDescription": {
+                "description": "Short description of the article. \\\nNote: This can be null if the product was not created via the API.",
+                "type": "string",
+                "nullable": true
+              },
               "productNumber": {
                 "description": "",
                 "type": "string"

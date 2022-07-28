@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Product
+class BaseProduct
 {
     /**
      * Type of the product ('standard' if no value is provided)
@@ -149,25 +149,6 @@ class Product
      * @var string
      */
     protected $languageCode = 'de';
-    /**
-    * Short description of the article. \
-    Note: This can be null if the product was not created via the API.
-    *
-    * @var string|null
-    */
-    protected $articleShortDescription;
-    /**
-     * 
-     *
-     * @var string
-     */
-    protected $productNumber;
-    /**
-     * The shop to which the product belongs
-     *
-     * @var string
-     */
-    protected $shopCode;
     /**
      * Type of the product ('standard' if no value is provided)
      *
@@ -663,71 +644,6 @@ class Product
     public function setLanguageCode(string $languageCode) : self
     {
         $this->languageCode = $languageCode;
-        return $this;
-    }
-    /**
-    * Short description of the article. \
-    Note: This can be null if the product was not created via the API.
-    *
-    * @return string|null
-    */
-    public function getArticleShortDescription() : ?string
-    {
-        return $this->articleShortDescription;
-    }
-    /**
-    * Short description of the article. \
-    Note: This can be null if the product was not created via the API.
-    *
-    * @param string|null $articleShortDescription
-    *
-    * @return self
-    */
-    public function setArticleShortDescription(?string $articleShortDescription) : self
-    {
-        $this->articleShortDescription = $articleShortDescription;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string
-     */
-    public function getProductNumber() : string
-    {
-        return $this->productNumber;
-    }
-    /**
-     * 
-     *
-     * @param string $productNumber
-     *
-     * @return self
-     */
-    public function setProductNumber(string $productNumber) : self
-    {
-        $this->productNumber = $productNumber;
-        return $this;
-    }
-    /**
-     * The shop to which the product belongs
-     *
-     * @return string
-     */
-    public function getShopCode() : string
-    {
-        return $this->shopCode;
-    }
-    /**
-     * The shop to which the product belongs
-     *
-     * @param string $shopCode
-     *
-     * @return self
-     */
-    public function setShopCode(string $shopCode) : self
-    {
-        $this->shopCode = $shopCode;
         return $this;
     }
 }

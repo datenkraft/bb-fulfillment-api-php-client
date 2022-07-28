@@ -29,12 +29,6 @@ class NewProduct
      */
     protected $productStatus = 'enabled';
     /**
-     * Short description of the article
-     *
-     * @var string
-     */
-    protected $articleShortDescription;
-    /**
      * Long description of the article
      *
      * @var string
@@ -156,6 +150,12 @@ class NewProduct
      */
     protected $languageCode = 'de';
     /**
+     * Short description of the article.
+     *
+     * @var string
+     */
+    protected $articleShortDescription;
+    /**
      * Type of the product ('standard' if no value is provided)
      *
      * @return string
@@ -237,27 +237,6 @@ class NewProduct
     public function setProductStatus(?string $productStatus) : self
     {
         $this->productStatus = $productStatus;
-        return $this;
-    }
-    /**
-     * Short description of the article
-     *
-     * @return string
-     */
-    public function getArticleShortDescription() : string
-    {
-        return $this->articleShortDescription;
-    }
-    /**
-     * Short description of the article
-     *
-     * @param string $articleShortDescription
-     *
-     * @return self
-     */
-    public function setArticleShortDescription(string $articleShortDescription) : self
-    {
-        $this->articleShortDescription = $articleShortDescription;
         return $this;
     }
     /**
@@ -671,6 +650,27 @@ class NewProduct
     public function setLanguageCode(string $languageCode) : self
     {
         $this->languageCode = $languageCode;
+        return $this;
+    }
+    /**
+     * Short description of the article.
+     *
+     * @return string
+     */
+    public function getArticleShortDescription() : string
+    {
+        return $this->articleShortDescription;
+    }
+    /**
+     * Short description of the article.
+     *
+     * @param string $articleShortDescription
+     *
+     * @return self
+     */
+    public function setArticleShortDescription(string $articleShortDescription) : self
+    {
+        $this->articleShortDescription = $articleShortDescription;
         return $this;
     }
 }

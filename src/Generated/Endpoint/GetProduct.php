@@ -87,6 +87,6 @@ class GetProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Ru
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

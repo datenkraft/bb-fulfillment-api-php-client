@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Product';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProduct';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Product';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProduct';
     }
     /**
      * @return mixed
@@ -35,7 +35,7 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProduct();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -148,18 +148,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
-        if (\array_key_exists('articleShortDescription', $data) && $data['articleShortDescription'] !== null) {
-            $object->setArticleShortDescription($data['articleShortDescription']);
-        }
-        elseif (\array_key_exists('articleShortDescription', $data) && $data['articleShortDescription'] === null) {
-            $object->setArticleShortDescription(null);
-        }
-        if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
-        }
-        if (\array_key_exists('shopCode', $data)) {
-            $object->setShopCode($data['shopCode']);
-        }
         return $object;
     }
     /**
@@ -240,15 +228,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
-        }
-        if (null !== $object->getArticleShortDescription()) {
-            $data['articleShortDescription'] = $object->getArticleShortDescription();
-        }
-        if (null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
-        }
-        if (null !== $object->getShopCode()) {
-            $data['shopCode'] = $object->getShopCode();
         }
         return $data;
     }
