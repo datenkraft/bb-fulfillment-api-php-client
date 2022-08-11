@@ -42,11 +42,11 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
         }
-        if (\array_key_exists('discoShopCode', $data)) {
-            $object->setDiscoShopCode($data['discoShopCode']);
+        if (\array_key_exists('shopCode', $data)) {
+            $object->setShopCode($data['shopCode']);
         }
-        if (\array_key_exists('discoReferencePrefix', $data)) {
-            $object->setDiscoReferencePrefix($data['discoReferencePrefix']);
+        if (\array_key_exists('internalReferencePrefix', $data)) {
+            $object->setInternalReferencePrefix($data['internalReferencePrefix']);
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
@@ -68,11 +68,11 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getDiscoShopCode()) {
-            $data['discoShopCode'] = $object->getDiscoShopCode();
+        if (null !== $object->getShopCode()) {
+            $data['shopCode'] = $object->getShopCode();
         }
-        if (null !== $object->getDiscoReferencePrefix()) {
-            $data['discoReferencePrefix'] = $object->getDiscoReferencePrefix();
+        if (null !== $object->getInternalReferencePrefix()) {
+            $data['internalReferencePrefix'] = $object->getInternalReferencePrefix();
         }
         if (null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();

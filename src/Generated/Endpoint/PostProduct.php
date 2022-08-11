@@ -6,14 +6,17 @@ class PostProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
 {
     protected $productNumber;
     /**
-     * Add a new product referenced by the given productNumber.
-     *
-     * @param string $productNumber The number the product should be refered by. This number is user defined, must be unique and has a maximum length (check maxLength field).
-     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
-     * @param array $queryParameters {
-     *     @var string $shopCode The shopCode used in DISCO (optional).
-     * }
-     */
+    * Add a new product referenced by the given productNumber.
+    *
+    * @param string $productNumber The number the product should be refered by.
+       This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+       _This code is optional, if your identity is assigned to only one shop.
+       Otherwise the response would be a 422 HTTP Error._
+    * }
+    */
     public function __construct(string $productNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody, array $queryParameters = array())
     {
         $this->productNumber = $productNumber;
@@ -88,6 +91,6 @@ class PostProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
     }
     public function getAuthenticationScopes() : array
     {
-        return array('oAuthAuthorization');
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }

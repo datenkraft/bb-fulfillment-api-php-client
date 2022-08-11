@@ -46,7 +46,7 @@ class InboundDelivery
     */
     protected $status;
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients.
      *
      * @var string|null
      */
@@ -200,7 +200,7 @@ class InboundDelivery
         return $this;
     }
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
      */
@@ -209,7 +209,7 @@ class InboundDelivery
         return $this->shopCode;
     }
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients.
      *
      * @param string|null $shopCode
      *
