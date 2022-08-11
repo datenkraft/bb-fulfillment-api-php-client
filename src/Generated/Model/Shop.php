@@ -11,19 +11,19 @@ class Shop
      */
     protected $id;
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients
      *
      * @var string
      */
-    protected $discoShopCode;
+    protected $shopCode;
     /**
-     * The prefix to the references in DISCO.
+     * The prefix to the references internally to distinguish between clients.
      *
      * @var string
      */
-    protected $discoReferencePrefix;
+    protected $internalReferencePrefix;
     /**
-     * The email used in DISCO.
+     * The email used internally.
      *
      * @var string
      */
@@ -56,49 +56,49 @@ class Shop
         return $this;
     }
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients
      *
      * @return string
      */
-    public function getDiscoShopCode() : string
+    public function getShopCode() : string
     {
-        return $this->discoShopCode;
+        return $this->shopCode;
     }
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients
      *
-     * @param string $discoShopCode
+     * @param string $shopCode
      *
      * @return self
      */
-    public function setDiscoShopCode(string $discoShopCode) : self
+    public function setShopCode(string $shopCode) : self
     {
-        $this->discoShopCode = $discoShopCode;
+        $this->shopCode = $shopCode;
         return $this;
     }
     /**
-     * The prefix to the references in DISCO.
+     * The prefix to the references internally to distinguish between clients.
      *
      * @return string
      */
-    public function getDiscoReferencePrefix() : string
+    public function getInternalReferencePrefix() : string
     {
-        return $this->discoReferencePrefix;
+        return $this->internalReferencePrefix;
     }
     /**
-     * The prefix to the references in DISCO.
+     * The prefix to the references internally to distinguish between clients.
      *
-     * @param string $discoReferencePrefix
+     * @param string $internalReferencePrefix
      *
      * @return self
      */
-    public function setDiscoReferencePrefix(string $discoReferencePrefix) : self
+    public function setInternalReferencePrefix(string $internalReferencePrefix) : self
     {
-        $this->discoReferencePrefix = $discoReferencePrefix;
+        $this->internalReferencePrefix = $internalReferencePrefix;
         return $this;
     }
     /**
-     * The email used in DISCO.
+     * The email used internally.
      *
      * @return string
      */
@@ -107,7 +107,7 @@ class Shop
         return $this->email;
     }
     /**
-     * The email used in DISCO.
+     * The email used internally.
      *
      * @param string $email
      *

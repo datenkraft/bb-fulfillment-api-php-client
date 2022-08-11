@@ -6,14 +6,17 @@ class PostInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\Gen
 {
     protected $inboundDeliveryNumber;
     /**
-     * Add a new inbound delivery referenced by the given deliveryNumber.
-     *
-     * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by. This number is user defined, must be unique and has a maximum length (check maxLength field).
-     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
-     * @param array $queryParameters {
-     *     @var string $shopCode The shopCode used in DISCO (optional).
-     * }
-     */
+    * Add a new inbound delivery referenced by the given deliveryNumber.
+    *
+    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
+       This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+       _This code is optional, if your identity is assigned to only one shop.
+       Otherwise the response would be a 422 HTTP Error._
+    * }
+    */
     public function __construct(string $inboundDeliveryNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody, array $queryParameters = array())
     {
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;

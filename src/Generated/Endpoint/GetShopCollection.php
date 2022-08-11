@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get a list of shops.
+     * Get a list of shops the used identity is assigned to.
      *
      * @param array $queryParameters {
      *     @var int $page The page to read. Default is the first page.

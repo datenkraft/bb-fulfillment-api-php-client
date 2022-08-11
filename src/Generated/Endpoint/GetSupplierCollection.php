@@ -5,14 +5,16 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetSupplierCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get suppliers filtered by shopCode.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page to read. Default is the first page.
-     *     @var int $pageSize The maximum size per page is 100. Default is 20.
-     *     @var string $filter[shopCode] The shopCode used in DISCO (optional).
-     * }
-     */
+    * Get suppliers filtered by shopCode.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
+       _This code is optional, if your identity is assigned to only one shop.
+       Otherwise the response would be a 422 HTTP Error._
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;

@@ -5,16 +5,18 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetOrderReportClearingCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Read the created orders for the given shopCode in the given dateRange.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page to read. Default is the first page.
-     *     @var int $pageSize The maximum size per page is 100. Default is 20.
-     *     @var string $filter[shopCode] The shopCode used in DISCO (optional).
-     *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d for which orders should be returned.
-     *     @var string $filter[dateTo] The end date (inclusive) in format Y-m-d for which orders should be returned.
-     * }
-     */
+    * Read the created orders for the given shopCode in the given dateRange.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
+       _This code is optional, if your identity is assigned to only one shop.
+       Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d for which orders should be returned.
+    *     @var string $filter[dateTo] The end date (inclusive) in format Y-m-d for which orders should be returned.
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;

@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class BaseOrder
 {
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients.
      *
      * @var string|null
      */
@@ -29,7 +29,7 @@ class BaseOrder
      */
     protected $options;
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
      */
@@ -38,7 +38,7 @@ class BaseOrder
         return $this->shopCode;
     }
     /**
-     * The shopCode used in DISCO.
+     * The shopCode used internally to distinguish between clients.
      *
      * @param string|null $shopCode
      *

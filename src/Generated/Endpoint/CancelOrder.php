@@ -6,13 +6,15 @@ class CancelOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
 {
     protected $orderNumber;
     /**
-     * Cancel the order specified by the given order number (set in param orderNumber).
-     *
-     * @param string $orderNumber The number the order is refered by.
-     * @param array $queryParameters {
-     *     @var string $shopCode The shopCode used in DISCO (optional).
-     * }
-     */
+    * Cancel the order specified by the given order number (set in param orderNumber).
+    *
+    * @param string $orderNumber The number the order is refered by.
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+       _This code is optional, if your identity is assigned to only one shop.
+       Otherwise the response would be a 422 HTTP Error._
+    * }
+    */
     public function __construct(string $orderNumber, array $queryParameters = array())
     {
         $this->orderNumber = $orderNumber;

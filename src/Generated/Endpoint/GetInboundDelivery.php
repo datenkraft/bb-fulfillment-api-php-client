@@ -6,13 +6,15 @@ class GetInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
 {
     protected $inboundDeliveryNumber;
     /**
-     * Get an inbound delivery by inbound delivery number.
-     *
-     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
-     * @param array $queryParameters {
-     *     @var string $shopCode The shopCode used in DISCO (optional).
-     * }
-     */
+    * Get an inbound delivery by inbound delivery number.
+    *
+    * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+       _This code is optional, if your identity is assigned to only one shop.
+       Otherwise the response would be a 422 HTTP Error._
+    * }
+    */
     public function __construct(string $inboundDeliveryNumber, array $queryParameters = array())
     {
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
