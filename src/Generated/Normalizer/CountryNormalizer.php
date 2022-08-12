@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomer';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomer';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
     }
     /**
      * @return mixed
@@ -35,24 +35,18 @@ class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomer();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('gender', $data)) {
-            $object->setGender($data['gender']);
+        if (\array_key_exists('countryCode', $data)) {
+            $object->setCountryCode($data['countryCode']);
         }
-        if (\array_key_exists('languageCode', $data)) {
-            $object->setLanguageCode($data['languageCode']);
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
         }
-        if (\array_key_exists('deliveryAddress', $data)) {
-            $object->setDeliveryAddress($this->denormalizer->denormalize($data['deliveryAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress', 'json', $context));
-        }
-        if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
-            $object->setPhone($data['phone']);
-        }
-        elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
-            $object->setPhone(null);
+        if (\array_key_exists('phoneRequired', $data)) {
+            $object->setPhoneRequired($data['phoneRequired']);
         }
         return $object;
     }
@@ -62,11 +56,14 @@ class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['gender'] = $object->getGender();
-        $data['languageCode'] = $object->getLanguageCode();
-        $data['deliveryAddress'] = $this->normalizer->normalize($object->getDeliveryAddress(), 'json', $context);
-        if (null !== $object->getPhone()) {
-            $data['phone'] = $object->getPhone();
+        if (null !== $object->getCountryCode()) {
+            $data['countryCode'] = $object->getCountryCode();
+        }
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
+        }
+        if (null !== $object->getPhoneRequired()) {
+            $data['phoneRequired'] = $object->getPhoneRequired();
         }
         return $data;
     }
