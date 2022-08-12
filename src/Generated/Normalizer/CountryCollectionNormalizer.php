@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class CountryCollectionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomer';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryCollection';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomer';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryCollection';
     }
     /**
      * @return mixed
@@ -35,24 +35,19 @@ class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerIn
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomer();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryCollection();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('gender', $data)) {
-            $object->setGender($data['gender']);
+        if (\array_key_exists('pagination', $data)) {
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CollectionPagination', 'json', $context));
         }
-        if (\array_key_exists('languageCode', $data)) {
-            $object->setLanguageCode($data['languageCode']);
-        }
-        if (\array_key_exists('deliveryAddress', $data)) {
-            $object->setDeliveryAddress($this->denormalizer->denormalize($data['deliveryAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress', 'json', $context));
-        }
-        if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
-            $object->setPhone($data['phone']);
-        }
-        elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
-            $object->setPhone(null);
+        if (\array_key_exists('data', $data)) {
+            $values = array();
+            foreach ($data['data'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country', 'json', $context);
+            }
+            $object->setData($values);
         }
         return $object;
     }
@@ -62,11 +57,15 @@ class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['gender'] = $object->getGender();
-        $data['languageCode'] = $object->getLanguageCode();
-        $data['deliveryAddress'] = $this->normalizer->normalize($object->getDeliveryAddress(), 'json', $context);
-        if (null !== $object->getPhone()) {
-            $data['phone'] = $object->getPhone();
+        if (null !== $object->getPagination()) {
+            $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
+        }
+        if (null !== $object->getData()) {
+            $values = array();
+            foreach ($object->getData() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['data'] = $values;
         }
         return $data;
     }

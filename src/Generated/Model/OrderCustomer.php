@@ -23,6 +23,12 @@ class OrderCustomer
      */
     protected $deliveryAddress;
     /**
+     * The customer's phone number, preferably in the DIN 5008 format, like:+43 2236 123456-7890
+     *
+     * @var string|null
+     */
+    protected $phone;
+    /**
      * 
      *
      * @var string|null
@@ -95,6 +101,27 @@ class OrderCustomer
     public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress) : self
     {
         $this->deliveryAddress = $deliveryAddress;
+        return $this;
+    }
+    /**
+     * The customer's phone number, preferably in the DIN 5008 format, like:+43 2236 123456-7890
+     *
+     * @return string|null
+     */
+    public function getPhone() : ?string
+    {
+        return $this->phone;
+    }
+    /**
+     * The customer's phone number, preferably in the DIN 5008 format, like:+43 2236 123456-7890
+     *
+     * @param string|null $phone
+     *
+     * @return self
+     */
+    public function setPhone(?string $phone) : self
+    {
+        $this->phone = $phone;
         return $this;
     }
     /**
