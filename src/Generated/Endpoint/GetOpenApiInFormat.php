@@ -6,7 +6,7 @@ class GetOpenApiInFormat extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
 {
     protected $format;
     /**
-     * Get the openapi documentation in the specified format (yaml or json, fallback is json)
+     * Get the openapi documentation in the specified format (yaml or json)
      *
      * @param string $format Openapi file format
      */
