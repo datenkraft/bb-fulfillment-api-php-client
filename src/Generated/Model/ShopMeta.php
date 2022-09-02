@@ -23,6 +23,18 @@ class ShopMeta extends \ArrayObject
      */
     protected $testShopResetNotBefore;
     /**
+     * Flag to mark a shop in sandbox mode.
+     *
+     * @var bool|null
+     */
+    protected $sandboxMode = false;
+    /**
+     * Flag to mark if a test suffix should be added to internal references.
+     *
+     * @var bool|null
+     */
+    protected $addTestSuffixToInternalReference = false;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -83,6 +95,48 @@ class ShopMeta extends \ArrayObject
     public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore) : self
     {
         $this->testShopResetNotBefore = $testShopResetNotBefore;
+        return $this;
+    }
+    /**
+     * Flag to mark a shop in sandbox mode.
+     *
+     * @return bool|null
+     */
+    public function getSandboxMode() : ?bool
+    {
+        return $this->sandboxMode;
+    }
+    /**
+     * Flag to mark a shop in sandbox mode.
+     *
+     * @param bool|null $sandboxMode
+     *
+     * @return self
+     */
+    public function setSandboxMode(?bool $sandboxMode) : self
+    {
+        $this->sandboxMode = $sandboxMode;
+        return $this;
+    }
+    /**
+     * Flag to mark if a test suffix should be added to internal references.
+     *
+     * @return bool|null
+     */
+    public function getAddTestSuffixToInternalReference() : ?bool
+    {
+        return $this->addTestSuffixToInternalReference;
+    }
+    /**
+     * Flag to mark if a test suffix should be added to internal references.
+     *
+     * @param bool|null $addTestSuffixToInternalReference
+     *
+     * @return self
+     */
+    public function setAddTestSuffixToInternalReference(?bool $addTestSuffixToInternalReference) : self
+    {
+        $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
         return $this;
     }
 }

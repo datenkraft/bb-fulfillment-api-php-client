@@ -11,6 +11,12 @@ class DeliveryService
      */
     protected $code;
     /**
+     * Name of the delivery service
+     *
+     * @var string
+     */
+    protected $name;
+    /**
      * Code of the delivery service
      *
      * @return string
@@ -29,6 +35,27 @@ class DeliveryService
     public function setCode(string $code) : self
     {
         $this->code = $code;
+        return $this;
+    }
+    /**
+     * Name of the delivery service
+     *
+     * @return string
+     */
+    public function getName() : string
+    {
+        return $this->name;
+    }
+    /**
+     * Name of the delivery service
+     *
+     * @param string $name
+     *
+     * @return self
+     */
+    public function setName(string $name) : self
+    {
+        $this->name = $name;
         return $this;
     }
 }
