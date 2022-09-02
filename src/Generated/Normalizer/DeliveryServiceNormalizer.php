@@ -42,6 +42,9 @@ class DeliveryServiceNormalizer implements DenormalizerInterface, NormalizerInte
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
         }
+        if (\array_key_exists('name', $data)) {
+            $object->setName($data['name']);
+        }
         return $object;
     }
     /**
@@ -52,6 +55,9 @@ class DeliveryServiceNormalizer implements DenormalizerInterface, NormalizerInte
         $data = array();
         if (null !== $object->getCode()) {
             $data['code'] = $object->getCode();
+        }
+        if (null !== $object->getName()) {
+            $data['name'] = $object->getName();
         }
         return $data;
     }
