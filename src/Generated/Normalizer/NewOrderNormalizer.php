@@ -61,6 +61,9 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
         }
+        if (\array_key_exists('externalOrderId', $data)) {
+            $object->setExternalOrderId($data['externalOrderId']);
+        }
         return $object;
     }
     /**
@@ -84,6 +87,9 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
+        }
+        if (null !== $object->getExternalOrderId()) {
+            $data['externalOrderId'] = $object->getExternalOrderId();
         }
         return $data;
     }

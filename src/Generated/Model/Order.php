@@ -72,6 +72,12 @@ class Order
      */
     protected $shipping;
     /**
+     * The external order ID e.g. from third party apps.
+     *
+     * @var string
+     */
+    protected $externalOrderId;
+    /**
      * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
@@ -293,6 +299,27 @@ class Order
     public function setShipping(OrderShipping $shipping) : self
     {
         $this->shipping = $shipping;
+        return $this;
+    }
+    /**
+     * The external order ID e.g. from third party apps.
+     *
+     * @return string
+     */
+    public function getExternalOrderId() : string
+    {
+        return $this->externalOrderId;
+    }
+    /**
+     * The external order ID e.g. from third party apps.
+     *
+     * @param string $externalOrderId
+     *
+     * @return self
+     */
+    public function setExternalOrderId(string $externalOrderId) : self
+    {
+        $this->externalOrderId = $externalOrderId;
         return $this;
     }
 }

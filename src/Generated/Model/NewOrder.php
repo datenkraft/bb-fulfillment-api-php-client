@@ -29,6 +29,12 @@ class NewOrder
      */
     protected $options;
     /**
+     * The external order ID e.g. from third party apps.
+     *
+     * @var string
+     */
+    protected $externalOrderId;
+    /**
      * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
@@ -110,6 +116,27 @@ class NewOrder
     public function setOptions(?NewOrderOptions $options) : self
     {
         $this->options = $options;
+        return $this;
+    }
+    /**
+     * The external order ID e.g. from third party apps.
+     *
+     * @return string
+     */
+    public function getExternalOrderId() : string
+    {
+        return $this->externalOrderId;
+    }
+    /**
+     * The external order ID e.g. from third party apps.
+     *
+     * @param string $externalOrderId
+     *
+     * @return self
+     */
+    public function setExternalOrderId(string $externalOrderId) : self
+    {
+        $this->externalOrderId = $externalOrderId;
         return $this;
     }
 }
