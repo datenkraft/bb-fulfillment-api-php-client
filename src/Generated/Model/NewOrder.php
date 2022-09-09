@@ -31,7 +31,7 @@ class NewOrder
     /**
      * The external order ID e.g. from third party apps.
      *
-     * @var string
+     * @var string|null
      */
     protected $externalOrderId;
     /**
@@ -121,20 +121,20 @@ class NewOrder
     /**
      * The external order ID e.g. from third party apps.
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalOrderId() : string
+    public function getExternalOrderId() : ?string
     {
         return $this->externalOrderId;
     }
     /**
      * The external order ID e.g. from third party apps.
      *
-     * @param string $externalOrderId
+     * @param string|null $externalOrderId
      *
      * @return self
      */
-    public function setExternalOrderId(string $externalOrderId) : self
+    public function setExternalOrderId(?string $externalOrderId) : self
     {
         $this->externalOrderId = $externalOrderId;
         return $this;

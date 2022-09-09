@@ -3666,7 +3666,8 @@
               },
               "externalOrderId": {
                 "description": "The external order ID e.g. from third party apps.",
-                "type": "string"
+                "type": "string",
+                "nullable": true
               }
             },
             "type": "object"
@@ -3761,7 +3762,8 @@
               },
               "externalOrderId": {
                 "description": "The external order ID e.g. from third party apps.",
-                "type": "string"
+                "type": "string",
+                "nullable": true
               }
             },
             "type": "object"
