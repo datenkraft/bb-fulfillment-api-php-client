@@ -51,6 +51,18 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] === null) {
             $object->setTestShopResetNotBefore(null);
         }
+        if (\array_key_exists('sandboxMode', $data) && $data['sandboxMode'] !== null) {
+            $object->setSandboxMode($data['sandboxMode']);
+        }
+        elseif (\array_key_exists('sandboxMode', $data) && $data['sandboxMode'] === null) {
+            $object->setSandboxMode(null);
+        }
+        if (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] !== null) {
+            $object->setAddTestSuffixToInternalReference($data['addTestSuffixToInternalReference']);
+        }
+        elseif (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] === null) {
+            $object->setAddTestSuffixToInternalReference(null);
+        }
         return $object;
     }
     /**
@@ -64,6 +76,12 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getTestShopResetNotBefore()) {
             $data['testShopResetNotBefore'] = $object->getTestShopResetNotBefore()->format('Y-m-d\\TH:i:sP');
+        }
+        if (null !== $object->getSandboxMode()) {
+            $data['sandboxMode'] = $object->getSandboxMode();
+        }
+        if (null !== $object->getAddTestSuffixToInternalReference()) {
+            $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
         }
         return $data;
     }
