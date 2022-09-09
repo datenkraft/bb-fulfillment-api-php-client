@@ -86,8 +86,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('shipping', $data)) {
             $object->setShipping($this->denormalizer->denormalize($data['shipping'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderShipping', 'json', $context));
         }
-        if (\array_key_exists('externalOrderId', $data)) {
+        if (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] !== null) {
             $object->setExternalOrderId($data['externalOrderId']);
+        }
+        elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
+            $object->setExternalOrderId(null);
         }
         return $object;
     }
