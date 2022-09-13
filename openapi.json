@@ -667,7 +667,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "maxLength": 59
+              "maxLength": 54
             }
           },
           {
@@ -787,7 +787,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "maxLength": 59
+              "maxLength": 54
             }
           }
         ],
@@ -899,7 +899,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "maxLength": 59
+              "maxLength": 54
             }
           },
           {
@@ -1107,6 +1107,138 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oAuthAuthorization": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/order/{orderNumber}/redact": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "summary": "Redact an order.",
+        "description": "Redact the order and all other orders linked to the given order number (set in the param\norderNumber) in a GDPR article 17 conform way. <br />\n\nOnly orders with one of the following statuses are redactable:\n- delivered\n- deleted\n- canceled",
+        "operationId": "redactOrder",
+        "parameters": [
+          {
+            "name": "orderNumber",
+            "in": "path",
+            "description": "The number the order is refered by.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 54
+            }
+          },
+          {
+            "name": "shopCode",
+            "in": "query",
+            "description": "The shopCode used internally to distinguish between clients.<br />\n    _This code is optional, if your identity is assigned to only one shop.\n    Otherwise the response would be a 422 HTTP Error._",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "teststeve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/order"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict\n\nAvailable message codes:\n- ORDER_NOT_REDACTABLE: The order is not redactable because of status conflicts\n- ORDER_ALREADY_REDACTED: The order is already redacted",
             "content": {
               "application/json": {
                 "schema": {
