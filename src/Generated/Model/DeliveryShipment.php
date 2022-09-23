@@ -2,10 +2,10 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Shipment
+class DeliveryShipment
 {
     /**
-     * The delivery number
+     * The shipment number
      *
      * @var string
      */
@@ -56,7 +56,13 @@ class Shipment
      */
     protected $shipmentLines;
     /**
-     * The delivery number
+     * External id of the shipment
+     *
+     * @var string
+     */
+    protected $externalShipmentId;
+    /**
+     * The shipment number
      *
      * @return string
      */
@@ -65,7 +71,7 @@ class Shipment
         return $this->number;
     }
     /**
-     * The delivery number
+     * The shipment number
      *
      * @param string $number
      *
@@ -227,6 +233,27 @@ class Shipment
     public function setShipmentLines(array $shipmentLines) : self
     {
         $this->shipmentLines = $shipmentLines;
+        return $this;
+    }
+    /**
+     * External id of the shipment
+     *
+     * @return string
+     */
+    public function getExternalShipmentId() : string
+    {
+        return $this->externalShipmentId;
+    }
+    /**
+     * External id of the shipment
+     *
+     * @param string $externalShipmentId
+     *
+     * @return self
+     */
+    public function setExternalShipmentId(string $externalShipmentId) : self
+    {
+        $this->externalShipmentId = $externalShipmentId;
         return $this;
     }
 }

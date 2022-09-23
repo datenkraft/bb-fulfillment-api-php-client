@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class Delivery
 {
     /**
-     * Number
+     * The delivery number
      *
      * @var string
      */
@@ -27,11 +27,11 @@ class Delivery
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @var Shipment[]
+     * @var DeliveryShipment[]
      */
     protected $shipments;
     /**
-     * Number
+     * The delivery number
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class Delivery
         return $this->number;
     }
     /**
-     * Number
+     * The delivery number
      *
      * @param string $number
      *
@@ -100,7 +100,7 @@ class Delivery
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @return Shipment[]
+     * @return DeliveryShipment[]
      */
     public function getShipments() : array
     {
@@ -109,7 +109,7 @@ class Delivery
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @param Shipment[] $shipments
+     * @param DeliveryShipment[] $shipments
      *
      * @return self
      */

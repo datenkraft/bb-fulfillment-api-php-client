@@ -413,6 +413,16 @@
               "type": "string",
               "maxLength": 250
             }
+          },
+          {
+            "name": "shopCode",
+            "in": "query",
+            "description": "The shopCode used internally to distinguish between clients.<br />\n    _This code is optional, if your identity is assigned to only one shop.\n    Otherwise the response would be a 422 HTTP Error._",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "teststeve"
           }
         ],
         "responses": {
@@ -1793,15 +1803,15 @@
             "examples": {
               "single order number": {
                 "summary": "single order number",
-                "value": {
-                  "filter[orderNumber]": "100123123"
-                }
+                "value": [
+                  "100123123"
+                ]
               },
               "multiple order numbers": {
                 "summary": "multiple order numbers",
-                "value": {
-                  "filter[orderNumber]": "100123123,100123124"
-                }
+                "value": [
+                  "100123123,100123124"
+                ]
               }
             }
           },
@@ -1823,6 +1833,128 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/deliveryCollection"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oAuthAuthorization": []
+          },
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/delivery/{deliveryNumber}/shipment/{shipmentNumber}": {
+      "patch": {
+        "tags": [
+          "delivery"
+        ],
+        "summary": "Patch data of the shipment of the delivery specified by the given delivery and shipment numbers.",
+        "description": "Patch data of the shipment of the delivery specified by the given delivery and shipment numbers.",
+        "operationId": "patchDeliveryShipment",
+        "parameters": [
+          {
+            "name": "deliveryNumber",
+            "in": "path",
+            "description": "Number of the delivery.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "L41520000022100001"
+          },
+          {
+            "name": "shipmentNumber",
+            "in": "path",
+            "description": "Number of the shipment",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "L41520000022100001"
+          },
+          {
+            "name": "shopCode",
+            "in": "query",
+            "description": "The shopCode used internally to distinguish between clients.<br />\n_This code is optional, if your identity is assigned to only one shop.\nOtherwise the response would be a 422 HTTP Error._",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "teststeve"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateDeliveryShipment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deliveryShipment"
                 }
               }
             }
@@ -3084,41 +3216,11 @@
   },
   "components": {
     "schemas": {
-      "delivery": {
-        "description": "A delivery of the order",
-        "properties": {
-          "number": {
-            "description": "Number",
-            "type": "string"
-          },
-          "orderNumber": {
-            "description": "The order number. Note: This can be null if the delivery has no associated order.",
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
-            "type": "string",
-            "enum": [
-              "in_progress",
-              "delivered"
-            ]
-          },
-          "shipments": {
-            "description": "List of shipments (= package, parcel, pallet, ...)",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/shipment"
-            }
-          }
-        },
-        "type": "object"
-      },
-      "shipment": {
+      "deliveryShipment": {
         "description": "A shipments defines a single delivered entity (package, parcel, pallet, ...)",
         "properties": {
           "number": {
-            "description": "The delivery number",
+            "description": "The shipment number",
             "type": "string"
           },
           "status": {
@@ -3157,6 +3259,10 @@
             "items": {
               "$ref": "#/components/schemas/shipmentLine"
             }
+          },
+          "externalShipmentId": {
+            "description": "External id of the shipment",
+            "type": "string"
           }
         },
         "type": "object"
@@ -3188,6 +3294,49 @@
         },
         "type": "object",
         "nullable": true
+      },
+      "updateDeliveryShipment": {
+        "description": "Fields to update a shipment",
+        "required": [
+          "externalShipmentId"
+        ],
+        "properties": {
+          "externalShipmentId": {
+            "description": "The external id of the shipment",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "delivery": {
+        "description": "A delivery of the order",
+        "properties": {
+          "number": {
+            "description": "The delivery number",
+            "type": "string"
+          },
+          "orderNumber": {
+            "description": "The order number. Note: This can be null if the delivery has no associated order.",
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "description": "Status of the delivery.\n- in_progress: The delivery is in the process of being packaged.\n- delivered: The delivery has been transferred to the delivery agent.",
+            "type": "string",
+            "enum": [
+              "in_progress",
+              "delivered"
+            ]
+          },
+          "shipments": {
+            "description": "List of shipments (= package, parcel, pallet, ...)",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/deliveryShipment"
+            }
+          }
+        },
+        "type": "object"
       },
       "deliveryCollection": {
         "title": "deliveryCollection",
@@ -4628,7 +4777,7 @@
         "description": "OAuth2 Authorization",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://localhost:30370/oauth/token",
+            "tokenUrl": null,
             "refreshUrl": "UNDEFINED",
             "scopes": {}
           }
