@@ -58,7 +58,7 @@ class DeliveryShipment
     /**
      * External id of the shipment
      *
-     * @var string
+     * @var string|null
      */
     protected $externalShipmentId;
     /**
@@ -238,20 +238,20 @@ class DeliveryShipment
     /**
      * External id of the shipment
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalShipmentId() : string
+    public function getExternalShipmentId() : ?string
     {
         return $this->externalShipmentId;
     }
     /**
      * External id of the shipment
      *
-     * @param string $externalShipmentId
+     * @param string|null $externalShipmentId
      *
      * @return self
      */
-    public function setExternalShipmentId(string $externalShipmentId) : self
+    public function setExternalShipmentId(?string $externalShipmentId) : self
     {
         $this->externalShipmentId = $externalShipmentId;
         return $this;
