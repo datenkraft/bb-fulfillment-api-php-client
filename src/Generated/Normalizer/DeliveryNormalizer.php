@@ -54,7 +54,7 @@ class DeliveryNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (\array_key_exists('shipments', $data)) {
             $values = array();
             foreach ($data['shipments'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shipment', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryShipment', 'json', $context);
             }
             $object->setShipments($values);
         }

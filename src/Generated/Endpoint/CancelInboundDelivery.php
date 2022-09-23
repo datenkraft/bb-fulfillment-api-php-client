@@ -10,10 +10,16 @@ class CancelInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     *
     * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
        This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+       _This code is optional, if your identity is assigned to only one shop.
+       Otherwise the response would be a 422 HTTP Error._
+    * }
     */
-    public function __construct(string $inboundDeliveryNumber)
+    public function __construct(string $inboundDeliveryNumber, array $queryParameters = array())
     {
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
+        $this->queryParameters = $queryParameters;
     }
     use \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
@@ -31,6 +37,15 @@ class CancelInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     public function getExtraHeaders() : array
     {
         return array('Accept' => array('application/json'));
+    }
+    protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
+    {
+        $optionsResolver = parent::getQueryOptionsResolver();
+        $optionsResolver->setDefined(array('shopCode'));
+        $optionsResolver->setRequired(array());
+        $optionsResolver->setDefaults(array());
+        $optionsResolver->setAllowedTypes('shopCode', array('string'));
+        return $optionsResolver;
     }
     /**
      * {@inheritdoc}
