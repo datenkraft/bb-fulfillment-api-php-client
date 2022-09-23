@@ -70,8 +70,11 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
             }
             $object->setShipmentLines($values);
         }
-        if (\array_key_exists('externalShipmentId', $data)) {
+        if (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] !== null) {
             $object->setExternalShipmentId($data['externalShipmentId']);
+        }
+        elseif (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] === null) {
+            $object->setExternalShipmentId(null);
         }
         return $object;
     }

@@ -3262,7 +3262,8 @@
           },
           "externalShipmentId": {
             "description": "External id of the shipment",
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         },
         "type": "object"
