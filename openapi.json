@@ -3878,7 +3878,7 @@
           },
           {
             "properties": {
-              "collection": {
+              "data": {
                 "description": "",
                 "type": "array",
                 "items": {

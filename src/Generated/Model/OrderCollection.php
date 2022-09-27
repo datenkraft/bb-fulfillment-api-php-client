@@ -13,15 +13,9 @@ class OrderCollection
     /**
      * 
      *
-     * @var mixed
-     */
-    protected $data;
-    /**
-     * 
-     *
      * @var Order[]
      */
-    protected $collection;
+    protected $data;
     /**
      * 
      *
@@ -46,43 +40,22 @@ class OrderCollection
     /**
      * 
      *
-     * @return mixed
+     * @return Order[]
      */
-    public function getData()
+    public function getData() : array
     {
         return $this->data;
     }
     /**
      * 
      *
-     * @param mixed $data
+     * @param Order[] $data
      *
      * @return self
      */
-    public function setData($data) : self
+    public function setData(array $data) : self
     {
         $this->data = $data;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return Order[]
-     */
-    public function getCollection() : array
-    {
-        return $this->collection;
-    }
-    /**
-     * 
-     *
-     * @param Order[] $collection
-     *
-     * @return self
-     */
-    public function setCollection(array $collection) : self
-    {
-        $this->collection = $collection;
         return $this;
     }
 }

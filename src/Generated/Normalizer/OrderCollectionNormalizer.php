@@ -43,14 +43,11 @@ class OrderCollectionNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CollectionPagination', 'json', $context));
         }
         if (\array_key_exists('data', $data)) {
-            $object->setData($data['data']);
-        }
-        if (\array_key_exists('collection', $data)) {
             $values = array();
-            foreach ($data['collection'] as $value) {
+            foreach ($data['data'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Order', 'json', $context);
             }
-            $object->setCollection($values);
+            $object->setData($values);
         }
         return $object;
     }
@@ -64,14 +61,11 @@ class OrderCollectionNormalizer implements DenormalizerInterface, NormalizerInte
             $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
         }
         if (null !== $object->getData()) {
-            $data['data'] = $object->getData();
-        }
-        if (null !== $object->getCollection()) {
             $values = array();
-            foreach ($object->getCollection() as $value) {
+            foreach ($object->getData() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['collection'] = $values;
+            $data['data'] = $values;
         }
         return $data;
     }
