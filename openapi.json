@@ -3950,6 +3950,12 @@
                 "description": "The external order ID e.g. from third party apps.",
                 "type": "string",
                 "nullable": true
+              },
+              "orderNotes": {
+                "description": "Order notes regarding the fulfillment",
+                "type": "string",
+                "maxLength": 500,
+                "nullable": true
               }
             },
             "type": "object"
@@ -4045,6 +4051,12 @@
               "externalOrderId": {
                 "description": "The external order ID e.g. from third party apps.",
                 "type": "string",
+                "nullable": true
+              },
+              "orderNotes": {
+                "description": "Order notes regarding the fulfillment",
+                "type": "string",
+                "maxLength": 500,
                 "nullable": true
               }
             },

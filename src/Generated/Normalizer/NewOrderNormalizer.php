@@ -67,6 +67,12 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
             $object->setExternalOrderId(null);
         }
+        if (\array_key_exists('orderNotes', $data) && $data['orderNotes'] !== null) {
+            $object->setOrderNotes($data['orderNotes']);
+        }
+        elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
+            $object->setOrderNotes(null);
+        }
         return $object;
     }
     /**
@@ -93,6 +99,9 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getExternalOrderId()) {
             $data['externalOrderId'] = $object->getExternalOrderId();
+        }
+        if (null !== $object->getOrderNotes()) {
+            $data['orderNotes'] = $object->getOrderNotes();
         }
         return $data;
     }

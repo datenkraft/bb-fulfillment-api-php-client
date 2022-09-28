@@ -78,6 +78,12 @@ class Order
      */
     protected $externalOrderId;
     /**
+     * Order notes regarding the fulfillment
+     *
+     * @var string|null
+     */
+    protected $orderNotes;
+    /**
      * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
@@ -320,6 +326,27 @@ class Order
     public function setExternalOrderId(?string $externalOrderId) : self
     {
         $this->externalOrderId = $externalOrderId;
+        return $this;
+    }
+    /**
+     * Order notes regarding the fulfillment
+     *
+     * @return string|null
+     */
+    public function getOrderNotes() : ?string
+    {
+        return $this->orderNotes;
+    }
+    /**
+     * Order notes regarding the fulfillment
+     *
+     * @param string|null $orderNotes
+     *
+     * @return self
+     */
+    public function setOrderNotes(?string $orderNotes) : self
+    {
+        $this->orderNotes = $orderNotes;
         return $this;
     }
 }
