@@ -23,6 +23,12 @@ class OrderItem
      */
     protected $count;
     /**
+     * Product number of the customer
+     *
+     * @var string|null
+     */
+    protected $externalProductNumber;
+    /**
      * 
      *
      * @var OrderItemPrice|null
@@ -95,6 +101,27 @@ class OrderItem
     public function setCount(int $count) : self
     {
         $this->count = $count;
+        return $this;
+    }
+    /**
+     * Product number of the customer
+     *
+     * @return string|null
+     */
+    public function getExternalProductNumber() : ?string
+    {
+        return $this->externalProductNumber;
+    }
+    /**
+     * Product number of the customer
+     *
+     * @param string|null $externalProductNumber
+     *
+     * @return self
+     */
+    public function setExternalProductNumber(?string $externalProductNumber) : self
+    {
+        $this->externalProductNumber = $externalProductNumber;
         return $this;
     }
     /**

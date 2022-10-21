@@ -15,6 +15,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
        Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[status] Filter for status/statuses (optional).
     *     @var string $filter[externalOrderId] Filter for the external order ID e.g. from third party apps (optional)
+    *     @var string $filter[externalCustomerId] Filter for the external customer ID e.g. from third party apps (optional)
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -41,7 +42,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
@@ -49,6 +50,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->setAllowedTypes('filter[status]', array('string'));
         $optionsResolver->setAllowedTypes('filter[externalOrderId]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[externalCustomerId]', array('string'));
         return $optionsResolver;
     }
     /**

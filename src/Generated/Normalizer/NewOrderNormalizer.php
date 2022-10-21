@@ -55,23 +55,29 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $object->setOrderItems($values);
         }
-        if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions', 'json', $context));
-        }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
-        }
         if (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] !== null) {
             $object->setExternalOrderId($data['externalOrderId']);
         }
         elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
             $object->setExternalOrderId(null);
         }
+        if (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] !== null) {
+            $object->setDeliverySlipNotes($data['deliverySlipNotes']);
+        }
+        elseif (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] === null) {
+            $object->setDeliverySlipNotes(null);
+        }
         if (\array_key_exists('orderNotes', $data) && $data['orderNotes'] !== null) {
             $object->setOrderNotes($data['orderNotes']);
         }
         elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
             $object->setOrderNotes(null);
+        }
+        if (\array_key_exists('options', $data) && $data['options'] !== null) {
+            $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions', 'json', $context));
+        }
+        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
+            $object->setOptions(null);
         }
         return $object;
     }
@@ -94,14 +100,17 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
             }
             $data['orderItems'] = $values;
         }
-        if (null !== $object->getOptions()) {
-            $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
-        }
         if (null !== $object->getExternalOrderId()) {
             $data['externalOrderId'] = $object->getExternalOrderId();
         }
+        if (null !== $object->getDeliverySlipNotes()) {
+            $data['deliverySlipNotes'] = $object->getDeliverySlipNotes();
+        }
         if (null !== $object->getOrderNotes()) {
             $data['orderNotes'] = $object->getOrderNotes();
+        }
+        if (null !== $object->getOptions()) {
+            $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
         }
         return $data;
     }

@@ -17,6 +17,12 @@ class NewOrderCustomer
      */
     protected $languageCode;
     /**
+     * The external id of the order customer.
+     *
+     * @var string|null
+     */
+    protected $externalCustomerId;
+    /**
      * 
      *
      * @var OrderCustomerDeliveryAddress
@@ -68,6 +74,27 @@ class NewOrderCustomer
     public function setLanguageCode(string $languageCode) : self
     {
         $this->languageCode = $languageCode;
+        return $this;
+    }
+    /**
+     * The external id of the order customer.
+     *
+     * @return string|null
+     */
+    public function getExternalCustomerId() : ?string
+    {
+        return $this->externalCustomerId;
+    }
+    /**
+     * The external id of the order customer.
+     *
+     * @param string|null $externalCustomerId
+     *
+     * @return self
+     */
+    public function setExternalCustomerId(?string $externalCustomerId) : self
+    {
+        $this->externalCustomerId = $externalCustomerId;
         return $this;
     }
     /**
