@@ -23,23 +23,29 @@ class NewOrder
      */
     protected $orderItems;
     /**
-     * Additional optional options for a new order.
-     *
-     * @var NewOrderOptions|null
-     */
-    protected $options;
-    /**
      * The external order ID e.g. from third party apps.
      *
      * @var string|null
      */
     protected $externalOrderId;
     /**
+     * Notes for the delivery slip.
+     *
+     * @var string|null
+     */
+    protected $deliverySlipNotes;
+    /**
      * Order notes regarding the fulfillment
      *
      * @var string|null
      */
     protected $orderNotes;
+    /**
+     * Additional optional options for a new order.
+     *
+     * @var NewOrderOptions|null
+     */
+    protected $options;
     /**
      * The shopCode used internally to distinguish between clients.
      *
@@ -104,27 +110,6 @@ class NewOrder
         return $this;
     }
     /**
-     * Additional optional options for a new order.
-     *
-     * @return NewOrderOptions|null
-     */
-    public function getOptions() : ?NewOrderOptions
-    {
-        return $this->options;
-    }
-    /**
-     * Additional optional options for a new order.
-     *
-     * @param NewOrderOptions|null $options
-     *
-     * @return self
-     */
-    public function setOptions(?NewOrderOptions $options) : self
-    {
-        $this->options = $options;
-        return $this;
-    }
-    /**
      * The external order ID e.g. from third party apps.
      *
      * @return string|null
@@ -146,6 +131,27 @@ class NewOrder
         return $this;
     }
     /**
+     * Notes for the delivery slip.
+     *
+     * @return string|null
+     */
+    public function getDeliverySlipNotes() : ?string
+    {
+        return $this->deliverySlipNotes;
+    }
+    /**
+     * Notes for the delivery slip.
+     *
+     * @param string|null $deliverySlipNotes
+     *
+     * @return self
+     */
+    public function setDeliverySlipNotes(?string $deliverySlipNotes) : self
+    {
+        $this->deliverySlipNotes = $deliverySlipNotes;
+        return $this;
+    }
+    /**
      * Order notes regarding the fulfillment
      *
      * @return string|null
@@ -164,6 +170,27 @@ class NewOrder
     public function setOrderNotes(?string $orderNotes) : self
     {
         $this->orderNotes = $orderNotes;
+        return $this;
+    }
+    /**
+     * Additional optional options for a new order.
+     *
+     * @return NewOrderOptions|null
+     */
+    public function getOptions() : ?NewOrderOptions
+    {
+        return $this->options;
+    }
+    /**
+     * Additional optional options for a new order.
+     *
+     * @param NewOrderOptions|null $options
+     *
+     * @return self
+     */
+    public function setOptions(?NewOrderOptions $options) : self
+    {
+        $this->options = $options;
         return $this;
     }
 }

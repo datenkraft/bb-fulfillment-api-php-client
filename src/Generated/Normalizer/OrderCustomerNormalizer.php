@@ -45,6 +45,12 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
+        if (\array_key_exists('externalCustomerId', $data) && $data['externalCustomerId'] !== null) {
+            $object->setExternalCustomerId($data['externalCustomerId']);
+        }
+        elseif (\array_key_exists('externalCustomerId', $data) && $data['externalCustomerId'] === null) {
+            $object->setExternalCustomerId(null);
+        }
         if (\array_key_exists('deliveryAddress', $data)) {
             $object->setDeliveryAddress($this->denormalizer->denormalize($data['deliveryAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress', 'json', $context));
         }
@@ -76,6 +82,9 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
         $data = array();
         $data['gender'] = $object->getGender();
         $data['languageCode'] = $object->getLanguageCode();
+        if (null !== $object->getExternalCustomerId()) {
+            $data['externalCustomerId'] = $object->getExternalCustomerId();
+        }
         $data['deliveryAddress'] = $this->normalizer->normalize($object->getDeliveryAddress(), 'json', $context);
         if (null !== $object->getPhone()) {
             $data['phone'] = $object->getPhone();

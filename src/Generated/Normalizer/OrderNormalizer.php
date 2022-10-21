@@ -55,6 +55,24 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
             $object->setOrderItems($values);
         }
+        if (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] !== null) {
+            $object->setExternalOrderId($data['externalOrderId']);
+        }
+        elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
+            $object->setExternalOrderId(null);
+        }
+        if (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] !== null) {
+            $object->setDeliverySlipNotes($data['deliverySlipNotes']);
+        }
+        elseif (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] === null) {
+            $object->setDeliverySlipNotes(null);
+        }
+        if (\array_key_exists('orderNotes', $data) && $data['orderNotes'] !== null) {
+            $object->setOrderNotes($data['orderNotes']);
+        }
+        elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
+            $object->setOrderNotes(null);
+        }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($data['options']);
         }
@@ -86,18 +104,6 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('shipping', $data)) {
             $object->setShipping($this->denormalizer->denormalize($data['shipping'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderShipping', 'json', $context));
         }
-        if (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] !== null) {
-            $object->setExternalOrderId($data['externalOrderId']);
-        }
-        elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
-            $object->setExternalOrderId(null);
-        }
-        if (\array_key_exists('orderNotes', $data) && $data['orderNotes'] !== null) {
-            $object->setOrderNotes($data['orderNotes']);
-        }
-        elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
-            $object->setOrderNotes(null);
-        }
         return $object;
     }
     /**
@@ -118,6 +124,15 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['orderItems'] = $values;
+        }
+        if (null !== $object->getExternalOrderId()) {
+            $data['externalOrderId'] = $object->getExternalOrderId();
+        }
+        if (null !== $object->getDeliverySlipNotes()) {
+            $data['deliverySlipNotes'] = $object->getDeliverySlipNotes();
+        }
+        if (null !== $object->getOrderNotes()) {
+            $data['orderNotes'] = $object->getOrderNotes();
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $object->getOptions();
@@ -143,12 +158,6 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getShipping()) {
             $data['shipping'] = $this->normalizer->normalize($object->getShipping(), 'json', $context);
-        }
-        if (null !== $object->getExternalOrderId()) {
-            $data['externalOrderId'] = $object->getExternalOrderId();
-        }
-        if (null !== $object->getOrderNotes()) {
-            $data['orderNotes'] = $object->getOrderNotes();
         }
         return $data;
     }
