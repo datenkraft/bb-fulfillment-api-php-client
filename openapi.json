@@ -2875,11 +2875,11 @@
           "200": {
             "description": "OK"
           },
-          "404": {
-            "description": "Changelog not found"
-          },
           "400": {
             "description": "Invalid format"
+          },
+          "404": {
+            "description": "Changelog not found"
           }
         }
       }
