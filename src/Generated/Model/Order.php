@@ -49,7 +49,7 @@ class Order
     /**
      * The order number. Note: This can be null if the order as not created via the API.
      *
-     * @var string
+     * @var string|null
      */
     protected $orderNumber;
     /**
@@ -239,20 +239,20 @@ class Order
     /**
      * The order number. Note: This can be null if the order as not created via the API.
      *
-     * @return string
+     * @return string|null
      */
-    public function getOrderNumber() : string
+    public function getOrderNumber() : ?string
     {
         return $this->orderNumber;
     }
     /**
      * The order number. Note: This can be null if the order as not created via the API.
      *
-     * @param string $orderNumber
+     * @param string|null $orderNumber
      *
      * @return self
      */
-    public function setOrderNumber(string $orderNumber) : self
+    public function setOrderNumber(?string $orderNumber) : self
     {
         $this->orderNumber = $orderNumber;
         return $this;
