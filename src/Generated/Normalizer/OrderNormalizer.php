@@ -79,8 +79,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
         }
-        if (\array_key_exists('orderNumber', $data)) {
+        if (\array_key_exists('orderNumber', $data) && $data['orderNumber'] !== null) {
             $object->setOrderNumber($data['orderNumber']);
+        }
+        elseif (\array_key_exists('orderNumber', $data) && $data['orderNumber'] === null) {
+            $object->setOrderNumber(null);
         }
         if (\array_key_exists('status', $data)) {
             $object->setStatus($data['status']);
