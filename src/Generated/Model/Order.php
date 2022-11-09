@@ -23,11 +23,18 @@ class Order
      */
     protected $orderItems;
     /**
-     * The external order ID e.g. from third party apps.
+    * The external order ID e.g. from third party apps. This field does not have to be unique.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    *
+    * @var string|null
+    */
+    protected $externalOrderId;
+    /**
+     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
      *
      * @var string|null
      */
-    protected $externalOrderId;
+    protected $externalOrderReference;
     /**
      * Notes for the delivery slip.
      *
@@ -153,24 +160,47 @@ class Order
         return $this;
     }
     /**
-     * The external order ID e.g. from third party apps.
-     *
-     * @return string|null
-     */
+    * The external order ID e.g. from third party apps. This field does not have to be unique.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    *
+    * @return string|null
+    */
     public function getExternalOrderId() : ?string
     {
         return $this->externalOrderId;
     }
     /**
-     * The external order ID e.g. from third party apps.
-     *
-     * @param string|null $externalOrderId
-     *
-     * @return self
-     */
+    * The external order ID e.g. from third party apps. This field does not have to be unique.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    *
+    * @param string|null $externalOrderId
+    *
+    * @return self
+    */
     public function setExternalOrderId(?string $externalOrderId) : self
     {
         $this->externalOrderId = $externalOrderId;
+        return $this;
+    }
+    /**
+     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
+     *
+     * @return string|null
+     */
+    public function getExternalOrderReference() : ?string
+    {
+        return $this->externalOrderReference;
+    }
+    /**
+     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
+     *
+     * @param string|null $externalOrderReference
+     *
+     * @return self
+     */
+    public function setExternalOrderReference(?string $externalOrderReference) : self
+    {
+        $this->externalOrderReference = $externalOrderReference;
         return $this;
     }
     /**

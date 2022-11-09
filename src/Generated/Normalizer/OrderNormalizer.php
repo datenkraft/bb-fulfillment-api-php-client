@@ -61,6 +61,12 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
             $object->setExternalOrderId(null);
         }
+        if (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] !== null) {
+            $object->setExternalOrderReference($data['externalOrderReference']);
+        }
+        elseif (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] === null) {
+            $object->setExternalOrderReference(null);
+        }
         if (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] !== null) {
             $object->setDeliverySlipNotes($data['deliverySlipNotes']);
         }
@@ -130,6 +136,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getExternalOrderId()) {
             $data['externalOrderId'] = $object->getExternalOrderId();
+        }
+        if (null !== $object->getExternalOrderReference()) {
+            $data['externalOrderReference'] = $object->getExternalOrderReference();
         }
         if (null !== $object->getDeliverySlipNotes()) {
             $data['deliverySlipNotes'] = $object->getDeliverySlipNotes();
