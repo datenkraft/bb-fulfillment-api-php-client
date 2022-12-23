@@ -11,8 +11,8 @@ class GetOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runt
     * @param string $orderNumber The order number as defined during the creation of the order.
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
     * }
     */
     public function __construct(string $orderNumber, array $queryParameters = array())

@@ -11,8 +11,17 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[search] Filter for product search.\
+    Usage:
+    - Provide one or multiple search terms to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is enabled for the fields productTitle and productNumber.
+    - Each search term filters the response for products where at least one of the fields contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
+    If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -39,12 +48,13 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]', 'filter[search]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[search]', array('string'));
         return $optionsResolver;
     }
     /**

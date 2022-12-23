@@ -39,6 +39,12 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] !== null) {
+            $object->setInboundDeliveryName($data['inboundDeliveryName']);
+        }
+        elseif (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] === null) {
+            $object->setInboundDeliveryName(null);
+        }
         if (\array_key_exists('supplierNumber', $data)) {
             $object->setSupplierNumber($data['supplierNumber']);
         }
@@ -60,6 +66,9 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getInboundDeliveryName()) {
+            $data['inboundDeliveryName'] = $object->getInboundDeliveryName();
+        }
         $data['supplierNumber'] = $object->getSupplierNumber();
         $data['expectedDeliveryDate'] = $object->getExpectedDeliveryDate()->format('Y-m-d');
         $values = array();

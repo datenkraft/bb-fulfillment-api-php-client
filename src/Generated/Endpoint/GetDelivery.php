@@ -11,8 +11,8 @@ class GetDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
     * @param string $deliveryNumber delivery number
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
     * }
     */
     public function __construct(string $deliveryNumber, array $queryParameters = array())

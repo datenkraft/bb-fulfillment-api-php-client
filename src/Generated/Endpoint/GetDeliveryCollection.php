@@ -15,8 +15,8 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     - The order numbers in the filter must be unique.
     - A single order number can have a maximum length of 59 characters.
     *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
     * }
     */
     public function __construct(array $queryParameters = array())

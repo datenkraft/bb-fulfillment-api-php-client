@@ -11,8 +11,8 @@ class GetManufacturerCollection extends \Datenkraft\Backbone\Client\FulfillmentA
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
     * }
     */
     public function __construct(array $queryParameters = array())

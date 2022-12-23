@@ -18,8 +18,8 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     - completed: The inbound delivery has been processed in our warehouse.
     - deleted: The inbound delivery has been deleted.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
     * }
     */
     public function __construct(array $queryParameters = array())

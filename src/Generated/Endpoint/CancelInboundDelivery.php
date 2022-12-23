@@ -6,14 +6,14 @@ class CancelInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\G
 {
     protected $inboundDeliveryNumber;
     /**
-    * Cancel a inbound delivery referenced by the given deliveryNumber.
+    * Cancel a inbound delivery referenced by the given inboundDeliveryNumber. An inboundDeliveryNumber from a canceled inbound delivery cannot be used for a new inbound delivery, because they must always be unique.
     *
     * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
        This number is user defined, must be unique and has a maximum length (check maxLength field).
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
     * }
     */
     public function __construct(string $inboundDeliveryNumber, array $queryParameters = array())

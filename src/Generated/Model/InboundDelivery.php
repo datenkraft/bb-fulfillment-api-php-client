@@ -5,13 +5,19 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class InboundDelivery
 {
     /**
+     * Optional free-text reference for inbound delivery.
+     *
+     * @var string|null
+     */
+    protected $inboundDeliveryName;
+    /**
      * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
      * @var string
      */
     protected $supplierNumber;
     /**
-     * Expected date of the delivery
+     * Expected date of the delivery (timezone CET/CEST)
      *
      * @var \DateTime
      */
@@ -23,7 +29,7 @@ class InboundDelivery
      */
     protected $products;
     /**
-     * 
+     * Number of the inbound delivery
      *
      * @var string|null
      */
@@ -52,17 +58,46 @@ class InboundDelivery
      */
     protected $shopCode;
     /**
-     * Start date of the delivery
+     * Start date of the delivery (timezone CET/CEST)
      *
      * @var \DateTime|null
      */
     protected $startDate;
     /**
-     * End date of the delivery
+     * End date of the delivery (timezone CET/CEST)
      *
      * @var \DateTime|null
      */
     protected $endDate;
+    /**
+    * Number of the inbound delivery on the delivery slip.
+    If the field is empty or not set in the database (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.
+    If an empty string (") is returned, it means that no delivery slip number is available for the inbound delivery.
+    *
+    * @var string|null
+    */
+    protected $deliverySlipNumber;
+    /**
+     * Optional free-text reference for inbound delivery.
+     *
+     * @return string|null
+     */
+    public function getInboundDeliveryName() : ?string
+    {
+        return $this->inboundDeliveryName;
+    }
+    /**
+     * Optional free-text reference for inbound delivery.
+     *
+     * @param string|null $inboundDeliveryName
+     *
+     * @return self
+     */
+    public function setInboundDeliveryName(?string $inboundDeliveryName) : self
+    {
+        $this->inboundDeliveryName = $inboundDeliveryName;
+        return $this;
+    }
     /**
      * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
@@ -85,7 +120,7 @@ class InboundDelivery
         return $this;
     }
     /**
-     * Expected date of the delivery
+     * Expected date of the delivery (timezone CET/CEST)
      *
      * @return \DateTime
      */
@@ -94,7 +129,7 @@ class InboundDelivery
         return $this->expectedDeliveryDate;
     }
     /**
-     * Expected date of the delivery
+     * Expected date of the delivery (timezone CET/CEST)
      *
      * @param \DateTime $expectedDeliveryDate
      *
@@ -127,7 +162,7 @@ class InboundDelivery
         return $this;
     }
     /**
-     * 
+     * Number of the inbound delivery
      *
      * @return string|null
      */
@@ -136,7 +171,7 @@ class InboundDelivery
         return $this->inboundDeliveryNumber;
     }
     /**
-     * 
+     * Number of the inbound delivery
      *
      * @param string|null $inboundDeliveryNumber
      *
@@ -221,7 +256,7 @@ class InboundDelivery
         return $this;
     }
     /**
-     * Start date of the delivery
+     * Start date of the delivery (timezone CET/CEST)
      *
      * @return \DateTime|null
      */
@@ -230,7 +265,7 @@ class InboundDelivery
         return $this->startDate;
     }
     /**
-     * Start date of the delivery
+     * Start date of the delivery (timezone CET/CEST)
      *
      * @param \DateTime|null $startDate
      *
@@ -242,7 +277,7 @@ class InboundDelivery
         return $this;
     }
     /**
-     * End date of the delivery
+     * End date of the delivery (timezone CET/CEST)
      *
      * @return \DateTime|null
      */
@@ -251,7 +286,7 @@ class InboundDelivery
         return $this->endDate;
     }
     /**
-     * End date of the delivery
+     * End date of the delivery (timezone CET/CEST)
      *
      * @param \DateTime|null $endDate
      *
@@ -260,6 +295,31 @@ class InboundDelivery
     public function setEndDate(?\DateTime $endDate) : self
     {
         $this->endDate = $endDate;
+        return $this;
+    }
+    /**
+    * Number of the inbound delivery on the delivery slip.
+    If the field is empty or not set in the database (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.
+    If an empty string (") is returned, it means that no delivery slip number is available for the inbound delivery.
+    *
+    * @return string|null
+    */
+    public function getDeliverySlipNumber() : ?string
+    {
+        return $this->deliverySlipNumber;
+    }
+    /**
+    * Number of the inbound delivery on the delivery slip.
+    If the field is empty or not set in the database (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.
+    If an empty string (") is returned, it means that no delivery slip number is available for the inbound delivery.
+    *
+    * @param string|null $deliverySlipNumber
+    *
+    * @return self
+    */
+    public function setDeliverySlipNumber(?string $deliverySlipNumber) : self
+    {
+        $this->deliverySlipNumber = $deliverySlipNumber;
         return $this;
     }
 }

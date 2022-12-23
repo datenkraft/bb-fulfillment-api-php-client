@@ -12,8 +12,8 @@ class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $filter[productNumber] product number
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
-       _This code is optional, if your identity is assigned to only one shop.
-       Otherwise the response would be a 422 HTTP Error._
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[productStatus] filter for productStatus\
     By default, only valid products (available or in stock) are returned.\
     Use '_all' to return all products (also invalid products)\

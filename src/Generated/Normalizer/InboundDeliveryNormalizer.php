@@ -39,6 +39,12 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
+        if (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] !== null) {
+            $object->setInboundDeliveryName($data['inboundDeliveryName']);
+        }
+        elseif (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] === null) {
+            $object->setInboundDeliveryName(null);
+        }
         if (\array_key_exists('supplierNumber', $data)) {
             $object->setSupplierNumber($data['supplierNumber']);
         }
@@ -82,6 +88,12 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('endDate', $data) && $data['endDate'] === null) {
             $object->setEndDate(null);
         }
+        if (\array_key_exists('deliverySlipNumber', $data) && $data['deliverySlipNumber'] !== null) {
+            $object->setDeliverySlipNumber($data['deliverySlipNumber']);
+        }
+        elseif (\array_key_exists('deliverySlipNumber', $data) && $data['deliverySlipNumber'] === null) {
+            $object->setDeliverySlipNumber(null);
+        }
         return $object;
     }
     /**
@@ -90,6 +102,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
+        if (null !== $object->getInboundDeliveryName()) {
+            $data['inboundDeliveryName'] = $object->getInboundDeliveryName();
+        }
         $data['supplierNumber'] = $object->getSupplierNumber();
         $data['expectedDeliveryDate'] = $object->getExpectedDeliveryDate()->format('Y-m-d');
         if (null !== $object->getProducts()) {
@@ -116,6 +131,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getEndDate()) {
             $data['endDate'] = $object->getEndDate()->format('Y-m-d');
+        }
+        if (null !== $object->getDeliverySlipNumber()) {
+            $data['deliverySlipNumber'] = $object->getDeliverySlipNumber();
         }
         return $data;
     }

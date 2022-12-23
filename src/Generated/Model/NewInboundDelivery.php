@@ -5,13 +5,19 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class NewInboundDelivery
 {
     /**
+     * Optional free-text reference for inbound delivery.
+     *
+     * @var string|null
+     */
+    protected $inboundDeliveryName;
+    /**
      * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
      * @var string
      */
     protected $supplierNumber;
     /**
-     * Expected date of the delivery
+     * Expected date of the delivery (timezone CET/CEST)
      *
      * @var \DateTime
      */
@@ -22,6 +28,27 @@ class NewInboundDelivery
      * @var NewInboundDeliveryProduct[]
      */
     protected $products;
+    /**
+     * Optional free-text reference for inbound delivery.
+     *
+     * @return string|null
+     */
+    public function getInboundDeliveryName() : ?string
+    {
+        return $this->inboundDeliveryName;
+    }
+    /**
+     * Optional free-text reference for inbound delivery.
+     *
+     * @param string|null $inboundDeliveryName
+     *
+     * @return self
+     */
+    public function setInboundDeliveryName(?string $inboundDeliveryName) : self
+    {
+        $this->inboundDeliveryName = $inboundDeliveryName;
+        return $this;
+    }
     /**
      * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
      *
@@ -44,7 +71,7 @@ class NewInboundDelivery
         return $this;
     }
     /**
-     * Expected date of the delivery
+     * Expected date of the delivery (timezone CET/CEST)
      *
      * @return \DateTime
      */
@@ -53,7 +80,7 @@ class NewInboundDelivery
         return $this->expectedDeliveryDate;
     }
     /**
-     * Expected date of the delivery
+     * Expected date of the delivery (timezone CET/CEST)
      *
      * @param \DateTime $expectedDeliveryDate
      *
