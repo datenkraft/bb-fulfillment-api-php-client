@@ -30,8 +30,8 @@ class GetChangelogInFormat extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     /**
      * {@inheritdoc}
      *
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetChangelogInFormatNotFoundException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetChangelogInFormatBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetChangelogInFormatNotFoundException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
      * @return null
@@ -41,11 +41,11 @@ class GetChangelogInFormat extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
         if (200 === $status) {
             return null;
         }
-        if (404 === $status) {
-            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetChangelogInFormatNotFoundException();
-        }
         if (400 === $status) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetChangelogInFormatBadRequestException();
+        }
+        if (404 === $status) {
+            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetChangelogInFormatNotFoundException();
         }
         throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException($status, $body);
     }
