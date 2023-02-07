@@ -23,12 +23,6 @@ class Product
      */
     protected $productTitleOriginal;
     /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @var string|null
-     */
-    protected $productStatus = 'enabled';
-    /**
      * Long description of the article
      *
      * @var string
@@ -150,6 +144,22 @@ class Product
      */
     protected $languageCode = 'de';
     /**
+    * Status of the product regarding sales.
+    
+    Available values:
+    - enabled: Product is on sale
+    - enabled_external_only: Product is only available in external stores
+    - deleted: Product is deleted
+    - discontinued: Product is disontinued
+    - expired: Product is expired
+    - incorrect: Product was incorrectly created
+    - internal: Product is available for internal sales only
+    - preparation: Product is in preparation for sale
+    *
+    * @var string
+    */
+    protected $productStatus = 'enabled';
+    /**
     * Short description of the article. \
     Note: This can be null if the product was not created via the API.
     *
@@ -229,27 +239,6 @@ class Product
     public function setProductTitleOriginal(string $productTitleOriginal) : self
     {
         $this->productTitleOriginal = $productTitleOriginal;
-        return $this;
-    }
-    /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @return string|null
-     */
-    public function getProductStatus() : ?string
-    {
-        return $this->productStatus;
-    }
-    /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @param string|null $productStatus
-     *
-     * @return self
-     */
-    public function setProductStatus(?string $productStatus) : self
-    {
-        $this->productStatus = $productStatus;
         return $this;
     }
     /**
@@ -663,6 +652,47 @@ class Product
     public function setLanguageCode(string $languageCode) : self
     {
         $this->languageCode = $languageCode;
+        return $this;
+    }
+    /**
+    * Status of the product regarding sales.
+    
+    Available values:
+    - enabled: Product is on sale
+    - enabled_external_only: Product is only available in external stores
+    - deleted: Product is deleted
+    - discontinued: Product is disontinued
+    - expired: Product is expired
+    - incorrect: Product was incorrectly created
+    - internal: Product is available for internal sales only
+    - preparation: Product is in preparation for sale
+    *
+    * @return string
+    */
+    public function getProductStatus() : string
+    {
+        return $this->productStatus;
+    }
+    /**
+    * Status of the product regarding sales.
+    
+    Available values:
+    - enabled: Product is on sale
+    - enabled_external_only: Product is only available in external stores
+    - deleted: Product is deleted
+    - discontinued: Product is disontinued
+    - expired: Product is expired
+    - incorrect: Product was incorrectly created
+    - internal: Product is available for internal sales only
+    - preparation: Product is in preparation for sale
+    *
+    * @param string $productStatus
+    *
+    * @return self
+    */
+    public function setProductStatus(string $productStatus) : self
+    {
+        $this->productStatus = $productStatus;
         return $this;
     }
     /**

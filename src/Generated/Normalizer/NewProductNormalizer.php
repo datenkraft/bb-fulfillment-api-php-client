@@ -48,12 +48,6 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('productTitleOriginal', $data)) {
             $object->setProductTitleOriginal($data['productTitleOriginal']);
         }
-        if (\array_key_exists('productStatus', $data) && $data['productStatus'] !== null) {
-            $object->setProductStatus($data['productStatus']);
-        }
-        elseif (\array_key_exists('productStatus', $data) && $data['productStatus'] === null) {
-            $object->setProductStatus(null);
-        }
         if (\array_key_exists('articleLongDescription', $data)) {
             $object->setArticleLongDescription($data['articleLongDescription']);
         }
@@ -148,6 +142,12 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
+        if (\array_key_exists('productStatus', $data) && $data['productStatus'] !== null) {
+            $object->setProductStatus($data['productStatus']);
+        }
+        elseif (\array_key_exists('productStatus', $data) && $data['productStatus'] === null) {
+            $object->setProductStatus(null);
+        }
         if (\array_key_exists('articleShortDescription', $data)) {
             $object->setArticleShortDescription($data['articleShortDescription']);
         }
@@ -167,9 +167,6 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getProductTitleOriginal()) {
             $data['productTitleOriginal'] = $object->getProductTitleOriginal();
-        }
-        if (null !== $object->getProductStatus()) {
-            $data['productStatus'] = $object->getProductStatus();
         }
         if (null !== $object->getArticleLongDescription()) {
             $data['articleLongDescription'] = $object->getArticleLongDescription();
@@ -231,6 +228,9 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
+        }
+        if (null !== $object->getProductStatus()) {
+            $data['productStatus'] = $object->getProductStatus();
         }
         if (null !== $object->getArticleShortDescription()) {
             $data['articleShortDescription'] = $object->getArticleShortDescription();

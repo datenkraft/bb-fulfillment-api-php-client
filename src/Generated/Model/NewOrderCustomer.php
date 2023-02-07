@@ -11,7 +11,7 @@ class NewOrderCustomer
      */
     protected $gender;
     /**
-     * The language code for any customer communications (ISO 639-1)
+     * The language code for any customer communications (ISO 639-1). Currently only 'de' is supported
      *
      * @var string
      */
@@ -56,7 +56,7 @@ class NewOrderCustomer
         return $this;
     }
     /**
-     * The language code for any customer communications (ISO 639-1)
+     * The language code for any customer communications (ISO 639-1). Currently only 'de' is supported
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class NewOrderCustomer
         return $this->languageCode;
     }
     /**
-     * The language code for any customer communications (ISO 639-1)
+     * The language code for any customer communications (ISO 639-1). Currently only 'de' is supported
      *
      * @param string $languageCode
      *

@@ -23,12 +23,6 @@ class BaseProduct
      */
     protected $productTitleOriginal;
     /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @var string|null
-     */
-    protected $productStatus = 'enabled';
-    /**
      * Long description of the article
      *
      * @var string
@@ -210,27 +204,6 @@ class BaseProduct
     public function setProductTitleOriginal(string $productTitleOriginal) : self
     {
         $this->productTitleOriginal = $productTitleOriginal;
-        return $this;
-    }
-    /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @return string|null
-     */
-    public function getProductStatus() : ?string
-    {
-        return $this->productStatus;
-    }
-    /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @param string|null $productStatus
-     *
-     * @return self
-     */
-    public function setProductStatus(?string $productStatus) : self
-    {
-        $this->productStatus = $productStatus;
         return $this;
     }
     /**

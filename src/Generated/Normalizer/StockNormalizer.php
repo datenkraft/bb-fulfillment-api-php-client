@@ -51,6 +51,12 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('available', $data)) {
             $object->setAvailable($data['available']);
         }
+        if (\array_key_exists('incoming', $data)) {
+            $object->setIncoming($data['incoming']);
+        }
+        if (\array_key_exists('overbookingPossibilityStatus', $data)) {
+            $object->setOverbookingPossibilityStatus($data['overbookingPossibilityStatus']);
+        }
         return $object;
     }
     /**
@@ -70,6 +76,12 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getAvailable()) {
             $data['available'] = $object->getAvailable();
+        }
+        if (null !== $object->getIncoming()) {
+            $data['incoming'] = $object->getIncoming();
+        }
+        if (null !== $object->getOverbookingPossibilityStatus()) {
+            $data['overbookingPossibilityStatus'] = $object->getOverbookingPossibilityStatus();
         }
         return $data;
     }

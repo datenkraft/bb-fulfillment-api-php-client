@@ -7,6 +7,7 @@ class PostProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
     protected $productNumber;
     /**
     * Add a new product referenced by the given productNumber.
+    Please note that due to necessary product compliance enabling by our steve team, you might not be able to use all sent products immediately.
     *
     * @param string $productNumber The number the product should be refered by.
        This number is user defined, must be unique and has a maximum length (check maxLength field).
@@ -62,12 +63,12 @@ class PostProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
+     * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InformationResponse|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
      */
     protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         if (is_null($contentType) === false && (201 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Product', 'json');
+            return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InformationResponse', 'json');
         }
         if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));
