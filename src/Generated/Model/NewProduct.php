@@ -23,12 +23,6 @@ class NewProduct
      */
     protected $productTitleOriginal;
     /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @var string|null
-     */
-    protected $productStatus = 'enabled';
-    /**
      * Long description of the article
      *
      * @var string
@@ -150,6 +144,16 @@ class NewProduct
      */
     protected $languageCode = 'de';
     /**
+    * Status of the product regarding sales.
+    
+    Available values:
+    - enabled: Product is on sale (default)
+    - enabled_external_only: Product is only available in external stores
+    *
+    * @var string|null
+    */
+    protected $productStatus = 'enabled';
+    /**
      * Short description of the article.
      *
      * @var string
@@ -216,27 +220,6 @@ class NewProduct
     public function setProductTitleOriginal(string $productTitleOriginal) : self
     {
         $this->productTitleOriginal = $productTitleOriginal;
-        return $this;
-    }
-    /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @return string|null
-     */
-    public function getProductStatus() : ?string
-    {
-        return $this->productStatus;
-    }
-    /**
-     * Status of the product regarding sales ('enabled' if no value is provided)
-     *
-     * @param string|null $productStatus
-     *
-     * @return self
-     */
-    public function setProductStatus(?string $productStatus) : self
-    {
-        $this->productStatus = $productStatus;
         return $this;
     }
     /**
@@ -650,6 +633,35 @@ class NewProduct
     public function setLanguageCode(string $languageCode) : self
     {
         $this->languageCode = $languageCode;
+        return $this;
+    }
+    /**
+    * Status of the product regarding sales.
+    
+    Available values:
+    - enabled: Product is on sale (default)
+    - enabled_external_only: Product is only available in external stores
+    *
+    * @return string|null
+    */
+    public function getProductStatus() : ?string
+    {
+        return $this->productStatus;
+    }
+    /**
+    * Status of the product regarding sales.
+    
+    Available values:
+    - enabled: Product is on sale (default)
+    - enabled_external_only: Product is only available in external stores
+    *
+    * @param string|null $productStatus
+    *
+    * @return self
+    */
+    public function setProductStatus(?string $productStatus) : self
+    {
+        $this->productStatus = $productStatus;
         return $this;
     }
     /**

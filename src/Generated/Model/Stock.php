@@ -29,6 +29,21 @@ class Stock
      */
     protected $available;
     /**
+     * Amount of ongoing inbound deliveries
+     *
+     * @var int
+     */
+    protected $incoming;
+    /**
+    * Status regarding the possibility of overbooking
+    - possible: Overbooking is possible
+    - not_possible: Overbooking is not possible
+    - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
+    *
+    * @var string
+    */
+    protected $overbookingPossibilityStatus;
+    /**
      * Product number
      *
      * @return string
@@ -110,6 +125,54 @@ class Stock
     public function setAvailable(int $available) : self
     {
         $this->available = $available;
+        return $this;
+    }
+    /**
+     * Amount of ongoing inbound deliveries
+     *
+     * @return int
+     */
+    public function getIncoming() : int
+    {
+        return $this->incoming;
+    }
+    /**
+     * Amount of ongoing inbound deliveries
+     *
+     * @param int $incoming
+     *
+     * @return self
+     */
+    public function setIncoming(int $incoming) : self
+    {
+        $this->incoming = $incoming;
+        return $this;
+    }
+    /**
+    * Status regarding the possibility of overbooking
+    - possible: Overbooking is possible
+    - not_possible: Overbooking is not possible
+    - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
+    *
+    * @return string
+    */
+    public function getOverbookingPossibilityStatus() : string
+    {
+        return $this->overbookingPossibilityStatus;
+    }
+    /**
+    * Status regarding the possibility of overbooking
+    - possible: Overbooking is possible
+    - not_possible: Overbooking is not possible
+    - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
+    *
+    * @param string $overbookingPossibilityStatus
+    *
+    * @return self
+    */
+    public function setOverbookingPossibilityStatus(string $overbookingPossibilityStatus) : self
+    {
+        $this->overbookingPossibilityStatus = $overbookingPossibilityStatus;
         return $this;
     }
 }

@@ -48,12 +48,6 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         if (\array_key_exists('productTitleOriginal', $data)) {
             $object->setProductTitleOriginal($data['productTitleOriginal']);
         }
-        if (\array_key_exists('productStatus', $data) && $data['productStatus'] !== null) {
-            $object->setProductStatus($data['productStatus']);
-        }
-        elseif (\array_key_exists('productStatus', $data) && $data['productStatus'] === null) {
-            $object->setProductStatus(null);
-        }
         if (\array_key_exists('articleLongDescription', $data)) {
             $object->setArticleLongDescription($data['articleLongDescription']);
         }
@@ -164,9 +158,6 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getProductTitleOriginal()) {
             $data['productTitleOriginal'] = $object->getProductTitleOriginal();
-        }
-        if (null !== $object->getProductStatus()) {
-            $data['productStatus'] = $object->getProductStatus();
         }
         if (null !== $object->getArticleLongDescription()) {
             $data['articleLongDescription'] = $object->getArticleLongDescription();

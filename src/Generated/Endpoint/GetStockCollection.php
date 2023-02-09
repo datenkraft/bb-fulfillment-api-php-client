@@ -10,7 +10,7 @@ class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
-    *     @var string $filter[productNumber] product number
+    *     @var string $filter[productNumber] Filter for product number(s) (optional).
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
