@@ -35,6 +35,26 @@ class ShopMeta extends \ArrayObject
      */
     protected $addTestSuffixToInternalReference = false;
     /**
+     * Flag to mark the shop as part of a Shopify installation that uses multiple shops.
+     *
+     * @var bool|null
+     */
+    protected $shopifyMultiShop = true;
+    /**
+    * Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\
+    The default shop is used for e.g. fetching stock levels.
+    *
+    * @var bool|null
+    */
+    protected $shopifyDefaultShop = true;
+    /**
+    * The order tags to identify which shop to use in a Shopify installation that uses multiple shops.\
+    If a Shopify order matches a tag, it will be assigned to this shop.
+    *
+    * @var string[]|null
+    */
+    protected $shopifyOrderTags;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -137,6 +157,73 @@ class ShopMeta extends \ArrayObject
     public function setAddTestSuffixToInternalReference(?bool $addTestSuffixToInternalReference) : self
     {
         $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
+        return $this;
+    }
+    /**
+     * Flag to mark the shop as part of a Shopify installation that uses multiple shops.
+     *
+     * @return bool|null
+     */
+    public function getShopifyMultiShop() : ?bool
+    {
+        return $this->shopifyMultiShop;
+    }
+    /**
+     * Flag to mark the shop as part of a Shopify installation that uses multiple shops.
+     *
+     * @param bool|null $shopifyMultiShop
+     *
+     * @return self
+     */
+    public function setShopifyMultiShop(?bool $shopifyMultiShop) : self
+    {
+        $this->shopifyMultiShop = $shopifyMultiShop;
+        return $this;
+    }
+    /**
+    * Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\
+    The default shop is used for e.g. fetching stock levels.
+    *
+    * @return bool|null
+    */
+    public function getShopifyDefaultShop() : ?bool
+    {
+        return $this->shopifyDefaultShop;
+    }
+    /**
+    * Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\
+    The default shop is used for e.g. fetching stock levels.
+    *
+    * @param bool|null $shopifyDefaultShop
+    *
+    * @return self
+    */
+    public function setShopifyDefaultShop(?bool $shopifyDefaultShop) : self
+    {
+        $this->shopifyDefaultShop = $shopifyDefaultShop;
+        return $this;
+    }
+    /**
+    * The order tags to identify which shop to use in a Shopify installation that uses multiple shops.\
+    If a Shopify order matches a tag, it will be assigned to this shop.
+    *
+    * @return string[]|null
+    */
+    public function getShopifyOrderTags() : ?array
+    {
+        return $this->shopifyOrderTags;
+    }
+    /**
+    * The order tags to identify which shop to use in a Shopify installation that uses multiple shops.\
+    If a Shopify order matches a tag, it will be assigned to this shop.
+    *
+    * @param string[]|null $shopifyOrderTags
+    *
+    * @return self
+    */
+    public function setShopifyOrderTags(?array $shopifyOrderTags) : self
+    {
+        $this->shopifyOrderTags = $shopifyOrderTags;
         return $this;
     }
 }

@@ -2101,6 +2101,34 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "filter[meta][shopifyDefaultShop]",
+            "in": "query",
+            "description": "A filter for Shopify default shops.\\\nNote: For shops that are part of a Shopify installation that uses multiple shops,\n only shops where meta.shopifyShopDefault is true will be considered as default shops.\\\nAll shops that are used for a single shop Shopify installation will also be considered as default shops.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "filter[meta][shopifyOrderTags]",
+            "in": "query",
+            "description": "Filter for Shopify order tag(s).\\\nNote: Filter by a single tag or multiple tags separated by commas.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "examples": {
+              "single order tag": {
+                "summary": "single order tag",
+                "value": "tag1"
+              },
+              "multiple order tags": {
+                "summary": "multiple order tags",
+                "value": "tag1,tag2,tag3"
+              }
+            }
           }
         ],
         "responses": {
@@ -5206,6 +5234,26 @@
                 "description": "Flag to mark if a test suffix should be added to internal references.",
                 "type": "boolean",
                 "default": false,
+                "nullable": true
+              },
+              "shopifyMultiShop": {
+                "description": "Flag to mark the shop as part of a Shopify installation that uses multiple shops.",
+                "type": "boolean",
+                "default": true,
+                "nullable": true
+              },
+              "shopifyDefaultShop": {
+                "description": "Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\\\nThe default shop is used for e.g. fetching stock levels.",
+                "type": "boolean",
+                "default": true,
+                "nullable": true
+              },
+              "shopifyOrderTags": {
+                "description": "The order tags to identify which shop to use in a Shopify installation that uses multiple shops.\\\nIf a Shopify order matches a tag, it will be assigned to this shop.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
                 "nullable": true
               }
             },
