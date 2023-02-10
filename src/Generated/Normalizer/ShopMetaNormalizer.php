@@ -74,9 +74,34 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] === null) {
             $object->setAddTestSuffixToInternalReference(null);
         }
-        foreach ($data as $key => $value) {
+        if (\array_key_exists('shopifyMultiShop', $data) && $data['shopifyMultiShop'] !== null) {
+            $object->setShopifyMultiShop($data['shopifyMultiShop']);
+            unset($data['shopifyMultiShop']);
+        }
+        elseif (\array_key_exists('shopifyMultiShop', $data) && $data['shopifyMultiShop'] === null) {
+            $object->setShopifyMultiShop(null);
+        }
+        if (\array_key_exists('shopifyDefaultShop', $data) && $data['shopifyDefaultShop'] !== null) {
+            $object->setShopifyDefaultShop($data['shopifyDefaultShop']);
+            unset($data['shopifyDefaultShop']);
+        }
+        elseif (\array_key_exists('shopifyDefaultShop', $data) && $data['shopifyDefaultShop'] === null) {
+            $object->setShopifyDefaultShop(null);
+        }
+        if (\array_key_exists('shopifyOrderTags', $data) && $data['shopifyOrderTags'] !== null) {
+            $values = array();
+            foreach ($data['shopifyOrderTags'] as $value) {
+                $values[] = $value;
+            }
+            $object->setShopifyOrderTags($values);
+            unset($data['shopifyOrderTags']);
+        }
+        elseif (\array_key_exists('shopifyOrderTags', $data) && $data['shopifyOrderTags'] === null) {
+            $object->setShopifyOrderTags(null);
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -102,9 +127,22 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getAddTestSuffixToInternalReference()) {
             $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
         }
-        foreach ($object as $key => $value) {
+        if (null !== $object->getShopifyMultiShop()) {
+            $data['shopifyMultiShop'] = $object->getShopifyMultiShop();
+        }
+        if (null !== $object->getShopifyDefaultShop()) {
+            $data['shopifyDefaultShop'] = $object->getShopifyDefaultShop();
+        }
+        if (null !== $object->getShopifyOrderTags()) {
+            $values = array();
+            foreach ($object->getShopifyOrderTags() as $value) {
+                $values[] = $value;
+            }
+            $data['shopifyOrderTags'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $data[$key] = $value_1;
             }
         }
         return $data;
