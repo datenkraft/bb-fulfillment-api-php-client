@@ -39,7 +39,7 @@ class ShopMeta extends \ArrayObject
      *
      * @var bool|null
      */
-    protected $shopifyMultiShop = true;
+    protected $shopifyMultiShop = false;
     /**
     * Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\
     The default shop is used for e.g. fetching stock levels.

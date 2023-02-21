@@ -5229,7 +5229,7 @@
                             "shopifyMultiShop": {
                                 "description": "Flag to mark the shop as part of a Shopify installation that uses multiple shops.",
                                 "type": "boolean",
-                                "default": true,
+                                "default": false,
                                 "nullable": true
                             },
                             "shopifyDefaultShop": {
