@@ -43,7 +43,6 @@ class PatchShop extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Run
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopForbiddenException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopNotFoundException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopConflictException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
@@ -65,9 +64,6 @@ class PatchShop extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Run
         }
         if (is_null($contentType) === false && (404 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopNotFoundException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));
-        }
-        if (is_null($contentType) === false && (409 === $status && mb_strpos($contentType, 'application/json') !== false)) {
-            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopConflictException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopInternalServerErrorException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));
