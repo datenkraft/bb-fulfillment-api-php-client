@@ -67,7 +67,7 @@ class BaseOrderCustomer
     /**
      * 
      *
-     * @var OrderCustomerDeliveryAddress
+     * @var mixed|null
      */
     protected $deliveryAddress;
     /**
@@ -283,20 +283,20 @@ class BaseOrderCustomer
     /**
      * 
      *
-     * @return OrderCustomerDeliveryAddress
+     * @return mixed
      */
-    public function getDeliveryAddress() : OrderCustomerDeliveryAddress
+    public function getDeliveryAddress()
     {
         return $this->deliveryAddress;
     }
     /**
      * 
      *
-     * @param OrderCustomerDeliveryAddress $deliveryAddress
+     * @param mixed $deliveryAddress
      *
      * @return self
      */
-    public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress) : self
+    public function setDeliveryAddress($deliveryAddress) : self
     {
         $this->deliveryAddress = $deliveryAddress;
         return $this;

@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class DeliveryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class InformationResponseNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Delivery';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InformationResponse';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Delivery';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InformationResponse';
     }
     /**
      * @return mixed
@@ -35,28 +35,16 @@ class DeliveryNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Delivery();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InformationResponse();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('number', $data)) {
-            $object->setNumber($data['number']);
-        }
-        if (\array_key_exists('orderNumber', $data) && $data['orderNumber'] !== null) {
-            $object->setOrderNumber($data['orderNumber']);
-        }
-        elseif (\array_key_exists('orderNumber', $data) && $data['orderNumber'] === null) {
-            $object->setOrderNumber(null);
-        }
-        if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
-        }
-        if (\array_key_exists('shipments', $data)) {
+        if (\array_key_exists('information', $data)) {
             $values = array();
-            foreach ($data['shipments'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryShipment', 'json', $context);
+            foreach ($data['information'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Information', 'json', $context);
             }
-            $object->setShipments($values);
+            $object->setInformation($values);
         }
         return $object;
     }
@@ -66,21 +54,12 @@ class DeliveryNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getNumber()) {
-            $data['number'] = $object->getNumber();
-        }
-        if (null !== $object->getOrderNumber()) {
-            $data['orderNumber'] = $object->getOrderNumber();
-        }
-        if (null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
-        }
-        if (null !== $object->getShipments()) {
+        if (null !== $object->getInformation()) {
             $values = array();
-            foreach ($object->getShipments() as $value) {
+            foreach ($object->getInformation() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['shipments'] = $values;
+            $data['information'] = $values;
         }
         return $data;
     }
