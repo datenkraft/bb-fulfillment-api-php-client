@@ -7,7 +7,8 @@ class PostProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
     protected $productNumber;
     /**
     * Add a new product referenced by the given productNumber.
-    Please note that due to necessary product compliance enabling by our steve team, you might not be able to use all sent products immediately.
+    Please note that due to necessary product compliance enabling by our steve team, the product might not be usable immediately.
+    The product number is nevertheless reserved, even before the product can be queried in the GET endpoint.
     *
     * @param string $productNumber The number the product should be refered by.
        This number is user defined, must be unique and has a maximum length (check maxLength field).
