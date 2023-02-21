@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Shipment
+class DeliveryShipment
 {
     /**
      * The delivery number

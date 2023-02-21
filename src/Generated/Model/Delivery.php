@@ -27,7 +27,7 @@ class Delivery
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @var Shipment[]
+     * @var DeliveryShipment[]
      */
     protected $shipments;
     /**
@@ -100,7 +100,7 @@ class Delivery
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @return Shipment[]
+     * @return DeliveryShipment[]
      */
     public function getShipments() : array
     {
@@ -109,7 +109,7 @@ class Delivery
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @param Shipment[] $shipments
+     * @param DeliveryShipment[] $shipments
      *
      * @return self
      */
