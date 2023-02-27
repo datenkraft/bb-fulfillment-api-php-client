@@ -12,7 +12,7 @@ class PostInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\Gen
     This number is user defined, must be unique and has a maximum length (check maxLength field).
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }

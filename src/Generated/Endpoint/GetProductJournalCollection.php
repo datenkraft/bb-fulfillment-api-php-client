@@ -12,11 +12,21 @@ class GetProductJournalCollection extends \Datenkraft\Backbone\Client\Fulfillmen
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d (timezone CET/CEST) for which product journal entries should be returned.
     *     @var string $filter[dateTo] The end date (inclusive) in format Y-m-d (timezone CET/CEST) for which product journal entries should be returned.
+    *     @var string $filter[reason] Filter journal entries for one or more reasons
+    
+    - expired: Taking an expired product off the books
+    - damaged: Taking a damaged product off the books
+    - own_withdrawl: Product taken for own use
+    - correction: Manual correction
+    - niceshops_order: Product sold via a shop from niceshops
+    - inbound: Restocking the product
+    - fulfillment: steve fulfilled an order
+    - return: A customer sent the product back to our warehouse
     * }
     */
     public function __construct(string $productNumber, array $queryParameters = array())
@@ -44,7 +54,7 @@ class GetProductJournalCollection extends \Datenkraft\Backbone\Client\Fulfillmen
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'shopCode', 'filter[dateFrom]', 'filter[dateTo]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'shopCode', 'filter[dateFrom]', 'filter[dateTo]', 'filter[reason]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
@@ -52,6 +62,7 @@ class GetProductJournalCollection extends \Datenkraft\Backbone\Client\Fulfillmen
         $optionsResolver->setAllowedTypes('shopCode', array('string'));
         $optionsResolver->setAllowedTypes('filter[dateFrom]', array('string'));
         $optionsResolver->setAllowedTypes('filter[dateTo]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[reason]', array('string'));
         return $optionsResolver;
     }
     /**

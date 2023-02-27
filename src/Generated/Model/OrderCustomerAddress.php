@@ -35,7 +35,7 @@ class OrderCustomerAddress
      */
     protected $city;
     /**
-     * Province code (ISO 3166-2)
+     * Mandatory if province codes for country (GET /country) exist (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
      *
      * @var string|null
      */
@@ -152,7 +152,7 @@ class OrderCustomerAddress
         return $this;
     }
     /**
-     * Province code (ISO 3166-2)
+     * Mandatory if province codes for country (GET /country) exist (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
      *
      * @return string|null
      */
@@ -161,7 +161,7 @@ class OrderCustomerAddress
         return $this->provinceCode;
     }
     /**
-     * Province code (ISO 3166-2)
+     * Mandatory if province codes for country (GET /country) exist (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
      *
      * @param string|null $provinceCode
      *

@@ -97,6 +97,24 @@ class Order
      */
     protected $shipping;
     /**
+    * The source of the order.
+    - shopify: This order was created via the steve by niceshops Shopify application
+    - nice: This order was created manually by niceshops
+    - api: This order was created via the Fulfillment API
+    
+    If null, the source could not be determined
+    
+    *
+    * @var string|null
+    */
+    protected $source;
+    /**
+     * If available, a hyperlink to the application where this order was created is provided
+     *
+     * @var string|null
+     */
+    protected $sourceLink;
+    /**
      * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
@@ -404,6 +422,60 @@ class Order
     public function setShipping(OrderShipping $shipping) : self
     {
         $this->shipping = $shipping;
+        return $this;
+    }
+    /**
+    * The source of the order.
+    - shopify: This order was created via the steve by niceshops Shopify application
+    - nice: This order was created manually by niceshops
+    - api: This order was created via the Fulfillment API
+    
+    If null, the source could not be determined
+    
+    *
+    * @return string|null
+    */
+    public function getSource() : ?string
+    {
+        return $this->source;
+    }
+    /**
+    * The source of the order.
+    - shopify: This order was created via the steve by niceshops Shopify application
+    - nice: This order was created manually by niceshops
+    - api: This order was created via the Fulfillment API
+    
+    If null, the source could not be determined
+    
+    *
+    * @param string|null $source
+    *
+    * @return self
+    */
+    public function setSource(?string $source) : self
+    {
+        $this->source = $source;
+        return $this;
+    }
+    /**
+     * If available, a hyperlink to the application where this order was created is provided
+     *
+     * @return string|null
+     */
+    public function getSourceLink() : ?string
+    {
+        return $this->sourceLink;
+    }
+    /**
+     * If available, a hyperlink to the application where this order was created is provided
+     *
+     * @param string|null $sourceLink
+     *
+     * @return self
+     */
+    public function setSourceLink(?string $sourceLink) : self
+    {
+        $this->sourceLink = $sourceLink;
         return $this;
     }
 }

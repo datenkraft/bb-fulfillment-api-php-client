@@ -23,6 +23,12 @@ class Country
      */
     protected $phoneRequired;
     /**
+     * 
+     *
+     * @var CountryProvinces[]|null
+     */
+    protected $provinces;
+    /**
      * Country code (ISO 3166-1 alpha-2)
      *
      * @return string
@@ -83,6 +89,27 @@ class Country
     public function setPhoneRequired(bool $phoneRequired) : self
     {
         $this->phoneRequired = $phoneRequired;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return CountryProvinces[]|null
+     */
+    public function getProvinces() : ?array
+    {
+        return $this->provinces;
+    }
+    /**
+     * 
+     *
+     * @param CountryProvinces[]|null $provinces
+     *
+     * @return self
+     */
+    public function setProvinces(?array $provinces) : self
+    {
+        $this->provinces = $provinces;
         return $this;
     }
 }

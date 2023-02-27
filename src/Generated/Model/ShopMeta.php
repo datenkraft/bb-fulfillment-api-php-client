@@ -55,6 +55,12 @@ class ShopMeta extends \ArrayObject
     */
     protected $shopifyOrderTags;
     /**
+     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order customers or not.
+     *
+     * @var bool|null
+     */
+    protected $invoiceEnabled = false;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -224,6 +230,27 @@ class ShopMeta extends \ArrayObject
     public function setShopifyOrderTags(?array $shopifyOrderTags) : self
     {
         $this->shopifyOrderTags = $shopifyOrderTags;
+        return $this;
+    }
+    /**
+     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order customers or not.
+     *
+     * @return bool|null
+     */
+    public function getInvoiceEnabled() : ?bool
+    {
+        return $this->invoiceEnabled;
+    }
+    /**
+     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order customers or not.
+     *
+     * @param bool|null $invoiceEnabled
+     *
+     * @return self
+     */
+    public function setInvoiceEnabled(?bool $invoiceEnabled) : self
+    {
+        $this->invoiceEnabled = $invoiceEnabled;
         return $this;
     }
 }
