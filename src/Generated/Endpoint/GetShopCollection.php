@@ -17,6 +17,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     All shops that are used for a single shop Shopify installation will also be considered as default shops.
     *     @var string $filter[meta][shopifyOrderTags] Filter for Shopify order tag(s).\
     Note: Filter by a single tag or multiple tags separated by commas.
+    *     @var string $filter[shopCode] one or more shopCode(s) of the shop(s) (optional).
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -43,7 +44,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[meta][shopifyShopDomain]', 'filter[meta][shopifyDefaultShop]', 'filter[meta][shopifyOrderTags]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[meta][shopifyShopDomain]', 'filter[meta][shopifyDefaultShop]', 'filter[meta][shopifyOrderTags]', 'filter[shopCode]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
@@ -51,6 +52,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
         $optionsResolver->setAllowedTypes('filter[meta][shopifyShopDomain]', array('string'));
         $optionsResolver->setAllowedTypes('filter[meta][shopifyDefaultShop]', array('bool'));
         $optionsResolver->setAllowedTypes('filter[meta][shopifyOrderTags]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
         return $optionsResolver;
     }
     /**

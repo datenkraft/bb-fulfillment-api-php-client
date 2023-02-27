@@ -60,6 +60,36 @@ class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerIn
         elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
             $object->setPhone(null);
         }
+        if (\array_key_exists('firstname', $data)) {
+            $object->setFirstname($data['firstname']);
+        }
+        if (\array_key_exists('lastname', $data)) {
+            $object->setLastname($data['lastname']);
+        }
+        if (\array_key_exists('title', $data) && $data['title'] !== null) {
+            $object->setTitle($data['title']);
+        }
+        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+            $object->setTitle(null);
+        }
+        if (\array_key_exists('company', $data) && $data['company'] !== null) {
+            $object->setCompany($data['company']);
+        }
+        elseif (\array_key_exists('company', $data) && $data['company'] === null) {
+            $object->setCompany(null);
+        }
+        if (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] !== null) {
+            $object->setCompanyVatNumber($data['companyVatNumber']);
+        }
+        elseif (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] === null) {
+            $object->setCompanyVatNumber(null);
+        }
+        if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
+            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomerInvoiceAddress', 'json', $context));
+        }
+        elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
+            $object->setInvoiceAddress(null);
+        }
         return $object;
     }
     /**
@@ -76,6 +106,24 @@ class BaseOrderCustomerNormalizer implements DenormalizerInterface, NormalizerIn
         $data['deliveryAddress'] = $this->normalizer->normalize($object->getDeliveryAddress(), 'json', $context);
         if (null !== $object->getPhone()) {
             $data['phone'] = $object->getPhone();
+        }
+        if (null !== $object->getFirstname()) {
+            $data['firstname'] = $object->getFirstname();
+        }
+        if (null !== $object->getLastname()) {
+            $data['lastname'] = $object->getLastname();
+        }
+        if (null !== $object->getTitle()) {
+            $data['title'] = $object->getTitle();
+        }
+        if (null !== $object->getCompany()) {
+            $data['company'] = $object->getCompany();
+        }
+        if (null !== $object->getCompanyVatNumber()) {
+            $data['companyVatNumber'] = $object->getCompanyVatNumber();
+        }
+        if (null !== $object->getInvoiceAddress()) {
+            $data['invoiceAddress'] = $this->normalizer->normalize($object->getInvoiceAddress(), 'json', $context);
         }
         return $data;
     }

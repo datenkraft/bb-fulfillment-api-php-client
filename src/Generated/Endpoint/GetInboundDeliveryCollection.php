@@ -17,7 +17,7 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     - in_progress: The inbound delivery is being processed in our warehouse.
     - completed: The inbound delivery has been processed in our warehouse.
     - deleted: The inbound delivery has been deleted.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.<br />
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }

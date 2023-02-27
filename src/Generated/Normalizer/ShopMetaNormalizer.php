@@ -99,6 +99,13 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('shopifyOrderTags', $data) && $data['shopifyOrderTags'] === null) {
             $object->setShopifyOrderTags(null);
         }
+        if (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] !== null) {
+            $object->setInvoiceEnabled($data['invoiceEnabled']);
+            unset($data['invoiceEnabled']);
+        }
+        elseif (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] === null) {
+            $object->setInvoiceEnabled(null);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -139,6 +146,9 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $value;
             }
             $data['shopifyOrderTags'] = $values;
+        }
+        if (null !== $object->getInvoiceEnabled()) {
+            $data['invoiceEnabled'] = $object->getInvoiceEnabled();
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class CountryProvincesNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryProvinces';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryProvinces';
     }
     /**
      * @return mixed
@@ -35,28 +35,15 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryProvinces();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+        if (\array_key_exists('provinceCode', $data)) {
+            $object->setProvinceCode($data['provinceCode']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
-        }
-        if (\array_key_exists('phoneRequired', $data)) {
-            $object->setPhoneRequired($data['phoneRequired']);
-        }
-        if (\array_key_exists('provinces', $data) && $data['provinces'] !== null) {
-            $values = array();
-            foreach ($data['provinces'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryProvinces', 'json', $context);
-            }
-            $object->setProvinces($values);
-        }
-        elseif (\array_key_exists('provinces', $data) && $data['provinces'] === null) {
-            $object->setProvinces(null);
         }
         return $object;
     }
@@ -66,21 +53,11 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCountryCode()) {
-            $data['countryCode'] = $object->getCountryCode();
+        if (null !== $object->getProvinceCode()) {
+            $data['provinceCode'] = $object->getProvinceCode();
         }
         if (null !== $object->getName()) {
             $data['name'] = $object->getName();
-        }
-        if (null !== $object->getPhoneRequired()) {
-            $data['phoneRequired'] = $object->getPhoneRequired();
-        }
-        if (null !== $object->getProvinces()) {
-            $values = array();
-            foreach ($object->getProvinces() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['provinces'] = $values;
         }
         return $data;
     }

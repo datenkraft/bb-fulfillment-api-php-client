@@ -13,7 +13,7 @@ class PatchDeliveryShipment extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     * @param string $shipmentNumber Number of the shipment
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment $requestBody 
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.<br />
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
