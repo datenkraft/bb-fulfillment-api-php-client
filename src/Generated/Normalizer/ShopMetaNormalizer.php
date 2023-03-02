@@ -88,16 +88,12 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('shopifyDefaultShop', $data) && $data['shopifyDefaultShop'] === null) {
             $object->setShopifyDefaultShop(null);
         }
-        if (\array_key_exists('shopifyOrderTags', $data) && $data['shopifyOrderTags'] !== null) {
-            $values = array();
-            foreach ($data['shopifyOrderTags'] as $value) {
-                $values[] = $value;
-            }
-            $object->setShopifyOrderTags($values);
-            unset($data['shopifyOrderTags']);
+        if (\array_key_exists('shopifyOrderCountryCode', $data) && $data['shopifyOrderCountryCode'] !== null) {
+            $object->setShopifyOrderCountryCode($data['shopifyOrderCountryCode']);
+            unset($data['shopifyOrderCountryCode']);
         }
-        elseif (\array_key_exists('shopifyOrderTags', $data) && $data['shopifyOrderTags'] === null) {
-            $object->setShopifyOrderTags(null);
+        elseif (\array_key_exists('shopifyOrderCountryCode', $data) && $data['shopifyOrderCountryCode'] === null) {
+            $object->setShopifyOrderCountryCode(null);
         }
         if (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] !== null) {
             $object->setInvoiceEnabled($data['invoiceEnabled']);
@@ -106,9 +102,9 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] === null) {
             $object->setInvoiceEnabled(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -140,19 +136,15 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if (null !== $object->getShopifyDefaultShop()) {
             $data['shopifyDefaultShop'] = $object->getShopifyDefaultShop();
         }
-        if (null !== $object->getShopifyOrderTags()) {
-            $values = array();
-            foreach ($object->getShopifyOrderTags() as $value) {
-                $values[] = $value;
-            }
-            $data['shopifyOrderTags'] = $values;
+        if (null !== $object->getShopifyOrderCountryCode()) {
+            $data['shopifyOrderCountryCode'] = $object->getShopifyOrderCountryCode();
         }
         if (null !== $object->getInvoiceEnabled()) {
             $data['invoiceEnabled'] = $object->getInvoiceEnabled();
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value;
             }
         }
         return $data;
