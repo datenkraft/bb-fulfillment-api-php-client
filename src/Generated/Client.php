@@ -424,9 +424,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     Note: For shops that are part of a Shopify installation that uses multiple shops,
     only shops where meta.shopifyShopDefault is true will be considered as default shops.\
     All shops that are used for a single shop Shopify installation will also be considered as default shops.
-    *     @var string $filter[meta][shopifyOrderTags] Filter for Shopify order tag(s).\
-    Note: Filter by a single tag or multiple tags separated by commas.
-    *     @var string $filter[shopCode] one or more shopCode(s) of the shop(s) (optional).
+    *     @var string $filter[meta][shopifyOrderCountryCode] A filter for the Shopify order country code (ISO 3166-1 alpha-2).
+    *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionUnauthorizedException

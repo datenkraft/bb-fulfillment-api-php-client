@@ -48,17 +48,19 @@ class ShopMeta extends \ArrayObject
     */
     protected $shopifyDefaultShop = true;
     /**
-    * The order tags to identify which shop to use in a Shopify installation that uses multiple shops.\
-    If a Shopify order matches a tag, it will be assigned to this shop.
+    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify
+    installation that uses multiple shops.\
+    If a Shopify order matches this country code, it will be assigned to this shop.
     *
-    * @var string[]|null
+    * @var string|null
     */
-    protected $shopifyOrderTags;
+    protected $shopifyOrderCountryCode;
     /**
-     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order customers or not.
-     *
-     * @var bool|null
-     */
+    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
+    customers or not.
+    *
+    * @var bool|null
+    */
     protected $invoiceEnabled = false;
     /**
      * Domain of the Shopify shop.
@@ -210,44 +212,48 @@ class ShopMeta extends \ArrayObject
         return $this;
     }
     /**
-    * The order tags to identify which shop to use in a Shopify installation that uses multiple shops.\
-    If a Shopify order matches a tag, it will be assigned to this shop.
+    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify
+    installation that uses multiple shops.\
+    If a Shopify order matches this country code, it will be assigned to this shop.
     *
-    * @return string[]|null
+    * @return string|null
     */
-    public function getShopifyOrderTags() : ?array
+    public function getShopifyOrderCountryCode() : ?string
     {
-        return $this->shopifyOrderTags;
+        return $this->shopifyOrderCountryCode;
     }
     /**
-    * The order tags to identify which shop to use in a Shopify installation that uses multiple shops.\
-    If a Shopify order matches a tag, it will be assigned to this shop.
+    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify
+    installation that uses multiple shops.\
+    If a Shopify order matches this country code, it will be assigned to this shop.
     *
-    * @param string[]|null $shopifyOrderTags
+    * @param string|null $shopifyOrderCountryCode
     *
     * @return self
     */
-    public function setShopifyOrderTags(?array $shopifyOrderTags) : self
+    public function setShopifyOrderCountryCode(?string $shopifyOrderCountryCode) : self
     {
-        $this->shopifyOrderTags = $shopifyOrderTags;
+        $this->shopifyOrderCountryCode = $shopifyOrderCountryCode;
         return $this;
     }
     /**
-     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order customers or not.
-     *
-     * @return bool|null
-     */
+    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
+    customers or not.
+    *
+    * @return bool|null
+    */
     public function getInvoiceEnabled() : ?bool
     {
         return $this->invoiceEnabled;
     }
     /**
-     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order customers or not.
-     *
-     * @param bool|null $invoiceEnabled
-     *
-     * @return self
-     */
+    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
+    customers or not.
+    *
+    * @param bool|null $invoiceEnabled
+    *
+    * @return self
+    */
     public function setInvoiceEnabled(?bool $invoiceEnabled) : self
     {
         $this->invoiceEnabled = $invoiceEnabled;
