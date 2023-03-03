@@ -60,11 +60,17 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
             $object->setPhone(null);
         }
-        if (\array_key_exists('firstname', $data)) {
+        if (\array_key_exists('firstname', $data) && $data['firstname'] !== null) {
             $object->setFirstname($data['firstname']);
         }
-        if (\array_key_exists('lastname', $data)) {
+        elseif (\array_key_exists('firstname', $data) && $data['firstname'] === null) {
+            $object->setFirstname(null);
+        }
+        if (\array_key_exists('lastname', $data) && $data['lastname'] !== null) {
             $object->setLastname($data['lastname']);
+        }
+        elseif (\array_key_exists('lastname', $data) && $data['lastname'] === null) {
+            $object->setLastname(null);
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
