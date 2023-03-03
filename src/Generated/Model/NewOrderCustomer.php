@@ -39,7 +39,7 @@ class NewOrderCustomer
     Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
-    * @var string
+    * @var string|null
     */
     protected $firstname;
     /**
@@ -47,7 +47,7 @@ class NewOrderCustomer
     Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
-    * @var string
+    * @var string|null
     */
     protected $lastname;
     /**
@@ -192,9 +192,9 @@ class NewOrderCustomer
     Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
-    * @return string
+    * @return string|null
     */
-    public function getFirstname() : string
+    public function getFirstname() : ?string
     {
         return $this->firstname;
     }
@@ -203,11 +203,11 @@ class NewOrderCustomer
     Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
-    * @param string $firstname
+    * @param string|null $firstname
     *
     * @return self
     */
-    public function setFirstname(string $firstname) : self
+    public function setFirstname(?string $firstname) : self
     {
         $this->firstname = $firstname;
         return $this;
@@ -217,9 +217,9 @@ class NewOrderCustomer
     Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
-    * @return string
+    * @return string|null
     */
-    public function getLastname() : string
+    public function getLastname() : ?string
     {
         return $this->lastname;
     }
@@ -228,11 +228,11 @@ class NewOrderCustomer
     Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
-    * @param string $lastname
+    * @param string|null $lastname
     *
     * @return self
     */
-    public function setLastname(string $lastname) : self
+    public function setLastname(?string $lastname) : self
     {
         $this->lastname = $lastname;
         return $this;

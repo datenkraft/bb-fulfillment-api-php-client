@@ -4897,11 +4897,13 @@
                     },
                     "firstname": {
                         "description": "The customer's first name.\\\nNote: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\\\nUse the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "lastname": {
                         "description": "The customer's last name.\\\nNote: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\\\nUse the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.",
-                        "type": "string"
+                        "type": "string",
+                        "nullable": true
                     },
                     "title": {
                         "description": "The customer's title.\\\nNote: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\\\nUse the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.",
