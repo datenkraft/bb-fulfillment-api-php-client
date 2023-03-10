@@ -79,6 +79,12 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
             $object->setOrderNotes(null);
         }
+        if (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] !== null) {
+            $object->setAmazonOrderId($data['amazonOrderId']);
+        }
+        elseif (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] === null) {
+            $object->setAmazonOrderId(null);
+        }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions', 'json', $context));
         }
@@ -117,6 +123,9 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getOrderNotes()) {
             $data['orderNotes'] = $object->getOrderNotes();
+        }
+        if (null !== $object->getAmazonOrderId()) {
+            $data['amazonOrderId'] = $object->getAmazonOrderId();
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);

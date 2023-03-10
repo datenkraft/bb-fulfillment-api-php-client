@@ -79,6 +79,12 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
             $object->setOrderNotes(null);
         }
+        if (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] !== null) {
+            $object->setAmazonOrderId($data['amazonOrderId']);
+        }
+        elseif (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] === null) {
+            $object->setAmazonOrderId(null);
+        }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($data['options']);
         }
@@ -157,6 +163,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getOrderNotes()) {
             $data['orderNotes'] = $object->getOrderNotes();
+        }
+        if (null !== $object->getAmazonOrderId()) {
+            $data['amazonOrderId'] = $object->getAmazonOrderId();
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $object->getOptions();

@@ -48,6 +48,14 @@ class Order
      */
     protected $orderNotes;
     /**
+    * The amazon order Id.
+    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    *
+    * @var string|null
+    */
+    protected $amazonOrderId;
+    /**
      * Additional optional options for the order.
      *
      * @var mixed|null
@@ -261,6 +269,31 @@ class Order
     public function setOrderNotes(?string $orderNotes) : self
     {
         $this->orderNotes = $orderNotes;
+        return $this;
+    }
+    /**
+    * The amazon order Id.
+    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    *
+    * @return string|null
+    */
+    public function getAmazonOrderId() : ?string
+    {
+        return $this->amazonOrderId;
+    }
+    /**
+    * The amazon order Id.
+    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    *
+    * @param string|null $amazonOrderId
+    *
+    * @return self
+    */
+    public function setAmazonOrderId(?string $amazonOrderId) : self
+    {
+        $this->amazonOrderId = $amazonOrderId;
         return $this;
     }
     /**
