@@ -12,7 +12,6 @@ class DeliveryShipment
     protected $number;
     /**
     * Status of the delivery.
-    - in_progress: The delivery is in the process of being packaged.
     - delivered: The delivery has been transferred to the delivery agent.
     *
     * @var string
@@ -84,7 +83,6 @@ class DeliveryShipment
     }
     /**
     * Status of the delivery.
-    - in_progress: The delivery is in the process of being packaged.
     - delivered: The delivery has been transferred to the delivery agent.
     *
     * @return string
@@ -95,7 +93,6 @@ class DeliveryShipment
     }
     /**
     * Status of the delivery.
-    - in_progress: The delivery is in the process of being packaged.
     - delivered: The delivery has been transferred to the delivery agent.
     *
     * @param string $status

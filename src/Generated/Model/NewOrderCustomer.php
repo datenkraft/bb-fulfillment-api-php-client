@@ -36,7 +36,7 @@ class NewOrderCustomer
     protected $phone;
     /**
     * The customer's first name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @var string|null
@@ -44,7 +44,7 @@ class NewOrderCustomer
     protected $firstname;
     /**
     * The customer's last name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @var string|null
@@ -52,7 +52,7 @@ class NewOrderCustomer
     protected $lastname;
     /**
     * The customer's title.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @var string|null
@@ -60,7 +60,7 @@ class NewOrderCustomer
     protected $title;
     /**
     * The customer's company name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @var string|null
@@ -68,7 +68,7 @@ class NewOrderCustomer
     protected $company;
     /**
     * The customer's company VAT number.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @var string|null
@@ -76,7 +76,7 @@ class NewOrderCustomer
     protected $companyVatNumber;
     /**
     * The customer's invoice address.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @var BaseOrderCustomerInvoiceAddress|null
@@ -189,7 +189,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's first name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @return string|null
@@ -200,7 +200,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's first name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @param string|null $firstname
@@ -214,7 +214,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's last name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @return string|null
@@ -225,7 +225,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's last name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @param string|null $lastname
@@ -239,7 +239,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's title.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @return string|null
@@ -250,7 +250,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's title.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @param string|null $title
@@ -264,7 +264,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's company name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @return string|null
@@ -275,7 +275,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's company name.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @param string|null $company
@@ -289,7 +289,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's company VAT number.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @return string|null
@@ -300,7 +300,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's company VAT number.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @param string|null $companyVatNumber
@@ -314,7 +314,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's invoice address.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @return BaseOrderCustomerInvoiceAddress|null
@@ -325,7 +325,7 @@ class NewOrderCustomer
     }
     /**
     * The customer's invoice address.\
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.\
+    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
     * @param BaseOrderCustomerInvoiceAddress|null $invoiceAddress

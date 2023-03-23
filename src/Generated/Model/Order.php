@@ -24,16 +24,18 @@ class Order
     protected $orderItems;
     /**
     * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
+    single customer order.
     *
     * @var string|null
     */
     protected $externalOrderId;
     /**
-     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
-     *
-     * @var string|null
-     */
+    * A not unique reference for the order which can be used for identifiying a specific order or for
+    mapping to a third party app.
+    *
+    * @var string|null
+    */
     protected $externalOrderReference;
     /**
      * Notes for the delivery slip.
@@ -48,13 +50,18 @@ class Order
      */
     protected $orderNotes;
     /**
-    * The amazon order Id.
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var string|null
-    */
+     * The amazon order Id
+     *
+     * @var string|null
+     */
     protected $amazonOrderId;
+    /**
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if customs clearance is necessary for the delivery address of the order.
+    *
+    * @var OrderDeliveryCosts
+    */
+    protected $deliveryCosts;
     /**
      * Additional optional options for the order.
      *
@@ -62,20 +69,24 @@ class Order
      */
     protected $options;
     /**
-     * The order number. Note: This can be null if the order as not created via the API.
-     *
-     * @var string|null
-     */
+    * The order number.\
+    Note: If this number is prefixed with 'NICE', it means that the order was created was created manually by niceshops (see
+    `source`).
+    *
+    * @var string|null
+    */
     protected $orderNumber;
     /**
     * The current status of the order.
-    - new: The order was created but not every required information was given. The order can not be processed without manual intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent.
+    - new: The order was created but not every required information was given. The order can not be processed without manual
+    intervention.
+    - processing: The order is being processed. For split deliveries, some of the shipments might have already been
+    transferred to the delivery agent.
+    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
+    might be delayed and not yet reflect the status of the linked deliveries).
     - deleted: The order has been cancelled.
     - locked: The order is locked. The order can not be processed without manual intervention.
     - examination: The order has been manually locked.  The order can not be processed without manual intervention.
-    
     *
     * @var string
     */
@@ -87,7 +98,7 @@ class Order
      */
     protected $orderDate;
     /**
-     * 
+     * Note that only deliveries with status 'delivered' are shown in this list.
      *
      * @var OrderDelivery[]|null
      */
@@ -108,10 +119,8 @@ class Order
     * The source of the order.
     - shopify: This order was created via the steve by niceshops Shopify application
     - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API
-    
+    - api: This order was created via the Fulfillment API\
     If null, the source could not be determined
-    
     *
     * @var string|null
     */
@@ -187,7 +196,8 @@ class Order
     }
     /**
     * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
+    single customer order.
     *
     * @return string|null
     */
@@ -197,7 +207,8 @@ class Order
     }
     /**
     * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
+    single customer order.
     *
     * @param string|null $externalOrderId
     *
@@ -209,21 +220,23 @@ class Order
         return $this;
     }
     /**
-     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
-     *
-     * @return string|null
-     */
+    * A not unique reference for the order which can be used for identifiying a specific order or for
+    mapping to a third party app.
+    *
+    * @return string|null
+    */
     public function getExternalOrderReference() : ?string
     {
         return $this->externalOrderReference;
     }
     /**
-     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
-     *
-     * @param string|null $externalOrderReference
-     *
-     * @return self
-     */
+    * A not unique reference for the order which can be used for identifiying a specific order or for
+    mapping to a third party app.
+    *
+    * @param string|null $externalOrderReference
+    *
+    * @return self
+    */
     public function setExternalOrderReference(?string $externalOrderReference) : self
     {
         $this->externalOrderReference = $externalOrderReference;
@@ -272,28 +285,47 @@ class Order
         return $this;
     }
     /**
-    * The amazon order Id.
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return string|null
-    */
+     * The amazon order Id
+     *
+     * @return string|null
+     */
     public function getAmazonOrderId() : ?string
     {
         return $this->amazonOrderId;
     }
     /**
-    * The amazon order Id.
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @param string|null $amazonOrderId
-    *
-    * @return self
-    */
+     * The amazon order Id
+     *
+     * @param string|null $amazonOrderId
+     *
+     * @return self
+     */
     public function setAmazonOrderId(?string $amazonOrderId) : self
     {
         $this->amazonOrderId = $amazonOrderId;
+        return $this;
+    }
+    /**
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if customs clearance is necessary for the delivery address of the order.
+    *
+    * @return OrderDeliveryCosts
+    */
+    public function getDeliveryCosts() : OrderDeliveryCosts
+    {
+        return $this->deliveryCosts;
+    }
+    /**
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if customs clearance is necessary for the delivery address of the order.
+    *
+    * @param OrderDeliveryCosts $deliveryCosts
+    *
+    * @return self
+    */
+    public function setDeliveryCosts(OrderDeliveryCosts $deliveryCosts) : self
+    {
+        $this->deliveryCosts = $deliveryCosts;
         return $this;
     }
     /**
@@ -318,21 +350,25 @@ class Order
         return $this;
     }
     /**
-     * The order number. Note: This can be null if the order as not created via the API.
-     *
-     * @return string|null
-     */
+    * The order number.\
+    Note: If this number is prefixed with 'NICE', it means that the order was created was created manually by niceshops (see
+    `source`).
+    *
+    * @return string|null
+    */
     public function getOrderNumber() : ?string
     {
         return $this->orderNumber;
     }
     /**
-     * The order number. Note: This can be null if the order as not created via the API.
-     *
-     * @param string|null $orderNumber
-     *
-     * @return self
-     */
+    * The order number.\
+    Note: If this number is prefixed with 'NICE', it means that the order was created was created manually by niceshops (see
+    `source`).
+    *
+    * @param string|null $orderNumber
+    *
+    * @return self
+    */
     public function setOrderNumber(?string $orderNumber) : self
     {
         $this->orderNumber = $orderNumber;
@@ -340,13 +376,15 @@ class Order
     }
     /**
     * The current status of the order.
-    - new: The order was created but not every required information was given. The order can not be processed without manual intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent.
+    - new: The order was created but not every required information was given. The order can not be processed without manual
+    intervention.
+    - processing: The order is being processed. For split deliveries, some of the shipments might have already been
+    transferred to the delivery agent.
+    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
+    might be delayed and not yet reflect the status of the linked deliveries).
     - deleted: The order has been cancelled.
     - locked: The order is locked. The order can not be processed without manual intervention.
     - examination: The order has been manually locked.  The order can not be processed without manual intervention.
-    
     *
     * @return string
     */
@@ -356,13 +394,15 @@ class Order
     }
     /**
     * The current status of the order.
-    - new: The order was created but not every required information was given. The order can not be processed without manual intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have already been transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent.
+    - new: The order was created but not every required information was given. The order can not be processed without manual
+    intervention.
+    - processing: The order is being processed. For split deliveries, some of the shipments might have already been
+    transferred to the delivery agent.
+    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
+    might be delayed and not yet reflect the status of the linked deliveries).
     - deleted: The order has been cancelled.
     - locked: The order is locked. The order can not be processed without manual intervention.
     - examination: The order has been manually locked.  The order can not be processed without manual intervention.
-    
     *
     * @param string $status
     *
@@ -395,7 +435,7 @@ class Order
         return $this;
     }
     /**
-     * 
+     * Note that only deliveries with status 'delivered' are shown in this list.
      *
      * @return OrderDelivery[]|null
      */
@@ -404,7 +444,7 @@ class Order
         return $this->delivery;
     }
     /**
-     * 
+     * Note that only deliveries with status 'delivered' are shown in this list.
      *
      * @param OrderDelivery[]|null $delivery
      *
@@ -461,10 +501,8 @@ class Order
     * The source of the order.
     - shopify: This order was created via the steve by niceshops Shopify application
     - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API
-    
+    - api: This order was created via the Fulfillment API\
     If null, the source could not be determined
-    
     *
     * @return string|null
     */
@@ -476,10 +514,8 @@ class Order
     * The source of the order.
     - shopify: This order was created via the steve by niceshops Shopify application
     - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API
-    
+    - api: This order was created via the Fulfillment API\
     If null, the source could not be determined
-    
     *
     * @param string|null $source
     *

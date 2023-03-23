@@ -10,7 +10,10 @@ class GetInboundDeliveryConflictException extends ConflictException
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Conflict');
+        parent::__construct('Conflict
+
+Available message codes:
+- AMBIGUOUS_INBOUND_DELIVERY: Multiple inbound deliveries were found.');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
