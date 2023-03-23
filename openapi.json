@@ -5380,7 +5380,12 @@
                         "nullable": true
                     },
                     "deliveryCosts": {
-                        "$ref": "#/components/schemas/orderDeliveryCosts"
+                        "nullable": true,
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/orderDeliveryCosts"
+                            }
+                        ]
                     },
                     "options": {
                         "$ref": "#/components/schemas/baseOrderOptions"
