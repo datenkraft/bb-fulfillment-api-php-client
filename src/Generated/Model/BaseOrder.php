@@ -56,11 +56,10 @@ class BaseOrder
      */
     protected $amazonOrderId;
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if customs clearance is necessary for the delivery address of the order.
-    *
-    * @var OrderDeliveryCosts
-    */
+     * 
+     *
+     * @var mixed|null
+     */
     protected $deliveryCosts;
     /**
      * Additional optional options for the order.
@@ -243,24 +242,22 @@ class BaseOrder
         return $this;
     }
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if customs clearance is necessary for the delivery address of the order.
-    *
-    * @return OrderDeliveryCosts
-    */
-    public function getDeliveryCosts() : OrderDeliveryCosts
+     * 
+     *
+     * @return mixed
+     */
+    public function getDeliveryCosts()
     {
         return $this->deliveryCosts;
     }
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if customs clearance is necessary for the delivery address of the order.
-    *
-    * @param OrderDeliveryCosts $deliveryCosts
-    *
-    * @return self
-    */
-    public function setDeliveryCosts(OrderDeliveryCosts $deliveryCosts) : self
+     * 
+     *
+     * @param mixed $deliveryCosts
+     *
+     * @return self
+     */
+    public function setDeliveryCosts($deliveryCosts) : self
     {
         $this->deliveryCosts = $deliveryCosts;
         return $this;

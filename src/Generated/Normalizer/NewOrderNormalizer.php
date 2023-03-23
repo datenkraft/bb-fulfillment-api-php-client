@@ -85,8 +85,11 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] === null) {
             $object->setAmazonOrderId(null);
         }
-        if (\array_key_exists('deliveryCosts', $data)) {
-            $object->setDeliveryCosts($this->denormalizer->denormalize($data['deliveryCosts'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts', 'json', $context));
+        if (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] !== null) {
+            $object->setDeliveryCosts($data['deliveryCosts']);
+        }
+        elseif (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] === null) {
+            $object->setDeliveryCosts(null);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions', 'json', $context));
@@ -131,7 +134,7 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
             $data['amazonOrderId'] = $object->getAmazonOrderId();
         }
         if (null !== $object->getDeliveryCosts()) {
-            $data['deliveryCosts'] = $this->normalizer->normalize($object->getDeliveryCosts(), 'json', $context);
+            $data['deliveryCosts'] = $object->getDeliveryCosts();
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
