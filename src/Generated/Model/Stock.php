@@ -11,10 +11,11 @@ class Stock
      */
     protected $productNumber;
     /**
-     * Amount stocked in the warehouse - without considering the reserved amount for ongoing orders
-     *
-     * @var int
-     */
+    * Amount stocked in the warehouse
+    - the reserved amount for ongoing orders is NOT subtracted
+    *
+    * @var int
+    */
     protected $stocked;
     /**
      * Amount reserved for ongoing orders
@@ -23,17 +24,13 @@ class Stock
      */
     protected $reserved;
     /**
-     * Amount available for orders - with the reserved amount for ongoing orders taken into account
-     *
-     * @var int
-     */
+    * Amount available for orders
+    - the reserved amount for ongoing orders is subtracted\
+    - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
+    *
+    * @var int
+    */
     protected $available;
-    /**
-     * Amount of ongoing inbound deliveries
-     *
-     * @var int
-     */
-    protected $incoming;
     /**
     * Status regarding the possibility of overbooking
     - possible: Overbooking is possible
@@ -65,21 +62,23 @@ class Stock
         return $this;
     }
     /**
-     * Amount stocked in the warehouse - without considering the reserved amount for ongoing orders
-     *
-     * @return int
-     */
+    * Amount stocked in the warehouse
+    - the reserved amount for ongoing orders is NOT subtracted
+    *
+    * @return int
+    */
     public function getStocked() : int
     {
         return $this->stocked;
     }
     /**
-     * Amount stocked in the warehouse - without considering the reserved amount for ongoing orders
-     *
-     * @param int $stocked
-     *
-     * @return self
-     */
+    * Amount stocked in the warehouse
+    - the reserved amount for ongoing orders is NOT subtracted
+    *
+    * @param int $stocked
+    *
+    * @return self
+    */
     public function setStocked(int $stocked) : self
     {
         $this->stocked = $stocked;
@@ -107,45 +106,28 @@ class Stock
         return $this;
     }
     /**
-     * Amount available for orders - with the reserved amount for ongoing orders taken into account
-     *
-     * @return int
-     */
+    * Amount available for orders
+    - the reserved amount for ongoing orders is subtracted\
+    - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
+    *
+    * @return int
+    */
     public function getAvailable() : int
     {
         return $this->available;
     }
     /**
-     * Amount available for orders - with the reserved amount for ongoing orders taken into account
-     *
-     * @param int $available
-     *
-     * @return self
-     */
+    * Amount available for orders
+    - the reserved amount for ongoing orders is subtracted\
+    - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
+    *
+    * @param int $available
+    *
+    * @return self
+    */
     public function setAvailable(int $available) : self
     {
         $this->available = $available;
-        return $this;
-    }
-    /**
-     * Amount of ongoing inbound deliveries
-     *
-     * @return int
-     */
-    public function getIncoming() : int
-    {
-        return $this->incoming;
-    }
-    /**
-     * Amount of ongoing inbound deliveries
-     *
-     * @param int $incoming
-     *
-     * @return self
-     */
-    public function setIncoming(int $incoming) : self
-    {
-        $this->incoming = $incoming;
         return $this;
     }
     /**

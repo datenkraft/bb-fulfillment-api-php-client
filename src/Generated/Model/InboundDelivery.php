@@ -29,10 +29,11 @@ class InboundDelivery
      */
     protected $products;
     /**
-     * Number of the inbound delivery
-     *
-     * @var string|null
-     */
+    * The inbound delivery number.\
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was created was created manually by niceshops.
+    *
+    * @var string|null
+    */
     protected $inboundDeliveryNumber;
     /**
      * The API internal id of the inbound delivery.
@@ -162,21 +163,23 @@ class InboundDelivery
         return $this;
     }
     /**
-     * Number of the inbound delivery
-     *
-     * @return string|null
-     */
+    * The inbound delivery number.\
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was created was created manually by niceshops.
+    *
+    * @return string|null
+    */
     public function getInboundDeliveryNumber() : ?string
     {
         return $this->inboundDeliveryNumber;
     }
     /**
-     * Number of the inbound delivery
-     *
-     * @param string|null $inboundDeliveryNumber
-     *
-     * @return self
-     */
+    * The inbound delivery number.\
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was created was created manually by niceshops.
+    *
+    * @param string|null $inboundDeliveryNumber
+    *
+    * @return self
+    */
     public function setInboundDeliveryNumber(?string $inboundDeliveryNumber) : self
     {
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;

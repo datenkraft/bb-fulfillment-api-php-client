@@ -30,6 +30,9 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     }
     /**
     * Add a new order referenced by the given orderNumber.
+    
+    If you set one of the following fields, all of them have to be set: body.customer.firstname, body.customer.lastname,
+    body.customer.invoiceAddress
     *
     * @param string $orderNumber The number the order should be refered by.
        This number is user defined, must be unique and has a maximum length (check maxLength field).
@@ -49,7 +52,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostOrder($orderNumber, $requestBody), $fetch);
     }
     /**
-    * Cancel the order specified by the given order number (set in param orderNumber). An orderNumber from a canceled order cannot be used for a new order, because they must always be unique.
+    * Cancel the order specified by the given order number (set in param orderNumber).\
+    An orderNumber from a canceled order cannot be used for a new order, because they must always be unique.
     *
     * @param string $orderNumber The number the order is refered by.
     * @param array $queryParameters {
@@ -195,6 +199,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentForbiddenException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentConflictException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentUnprocessableEntityException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
@@ -341,7 +346,9 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\InboundDeliveryBulkImport($format, $requestBody), $fetch);
     }
     /**
-    * Cancel a inbound delivery referenced by the given inboundDeliveryNumber. An inboundDeliveryNumber from a canceled inbound delivery cannot be used for a new inbound delivery, because they must always be unique.
+    * Cancel a inbound delivery referenced by the given inboundDeliveryNumber.\
+    An inboundDeliveryNumber from a canceled inbound delivery cannot be used for a new inbound delivery, because they must
+    always be unique.
     *
     * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
     This number is user defined, must be unique and has a maximum length (check maxLength field).

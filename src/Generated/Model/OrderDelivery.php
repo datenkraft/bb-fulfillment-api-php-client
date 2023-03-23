@@ -11,10 +11,11 @@ class OrderDelivery
      */
     protected $number;
     /**
-     * Status code of the delivery
-     *
-     * @var string
-     */
+    * Status of the delivery.
+    - delivered: The delivery has been transferred to the delivery agent.
+    *
+    * @var string
+    */
     protected $status;
     /**
      * 
@@ -38,21 +39,23 @@ class OrderDelivery
         return $this;
     }
     /**
-     * Status code of the delivery
-     *
-     * @return string
-     */
+    * Status of the delivery.
+    - delivered: The delivery has been transferred to the delivery agent.
+    *
+    * @return string
+    */
     public function getStatus() : string
     {
         return $this->status;
     }
     /**
-     * Status code of the delivery
-     *
-     * @param string $status
-     *
-     * @return self
-     */
+    * Status of the delivery.
+    - delivered: The delivery has been transferred to the delivery agent.
+    *
+    * @param string $status
+    *
+    * @return self
+    */
     public function setStatus(string $status) : self
     {
         $this->status = $status;

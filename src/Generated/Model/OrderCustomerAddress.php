@@ -35,10 +35,11 @@ class OrderCustomerAddress
      */
     protected $city;
     /**
-     * Mandatory if province codes for country (GET /country) exist (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
-     *
-     * @var string|null
-     */
+    * Mandatory if province codes for country (GET /country) exist
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
+    *
+    * @var string|null
+    */
     protected $provinceCode;
     /**
      * Country code (ISO 3166-1 alpha-2)
@@ -152,21 +153,23 @@ class OrderCustomerAddress
         return $this;
     }
     /**
-     * Mandatory if province codes for country (GET /country) exist (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
-     *
-     * @return string|null
-     */
+    * Mandatory if province codes for country (GET /country) exist
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
+    *
+    * @return string|null
+    */
     public function getProvinceCode() : ?string
     {
         return $this->provinceCode;
     }
     /**
-     * Mandatory if province codes for country (GET /country) exist (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
-     *
-     * @param string|null $provinceCode
-     *
-     * @return self
-     */
+    * Mandatory if province codes for country (GET /country) exist
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
+    *
+    * @param string|null $provinceCode
+    *
+    * @return self
+    */
     public function setProvinceCode(?string $provinceCode) : self
     {
         $this->provinceCode = $provinceCode;

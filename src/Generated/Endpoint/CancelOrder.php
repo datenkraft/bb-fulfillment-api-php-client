@@ -6,7 +6,8 @@ class CancelOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
 {
     protected $orderNumber;
     /**
-    * Cancel the order specified by the given order number (set in param orderNumber). An orderNumber from a canceled order cannot be used for a new order, because they must always be unique.
+    * Cancel the order specified by the given order number (set in param orderNumber).\
+    An orderNumber from a canceled order cannot be used for a new order, because they must always be unique.
     *
     * @param string $orderNumber The number the order is refered by.
     * @param array $queryParameters {

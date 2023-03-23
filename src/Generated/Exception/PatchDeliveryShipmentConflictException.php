@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class PostOrderUnprocessableEntityException extends UnprocessableEntityException
+class PatchDeliveryShipmentConflictException extends ConflictException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -10,12 +10,11 @@ class PostOrderUnprocessableEntityException extends UnprocessableEntityException
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Unprocessable Entity
+        parent::__construct('Conflict
 
 Available message codes:
-- PRODUCT_NOT_FOUND: A product could not be found.
-- DUPLICATED_PRODUCT: There are multiple orderItems with the same productNumber.
-- ORDER_CUSTOMS_CLEARANCE_REQUIRED_FIELD_MISSING: A field required for customs clearance is missing.');
+- SHIPMENT_WITH_STEVE_EXTERNAL_SHIPMENT_ID_ALREADY_EXISTS: Another shipment with the given steveExternalShipmentId
+already exists.');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse

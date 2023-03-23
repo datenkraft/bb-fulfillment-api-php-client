@@ -24,16 +24,18 @@ class BaseOrder
     protected $orderItems;
     /**
     * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
+    single customer order.
     *
     * @var string|null
     */
     protected $externalOrderId;
     /**
-     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
-     *
-     * @var string|null
-     */
+    * A not unique reference for the order which can be used for identifiying a specific order or for
+    mapping to a third party app.
+    *
+    * @var string|null
+    */
     protected $externalOrderReference;
     /**
      * Notes for the delivery slip.
@@ -48,13 +50,18 @@ class BaseOrder
      */
     protected $orderNotes;
     /**
-    * The amazon order Id.
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var string|null
-    */
+     * The amazon order Id
+     *
+     * @var string|null
+     */
     protected $amazonOrderId;
+    /**
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if customs clearance is necessary for the delivery address of the order.
+    *
+    * @var OrderDeliveryCosts
+    */
+    protected $deliveryCosts;
     /**
      * Additional optional options for the order.
      *
@@ -126,7 +133,8 @@ class BaseOrder
     }
     /**
     * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
+    single customer order.
     *
     * @return string|null
     */
@@ -136,7 +144,8 @@ class BaseOrder
     }
     /**
     * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a single customer order.
+    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
+    single customer order.
     *
     * @param string|null $externalOrderId
     *
@@ -148,21 +157,23 @@ class BaseOrder
         return $this;
     }
     /**
-     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
-     *
-     * @return string|null
-     */
+    * A not unique reference for the order which can be used for identifiying a specific order or for
+    mapping to a third party app.
+    *
+    * @return string|null
+    */
     public function getExternalOrderReference() : ?string
     {
         return $this->externalOrderReference;
     }
     /**
-     * A not unique reference for the order which can be used for identifiying a specific order or for mapping to a third party app.
-     *
-     * @param string|null $externalOrderReference
-     *
-     * @return self
-     */
+    * A not unique reference for the order which can be used for identifiying a specific order or for
+    mapping to a third party app.
+    *
+    * @param string|null $externalOrderReference
+    *
+    * @return self
+    */
     public function setExternalOrderReference(?string $externalOrderReference) : self
     {
         $this->externalOrderReference = $externalOrderReference;
@@ -211,28 +222,47 @@ class BaseOrder
         return $this;
     }
     /**
-    * The amazon order Id.
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return string|null
-    */
+     * The amazon order Id
+     *
+     * @return string|null
+     */
     public function getAmazonOrderId() : ?string
     {
         return $this->amazonOrderId;
     }
     /**
-    * The amazon order Id.
-    Note: This field is relevant for invoicing and whether it is available or not depends on the used shopCode.
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @param string|null $amazonOrderId
-    *
-    * @return self
-    */
+     * The amazon order Id
+     *
+     * @param string|null $amazonOrderId
+     *
+     * @return self
+     */
     public function setAmazonOrderId(?string $amazonOrderId) : self
     {
         $this->amazonOrderId = $amazonOrderId;
+        return $this;
+    }
+    /**
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if customs clearance is necessary for the delivery address of the order.
+    *
+    * @return OrderDeliveryCosts
+    */
+    public function getDeliveryCosts() : OrderDeliveryCosts
+    {
+        return $this->deliveryCosts;
+    }
+    /**
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if customs clearance is necessary for the delivery address of the order.
+    *
+    * @param OrderDeliveryCosts $deliveryCosts
+    *
+    * @return self
+    */
+    public function setDeliveryCosts(OrderDeliveryCosts $deliveryCosts) : self
+    {
+        $this->deliveryCosts = $deliveryCosts;
         return $this;
     }
     /**
