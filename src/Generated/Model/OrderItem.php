@@ -29,10 +29,11 @@ class OrderItem
      */
     protected $externalProductNumber;
     /**
-     * 
-     *
-     * @var mixed|null
-     */
+    * The selling price of the item.\
+    Note: This field is required if the delivery address of the order requires customs clearance.
+    *
+    * @var OrderItemPrice|null
+    */
     protected $price;
     /**
      * Additional options (optional, TBD)
@@ -125,22 +126,24 @@ class OrderItem
         return $this;
     }
     /**
-     * 
-     *
-     * @return mixed
-     */
-    public function getPrice()
+    * The selling price of the item.\
+    Note: This field is required if the delivery address of the order requires customs clearance.
+    *
+    * @return OrderItemPrice|null
+    */
+    public function getPrice() : ?OrderItemPrice
     {
         return $this->price;
     }
     /**
-     * 
-     *
-     * @param mixed $price
-     *
-     * @return self
-     */
-    public function setPrice($price) : self
+    * The selling price of the item.\
+    Note: This field is required if the delivery address of the order requires customs clearance.
+    *
+    * @param OrderItemPrice|null $price
+    *
+    * @return self
+    */
+    public function setPrice(?OrderItemPrice $price) : self
     {
         $this->price = $price;
         return $this;

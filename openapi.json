@@ -5380,12 +5380,7 @@
                         "nullable": true
                     },
                     "deliveryCosts": {
-                        "nullable": true,
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/orderDeliveryCosts"
-                            }
-                        ]
+                        "$ref": "#/components/schemas/orderDeliveryCosts"
                     },
                     "options": {
                         "$ref": "#/components/schemas/baseOrderOptions"
@@ -5558,12 +5553,7 @@
                         "nullable": true
                     },
                     "price": {
-                        "nullable": true,
-                        "allOf": [
-                            {
-                                "$ref": "#/components/schemas/orderItemPrice"
-                            }
-                        ]
+                        "$ref": "#/components/schemas/orderItemPrice"
                     },
                     "options": {
                         "description": "Additional options (optional, TBD)",
@@ -5622,6 +5612,7 @@
             "orderItemPrice": {
                 "title": "orderItemPrice",
                 "description": "The selling price of the item.\\\nNote: This field is required if the delivery address of the order requires customs clearance.",
+                "nullable": true,
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/orderPrice"
@@ -5840,6 +5831,7 @@
             "orderDeliveryCosts": {
                 "title": "orderDeliveryCosts",
                 "description": "The delivery costs of the order, which will be charged to the customer.\\\nNote: This field is required if customs clearance is necessary for the delivery address of the order.",
+                "nullable": true,
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/orderPrice"

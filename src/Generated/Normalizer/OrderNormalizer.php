@@ -86,7 +86,7 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setAmazonOrderId(null);
         }
         if (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] !== null) {
-            $object->setDeliveryCosts($data['deliveryCosts']);
+            $object->setDeliveryCosts($this->denormalizer->denormalize($data['deliveryCosts'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts', 'json', $context));
         }
         elseif (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] === null) {
             $object->setDeliveryCosts(null);
@@ -174,7 +174,7 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['amazonOrderId'] = $object->getAmazonOrderId();
         }
         if (null !== $object->getDeliveryCosts()) {
-            $data['deliveryCosts'] = $object->getDeliveryCosts();
+            $data['deliveryCosts'] = $this->normalizer->normalize($object->getDeliveryCosts(), 'json', $context);
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $object->getOptions();
