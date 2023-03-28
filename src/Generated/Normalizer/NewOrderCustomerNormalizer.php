@@ -91,7 +91,7 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setCompanyVatNumber(null);
         }
         if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
-            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomerInvoiceAddress', 'json', $context));
+            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomerinvoiceAddress', 'json', $context));
         }
         elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
             $object->setInvoiceAddress(null);

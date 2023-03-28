@@ -30,9 +30,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     }
     /**
     * Add a new order referenced by the given orderNumber.
-    
-    If you set one of the following fields, all of them have to be set: body.customer.firstname, body.customer.lastname,
-    body.customer.invoiceAddress
     *
     * @param string $orderNumber The number the order should be refered by.
        This number is user defined, must be unique and has a maximum length (check maxLength field).

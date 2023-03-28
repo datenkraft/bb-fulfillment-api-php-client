@@ -136,9 +136,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] === null) {
             $object->setManufacturerCountryCode(null);
         }
-        if (\array_key_exists('supplierNumber', $data)) {
-            $object->setSupplierNumber($data['supplierNumber']);
-        }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
@@ -156,6 +153,12 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('shopCode', $data)) {
             $object->setShopCode($data['shopCode']);
+        }
+        if (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] !== null) {
+            $object->setSupplierNumber($data['supplierNumber']);
+        }
+        elseif (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] === null) {
+            $object->setSupplierNumber(null);
         }
         return $object;
     }
@@ -229,9 +232,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getManufacturerCountryCode()) {
             $data['manufacturerCountryCode'] = $object->getManufacturerCountryCode();
         }
-        if (null !== $object->getSupplierNumber()) {
-            $data['supplierNumber'] = $object->getSupplierNumber();
-        }
         if (null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
@@ -246,6 +246,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getShopCode()) {
             $data['shopCode'] = $object->getShopCode();
+        }
+        if (null !== $object->getSupplierNumber()) {
+            $data['supplierNumber'] = $object->getSupplierNumber();
         }
         return $data;
     }

@@ -37,7 +37,9 @@ class NewOrderCustomer
     /**
     * The customer's first name.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
+    If a lastname is provided, this field is required.
     *
     * @var string|null
     */
@@ -45,7 +47,9 @@ class NewOrderCustomer
     /**
     * The customer's last name.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
+    If a lastname is provided, this field is required.
     *
     * @var string|null
     */
@@ -77,9 +81,10 @@ class NewOrderCustomer
     /**
     * The customer's invoice address.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, fields of this array may be set with a fallback, if it is not provided.
     *
-    * @var BaseOrderCustomerInvoiceAddress|null
+    * @var NewOrderCustomerinvoiceAddress|null
     */
     protected $invoiceAddress;
     /**
@@ -190,7 +195,9 @@ class NewOrderCustomer
     /**
     * The customer's first name.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
+    If a lastname is provided, this field is required.
     *
     * @return string|null
     */
@@ -201,7 +208,9 @@ class NewOrderCustomer
     /**
     * The customer's first name.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
+    If a lastname is provided, this field is required.
     *
     * @param string|null $firstname
     *
@@ -215,7 +224,9 @@ class NewOrderCustomer
     /**
     * The customer's last name.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
+    If a lastname is provided, this field is required.
     *
     * @return string|null
     */
@@ -226,7 +237,9 @@ class NewOrderCustomer
     /**
     * The customer's last name.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
+    If a lastname is provided, this field is required.
     *
     * @param string|null $lastname
     *
@@ -315,24 +328,26 @@ class NewOrderCustomer
     /**
     * The customer's invoice address.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, fields of this array may be set with a fallback, if it is not provided.
     *
-    * @return BaseOrderCustomerInvoiceAddress|null
+    * @return NewOrderCustomerinvoiceAddress|null
     */
-    public function getInvoiceAddress() : ?BaseOrderCustomerInvoiceAddress
+    public function getInvoiceAddress() : ?NewOrderCustomerinvoiceAddress
     {
         return $this->invoiceAddress;
     }
     /**
     * The customer's invoice address.\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
+    Because of internal requirements, fields of this array may be set with a fallback, if it is not provided.
     *
-    * @param BaseOrderCustomerInvoiceAddress|null $invoiceAddress
+    * @param NewOrderCustomerinvoiceAddress|null $invoiceAddress
     *
     * @return self
     */
-    public function setInvoiceAddress(?BaseOrderCustomerInvoiceAddress $invoiceAddress) : self
+    public function setInvoiceAddress(?NewOrderCustomerinvoiceAddress $invoiceAddress) : self
     {
         $this->invoiceAddress = $invoiceAddress;
         return $this;

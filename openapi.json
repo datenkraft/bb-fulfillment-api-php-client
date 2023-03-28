@@ -138,7 +138,7 @@
                     "order"
                 ],
                 "summary": "Add a new order.",
-                "description": "Add a new order referenced by the given orderNumber.\n\nIf you set one of the following fields, all of them have to be set: body.customer.firstname, body.customer.lastname,\nbody.customer.invoiceAddress",
+                "description": "Add a new order referenced by the given orderNumber.",
                 "operationId": "postOrder",
                 "parameters": [
                     {
@@ -5101,10 +5101,6 @@
                         "default": "AT",
                         "nullable": true
                     },
-                    "supplierNumber": {
-                        "description": "Number of the supplier",
-                        "type": "string"
-                    },
                     "languageCode": {
                         "description": "The language code used for the product (ISO 639-1)",
                         "type": "string",
@@ -5148,6 +5144,10 @@
                             "articleShortDescription": {
                                 "description": "Short description of the article.",
                                 "type": "string"
+                            },
+                            "supplierNumber": {
+                                "description": "Number of the supplier",
+                                "type": "string"
                             }
                         },
                         "type": "object"
@@ -5190,6 +5190,11 @@
                             "shopCode": {
                                 "description": "The shop to which the product belongs",
                                 "type": "string"
+                            },
+                            "supplierNumber": {
+                                "description": "Number of the supplier\\\nNote: This can be null if the product is a bundle product.",
+                                "type": "string",
+                                "nullable": true
                             }
                         },
                         "type": "object"
@@ -5691,9 +5696,38 @@
             },
             "newOrderCustomer": {
                 "title": "newOrderCustomer",
+                "required": [
+                    "gender",
+                    "languageCode",
+                    "deliveryAddress"
+                ],
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/baseOrderCustomer"
+                    },
+                    {
+                        "properties": {
+                            "firstname": {
+                                "description": "The customer's first name.\\\nNote: This field is required for invoicing and whether it is available or not depends on the used shopCode.\\\nUse the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\\\nBecause of internal requirements, this field may be set with a fallback, if it is not provided.\\\nIf a lastname is provided, this field is required.",
+                                "type": "string",
+                                "nullable": true
+                            },
+                            "lastname": {
+                                "description": "The customer's last name.\\\nNote: This field is required for invoicing and whether it is available or not depends on the used shopCode.\\\nUse the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\\\nBecause of internal requirements, this field may be set with a fallback, if it is not provided.\\\nIf a lastname is provided, this field is required.",
+                                "type": "string",
+                                "nullable": true
+                            },
+                            "invoiceAddress": {
+                                "description": "The customer's invoice address.\\\nNote: This field is required for invoicing and whether it is available or not depends on the used shopCode.\\\nUse the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\\\nBecause of internal requirements, fields of this array may be set with a fallback, if it is not provided.",
+                                "nullable": true,
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/orderCustomerAddress"
+                                    }
+                                ]
+                            }
+                        },
+                        "type": "object"
                     }
                 ]
             },
