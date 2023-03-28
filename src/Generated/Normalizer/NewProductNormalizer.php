@@ -136,9 +136,6 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         elseif (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] === null) {
             $object->setManufacturerCountryCode(null);
         }
-        if (\array_key_exists('supplierNumber', $data)) {
-            $object->setSupplierNumber($data['supplierNumber']);
-        }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
@@ -150,6 +147,9 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (\array_key_exists('articleShortDescription', $data)) {
             $object->setArticleShortDescription($data['articleShortDescription']);
+        }
+        if (\array_key_exists('supplierNumber', $data)) {
+            $object->setSupplierNumber($data['supplierNumber']);
         }
         return $object;
     }
@@ -223,9 +223,6 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         if (null !== $object->getManufacturerCountryCode()) {
             $data['manufacturerCountryCode'] = $object->getManufacturerCountryCode();
         }
-        if (null !== $object->getSupplierNumber()) {
-            $data['supplierNumber'] = $object->getSupplierNumber();
-        }
         if (null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
@@ -234,6 +231,9 @@ class NewProductNormalizer implements DenormalizerInterface, NormalizerInterface
         }
         if (null !== $object->getArticleShortDescription()) {
             $data['articleShortDescription'] = $object->getArticleShortDescription();
+        }
+        if (null !== $object->getSupplierNumber()) {
+            $data['supplierNumber'] = $object->getSupplierNumber();
         }
         return $data;
     }

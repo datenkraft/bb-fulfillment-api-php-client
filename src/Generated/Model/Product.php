@@ -132,12 +132,6 @@ class Product
      */
     protected $manufacturerCountryCode = 'AT';
     /**
-     * Number of the supplier
-     *
-     * @var string
-     */
-    protected $supplierNumber;
-    /**
      * The language code used for the product (ISO 639-1)
      *
      * @var string
@@ -178,6 +172,13 @@ class Product
      * @var string
      */
     protected $shopCode;
+    /**
+    * Number of the supplier\
+    Note: This can be null if the product is a bundle product.
+    *
+    * @var string|null
+    */
+    protected $supplierNumber;
     /**
      * Type of the product ('standard' if no value is provided)
      *
@@ -613,27 +614,6 @@ class Product
         return $this;
     }
     /**
-     * Number of the supplier
-     *
-     * @return string
-     */
-    public function getSupplierNumber() : string
-    {
-        return $this->supplierNumber;
-    }
-    /**
-     * Number of the supplier
-     *
-     * @param string $supplierNumber
-     *
-     * @return self
-     */
-    public function setSupplierNumber(string $supplierNumber) : self
-    {
-        $this->supplierNumber = $supplierNumber;
-        return $this;
-    }
-    /**
      * The language code used for the product (ISO 639-1)
      *
      * @return string
@@ -758,6 +738,29 @@ class Product
     public function setShopCode(string $shopCode) : self
     {
         $this->shopCode = $shopCode;
+        return $this;
+    }
+    /**
+    * Number of the supplier\
+    Note: This can be null if the product is a bundle product.
+    *
+    * @return string|null
+    */
+    public function getSupplierNumber() : ?string
+    {
+        return $this->supplierNumber;
+    }
+    /**
+    * Number of the supplier\
+    Note: This can be null if the product is a bundle product.
+    *
+    * @param string|null $supplierNumber
+    *
+    * @return self
+    */
+    public function setSupplierNumber(?string $supplierNumber) : self
+    {
+        $this->supplierNumber = $supplierNumber;
         return $this;
     }
 }

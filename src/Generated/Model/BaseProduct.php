@@ -132,12 +132,6 @@ class BaseProduct
      */
     protected $manufacturerCountryCode = 'AT';
     /**
-     * Number of the supplier
-     *
-     * @var string
-     */
-    protected $supplierNumber;
-    /**
      * The language code used for the product (ISO 639-1)
      *
      * @var string
@@ -575,27 +569,6 @@ class BaseProduct
     public function setManufacturerCountryCode(?string $manufacturerCountryCode) : self
     {
         $this->manufacturerCountryCode = $manufacturerCountryCode;
-        return $this;
-    }
-    /**
-     * Number of the supplier
-     *
-     * @return string
-     */
-    public function getSupplierNumber() : string
-    {
-        return $this->supplierNumber;
-    }
-    /**
-     * Number of the supplier
-     *
-     * @param string $supplierNumber
-     *
-     * @return self
-     */
-    public function setSupplierNumber(string $supplierNumber) : self
-    {
-        $this->supplierNumber = $supplierNumber;
         return $this;
     }
     /**

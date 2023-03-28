@@ -132,12 +132,6 @@ class NewProduct
      */
     protected $manufacturerCountryCode = 'AT';
     /**
-     * Number of the supplier
-     *
-     * @var string
-     */
-    protected $supplierNumber;
-    /**
      * The language code used for the product (ISO 639-1)
      *
      * @var string
@@ -159,6 +153,12 @@ class NewProduct
      * @var string
      */
     protected $articleShortDescription;
+    /**
+     * Number of the supplier
+     *
+     * @var string
+     */
+    protected $supplierNumber;
     /**
      * Type of the product ('standard' if no value is provided)
      *
@@ -594,27 +594,6 @@ class NewProduct
         return $this;
     }
     /**
-     * Number of the supplier
-     *
-     * @return string
-     */
-    public function getSupplierNumber() : string
-    {
-        return $this->supplierNumber;
-    }
-    /**
-     * Number of the supplier
-     *
-     * @param string $supplierNumber
-     *
-     * @return self
-     */
-    public function setSupplierNumber(string $supplierNumber) : self
-    {
-        $this->supplierNumber = $supplierNumber;
-        return $this;
-    }
-    /**
      * The language code used for the product (ISO 639-1)
      *
      * @return string
@@ -683,6 +662,27 @@ class NewProduct
     public function setArticleShortDescription(string $articleShortDescription) : self
     {
         $this->articleShortDescription = $articleShortDescription;
+        return $this;
+    }
+    /**
+     * Number of the supplier
+     *
+     * @return string
+     */
+    public function getSupplierNumber() : string
+    {
+        return $this->supplierNumber;
+    }
+    /**
+     * Number of the supplier
+     *
+     * @param string $supplierNumber
+     *
+     * @return self
+     */
+    public function setSupplierNumber(string $supplierNumber) : self
+    {
+        $this->supplierNumber = $supplierNumber;
         return $this;
     }
 }

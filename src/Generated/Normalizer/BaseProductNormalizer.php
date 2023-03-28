@@ -136,9 +136,6 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] === null) {
             $object->setManufacturerCountryCode(null);
         }
-        if (\array_key_exists('supplierNumber', $data)) {
-            $object->setSupplierNumber($data['supplierNumber']);
-        }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
@@ -213,9 +210,6 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if (null !== $object->getManufacturerCountryCode()) {
             $data['manufacturerCountryCode'] = $object->getManufacturerCountryCode();
-        }
-        if (null !== $object->getSupplierNumber()) {
-            $data['supplierNumber'] = $object->getSupplierNumber();
         }
         if (null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
