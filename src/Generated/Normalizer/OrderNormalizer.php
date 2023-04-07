@@ -137,6 +137,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('sourceLink', $data) && $data['sourceLink'] === null) {
             $object->setSourceLink(null);
         }
+        if (\array_key_exists('cancelable', $data)) {
+            $object->setCancelable($data['cancelable']);
+        }
         return $object;
     }
     /**
@@ -206,6 +209,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (null !== $object->getSourceLink()) {
             $data['sourceLink'] = $object->getSourceLink();
+        }
+        if (null !== $object->getCancelable()) {
+            $data['cancelable'] = $object->getCancelable();
         }
         return $data;
     }

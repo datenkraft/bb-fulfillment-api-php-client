@@ -8,7 +8,7 @@ class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\F
     /**
      * Get a spreadsheet template for performing POST queries to the respective endpoint.
      *
-     * @param string $format The inbound delivery number as defined during the creation of the inbound delivery.
+     * @param string $format The format of the spreadsheet template
      */
     public function __construct(string $format)
     {
