@@ -16,6 +16,9 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     *     @var string $filter[status] Filter for status/statuses (optional).
     *     @var string $filter[externalOrderId] Filter for the external order ID e.g. from third party apps (optional)
     *     @var string $filter[externalCustomerId] Filter for the external customer ID e.g. from third party apps (optional)
+    *     @var string $filter[externalOrderReference] filter for externalOrderReference
+    *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
+    *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -42,7 +45,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]', 'filter[externalOrderReference]', 'filter[orderDateFrom]', 'filter[orderDateTo]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
@@ -51,6 +54,9 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
         $optionsResolver->setAllowedTypes('filter[status]', array('string'));
         $optionsResolver->setAllowedTypes('filter[externalOrderId]', array('string'));
         $optionsResolver->setAllowedTypes('filter[externalCustomerId]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[externalOrderReference]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[orderDateFrom]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[orderDateTo]', array('string'));
         return $optionsResolver;
     }
     /**

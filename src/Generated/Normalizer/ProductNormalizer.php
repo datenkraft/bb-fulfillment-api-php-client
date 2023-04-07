@@ -42,15 +42,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('productType', $data)) {
             $object->setProductType($data['productType']);
         }
-        if (\array_key_exists('productTitle', $data)) {
-            $object->setProductTitle($data['productTitle']);
-        }
-        if (\array_key_exists('productTitleOriginal', $data)) {
-            $object->setProductTitleOriginal($data['productTitleOriginal']);
-        }
-        if (\array_key_exists('articleLongDescription', $data)) {
-            $object->setArticleLongDescription($data['articleLongDescription']);
-        }
         if (\array_key_exists('articleVariantTitle', $data) && $data['articleVariantTitle'] !== null) {
             $object->setArticleVariantTitle($data['articleVariantTitle']);
         }
@@ -102,20 +93,11 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('ean', $data) && $data['ean'] === null) {
             $object->setEan(null);
         }
-        if (\array_key_exists('taricCode', $data)) {
-            $object->setTaricCode($data['taricCode']);
-        }
-        if (\array_key_exists('listPriceEUR', $data)) {
-            $object->setListPriceEUR($data['listPriceEUR']);
-        }
         if (\array_key_exists('suggestedRetailPriceEUR', $data) && $data['suggestedRetailPriceEUR'] !== null) {
             $object->setSuggestedRetailPriceEUR($data['suggestedRetailPriceEUR']);
         }
         elseif (\array_key_exists('suggestedRetailPriceEUR', $data) && $data['suggestedRetailPriceEUR'] === null) {
             $object->setSuggestedRetailPriceEUR(null);
-        }
-        if (\array_key_exists('taxCode', $data)) {
-            $object->setTaxCode($data['taxCode']);
         }
         if (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] !== null) {
             $values = array();
@@ -127,9 +109,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] === null) {
             $object->setPurchasePrices(null);
         }
-        if (\array_key_exists('manufacturerNumber', $data)) {
-            $object->setManufacturerNumber($data['manufacturerNumber']);
-        }
         if (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] !== null) {
             $object->setManufacturerCountryCode($data['manufacturerCountryCode']);
         }
@@ -139,8 +118,23 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
         }
-        if (\array_key_exists('productStatus', $data)) {
+        if (\array_key_exists('productTitle', $data) && $data['productTitle'] !== null) {
+            $object->setProductTitle($data['productTitle']);
+        }
+        elseif (\array_key_exists('productTitle', $data) && $data['productTitle'] === null) {
+            $object->setProductTitle(null);
+        }
+        if (\array_key_exists('productTitleOriginal', $data) && $data['productTitleOriginal'] !== null) {
+            $object->setProductTitleOriginal($data['productTitleOriginal']);
+        }
+        elseif (\array_key_exists('productTitleOriginal', $data) && $data['productTitleOriginal'] === null) {
+            $object->setProductTitleOriginal(null);
+        }
+        if (\array_key_exists('productStatus', $data) && $data['productStatus'] !== null) {
             $object->setProductStatus($data['productStatus']);
+        }
+        elseif (\array_key_exists('productStatus', $data) && $data['productStatus'] === null) {
+            $object->setProductStatus(null);
         }
         if (\array_key_exists('articleShortDescription', $data) && $data['articleShortDescription'] !== null) {
             $object->setArticleShortDescription($data['articleShortDescription']);
@@ -148,17 +142,47 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('articleShortDescription', $data) && $data['articleShortDescription'] === null) {
             $object->setArticleShortDescription(null);
         }
-        if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+        if (\array_key_exists('articleLongDescription', $data) && $data['articleLongDescription'] !== null) {
+            $object->setArticleLongDescription($data['articleLongDescription']);
         }
-        if (\array_key_exists('shopCode', $data)) {
-            $object->setShopCode($data['shopCode']);
+        elseif (\array_key_exists('articleLongDescription', $data) && $data['articleLongDescription'] === null) {
+            $object->setArticleLongDescription(null);
+        }
+        if (\array_key_exists('taricCode', $data) && $data['taricCode'] !== null) {
+            $object->setTaricCode($data['taricCode']);
+        }
+        elseif (\array_key_exists('taricCode', $data) && $data['taricCode'] === null) {
+            $object->setTaricCode(null);
+        }
+        if (\array_key_exists('listPriceEUR', $data) && $data['listPriceEUR'] !== null) {
+            $object->setListPriceEUR($data['listPriceEUR']);
+        }
+        elseif (\array_key_exists('listPriceEUR', $data) && $data['listPriceEUR'] === null) {
+            $object->setListPriceEUR(null);
+        }
+        if (\array_key_exists('taxCode', $data) && $data['taxCode'] !== null) {
+            $object->setTaxCode($data['taxCode']);
+        }
+        elseif (\array_key_exists('taxCode', $data) && $data['taxCode'] === null) {
+            $object->setTaxCode(null);
+        }
+        if (\array_key_exists('manufacturerNumber', $data) && $data['manufacturerNumber'] !== null) {
+            $object->setManufacturerNumber($data['manufacturerNumber']);
+        }
+        elseif (\array_key_exists('manufacturerNumber', $data) && $data['manufacturerNumber'] === null) {
+            $object->setManufacturerNumber(null);
         }
         if (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] !== null) {
             $object->setSupplierNumber($data['supplierNumber']);
         }
         elseif (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] === null) {
             $object->setSupplierNumber(null);
+        }
+        if (\array_key_exists('productNumber', $data)) {
+            $object->setProductNumber($data['productNumber']);
+        }
+        if (\array_key_exists('shopCode', $data)) {
+            $object->setShopCode($data['shopCode']);
         }
         return $object;
     }
@@ -170,15 +194,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         $data = array();
         if (null !== $object->getProductType()) {
             $data['productType'] = $object->getProductType();
-        }
-        if (null !== $object->getProductTitle()) {
-            $data['productTitle'] = $object->getProductTitle();
-        }
-        if (null !== $object->getProductTitleOriginal()) {
-            $data['productTitleOriginal'] = $object->getProductTitleOriginal();
-        }
-        if (null !== $object->getArticleLongDescription()) {
-            $data['articleLongDescription'] = $object->getArticleLongDescription();
         }
         if (null !== $object->getArticleVariantTitle()) {
             $data['articleVariantTitle'] = $object->getArticleVariantTitle();
@@ -207,17 +222,8 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getEan()) {
             $data['ean'] = $object->getEan();
         }
-        if (null !== $object->getTaricCode()) {
-            $data['taricCode'] = $object->getTaricCode();
-        }
-        if (null !== $object->getListPriceEUR()) {
-            $data['listPriceEUR'] = $object->getListPriceEUR();
-        }
         if (null !== $object->getSuggestedRetailPriceEUR()) {
             $data['suggestedRetailPriceEUR'] = $object->getSuggestedRetailPriceEUR();
-        }
-        if (null !== $object->getTaxCode()) {
-            $data['taxCode'] = $object->getTaxCode();
         }
         if (null !== $object->getPurchasePrices()) {
             $values = array();
@@ -226,14 +232,17 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $data['purchasePrices'] = $values;
         }
-        if (null !== $object->getManufacturerNumber()) {
-            $data['manufacturerNumber'] = $object->getManufacturerNumber();
-        }
         if (null !== $object->getManufacturerCountryCode()) {
             $data['manufacturerCountryCode'] = $object->getManufacturerCountryCode();
         }
         if (null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
+        }
+        if (null !== $object->getProductTitle()) {
+            $data['productTitle'] = $object->getProductTitle();
+        }
+        if (null !== $object->getProductTitleOriginal()) {
+            $data['productTitleOriginal'] = $object->getProductTitleOriginal();
         }
         if (null !== $object->getProductStatus()) {
             $data['productStatus'] = $object->getProductStatus();
@@ -241,14 +250,29 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (null !== $object->getArticleShortDescription()) {
             $data['articleShortDescription'] = $object->getArticleShortDescription();
         }
+        if (null !== $object->getArticleLongDescription()) {
+            $data['articleLongDescription'] = $object->getArticleLongDescription();
+        }
+        if (null !== $object->getTaricCode()) {
+            $data['taricCode'] = $object->getTaricCode();
+        }
+        if (null !== $object->getListPriceEUR()) {
+            $data['listPriceEUR'] = $object->getListPriceEUR();
+        }
+        if (null !== $object->getTaxCode()) {
+            $data['taxCode'] = $object->getTaxCode();
+        }
+        if (null !== $object->getManufacturerNumber()) {
+            $data['manufacturerNumber'] = $object->getManufacturerNumber();
+        }
+        if (null !== $object->getSupplierNumber()) {
+            $data['supplierNumber'] = $object->getSupplierNumber();
+        }
         if (null !== $object->getProductNumber()) {
             $data['productNumber'] = $object->getProductNumber();
         }
         if (null !== $object->getShopCode()) {
             $data['shopCode'] = $object->getShopCode();
-        }
-        if (null !== $object->getSupplierNumber()) {
-            $data['supplierNumber'] = $object->getSupplierNumber();
         }
         return $data;
     }

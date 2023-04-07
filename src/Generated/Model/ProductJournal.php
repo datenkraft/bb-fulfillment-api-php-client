@@ -50,6 +50,12 @@ class ProductJournal
     */
     protected $stockNew;
     /**
+     * 
+     *
+     * @var mixed
+     */
+    protected $reference;
+    /**
      * The API internal id of the journal entry.
      *
      * @return int
@@ -200,6 +206,27 @@ class ProductJournal
     public function setStockNew(?int $stockNew) : self
     {
         $this->stockNew = $stockNew;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return mixed
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+    /**
+     * 
+     *
+     * @param mixed $reference
+     *
+     * @return self
+     */
+    public function setReference($reference) : self
+    {
+        $this->reference = $reference;
         return $this;
     }
 }

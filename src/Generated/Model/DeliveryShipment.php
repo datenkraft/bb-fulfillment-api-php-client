@@ -61,6 +61,12 @@ class DeliveryShipment
      */
     protected $externalShipmentId;
     /**
+     * Journal entries regarding the shipment.
+     *
+     * @var DeliveryShipmentJournal[]
+     */
+    protected $journal;
+    /**
      * The shipment number
      *
      * @return string
@@ -251,6 +257,27 @@ class DeliveryShipment
     public function setExternalShipmentId(?string $externalShipmentId) : self
     {
         $this->externalShipmentId = $externalShipmentId;
+        return $this;
+    }
+    /**
+     * Journal entries regarding the shipment.
+     *
+     * @return DeliveryShipmentJournal[]
+     */
+    public function getJournal() : array
+    {
+        return $this->journal;
+    }
+    /**
+     * Journal entries regarding the shipment.
+     *
+     * @param DeliveryShipmentJournal[] $journal
+     *
+     * @return self
+     */
+    public function setJournal(array $journal) : self
+    {
+        $this->journal = $journal;
         return $this;
     }
 }

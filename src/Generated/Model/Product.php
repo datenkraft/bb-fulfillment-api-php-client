@@ -11,24 +11,6 @@ class Product
      */
     protected $productType = 'standard';
     /**
-     * Title of the product
-     *
-     * @var string
-     */
-    protected $productTitle;
-    /**
-     * Original title of the product
-     *
-     * @var string
-     */
-    protected $productTitleOriginal;
-    /**
-     * Long description of the article
-     *
-     * @var string
-     */
-    protected $articleLongDescription;
-    /**
     * The title of the article variant. \
     Must not be set when the articleVariantType is 'standard_autotitle'.
     *
@@ -85,46 +67,17 @@ class Product
      */
     protected $ean;
     /**
-     * The TARIC code of the product
-     *
-     * @var string
-     */
-    protected $taricCode;
-    /**
-     * The list price of the product in EUR
-     *
-     * @var float
-     */
-    protected $listPriceEUR;
-    /**
      * The suggested retail price for the product in EUR
      *
      * @var float|null
      */
     protected $suggestedRetailPriceEUR;
     /**
-    * One of the available tax codes.
-    - std: Standard tax rate (AT 20%)
-    - spc: 1st tax rate (AT 13%)
-    - erm: 2nd tax rate (AT 10%)
-    - erm3: 3rd tax rate (AT 5%)
-    - nsp: not taxable (0%)
-    *
-    * @var string
-    */
-    protected $taxCode;
-    /**
      * 
      *
      * @var ProductPurchasePrice[]|null
      */
     protected $purchasePrices;
-    /**
-     * Number of the manufacturer.
-     *
-     * @var string
-     */
-    protected $manufacturerNumber;
     /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
@@ -138,8 +91,21 @@ class Product
      */
     protected $languageCode = 'de';
     /**
-    * Status of the product regarding sales.
-    
+    * Title of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var string|null
+    */
+    protected $productTitle;
+    /**
+    * Original title of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var string|null
+    */
+    protected $productTitleOriginal;
+    /**
+    * Status of the product regarding sales.\
     Available values:
     - enabled: Product is on sale
     - enabled_external_only: Product is only available in external stores
@@ -149,17 +115,67 @@ class Product
     - incorrect: Product was incorrectly created
     - internal: Product is available for internal sales only
     - preparation: Product is in preparation for sale
+    
+    Note: This can be null if the product was not created via the API.
     *
-    * @var string
+    * @var string|null
     */
-    protected $productStatus = 'enabled';
+    protected $productStatus;
     /**
-    * Short description of the article. \
+    * Short description of the article.\
     Note: This can be null if the product was not created via the API.
     *
     * @var string|null
     */
     protected $articleShortDescription;
+    /**
+    * Long description of the article.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var string|null
+    */
+    protected $articleLongDescription;
+    /**
+    * The TARIC code of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var string|null
+    */
+    protected $taricCode;
+    /**
+    * The list price of the product in EUR.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var float|null
+    */
+    protected $listPriceEUR;
+    /**
+    * One of the available tax codes.
+    - std: Standard tax rate (AT 20%)
+    - spc: 1st tax rate (AT 13%)
+    - erm: 2nd tax rate (AT 10%)
+    - erm3: 3rd tax rate (AT 5%)
+    - nsp: not taxable (0%)
+    
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var string|null
+    */
+    protected $taxCode;
+    /**
+    * Number of the manufacturer.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var string|null
+    */
+    protected $manufacturerNumber;
+    /**
+    * Number of the supplier.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @var string|null
+    */
+    protected $supplierNumber;
     /**
      * 
      *
@@ -172,13 +188,6 @@ class Product
      * @var string
      */
     protected $shopCode;
-    /**
-    * Number of the supplier\
-    Note: This can be null if the product is a bundle product.
-    *
-    * @var string|null
-    */
-    protected $supplierNumber;
     /**
      * Type of the product ('standard' if no value is provided)
      *
@@ -198,69 +207,6 @@ class Product
     public function setProductType(string $productType) : self
     {
         $this->productType = $productType;
-        return $this;
-    }
-    /**
-     * Title of the product
-     *
-     * @return string
-     */
-    public function getProductTitle() : string
-    {
-        return $this->productTitle;
-    }
-    /**
-     * Title of the product
-     *
-     * @param string $productTitle
-     *
-     * @return self
-     */
-    public function setProductTitle(string $productTitle) : self
-    {
-        $this->productTitle = $productTitle;
-        return $this;
-    }
-    /**
-     * Original title of the product
-     *
-     * @return string
-     */
-    public function getProductTitleOriginal() : string
-    {
-        return $this->productTitleOriginal;
-    }
-    /**
-     * Original title of the product
-     *
-     * @param string $productTitleOriginal
-     *
-     * @return self
-     */
-    public function setProductTitleOriginal(string $productTitleOriginal) : self
-    {
-        $this->productTitleOriginal = $productTitleOriginal;
-        return $this;
-    }
-    /**
-     * Long description of the article
-     *
-     * @return string
-     */
-    public function getArticleLongDescription() : string
-    {
-        return $this->articleLongDescription;
-    }
-    /**
-     * Long description of the article
-     *
-     * @param string $articleLongDescription
-     *
-     * @return self
-     */
-    public function setArticleLongDescription(string $articleLongDescription) : self
-    {
-        $this->articleLongDescription = $articleLongDescription;
         return $this;
     }
     /**
@@ -457,48 +403,6 @@ class Product
         return $this;
     }
     /**
-     * The TARIC code of the product
-     *
-     * @return string
-     */
-    public function getTaricCode() : string
-    {
-        return $this->taricCode;
-    }
-    /**
-     * The TARIC code of the product
-     *
-     * @param string $taricCode
-     *
-     * @return self
-     */
-    public function setTaricCode(string $taricCode) : self
-    {
-        $this->taricCode = $taricCode;
-        return $this;
-    }
-    /**
-     * The list price of the product in EUR
-     *
-     * @return float
-     */
-    public function getListPriceEUR() : float
-    {
-        return $this->listPriceEUR;
-    }
-    /**
-     * The list price of the product in EUR
-     *
-     * @param float $listPriceEUR
-     *
-     * @return self
-     */
-    public function setListPriceEUR(float $listPriceEUR) : self
-    {
-        $this->listPriceEUR = $listPriceEUR;
-        return $this;
-    }
-    /**
      * The suggested retail price for the product in EUR
      *
      * @return float|null
@@ -520,37 +424,6 @@ class Product
         return $this;
     }
     /**
-    * One of the available tax codes.
-    - std: Standard tax rate (AT 20%)
-    - spc: 1st tax rate (AT 13%)
-    - erm: 2nd tax rate (AT 10%)
-    - erm3: 3rd tax rate (AT 5%)
-    - nsp: not taxable (0%)
-    *
-    * @return string
-    */
-    public function getTaxCode() : string
-    {
-        return $this->taxCode;
-    }
-    /**
-    * One of the available tax codes.
-    - std: Standard tax rate (AT 20%)
-    - spc: 1st tax rate (AT 13%)
-    - erm: 2nd tax rate (AT 10%)
-    - erm3: 3rd tax rate (AT 5%)
-    - nsp: not taxable (0%)
-    *
-    * @param string $taxCode
-    *
-    * @return self
-    */
-    public function setTaxCode(string $taxCode) : self
-    {
-        $this->taxCode = $taxCode;
-        return $this;
-    }
-    /**
      * 
      *
      * @return ProductPurchasePrice[]|null
@@ -569,27 +442,6 @@ class Product
     public function setPurchasePrices(?array $purchasePrices) : self
     {
         $this->purchasePrices = $purchasePrices;
-        return $this;
-    }
-    /**
-     * Number of the manufacturer.
-     *
-     * @return string
-     */
-    public function getManufacturerNumber() : string
-    {
-        return $this->manufacturerNumber;
-    }
-    /**
-     * Number of the manufacturer.
-     *
-     * @param string $manufacturerNumber
-     *
-     * @return self
-     */
-    public function setManufacturerNumber(string $manufacturerNumber) : self
-    {
-        $this->manufacturerNumber = $manufacturerNumber;
         return $this;
     }
     /**
@@ -635,8 +487,53 @@ class Product
         return $this;
     }
     /**
-    * Status of the product regarding sales.
-    
+    * Title of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return string|null
+    */
+    public function getProductTitle() : ?string
+    {
+        return $this->productTitle;
+    }
+    /**
+    * Title of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param string|null $productTitle
+    *
+    * @return self
+    */
+    public function setProductTitle(?string $productTitle) : self
+    {
+        $this->productTitle = $productTitle;
+        return $this;
+    }
+    /**
+    * Original title of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return string|null
+    */
+    public function getProductTitleOriginal() : ?string
+    {
+        return $this->productTitleOriginal;
+    }
+    /**
+    * Original title of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param string|null $productTitleOriginal
+    *
+    * @return self
+    */
+    public function setProductTitleOriginal(?string $productTitleOriginal) : self
+    {
+        $this->productTitleOriginal = $productTitleOriginal;
+        return $this;
+    }
+    /**
+    * Status of the product regarding sales.\
     Available values:
     - enabled: Product is on sale
     - enabled_external_only: Product is only available in external stores
@@ -646,16 +543,17 @@ class Product
     - incorrect: Product was incorrectly created
     - internal: Product is available for internal sales only
     - preparation: Product is in preparation for sale
+    
+    Note: This can be null if the product was not created via the API.
     *
-    * @return string
+    * @return string|null
     */
-    public function getProductStatus() : string
+    public function getProductStatus() : ?string
     {
         return $this->productStatus;
     }
     /**
-    * Status of the product regarding sales.
-    
+    * Status of the product regarding sales.\
     Available values:
     - enabled: Product is on sale
     - enabled_external_only: Product is only available in external stores
@@ -665,18 +563,20 @@ class Product
     - incorrect: Product was incorrectly created
     - internal: Product is available for internal sales only
     - preparation: Product is in preparation for sale
+    
+    Note: This can be null if the product was not created via the API.
     *
-    * @param string $productStatus
+    * @param string|null $productStatus
     *
     * @return self
     */
-    public function setProductStatus(string $productStatus) : self
+    public function setProductStatus(?string $productStatus) : self
     {
         $this->productStatus = $productStatus;
         return $this;
     }
     /**
-    * Short description of the article. \
+    * Short description of the article.\
     Note: This can be null if the product was not created via the API.
     *
     * @return string|null
@@ -686,7 +586,7 @@ class Product
         return $this->articleShortDescription;
     }
     /**
-    * Short description of the article. \
+    * Short description of the article.\
     Note: This can be null if the product was not created via the API.
     *
     * @param string|null $articleShortDescription
@@ -696,6 +596,156 @@ class Product
     public function setArticleShortDescription(?string $articleShortDescription) : self
     {
         $this->articleShortDescription = $articleShortDescription;
+        return $this;
+    }
+    /**
+    * Long description of the article.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return string|null
+    */
+    public function getArticleLongDescription() : ?string
+    {
+        return $this->articleLongDescription;
+    }
+    /**
+    * Long description of the article.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param string|null $articleLongDescription
+    *
+    * @return self
+    */
+    public function setArticleLongDescription(?string $articleLongDescription) : self
+    {
+        $this->articleLongDescription = $articleLongDescription;
+        return $this;
+    }
+    /**
+    * The TARIC code of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return string|null
+    */
+    public function getTaricCode() : ?string
+    {
+        return $this->taricCode;
+    }
+    /**
+    * The TARIC code of the product.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param string|null $taricCode
+    *
+    * @return self
+    */
+    public function setTaricCode(?string $taricCode) : self
+    {
+        $this->taricCode = $taricCode;
+        return $this;
+    }
+    /**
+    * The list price of the product in EUR.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return float|null
+    */
+    public function getListPriceEUR() : ?float
+    {
+        return $this->listPriceEUR;
+    }
+    /**
+    * The list price of the product in EUR.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param float|null $listPriceEUR
+    *
+    * @return self
+    */
+    public function setListPriceEUR(?float $listPriceEUR) : self
+    {
+        $this->listPriceEUR = $listPriceEUR;
+        return $this;
+    }
+    /**
+    * One of the available tax codes.
+    - std: Standard tax rate (AT 20%)
+    - spc: 1st tax rate (AT 13%)
+    - erm: 2nd tax rate (AT 10%)
+    - erm3: 3rd tax rate (AT 5%)
+    - nsp: not taxable (0%)
+    
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return string|null
+    */
+    public function getTaxCode() : ?string
+    {
+        return $this->taxCode;
+    }
+    /**
+    * One of the available tax codes.
+    - std: Standard tax rate (AT 20%)
+    - spc: 1st tax rate (AT 13%)
+    - erm: 2nd tax rate (AT 10%)
+    - erm3: 3rd tax rate (AT 5%)
+    - nsp: not taxable (0%)
+    
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param string|null $taxCode
+    *
+    * @return self
+    */
+    public function setTaxCode(?string $taxCode) : self
+    {
+        $this->taxCode = $taxCode;
+        return $this;
+    }
+    /**
+    * Number of the manufacturer.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return string|null
+    */
+    public function getManufacturerNumber() : ?string
+    {
+        return $this->manufacturerNumber;
+    }
+    /**
+    * Number of the manufacturer.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param string|null $manufacturerNumber
+    *
+    * @return self
+    */
+    public function setManufacturerNumber(?string $manufacturerNumber) : self
+    {
+        $this->manufacturerNumber = $manufacturerNumber;
+        return $this;
+    }
+    /**
+    * Number of the supplier.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @return string|null
+    */
+    public function getSupplierNumber() : ?string
+    {
+        return $this->supplierNumber;
+    }
+    /**
+    * Number of the supplier.\
+    Note: This can be null if the product was not created via the API.
+    *
+    * @param string|null $supplierNumber
+    *
+    * @return self
+    */
+    public function setSupplierNumber(?string $supplierNumber) : self
+    {
+        $this->supplierNumber = $supplierNumber;
         return $this;
     }
     /**
@@ -738,29 +788,6 @@ class Product
     public function setShopCode(string $shopCode) : self
     {
         $this->shopCode = $shopCode;
-        return $this;
-    }
-    /**
-    * Number of the supplier\
-    Note: This can be null if the product is a bundle product.
-    *
-    * @return string|null
-    */
-    public function getSupplierNumber() : ?string
-    {
-        return $this->supplierNumber;
-    }
-    /**
-    * Number of the supplier\
-    Note: This can be null if the product is a bundle product.
-    *
-    * @param string|null $supplierNumber
-    *
-    * @return self
-    */
-    public function setSupplierNumber(?string $supplierNumber) : self
-    {
-        $this->supplierNumber = $supplierNumber;
         return $this;
     }
 }

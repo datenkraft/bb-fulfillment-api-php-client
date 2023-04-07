@@ -69,6 +69,9 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('stockNew', $data) && $data['stockNew'] === null) {
             $object->setStockNew(null);
         }
+        if (\array_key_exists('reference', $data)) {
+            $object->setReference($data['reference']);
+        }
         return $object;
     }
     /**
@@ -97,6 +100,9 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getStockNew()) {
             $data['stockNew'] = $object->getStockNew();
+        }
+        if (null !== $object->getReference()) {
+            $data['reference'] = $object->getReference();
         }
         return $data;
     }

@@ -76,6 +76,13 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
         elseif (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] === null) {
             $object->setExternalShipmentId(null);
         }
+        if (\array_key_exists('journal', $data)) {
+            $values_1 = array();
+            foreach ($data['journal'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryShipmentJournal', 'json', $context);
+            }
+            $object->setJournal($values_1);
+        }
         return $object;
     }
     /**
@@ -114,6 +121,13 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (null !== $object->getExternalShipmentId()) {
             $data['externalShipmentId'] = $object->getExternalShipmentId();
+        }
+        if (null !== $object->getJournal()) {
+            $values_1 = array();
+            foreach ($object->getJournal() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['journal'] = $values_1;
         }
         return $data;
     }

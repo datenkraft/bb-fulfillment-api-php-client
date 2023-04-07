@@ -132,6 +132,12 @@ class Order
      */
     protected $sourceLink;
     /**
+     * Indicates whether the order can be canceled or not
+     *
+     * @var bool
+     */
+    protected $cancelable;
+    /**
      * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
@@ -545,6 +551,27 @@ class Order
     public function setSourceLink(?string $sourceLink) : self
     {
         $this->sourceLink = $sourceLink;
+        return $this;
+    }
+    /**
+     * Indicates whether the order can be canceled or not
+     *
+     * @return bool
+     */
+    public function getCancelable() : bool
+    {
+        return $this->cancelable;
+    }
+    /**
+     * Indicates whether the order can be canceled or not
+     *
+     * @param bool $cancelable
+     *
+     * @return self
+     */
+    public function setCancelable(bool $cancelable) : self
+    {
+        $this->cancelable = $cancelable;
         return $this;
     }
 }
