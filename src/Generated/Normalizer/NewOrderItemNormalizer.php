@@ -58,7 +58,7 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setExternalProductNumber(null);
         }
         if (\array_key_exists('price', $data) && $data['price'] !== null) {
-            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice', 'json', $context));
+            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderItemPrice', 'json', $context));
         }
         elseif (\array_key_exists('price', $data) && $data['price'] === null) {
             $object->setPrice(null);

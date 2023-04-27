@@ -52,7 +52,7 @@ class ProductJournal
     /**
      * 
      *
-     * @var mixed
+     * @var ProductJournalReference
      */
     protected $reference;
     /**
@@ -211,20 +211,20 @@ class ProductJournal
     /**
      * 
      *
-     * @return mixed
+     * @return ProductJournalReference
      */
-    public function getReference()
+    public function getReference() : ProductJournalReference
     {
         return $this->reference;
     }
     /**
      * 
      *
-     * @param mixed $reference
+     * @param ProductJournalReference $reference
      *
      * @return self
      */
-    public function setReference($reference) : self
+    public function setReference(ProductJournalReference $reference) : self
     {
         $this->reference = $reference;
         return $this;

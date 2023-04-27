@@ -29,11 +29,10 @@ class NewOrderItem
      */
     protected $externalProductNumber;
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @var OrderItemPrice|null
-    */
+     * 
+     *
+     * @var NewOrderItemPrice|null
+     */
     protected $price;
     /**
      * Additional options (optional, TBD)
@@ -126,24 +125,22 @@ class NewOrderItem
         return $this;
     }
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @return OrderItemPrice|null
-    */
-    public function getPrice() : ?OrderItemPrice
+     * 
+     *
+     * @return NewOrderItemPrice|null
+     */
+    public function getPrice() : ?NewOrderItemPrice
     {
         return $this->price;
     }
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @param OrderItemPrice|null $price
-    *
-    * @return self
-    */
-    public function setPrice(?OrderItemPrice $price) : self
+     * 
+     *
+     * @param NewOrderItemPrice|null $price
+     *
+     * @return self
+     */
+    public function setPrice(?NewOrderItemPrice $price) : self
     {
         $this->price = $price;
         return $this;

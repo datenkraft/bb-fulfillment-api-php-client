@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class OrderItemPrice
+class NewOrderItemPrice
 {
     /**
     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
@@ -19,9 +19,9 @@ class OrderItemPrice
      */
     protected $type;
     /**
-     * The VAT in percent. Can be null in case of bundle products with mixed VAT percentages.
+     * The VAT in percent
      *
-     * @var float|null
+     * @var float
      */
     protected $vat;
     /**
@@ -77,22 +77,22 @@ class OrderItemPrice
         return $this;
     }
     /**
-     * The VAT in percent. Can be null in case of bundle products with mixed VAT percentages.
+     * The VAT in percent
      *
-     * @return float|null
+     * @return float
      */
-    public function getVat() : ?float
+    public function getVat() : float
     {
         return $this->vat;
     }
     /**
-     * The VAT in percent. Can be null in case of bundle products with mixed VAT percentages.
+     * The VAT in percent
      *
-     * @param float|null $vat
+     * @param float $vat
      *
      * @return self
      */
-    public function setVat(?float $vat) : self
+    public function setVat(float $vat) : self
     {
         $this->vat = $vat;
         return $this;
