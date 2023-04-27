@@ -5,10 +5,12 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class OrderPrice
 {
     /**
-     * The price value rounded to 2 decimals, dot as separator
-     *
-     * @var float
-     */
+    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
+    corresponding item count.
+    *
+    * @var float
+    */
     protected $value;
     /**
      * The price type
@@ -29,21 +31,25 @@ class OrderPrice
      */
     protected $currencyCode;
     /**
-     * The price value rounded to 2 decimals, dot as separator
-     *
-     * @return float
-     */
+    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
+    corresponding item count.
+    *
+    * @return float
+    */
     public function getValue() : float
     {
         return $this->value;
     }
     /**
-     * The price value rounded to 2 decimals, dot as separator
-     *
-     * @param float $value
-     *
-     * @return self
-     */
+    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
+    corresponding item count.
+    *
+    * @param float $value
+    *
+    * @return self
+    */
     public function setValue(float $value) : self
     {
         $this->value = $value;

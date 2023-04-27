@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ProductJournalReferenceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournalReference';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournalReference';
     }
     /**
      * @return mixed
@@ -35,24 +35,18 @@ class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItemPrice();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalReference();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+        if (\array_key_exists('companyName', $data)) {
+            $object->setCompanyName($data['companyName']);
         }
-        if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+        if (\array_key_exists('inboundDeliveryNumber', $data)) {
+            $object->setInboundDeliveryNumber($data['inboundDeliveryNumber']);
         }
-        if (\array_key_exists('vat', $data) && $data['vat'] !== null) {
-            $object->setVat($data['vat']);
-        }
-        elseif (\array_key_exists('vat', $data) && $data['vat'] === null) {
-            $object->setVat(null);
-        }
-        if (\array_key_exists('currencyCode', $data)) {
-            $object->setCurrencyCode($data['currencyCode']);
+        if (\array_key_exists('orderNumber', $data)) {
+            $object->setOrderNumber($data['orderNumber']);
         }
         return $object;
     }
@@ -62,12 +56,15 @@ class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['value'] = $object->getValue();
-        $data['type'] = $object->getType();
-        if (null !== $object->getVat()) {
-            $data['vat'] = $object->getVat();
+        if (null !== $object->getCompanyName()) {
+            $data['companyName'] = $object->getCompanyName();
         }
-        $data['currencyCode'] = $object->getCurrencyCode();
+        if (null !== $object->getInboundDeliveryNumber()) {
+            $data['inboundDeliveryNumber'] = $object->getInboundDeliveryNumber();
+        }
+        if (null !== $object->getOrderNumber()) {
+            $data['orderNumber'] = $object->getOrderNumber();
+        }
         return $data;
     }
 }

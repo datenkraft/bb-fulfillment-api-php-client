@@ -32,6 +32,12 @@ class Stock
     */
     protected $available;
     /**
+     * Amount of ongoing inbound deliveries
+     *
+     * @var int
+     */
+    protected $incoming;
+    /**
     * Status regarding the possibility of overbooking
     - possible: Overbooking is possible
     - not_possible: Overbooking is not possible
@@ -128,6 +134,27 @@ class Stock
     public function setAvailable(int $available) : self
     {
         $this->available = $available;
+        return $this;
+    }
+    /**
+     * Amount of ongoing inbound deliveries
+     *
+     * @return int
+     */
+    public function getIncoming() : int
+    {
+        return $this->incoming;
+    }
+    /**
+     * Amount of ongoing inbound deliveries
+     *
+     * @param int $incoming
+     *
+     * @return self
+     */
+    public function setIncoming(int $incoming) : self
+    {
+        $this->incoming = $incoming;
         return $this;
     }
     /**

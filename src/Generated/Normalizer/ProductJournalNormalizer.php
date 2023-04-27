@@ -70,7 +70,7 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setStockNew(null);
         }
         if (\array_key_exists('reference', $data)) {
-            $object->setReference($data['reference']);
+            $object->setReference($this->denormalizer->denormalize($data['reference'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournalReference', 'json', $context));
         }
         return $object;
     }
@@ -102,7 +102,7 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
             $data['stockNew'] = $object->getStockNew();
         }
         if (null !== $object->getReference()) {
-            $data['reference'] = $object->getReference();
+            $data['reference'] = $this->normalizer->normalize($object->getReference(), 'json', $context);
         }
         return $data;
     }
