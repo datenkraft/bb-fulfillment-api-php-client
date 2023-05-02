@@ -56,11 +56,10 @@ class NewOrder
      */
     protected $amazonOrderId;
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if customs clearance is necessary for the delivery address of the order.
-    *
-    * @var OrderDeliveryCosts|null
-    */
+     * 
+     *
+     * @var OrderDeliveryCosts[]|null
+     */
     protected $deliveryCosts;
     /**
      * Additional optional options for a new order.
@@ -243,24 +242,22 @@ class NewOrder
         return $this;
     }
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if customs clearance is necessary for the delivery address of the order.
-    *
-    * @return OrderDeliveryCosts|null
-    */
-    public function getDeliveryCosts() : ?OrderDeliveryCosts
+     * 
+     *
+     * @return OrderDeliveryCosts[]|null
+     */
+    public function getDeliveryCosts() : ?array
     {
         return $this->deliveryCosts;
     }
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if customs clearance is necessary for the delivery address of the order.
-    *
-    * @param OrderDeliveryCosts|null $deliveryCosts
-    *
-    * @return self
-    */
-    public function setDeliveryCosts(?OrderDeliveryCosts $deliveryCosts) : self
+     * 
+     *
+     * @param OrderDeliveryCosts[]|null $deliveryCosts
+     *
+     * @return self
+     */
+    public function setDeliveryCosts(?array $deliveryCosts) : self
     {
         $this->deliveryCosts = $deliveryCosts;
         return $this;

@@ -1510,7 +1510,7 @@
                         }
                     },
                     "422": {
-                        "description": "Unprocessable Entity\n\nAvailable message codes:\n- PRODUCT_NOT_FOUND: A product could not be found.\n- DUPLICATED_PRODUCT: There are multiple orderItems with the same productNumber.\n- ORDER_CUSTOMS_CLEARANCE_REQUIRED_FIELD_MISSING: A field required for customs clearance is missing.",
+                        "description": "Unprocessable Entity\n\nAvailable message codes:\n- PRODUCT_NOT_FOUND: A product could not be found.\n- DUPLICATED_PRODUCT: There are multiple orderItems with the same productNumber.\n- ORDER_CUSTOMS_CLEARANCE_REQUIRED_FIELD_MISSING: A field required for customs clearance is missing.\n- ORDER_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The orderNumber starts with a prefix that is reserved for internal\n  references.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -2205,7 +2205,7 @@
                         }
                     },
                     "422": {
-                        "description": "Unprocessable Entity\n\nAvailable message codes:\n- SUPPLIER_NOT_FOUND: The supplier with the given supplierNumber could not be found.\n- PRODUCT_NOT_FOUND: The product with the given productNumber could not be found.\n- DUPLICATED_PRODUCT: There are multiple products with the same productNumber.\n- PRODUCT_COULD_NOT_BE_ADDED_FOR_SUPPLIER: At least one of the the given products could not be added for the supplier.\n- INBOUND_DELIVERY_NOTIFICATION_NOT_SENDABLE: Could not send the delivery notification to the supplier. The inbound\ndelivery has been deleted.",
+                        "description": "Unprocessable Entity\n\nAvailable message codes:\n- SUPPLIER_NOT_FOUND: The supplier with the given supplierNumber could not be found.\n- PRODUCT_NOT_FOUND: The product with the given productNumber could not be found.\n- DUPLICATED_PRODUCT: There are multiple products with the same productNumber.\n- PRODUCT_COULD_NOT_BE_ADDED_FOR_SUPPLIER: At least one of the the given products could not be added for the supplier.\n- INBOUND_DELIVERY_NOTIFICATION_NOT_SENDABLE: Could not send the delivery notification to the supplier. The inbound\ndelivery has been deleted.\n- INBOUND_DELIVERY_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The inboundDeliveryNumber starts with a prefix that is\n  reserved for internal references.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -5086,7 +5086,11 @@
                         "nullable": true
                     },
                     "deliveryCosts": {
-                        "$ref": "#/components/schemas/orderDeliveryCosts"
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/orderDeliveryCosts"
+                        },
+                        "nullable": true
                     },
                     "options": {
                         "$ref": "#/components/schemas/baseOrderOptions"
@@ -5614,10 +5618,18 @@
             "orderDeliveryCosts": {
                 "title": "orderDeliveryCosts",
                 "description": "The delivery costs of the order, which will be charged to the customer.\\\nNote: This field is required if customs clearance is necessary for the delivery address of the order.",
-                "nullable": true,
+                "type": "object",
                 "allOf": [
                     {
                         "$ref": "#/components/schemas/orderPrice"
+                    },
+                    {
+                        "properties": {
+                            "title": {
+                                "type": "string",
+                                "nullable": true
+                            }
+                        }
                     }
                 ]
             },

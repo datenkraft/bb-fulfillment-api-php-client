@@ -86,7 +86,11 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setAmazonOrderId(null);
         }
         if (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] !== null) {
-            $object->setDeliveryCosts($this->denormalizer->denormalize($data['deliveryCosts'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts', 'json', $context));
+            $values_1 = array();
+            foreach ($data['deliveryCosts'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts', 'json', $context);
+            }
+            $object->setDeliveryCosts($values_1);
         }
         elseif (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] === null) {
             $object->setDeliveryCosts(null);
@@ -130,7 +134,11 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
             $data['amazonOrderId'] = $object->getAmazonOrderId();
         }
         if (null !== $object->getDeliveryCosts()) {
-            $data['deliveryCosts'] = $this->normalizer->normalize($object->getDeliveryCosts(), 'json', $context);
+            $values_1 = array();
+            foreach ($object->getDeliveryCosts() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['deliveryCosts'] = $values_1;
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $object->getOptions();

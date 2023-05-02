@@ -15,7 +15,9 @@ class PostOrderUnprocessableEntityException extends UnprocessableEntityException
 Available message codes:
 - PRODUCT_NOT_FOUND: A product could not be found.
 - DUPLICATED_PRODUCT: There are multiple orderItems with the same productNumber.
-- ORDER_CUSTOMS_CLEARANCE_REQUIRED_FIELD_MISSING: A field required for customs clearance is missing.');
+- ORDER_CUSTOMS_CLEARANCE_REQUIRED_FIELD_MISSING: A field required for customs clearance is missing.
+- ORDER_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The orderNumber starts with a prefix that is reserved for internal
+  references.');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
