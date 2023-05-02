@@ -31,6 +31,12 @@ class OrderDeliveryCosts
      */
     protected $currencyCode;
     /**
+     * 
+     *
+     * @var string|null
+     */
+    protected $title;
+    /**
     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
     a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
     corresponding item count.
@@ -116,6 +122,27 @@ class OrderDeliveryCosts
     public function setCurrencyCode(string $currencyCode) : self
     {
         $this->currencyCode = $currencyCode;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return string|null
+     */
+    public function getTitle() : ?string
+    {
+        return $this->title;
+    }
+    /**
+     * 
+     *
+     * @param string|null $title
+     *
+     * @return self
+     */
+    public function setTitle(?string $title) : self
+    {
+        $this->title = $title;
         return $this;
     }
 }

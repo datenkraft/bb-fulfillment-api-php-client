@@ -86,7 +86,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setAmazonOrderId(null);
         }
         if (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] !== null) {
-            $object->setDeliveryCosts($this->denormalizer->denormalize($data['deliveryCosts'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts', 'json', $context));
+            $values_1 = array();
+            foreach ($data['deliveryCosts'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts', 'json', $context);
+            }
+            $object->setDeliveryCosts($values_1);
         }
         elseif (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] === null) {
             $object->setDeliveryCosts(null);
@@ -110,11 +114,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setOrderDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['orderDate']));
         }
         if (\array_key_exists('delivery', $data) && $data['delivery'] !== null) {
-            $values_1 = array();
-            foreach ($data['delivery'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDelivery', 'json', $context);
+            $values_2 = array();
+            foreach ($data['delivery'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDelivery', 'json', $context);
             }
-            $object->setDelivery($values_1);
+            $object->setDelivery($values_2);
         }
         elseif (\array_key_exists('delivery', $data) && $data['delivery'] === null) {
             $object->setDelivery(null);
@@ -177,7 +181,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['amazonOrderId'] = $object->getAmazonOrderId();
         }
         if (null !== $object->getDeliveryCosts()) {
-            $data['deliveryCosts'] = $this->normalizer->normalize($object->getDeliveryCosts(), 'json', $context);
+            $values_1 = array();
+            foreach ($object->getDeliveryCosts() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['deliveryCosts'] = $values_1;
         }
         if (null !== $object->getOptions()) {
             $data['options'] = $object->getOptions();
@@ -192,11 +200,11 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $data['orderDate'] = $object->getOrderDate()->format('Y-m-d\\TH:i:sP');
         }
         if (null !== $object->getDelivery()) {
-            $values_1 = array();
-            foreach ($object->getDelivery() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            $values_2 = array();
+            foreach ($object->getDelivery() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $data['delivery'] = $values_1;
+            $data['delivery'] = $values_2;
         }
         if (null !== $object->getPayment()) {
             $data['payment'] = $this->normalizer->normalize($object->getPayment(), 'json', $context);

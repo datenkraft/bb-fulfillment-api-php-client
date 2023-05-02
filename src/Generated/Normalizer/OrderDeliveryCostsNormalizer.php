@@ -51,6 +51,12 @@ class OrderDeliveryCostsNormalizer implements DenormalizerInterface, NormalizerI
         if (\array_key_exists('currencyCode', $data)) {
             $object->setCurrencyCode($data['currencyCode']);
         }
+        if (\array_key_exists('title', $data) && $data['title'] !== null) {
+            $object->setTitle($data['title']);
+        }
+        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
+            $object->setTitle(null);
+        }
         return $object;
     }
     /**
@@ -63,6 +69,9 @@ class OrderDeliveryCostsNormalizer implements DenormalizerInterface, NormalizerI
         $data['type'] = $object->getType();
         $data['vat'] = $object->getVat();
         $data['currencyCode'] = $object->getCurrencyCode();
+        if (null !== $object->getTitle()) {
+            $data['title'] = $object->getTitle();
+        }
         return $data;
     }
 }
