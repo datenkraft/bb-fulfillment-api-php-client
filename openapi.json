@@ -5188,13 +5188,14 @@
                                 "$ref": "#/components/schemas/orderCustomer"
                             },
                             "status": {
-                                "description": "The current status of the order.\n- new: The order was created but not every required information was given. The order can not be processed without manual\nintervention.\n- processing: The order is being processed. For split deliveries, some of the shipments might have already been\ntransferred to the delivery agent.\n- delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status\nmight be delayed and not yet reflect the status of the linked deliveries).\n- deleted: The order has been cancelled.\n- locked: The order is locked. The order can not be processed without manual intervention.\n- examination: The order has been manually locked.  The order can not be processed without manual intervention.",
+                                "description": "The current status of the order.\n- new: The order was created but not every required information was given. The order can not be processed without manual\nintervention.\n- processing: The order is being processed. For split deliveries, some of the shipments might have already been\ntransferred to the delivery agent.\n- delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status\nmight be delayed and not yet reflect the status of the linked deliveries).\n- deleted: The order has been marked as deleted.\n- canceled: The order has been canceled.\n- locked: The order is locked. The order can not be processed without manual intervention.\n- examination: The order has been manually locked. The order can not be processed without manual intervention.",
                                 "type": "string",
                                 "enum": [
                                     "new",
                                     "processing",
                                     "delivered",
                                     "deleted",
+                                    "canceled",
                                     "locked",
                                     "examination"
                                 ]
