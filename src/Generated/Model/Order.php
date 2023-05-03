@@ -83,9 +83,10 @@ class Order
     transferred to the delivery agent.
     - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
     might be delayed and not yet reflect the status of the linked deliveries).
-    - deleted: The order has been cancelled.
+    - deleted: The order has been marked as deleted.
+    - canceled: The order has been canceled.
     - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked.  The order can not be processed without manual intervention.
+    - examination: The order has been manually locked. The order can not be processed without manual intervention.
     *
     * @var string
     */
@@ -385,9 +386,10 @@ class Order
     transferred to the delivery agent.
     - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
     might be delayed and not yet reflect the status of the linked deliveries).
-    - deleted: The order has been cancelled.
+    - deleted: The order has been marked as deleted.
+    - canceled: The order has been canceled.
     - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked.  The order can not be processed without manual intervention.
+    - examination: The order has been manually locked. The order can not be processed without manual intervention.
     *
     * @return string
     */
@@ -403,9 +405,10 @@ class Order
     transferred to the delivery agent.
     - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
     might be delayed and not yet reflect the status of the linked deliveries).
-    - deleted: The order has been cancelled.
+    - deleted: The order has been marked as deleted.
+    - canceled: The order has been canceled.
     - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked.  The order can not be processed without manual intervention.
+    - examination: The order has been manually locked. The order can not be processed without manual intervention.
     *
     * @param string $status
     *
