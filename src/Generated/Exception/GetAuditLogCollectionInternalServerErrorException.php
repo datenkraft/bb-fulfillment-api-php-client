@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class PostOrderUnprocessableEntityException extends UnprocessableEntityException
+class GetAuditLogCollectionInternalServerErrorException extends InternalServerErrorException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -10,11 +10,7 @@ class PostOrderUnprocessableEntityException extends UnprocessableEntityException
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Unprocessable Entity
-
-Available message codes:
-- PRODUCT_NOT_FOUND: A product could not be found.
-- DUPLICATED_PRODUCT: There are multiple orderItems with the same productNumber.');
+        parent::__construct('Server error');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
