@@ -10,6 +10,16 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - orderDate
+    
+    The default sort order is orderDate:desc.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
@@ -45,11 +55,12 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]', 'filter[externalOrderReference]', 'filter[orderDateFrom]', 'filter[orderDateTo]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'sortBy', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]', 'filter[externalOrderReference]', 'filter[orderDateFrom]', 'filter[orderDateTo]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array());
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('sortBy', array('string'));
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->setAllowedTypes('filter[status]', array('string'));
         $optionsResolver->setAllowedTypes('filter[externalOrderId]', array('string'));
