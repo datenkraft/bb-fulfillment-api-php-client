@@ -1215,6 +1215,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "filter[endpoint]",
                         "in": "query",
                         "description": "A filter for restricting the audit log to a endpoint.",
@@ -1710,6 +1724,20 @@
                             "type": "integer"
                         },
                         "example": 20
+                    },
+                    {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
                     },
                     {
                         "name": "sortBy",
@@ -2348,6 +2376,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "sortBy",
                         "in": "query",
                         "description": "Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.\n\nAvailable sort orders:\n- asc: ascending order\n- desc: descending order\n\nAvailable fields for sorting:\n- expectedDeliveryDate\n\nThe default sort order is expectedDeliveryDate:desc.",
@@ -2771,6 +2813,158 @@
                 ]
             }
         },
+        "/inbound-delivery/{inboundDeliveryNumber}/document/{documentCode}": {
+            "get": {
+                "tags": [
+                    "inbound-delivery"
+                ],
+                "summary": "Download inbound delivery related documents",
+                "description": "Allows to download a document associated with the given inbound delivery.",
+                "operationId": "getInboundDeliveryDocument",
+                "parameters": [
+                    {
+                        "name": "inboundDeliveryNumber",
+                        "in": "path",
+                        "description": "The inbound delivery number as defined during the creation of the inbound delivery.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 250
+                        }
+                    },
+                    {
+                        "name": "documentCode",
+                        "in": "path",
+                        "description": "The document type to download. The file format is determined by the Accept request header.\\\nNote: only a limited amount of document type to file format combinations are available:\n- supplierDeliveryLabel:\\\nthe label to put on the inbound delivery for warehouse processing.\\\nAccept header: application/pdf\n- details:\\\na spreadsheet containing details about the inbound delivery.\\\nAccept header: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\n    ",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "supplierDeliveryLabel",
+                                "details"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "shopCode",
+                        "in": "query",
+                        "description": "The shopCode used internally to distinguish between clients.\\\n_This code is optional, if your identity is assigned to only one shop.\nOtherwise the response would be a 422 HTTP Error._",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "teststeve"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns the document with the file format according to the sent Accept request header.",
+                        "content": {
+                            "application/pdf": {
+                                "schema": {
+                                    "type": "string",
+                                    "format": "binary"
+                                }
+                            },
+                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+                                "schema": {
+                                    "type": "string",
+                                    "format": "binary"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "The requested document could not be generated in\nthe format specified by the Accept request header.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "oAuthAuthorization": []
+                    },
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/delivery/{deliveryNumber}": {
             "get": {
                 "tags": [
@@ -2910,6 +3104,20 @@
                             "type": "integer"
                         },
                         "example": 20
+                    },
+                    {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
                     },
                     {
                         "name": "filter[orderNumber]",
@@ -3187,6 +3395,20 @@
                             "type": "integer"
                         },
                         "example": 20
+                    },
+                    {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
                     },
                     {
                         "name": "filter[meta][shopifyShopDomain]",
@@ -3686,6 +3908,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "filter[shopCode]",
                         "in": "query",
                         "description": "The shopCode used internally to distinguish between clients.\\\n_This code is optional, if your identity is assigned to only one shop.\nOtherwise the response would be a 422 HTTP Error._",
@@ -3814,6 +4050,20 @@
                             "type": "integer"
                         },
                         "example": 20
+                    },
+                    {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
                     },
                     {
                         "name": "shopCode",
@@ -3987,6 +4237,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "filter[productNumber]",
                         "in": "query",
                         "description": "Filter for product number(s) (optional).",
@@ -4141,6 +4405,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "filter[shopCode]",
                         "in": "query",
                         "description": "The shopCode used internally to distinguish between clients.\\\n_This code is optional, if your identity is assigned to only one shop.\nOtherwise the response would be a 422 HTTP Error._",
@@ -4261,6 +4539,20 @@
                             "type": "integer"
                         },
                         "example": 20
+                    },
+                    {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
                     },
                     {
                         "name": "filter[shopCode]",
@@ -4405,6 +4697,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "shopCode",
                         "in": "query",
                         "description": "The shopCode used internally to distinguish between clients.\\\n_This code is optional, if your identity is assigned to only one shop.\nOtherwise the response would be a 422 HTTP Error._",
@@ -4515,6 +4821,20 @@
                             "type": "integer"
                         },
                         "example": 20
+                    },
+                    {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
                     },
                     {
                         "name": "shopCode",
@@ -4639,6 +4959,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "filter[shopCode]",
                         "in": "query",
                         "description": "The shopCode used internally to distinguish between clients.\\\n_This code is optional, if your identity is assigned to only one shop.\nOtherwise the response would be a 422 HTTP Error._",
@@ -4749,6 +5083,20 @@
                             "type": "integer"
                         },
                         "example": 20
+                    },
+                    {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
                     }
                 ],
                 "responses": {
@@ -5017,6 +5365,12 @@
                         "description": "The page size used for reading the collection.",
                         "type": "integer",
                         "format": "int32"
+                    },
+                    "totalCount": {
+                        "description": "The total number of items in the collection.\\\nNote: This can be null depending on the used paginationMode.",
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
                     }
                 },
                 "type": "object"
@@ -5272,7 +5626,8 @@
                                 "enum": [
                                     "shopify",
                                     "nice",
-                                    "api"
+                                    "api",
+                                    null
                                 ],
                                 "nullable": true
                             },
@@ -6473,7 +6828,8 @@
                         "enum": [
                             "standard",
                             "standard_autotitle",
-                            "personalized"
+                            "personalized",
+                            null
                         ],
                         "nullable": true
                     },
@@ -6486,7 +6842,8 @@
                             "temporary_inactive",
                             "preparation_inactive",
                             "inactive_but_visible",
-                            "inactive"
+                            "inactive",
+                            null
                         ],
                         "nullable": true
                     },
@@ -6587,7 +6944,8 @@
                                 "default": "enabled",
                                 "enum": [
                                     "enabled",
-                                    "enabled_external_only"
+                                    "enabled_external_only",
+                                    null
                                 ],
                                 "nullable": true
                             },
@@ -6665,6 +7023,7 @@
                                 "enum": [
                                     "enabled",
                                     "enabled_external_only",
+                                    null,
                                     "deleted",
                                     "discontinued",
                                     "expired",
@@ -6703,7 +7062,8 @@
                                     "spc",
                                     "erm",
                                     "erm3",
-                                    "nsp"
+                                    "nsp",
+                                    null
                                 ],
                                 "nullable": true
                             },
