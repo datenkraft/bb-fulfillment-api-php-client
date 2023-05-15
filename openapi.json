@@ -2091,6 +2091,20 @@
                         "example": 20
                     },
                     {
+                        "name": "paginationMode",
+                        "in": "query",
+                        "description": "The paginationMode to use:\n- default: The total number of items in the collection will not be calculated.\n- totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "default",
+                            "enum": [
+                                "default",
+                                "totalCount"
+                            ]
+                        }
+                    },
+                    {
                         "name": "filter[endpoint]",
                         "in": "query",
                         "description": "A filter for restricting the audit log to a endpoint.",
@@ -3100,6 +3114,12 @@
                         "description": "The page size used for reading the collection.",
                         "type": "integer",
                         "format": "int32"
+                    },
+                    "totalCount": {
+                        "description": "The total number of items in the collection.\\\nNote: This can be null depending on the used paginationMode.",
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
                     }
                 },
                 "type": "object"
