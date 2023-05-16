@@ -5,16 +5,19 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetAuditLogCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get the audit log.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page to read. Default is the first page.
-     *     @var int $pageSize The maximum size per page is 100. Default is 100.
-     *     @var string $filter[endpoint] A filter for restricting the audit log to a endpoint.
-     *     @var string $filter[version] A filter for restricting the audit log to a endpoint version.
-     *     @var mixed $filter[identifier] A filter for querying actions for a identifier.
-     * }
-     */
+    * Get the audit log.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[endpoint] A filter for restricting the audit log to a endpoint.
+    *     @var string $filter[version] A filter for restricting the audit log to a endpoint version.
+    *     @var mixed $filter[identifier] A filter for querying actions for a identifier.
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -39,11 +42,12 @@ class GetAuditLogCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[endpoint]', 'filter[version]', 'filter[identifier]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[endpoint]', 'filter[version]', 'filter[identifier]'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('paginationMode', array('string'));
         $optionsResolver->setAllowedTypes('filter[endpoint]', array('string'));
         $optionsResolver->setAllowedTypes('filter[version]', array('string'));
         return $optionsResolver;
