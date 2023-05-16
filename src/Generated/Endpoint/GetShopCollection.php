@@ -10,6 +10,9 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
     *     @var string $filter[meta][shopifyShopDomain] A filter for the Shopify hostname of the shop.
     *     @var bool $filter[meta][shopifyDefaultShop] A filter for Shopify default shops.\
     Note: For shops that are part of a Shopify installation that uses multiple shops,
@@ -43,11 +46,12 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[meta][shopifyShopDomain]', 'filter[meta][shopifyDefaultShop]', 'filter[meta][shopifyOrderCountryCode]', 'filter[shopCode]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[meta][shopifyShopDomain]', 'filter[meta][shopifyDefaultShop]', 'filter[meta][shopifyOrderCountryCode]', 'filter[shopCode]'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('paginationMode', array('string'));
         $optionsResolver->setAllowedTypes('filter[meta][shopifyShopDomain]', array('string'));
         $optionsResolver->setAllowedTypes('filter[meta][shopifyDefaultShop]', array('bool'));
         $optionsResolver->setAllowedTypes('filter[meta][shopifyOrderCountryCode]', array('string'));
