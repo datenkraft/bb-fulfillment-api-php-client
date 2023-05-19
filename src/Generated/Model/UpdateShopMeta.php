@@ -29,6 +29,12 @@ class UpdateShopMeta
      */
     protected $addTestSuffixToInternalReference = false;
     /**
+     * Overwrite currency of shopify orders.
+     *
+     * @var string|null
+     */
+    protected $defaultCurrency;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -110,6 +116,27 @@ class UpdateShopMeta
     public function setAddTestSuffixToInternalReference(?bool $addTestSuffixToInternalReference) : self
     {
         $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
+        return $this;
+    }
+    /**
+     * Overwrite currency of shopify orders.
+     *
+     * @return string|null
+     */
+    public function getDefaultCurrency() : ?string
+    {
+        return $this->defaultCurrency;
+    }
+    /**
+     * Overwrite currency of shopify orders.
+     *
+     * @param string|null $defaultCurrency
+     *
+     * @return self
+     */
+    public function setDefaultCurrency(?string $defaultCurrency) : self
+    {
+        $this->defaultCurrency = $defaultCurrency;
         return $this;
     }
 }

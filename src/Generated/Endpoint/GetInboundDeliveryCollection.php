@@ -10,6 +10,9 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
     *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
     
     Available sort orders:
@@ -68,11 +71,12 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'sortBy', 'filter[status]', 'filter[shopCode]', 'filter[expectedDeliveryDateFrom]', 'filter[expectedDeliveryDateTo]', 'filter[search]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[status]', 'filter[shopCode]', 'filter[expectedDeliveryDateFrom]', 'filter[expectedDeliveryDateTo]', 'filter[search]'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('paginationMode', array('string'));
         $optionsResolver->setAllowedTypes('sortBy', array('string'));
         $optionsResolver->setAllowedTypes('filter[status]', array('string'));
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));

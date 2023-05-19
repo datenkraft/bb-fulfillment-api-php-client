@@ -10,6 +10,9 @@ class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
     *     @var string $filter[productNumber] Filter for product number(s) (optional).
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
@@ -44,11 +47,12 @@ class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[productNumber]', 'filter[shopCode]', 'filter[productStatus]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[productNumber]', 'filter[shopCode]', 'filter[productStatus]'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('paginationMode', array('string'));
         $optionsResolver->setAllowedTypes('filter[productNumber]', array('string'));
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->setAllowedTypes('filter[productStatus]', array('string'));

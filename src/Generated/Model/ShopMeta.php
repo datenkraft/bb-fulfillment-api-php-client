@@ -63,6 +63,12 @@ class ShopMeta extends \ArrayObject
     */
     protected $invoiceEnabled = false;
     /**
+     * Overwrite currency of shopify orders.
+     *
+     * @var string|null
+     */
+    protected $defaultCurrency;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -257,6 +263,27 @@ class ShopMeta extends \ArrayObject
     public function setInvoiceEnabled(?bool $invoiceEnabled) : self
     {
         $this->invoiceEnabled = $invoiceEnabled;
+        return $this;
+    }
+    /**
+     * Overwrite currency of shopify orders.
+     *
+     * @return string|null
+     */
+    public function getDefaultCurrency() : ?string
+    {
+        return $this->defaultCurrency;
+    }
+    /**
+     * Overwrite currency of shopify orders.
+     *
+     * @param string|null $defaultCurrency
+     *
+     * @return self
+     */
+    public function setDefaultCurrency(?string $defaultCurrency) : self
+    {
+        $this->defaultCurrency = $defaultCurrency;
         return $this;
     }
 }
