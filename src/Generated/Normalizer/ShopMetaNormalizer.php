@@ -102,6 +102,13 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] === null) {
             $object->setInvoiceEnabled(null);
         }
+        if (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] !== null) {
+            $object->setDefaultCurrency($data['defaultCurrency']);
+            unset($data['defaultCurrency']);
+        }
+        elseif (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] === null) {
+            $object->setDefaultCurrency(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -141,6 +148,9 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (null !== $object->getInvoiceEnabled()) {
             $data['invoiceEnabled'] = $object->getInvoiceEnabled();
+        }
+        if (null !== $object->getDefaultCurrency()) {
+            $data['defaultCurrency'] = $object->getDefaultCurrency();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

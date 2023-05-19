@@ -10,6 +10,9 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
     *     @var string $filter[orderNumber] A filter for a single order number or multiple order numbers separted by a comma.
     - The filter can contain a maximum of 100 order numbers.
     - The order numbers in the filter must be unique.
@@ -43,11 +46,12 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[orderNumber]', 'shopCode'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[orderNumber]', 'shopCode'));
         $optionsResolver->setRequired(array('filter[orderNumber]'));
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('paginationMode', array('string'));
         $optionsResolver->setAllowedTypes('filter[orderNumber]', array('string'));
         $optionsResolver->setAllowedTypes('shopCode', array('string'));
         return $optionsResolver;

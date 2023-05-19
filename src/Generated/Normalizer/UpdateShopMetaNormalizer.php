@@ -63,6 +63,12 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] === null) {
             $object->setAddTestSuffixToInternalReference(null);
         }
+        if (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] !== null) {
+            $object->setDefaultCurrency($data['defaultCurrency']);
+        }
+        elseif (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] === null) {
+            $object->setDefaultCurrency(null);
+        }
         return $object;
     }
     /**
@@ -82,6 +88,9 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (null !== $object->getAddTestSuffixToInternalReference()) {
             $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
+        }
+        if (null !== $object->getDefaultCurrency()) {
+            $data['defaultCurrency'] = $object->getDefaultCurrency();
         }
         return $data;
     }
