@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class OrderCustomer
+class OrderCustomer extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -112,6 +120,7 @@ class OrderCustomer
      */
     public function setGender(string $gender) : self
     {
+        $this->initialized['gender'] = true;
         $this->gender = $gender;
         return $this;
     }
@@ -133,6 +142,7 @@ class OrderCustomer
      */
     public function setLanguageCode(string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -154,6 +164,7 @@ class OrderCustomer
      */
     public function setExternalCustomerId(?string $externalCustomerId) : self
     {
+        $this->initialized['externalCustomerId'] = true;
         $this->externalCustomerId = $externalCustomerId;
         return $this;
     }
@@ -175,6 +186,7 @@ class OrderCustomer
      */
     public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress) : self
     {
+        $this->initialized['deliveryAddress'] = true;
         $this->deliveryAddress = $deliveryAddress;
         return $this;
     }
@@ -196,6 +208,7 @@ class OrderCustomer
      */
     public function setPhone(?string $phone) : self
     {
+        $this->initialized['phone'] = true;
         $this->phone = $phone;
         return $this;
     }
@@ -221,6 +234,7 @@ class OrderCustomer
     */
     public function setFirstname(?string $firstname) : self
     {
+        $this->initialized['firstname'] = true;
         $this->firstname = $firstname;
         return $this;
     }
@@ -246,6 +260,7 @@ class OrderCustomer
     */
     public function setLastname(?string $lastname) : self
     {
+        $this->initialized['lastname'] = true;
         $this->lastname = $lastname;
         return $this;
     }
@@ -271,6 +286,7 @@ class OrderCustomer
     */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -296,6 +312,7 @@ class OrderCustomer
     */
     public function setCompany(?string $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -321,6 +338,7 @@ class OrderCustomer
     */
     public function setCompanyVatNumber(?string $companyVatNumber) : self
     {
+        $this->initialized['companyVatNumber'] = true;
         $this->companyVatNumber = $companyVatNumber;
         return $this;
     }
@@ -346,6 +364,7 @@ class OrderCustomer
     */
     public function setInvoiceAddress(?BaseOrderCustomerInvoiceAddress $invoiceAddress) : self
     {
+        $this->initialized['invoiceAddress'] = true;
         $this->invoiceAddress = $invoiceAddress;
         return $this;
     }
@@ -367,6 +386,7 @@ class OrderCustomer
      */
     public function setNumber(?string $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -388,6 +408,7 @@ class OrderCustomer
      */
     public function setType(?string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }

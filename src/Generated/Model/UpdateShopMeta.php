@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class UpdateShopMeta
+class UpdateShopMeta extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Domain of the Shopify shop.
      *
@@ -52,6 +60,7 @@ class UpdateShopMeta
      */
     public function setShopifyShopDomain(?string $shopifyShopDomain) : self
     {
+        $this->initialized['shopifyShopDomain'] = true;
         $this->shopifyShopDomain = $shopifyShopDomain;
         return $this;
     }
@@ -73,6 +82,7 @@ class UpdateShopMeta
      */
     public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore) : self
     {
+        $this->initialized['testShopResetNotBefore'] = true;
         $this->testShopResetNotBefore = $testShopResetNotBefore;
         return $this;
     }
@@ -94,6 +104,7 @@ class UpdateShopMeta
      */
     public function setSandboxMode(?bool $sandboxMode) : self
     {
+        $this->initialized['sandboxMode'] = true;
         $this->sandboxMode = $sandboxMode;
         return $this;
     }
@@ -115,6 +126,7 @@ class UpdateShopMeta
      */
     public function setAddTestSuffixToInternalReference(?bool $addTestSuffixToInternalReference) : self
     {
+        $this->initialized['addTestSuffixToInternalReference'] = true;
         $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
         return $this;
     }
@@ -136,6 +148,7 @@ class UpdateShopMeta
      */
     public function setDefaultCurrency(?string $defaultCurrency) : self
     {
+        $this->initialized['defaultCurrency'] = true;
         $this->defaultCurrency = $defaultCurrency;
         return $this;
     }

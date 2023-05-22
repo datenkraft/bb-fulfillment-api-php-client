@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewOrderOptions
+class NewOrderOptions extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
     * By setting this option, the order will be processed into the defined state.\
     This option is NOT available in the production systems.\
@@ -64,6 +72,7 @@ class NewOrderOptions
     */
     public function setAutoProcessState(string $autoProcessState) : self
     {
+        $this->initialized['autoProcessState'] = true;
         $this->autoProcessState = $autoProcessState;
         return $this;
     }

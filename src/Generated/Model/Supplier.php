@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Supplier
+class Supplier extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -34,6 +42,7 @@ class Supplier
      */
     public function setSupplierNumber(string $supplierNumber) : self
     {
+        $this->initialized['supplierNumber'] = true;
         $this->supplierNumber = $supplierNumber;
         return $this;
     }
@@ -55,6 +64,7 @@ class Supplier
      */
     public function setName(string $name) : self
     {
+        $this->initialized['name'] = true;
         $this->name = $name;
         return $this;
     }

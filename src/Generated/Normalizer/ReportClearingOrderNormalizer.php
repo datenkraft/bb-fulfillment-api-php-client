@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class ReportClearingOrderNormalizer implements DenormalizerInterface, Normalizer
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportClearingOrder';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportClearingOrder';
     }
@@ -41,15 +43,24 @@ class ReportClearingOrderNormalizer implements DenormalizerInterface, Normalizer
         }
         if (\array_key_exists('orderNumber', $data)) {
             $object->setOrderNumber($data['orderNumber']);
+            unset($data['orderNumber']);
         }
         if (\array_key_exists('shopOrderId', $data)) {
             $object->setShopOrderId($data['shopOrderId']);
+            unset($data['shopOrderId']);
         }
         if (\array_key_exists('deliveryZipCode', $data)) {
             $object->setDeliveryZipCode($data['deliveryZipCode']);
+            unset($data['deliveryZipCode']);
         }
         if (\array_key_exists('deliveryCountryCode', $data)) {
             $object->setDeliveryCountryCode($data['deliveryCountryCode']);
+            unset($data['deliveryCountryCode']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -59,17 +70,22 @@ class ReportClearingOrderNormalizer implements DenormalizerInterface, Normalizer
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getOrderNumber()) {
+        if ($object->isInitialized('orderNumber') && null !== $object->getOrderNumber()) {
             $data['orderNumber'] = $object->getOrderNumber();
         }
-        if (null !== $object->getShopOrderId()) {
+        if ($object->isInitialized('shopOrderId') && null !== $object->getShopOrderId()) {
             $data['shopOrderId'] = $object->getShopOrderId();
         }
-        if (null !== $object->getDeliveryZipCode()) {
+        if ($object->isInitialized('deliveryZipCode') && null !== $object->getDeliveryZipCode()) {
             $data['deliveryZipCode'] = $object->getDeliveryZipCode();
         }
-        if (null !== $object->getDeliveryCountryCode()) {
+        if ($object->isInitialized('deliveryCountryCode') && null !== $object->getDeliveryCountryCode()) {
             $data['deliveryCountryCode'] = $object->getDeliveryCountryCode();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

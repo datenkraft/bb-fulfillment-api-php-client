@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta';
     }
@@ -41,33 +43,43 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] !== null) {
             $object->setShopifyShopDomain($data['shopifyShopDomain']);
+            unset($data['shopifyShopDomain']);
         }
         elseif (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] === null) {
             $object->setShopifyShopDomain(null);
         }
         if (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] !== null) {
             $object->setTestShopResetNotBefore(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['testShopResetNotBefore']));
+            unset($data['testShopResetNotBefore']);
         }
         elseif (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] === null) {
             $object->setTestShopResetNotBefore(null);
         }
         if (\array_key_exists('sandboxMode', $data) && $data['sandboxMode'] !== null) {
             $object->setSandboxMode($data['sandboxMode']);
+            unset($data['sandboxMode']);
         }
         elseif (\array_key_exists('sandboxMode', $data) && $data['sandboxMode'] === null) {
             $object->setSandboxMode(null);
         }
         if (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] !== null) {
             $object->setAddTestSuffixToInternalReference($data['addTestSuffixToInternalReference']);
+            unset($data['addTestSuffixToInternalReference']);
         }
         elseif (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] === null) {
             $object->setAddTestSuffixToInternalReference(null);
         }
         if (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] !== null) {
             $object->setDefaultCurrency($data['defaultCurrency']);
+            unset($data['defaultCurrency']);
         }
         elseif (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] === null) {
             $object->setDefaultCurrency(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -77,20 +89,25 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getShopifyShopDomain()) {
+        if ($object->isInitialized('shopifyShopDomain') && null !== $object->getShopifyShopDomain()) {
             $data['shopifyShopDomain'] = $object->getShopifyShopDomain();
         }
-        if (null !== $object->getTestShopResetNotBefore()) {
+        if ($object->isInitialized('testShopResetNotBefore') && null !== $object->getTestShopResetNotBefore()) {
             $data['testShopResetNotBefore'] = $object->getTestShopResetNotBefore()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getSandboxMode()) {
+        if ($object->isInitialized('sandboxMode') && null !== $object->getSandboxMode()) {
             $data['sandboxMode'] = $object->getSandboxMode();
         }
-        if (null !== $object->getAddTestSuffixToInternalReference()) {
+        if ($object->isInitialized('addTestSuffixToInternalReference') && null !== $object->getAddTestSuffixToInternalReference()) {
             $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
         }
-        if (null !== $object->getDefaultCurrency()) {
+        if ($object->isInitialized('defaultCurrency') && null !== $object->getDefaultCurrency()) {
             $data['defaultCurrency'] = $object->getDefaultCurrency();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

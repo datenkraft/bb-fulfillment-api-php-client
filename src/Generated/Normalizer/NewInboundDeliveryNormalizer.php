@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDelivery';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDelivery';
     }
@@ -41,15 +43,18 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
         }
         if (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] !== null) {
             $object->setInboundDeliveryName($data['inboundDeliveryName']);
+            unset($data['inboundDeliveryName']);
         }
         elseif (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] === null) {
             $object->setInboundDeliveryName(null);
         }
         if (\array_key_exists('supplierNumber', $data)) {
             $object->setSupplierNumber($data['supplierNumber']);
+            unset($data['supplierNumber']);
         }
         if (\array_key_exists('expectedDeliveryDate', $data)) {
             $object->setExpectedDeliveryDate(\DateTime::createFromFormat('Y-m-d', $data['expectedDeliveryDate'])->setTime(0, 0, 0));
+            unset($data['expectedDeliveryDate']);
         }
         if (\array_key_exists('products', $data)) {
             $values = array();
@@ -57,6 +62,12 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
                 $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDeliveryProduct', 'json', $context);
             }
             $object->setProducts($values);
+            unset($data['products']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -66,7 +77,7 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getInboundDeliveryName()) {
+        if ($object->isInitialized('inboundDeliveryName') && null !== $object->getInboundDeliveryName()) {
             $data['inboundDeliveryName'] = $object->getInboundDeliveryName();
         }
         $data['supplierNumber'] = $object->getSupplierNumber();
@@ -76,6 +87,11 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $data['products'] = $values;
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
+        }
         return $data;
     }
 }

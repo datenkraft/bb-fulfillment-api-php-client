@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class InboundDelivery
+class InboundDelivery extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Optional free-text reference for inbound delivery.
      *
@@ -96,6 +104,7 @@ class InboundDelivery
      */
     public function setInboundDeliveryName(?string $inboundDeliveryName) : self
     {
+        $this->initialized['inboundDeliveryName'] = true;
         $this->inboundDeliveryName = $inboundDeliveryName;
         return $this;
     }
@@ -117,6 +126,7 @@ class InboundDelivery
      */
     public function setSupplierNumber(string $supplierNumber) : self
     {
+        $this->initialized['supplierNumber'] = true;
         $this->supplierNumber = $supplierNumber;
         return $this;
     }
@@ -138,6 +148,7 @@ class InboundDelivery
      */
     public function setExpectedDeliveryDate(\DateTime $expectedDeliveryDate) : self
     {
+        $this->initialized['expectedDeliveryDate'] = true;
         $this->expectedDeliveryDate = $expectedDeliveryDate;
         return $this;
     }
@@ -159,6 +170,7 @@ class InboundDelivery
      */
     public function setProducts(array $products) : self
     {
+        $this->initialized['products'] = true;
         $this->products = $products;
         return $this;
     }
@@ -182,6 +194,7 @@ class InboundDelivery
     */
     public function setInboundDeliveryNumber(?string $inboundDeliveryNumber) : self
     {
+        $this->initialized['inboundDeliveryNumber'] = true;
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
         return $this;
     }
@@ -203,6 +216,7 @@ class InboundDelivery
      */
     public function setShopWAWIDeliveryId(int $shopWAWIDeliveryId) : self
     {
+        $this->initialized['shopWAWIDeliveryId'] = true;
         $this->shopWAWIDeliveryId = $shopWAWIDeliveryId;
         return $this;
     }
@@ -234,6 +248,7 @@ class InboundDelivery
     */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -255,6 +270,7 @@ class InboundDelivery
      */
     public function setShopCode(?string $shopCode) : self
     {
+        $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
         return $this;
     }
@@ -276,6 +292,7 @@ class InboundDelivery
      */
     public function setStartDate(?\DateTime $startDate) : self
     {
+        $this->initialized['startDate'] = true;
         $this->startDate = $startDate;
         return $this;
     }
@@ -297,6 +314,7 @@ class InboundDelivery
      */
     public function setEndDate(?\DateTime $endDate) : self
     {
+        $this->initialized['endDate'] = true;
         $this->endDate = $endDate;
         return $this;
     }
@@ -322,6 +340,7 @@ class InboundDelivery
     */
     public function setDeliverySlipNumber(?string $deliverySlipNumber) : self
     {
+        $this->initialized['deliverySlipNumber'] = true;
         $this->deliverySlipNumber = $deliverySlipNumber;
         return $this;
     }

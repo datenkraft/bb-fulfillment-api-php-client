@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Order
+class Order extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shopCode used internally to distinguish between clients.
      *
@@ -155,6 +163,7 @@ class Order
      */
     public function setShopCode(?string $shopCode) : self
     {
+        $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
         return $this;
     }
@@ -176,6 +185,7 @@ class Order
      */
     public function setCustomer(OrderCustomer $customer) : self
     {
+        $this->initialized['customer'] = true;
         $this->customer = $customer;
         return $this;
     }
@@ -197,6 +207,7 @@ class Order
      */
     public function setOrderItems(array $orderItems) : self
     {
+        $this->initialized['orderItems'] = true;
         $this->orderItems = $orderItems;
         return $this;
     }
@@ -222,6 +233,7 @@ class Order
     */
     public function setExternalOrderId(?string $externalOrderId) : self
     {
+        $this->initialized['externalOrderId'] = true;
         $this->externalOrderId = $externalOrderId;
         return $this;
     }
@@ -245,6 +257,7 @@ class Order
     */
     public function setExternalOrderReference(?string $externalOrderReference) : self
     {
+        $this->initialized['externalOrderReference'] = true;
         $this->externalOrderReference = $externalOrderReference;
         return $this;
     }
@@ -266,6 +279,7 @@ class Order
      */
     public function setDeliverySlipNotes(?string $deliverySlipNotes) : self
     {
+        $this->initialized['deliverySlipNotes'] = true;
         $this->deliverySlipNotes = $deliverySlipNotes;
         return $this;
     }
@@ -287,6 +301,7 @@ class Order
      */
     public function setOrderNotes(?string $orderNotes) : self
     {
+        $this->initialized['orderNotes'] = true;
         $this->orderNotes = $orderNotes;
         return $this;
     }
@@ -308,6 +323,7 @@ class Order
      */
     public function setAmazonOrderId(?string $amazonOrderId) : self
     {
+        $this->initialized['amazonOrderId'] = true;
         $this->amazonOrderId = $amazonOrderId;
         return $this;
     }
@@ -329,6 +345,7 @@ class Order
      */
     public function setDeliveryCosts(?array $deliveryCosts) : self
     {
+        $this->initialized['deliveryCosts'] = true;
         $this->deliveryCosts = $deliveryCosts;
         return $this;
     }
@@ -350,6 +367,7 @@ class Order
      */
     public function setOptions($options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -375,6 +393,7 @@ class Order
     */
     public function setOrderNumber(?string $orderNumber) : self
     {
+        $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
         return $this;
     }
@@ -416,6 +435,7 @@ class Order
     */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -437,6 +457,7 @@ class Order
      */
     public function setOrderDate(\DateTime $orderDate) : self
     {
+        $this->initialized['orderDate'] = true;
         $this->orderDate = $orderDate;
         return $this;
     }
@@ -458,6 +479,7 @@ class Order
      */
     public function setDelivery(?array $delivery) : self
     {
+        $this->initialized['delivery'] = true;
         $this->delivery = $delivery;
         return $this;
     }
@@ -479,6 +501,7 @@ class Order
      */
     public function setPayment(OrderPayment $payment) : self
     {
+        $this->initialized['payment'] = true;
         $this->payment = $payment;
         return $this;
     }
@@ -500,6 +523,7 @@ class Order
      */
     public function setShipping(OrderShipping $shipping) : self
     {
+        $this->initialized['shipping'] = true;
         $this->shipping = $shipping;
         return $this;
     }
@@ -529,6 +553,7 @@ class Order
     */
     public function setSource(?string $source) : self
     {
+        $this->initialized['source'] = true;
         $this->source = $source;
         return $this;
     }
@@ -550,6 +575,7 @@ class Order
      */
     public function setSourceLink(?string $sourceLink) : self
     {
+        $this->initialized['sourceLink'] = true;
         $this->sourceLink = $sourceLink;
         return $this;
     }
@@ -571,6 +597,7 @@ class Order
      */
     public function setCancelable(bool $cancelable) : self
     {
+        $this->initialized['cancelable'] = true;
         $this->cancelable = $cancelable;
         return $this;
     }

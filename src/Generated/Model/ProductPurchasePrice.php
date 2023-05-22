@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ProductPurchasePrice
+class ProductPurchasePrice extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The currency code (ISO 4217)
      *
@@ -40,6 +48,7 @@ class ProductPurchasePrice
      */
     public function setCurrencyCode(string $currencyCode) : self
     {
+        $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;
         return $this;
     }
@@ -61,6 +70,7 @@ class ProductPurchasePrice
      */
     public function setAmount(int $amount) : self
     {
+        $this->initialized['amount'] = true;
         $this->amount = $amount;
         return $this;
     }
@@ -82,6 +92,7 @@ class ProductPurchasePrice
      */
     public function setPricePerUnit(float $pricePerUnit) : self
     {
+        $this->initialized['pricePerUnit'] = true;
         $this->pricePerUnit = $pricePerUnit;
         return $this;
     }
