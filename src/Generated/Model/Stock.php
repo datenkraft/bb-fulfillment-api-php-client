@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Stock
+class Stock extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The product number the stock is available for
      *
@@ -34,6 +42,7 @@ class Stock
      */
     public function setProductNumber(string $productNumber) : self
     {
+        $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
         return $this;
     }
@@ -55,6 +64,7 @@ class Stock
      */
     public function setStock(int $stock) : self
     {
+        $this->initialized['stock'] = true;
         $this->stock = $stock;
         return $this;
     }

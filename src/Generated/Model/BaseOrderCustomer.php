@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BaseOrderCustomer
+class BaseOrderCustomer extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -88,6 +96,7 @@ class BaseOrderCustomer
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -109,6 +118,7 @@ class BaseOrderCustomer
      */
     public function setFirstname(string $firstname) : self
     {
+        $this->initialized['firstname'] = true;
         $this->firstname = $firstname;
         return $this;
     }
@@ -130,6 +140,7 @@ class BaseOrderCustomer
      */
     public function setLastname(string $lastname) : self
     {
+        $this->initialized['lastname'] = true;
         $this->lastname = $lastname;
         return $this;
     }
@@ -151,6 +162,7 @@ class BaseOrderCustomer
      */
     public function setGender(string $gender) : self
     {
+        $this->initialized['gender'] = true;
         $this->gender = $gender;
         return $this;
     }
@@ -172,6 +184,7 @@ class BaseOrderCustomer
      */
     public function setTitle(?string $title) : self
     {
+        $this->initialized['title'] = true;
         $this->title = $title;
         return $this;
     }
@@ -193,6 +206,7 @@ class BaseOrderCustomer
      */
     public function setPhone(?string $phone) : self
     {
+        $this->initialized['phone'] = true;
         $this->phone = $phone;
         return $this;
     }
@@ -214,6 +228,7 @@ class BaseOrderCustomer
      */
     public function setLanguageCode(string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -235,6 +250,7 @@ class BaseOrderCustomer
      */
     public function setCompany(?string $company) : self
     {
+        $this->initialized['company'] = true;
         $this->company = $company;
         return $this;
     }
@@ -256,6 +272,7 @@ class BaseOrderCustomer
      */
     public function setCompanyVatNumber(?string $companyVatNumber) : self
     {
+        $this->initialized['companyVatNumber'] = true;
         $this->companyVatNumber = $companyVatNumber;
         return $this;
     }
@@ -277,6 +294,7 @@ class BaseOrderCustomer
      */
     public function setInvoiceAddress(OrderCustomerInvoiceAddress $invoiceAddress) : self
     {
+        $this->initialized['invoiceAddress'] = true;
         $this->invoiceAddress = $invoiceAddress;
         return $this;
     }
@@ -298,6 +316,7 @@ class BaseOrderCustomer
      */
     public function setDeliveryAddress($deliveryAddress) : self
     {
+        $this->initialized['deliveryAddress'] = true;
         $this->deliveryAddress = $deliveryAddress;
         return $this;
     }

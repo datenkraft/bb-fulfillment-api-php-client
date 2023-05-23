@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class AuditLogNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuditLog';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuditLog';
     }
@@ -41,39 +43,53 @@ class AuditLogNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
+            unset($data['id']);
         }
         if (\array_key_exists('endpoint', $data)) {
             $object->setEndpoint($data['endpoint']);
+            unset($data['endpoint']);
         }
         if (\array_key_exists('version', $data)) {
             $object->setVersion($data['version']);
+            unset($data['version']);
         }
         if (\array_key_exists('identifier', $data)) {
             $object->setIdentifier($data['identifier']);
+            unset($data['identifier']);
         }
         if (\array_key_exists('content', $data) && $data['content'] !== null) {
             $object->setContent($data['content']);
+            unset($data['content']);
         }
         elseif (\array_key_exists('content', $data) && $data['content'] === null) {
             $object->setContent(null);
         }
         if (\array_key_exists('confidentialContent', $data) && $data['confidentialContent'] !== null) {
             $object->setConfidentialContent($data['confidentialContent']);
+            unset($data['confidentialContent']);
         }
         elseif (\array_key_exists('confidentialContent', $data) && $data['confidentialContent'] === null) {
             $object->setConfidentialContent(null);
         }
         if (\array_key_exists('requestId', $data) && $data['requestId'] !== null) {
             $object->setRequestId($data['requestId']);
+            unset($data['requestId']);
         }
         elseif (\array_key_exists('requestId', $data) && $data['requestId'] === null) {
             $object->setRequestId(null);
         }
         if (\array_key_exists('oauthClientId', $data)) {
             $object->setOauthClientId($data['oauthClientId']);
+            unset($data['oauthClientId']);
         }
         if (\array_key_exists('timestamp', $data)) {
             $object->setTimestamp(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['timestamp']));
+            unset($data['timestamp']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -83,32 +99,37 @@ class AuditLogNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getId()) {
+        if ($object->isInitialized('id') && null !== $object->getId()) {
             $data['id'] = $object->getId();
         }
-        if (null !== $object->getEndpoint()) {
+        if ($object->isInitialized('endpoint') && null !== $object->getEndpoint()) {
             $data['endpoint'] = $object->getEndpoint();
         }
-        if (null !== $object->getVersion()) {
+        if ($object->isInitialized('version') && null !== $object->getVersion()) {
             $data['version'] = $object->getVersion();
         }
-        if (null !== $object->getIdentifier()) {
+        if ($object->isInitialized('identifier') && null !== $object->getIdentifier()) {
             $data['identifier'] = $object->getIdentifier();
         }
-        if (null !== $object->getContent()) {
+        if ($object->isInitialized('content') && null !== $object->getContent()) {
             $data['content'] = $object->getContent();
         }
-        if (null !== $object->getConfidentialContent()) {
+        if ($object->isInitialized('confidentialContent') && null !== $object->getConfidentialContent()) {
             $data['confidentialContent'] = $object->getConfidentialContent();
         }
-        if (null !== $object->getRequestId()) {
+        if ($object->isInitialized('requestId') && null !== $object->getRequestId()) {
             $data['requestId'] = $object->getRequestId();
         }
-        if (null !== $object->getOauthClientId()) {
+        if ($object->isInitialized('oauthClientId') && null !== $object->getOauthClientId()) {
             $data['oauthClientId'] = $object->getOauthClientId();
         }
-        if (null !== $object->getTimestamp()) {
+        if ($object->isInitialized('timestamp') && null !== $object->getTimestamp()) {
             $data['timestamp'] = $object->getTimestamp()->format('Y-m-d\\TH:i:sP');
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }
