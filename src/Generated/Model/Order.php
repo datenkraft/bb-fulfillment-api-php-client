@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Order
+class Order extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shopCode used in DISCO.
      *
@@ -25,7 +33,7 @@ class Order
     /**
      * Additional options (optional, TBD)
      *
-     * @var mixed|null
+     * @var mixed[]|null
      */
     protected $options;
     /**
@@ -93,6 +101,7 @@ class Order
      */
     public function setShopCode(?string $shopCode) : self
     {
+        $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
         return $this;
     }
@@ -114,6 +123,7 @@ class Order
      */
     public function setCustomer(OrderCustomer $customer) : self
     {
+        $this->initialized['customer'] = true;
         $this->customer = $customer;
         return $this;
     }
@@ -135,27 +145,29 @@ class Order
      */
     public function setOrderItems(array $orderItems) : self
     {
+        $this->initialized['orderItems'] = true;
         $this->orderItems = $orderItems;
         return $this;
     }
     /**
      * Additional options (optional, TBD)
      *
-     * @return mixed
+     * @return mixed[]|null
      */
-    public function getOptions()
+    public function getOptions() : ?iterable
     {
         return $this->options;
     }
     /**
      * Additional options (optional, TBD)
      *
-     * @param mixed $options
+     * @param mixed[]|null $options
      *
      * @return self
      */
-    public function setOptions($options) : self
+    public function setOptions(?iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
@@ -179,6 +191,7 @@ class Order
     */
     public function setOrderNumber(?string $orderNumber) : self
     {
+        $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
         return $this;
     }
@@ -220,6 +233,7 @@ class Order
     */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -241,6 +255,7 @@ class Order
      */
     public function setOrderDate(\DateTime $orderDate) : self
     {
+        $this->initialized['orderDate'] = true;
         $this->orderDate = $orderDate;
         return $this;
     }
@@ -262,6 +277,7 @@ class Order
      */
     public function setDelivery(?array $delivery) : self
     {
+        $this->initialized['delivery'] = true;
         $this->delivery = $delivery;
         return $this;
     }
@@ -283,6 +299,7 @@ class Order
      */
     public function setPayment(OrderPayment $payment) : self
     {
+        $this->initialized['payment'] = true;
         $this->payment = $payment;
         return $this;
     }
@@ -304,6 +321,7 @@ class Order
      */
     public function setShipping(OrderShipping $shipping) : self
     {
+        $this->initialized['shipping'] = true;
         $this->shipping = $shipping;
         return $this;
     }

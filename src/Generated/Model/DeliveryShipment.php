@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class DeliveryShipment
+class DeliveryShipment extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The delivery number
      *
@@ -72,6 +80,7 @@ class DeliveryShipment
      */
     public function setNumber(string $number) : self
     {
+        $this->initialized['number'] = true;
         $this->number = $number;
         return $this;
     }
@@ -95,6 +104,7 @@ class DeliveryShipment
     */
     public function setStatus(string $status) : self
     {
+        $this->initialized['status'] = true;
         $this->status = $status;
         return $this;
     }
@@ -118,6 +128,7 @@ class DeliveryShipment
     */
     public function setDeliveryService(?string $deliveryService) : self
     {
+        $this->initialized['deliveryService'] = true;
         $this->deliveryService = $deliveryService;
         return $this;
     }
@@ -139,6 +150,7 @@ class DeliveryShipment
      */
     public function setCode(string $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -160,6 +172,7 @@ class DeliveryShipment
      */
     public function setLink(string $link) : self
     {
+        $this->initialized['link'] = true;
         $this->link = $link;
         return $this;
     }
@@ -181,6 +194,7 @@ class DeliveryShipment
      */
     public function setWeight(float $weight) : self
     {
+        $this->initialized['weight'] = true;
         $this->weight = $weight;
         return $this;
     }
@@ -202,6 +216,7 @@ class DeliveryShipment
      */
     public function setWeightUnit(string $weightUnit) : self
     {
+        $this->initialized['weightUnit'] = true;
         $this->weightUnit = $weightUnit;
         return $this;
     }
@@ -223,6 +238,7 @@ class DeliveryShipment
      */
     public function setShipmentLines(array $shipmentLines) : self
     {
+        $this->initialized['shipmentLines'] = true;
         $this->shipmentLines = $shipmentLines;
         return $this;
     }

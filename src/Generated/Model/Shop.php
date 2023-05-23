@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Shop
+class Shop extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Id
      *
@@ -52,6 +60,7 @@ class Shop
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -73,6 +82,7 @@ class Shop
      */
     public function setDiscoShopCode(string $discoShopCode) : self
     {
+        $this->initialized['discoShopCode'] = true;
         $this->discoShopCode = $discoShopCode;
         return $this;
     }
@@ -94,6 +104,7 @@ class Shop
      */
     public function setDiscoOrderReferencePrefix(string $discoOrderReferencePrefix) : self
     {
+        $this->initialized['discoOrderReferencePrefix'] = true;
         $this->discoOrderReferencePrefix = $discoOrderReferencePrefix;
         return $this;
     }
@@ -115,6 +126,7 @@ class Shop
      */
     public function setEmail(string $email) : self
     {
+        $this->initialized['email'] = true;
         $this->email = $email;
         return $this;
     }
@@ -136,6 +148,7 @@ class Shop
      */
     public function setMeta(?ShopMeta $meta) : self
     {
+        $this->initialized['meta'] = true;
         $this->meta = $meta;
         return $this;
     }

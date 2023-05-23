@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ShipmentLine
+class ShipmentLine extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * product number
      *
@@ -46,6 +54,7 @@ class ShipmentLine
      */
     public function setProductNumber(string $productNumber) : self
     {
+        $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
         return $this;
     }
@@ -67,6 +76,7 @@ class ShipmentLine
      */
     public function setCount(int $count) : self
     {
+        $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
@@ -88,6 +98,7 @@ class ShipmentLine
      */
     public function setUnit(?string $unit) : self
     {
+        $this->initialized['unit'] = true;
         $this->unit = $unit;
         return $this;
     }
@@ -109,6 +120,7 @@ class ShipmentLine
      */
     public function setSerialNumbers(array $serialNumbers) : self
     {
+        $this->initialized['serialNumbers'] = true;
         $this->serialNumbers = $serialNumbers;
         return $this;
     }
