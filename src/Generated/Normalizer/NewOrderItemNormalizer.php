@@ -52,7 +52,7 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setCount($data['count']);
         }
         if (\array_key_exists('price', $data) && $data['price'] !== null) {
-            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderItemPrice', 'json', $context));
+            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice', 'json', $context));
         }
         elseif (\array_key_exists('price', $data) && $data['price'] === null) {
             $object->setPrice(null);
@@ -62,6 +62,18 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
+        }
+        if (\array_key_exists('value', $data)) {
+            $object->setValue($data['value']);
+        }
+        if (\array_key_exists('type', $data)) {
+            $object->setType($data['type']);
+        }
+        if (\array_key_exists('vat', $data)) {
+            $object->setVat($data['vat']);
+        }
+        if (\array_key_exists('currencyCode', $data)) {
+            $object->setCurrencyCode($data['currencyCode']);
         }
         return $object;
     }
@@ -82,6 +94,12 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (null !== $object->getOptions()) {
             $data['options'] = $object->getOptions();
         }
+        $data['value'] = $object->getValue();
+        $data['type'] = $object->getType();
+        if (null !== $object->getVat()) {
+            $data['vat'] = $object->getVat();
+        }
+        $data['currencyCode'] = $object->getCurrencyCode();
         return $data;
     }
 }

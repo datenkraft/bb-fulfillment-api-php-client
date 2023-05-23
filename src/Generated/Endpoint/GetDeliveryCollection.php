@@ -5,15 +5,18 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Get deliveries filtered by orderNumber.
-     *
-     * @param array $queryParameters {
-     *     @var int $page The page to read. Default is the first page.
-     *     @var int $pageSize The maximum size per page is 100. Default is 100.
-     *     @var string $filter[orderNumber] A filter with the orderNumber as given during the creation of the order.
-     *     @var string $shopCode The shopCode used in DISCO (optional).
-     * }
-     */
+    * Get deliveries filtered by orderNumber.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[orderNumber] A filter with the orderNumber as given during the creation of the order.
+    *     @var string $shopCode The shopCode used in DISCO (optional).
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -38,11 +41,12 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'filter[orderNumber]', 'shopCode'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[orderNumber]', 'shopCode'));
         $optionsResolver->setRequired(array('filter[orderNumber]'));
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
+        $optionsResolver->setAllowedTypes('paginationMode', array('string'));
         $optionsResolver->setAllowedTypes('filter[orderNumber]', array('string'));
         $optionsResolver->setAllowedTypes('shopCode', array('string'));
         return $optionsResolver;
