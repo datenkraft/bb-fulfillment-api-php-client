@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomer';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomer';
     }
@@ -41,51 +43,67 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
+            unset($data['email']);
         }
         if (\array_key_exists('firstname', $data)) {
             $object->setFirstname($data['firstname']);
+            unset($data['firstname']);
         }
         if (\array_key_exists('lastname', $data)) {
             $object->setLastname($data['lastname']);
+            unset($data['lastname']);
         }
         if (\array_key_exists('gender', $data)) {
             $object->setGender($data['gender']);
+            unset($data['gender']);
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
             $object->setTitle($data['title']);
+            unset($data['title']);
         }
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
         if (\array_key_exists('phone', $data) && $data['phone'] !== null) {
             $object->setPhone($data['phone']);
+            unset($data['phone']);
         }
         elseif (\array_key_exists('phone', $data) && $data['phone'] === null) {
             $object->setPhone(null);
         }
         if (\array_key_exists('languageCode', $data)) {
             $object->setLanguageCode($data['languageCode']);
+            unset($data['languageCode']);
         }
         if (\array_key_exists('company', $data) && $data['company'] !== null) {
             $object->setCompany($data['company']);
+            unset($data['company']);
         }
         elseif (\array_key_exists('company', $data) && $data['company'] === null) {
             $object->setCompany(null);
         }
         if (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] !== null) {
             $object->setCompanyVatNumber($data['companyVatNumber']);
+            unset($data['companyVatNumber']);
         }
         elseif (\array_key_exists('companyVatNumber', $data) && $data['companyVatNumber'] === null) {
             $object->setCompanyVatNumber(null);
         }
         if (\array_key_exists('invoiceAddress', $data)) {
             $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerInvoiceAddress', 'json', $context));
+            unset($data['invoiceAddress']);
         }
         if (\array_key_exists('deliveryAddress', $data) && $data['deliveryAddress'] !== null) {
             $object->setDeliveryAddress($data['deliveryAddress']);
+            unset($data['deliveryAddress']);
         }
         elseif (\array_key_exists('deliveryAddress', $data) && $data['deliveryAddress'] === null) {
             $object->setDeliveryAddress(null);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -99,22 +117,27 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
         $data['firstname'] = $object->getFirstname();
         $data['lastname'] = $object->getLastname();
         $data['gender'] = $object->getGender();
-        if (null !== $object->getTitle()) {
+        if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        if (null !== $object->getPhone()) {
+        if ($object->isInitialized('phone') && null !== $object->getPhone()) {
             $data['phone'] = $object->getPhone();
         }
         $data['languageCode'] = $object->getLanguageCode();
-        if (null !== $object->getCompany()) {
+        if ($object->isInitialized('company') && null !== $object->getCompany()) {
             $data['company'] = $object->getCompany();
         }
-        if (null !== $object->getCompanyVatNumber()) {
+        if ($object->isInitialized('companyVatNumber') && null !== $object->getCompanyVatNumber()) {
             $data['companyVatNumber'] = $object->getCompanyVatNumber();
         }
         $data['invoiceAddress'] = $this->normalizer->normalize($object->getInvoiceAddress(), 'json', $context);
-        if (null !== $object->getDeliveryAddress()) {
+        if ($object->isInitialized('deliveryAddress') && null !== $object->getDeliveryAddress()) {
             $data['deliveryAddress'] = $object->getDeliveryAddress();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

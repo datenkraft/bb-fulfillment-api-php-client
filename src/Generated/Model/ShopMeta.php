@@ -5,6 +5,14 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class ShopMeta extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Domain of the Shopify shop.
      *
      * @var string|null
@@ -40,6 +48,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setShopifyShopDomain(?string $shopifyShopDomain) : self
     {
+        $this->initialized['shopifyShopDomain'] = true;
         $this->shopifyShopDomain = $shopifyShopDomain;
         return $this;
     }
@@ -61,6 +70,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setTestShop(?bool $testShop) : self
     {
+        $this->initialized['testShop'] = true;
         $this->testShop = $testShop;
         return $this;
     }
@@ -82,6 +92,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore) : self
     {
+        $this->initialized['testShopResetNotBefore'] = true;
         $this->testShopResetNotBefore = $testShopResetNotBefore;
         return $this;
     }

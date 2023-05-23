@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewOrder
+class NewOrder extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The shopCode used in DISCO.
      *
@@ -25,7 +33,7 @@ class NewOrder
     /**
      * Additional options (optional, TBD)
      *
-     * @var mixed|null
+     * @var mixed[]|null
      */
     protected $options;
     /**
@@ -46,6 +54,7 @@ class NewOrder
      */
     public function setShopCode(?string $shopCode) : self
     {
+        $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
         return $this;
     }
@@ -67,6 +76,7 @@ class NewOrder
      */
     public function setCustomer(NewOrderCustomer $customer) : self
     {
+        $this->initialized['customer'] = true;
         $this->customer = $customer;
         return $this;
     }
@@ -88,27 +98,29 @@ class NewOrder
      */
     public function setOrderItems(array $orderItems) : self
     {
+        $this->initialized['orderItems'] = true;
         $this->orderItems = $orderItems;
         return $this;
     }
     /**
      * Additional options (optional, TBD)
      *
-     * @return mixed
+     * @return mixed[]|null
      */
-    public function getOptions()
+    public function getOptions() : ?iterable
     {
         return $this->options;
     }
     /**
      * Additional options (optional, TBD)
      *
-     * @param mixed $options
+     * @param mixed[]|null $options
      *
      * @return self
      */
-    public function setOptions($options) : self
+    public function setOptions(?iterable $options) : self
     {
+        $this->initialized['options'] = true;
         $this->options = $options;
         return $this;
     }
