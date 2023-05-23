@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class OrderCustomerDeliveryAddress
+class OrderCustomerDeliveryAddress extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -76,6 +84,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setStreet(string $street) : self
     {
+        $this->initialized['street'] = true;
         $this->street = $street;
         return $this;
     }
@@ -97,6 +106,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setStreetNumber(string $streetNumber) : self
     {
+        $this->initialized['streetNumber'] = true;
         $this->streetNumber = $streetNumber;
         return $this;
     }
@@ -118,6 +128,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setZipCode(string $zipCode) : self
     {
+        $this->initialized['zipCode'] = true;
         $this->zipCode = $zipCode;
         return $this;
     }
@@ -139,6 +150,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setDistrict(?string $district) : self
     {
+        $this->initialized['district'] = true;
         $this->district = $district;
         return $this;
     }
@@ -160,6 +172,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setCity(string $city) : self
     {
+        $this->initialized['city'] = true;
         $this->city = $city;
         return $this;
     }
@@ -181,6 +194,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setProvinceCode(?string $provinceCode) : self
     {
+        $this->initialized['provinceCode'] = true;
         $this->provinceCode = $provinceCode;
         return $this;
     }
@@ -202,6 +216,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setCountryCode(string $countryCode) : self
     {
+        $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
         return $this;
     }
@@ -223,6 +238,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setNameLine1(string $nameLine1) : self
     {
+        $this->initialized['nameLine1'] = true;
         $this->nameLine1 = $nameLine1;
         return $this;
     }
@@ -244,6 +260,7 @@ class OrderCustomerDeliveryAddress
      */
     public function setNameLine2(?string $nameLine2) : self
     {
+        $this->initialized['nameLine2'] = true;
         $this->nameLine2 = $nameLine2;
         return $this;
     }
