@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BulkImportInboundDeliveryFormatPostResponse207Item
+class BulkImportInboundDeliveryFormatPostResponse207Item extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * HTTP Status code of the single request
      *
@@ -25,7 +33,7 @@ class BulkImportInboundDeliveryFormatPostResponse207Item
     /**
      * 
      *
-     * @var mixed
+     * @var mixed[]
      */
     protected $content;
     /**
@@ -46,6 +54,7 @@ class BulkImportInboundDeliveryFormatPostResponse207Item
      */
     public function setCode(int $code) : self
     {
+        $this->initialized['code'] = true;
         $this->code = $code;
         return $this;
     }
@@ -67,6 +76,7 @@ class BulkImportInboundDeliveryFormatPostResponse207Item
      */
     public function setMessage(string $message) : self
     {
+        $this->initialized['message'] = true;
         $this->message = $message;
         return $this;
     }
@@ -88,27 +98,29 @@ class BulkImportInboundDeliveryFormatPostResponse207Item
      */
     public function setReference(iterable $reference) : self
     {
+        $this->initialized['reference'] = true;
         $this->reference = $reference;
         return $this;
     }
     /**
      * 
      *
-     * @return mixed
+     * @return mixed[]
      */
-    public function getContent()
+    public function getContent() : iterable
     {
         return $this->content;
     }
     /**
      * 
      *
-     * @param mixed $content
+     * @param mixed[] $content
      *
      * @return self
      */
-    public function setContent($content) : self
+    public function setContent(iterable $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }

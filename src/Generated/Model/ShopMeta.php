@@ -5,6 +5,14 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class ShopMeta extends \ArrayObject
 {
     /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
+    /**
      * Domain of the Shopify shop.
      *
      * @var string|null
@@ -86,6 +94,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setShopifyShopDomain(?string $shopifyShopDomain) : self
     {
+        $this->initialized['shopifyShopDomain'] = true;
         $this->shopifyShopDomain = $shopifyShopDomain;
         return $this;
     }
@@ -107,6 +116,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setTestShop(?bool $testShop) : self
     {
+        $this->initialized['testShop'] = true;
         $this->testShop = $testShop;
         return $this;
     }
@@ -128,6 +138,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore) : self
     {
+        $this->initialized['testShopResetNotBefore'] = true;
         $this->testShopResetNotBefore = $testShopResetNotBefore;
         return $this;
     }
@@ -149,6 +160,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setSandboxMode(?bool $sandboxMode) : self
     {
+        $this->initialized['sandboxMode'] = true;
         $this->sandboxMode = $sandboxMode;
         return $this;
     }
@@ -170,6 +182,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setAddTestSuffixToInternalReference(?bool $addTestSuffixToInternalReference) : self
     {
+        $this->initialized['addTestSuffixToInternalReference'] = true;
         $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
         return $this;
     }
@@ -191,6 +204,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setShopifyMultiShop(?bool $shopifyMultiShop) : self
     {
+        $this->initialized['shopifyMultiShop'] = true;
         $this->shopifyMultiShop = $shopifyMultiShop;
         return $this;
     }
@@ -214,6 +228,7 @@ class ShopMeta extends \ArrayObject
     */
     public function setShopifyDefaultShop(?bool $shopifyDefaultShop) : self
     {
+        $this->initialized['shopifyDefaultShop'] = true;
         $this->shopifyDefaultShop = $shopifyDefaultShop;
         return $this;
     }
@@ -239,6 +254,7 @@ class ShopMeta extends \ArrayObject
     */
     public function setShopifyOrderCountryCode(?string $shopifyOrderCountryCode) : self
     {
+        $this->initialized['shopifyOrderCountryCode'] = true;
         $this->shopifyOrderCountryCode = $shopifyOrderCountryCode;
         return $this;
     }
@@ -262,6 +278,7 @@ class ShopMeta extends \ArrayObject
     */
     public function setInvoiceEnabled(?bool $invoiceEnabled) : self
     {
+        $this->initialized['invoiceEnabled'] = true;
         $this->invoiceEnabled = $invoiceEnabled;
         return $this;
     }
@@ -283,6 +300,7 @@ class ShopMeta extends \ArrayObject
      */
     public function setDefaultCurrency(?string $defaultCurrency) : self
     {
+        $this->initialized['defaultCurrency'] = true;
         $this->defaultCurrency = $defaultCurrency;
         return $this;
     }

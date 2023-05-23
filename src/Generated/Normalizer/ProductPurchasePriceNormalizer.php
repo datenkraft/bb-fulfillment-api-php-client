@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class ProductPurchasePriceNormalizer implements DenormalizerInterface, Normalize
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductPurchasePrice';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductPurchasePrice';
     }
@@ -36,17 +38,28 @@ class ProductPurchasePriceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductPurchasePrice();
+        if (\array_key_exists('pricePerUnit', $data) && \is_int($data['pricePerUnit'])) {
+            $data['pricePerUnit'] = (double) $data['pricePerUnit'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('currencyCode', $data)) {
             $object->setCurrencyCode($data['currencyCode']);
+            unset($data['currencyCode']);
         }
         if (\array_key_exists('amount', $data)) {
             $object->setAmount($data['amount']);
+            unset($data['amount']);
         }
         if (\array_key_exists('pricePerUnit', $data)) {
             $object->setPricePerUnit($data['pricePerUnit']);
+            unset($data['pricePerUnit']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -59,6 +72,11 @@ class ProductPurchasePriceNormalizer implements DenormalizerInterface, Normalize
         $data['currencyCode'] = $object->getCurrencyCode();
         $data['amount'] = $object->getAmount();
         $data['pricePerUnit'] = $object->getPricePerUnit();
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
+        }
         return $data;
     }
 }

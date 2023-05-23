@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryProduct';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryProduct';
     }
@@ -41,15 +43,24 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
+            unset($data['productNumber']);
         }
         if (\array_key_exists('announcedCount', $data)) {
             $object->setAnnouncedCount($data['announcedCount']);
+            unset($data['announcedCount']);
         }
         if (\array_key_exists('productTitle', $data)) {
             $object->setProductTitle($data['productTitle']);
+            unset($data['productTitle']);
         }
         if (\array_key_exists('deliveredCount', $data)) {
             $object->setDeliveredCount($data['deliveredCount']);
+            unset($data['deliveredCount']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -61,11 +72,16 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
         $data = array();
         $data['productNumber'] = $object->getProductNumber();
         $data['announcedCount'] = $object->getAnnouncedCount();
-        if (null !== $object->getProductTitle()) {
+        if ($object->isInitialized('productTitle') && null !== $object->getProductTitle()) {
             $data['productTitle'] = $object->getProductTitle();
         }
-        if (null !== $object->getDeliveredCount()) {
+        if ($object->isInitialized('deliveredCount') && null !== $object->getDeliveredCount()) {
             $data['deliveredCount'] = $object->getDeliveredCount();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ProductJournalReference
+class ProductJournalReference extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Company name. Set if Journal entry reason is 'niceshops_order' and a company is set.
      *
@@ -40,6 +48,7 @@ class ProductJournalReference
      */
     public function setCompanyName(string $companyName) : self
     {
+        $this->initialized['companyName'] = true;
         $this->companyName = $companyName;
         return $this;
     }
@@ -61,6 +70,7 @@ class ProductJournalReference
      */
     public function setInboundDeliveryNumber(string $inboundDeliveryNumber) : self
     {
+        $this->initialized['inboundDeliveryNumber'] = true;
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
         return $this;
     }
@@ -82,6 +92,7 @@ class ProductJournalReference
      */
     public function setOrderNumber(string $orderNumber) : self
     {
+        $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
         return $this;
     }

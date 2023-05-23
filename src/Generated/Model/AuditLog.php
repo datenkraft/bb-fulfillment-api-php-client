@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class AuditLog
+class AuditLog extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Id
      *
@@ -76,6 +84,7 @@ class AuditLog
      */
     public function setId(string $id) : self
     {
+        $this->initialized['id'] = true;
         $this->id = $id;
         return $this;
     }
@@ -97,6 +106,7 @@ class AuditLog
      */
     public function setEndpoint(string $endpoint) : self
     {
+        $this->initialized['endpoint'] = true;
         $this->endpoint = $endpoint;
         return $this;
     }
@@ -118,6 +128,7 @@ class AuditLog
      */
     public function setVersion(string $version) : self
     {
+        $this->initialized['version'] = true;
         $this->version = $version;
         return $this;
     }
@@ -139,6 +150,7 @@ class AuditLog
      */
     public function setIdentifier(string $identifier) : self
     {
+        $this->initialized['identifier'] = true;
         $this->identifier = $identifier;
         return $this;
     }
@@ -160,6 +172,7 @@ class AuditLog
      */
     public function setContent(?string $content) : self
     {
+        $this->initialized['content'] = true;
         $this->content = $content;
         return $this;
     }
@@ -181,6 +194,7 @@ class AuditLog
      */
     public function setConfidentialContent(?string $confidentialContent) : self
     {
+        $this->initialized['confidentialContent'] = true;
         $this->confidentialContent = $confidentialContent;
         return $this;
     }
@@ -202,6 +216,7 @@ class AuditLog
      */
     public function setRequestId(?string $requestId) : self
     {
+        $this->initialized['requestId'] = true;
         $this->requestId = $requestId;
         return $this;
     }
@@ -223,6 +238,7 @@ class AuditLog
      */
     public function setOauthClientId(string $oauthClientId) : self
     {
+        $this->initialized['oauthClientId'] = true;
         $this->oauthClientId = $oauthClientId;
         return $this;
     }
@@ -244,6 +260,7 @@ class AuditLog
      */
     public function setTimestamp(\DateTime $timestamp) : self
     {
+        $this->initialized['timestamp'] = true;
         $this->timestamp = $timestamp;
         return $this;
     }
