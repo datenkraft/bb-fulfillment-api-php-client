@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewInboundDelivery
+class NewInboundDelivery extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Optional free-text reference for inbound delivery.
      *
@@ -46,6 +54,7 @@ class NewInboundDelivery
      */
     public function setInboundDeliveryName(?string $inboundDeliveryName) : self
     {
+        $this->initialized['inboundDeliveryName'] = true;
         $this->inboundDeliveryName = $inboundDeliveryName;
         return $this;
     }
@@ -67,6 +76,7 @@ class NewInboundDelivery
      */
     public function setSupplierNumber(string $supplierNumber) : self
     {
+        $this->initialized['supplierNumber'] = true;
         $this->supplierNumber = $supplierNumber;
         return $this;
     }
@@ -88,6 +98,7 @@ class NewInboundDelivery
      */
     public function setExpectedDeliveryDate(\DateTime $expectedDeliveryDate) : self
     {
+        $this->initialized['expectedDeliveryDate'] = true;
         $this->expectedDeliveryDate = $expectedDeliveryDate;
         return $this;
     }
@@ -109,6 +120,7 @@ class NewInboundDelivery
      */
     public function setProducts(array $products) : self
     {
+        $this->initialized['products'] = true;
         $this->products = $products;
         return $this;
     }

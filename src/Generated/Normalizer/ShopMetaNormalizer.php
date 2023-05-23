@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShopMeta';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShopMeta';
     }
@@ -122,34 +124,34 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getShopifyShopDomain()) {
+        if ($object->isInitialized('shopifyShopDomain') && null !== $object->getShopifyShopDomain()) {
             $data['shopifyShopDomain'] = $object->getShopifyShopDomain();
         }
-        if (null !== $object->getTestShop()) {
+        if ($object->isInitialized('testShop') && null !== $object->getTestShop()) {
             $data['testShop'] = $object->getTestShop();
         }
-        if (null !== $object->getTestShopResetNotBefore()) {
+        if ($object->isInitialized('testShopResetNotBefore') && null !== $object->getTestShopResetNotBefore()) {
             $data['testShopResetNotBefore'] = $object->getTestShopResetNotBefore()->format('Y-m-d\\TH:i:sP');
         }
-        if (null !== $object->getSandboxMode()) {
+        if ($object->isInitialized('sandboxMode') && null !== $object->getSandboxMode()) {
             $data['sandboxMode'] = $object->getSandboxMode();
         }
-        if (null !== $object->getAddTestSuffixToInternalReference()) {
+        if ($object->isInitialized('addTestSuffixToInternalReference') && null !== $object->getAddTestSuffixToInternalReference()) {
             $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
         }
-        if (null !== $object->getShopifyMultiShop()) {
+        if ($object->isInitialized('shopifyMultiShop') && null !== $object->getShopifyMultiShop()) {
             $data['shopifyMultiShop'] = $object->getShopifyMultiShop();
         }
-        if (null !== $object->getShopifyDefaultShop()) {
+        if ($object->isInitialized('shopifyDefaultShop') && null !== $object->getShopifyDefaultShop()) {
             $data['shopifyDefaultShop'] = $object->getShopifyDefaultShop();
         }
-        if (null !== $object->getShopifyOrderCountryCode()) {
+        if ($object->isInitialized('shopifyOrderCountryCode') && null !== $object->getShopifyOrderCountryCode()) {
             $data['shopifyOrderCountryCode'] = $object->getShopifyOrderCountryCode();
         }
-        if (null !== $object->getInvoiceEnabled()) {
+        if ($object->isInitialized('invoiceEnabled') && null !== $object->getInvoiceEnabled()) {
             $data['invoiceEnabled'] = $object->getInvoiceEnabled();
         }
-        if (null !== $object->getDefaultCurrency()) {
+        if ($object->isInitialized('defaultCurrency') && null !== $object->getDefaultCurrency()) {
             $data['defaultCurrency'] = $object->getDefaultCurrency();
         }
         foreach ($object as $key => $value) {

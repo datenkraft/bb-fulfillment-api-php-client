@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class CollectionPagination
+class CollectionPagination extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The page contained in this collection.
      *
@@ -41,6 +49,7 @@ class CollectionPagination
      */
     public function setPage(int $page) : self
     {
+        $this->initialized['page'] = true;
         $this->page = $page;
         return $this;
     }
@@ -62,6 +71,7 @@ class CollectionPagination
      */
     public function setPageSize(int $pageSize) : self
     {
+        $this->initialized['pageSize'] = true;
         $this->pageSize = $pageSize;
         return $this;
     }
@@ -85,6 +95,7 @@ class CollectionPagination
     */
     public function setTotalCount(?int $totalCount) : self
     {
+        $this->initialized['totalCount'] = true;
         $this->totalCount = $totalCount;
         return $this;
     }

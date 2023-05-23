@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShipmentLine';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShipmentLine';
     }
@@ -41,12 +43,15 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
+            unset($data['productNumber']);
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
+            unset($data['count']);
         }
         if (\array_key_exists('unit', $data) && $data['unit'] !== null) {
             $object->setUnit($data['unit']);
+            unset($data['unit']);
         }
         elseif (\array_key_exists('unit', $data) && $data['unit'] === null) {
             $object->setUnit(null);
@@ -57,6 +62,12 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
                 $values[] = $value;
             }
             $object->setSerialNumbers($values);
+            unset($data['serialNumbers']);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -66,21 +77,26 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProductNumber()) {
+        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
             $data['productNumber'] = $object->getProductNumber();
         }
-        if (null !== $object->getCount()) {
+        if ($object->isInitialized('count') && null !== $object->getCount()) {
             $data['count'] = $object->getCount();
         }
-        if (null !== $object->getUnit()) {
+        if ($object->isInitialized('unit') && null !== $object->getUnit()) {
             $data['unit'] = $object->getUnit();
         }
-        if (null !== $object->getSerialNumbers()) {
+        if ($object->isInitialized('serialNumbers') && null !== $object->getSerialNumbers()) {
             $values = array();
             foreach ($object->getSerialNumbers() as $value) {
                 $values[] = $value;
             }
             $data['serialNumbers'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

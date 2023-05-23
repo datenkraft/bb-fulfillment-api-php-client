@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Stock
+class Stock extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Product number
      *
@@ -64,6 +72,7 @@ class Stock
      */
     public function setProductNumber(string $productNumber) : self
     {
+        $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
         return $this;
     }
@@ -87,6 +96,7 @@ class Stock
     */
     public function setStocked(int $stocked) : self
     {
+        $this->initialized['stocked'] = true;
         $this->stocked = $stocked;
         return $this;
     }
@@ -108,6 +118,7 @@ class Stock
      */
     public function setReserved(int $reserved) : self
     {
+        $this->initialized['reserved'] = true;
         $this->reserved = $reserved;
         return $this;
     }
@@ -133,6 +144,7 @@ class Stock
     */
     public function setAvailable(int $available) : self
     {
+        $this->initialized['available'] = true;
         $this->available = $available;
         return $this;
     }
@@ -154,6 +166,7 @@ class Stock
      */
     public function setIncoming(int $incoming) : self
     {
+        $this->initialized['incoming'] = true;
         $this->incoming = $incoming;
         return $this;
     }
@@ -181,6 +194,7 @@ class Stock
     */
     public function setOverbookingPossibilityStatus(string $overbookingPossibilityStatus) : self
     {
+        $this->initialized['overbookingPossibilityStatus'] = true;
         $this->overbookingPossibilityStatus = $overbookingPossibilityStatus;
         return $this;
     }

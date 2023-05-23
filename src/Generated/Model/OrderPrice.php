@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class OrderPrice
+class OrderPrice extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
     a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
@@ -52,6 +60,7 @@ class OrderPrice
     */
     public function setValue(float $value) : self
     {
+        $this->initialized['value'] = true;
         $this->value = $value;
         return $this;
     }
@@ -73,6 +82,7 @@ class OrderPrice
      */
     public function setType(string $type) : self
     {
+        $this->initialized['type'] = true;
         $this->type = $type;
         return $this;
     }
@@ -94,6 +104,7 @@ class OrderPrice
      */
     public function setVat(float $vat) : self
     {
+        $this->initialized['vat'] = true;
         $this->vat = $vat;
         return $this;
     }
@@ -115,6 +126,7 @@ class OrderPrice
      */
     public function setCurrencyCode(string $currencyCode) : self
     {
+        $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;
         return $this;
     }

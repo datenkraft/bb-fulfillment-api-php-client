@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrder';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrder';
     }
@@ -41,12 +43,14 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
             $object->setShopCode($data['shopCode']);
+            unset($data['shopCode']);
         }
         elseif (\array_key_exists('shopCode', $data) && $data['shopCode'] === null) {
             $object->setShopCode(null);
         }
         if (\array_key_exists('customer', $data)) {
             $object->setCustomer($this->denormalizer->denormalize($data['customer'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomer', 'json', $context));
+            unset($data['customer']);
         }
         if (\array_key_exists('orderItems', $data)) {
             $values = array();
@@ -54,33 +58,39 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderItem', 'json', $context);
             }
             $object->setOrderItems($values);
+            unset($data['orderItems']);
         }
         if (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] !== null) {
             $object->setExternalOrderId($data['externalOrderId']);
+            unset($data['externalOrderId']);
         }
         elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
             $object->setExternalOrderId(null);
         }
         if (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] !== null) {
             $object->setExternalOrderReference($data['externalOrderReference']);
+            unset($data['externalOrderReference']);
         }
         elseif (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] === null) {
             $object->setExternalOrderReference(null);
         }
         if (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] !== null) {
             $object->setDeliverySlipNotes($data['deliverySlipNotes']);
+            unset($data['deliverySlipNotes']);
         }
         elseif (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] === null) {
             $object->setDeliverySlipNotes(null);
         }
         if (\array_key_exists('orderNotes', $data) && $data['orderNotes'] !== null) {
             $object->setOrderNotes($data['orderNotes']);
+            unset($data['orderNotes']);
         }
         elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
             $object->setOrderNotes(null);
         }
         if (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] !== null) {
             $object->setAmazonOrderId($data['amazonOrderId']);
+            unset($data['amazonOrderId']);
         }
         elseif (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] === null) {
             $object->setAmazonOrderId(null);
@@ -91,15 +101,22 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts', 'json', $context);
             }
             $object->setDeliveryCosts($values_1);
+            unset($data['deliveryCosts']);
         }
         elseif (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] === null) {
             $object->setDeliveryCosts(null);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
             $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions', 'json', $context));
+            unset($data['options']);
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
+        }
+        foreach ($data as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_2;
+            }
         }
         return $object;
     }
@@ -109,43 +126,48 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getShopCode()) {
+        if ($object->isInitialized('shopCode') && null !== $object->getShopCode()) {
             $data['shopCode'] = $object->getShopCode();
         }
-        if (null !== $object->getCustomer()) {
+        if ($object->isInitialized('customer') && null !== $object->getCustomer()) {
             $data['customer'] = $this->normalizer->normalize($object->getCustomer(), 'json', $context);
         }
-        if (null !== $object->getOrderItems()) {
+        if ($object->isInitialized('orderItems') && null !== $object->getOrderItems()) {
             $values = array();
             foreach ($object->getOrderItems() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['orderItems'] = $values;
         }
-        if (null !== $object->getExternalOrderId()) {
+        if ($object->isInitialized('externalOrderId') && null !== $object->getExternalOrderId()) {
             $data['externalOrderId'] = $object->getExternalOrderId();
         }
-        if (null !== $object->getExternalOrderReference()) {
+        if ($object->isInitialized('externalOrderReference') && null !== $object->getExternalOrderReference()) {
             $data['externalOrderReference'] = $object->getExternalOrderReference();
         }
-        if (null !== $object->getDeliverySlipNotes()) {
+        if ($object->isInitialized('deliverySlipNotes') && null !== $object->getDeliverySlipNotes()) {
             $data['deliverySlipNotes'] = $object->getDeliverySlipNotes();
         }
-        if (null !== $object->getOrderNotes()) {
+        if ($object->isInitialized('orderNotes') && null !== $object->getOrderNotes()) {
             $data['orderNotes'] = $object->getOrderNotes();
         }
-        if (null !== $object->getAmazonOrderId()) {
+        if ($object->isInitialized('amazonOrderId') && null !== $object->getAmazonOrderId()) {
             $data['amazonOrderId'] = $object->getAmazonOrderId();
         }
-        if (null !== $object->getDeliveryCosts()) {
+        if ($object->isInitialized('deliveryCosts') && null !== $object->getDeliveryCosts()) {
             $values_1 = array();
             foreach ($object->getDeliveryCosts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['deliveryCosts'] = $values_1;
         }
-        if (null !== $object->getOptions()) {
+        if ($object->isInitialized('options') && null !== $object->getOptions()) {
             $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
+        }
+        foreach ($object as $key => $value_2) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_2;
+            }
         }
         return $data;
     }

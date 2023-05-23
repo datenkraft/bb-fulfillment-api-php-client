@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
     }
@@ -41,12 +43,15 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
+            unset($data['countryCode']);
         }
         if (\array_key_exists('name', $data)) {
             $object->setName($data['name']);
+            unset($data['name']);
         }
         if (\array_key_exists('phoneRequired', $data)) {
             $object->setPhoneRequired($data['phoneRequired']);
+            unset($data['phoneRequired']);
         }
         if (\array_key_exists('provinces', $data) && $data['provinces'] !== null) {
             $values = array();
@@ -54,9 +59,15 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryProvinces', 'json', $context);
             }
             $object->setProvinces($values);
+            unset($data['provinces']);
         }
         elseif (\array_key_exists('provinces', $data) && $data['provinces'] === null) {
             $object->setProvinces(null);
+        }
+        foreach ($data as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value_1;
+            }
         }
         return $object;
     }
@@ -66,21 +77,26 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getCountryCode()) {
+        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
             $data['countryCode'] = $object->getCountryCode();
         }
-        if (null !== $object->getName()) {
+        if ($object->isInitialized('name') && null !== $object->getName()) {
             $data['name'] = $object->getName();
         }
-        if (null !== $object->getPhoneRequired()) {
+        if ($object->isInitialized('phoneRequired') && null !== $object->getPhoneRequired()) {
             $data['phoneRequired'] = $object->getPhoneRequired();
         }
-        if (null !== $object->getProvinces()) {
+        if ($object->isInitialized('provinces') && null !== $object->getProvinces()) {
             $values = array();
             foreach ($object->getProvinces() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['provinces'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value_1;
+            }
         }
         return $data;
     }

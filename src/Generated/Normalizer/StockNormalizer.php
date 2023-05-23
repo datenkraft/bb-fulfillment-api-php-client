@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Stock';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Stock';
     }
@@ -41,21 +43,32 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
+            unset($data['productNumber']);
         }
         if (\array_key_exists('stocked', $data)) {
             $object->setStocked($data['stocked']);
+            unset($data['stocked']);
         }
         if (\array_key_exists('reserved', $data)) {
             $object->setReserved($data['reserved']);
+            unset($data['reserved']);
         }
         if (\array_key_exists('available', $data)) {
             $object->setAvailable($data['available']);
+            unset($data['available']);
         }
         if (\array_key_exists('incoming', $data)) {
             $object->setIncoming($data['incoming']);
+            unset($data['incoming']);
         }
         if (\array_key_exists('overbookingPossibilityStatus', $data)) {
             $object->setOverbookingPossibilityStatus($data['overbookingPossibilityStatus']);
+            unset($data['overbookingPossibilityStatus']);
+        }
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
+            }
         }
         return $object;
     }
@@ -65,23 +78,28 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if (null !== $object->getProductNumber()) {
+        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
             $data['productNumber'] = $object->getProductNumber();
         }
-        if (null !== $object->getStocked()) {
+        if ($object->isInitialized('stocked') && null !== $object->getStocked()) {
             $data['stocked'] = $object->getStocked();
         }
-        if (null !== $object->getReserved()) {
+        if ($object->isInitialized('reserved') && null !== $object->getReserved()) {
             $data['reserved'] = $object->getReserved();
         }
-        if (null !== $object->getAvailable()) {
+        if ($object->isInitialized('available') && null !== $object->getAvailable()) {
             $data['available'] = $object->getAvailable();
         }
-        if (null !== $object->getIncoming()) {
+        if ($object->isInitialized('incoming') && null !== $object->getIncoming()) {
             $data['incoming'] = $object->getIncoming();
         }
-        if (null !== $object->getOverbookingPossibilityStatus()) {
+        if ($object->isInitialized('overbookingPossibilityStatus') && null !== $object->getOverbookingPossibilityStatus()) {
             $data['overbookingPossibilityStatus'] = $object->getOverbookingPossibilityStatus();
+        }
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
+            }
         }
         return $data;
     }

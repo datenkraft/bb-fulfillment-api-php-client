@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ProductUnitCollection
+class ProductUnitCollection extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * 
      *
@@ -34,6 +42,7 @@ class ProductUnitCollection
      */
     public function setPagination(CollectionPagination $pagination) : self
     {
+        $this->initialized['pagination'] = true;
         $this->pagination = $pagination;
         return $this;
     }
@@ -55,6 +64,7 @@ class ProductUnitCollection
      */
     public function setData(array $data) : self
     {
+        $this->initialized['data'] = true;
         $this->data = $data;
         return $this;
     }

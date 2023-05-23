@@ -4,6 +4,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
@@ -16,11 +17,12 @@ class BulkImportInboundDeliveryFormatPostResponse207ItemNormalizer implements De
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
-    public function supportsDenormalization($data, $type, $format = null) : bool
+    use ValidatorTrait;
+    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
         return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryFormatPostResponse207Item';
     }
-    public function supportsNormalization($data, $format = null) : bool
+    public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
         return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryFormatPostResponse207Item';
     }
@@ -41,9 +43,11 @@ class BulkImportInboundDeliveryFormatPostResponse207ItemNormalizer implements De
         }
         if (\array_key_exists('code', $data)) {
             $object->setCode($data['code']);
+            unset($data['code']);
         }
         if (\array_key_exists('message', $data)) {
             $object->setMessage($data['message']);
+            unset($data['message']);
         }
         if (\array_key_exists('reference', $data)) {
             $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
@@ -51,9 +55,20 @@ class BulkImportInboundDeliveryFormatPostResponse207ItemNormalizer implements De
                 $values[$key] = $value;
             }
             $object->setReference($values);
+            unset($data['reference']);
         }
         if (\array_key_exists('content', $data)) {
-            $object->setContent($data['content']);
+            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['content'] as $key_1 => $value_1) {
+                $values_1[$key_1] = $value_1;
+            }
+            $object->setContent($values_1);
+            unset($data['content']);
+        }
+        foreach ($data as $key_2 => $value_2) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $object[$key_2] = $value_2;
+            }
         }
         return $object;
     }
@@ -70,7 +85,16 @@ class BulkImportInboundDeliveryFormatPostResponse207ItemNormalizer implements De
             $values[$key] = $value;
         }
         $data['reference'] = $values;
-        $data['content'] = $object->getContent();
+        $values_1 = array();
+        foreach ($object->getContent() as $key_1 => $value_1) {
+            $values_1[$key_1] = $value_1;
+        }
+        $data['content'] = $values_1;
+        foreach ($object as $key_2 => $value_2) {
+            if (preg_match('/.*/', (string) $key_2)) {
+                $data[$key_2] = $value_2;
+            }
+        }
         return $data;
     }
 }

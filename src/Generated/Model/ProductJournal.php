@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ProductJournal
+class ProductJournal extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * The API internal id of the journal entry.
      *
@@ -73,6 +81,7 @@ class ProductJournal
      */
     public function setJournalId(int $journalId) : self
     {
+        $this->initialized['journalId'] = true;
         $this->journalId = $journalId;
         return $this;
     }
@@ -94,6 +103,7 @@ class ProductJournal
      */
     public function setDate(\DateTime $date) : self
     {
+        $this->initialized['date'] = true;
         $this->date = $date;
         return $this;
     }
@@ -115,6 +125,7 @@ class ProductJournal
      */
     public function setProductNumber(string $productNumber) : self
     {
+        $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
         return $this;
     }
@@ -136,6 +147,7 @@ class ProductJournal
      */
     public function setReason(string $reason) : self
     {
+        $this->initialized['reason'] = true;
         $this->reason = $reason;
         return $this;
     }
@@ -159,6 +171,7 @@ class ProductJournal
     */
     public function setStockDelta(?int $stockDelta) : self
     {
+        $this->initialized['stockDelta'] = true;
         $this->stockDelta = $stockDelta;
         return $this;
     }
@@ -182,6 +195,7 @@ class ProductJournal
     */
     public function setStockOld(?int $stockOld) : self
     {
+        $this->initialized['stockOld'] = true;
         $this->stockOld = $stockOld;
         return $this;
     }
@@ -205,6 +219,7 @@ class ProductJournal
     */
     public function setStockNew(?int $stockNew) : self
     {
+        $this->initialized['stockNew'] = true;
         $this->stockNew = $stockNew;
         return $this;
     }
@@ -226,6 +241,7 @@ class ProductJournal
      */
     public function setReference(ProductJournalReference $reference) : self
     {
+        $this->initialized['reference'] = true;
         $this->reference = $reference;
         return $this;
     }

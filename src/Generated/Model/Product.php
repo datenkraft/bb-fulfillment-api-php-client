@@ -2,8 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Product
+class Product extends \ArrayObject
 {
+    /**
+     * @var array
+     */
+    protected $initialized = array();
+    public function isInitialized($property) : bool
+    {
+        return array_key_exists($property, $this->initialized);
+    }
     /**
      * Type of the product ('standard' if no value is provided)
      *
@@ -206,6 +214,7 @@ class Product
      */
     public function setProductType(string $productType) : self
     {
+        $this->initialized['productType'] = true;
         $this->productType = $productType;
         return $this;
     }
@@ -229,6 +238,7 @@ class Product
     */
     public function setArticleVariantTitle(?string $articleVariantTitle) : self
     {
+        $this->initialized['articleVariantTitle'] = true;
         $this->articleVariantTitle = $articleVariantTitle;
         return $this;
     }
@@ -252,6 +262,7 @@ class Product
     */
     public function setArticleVariantType(?string $articleVariantType) : self
     {
+        $this->initialized['articleVariantType'] = true;
         $this->articleVariantType = $articleVariantType;
         return $this;
     }
@@ -273,6 +284,7 @@ class Product
      */
     public function setArticleStatus(?string $articleStatus) : self
     {
+        $this->initialized['articleStatus'] = true;
         $this->articleStatus = $articleStatus;
         return $this;
     }
@@ -294,6 +306,7 @@ class Product
      */
     public function setContentsAmount(?float $contentsAmount) : self
     {
+        $this->initialized['contentsAmount'] = true;
         $this->contentsAmount = $contentsAmount;
         return $this;
     }
@@ -315,6 +328,7 @@ class Product
      */
     public function setContentsUnit(?string $contentsUnit) : self
     {
+        $this->initialized['contentsUnit'] = true;
         $this->contentsUnit = $contentsUnit;
         return $this;
     }
@@ -336,6 +350,7 @@ class Product
      */
     public function setContentsWeightGram(?int $contentsWeightGram) : self
     {
+        $this->initialized['contentsWeightGram'] = true;
         $this->contentsWeightGram = $contentsWeightGram;
         return $this;
     }
@@ -357,6 +372,7 @@ class Product
      */
     public function setWeightGram(?int $weightGram) : self
     {
+        $this->initialized['weightGram'] = true;
         $this->weightGram = $weightGram;
         return $this;
     }
@@ -378,6 +394,7 @@ class Product
      */
     public function setVariantGroup(string $variantGroup) : self
     {
+        $this->initialized['variantGroup'] = true;
         $this->variantGroup = $variantGroup;
         return $this;
     }
@@ -399,6 +416,7 @@ class Product
      */
     public function setEan(?string $ean) : self
     {
+        $this->initialized['ean'] = true;
         $this->ean = $ean;
         return $this;
     }
@@ -420,6 +438,7 @@ class Product
      */
     public function setSuggestedRetailPriceEUR(?float $suggestedRetailPriceEUR) : self
     {
+        $this->initialized['suggestedRetailPriceEUR'] = true;
         $this->suggestedRetailPriceEUR = $suggestedRetailPriceEUR;
         return $this;
     }
@@ -441,6 +460,7 @@ class Product
      */
     public function setPurchasePrices(?array $purchasePrices) : self
     {
+        $this->initialized['purchasePrices'] = true;
         $this->purchasePrices = $purchasePrices;
         return $this;
     }
@@ -462,6 +482,7 @@ class Product
      */
     public function setManufacturerCountryCode(?string $manufacturerCountryCode) : self
     {
+        $this->initialized['manufacturerCountryCode'] = true;
         $this->manufacturerCountryCode = $manufacturerCountryCode;
         return $this;
     }
@@ -483,6 +504,7 @@ class Product
      */
     public function setLanguageCode(string $languageCode) : self
     {
+        $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
@@ -506,6 +528,7 @@ class Product
     */
     public function setProductTitle(?string $productTitle) : self
     {
+        $this->initialized['productTitle'] = true;
         $this->productTitle = $productTitle;
         return $this;
     }
@@ -529,6 +552,7 @@ class Product
     */
     public function setProductTitleOriginal(?string $productTitleOriginal) : self
     {
+        $this->initialized['productTitleOriginal'] = true;
         $this->productTitleOriginal = $productTitleOriginal;
         return $this;
     }
@@ -572,6 +596,7 @@ class Product
     */
     public function setProductStatus(?string $productStatus) : self
     {
+        $this->initialized['productStatus'] = true;
         $this->productStatus = $productStatus;
         return $this;
     }
@@ -595,6 +620,7 @@ class Product
     */
     public function setArticleShortDescription(?string $articleShortDescription) : self
     {
+        $this->initialized['articleShortDescription'] = true;
         $this->articleShortDescription = $articleShortDescription;
         return $this;
     }
@@ -618,6 +644,7 @@ class Product
     */
     public function setArticleLongDescription(?string $articleLongDescription) : self
     {
+        $this->initialized['articleLongDescription'] = true;
         $this->articleLongDescription = $articleLongDescription;
         return $this;
     }
@@ -641,6 +668,7 @@ class Product
     */
     public function setTaricCode(?string $taricCode) : self
     {
+        $this->initialized['taricCode'] = true;
         $this->taricCode = $taricCode;
         return $this;
     }
@@ -664,6 +692,7 @@ class Product
     */
     public function setListPriceEUR(?float $listPriceEUR) : self
     {
+        $this->initialized['listPriceEUR'] = true;
         $this->listPriceEUR = $listPriceEUR;
         return $this;
     }
@@ -699,6 +728,7 @@ class Product
     */
     public function setTaxCode(?string $taxCode) : self
     {
+        $this->initialized['taxCode'] = true;
         $this->taxCode = $taxCode;
         return $this;
     }
@@ -722,6 +752,7 @@ class Product
     */
     public function setManufacturerNumber(?string $manufacturerNumber) : self
     {
+        $this->initialized['manufacturerNumber'] = true;
         $this->manufacturerNumber = $manufacturerNumber;
         return $this;
     }
@@ -745,6 +776,7 @@ class Product
     */
     public function setSupplierNumber(?string $supplierNumber) : self
     {
+        $this->initialized['supplierNumber'] = true;
         $this->supplierNumber = $supplierNumber;
         return $this;
     }
@@ -766,6 +798,7 @@ class Product
      */
     public function setProductNumber(string $productNumber) : self
     {
+        $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
         return $this;
     }
@@ -787,6 +820,7 @@ class Product
      */
     public function setShopCode(string $shopCode) : self
     {
+        $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
         return $this;
     }
