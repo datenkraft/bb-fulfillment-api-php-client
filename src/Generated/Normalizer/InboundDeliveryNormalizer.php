@@ -107,6 +107,13 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('deliverySlipNumber', $data) && $data['deliverySlipNumber'] === null) {
             $object->setDeliverySlipNumber(null);
         }
+        if (\array_key_exists('createDate', $data) && $data['createDate'] !== null) {
+            $object->setCreateDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['createDate']));
+            unset($data['createDate']);
+        }
+        elseif (\array_key_exists('createDate', $data) && $data['createDate'] === null) {
+            $object->setCreateDate(null);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -152,6 +159,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($object->isInitialized('deliverySlipNumber') && null !== $object->getDeliverySlipNumber()) {
             $data['deliverySlipNumber'] = $object->getDeliverySlipNumber();
+        }
+        if ($object->isInitialized('createDate') && null !== $object->getCreateDate()) {
+            $data['createDate'] = $object->getCreateDate()->format('Y-m-d\\TH:i:sP');
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

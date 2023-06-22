@@ -13,7 +13,7 @@ class Product extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @var string
      */
@@ -26,7 +26,7 @@ class Product extends \ArrayObject
     */
     protected $articleVariantTitle;
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @var string|null
@@ -65,7 +65,7 @@ class Product extends \ArrayObject
     /**
      * The variant group of the product
      *
-     * @var string
+     * @var mixed
      */
     protected $variantGroup = 'content';
     /**
@@ -205,7 +205,7 @@ class Product extends \ArrayObject
     */
     protected $source;
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @return string
      */
@@ -214,7 +214,7 @@ class Product extends \ArrayObject
         return $this->productType;
     }
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @param string $productType
      *
@@ -251,7 +251,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @return string|null
@@ -261,7 +261,7 @@ class Product extends \ArrayObject
         return $this->articleVariantType;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @param string|null $articleVariantType
@@ -387,20 +387,20 @@ class Product extends \ArrayObject
     /**
      * The variant group of the product
      *
-     * @return string
+     * @return mixed
      */
-    public function getVariantGroup() : string
+    public function getVariantGroup()
     {
         return $this->variantGroup;
     }
     /**
      * The variant group of the product
      *
-     * @param string $variantGroup
+     * @param mixed $variantGroup
      *
      * @return self
      */
-    public function setVariantGroup(string $variantGroup) : self
+    public function setVariantGroup($variantGroup) : self
     {
         $this->initialized['variantGroup'] = true;
         $this->variantGroup = $variantGroup;

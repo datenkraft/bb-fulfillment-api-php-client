@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BulkImportInboundDeliveryFormatPostResponse207Item extends \ArrayObject
+class BulkImportInboundDeliveryPostResponse207Item extends \ArrayObject
 {
     /**
      * @var array

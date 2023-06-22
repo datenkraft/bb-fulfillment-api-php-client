@@ -45,6 +45,8 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     - Each search term filters the response for inbound deliveries where at least one of the fields contains the search term.
     - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
+    *     @var string $filter[createDateFrom] The start date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
+    *     @var string $filter[createDateTo] The end date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -71,7 +73,7 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[status]', 'filter[shopCode]', 'filter[expectedDeliveryDateFrom]', 'filter[expectedDeliveryDateTo]', 'filter[search]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[status]', 'filter[shopCode]', 'filter[expectedDeliveryDateFrom]', 'filter[expectedDeliveryDateTo]', 'filter[search]', 'filter[createDateFrom]', 'filter[createDateTo]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -83,6 +85,8 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
         $optionsResolver->addAllowedTypes('filter[expectedDeliveryDateFrom]', array('string'));
         $optionsResolver->addAllowedTypes('filter[expectedDeliveryDateTo]', array('string'));
         $optionsResolver->addAllowedTypes('filter[search]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[createDateFrom]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[createDateTo]', array('string'));
         return $optionsResolver;
     }
     /**
