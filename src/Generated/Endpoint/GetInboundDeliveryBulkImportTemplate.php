@@ -8,6 +8,7 @@ class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\F
     /**
     * Get a spreadsheet template for performing POST queries to the respective endpoint.
            The file type is controlled by the accept header.
+           The fill-in help in the second line can be removed or remain.
     *
     * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
     */
@@ -59,6 +60,6 @@ class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\F
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }
