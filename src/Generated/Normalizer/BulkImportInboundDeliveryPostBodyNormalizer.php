@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BulkImportInboundDeliveryFormatPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BulkImportInboundDeliveryPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class BulkImportInboundDeliveryFormatPostBodyNormalizer implements DenormalizerI
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryFormatPostBody';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostBody';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryFormatPostBody';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostBody';
     }
     /**
      * @return mixed
@@ -37,7 +37,7 @@ class BulkImportInboundDeliveryFormatPostBodyNormalizer implements DenormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryFormatPostBody();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

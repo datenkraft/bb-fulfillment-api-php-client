@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BulkImportInboundDeliveryFormatPostBody extends \ArrayObject
+class BulkImportInboundDeliveryPostBody extends \ArrayObject
 {
     /**
      * @var array
@@ -13,13 +13,13 @@ class BulkImportInboundDeliveryFormatPostBody extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * file to upload
+     * File to upload
      *
      * @var string
      */
     protected $file;
     /**
-     * file to upload
+     * File to upload
      *
      * @return string
      */
@@ -28,7 +28,7 @@ class BulkImportInboundDeliveryFormatPostBody extends \ArrayObject
         return $this->file;
     }
     /**
-     * file to upload
+     * File to upload
      *
      * @param string $file
      *

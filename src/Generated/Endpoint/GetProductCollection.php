@@ -21,7 +21,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields productTitle and productNumber.
+    - The search is enabled for the fields productTitle, productNumber and ean.
     - Each search term filters the response for products where at least one of the fields contains the search term.
     - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.

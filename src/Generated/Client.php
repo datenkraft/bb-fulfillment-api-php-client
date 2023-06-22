@@ -5,6 +5,146 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated;
 class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Client
 {
     /**
+    * Get the audit log.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[endpoint] A filter for restricting the audit log to a endpoint.
+    *     @var string $filter[version] A filter for restricting the audit log to a endpoint version.
+    *     @var mixed $filter[identifier] A filter for querying actions for a identifier.
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuditLogCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getAuditLogCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuditLogCollection($queryParameters), $fetch);
+    }
+    /**
+     * Delete one or more role to permission assignments in this resource server
+     *
+     * @param null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[] $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionNotFoundException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteAuthPermissionRoleCollection(?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\DeleteAuthPermissionRoleCollection($requestBody), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionRoleCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionRoleCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionRoleCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getAuthPermissionRoleCollection(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuthPermissionRoleCollection(), $fetch);
+    }
+    /**
+     * Create one or more role to permission assignments in this resource server
+     *
+     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[] $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionConflictException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function postAuthPermissionRoleCollection(array $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostAuthPermissionRoleCollection($requestBody), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getAuthPermissionCollection(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuthPermissionCollection(), $fetch);
+    }
+    /**
+     * Delete one or more role to identity assignments in this resource server
+     *
+     * @param null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[] $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionNotFoundException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionUnprocessableEntityException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function deleteAuthRoleIdentityCollection(?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\DeleteAuthRoleIdentityCollection($requestBody), $fetch);
+    }
+    /**
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionNotFoundException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function getAuthRoleIdentityCollection(string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuthRoleIdentityCollection(), $fetch);
+    }
+    /**
+     * Create one or more role to identity assignments in this resource server
+     *
+     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[] $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionConflictException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionUnprocessableEntityException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function postAuthRoleIdentityCollection(array $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostAuthRoleIdentityCollection($requestBody), $fetch);
+    }
+    /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleCollectionForbiddenException
@@ -91,56 +231,132 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostAuthRole($roleCode, $requestBody), $fetch);
     }
     /**
-     * Delete one or more role to identity assignments in this resource server
-     *
-     * @param null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[] $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionNotFoundException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionUnprocessableEntityException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteAuthRoleIdentityCollection(?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    * Collections are read in multiple pages with a defined page size.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getCountryCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\DeleteAuthRoleIdentityCollection($requestBody), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetCountryCollection($queryParameters), $fetch);
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionNotFoundException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthRoleIdentityCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function getAuthRoleIdentityCollection(string $fetch = self::FETCH_OBJECT)
+    * Get delivery services.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryServiceCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryServiceCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryServiceCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryServiceCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getDeliveryServiceCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuthRoleIdentityCollection(), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDeliveryServiceCollection($queryParameters), $fetch);
     }
     /**
-     * Create one or more role to identity assignments in this resource server
-     *
-     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[] $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionConflictException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionUnprocessableEntityException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthRoleIdentityCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function postAuthRoleIdentityCollection(array $requestBody, string $fetch = self::FETCH_OBJECT)
+    * Get deliveries filtered by a single or multiple order numbers.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[orderNumber] A filter for a single order number or multiple order numbers separted by a comma.
+    - The filter can contain a maximum of 100 order numbers.
+    - The order numbers in the filter must be unique.
+    - A single order number can have a maximum length of 59 characters.
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getDeliveryCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostAuthRoleIdentityCollection($requestBody), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDeliveryCollection($queryParameters), $fetch);
+    }
+    /**
+    * Get the delivery with the given deliveryNumber.
+    *
+    * @param string $deliveryNumber delivery number
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Delivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getDelivery(string $deliveryNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDelivery($deliveryNumber, $queryParameters), $fetch);
+    }
+    /**
+    * Patch data of the shipment of the delivery specified by the given delivery and shipment numbers.
+    *
+    * @param string $deliveryNumber Number of the delivery.
+    * @param string $shipmentNumber Number of the shipment
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment $requestBody 
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function patchDeliveryShipment(string $deliveryNumber, string $shipmentNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PatchDeliveryShipment($deliveryNumber, $shipmentNumber, $requestBody, $queryParameters), $fetch);
     }
     /**
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -151,19 +367,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     public function getOpenApi(string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOpenApi(), $fetch);
-    }
-    /**
-     * Get the openapi documentation in the specified format
-     *
-     * @param string $format Openapi file format
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return null|\Psr\Http\Message\ResponseInterface
-     */
-    public function getOpenApiInFormat(string $format, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOpenApiInFormat($format), $fetch);
     }
     /**
      * Get the changelog in the specified format
@@ -181,69 +384,53 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetChangelogInFormat($format), $fetch);
     }
     /**
+     * Get the openapi documentation in the specified format
+     *
+     * @param string $format Openapi file format
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     * @return null|\Psr\Http\Message\ResponseInterface
      */
-    public function getAuthPermissionCollection(string $fetch = self::FETCH_OBJECT)
+    public function getOpenApiInFormat(string $format, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuthPermissionCollection(), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOpenApiInFormat($format), $fetch);
     }
     /**
-     * Delete one or more role to permission assignments in this resource server
-     *
-     * @param null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[] $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionNotFoundException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function deleteAuthPermissionRoleCollection(?array $requestBody = null, string $fetch = self::FETCH_OBJECT)
+    * Import one or more new inbound deliveries.
+           The file type is controlled by the content type attribute of the uploaded file
+    *
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostResponse207Item[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function inboundDeliveryBulkImport(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\DeleteAuthPermissionRoleCollection($requestBody), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\InboundDeliveryBulkImport($requestBody), $fetch);
     }
     /**
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionRoleCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionRoleCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuthPermissionRoleCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function getAuthPermissionRoleCollection(string $fetch = self::FETCH_OBJECT)
+    * Get a spreadsheet template for performing POST queries to the respective endpoint.
+           The file type is controlled by the accept header.
+    *
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryBulkImportTemplateInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getInboundDeliveryBulkImportTemplate(string $fetch = self::FETCH_OBJECT, array $accept = array())
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuthPermissionRoleCollection(), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDeliveryBulkImportTemplate($accept), $fetch);
     }
     /**
-     * Create one or more role to permission assignments in this resource server
-     *
-     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[] $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionConflictException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function postAuthPermissionRoleCollection(array $requestBody, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostAuthPermissionRoleCollection($requestBody), $fetch);
-    }
-    /**
-    * Get the audit log.
+    * Get a list of inbound deliveries.
     *
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
@@ -251,22 +438,234 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[endpoint] A filter for restricting the audit log to a endpoint.
-    *     @var string $filter[version] A filter for restricting the audit log to a endpoint version.
-    *     @var mixed $filter[identifier] A filter for querying actions for a identifier.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - expectedDeliveryDate
+    
+    The default sort order is expectedDeliveryDate:desc.
+    *     @var string $filter[status] Status of the inbound delivery (optional).
+    
+    The status for not yet completed is subject to change. you may poll for changes.
+    - open: The inbound delivery has not yet been delivered.
+    - in_progress: The inbound delivery is being processed in our warehouse.
+    - completed: The inbound delivery has been processed in our warehouse.
+    - deleted: The inbound delivery has been deleted.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[expectedDeliveryDateFrom] The start date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
+    *     @var string $filter[expectedDeliveryDateTo] The end date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
+    *     @var string $filter[search] filter for inbound delivery search.\
+    \
+    Usage:
+    - Provide one or multiple search terms to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the numberPrefix of the associated supplier).
+    - Each search term filters the response for inbound deliveries where at least one of the fields contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
+    If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
+    *     @var string $filter[createDateFrom] The start date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
+    *     @var string $filter[createDateTo] The end date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetAuditLogCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuditLogCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
     */
-    public function getAuditLogCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getInboundDeliveryCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetAuditLogCollection($queryParameters), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDeliveryCollection($queryParameters), $fetch);
+    }
+    /**
+    * Get an inbound delivery by inbound delivery number.
+    *
+    * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getInboundDelivery(string $inboundDeliveryNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDelivery($inboundDeliveryNumber, $queryParameters), $fetch);
+    }
+    /**
+    * Add a new inbound delivery referenced by the given deliveryNumber.
+    *
+    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
+    This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function postInboundDelivery(string $inboundDeliveryNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostInboundDelivery($inboundDeliveryNumber, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+    * Cancel a inbound delivery referenced by the given inboundDeliveryNumber.\
+    An inboundDeliveryNumber from a canceled inbound delivery cannot be used for a new inbound delivery, because they must
+    always be unique.
+    *
+    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
+    This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function cancelInboundDelivery(string $inboundDeliveryNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\CancelInboundDelivery($inboundDeliveryNumber, $queryParameters), $fetch);
+    }
+    /**
+    * Allows to download a document associated with the given inbound delivery.
+    *
+    * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
+    * @param string $documentCode The document type to download. The file format is determined by the Accept request header.\
+    Note: only a limited amount of document type to file format combinations are available:
+    - supplierDeliveryLabel:\
+    the label to put on the inbound delivery for warehouse processing.\
+    Accept header: application/pdf
+    - details:\
+    a spreadsheet containing details about the inbound delivery.\
+    Accept header: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+       
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header application/pdf|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentNotAcceptableException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getInboundDeliveryDocument(string $inboundDeliveryNumber, string $documentCode, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDeliveryDocument($inboundDeliveryNumber, $documentCode, $queryParameters, $accept), $fetch);
+    }
+    /**
+    * Get a list of manufacturers.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ManufacturerCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getManufacturerCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetManufacturerCollection($queryParameters), $fetch);
+    }
+    /**
+    * Get a list of shop orders.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - orderDate
+    
+    The default sort order is orderDate:desc.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[status] Filter for status/statuses (optional).
+    *     @var string $filter[externalOrderId] Filter for the external order ID e.g. from third party apps (optional)
+    *     @var string $filter[externalCustomerId] Filter for the external customer ID e.g. from third party apps (optional)
+    *     @var string $filter[externalOrderReference] filter for externalOrderReference
+    *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
+    *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getOrderCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOrderCollection($queryParameters), $fetch);
     }
     /**
     * Get an order by order number.
@@ -339,48 +738,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\CancelOrder($orderNumber, $queryParameters), $fetch);
     }
     /**
-    * Get a list of shop orders.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
-    
-    Available sort orders:
-    - asc: ascending order
-    - desc: descending order
-    
-    Available fields for sorting:
-    - orderDate
-    
-    The default sort order is orderDate:desc.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    *     @var string $filter[status] Filter for status/statuses (optional).
-    *     @var string $filter[externalOrderId] Filter for the external order ID e.g. from third party apps (optional)
-    *     @var string $filter[externalCustomerId] Filter for the external customer ID e.g. from third party apps (optional)
-    *     @var string $filter[externalOrderReference] filter for externalOrderReference
-    *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
-    *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getOrderCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOrderCollection($queryParameters), $fetch);
-    }
-    /**
     * Redact the order and all other orders linked to the given order number (set in the param
     orderNumber) in a GDPR article 17 conform way. \
     
@@ -412,72 +769,33 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\RedactOrder($orderNumber, $queryParameters), $fetch);
     }
     /**
-    * Get an inbound delivery by inbound delivery number.
+    * Get all available product unit codes.
     *
-    * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
     * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryNotFoundException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryConflictException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductUnitCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
     */
-    public function getInboundDelivery(string $inboundDeliveryNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getProductUnitCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDelivery($inboundDeliveryNumber, $queryParameters), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductUnitCollection($queryParameters), $fetch);
     }
     /**
-    * Add a new inbound delivery referenced by the given deliveryNumber.
-    *
-    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
-    This number is user defined, must be unique and has a maximum length (check maxLength field).
-    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
-    * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function postInboundDelivery(string $inboundDeliveryNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostInboundDelivery($inboundDeliveryNumber, $requestBody, $queryParameters), $fetch);
-    }
-    /**
-     * Get a spreadsheet template for performing POST queries to the respective endpoint.
-     *
-     * @param string $format The format of the spreadsheet template
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryBulkImportTemplateInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function getInboundDeliveryBulkImportTemplate(string $format, string $fetch = self::FETCH_OBJECT, array $accept = array())
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDeliveryBulkImportTemplate($format, $accept), $fetch);
-    }
-    /**
-    * Get a list of inbound deliveries.
+    * Get a list of products.
     *
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
@@ -485,259 +803,32 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
-    
-    Available sort orders:
-    - asc: ascending order
-    - desc: descending order
-    
-    Available fields for sorting:
-    - expectedDeliveryDate
-    
-    The default sort order is expectedDeliveryDate:desc.
-    *     @var string $filter[status] Status of the inbound delivery (optional).
-    
-    The status for not yet completed is subject to change. you may poll for changes.
-    - open: The inbound delivery has not yet been delivered.
-    - in_progress: The inbound delivery is being processed in our warehouse.
-    - completed: The inbound delivery has been processed in our warehouse.
-    - deleted: The inbound delivery has been deleted.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
-    *     @var string $filter[expectedDeliveryDateFrom] The start date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
-    *     @var string $filter[expectedDeliveryDateTo] The end date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
-    *     @var string $filter[search] filter for inbound delivery search.\
-    \
+    *     @var string $filter[search] Filter for product search.\
     Usage:
     - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the numberPrefix of the associated supplier).
-    - Each search term filters the response for inbound deliveries where at least one of the fields contains the search term.
+    - The search is enabled for the fields productTitle, productNumber and ean.
+    - Each search term filters the response for products where at least one of the fields contains the search term.
     - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
+    *     @var string $filter[source] Filter for product source.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
     *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
     */
-    public function getInboundDeliveryCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    public function getProductCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDeliveryCollection($queryParameters), $fetch);
-    }
-    /**
-     * Import one or more new inbound deliveries.
-     *
-     * @param string $format The format for the upload.
-     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryFormatPostBody $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\InboundDeliveryBulkImportInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryFormatPostResponse207Item[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function inboundDeliveryBulkImport(string $format, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryFormatPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\InboundDeliveryBulkImport($format, $requestBody), $fetch);
-    }
-    /**
-    * Cancel a inbound delivery referenced by the given inboundDeliveryNumber.\
-    An inboundDeliveryNumber from a canceled inbound delivery cannot be used for a new inbound delivery, because they must
-    always be unique.
-    *
-    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
-    This number is user defined, must be unique and has a maximum length (check maxLength field).
-    * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryNotFoundException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryConflictException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\CancelInboundDeliveryInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function cancelInboundDelivery(string $inboundDeliveryNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\CancelInboundDelivery($inboundDeliveryNumber, $queryParameters), $fetch);
-    }
-    /**
-    * Allows to download a document associated with the given inbound delivery.
-    *
-    * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
-    * @param string $documentCode The document type to download. The file format is determined by the Accept request header.\
-    Note: only a limited amount of document type to file format combinations are available:
-    - supplierDeliveryLabel:\
-    the label to put on the inbound delivery for warehouse processing.\
-    Accept header: application/pdf
-    - details:\
-    a spreadsheet containing details about the inbound delivery.\
-    Accept header: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-       
-    * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @param array $accept Accept content header application/pdf|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentNotFoundException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentNotAcceptableException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getInboundDeliveryDocument(string $inboundDeliveryNumber, string $documentCode, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT, array $accept = array())
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDeliveryDocument($inboundDeliveryNumber, $documentCode, $queryParameters, $accept), $fetch);
-    }
-    /**
-    * Get the delivery with the given deliveryNumber.
-    *
-    * @param string $deliveryNumber delivery number
-    * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryNotFoundException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Delivery|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getDelivery(string $deliveryNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDelivery($deliveryNumber, $queryParameters), $fetch);
-    }
-    /**
-    * Get deliveries filtered by a single or multiple order numbers.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[orderNumber] A filter for a single order number or multiple order numbers separted by a comma.
-    - The filter can contain a maximum of 100 order numbers.
-    - The order numbers in the filter must be unique.
-    - A single order number can have a maximum length of 59 characters.
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getDeliveryCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDeliveryCollection($queryParameters), $fetch);
-    }
-    /**
-    * Patch data of the shipment of the delivery specified by the given delivery and shipment numbers.
-    *
-    * @param string $deliveryNumber Number of the delivery.
-    * @param string $shipmentNumber Number of the shipment
-    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment $requestBody 
-    * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentNotFoundException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentConflictException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function patchDeliveryShipment(string $deliveryNumber, string $shipmentNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PatchDeliveryShipment($deliveryNumber, $shipmentNumber, $requestBody, $queryParameters), $fetch);
-    }
-    /**
-    * Get a list of shops the used identity is assigned to.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[meta][shopifyShopDomain] A filter for the Shopify hostname of the shop.
-    *     @var bool $filter[meta][shopifyDefaultShop] A filter for Shopify default shops.\
-    Note: For shops that are part of a Shopify installation that uses multiple shops,
-    only shops where meta.shopifyShopDefault is true will be considered as default shops.\
-    All shops that are used for a single shop Shopify installation will also be considered as default shops.
-    *     @var string $filter[meta][shopifyOrderCountryCode] A filter for the Shopify order country code (ISO 3166-1 alpha-2).
-    *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getShopCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetShopCollection($queryParameters), $fetch);
-    }
-    /**
-     * Update one or more fields of a shop. Only a limited set of fields can be updated.
-     *
-     * @param string $shopId Shop Id
-     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop $requestBody 
-     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopBadRequestException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopUnauthorizedException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopNotFoundException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopInternalServerErrorException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-     *
-     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-     */
-    public function patchShop(string $shopId, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop $requestBody, string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PatchShop($shopId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductCollection($queryParameters), $fetch);
     }
     /**
     * Get a product by product number.
@@ -791,42 +882,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostProduct($productNumber, $requestBody, $queryParameters), $fetch);
     }
     /**
-    * Get a list of products.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    *     @var string $filter[search] Filter for product search.\
-    Usage:
-    - Provide one or multiple search terms to filter results.
-    - Multiple search terms are separated by spaces.
-    - The search is not case sensitive.
-    - The search is enabled for the fields productTitle and productNumber.
-    - Each search term filters the response for products where at least one of the fields contains the search term.
-    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
-    If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
-    *     @var string $filter[source] Filter for product source.
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getProductCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductCollection($queryParameters), $fetch);
-    }
-    /**
     * Read a journal collection for a specific product showing the history of stock changes.
     Only products with the source 'self' can be queried.
     *
@@ -867,6 +922,83 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     public function getProductJournalCollection(string $productNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductJournalCollection($productNumber, $queryParameters), $fetch);
+    }
+    /**
+    * Read the created orders for the given shopCode in the given dateRange.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d (timezone CET/CEST) for which orders should be returned.
+    *     @var string $filter[dateTo] The end date (inclusive) in format Y-m-d (timezone CET/CEST) for which orders should be returned.
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportClearingOrderCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getOrderReportClearingCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOrderReportClearingCollection($queryParameters), $fetch);
+    }
+    /**
+    * Get a list of shops the used identity is assigned to.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $filter[meta][shopifyShopDomain] A filter for the Shopify hostname of the shop.
+    *     @var bool $filter[meta][shopifyDefaultShop] A filter for Shopify default shops.\
+    Note: For shops that are part of a Shopify installation that uses multiple shops,
+    only shops where meta.shopifyShopDefault is true will be considered as default shops.\
+    All shops that are used for a single shop Shopify installation will also be considered as default shops.
+    *     @var string $filter[meta][shopifyOrderCountryCode] A filter for the Shopify order country code (ISO 3166-1 alpha-2).
+    *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getShopCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetShopCollection($queryParameters), $fetch);
+    }
+    /**
+     * Update one or more fields of a shop. Only a limited set of fields can be updated.
+     *
+     * @param string $shopId Shop Id
+     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop $requestBody 
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopBadRequestException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopUnauthorizedException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopForbiddenException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopNotFoundException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchShopInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     *
+     * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+     */
+    public function patchShop(string $shopId, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PatchShop($shopId, $requestBody), $fetch);
     }
     /**
     * Get the stock for all (per default only valid) products or for a specific product.
@@ -926,136 +1058,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     public function getSupplierCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetSupplierCollection($queryParameters), $fetch);
-    }
-    /**
-    * Read the created orders for the given shopCode in the given dateRange.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 20.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d (timezone CET/CEST) for which orders should be returned.
-    *     @var string $filter[dateTo] The end date (inclusive) in format Y-m-d (timezone CET/CEST) for which orders should be returned.
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderReportClearingCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportClearingOrderCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getOrderReportClearingCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOrderReportClearingCollection($queryParameters), $fetch);
-    }
-    /**
-    * Get all available product unit codes.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 20.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductUnitCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getProductUnitCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductUnitCollection($queryParameters), $fetch);
-    }
-    /**
-    * Collections are read in multiple pages with a defined page size.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 20.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetCountryCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getCountryCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetCountryCollection($queryParameters), $fetch);
-    }
-    /**
-    * Get a list of manufacturers.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetManufacturerCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ManufacturerCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getManufacturerCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetManufacturerCollection($queryParameters), $fetch);
-    }
-    /**
-    * Get delivery services.
-    *
-    * @param array $queryParameters {
-    *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryServiceCollectionUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryServiceCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryServiceCollectionInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryServiceCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function getDeliveryServiceCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDeliveryServiceCollection($queryParameters), $fetch);
     }
     public static function create($httpClient = null, array $additionalPlugins = array(), array $additionalNormalizers = array())
     {

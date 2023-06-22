@@ -4,17 +4,15 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 
 class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
-    protected $format;
     protected $accept;
     /**
-     * Get a spreadsheet template for performing POST queries to the respective endpoint.
-     *
-     * @param string $format The format of the spreadsheet template
-     * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
-     */
-    public function __construct(string $format, array $accept = array())
+    * Get a spreadsheet template for performing POST queries to the respective endpoint.
+           The file type is controlled by the accept header.
+    *
+    * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
+    */
+    public function __construct(array $accept = array())
     {
-        $this->format = $format;
         $this->accept = $accept;
     }
     use \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\EndpointTrait;
@@ -24,7 +22,7 @@ class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\F
     }
     public function getUri() : string
     {
-        return str_replace(array('{format}'), array($this->format), '/bulk-import/template/inbound-delivery.{format}');
+        return '/bulk-import/template/inbound-delivery';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
