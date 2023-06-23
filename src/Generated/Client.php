@@ -417,6 +417,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Get a spreadsheet template for performing POST queries to the respective endpoint.
            The file type is controlled by the accept header.
+           The fill-in help in the second line can be removed or remain.
     *
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
@@ -514,8 +515,10 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Add a new inbound delivery referenced by the given deliveryNumber.
     *
-    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
-    This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.\
+    This number is user defined, must be unique and has a maximum length (check maxLength field).\
+    Please ensure that it does not contain forward slashes or their URL-encoded equivalents ('/', '%2F', '%2f'),
+    as this will result in the route not being found.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
@@ -694,8 +697,10 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Add a new order referenced by the given orderNumber.
     *
-    * @param string $orderNumber The number the order should be refered by.
-       This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param string $orderNumber The number the order should be refered by.\
+    This number is user defined, must be unique and has a maximum length (check maxLength field).\
+    Please ensure that it does not contain forward slashes or their URL-encoded equivalents ('/', '%2F', '%2f'),
+    as this will result in the route not being found.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderBadRequestException
@@ -859,8 +864,10 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     Please note that due to necessary product compliance enabling by our steve team, the product might not be usable immediately.
     The product number is nevertheless reserved, even before the product can be queried in the GET endpoint.
     *
-    * @param string $productNumber The number the product should be refered by.
-       This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param string $productNumber The number the product should be refered by.\
+    This number is user defined, must be unique and has a maximum length (check maxLength field).\
+    Please ensure that it does not contain forward slashes or their URL-encoded equivalents ('/', '%2F', '%2f'),
+    as this will result in the route not being found.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
