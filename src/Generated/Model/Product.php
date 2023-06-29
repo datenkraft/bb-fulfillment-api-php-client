@@ -200,6 +200,7 @@ class Product extends \ArrayObject
     * The source of the product.
     - self: Own product
     - nice: Product of another supplier
+    - bundle: Product that is composed of individual positions
     *
     * @var string
     */
@@ -836,6 +837,7 @@ class Product extends \ArrayObject
     * The source of the product.
     - self: Own product
     - nice: Product of another supplier
+    - bundle: Product that is composed of individual positions
     *
     * @return string
     */
@@ -847,6 +849,7 @@ class Product extends \ArrayObject
     * The source of the product.
     - self: Own product
     - nice: Product of another supplier
+    - bundle: Product that is composed of individual positions
     *
     * @param string $source
     *
