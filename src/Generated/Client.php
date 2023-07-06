@@ -517,8 +517,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.\
     This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain forward slashes or their URL-encoded equivalents ('/', '%2F', '%2f'),
-    as this will result in the route not being found.
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
+    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
@@ -656,6 +656,16 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[externalOrderReference] filter for externalOrderReference
     *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
     *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
+    *     @var string $filter[search] filter for order search.\
+    \
+    Usage:
+    - Provide one or multiple search terms to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is enabled for the fields 'externalOrderReference' and 'orderNumber'.
+    - Each search term filters the response for orders where at least one of the fields contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in any field and 'term2' is also found in any field.\
+    If only 'term1' or 'term2' is found in the fields, the order is not included in the results.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionUnauthorizedException
@@ -699,8 +709,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param string $orderNumber The number the order should be refered by.\
     This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain forward slashes or their URL-encoded equivalents ('/', '%2F', '%2f'),
-    as this will result in the route not being found.
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
+    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderBadRequestException
@@ -866,8 +876,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param string $productNumber The number the product should be refered by.\
     This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain forward slashes or their URL-encoded equivalents ('/', '%2F', '%2f'),
-    as this will result in the route not being found.
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
+    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
