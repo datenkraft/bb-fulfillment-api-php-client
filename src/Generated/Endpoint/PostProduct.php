@@ -12,8 +12,8 @@ class PostProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
     *
     * @param string $productNumber The number the product should be refered by.\
     This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain forward slashes or their URL-encoded equivalents ('/', '%2F', '%2f'),
-    as this will result in the route not being found.
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
+    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
