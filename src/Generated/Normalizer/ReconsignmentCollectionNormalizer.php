@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ReconsignmentCollectionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Error';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentCollection';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Error';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentCollection';
     }
     /**
      * @return mixed
@@ -37,25 +37,21 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentCollection();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
-            unset($data['code']);
+        if (\array_key_exists('pagination', $data)) {
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CollectionPagination', 'json', $context));
+            unset($data['pagination']);
         }
-        if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
-            unset($data['message']);
-        }
-        if (\array_key_exists('references', $data)) {
+        if (\array_key_exists('data', $data)) {
             $values = array();
-            foreach ($data['references'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorReferencesItem', 'json', $context);
+            foreach ($data['data'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Reconsignment', 'json', $context);
             }
-            $object->setReferences($values);
-            unset($data['references']);
+            $object->setData($values);
+            unset($data['data']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -70,14 +66,15 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['code'] = $object->getCode();
-        $data['message'] = $object->getMessage();
-        if ($object->isInitialized('references') && null !== $object->getReferences()) {
+        if ($object->isInitialized('pagination') && null !== $object->getPagination()) {
+            $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
+        }
+        if ($object->isInitialized('data') && null !== $object->getData()) {
             $values = array();
-            foreach ($object->getReferences() as $value) {
+            foreach ($object->getData() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['references'] = $values;
+            $data['data'] = $values;
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
