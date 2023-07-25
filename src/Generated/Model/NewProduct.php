@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class NewProduct
 {
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @var string
      */
@@ -18,7 +18,7 @@ class NewProduct
     */
     protected $articleVariantTitle;
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @var string|null
@@ -55,11 +55,11 @@ class NewProduct
      */
     protected $weightGram;
     /**
-     * The variant group of the product
+     * 
      *
      * @var string
      */
-    protected $variantGroup = 'content';
+    protected $variantGroup;
     /**
      * The EAN of the product
      *
@@ -160,7 +160,7 @@ class NewProduct
      */
     protected $supplierNumber;
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @return string
      */
@@ -169,7 +169,7 @@ class NewProduct
         return $this->productType;
     }
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @param string $productType
      *
@@ -204,7 +204,7 @@ class NewProduct
         return $this;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @return string|null
@@ -214,7 +214,7 @@ class NewProduct
         return $this->articleVariantType;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @param string|null $articleVariantType
@@ -332,7 +332,7 @@ class NewProduct
         return $this;
     }
     /**
-     * The variant group of the product
+     * 
      *
      * @return string
      */
@@ -341,7 +341,7 @@ class NewProduct
         return $this->variantGroup;
     }
     /**
-     * The variant group of the product
+     * 
      *
      * @param string $variantGroup
      *

@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class Product
 {
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @var string
      */
@@ -18,7 +18,7 @@ class Product
     */
     protected $articleVariantTitle;
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @var string|null
@@ -57,7 +57,7 @@ class Product
     /**
      * The variant group of the product
      *
-     * @var string
+     * @var mixed
      */
     protected $variantGroup = 'content';
     /**
@@ -189,7 +189,16 @@ class Product
      */
     protected $shopCode;
     /**
-     * Type of the product ('standard' if no value is provided)
+    * The source of the product.
+    - self: Own product
+    - nice: Product of another supplier
+    - bundle: Product that is composed of individual positions
+    *
+    * @var string
+    */
+    protected $source;
+    /**
+     * Type of the product
      *
      * @return string
      */
@@ -198,7 +207,7 @@ class Product
         return $this->productType;
     }
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @param string $productType
      *
@@ -233,7 +242,7 @@ class Product
         return $this;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @return string|null
@@ -243,7 +252,7 @@ class Product
         return $this->articleVariantType;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @param string|null $articleVariantType
@@ -363,20 +372,20 @@ class Product
     /**
      * The variant group of the product
      *
-     * @return string
+     * @return mixed
      */
-    public function getVariantGroup() : string
+    public function getVariantGroup()
     {
         return $this->variantGroup;
     }
     /**
      * The variant group of the product
      *
-     * @param string $variantGroup
+     * @param mixed $variantGroup
      *
      * @return self
      */
-    public function setVariantGroup(string $variantGroup) : self
+    public function setVariantGroup($variantGroup) : self
     {
         $this->variantGroup = $variantGroup;
         return $this;
@@ -788,6 +797,33 @@ class Product
     public function setShopCode(string $shopCode) : self
     {
         $this->shopCode = $shopCode;
+        return $this;
+    }
+    /**
+    * The source of the product.
+    - self: Own product
+    - nice: Product of another supplier
+    - bundle: Product that is composed of individual positions
+    *
+    * @return string
+    */
+    public function getSource() : string
+    {
+        return $this->source;
+    }
+    /**
+    * The source of the product.
+    - self: Own product
+    - nice: Product of another supplier
+    - bundle: Product that is composed of individual positions
+    *
+    * @param string $source
+    *
+    * @return self
+    */
+    public function setSource(string $source) : self
+    {
+        $this->source = $source;
         return $this;
     }
 }

@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BulkImportInboundDeliveryFormatPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BulkImportInboundDeliveryPostResponse207ItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryFormatPostBody';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostResponse207Item';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryFormatPostBody';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostResponse207Item';
     }
     /**
      * @return mixed
@@ -35,12 +35,25 @@ class BulkImportInboundDeliveryFormatPostBodyNormalizer implements DenormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryFormatPostBody();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostResponse207Item();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('file', $data)) {
-            $object->setFile($data['file']);
+        if (\array_key_exists('code', $data)) {
+            $object->setCode($data['code']);
+        }
+        if (\array_key_exists('message', $data)) {
+            $object->setMessage($data['message']);
+        }
+        if (\array_key_exists('reference', $data)) {
+            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            foreach ($data['reference'] as $key => $value) {
+                $values[$key] = $value;
+            }
+            $object->setReference($values);
+        }
+        if (\array_key_exists('content', $data)) {
+            $object->setContent($data['content']);
         }
         return $object;
     }
@@ -50,7 +63,14 @@ class BulkImportInboundDeliveryFormatPostBodyNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['file'] = $object->getFile();
+        $data['code'] = $object->getCode();
+        $data['message'] = $object->getMessage();
+        $values = array();
+        foreach ($object->getReference() as $key => $value) {
+            $values[$key] = $value;
+        }
+        $data['reference'] = $values;
+        $data['content'] = $object->getContent();
         return $data;
     }
 }

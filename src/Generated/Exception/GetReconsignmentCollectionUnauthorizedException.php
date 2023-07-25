@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetProductJournalCollectionNotFoundException extends NotFoundException
+class GetReconsignmentCollectionUnauthorizedException extends UnauthorizedException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -10,7 +10,7 @@ class GetProductJournalCollectionNotFoundException extends NotFoundException
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Not Found or source of product is not \'self\'');
+        parent::__construct('Unauthorized');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse

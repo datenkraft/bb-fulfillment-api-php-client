@@ -8,8 +8,10 @@ class PostInboundDelivery extends \Datenkraft\Backbone\Client\FulfillmentApi\Gen
     /**
     * Add a new inbound delivery referenced by the given deliveryNumber.
     *
-    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
-    This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.\
+    This number is user defined, must be unique and has a maximum length (check maxLength field).\
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
+    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\

@@ -29,6 +29,12 @@ class Country
      */
     protected $provinces;
     /**
+     * The currency code which should be used for orders to the country (ISO 4217)
+     *
+     * @var string
+     */
+    protected $currencyCode;
+    /**
      * Country code (ISO 3166-1 alpha-2)
      *
      * @return string
@@ -110,6 +116,27 @@ class Country
     public function setProvinces(?array $provinces) : self
     {
         $this->provinces = $provinces;
+        return $this;
+    }
+    /**
+     * The currency code which should be used for orders to the country (ISO 4217)
+     *
+     * @return string
+     */
+    public function getCurrencyCode() : string
+    {
+        return $this->currencyCode;
+    }
+    /**
+     * The currency code which should be used for orders to the country (ISO 4217)
+     *
+     * @param string $currencyCode
+     *
+     * @return self
+     */
+    public function setCurrencyCode(string $currencyCode) : self
+    {
+        $this->currencyCode = $currencyCode;
         return $this;
     }
 }

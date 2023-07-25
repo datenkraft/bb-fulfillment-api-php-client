@@ -7,6 +7,7 @@ class GetProductJournalCollection extends \Datenkraft\Backbone\Client\Fulfillmen
     protected $productNumber;
     /**
     * Read a journal collection for a specific product showing the history of stock changes.
+    Only products with the source 'self' can be queried.
     *
     * @param string $productNumber The product number as defined during the creation of the product.
     * @param array $queryParameters {
