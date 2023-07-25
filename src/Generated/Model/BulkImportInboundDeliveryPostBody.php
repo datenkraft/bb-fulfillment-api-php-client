@@ -2,16 +2,16 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BulkImportInboundDeliveryFormatPostBody
+class BulkImportInboundDeliveryPostBody
 {
     /**
-     * file to upload
+     * File to upload
      *
      * @var string
      */
     protected $file;
     /**
-     * file to upload
+     * File to upload
      *
      * @return string
      */
@@ -20,7 +20,7 @@ class BulkImportInboundDeliveryFormatPostBody
         return $this->file;
     }
     /**
-     * file to upload
+     * File to upload
      *
      * @param string $file
      *

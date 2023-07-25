@@ -58,6 +58,9 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('provinces', $data) && $data['provinces'] === null) {
             $object->setProvinces(null);
         }
+        if (\array_key_exists('currencyCode', $data)) {
+            $object->setCurrencyCode($data['currencyCode']);
+        }
         return $object;
     }
     /**
@@ -81,6 +84,9 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['provinces'] = $values;
+        }
+        if (null !== $object->getCurrencyCode()) {
+            $data['currencyCode'] = $object->getCurrencyCode();
         }
         return $data;
     }

@@ -21,10 +21,11 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields productTitle and productNumber.
+    - The search is enabled for the fields productTitle, productNumber and ean.
     - Each search term filters the response for products where at least one of the fields contains the search term.
     - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
+    *     @var string $filter[source] Filter for product source.
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -51,7 +52,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[search]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[search]', 'filter[source]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
@@ -59,6 +60,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
         $optionsResolver->setAllowedTypes('paginationMode', array('string'));
         $optionsResolver->setAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->setAllowedTypes('filter[search]', array('string'));
+        $optionsResolver->setAllowedTypes('filter[source]', array('string'));
         return $optionsResolver;
     }
     /**

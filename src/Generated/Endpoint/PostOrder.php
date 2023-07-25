@@ -8,8 +8,10 @@ class PostOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Run
     /**
     * Add a new order referenced by the given orderNumber.
     *
-    * @param string $orderNumber The number the order should be refered by.
-       This number is user defined, must be unique and has a maximum length (check maxLength field).
+    * @param string $orderNumber The number the order should be refered by.\
+    This number is user defined, must be unique and has a maximum length (check maxLength field).\
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
+    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder $requestBody 
     */
     public function __construct(string $orderNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder $requestBody)

@@ -79,6 +79,12 @@ class InboundDelivery
     */
     protected $deliverySlipNumber;
     /**
+     * Creation date of the inbound delivery. Format in ISO 8601 (timezone CET/CEST)
+     *
+     * @var \DateTime|null
+     */
+    protected $createDate;
+    /**
      * Optional free-text reference for inbound delivery.
      *
      * @return string|null
@@ -323,6 +329,27 @@ class InboundDelivery
     public function setDeliverySlipNumber(?string $deliverySlipNumber) : self
     {
         $this->deliverySlipNumber = $deliverySlipNumber;
+        return $this;
+    }
+    /**
+     * Creation date of the inbound delivery. Format in ISO 8601 (timezone CET/CEST)
+     *
+     * @return \DateTime|null
+     */
+    public function getCreateDate() : ?\DateTime
+    {
+        return $this->createDate;
+    }
+    /**
+     * Creation date of the inbound delivery. Format in ISO 8601 (timezone CET/CEST)
+     *
+     * @param \DateTime|null $createDate
+     *
+     * @return self
+     */
+    public function setCreateDate(?\DateTime $createDate) : self
+    {
+        $this->createDate = $createDate;
         return $this;
     }
 }

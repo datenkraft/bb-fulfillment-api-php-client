@@ -94,6 +94,12 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('deliverySlipNumber', $data) && $data['deliverySlipNumber'] === null) {
             $object->setDeliverySlipNumber(null);
         }
+        if (\array_key_exists('createDate', $data) && $data['createDate'] !== null) {
+            $object->setCreateDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['createDate']));
+        }
+        elseif (\array_key_exists('createDate', $data) && $data['createDate'] === null) {
+            $object->setCreateDate(null);
+        }
         return $object;
     }
     /**
@@ -134,6 +140,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getDeliverySlipNumber()) {
             $data['deliverySlipNumber'] = $object->getDeliverySlipNumber();
+        }
+        if (null !== $object->getCreateDate()) {
+            $data['createDate'] = $object->getCreateDate()->format('Y-m-d\\TH:i:sP');
         }
         return $data;
     }

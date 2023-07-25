@@ -184,6 +184,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if (\array_key_exists('shopCode', $data)) {
             $object->setShopCode($data['shopCode']);
         }
+        if (\array_key_exists('source', $data)) {
+            $object->setSource($data['source']);
+        }
         return $object;
     }
     /**
@@ -273,6 +276,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (null !== $object->getShopCode()) {
             $data['shopCode'] = $object->getShopCode();
+        }
+        if (null !== $object->getSource()) {
+            $data['source'] = $object->getSource();
         }
         return $data;
     }

@@ -11,18 +11,18 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BulkImportInboundDeliveryPostBodyNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
     use CheckArray;
     public function supportsDenormalization($data, $type, $format = null) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Error';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostBody';
     }
     public function supportsNormalization($data, $format = null) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Error';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostBody';
     }
     /**
      * @return mixed
@@ -35,22 +35,12 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
-        }
-        if (\array_key_exists('message', $data)) {
-            $object->setMessage($data['message']);
-        }
-        if (\array_key_exists('references', $data)) {
-            $values = array();
-            foreach ($data['references'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorReferencesItem', 'json', $context);
-            }
-            $object->setReferences($values);
+        if (\array_key_exists('file', $data)) {
+            $object->setFile($data['file']);
         }
         return $object;
     }
@@ -60,15 +50,7 @@ class ErrorNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['code'] = $object->getCode();
-        $data['message'] = $object->getMessage();
-        if (null !== $object->getReferences()) {
-            $values = array();
-            foreach ($object->getReferences() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['references'] = $values;
-        }
+        $data['file'] = $object->getFile();
         return $data;
     }
 }

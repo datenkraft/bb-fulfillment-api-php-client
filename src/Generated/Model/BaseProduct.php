@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 class BaseProduct
 {
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @var string
      */
@@ -18,7 +18,7 @@ class BaseProduct
     */
     protected $articleVariantTitle;
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @var string|null
@@ -57,7 +57,7 @@ class BaseProduct
     /**
      * The variant group of the product
      *
-     * @var string
+     * @var mixed
      */
     protected $variantGroup = 'content';
     /**
@@ -91,7 +91,7 @@ class BaseProduct
      */
     protected $languageCode = 'de';
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @return string
      */
@@ -100,7 +100,7 @@ class BaseProduct
         return $this->productType;
     }
     /**
-     * Type of the product ('standard' if no value is provided)
+     * Type of the product
      *
      * @param string $productType
      *
@@ -135,7 +135,7 @@ class BaseProduct
         return $this;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @return string|null
@@ -145,7 +145,7 @@ class BaseProduct
         return $this->articleVariantType;
     }
     /**
-    * The type of the article variant ('standard_autotitle' if no value is provided). \
+    * The type of the article variant. \
     The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
     *
     * @param string|null $articleVariantType
@@ -265,20 +265,20 @@ class BaseProduct
     /**
      * The variant group of the product
      *
-     * @return string
+     * @return mixed
      */
-    public function getVariantGroup() : string
+    public function getVariantGroup()
     {
         return $this->variantGroup;
     }
     /**
      * The variant group of the product
      *
-     * @param string $variantGroup
+     * @param mixed $variantGroup
      *
      * @return self
      */
-    public function setVariantGroup(string $variantGroup) : self
+    public function setVariantGroup($variantGroup) : self
     {
         $this->variantGroup = $variantGroup;
         return $this;

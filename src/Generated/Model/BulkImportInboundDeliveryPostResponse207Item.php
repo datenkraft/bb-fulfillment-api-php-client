@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BulkImportInboundDeliveryFormatPostResponse207Item
+class BulkImportInboundDeliveryPostResponse207Item
 {
     /**
      * HTTP Status code of the single request

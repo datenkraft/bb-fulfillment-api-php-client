@@ -4,16 +4,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 
 class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
-    protected $format;
-    /**
-     * Get a spreadsheet template for performing POST queries to the respective endpoint.
-     *
-     * @param string $format The format of the spreadsheet template
-     */
-    public function __construct(string $format)
-    {
-        $this->format = $format;
-    }
     use \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\EndpointTrait;
     public function getMethod() : string
     {
@@ -21,7 +11,7 @@ class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\F
     }
     public function getUri() : string
     {
-        return str_replace(array('{format}'), array($this->format), '/bulk-import/template/inbound-delivery.{format}');
+        return '/bulk-import/template/inbound-delivery';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
@@ -53,6 +43,6 @@ class GetInboundDeliveryBulkImportTemplate extends \Datenkraft\Backbone\Client\F
     }
     public function getAuthenticationScopes() : array
     {
-        return array();
+        return array('oAuthAuthorization', 'bearerAuth');
     }
 }
