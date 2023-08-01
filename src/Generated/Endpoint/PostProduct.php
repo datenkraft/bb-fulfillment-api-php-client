@@ -6,17 +6,19 @@ class PostProduct extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
 {
     protected $productNumber;
     /**
-    * Add a new product referenced by the given productNumber.
-    Please note that due to necessary product compliance enabling by our steve team, the product might not be usable immediately.
-    The product number is nevertheless reserved, even before the product can be queried in the GET endpoint.
+    * Add a new product referenced by the given productNumber. \
+    _Please note that due to necessary product compliance enabling by our steve team,
+    the product might not be usable immediately.
+    The product number is nevertheless reserved, even before the product can be queried in the GET endpoint._
     *
-    * @param string $productNumber The number the product should be refered by.\
+    * @param string $productNumber The number the product should be referred by. \
     This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
-    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
+    Please ensure that it does not contain any of the following character sequences:
+    '/', '%2F', '%2f', '?', '%3F', '%3f', '#', '%23', '&', '%26'.
+    Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
