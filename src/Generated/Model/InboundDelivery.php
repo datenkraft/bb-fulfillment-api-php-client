@@ -36,6 +36,12 @@ class InboundDelivery
     */
     protected $inboundDeliveryNumber;
     /**
+     * Notes from the steve warehouse team.
+     *
+     * @var string|null
+     */
+    protected $inboundDeliveryNote;
+    /**
      * The API internal id of the inbound delivery.
      *
      * @var int
@@ -189,6 +195,27 @@ class InboundDelivery
     public function setInboundDeliveryNumber(?string $inboundDeliveryNumber) : self
     {
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
+        return $this;
+    }
+    /**
+     * Notes from the steve warehouse team.
+     *
+     * @return string|null
+     */
+    public function getInboundDeliveryNote() : ?string
+    {
+        return $this->inboundDeliveryNote;
+    }
+    /**
+     * Notes from the steve warehouse team.
+     *
+     * @param string|null $inboundDeliveryNote
+     *
+     * @return self
+     */
+    public function setInboundDeliveryNote(?string $inboundDeliveryNote) : self
+    {
+        $this->inboundDeliveryNote = $inboundDeliveryNote;
         return $this;
     }
     /**

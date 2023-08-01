@@ -64,6 +64,12 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] === null) {
             $object->setInboundDeliveryNumber(null);
         }
+        if (\array_key_exists('inboundDeliveryNote', $data) && $data['inboundDeliveryNote'] !== null) {
+            $object->setInboundDeliveryNote($data['inboundDeliveryNote']);
+        }
+        elseif (\array_key_exists('inboundDeliveryNote', $data) && $data['inboundDeliveryNote'] === null) {
+            $object->setInboundDeliveryNote(null);
+        }
         if (\array_key_exists('shopWAWIDeliveryId', $data)) {
             $object->setShopWAWIDeliveryId($data['shopWAWIDeliveryId']);
         }
@@ -122,6 +128,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if (null !== $object->getInboundDeliveryNumber()) {
             $data['inboundDeliveryNumber'] = $object->getInboundDeliveryNumber();
+        }
+        if (null !== $object->getInboundDeliveryNote()) {
+            $data['inboundDeliveryNote'] = $object->getInboundDeliveryNote();
         }
         if (null !== $object->getShopWAWIDeliveryId()) {
             $data['shopWAWIDeliveryId'] = $object->getShopWAWIDeliveryId();
