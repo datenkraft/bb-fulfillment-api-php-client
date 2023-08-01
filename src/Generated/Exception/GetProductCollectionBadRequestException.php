@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetProductJournalCollectionNotFoundException extends NotFoundException
+class GetProductCollectionBadRequestException extends BadRequestException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -14,7 +14,7 @@ class GetProductJournalCollectionNotFoundException extends NotFoundException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Not Found or source of product is not \'self\'');
+        parent::__construct('Bad Request');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

@@ -817,22 +817,26 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    - totalCount: The total number of items in the collection will be calculated. \
+    This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
-    *     @var string $filter[search] Filter for product search.\
+    *     @var string $filter[search] Filter for product search. \
     Usage:
-    - Provide one or multiple search terms to filter results.
+    - Provide one or multiple search terms to filter results. 
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
     - The search is enabled for the fields productTitle, productNumber and ean.
-    - Each search term filters the response for products where at least one of the fields contains the search term.
-    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
+    - Each search term filters the response for products where at least one of the
+    fields contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1'
+    is found in any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
     *     @var string $filter[source] Filter for product source.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionBadRequestException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionForbiddenException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionUnprocessableEntityException
@@ -850,7 +854,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param string $productNumber The product number as defined during the creation of the product.
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
@@ -858,7 +862,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductBadRequestException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductNotFoundException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnprocessableEntityException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
@@ -870,17 +873,19 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProduct($productNumber, $queryParameters), $fetch);
     }
     /**
-    * Add a new product referenced by the given productNumber.
-    Please note that due to necessary product compliance enabling by our steve team, the product might not be usable immediately.
-    The product number is nevertheless reserved, even before the product can be queried in the GET endpoint.
+    * Add a new product referenced by the given productNumber. \
+    _Please note that due to necessary product compliance enabling by our steve team,
+    the product might not be usable immediately.
+    The product number is nevertheless reserved, even before the product can be queried in the GET endpoint._
     *
-    * @param string $productNumber The number the product should be refered by.\
+    * @param string $productNumber The number the product should be referred by. \
     This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
-    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
+    Please ensure that it does not contain any of the following character sequences:
+    '/', '%2F', '%2f', '?', '%3F', '%3f', '#', '%23', '&', '%26'.
+    Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
@@ -900,22 +905,22 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     }
     /**
     * Read a journal collection for a specific product showing the history of stock changes.
-    Only products with the source 'self' can be queried.
+    _Only products with the source 'self' can be queried._
     *
     * @param string $productNumber The product number as defined during the creation of the product.
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
-    *     @var string $paginationMode The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    *     @var string $paginationMode The paginationMode to use:\
+    - default: The total number of items in the collection will not be calculated.\
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d (timezone CET/CEST) for which product journal entries should be returned.
     *     @var string $filter[dateTo] The end date (inclusive) in format Y-m-d (timezone CET/CEST) for which product journal entries should be returned.
     *     @var string $filter[reason] Filter journal entries for one or more reasons
-    
     - expired: Taking an expired product off the books
     - damaged: Taking a damaged product off the books
     - own_withdrawl: Product taken for own use
@@ -929,7 +934,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductJournalCollectionBadRequestException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductJournalCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductJournalCollectionForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductJournalCollectionNotFoundException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductJournalCollectionUnprocessableEntityException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductJournalCollectionInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
