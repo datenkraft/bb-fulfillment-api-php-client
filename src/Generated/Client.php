@@ -1007,11 +1007,12 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 20.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    - totalCount: The total number of items in the collection will be calculated. \
+    This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d (timezone CET/CEST) for which orders should be returned.
@@ -1030,6 +1031,37 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     public function getOrderReportClearingCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOrderReportClearingCollection($queryParameters), $fetch);
+    }
+    /**
+    * Read the inventory movements for the given shopCode in the given month and year.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. \
+    This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var int $filter[year] The year for which inventory movements should be returned.
+    *     @var int $filter[month] The month for which inventory movements should be returned.
+    *     @var string $filter[productNumbers] The productNumber(s) as comma delimited string for which inventory movements should be returned (optional).
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReportInventoryMovementCollectionBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReportInventoryMovementCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReportInventoryMovementCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReportInventoryMovementCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReportInventoryMovementCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryCollection|null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getReportInventoryMovementCollection(array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetReportInventoryMovementCollection($queryParameters), $fetch);
     }
     /**
     * Get a list of shops the used identity is assigned to.
