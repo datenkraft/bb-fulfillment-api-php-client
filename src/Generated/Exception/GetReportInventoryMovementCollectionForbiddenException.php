@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetOrderReportClearingCollectionInternalServerErrorException extends InternalServerErrorException
+class GetReportInventoryMovementCollectionForbiddenException extends ForbiddenException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -14,7 +14,7 @@ class GetOrderReportClearingCollectionInternalServerErrorException extends Inter
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Server Error');
+        parent::__construct('Forbidden');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
