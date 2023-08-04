@@ -12,14 +12,15 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[orderNumber] A filter for a single order number or multiple order numbers separted by a comma.
+    - totalCount: The total number of items in the collection will be calculated. \
+    This can mean loss of performance.
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[orderNumber] A filter for a single order number or multiple order numbers separated by a comma.
     - The filter can contain a maximum of 100 order numbers.
     - The order numbers in the filter must be unique.
     - A single order number can have a maximum length of 59 characters.
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -46,19 +47,20 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[orderNumber]', 'shopCode'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'shopCode', 'filter[orderNumber]'));
         $optionsResolver->setRequired(array('filter[orderNumber]'));
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->setAllowedTypes('page', array('int'));
         $optionsResolver->setAllowedTypes('pageSize', array('int'));
         $optionsResolver->setAllowedTypes('paginationMode', array('string'));
-        $optionsResolver->setAllowedTypes('filter[orderNumber]', array('string'));
         $optionsResolver->setAllowedTypes('shopCode', array('string'));
+        $optionsResolver->setAllowedTypes('filter[orderNumber]', array('string'));
         return $optionsResolver;
     }
     /**
      * {@inheritdoc}
      *
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionForbiddenException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnprocessableEntityException
@@ -71,6 +73,9 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     {
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryCollection', 'json');
+        }
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnauthorizedException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'));

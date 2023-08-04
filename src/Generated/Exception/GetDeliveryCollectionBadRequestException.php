@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class PatchDeliveryShipmentInternalServerErrorException extends InternalServerErrorException
+class GetDeliveryCollectionBadRequestException extends BadRequestException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -10,7 +10,7 @@ class PatchDeliveryShipmentInternalServerErrorException extends InternalServerEr
     private $errorResponse;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse)
     {
-        parent::__construct('Server Error');
+        parent::__construct('Bad Request');
         $this->errorResponse = $errorResponse;
     }
     public function getErrorResponse() : \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
