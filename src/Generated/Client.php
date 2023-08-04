@@ -287,16 +287,18 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[orderNumber] A filter for a single order number or multiple order numbers separted by a comma.
+    - totalCount: The total number of items in the collection will be calculated. \
+    This can mean loss of performance.
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[orderNumber] A filter for a single order number or multiple order numbers separated by a comma.
     - The filter can contain a maximum of 100 order numbers.
     - The order numbers in the filter must be unique.
     - A single order number can have a maximum length of 59 characters.
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionBadRequestException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionForbiddenException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionUnprocessableEntityException
@@ -312,13 +314,14 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Get the delivery with the given deliveryNumber.
     *
-    * @param string $deliveryNumber delivery number
+    * @param string $deliveryNumber Number of the delivery
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryBadRequestException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryForbiddenException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryNotFoundException
@@ -333,17 +336,47 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDelivery($deliveryNumber, $queryParameters), $fetch);
     }
     /**
-    * Patch data of the shipment of the delivery specified by the given delivery and shipment numbers.
+    * Allows to download a document associated with the given delivery.
     *
-    * @param string $deliveryNumber Number of the delivery.
-    * @param string $shipmentNumber Number of the shipment
-    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment $requestBody 
+    * @param string $deliveryNumber The number of the delivery
+    * @param string $documentCode The document type to download. The file format is determined by the Accept request header.\
+    **Note:** Only a limited amount of document type to file format combinations are available:
+    - deliverySlipNote: The delivery slip note to confirm successful delivery.\
+    Accept header: application/pdf
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryDocumentBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryDocumentUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryDocumentForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryDocumentNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryDocumentNotAcceptableException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryDocumentUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryDocumentInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getDeliveryDocument(string $deliveryNumber, string $documentCode, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDeliveryDocument($deliveryNumber, $documentCode, $queryParameters), $fetch);
+    }
+    /**
+    * Patch data of the shipment of the delivery specified by the given delivery and shipment numbers.
+    *
+    * @param string $deliveryNumber Number of the delivery.
+    * @param string $shipmentNumber Number of the shipment.
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment $requestBody 
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentBadRequestException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentForbiddenException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchDeliveryShipmentNotFoundException
