@@ -127,10 +127,9 @@ class Order extends \ArrayObject
     * The source of the order.
     - shopify: This order was created via the steve by niceshops Shopify application
     - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API\
-    If null, the source could not be determined
+    - api: This order was created via the Fulfillment API
     *
-    * @var string|null
+    * @var string
     */
     protected $source;
     /**
@@ -531,12 +530,11 @@ class Order extends \ArrayObject
     * The source of the order.
     - shopify: This order was created via the steve by niceshops Shopify application
     - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API\
-    If null, the source could not be determined
+    - api: This order was created via the Fulfillment API
     *
-    * @return string|null
+    * @return string
     */
-    public function getSource() : ?string
+    public function getSource() : string
     {
         return $this->source;
     }
@@ -544,14 +542,13 @@ class Order extends \ArrayObject
     * The source of the order.
     - shopify: This order was created via the steve by niceshops Shopify application
     - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API\
-    If null, the source could not be determined
+    - api: This order was created via the Fulfillment API
     *
-    * @param string|null $source
+    * @param string $source
     *
     * @return self
     */
-    public function setSource(?string $source) : self
+    public function setSource(string $source) : self
     {
         $this->initialized['source'] = true;
         $this->source = $source;
