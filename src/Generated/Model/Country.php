@@ -23,6 +23,12 @@ class Country
      */
     protected $phoneRequired;
     /**
+     * Specifies whether or not customs clearance is necessary
+     *
+     * @var bool
+     */
+    protected $customsClearanceRequired;
+    /**
      * 
      *
      * @var CountryProvinces[]|null
@@ -95,6 +101,27 @@ class Country
     public function setPhoneRequired(bool $phoneRequired) : self
     {
         $this->phoneRequired = $phoneRequired;
+        return $this;
+    }
+    /**
+     * Specifies whether or not customs clearance is necessary
+     *
+     * @return bool
+     */
+    public function getCustomsClearanceRequired() : bool
+    {
+        return $this->customsClearanceRequired;
+    }
+    /**
+     * Specifies whether or not customs clearance is necessary
+     *
+     * @param bool $customsClearanceRequired
+     *
+     * @return self
+     */
+    public function setCustomsClearanceRequired(bool $customsClearanceRequired) : self
+    {
+        $this->customsClearanceRequired = $customsClearanceRequired;
         return $this;
     }
     /**
