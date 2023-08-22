@@ -43,6 +43,12 @@ class UpdateShopMeta extends \ArrayObject
      */
     protected $defaultCurrency;
     /**
+     * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be used as default.
+     *
+     * @var bool|null
+     */
+    protected $shopifyOverwriteCustomerEmailEnabled;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -150,6 +156,28 @@ class UpdateShopMeta extends \ArrayObject
     {
         $this->initialized['defaultCurrency'] = true;
         $this->defaultCurrency = $defaultCurrency;
+        return $this;
+    }
+    /**
+     * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be used as default.
+     *
+     * @return bool|null
+     */
+    public function getShopifyOverwriteCustomerEmailEnabled() : ?bool
+    {
+        return $this->shopifyOverwriteCustomerEmailEnabled;
+    }
+    /**
+     * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be used as default.
+     *
+     * @param bool|null $shopifyOverwriteCustomerEmailEnabled
+     *
+     * @return self
+     */
+    public function setShopifyOverwriteCustomerEmailEnabled(?bool $shopifyOverwriteCustomerEmailEnabled) : self
+    {
+        $this->initialized['shopifyOverwriteCustomerEmailEnabled'] = true;
+        $this->shopifyOverwriteCustomerEmailEnabled = $shopifyOverwriteCustomerEmailEnabled;
         return $this;
     }
 }
