@@ -111,6 +111,13 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] === null) {
             $object->setDefaultCurrency(null);
         }
+        if (\array_key_exists('shopifyOverwriteCustomerEmailEnabled', $data) && $data['shopifyOverwriteCustomerEmailEnabled'] !== null) {
+            $object->setShopifyOverwriteCustomerEmailEnabled($data['shopifyOverwriteCustomerEmailEnabled']);
+            unset($data['shopifyOverwriteCustomerEmailEnabled']);
+        }
+        elseif (\array_key_exists('shopifyOverwriteCustomerEmailEnabled', $data) && $data['shopifyOverwriteCustomerEmailEnabled'] === null) {
+            $object->setShopifyOverwriteCustomerEmailEnabled(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -153,6 +160,9 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if ($object->isInitialized('defaultCurrency') && null !== $object->getDefaultCurrency()) {
             $data['defaultCurrency'] = $object->getDefaultCurrency();
+        }
+        if ($object->isInitialized('shopifyOverwriteCustomerEmailEnabled') && null !== $object->getShopifyOverwriteCustomerEmailEnabled()) {
+            $data['shopifyOverwriteCustomerEmailEnabled'] = $object->getShopifyOverwriteCustomerEmailEnabled();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
