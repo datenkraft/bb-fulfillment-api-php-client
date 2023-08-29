@@ -29,6 +29,18 @@ class Reconsignment
      */
     protected $orderNumber;
     /**
+     * The delivery service used for the creation of the order.
+     *
+     * @var string
+     */
+    protected $orderDeliveryServiceCode;
+    /**
+     * The delivery service used for the reconsignment.
+     *
+     * @var string
+     */
+    protected $reconsignmentDeliveryServiceCode;
+    /**
      * 
      *
      * @var ReconsignmentLine[]
@@ -116,6 +128,48 @@ class Reconsignment
     public function setOrderNumber(string $orderNumber) : self
     {
         $this->orderNumber = $orderNumber;
+        return $this;
+    }
+    /**
+     * The delivery service used for the creation of the order.
+     *
+     * @return string
+     */
+    public function getOrderDeliveryServiceCode() : string
+    {
+        return $this->orderDeliveryServiceCode;
+    }
+    /**
+     * The delivery service used for the creation of the order.
+     *
+     * @param string $orderDeliveryServiceCode
+     *
+     * @return self
+     */
+    public function setOrderDeliveryServiceCode(string $orderDeliveryServiceCode) : self
+    {
+        $this->orderDeliveryServiceCode = $orderDeliveryServiceCode;
+        return $this;
+    }
+    /**
+     * The delivery service used for the reconsignment.
+     *
+     * @return string
+     */
+    public function getReconsignmentDeliveryServiceCode() : string
+    {
+        return $this->reconsignmentDeliveryServiceCode;
+    }
+    /**
+     * The delivery service used for the reconsignment.
+     *
+     * @param string $reconsignmentDeliveryServiceCode
+     *
+     * @return self
+     */
+    public function setReconsignmentDeliveryServiceCode(string $reconsignmentDeliveryServiceCode) : self
+    {
+        $this->reconsignmentDeliveryServiceCode = $reconsignmentDeliveryServiceCode;
         return $this;
     }
     /**
