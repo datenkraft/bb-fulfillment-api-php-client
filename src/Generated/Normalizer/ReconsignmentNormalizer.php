@@ -51,6 +51,12 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
         if (\array_key_exists('orderNumber', $data)) {
             $object->setOrderNumber($data['orderNumber']);
         }
+        if (\array_key_exists('orderDeliveryServiceCode', $data)) {
+            $object->setOrderDeliveryServiceCode($data['orderDeliveryServiceCode']);
+        }
+        if (\array_key_exists('reconsignmentDeliveryServiceCode', $data)) {
+            $object->setReconsignmentDeliveryServiceCode($data['reconsignmentDeliveryServiceCode']);
+        }
         if (\array_key_exists('reconsignmentLines', $data)) {
             $values = array();
             foreach ($data['reconsignmentLines'] as $value) {
@@ -77,6 +83,12 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if (null !== $object->getOrderNumber()) {
             $data['orderNumber'] = $object->getOrderNumber();
+        }
+        if (null !== $object->getOrderDeliveryServiceCode()) {
+            $data['orderDeliveryServiceCode'] = $object->getOrderDeliveryServiceCode();
+        }
+        if (null !== $object->getReconsignmentDeliveryServiceCode()) {
+            $data['reconsignmentDeliveryServiceCode'] = $object->getReconsignmentDeliveryServiceCode();
         }
         if (null !== $object->getReconsignmentLines()) {
             $values = array();

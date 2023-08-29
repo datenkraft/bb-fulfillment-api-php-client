@@ -29,6 +29,12 @@ class NewOrderCustomer
      */
     protected $deliveryAddress;
     /**
+     * The customer's email.
+     *
+     * @var string|null
+     */
+    protected $email;
+    /**
      * The customer's phone number, preferably in the DIN 5008 format, like:+43 2236 123456-7890
      *
      * @var string|null
@@ -169,6 +175,27 @@ class NewOrderCustomer
     public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress) : self
     {
         $this->deliveryAddress = $deliveryAddress;
+        return $this;
+    }
+    /**
+     * The customer's email.
+     *
+     * @return string|null
+     */
+    public function getEmail() : ?string
+    {
+        return $this->email;
+    }
+    /**
+     * The customer's email.
+     *
+     * @param string|null $email
+     *
+     * @return self
+     */
+    public function setEmail(?string $email) : self
+    {
+        $this->email = $email;
         return $this;
     }
     /**
