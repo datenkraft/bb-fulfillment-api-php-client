@@ -57,6 +57,14 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setOrderNumber($data['orderNumber']);
             unset($data['orderNumber']);
         }
+        if (\array_key_exists('orderDeliveryServiceCode', $data)) {
+            $object->setOrderDeliveryServiceCode($data['orderDeliveryServiceCode']);
+            unset($data['orderDeliveryServiceCode']);
+        }
+        if (\array_key_exists('reconsignmentDeliveryServiceCode', $data)) {
+            $object->setReconsignmentDeliveryServiceCode($data['reconsignmentDeliveryServiceCode']);
+            unset($data['reconsignmentDeliveryServiceCode']);
+        }
         if (\array_key_exists('reconsignmentLines', $data)) {
             $values = array();
             foreach ($data['reconsignmentLines'] as $value) {
@@ -89,6 +97,12 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($object->isInitialized('orderNumber') && null !== $object->getOrderNumber()) {
             $data['orderNumber'] = $object->getOrderNumber();
+        }
+        if ($object->isInitialized('orderDeliveryServiceCode') && null !== $object->getOrderDeliveryServiceCode()) {
+            $data['orderDeliveryServiceCode'] = $object->getOrderDeliveryServiceCode();
+        }
+        if ($object->isInitialized('reconsignmentDeliveryServiceCode') && null !== $object->getReconsignmentDeliveryServiceCode()) {
+            $data['reconsignmentDeliveryServiceCode'] = $object->getReconsignmentDeliveryServiceCode();
         }
         if ($object->isInitialized('reconsignmentLines') && null !== $object->getReconsignmentLines()) {
             $values = array();

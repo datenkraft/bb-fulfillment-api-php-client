@@ -7725,6 +7725,14 @@
                         "description": "The order number. Note: This can be null if the order was not created via the API.",
                         "type": "string"
                     },
+                    "orderDeliveryServiceCode": {
+                        "description": "The delivery service used for the creation of the order.",
+                        "type": "string"
+                    },
+                    "reconsignmentDeliveryServiceCode": {
+                        "description": "The delivery service used for the reconsignment.",
+                        "type": "string"
+                    },
                     "reconsignmentLines": {
                         "description": "",
                         "type": "array",
