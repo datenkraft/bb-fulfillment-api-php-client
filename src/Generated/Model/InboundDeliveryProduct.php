@@ -13,13 +13,13 @@ class InboundDeliveryProduct extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Product number
+     * Number of the product
      *
      * @var string
      */
     protected $productNumber;
     /**
-     * Number of announced products in the inbound delivery
+     * Number of the announced products in the inbound delivery
      *
      * @var int
      */
@@ -37,7 +37,7 @@ class InboundDeliveryProduct extends \ArrayObject
      */
     protected $deliveredCount;
     /**
-     * Product number
+     * Number of the product
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class InboundDeliveryProduct extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * Product number
+     * Number of the product
      *
      * @param string $productNumber
      *
@@ -59,7 +59,7 @@ class InboundDeliveryProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Number of announced products in the inbound delivery
+     * Number of the announced products in the inbound delivery
      *
      * @return int
      */
@@ -68,7 +68,7 @@ class InboundDeliveryProduct extends \ArrayObject
         return $this->announcedCount;
     }
     /**
-     * Number of announced products in the inbound delivery
+     * Number of the announced products in the inbound delivery
      *
      * @param int $announcedCount
      *

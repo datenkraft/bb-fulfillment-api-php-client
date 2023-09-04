@@ -19,10 +19,11 @@ class InboundDelivery extends \ArrayObject
      */
     protected $inboundDeliveryName;
     /**
-     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-     *
-     * @var string
-     */
+    * Number of the supplier.\
+    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+    *
+    * @var string
+    */
     protected $supplierNumber;
     /**
      * Expected date of the delivery (timezone CET/CEST)
@@ -38,25 +39,26 @@ class InboundDelivery extends \ArrayObject
     protected $products;
     /**
     * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was created was created manually by niceshops.
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was 
+    created was created manually by niceshops.
     *
-    * @var string|null
+    * @var string
     */
     protected $inboundDeliveryNumber;
     /**
-     * Notes from the steve warehouse team.
+     * Notes from the steve warehouse team
      *
      * @var string|null
      */
     protected $inboundDeliveryNote;
     /**
-     * The API internal id of the inbound delivery.
+     * The API internal id of the inbound delivery
      *
      * @var int
      */
     protected $shopWAWIDeliveryId;
     /**
-    * Status of the inbound delivery.
+    * Status of the inbound delivery.\
     The status for not yet completed is subject to change. you may poll for changes.
     - open: The inbound delivery has not yet been delivered.
     - in_progress: The inbound delivery is being processed in our warehouse.
@@ -69,7 +71,7 @@ class InboundDelivery extends \ArrayObject
     /**
      * The shopCode used internally to distinguish between clients.
      *
-     * @var string|null
+     * @var string
      */
     protected $shopCode;
     /**
@@ -85,9 +87,11 @@ class InboundDelivery extends \ArrayObject
      */
     protected $endDate;
     /**
-    * Number of the inbound delivery on the delivery slip.
-    If the field is empty or not set in the database (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.
-    If an empty string (") is returned, it means that no delivery slip number is available for the inbound delivery.
+    * Number of the inbound delivery on the delivery slip.\
+    If the field is empty or not set in the database
+    (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
+    If an empty string ("") is returned, it means that no delivery slip number is 
+    available for the inbound delivery.
     *
     * @var string|null
     */
@@ -95,7 +99,7 @@ class InboundDelivery extends \ArrayObject
     /**
      * Creation date of the inbound delivery. Format in ISO 8601 (timezone CET/CEST)
      *
-     * @var \DateTime|null
+     * @var \DateTime
      */
     protected $createDate;
     /**
@@ -121,21 +125,23 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-     *
-     * @return string
-     */
+    * Number of the supplier.\
+    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+    *
+    * @return string
+    */
     public function getSupplierNumber() : string
     {
         return $this->supplierNumber;
     }
     /**
-     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-     *
-     * @param string $supplierNumber
-     *
-     * @return self
-     */
+    * Number of the supplier.\
+    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+    *
+    * @param string $supplierNumber
+    *
+    * @return self
+    */
     public function setSupplierNumber(string $supplierNumber) : self
     {
         $this->initialized['supplierNumber'] = true;
@@ -188,30 +194,32 @@ class InboundDelivery extends \ArrayObject
     }
     /**
     * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was created was created manually by niceshops.
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was 
+    created was created manually by niceshops.
     *
-    * @return string|null
+    * @return string
     */
-    public function getInboundDeliveryNumber() : ?string
+    public function getInboundDeliveryNumber() : string
     {
         return $this->inboundDeliveryNumber;
     }
     /**
     * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was created was created manually by niceshops.
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was 
+    created was created manually by niceshops.
     *
-    * @param string|null $inboundDeliveryNumber
+    * @param string $inboundDeliveryNumber
     *
     * @return self
     */
-    public function setInboundDeliveryNumber(?string $inboundDeliveryNumber) : self
+    public function setInboundDeliveryNumber(string $inboundDeliveryNumber) : self
     {
         $this->initialized['inboundDeliveryNumber'] = true;
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
         return $this;
     }
     /**
-     * Notes from the steve warehouse team.
+     * Notes from the steve warehouse team
      *
      * @return string|null
      */
@@ -220,7 +228,7 @@ class InboundDelivery extends \ArrayObject
         return $this->inboundDeliveryNote;
     }
     /**
-     * Notes from the steve warehouse team.
+     * Notes from the steve warehouse team
      *
      * @param string|null $inboundDeliveryNote
      *
@@ -233,7 +241,7 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-     * The API internal id of the inbound delivery.
+     * The API internal id of the inbound delivery
      *
      * @return int
      */
@@ -242,7 +250,7 @@ class InboundDelivery extends \ArrayObject
         return $this->shopWAWIDeliveryId;
     }
     /**
-     * The API internal id of the inbound delivery.
+     * The API internal id of the inbound delivery
      *
      * @param int $shopWAWIDeliveryId
      *
@@ -255,7 +263,7 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the inbound delivery.
+    * Status of the inbound delivery.\
     The status for not yet completed is subject to change. you may poll for changes.
     - open: The inbound delivery has not yet been delivered.
     - in_progress: The inbound delivery is being processed in our warehouse.
@@ -269,7 +277,7 @@ class InboundDelivery extends \ArrayObject
         return $this->status;
     }
     /**
-    * Status of the inbound delivery.
+    * Status of the inbound delivery.\
     The status for not yet completed is subject to change. you may poll for changes.
     - open: The inbound delivery has not yet been delivered.
     - in_progress: The inbound delivery is being processed in our warehouse.
@@ -289,20 +297,20 @@ class InboundDelivery extends \ArrayObject
     /**
      * The shopCode used internally to distinguish between clients.
      *
-     * @return string|null
+     * @return string
      */
-    public function getShopCode() : ?string
+    public function getShopCode() : string
     {
         return $this->shopCode;
     }
     /**
      * The shopCode used internally to distinguish between clients.
      *
-     * @param string|null $shopCode
+     * @param string $shopCode
      *
      * @return self
      */
-    public function setShopCode(?string $shopCode) : self
+    public function setShopCode(string $shopCode) : self
     {
         $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
@@ -353,9 +361,11 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the inbound delivery on the delivery slip.
-    If the field is empty or not set in the database (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.
-    If an empty string (") is returned, it means that no delivery slip number is available for the inbound delivery.
+    * Number of the inbound delivery on the delivery slip.\
+    If the field is empty or not set in the database
+    (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
+    If an empty string ("") is returned, it means that no delivery slip number is 
+    available for the inbound delivery.
     *
     * @return string|null
     */
@@ -364,9 +374,11 @@ class InboundDelivery extends \ArrayObject
         return $this->deliverySlipNumber;
     }
     /**
-    * Number of the inbound delivery on the delivery slip.
-    If the field is empty or not set in the database (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.
-    If an empty string (") is returned, it means that no delivery slip number is available for the inbound delivery.
+    * Number of the inbound delivery on the delivery slip.\
+    If the field is empty or not set in the database
+    (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
+    If an empty string ("") is returned, it means that no delivery slip number is 
+    available for the inbound delivery.
     *
     * @param string|null $deliverySlipNumber
     *
@@ -381,20 +393,20 @@ class InboundDelivery extends \ArrayObject
     /**
      * Creation date of the inbound delivery. Format in ISO 8601 (timezone CET/CEST)
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getCreateDate() : ?\DateTime
+    public function getCreateDate() : \DateTime
     {
         return $this->createDate;
     }
     /**
      * Creation date of the inbound delivery. Format in ISO 8601 (timezone CET/CEST)
      *
-     * @param \DateTime|null $createDate
+     * @param \DateTime $createDate
      *
      * @return self
      */
-    public function setCreateDate(?\DateTime $createDate) : self
+    public function setCreateDate(\DateTime $createDate) : self
     {
         $this->initialized['createDate'] = true;
         $this->createDate = $createDate;

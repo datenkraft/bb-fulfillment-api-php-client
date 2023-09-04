@@ -64,12 +64,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setProducts($values);
             unset($data['products']);
         }
-        if (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] !== null) {
+        if (\array_key_exists('inboundDeliveryNumber', $data)) {
             $object->setInboundDeliveryNumber($data['inboundDeliveryNumber']);
             unset($data['inboundDeliveryNumber']);
-        }
-        elseif (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] === null) {
-            $object->setInboundDeliveryNumber(null);
         }
         if (\array_key_exists('inboundDeliveryNote', $data) && $data['inboundDeliveryNote'] !== null) {
             $object->setInboundDeliveryNote($data['inboundDeliveryNote']);
@@ -86,12 +83,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setStatus($data['status']);
             unset($data['status']);
         }
-        if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
+        if (\array_key_exists('shopCode', $data)) {
             $object->setShopCode($data['shopCode']);
             unset($data['shopCode']);
-        }
-        elseif (\array_key_exists('shopCode', $data) && $data['shopCode'] === null) {
-            $object->setShopCode(null);
         }
         if (\array_key_exists('startDate', $data) && $data['startDate'] !== null) {
             $object->setStartDate(\DateTime::createFromFormat('Y-m-d', $data['startDate'])->setTime(0, 0, 0));
@@ -114,12 +108,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         elseif (\array_key_exists('deliverySlipNumber', $data) && $data['deliverySlipNumber'] === null) {
             $object->setDeliverySlipNumber(null);
         }
-        if (\array_key_exists('createDate', $data) && $data['createDate'] !== null) {
+        if (\array_key_exists('createDate', $data)) {
             $object->setCreateDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['createDate']));
             unset($data['createDate']);
-        }
-        elseif (\array_key_exists('createDate', $data) && $data['createDate'] === null) {
-            $object->setCreateDate(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

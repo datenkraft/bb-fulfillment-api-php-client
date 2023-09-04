@@ -132,6 +132,13 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] === null) {
             $object->setPurchasePrices(null);
         }
+        if (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] !== null) {
+            $object->setProductNumberManufacturer($data['productNumberManufacturer']);
+            unset($data['productNumberManufacturer']);
+        }
+        elseif (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] === null) {
+            $object->setProductNumberManufacturer(null);
+        }
         if (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] !== null) {
             $object->setManufacturerCountryCode($data['manufacturerCountryCode']);
             unset($data['manufacturerCountryCode']);
@@ -139,9 +146,27 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] === null) {
             $object->setManufacturerCountryCode(null);
         }
-        if (\array_key_exists('languageCode', $data)) {
+        if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->setLanguageCode($data['languageCode']);
             unset($data['languageCode']);
+        }
+        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
+            $object->setLanguageCode(null);
+        }
+        if (\array_key_exists('productNumber', $data)) {
+            $object->setProductNumber($data['productNumber']);
+            unset($data['productNumber']);
+        }
+        if (\array_key_exists('shopCode', $data)) {
+            $object->setShopCode($data['shopCode']);
+            unset($data['shopCode']);
+        }
+        if (\array_key_exists('productStatus', $data) && $data['productStatus'] !== null) {
+            $object->setProductStatus($data['productStatus']);
+            unset($data['productStatus']);
+        }
+        elseif (\array_key_exists('productStatus', $data) && $data['productStatus'] === null) {
+            $object->setProductStatus(null);
         }
         if (\array_key_exists('productTitle', $data) && $data['productTitle'] !== null) {
             $object->setProductTitle($data['productTitle']);
@@ -156,13 +181,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('productTitleOriginal', $data) && $data['productTitleOriginal'] === null) {
             $object->setProductTitleOriginal(null);
-        }
-        if (\array_key_exists('productStatus', $data) && $data['productStatus'] !== null) {
-            $object->setProductStatus($data['productStatus']);
-            unset($data['productStatus']);
-        }
-        elseif (\array_key_exists('productStatus', $data) && $data['productStatus'] === null) {
-            $object->setProductStatus(null);
         }
         if (\array_key_exists('articleShortDescription', $data) && $data['articleShortDescription'] !== null) {
             $object->setArticleShortDescription($data['articleShortDescription']);
@@ -212,14 +230,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         elseif (\array_key_exists('supplierNumber', $data) && $data['supplierNumber'] === null) {
             $object->setSupplierNumber(null);
-        }
-        if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
-            unset($data['productNumber']);
-        }
-        if (\array_key_exists('shopCode', $data)) {
-            $object->setShopCode($data['shopCode']);
-            unset($data['shopCode']);
         }
         if (\array_key_exists('source', $data)) {
             $object->setSource($data['source']);
@@ -278,20 +288,29 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $data['purchasePrices'] = $values;
         }
+        if ($object->isInitialized('productNumberManufacturer') && null !== $object->getProductNumberManufacturer()) {
+            $data['productNumberManufacturer'] = $object->getProductNumberManufacturer();
+        }
         if ($object->isInitialized('manufacturerCountryCode') && null !== $object->getManufacturerCountryCode()) {
             $data['manufacturerCountryCode'] = $object->getManufacturerCountryCode();
         }
         if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
+        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
+            $data['productNumber'] = $object->getProductNumber();
+        }
+        if ($object->isInitialized('shopCode') && null !== $object->getShopCode()) {
+            $data['shopCode'] = $object->getShopCode();
+        }
+        if ($object->isInitialized('productStatus') && null !== $object->getProductStatus()) {
+            $data['productStatus'] = $object->getProductStatus();
+        }
         if ($object->isInitialized('productTitle') && null !== $object->getProductTitle()) {
             $data['productTitle'] = $object->getProductTitle();
         }
         if ($object->isInitialized('productTitleOriginal') && null !== $object->getProductTitleOriginal()) {
             $data['productTitleOriginal'] = $object->getProductTitleOriginal();
-        }
-        if ($object->isInitialized('productStatus') && null !== $object->getProductStatus()) {
-            $data['productStatus'] = $object->getProductStatus();
         }
         if ($object->isInitialized('articleShortDescription') && null !== $object->getArticleShortDescription()) {
             $data['articleShortDescription'] = $object->getArticleShortDescription();
@@ -313,12 +332,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('supplierNumber') && null !== $object->getSupplierNumber()) {
             $data['supplierNumber'] = $object->getSupplierNumber();
-        }
-        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
-        }
-        if ($object->isInitialized('shopCode') && null !== $object->getShopCode()) {
-            $data['shopCode'] = $object->getShopCode();
         }
         if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['source'] = $object->getSource();

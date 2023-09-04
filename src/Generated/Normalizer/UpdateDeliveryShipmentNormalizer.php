@@ -41,9 +41,12 @@ class UpdateDeliveryShipmentNormalizer implements DenormalizerInterface, Normali
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('externalShipmentId', $data)) {
+        if (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] !== null) {
             $object->setExternalShipmentId($data['externalShipmentId']);
             unset($data['externalShipmentId']);
+        }
+        elseif (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] === null) {
+            $object->setExternalShipmentId(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

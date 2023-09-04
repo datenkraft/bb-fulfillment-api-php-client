@@ -38,6 +38,9 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShipmentLine();
+        if (\array_key_exists('count', $data) && \is_int($data['count'])) {
+            $data['count'] = (double) $data['count'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }

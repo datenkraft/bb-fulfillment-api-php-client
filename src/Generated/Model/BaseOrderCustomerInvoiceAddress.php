@@ -19,7 +19,7 @@ class BaseOrderCustomerInvoiceAddress extends \ArrayObject
      */
     protected $street;
     /**
-     * 
+     * Note: Must not contain more than 5 letters
      *
      * @var string
      */
@@ -78,7 +78,7 @@ class BaseOrderCustomerInvoiceAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * Note: Must not contain more than 5 letters
      *
      * @return string
      */
@@ -87,7 +87,7 @@ class BaseOrderCustomerInvoiceAddress extends \ArrayObject
         return $this->streetNumber;
     }
     /**
-     * 
+     * Note: Must not contain more than 5 letters
      *
      * @param string $streetNumber
      *

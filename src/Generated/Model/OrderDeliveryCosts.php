@@ -14,8 +14,8 @@ class OrderDeliveryCosts extends \ArrayObject
     }
     /**
     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
-    corresponding item count.
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+    value by the corresponding item count.
     *
     * @var float
     */
@@ -27,7 +27,7 @@ class OrderDeliveryCosts extends \ArrayObject
      */
     protected $type;
     /**
-     * The VAT in percent
+     * The VAT in percent (might be validated for country)
      *
      * @var float
      */
@@ -46,8 +46,8 @@ class OrderDeliveryCosts extends \ArrayObject
     protected $title;
     /**
     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
-    corresponding item count.
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+    value by the corresponding item count.
     *
     * @return float
     */
@@ -57,8 +57,8 @@ class OrderDeliveryCosts extends \ArrayObject
     }
     /**
     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price value by the
-    corresponding item count.
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+    value by the corresponding item count.
     *
     * @param float $value
     *
@@ -93,7 +93,7 @@ class OrderDeliveryCosts extends \ArrayObject
         return $this;
     }
     /**
-     * The VAT in percent
+     * The VAT in percent (might be validated for country)
      *
      * @return float
      */
@@ -102,7 +102,7 @@ class OrderDeliveryCosts extends \ArrayObject
         return $this->vat;
     }
     /**
-     * The VAT in percent
+     * The VAT in percent (might be validated for country)
      *
      * @param float $vat
      *
