@@ -26,7 +26,7 @@ class DeliveryShipment extends \ArrayObject
     */
     protected $status;
     /**
-    * The delivery service used to send this delivery.
+    * The delivery service used to send this delivery.\
     The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
     *
     * @var string|null
@@ -39,13 +39,13 @@ class DeliveryShipment extends \ArrayObject
      */
     protected $code;
     /**
-     * Link to the carrier's tracking site
+     * Link to the carrier's specific tracking site
      *
      * @var string
      */
     protected $link;
     /**
-     * Weight
+     * 
      *
      * @var float
      */
@@ -69,7 +69,7 @@ class DeliveryShipment extends \ArrayObject
      */
     protected $externalShipmentId;
     /**
-     * Journal entries regarding the shipment.
+     * Journal entries regarding the shipment
      *
      * @var DeliveryShipmentJournal[]
      */
@@ -121,7 +121,7 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-    * The delivery service used to send this delivery.
+    * The delivery service used to send this delivery.\
     The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
     *
     * @return string|null
@@ -131,7 +131,7 @@ class DeliveryShipment extends \ArrayObject
         return $this->deliveryService;
     }
     /**
-    * The delivery service used to send this delivery.
+    * The delivery service used to send this delivery.\
     The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
     *
     * @param string|null $deliveryService
@@ -167,7 +167,7 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-     * Link to the carrier's tracking site
+     * Link to the carrier's specific tracking site
      *
      * @return string
      */
@@ -176,7 +176,7 @@ class DeliveryShipment extends \ArrayObject
         return $this->link;
     }
     /**
-     * Link to the carrier's tracking site
+     * Link to the carrier's specific tracking site
      *
      * @param string $link
      *
@@ -189,7 +189,7 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-     * Weight
+     * 
      *
      * @return float
      */
@@ -198,7 +198,7 @@ class DeliveryShipment extends \ArrayObject
         return $this->weight;
     }
     /**
-     * Weight
+     * 
      *
      * @param float $weight
      *
@@ -277,7 +277,7 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-     * Journal entries regarding the shipment.
+     * Journal entries regarding the shipment
      *
      * @return DeliveryShipmentJournal[]
      */
@@ -286,7 +286,7 @@ class DeliveryShipment extends \ArrayObject
         return $this->journal;
     }
     /**
-     * Journal entries regarding the shipment.
+     * Journal entries regarding the shipment
      *
      * @param DeliveryShipmentJournal[] $journal
      *

@@ -43,12 +43,13 @@ class NewProduct extends \ArrayObject
      *
      * @var float|null
      */
-    protected $contentsAmount = '1';
+    protected $contentsAmount = 1;
     /**
-     * Unit of the product contents ('stk' if no value is provided).
-     *
-     * @var string|null
-     */
+    * Unit of the product contents ('stk' if no value is provided).\
+    Valid units can be queried with a GET /product-unit call
+    *
+    * @var string|null
+    */
     protected $contentsUnit = 'stk';
     /**
      * Weight of the product contents in gram
@@ -63,11 +64,11 @@ class NewProduct extends \ArrayObject
      */
     protected $weightGram;
     /**
-     * 
+     * The variant group of the product
      *
-     * @var string
+     * @var mixed
      */
-    protected $variantGroup;
+    protected $variantGroup = 'content';
     /**
      * The EAN of the product
      *
@@ -87,6 +88,12 @@ class NewProduct extends \ArrayObject
      */
     protected $purchasePrices;
     /**
+     * Product number of the manufacturer
+     *
+     * @var string|null
+     */
+    protected $productNumberManufacturer;
+    /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
      * @var string|null
@@ -95,12 +102,11 @@ class NewProduct extends \ArrayObject
     /**
      * The language code used for the product (ISO 639-1)
      *
-     * @var string
+     * @var string|null
      */
     protected $languageCode = 'de';
     /**
-    * Status of the product regarding sales.
-    
+    * Status of the product regarding sales.\
     Available values:
     - enabled: Product is on sale (default)
     - enabled_external_only: Product is only available in external stores
@@ -109,19 +115,19 @@ class NewProduct extends \ArrayObject
     */
     protected $productStatus = 'enabled';
     /**
-     * Title of the product
+     * Title of the Product
      *
      * @var string
      */
     protected $productTitle;
     /**
-     * Original title of the product
+     * Original title of the Product
      *
      * @var string
      */
     protected $productTitleOriginal;
     /**
-     * Short description of the article.
+     * Short description of the article
      *
      * @var string
      */
@@ -154,18 +160,19 @@ class NewProduct extends \ArrayObject
     *
     * @var string
     */
-    protected $taxCode;
+    protected $taxCode = 'std';
     /**
-     * Number of the manufacturer.
+     * Number of the manufacturer
      *
      * @var string
      */
     protected $manufacturerNumber;
     /**
-     * Number of the supplier
-     *
-     * @var string
-     */
+    * Number of the supplier.\
+    A list from available suppliers can be queried with the GET /supplier endpoint
+    *
+    * @var string
+    */
     protected $supplierNumber;
     /**
      * Type of the product
@@ -282,21 +289,23 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Unit of the product contents ('stk' if no value is provided).
-     *
-     * @return string|null
-     */
+    * Unit of the product contents ('stk' if no value is provided).\
+    Valid units can be queried with a GET /product-unit call
+    *
+    * @return string|null
+    */
     public function getContentsUnit() : ?string
     {
         return $this->contentsUnit;
     }
     /**
-     * Unit of the product contents ('stk' if no value is provided).
-     *
-     * @param string|null $contentsUnit
-     *
-     * @return self
-     */
+    * Unit of the product contents ('stk' if no value is provided).\
+    Valid units can be queried with a GET /product-unit call
+    *
+    * @param string|null $contentsUnit
+    *
+    * @return self
+    */
     public function setContentsUnit(?string $contentsUnit) : self
     {
         $this->initialized['contentsUnit'] = true;
@@ -348,22 +357,22 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * The variant group of the product
      *
-     * @return string
+     * @return mixed
      */
-    public function getVariantGroup() : string
+    public function getVariantGroup()
     {
         return $this->variantGroup;
     }
     /**
-     * 
+     * The variant group of the product
      *
-     * @param string $variantGroup
+     * @param mixed $variantGroup
      *
      * @return self
      */
-    public function setVariantGroup(string $variantGroup) : self
+    public function setVariantGroup($variantGroup) : self
     {
         $this->initialized['variantGroup'] = true;
         $this->variantGroup = $variantGroup;
@@ -436,6 +445,28 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
+     * Product number of the manufacturer
+     *
+     * @return string|null
+     */
+    public function getProductNumberManufacturer() : ?string
+    {
+        return $this->productNumberManufacturer;
+    }
+    /**
+     * Product number of the manufacturer
+     *
+     * @param string|null $productNumberManufacturer
+     *
+     * @return self
+     */
+    public function setProductNumberManufacturer(?string $productNumberManufacturer) : self
+    {
+        $this->initialized['productNumberManufacturer'] = true;
+        $this->productNumberManufacturer = $productNumberManufacturer;
+        return $this;
+    }
+    /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
      * @return string|null
@@ -460,28 +491,27 @@ class NewProduct extends \ArrayObject
     /**
      * The language code used for the product (ISO 639-1)
      *
-     * @return string
+     * @return string|null
      */
-    public function getLanguageCode() : string
+    public function getLanguageCode() : ?string
     {
         return $this->languageCode;
     }
     /**
      * The language code used for the product (ISO 639-1)
      *
-     * @param string $languageCode
+     * @param string|null $languageCode
      *
      * @return self
      */
-    public function setLanguageCode(string $languageCode) : self
+    public function setLanguageCode(?string $languageCode) : self
     {
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
         return $this;
     }
     /**
-    * Status of the product regarding sales.
-    
+    * Status of the product regarding sales.\
     Available values:
     - enabled: Product is on sale (default)
     - enabled_external_only: Product is only available in external stores
@@ -493,8 +523,7 @@ class NewProduct extends \ArrayObject
         return $this->productStatus;
     }
     /**
-    * Status of the product regarding sales.
-    
+    * Status of the product regarding sales.\
     Available values:
     - enabled: Product is on sale (default)
     - enabled_external_only: Product is only available in external stores
@@ -510,7 +539,7 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Title of the product
+     * Title of the Product
      *
      * @return string
      */
@@ -519,7 +548,7 @@ class NewProduct extends \ArrayObject
         return $this->productTitle;
     }
     /**
-     * Title of the product
+     * Title of the Product
      *
      * @param string $productTitle
      *
@@ -532,7 +561,7 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Original title of the product
+     * Original title of the Product
      *
      * @return string
      */
@@ -541,7 +570,7 @@ class NewProduct extends \ArrayObject
         return $this->productTitleOriginal;
     }
     /**
-     * Original title of the product
+     * Original title of the Product
      *
      * @param string $productTitleOriginal
      *
@@ -554,7 +583,7 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Short description of the article.
+     * Short description of the article
      *
      * @return string
      */
@@ -563,7 +592,7 @@ class NewProduct extends \ArrayObject
         return $this->articleShortDescription;
     }
     /**
-     * Short description of the article.
+     * Short description of the article
      *
      * @param string $articleShortDescription
      *
@@ -674,7 +703,7 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Number of the manufacturer.
+     * Number of the manufacturer
      *
      * @return string
      */
@@ -683,7 +712,7 @@ class NewProduct extends \ArrayObject
         return $this->manufacturerNumber;
     }
     /**
-     * Number of the manufacturer.
+     * Number of the manufacturer
      *
      * @param string $manufacturerNumber
      *
@@ -696,21 +725,23 @@ class NewProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Number of the supplier
-     *
-     * @return string
-     */
+    * Number of the supplier.\
+    A list from available suppliers can be queried with the GET /supplier endpoint
+    *
+    * @return string
+    */
     public function getSupplierNumber() : string
     {
         return $this->supplierNumber;
     }
     /**
-     * Number of the supplier
-     *
-     * @param string $supplierNumber
-     *
-     * @return self
-     */
+    * Number of the supplier.\
+    A list from available suppliers can be queried with the GET /supplier endpoint
+    *
+    * @param string $supplierNumber
+    *
+    * @return self
+    */
     public function setSupplierNumber(string $supplierNumber) : self
     {
         $this->initialized['supplierNumber'] = true;

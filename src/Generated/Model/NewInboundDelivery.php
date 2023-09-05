@@ -19,10 +19,11 @@ class NewInboundDelivery extends \ArrayObject
      */
     protected $inboundDeliveryName;
     /**
-     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-     *
-     * @var string
-     */
+    * Number of the supplier.\
+    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+    *
+    * @var string
+    */
     protected $supplierNumber;
     /**
      * Expected date of the delivery (timezone CET/CEST)
@@ -59,21 +60,23 @@ class NewInboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-     *
-     * @return string
-     */
+    * Number of the supplier.\
+    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+    *
+    * @return string
+    */
     public function getSupplierNumber() : string
     {
         return $this->supplierNumber;
     }
     /**
-     * Number of the supplier. Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-     *
-     * @param string $supplierNumber
-     *
-     * @return self
-     */
+    * Number of the supplier.\
+    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+    *
+    * @param string $supplierNumber
+    *
+    * @return self
+    */
     public function setSupplierNumber(string $supplierNumber) : self
     {
         $this->initialized['supplierNumber'] = true;

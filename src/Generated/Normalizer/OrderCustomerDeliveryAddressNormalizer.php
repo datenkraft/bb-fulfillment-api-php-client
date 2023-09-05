@@ -110,7 +110,9 @@ class OrderCustomerDeliveryAddressNormalizer implements DenormalizerInterface, N
             $data['provinceCode'] = $object->getProvinceCode();
         }
         $data['countryCode'] = $object->getCountryCode();
-        $data['nameLine1'] = $object->getNameLine1();
+        if ($object->isInitialized('nameLine1') && null !== $object->getNameLine1()) {
+            $data['nameLine1'] = $object->getNameLine1();
+        }
         if ($object->isInitialized('nameLine2') && null !== $object->getNameLine2()) {
             $data['nameLine2'] = $object->getNameLine2();
         }

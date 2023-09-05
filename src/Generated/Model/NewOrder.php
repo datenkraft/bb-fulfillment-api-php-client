@@ -31,34 +31,32 @@ class NewOrder extends \ArrayObject
      */
     protected $orderItems;
     /**
-    * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
-    single customer order.
+    * A not unique reference for the order which can be used for identifying a specific order or for
+    mapping to a third party app.
     *
     * @var string|null
     */
     protected $externalOrderId;
     /**
-    * A not unique reference for the order which can be used for identifiying a specific order or for
-    mapping to a third party app.
-    *
-    * @var string|null
-    */
-    protected $externalOrderReference;
-    /**
-     * Notes for the delivery slip.
+     * Notes to be printed on the delivery slip.
      *
      * @var string|null
      */
     protected $deliverySlipNotes;
     /**
-     * Order notes regarding the fulfillment
+     * External reference for the order
+     *
+     * @var string|null
+     */
+    protected $externalOrderReference;
+    /**
+     * Notes for the steve team regarding the fulfillment.
      *
      * @var string|null
      */
     protected $orderNotes;
     /**
-     * The amazon order Id
+     * The amazon order id.
      *
      * @var string|null
      */
@@ -142,9 +140,8 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-    * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
-    single customer order.
+    * A not unique reference for the order which can be used for identifying a specific order or for
+    mapping to a third party app.
     *
     * @return string|null
     */
@@ -153,9 +150,8 @@ class NewOrder extends \ArrayObject
         return $this->externalOrderId;
     }
     /**
-    * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
-    single customer order.
+    * A not unique reference for the order which can be used for identifying a specific order or for
+    mapping to a third party app.
     *
     * @param string|null $externalOrderId
     *
@@ -168,31 +164,7 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-    * A not unique reference for the order which can be used for identifiying a specific order or for
-    mapping to a third party app.
-    *
-    * @return string|null
-    */
-    public function getExternalOrderReference() : ?string
-    {
-        return $this->externalOrderReference;
-    }
-    /**
-    * A not unique reference for the order which can be used for identifiying a specific order or for
-    mapping to a third party app.
-    *
-    * @param string|null $externalOrderReference
-    *
-    * @return self
-    */
-    public function setExternalOrderReference(?string $externalOrderReference) : self
-    {
-        $this->initialized['externalOrderReference'] = true;
-        $this->externalOrderReference = $externalOrderReference;
-        return $this;
-    }
-    /**
-     * Notes for the delivery slip.
+     * Notes to be printed on the delivery slip.
      *
      * @return string|null
      */
@@ -201,7 +173,7 @@ class NewOrder extends \ArrayObject
         return $this->deliverySlipNotes;
     }
     /**
-     * Notes for the delivery slip.
+     * Notes to be printed on the delivery slip.
      *
      * @param string|null $deliverySlipNotes
      *
@@ -214,7 +186,29 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-     * Order notes regarding the fulfillment
+     * External reference for the order
+     *
+     * @return string|null
+     */
+    public function getExternalOrderReference() : ?string
+    {
+        return $this->externalOrderReference;
+    }
+    /**
+     * External reference for the order
+     *
+     * @param string|null $externalOrderReference
+     *
+     * @return self
+     */
+    public function setExternalOrderReference(?string $externalOrderReference) : self
+    {
+        $this->initialized['externalOrderReference'] = true;
+        $this->externalOrderReference = $externalOrderReference;
+        return $this;
+    }
+    /**
+     * Notes for the steve team regarding the fulfillment.
      *
      * @return string|null
      */
@@ -223,7 +217,7 @@ class NewOrder extends \ArrayObject
         return $this->orderNotes;
     }
     /**
-     * Order notes regarding the fulfillment
+     * Notes for the steve team regarding the fulfillment.
      *
      * @param string|null $orderNotes
      *
@@ -236,7 +230,7 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-     * The amazon order Id
+     * The amazon order id.
      *
      * @return string|null
      */
@@ -245,7 +239,7 @@ class NewOrder extends \ArrayObject
         return $this->amazonOrderId;
     }
     /**
-     * The amazon order Id
+     * The amazon order id.
      *
      * @param string|null $amazonOrderId
      *

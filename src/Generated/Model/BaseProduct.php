@@ -43,12 +43,13 @@ class BaseProduct extends \ArrayObject
      *
      * @var float|null
      */
-    protected $contentsAmount = '1';
+    protected $contentsAmount = 1;
     /**
-     * Unit of the product contents ('stk' if no value is provided).
-     *
-     * @var string|null
-     */
+    * Unit of the product contents ('stk' if no value is provided).\
+    Valid units can be queried with a GET /product-unit call
+    *
+    * @var string|null
+    */
     protected $contentsUnit = 'stk';
     /**
      * Weight of the product contents in gram
@@ -87,6 +88,12 @@ class BaseProduct extends \ArrayObject
      */
     protected $purchasePrices;
     /**
+     * Product number of the manufacturer
+     *
+     * @var string|null
+     */
+    protected $productNumberManufacturer;
+    /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
      * @var string|null
@@ -95,7 +102,7 @@ class BaseProduct extends \ArrayObject
     /**
      * The language code used for the product (ISO 639-1)
      *
-     * @var string
+     * @var string|null
      */
     protected $languageCode = 'de';
     /**
@@ -213,21 +220,23 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Unit of the product contents ('stk' if no value is provided).
-     *
-     * @return string|null
-     */
+    * Unit of the product contents ('stk' if no value is provided).\
+    Valid units can be queried with a GET /product-unit call
+    *
+    * @return string|null
+    */
     public function getContentsUnit() : ?string
     {
         return $this->contentsUnit;
     }
     /**
-     * Unit of the product contents ('stk' if no value is provided).
-     *
-     * @param string|null $contentsUnit
-     *
-     * @return self
-     */
+    * Unit of the product contents ('stk' if no value is provided).\
+    Valid units can be queried with a GET /product-unit call
+    *
+    * @param string|null $contentsUnit
+    *
+    * @return self
+    */
     public function setContentsUnit(?string $contentsUnit) : self
     {
         $this->initialized['contentsUnit'] = true;
@@ -367,6 +376,28 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
+     * Product number of the manufacturer
+     *
+     * @return string|null
+     */
+    public function getProductNumberManufacturer() : ?string
+    {
+        return $this->productNumberManufacturer;
+    }
+    /**
+     * Product number of the manufacturer
+     *
+     * @param string|null $productNumberManufacturer
+     *
+     * @return self
+     */
+    public function setProductNumberManufacturer(?string $productNumberManufacturer) : self
+    {
+        $this->initialized['productNumberManufacturer'] = true;
+        $this->productNumberManufacturer = $productNumberManufacturer;
+        return $this;
+    }
+    /**
      * Country code of the manufacturer (ISO 3166-1 alpha-2)
      *
      * @return string|null
@@ -391,20 +422,20 @@ class BaseProduct extends \ArrayObject
     /**
      * The language code used for the product (ISO 639-1)
      *
-     * @return string
+     * @return string|null
      */
-    public function getLanguageCode() : string
+    public function getLanguageCode() : ?string
     {
         return $this->languageCode;
     }
     /**
      * The language code used for the product (ISO 639-1)
      *
-     * @param string $languageCode
+     * @param string|null $languageCode
      *
      * @return self
      */
-    public function setLanguageCode(string $languageCode) : self
+    public function setLanguageCode(?string $languageCode) : self
     {
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;

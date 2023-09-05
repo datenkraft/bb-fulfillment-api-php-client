@@ -25,7 +25,7 @@ class OrderCustomer extends \ArrayObject
      */
     protected $languageCode;
     /**
-     * The external id of the order customer.
+     * The external id of the order customer
      *
      * @var string|null
      */
@@ -37,13 +37,13 @@ class OrderCustomer extends \ArrayObject
      */
     protected $deliveryAddress;
     /**
-     * The customer's email.
+     * The customer's email
      *
      * @var string|null
      */
     protected $email;
     /**
-     * The customer's phone number, preferably in the DIN 5008 format, like:+43 2236 123456-7890
+     * The customer's phone number, preferably in the DIN 5008 format, like: +43 2236 123456-7890
      *
      * @var string|null
      */
@@ -81,7 +81,7 @@ class OrderCustomer extends \ArrayObject
     */
     protected $company;
     /**
-    * The customer's company VAT number.\
+    * The customer's company vat number (might be validated).\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
@@ -103,7 +103,7 @@ class OrderCustomer extends \ArrayObject
      */
     protected $number;
     /**
-     * The customer type
+     * The customer's type
      *
      * @var string|null
      */
@@ -153,7 +153,7 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * The external id of the order customer.
+     * The external id of the order customer
      *
      * @return string|null
      */
@@ -162,7 +162,7 @@ class OrderCustomer extends \ArrayObject
         return $this->externalCustomerId;
     }
     /**
-     * The external id of the order customer.
+     * The external id of the order customer
      *
      * @param string|null $externalCustomerId
      *
@@ -197,7 +197,7 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * The customer's email.
+     * The customer's email
      *
      * @return string|null
      */
@@ -206,7 +206,7 @@ class OrderCustomer extends \ArrayObject
         return $this->email;
     }
     /**
-     * The customer's email.
+     * The customer's email
      *
      * @param string|null $email
      *
@@ -219,7 +219,7 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * The customer's phone number, preferably in the DIN 5008 format, like:+43 2236 123456-7890
+     * The customer's phone number, preferably in the DIN 5008 format, like: +43 2236 123456-7890
      *
      * @return string|null
      */
@@ -228,7 +228,7 @@ class OrderCustomer extends \ArrayObject
         return $this->phone;
     }
     /**
-     * The customer's phone number, preferably in the DIN 5008 format, like:+43 2236 123456-7890
+     * The customer's phone number, preferably in the DIN 5008 format, like: +43 2236 123456-7890
      *
      * @param string|null $phone
      *
@@ -345,7 +345,7 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer's company VAT number.\
+    * The customer's company vat number (might be validated).\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
@@ -356,7 +356,7 @@ class OrderCustomer extends \ArrayObject
         return $this->companyVatNumber;
     }
     /**
-    * The customer's company VAT number.\
+    * The customer's company vat number (might be validated).\
     Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
     Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
     *
@@ -419,7 +419,7 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * The customer type
+     * The customer's type
      *
      * @return string|null
      */
@@ -428,7 +428,7 @@ class OrderCustomer extends \ArrayObject
         return $this->type;
     }
     /**
-     * The customer type
+     * The customer's type
      *
      * @param string|null $type
      *

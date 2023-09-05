@@ -31,34 +31,32 @@ class Order extends \ArrayObject
      */
     protected $orderItems;
     /**
-    * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
-    single customer order.
+    * A not unique reference for the order which can be used for identifying a specific order or for
+    mapping to a third party app.
     *
     * @var string|null
     */
     protected $externalOrderId;
     /**
-    * A not unique reference for the order which can be used for identifiying a specific order or for
-    mapping to a third party app.
-    *
-    * @var string|null
-    */
-    protected $externalOrderReference;
-    /**
-     * Notes for the delivery slip.
+     * Notes to be printed on the delivery slip.
      *
      * @var string|null
      */
     protected $deliverySlipNotes;
     /**
-     * Order notes regarding the fulfillment
+     * External reference for the order
+     *
+     * @var string|null
+     */
+    protected $externalOrderReference;
+    /**
+     * Notes for the steve team regarding the fulfillment.
      *
      * @var string|null
      */
     protected $orderNotes;
     /**
-     * The amazon order Id
+     * The amazon order id.
      *
      * @var string|null
      */
@@ -77,30 +75,31 @@ class Order extends \ArrayObject
     protected $options;
     /**
     * The order number.\
-    Note: If this number is prefixed with 'NICE', it means that the order was created was created manually by niceshops (see
-    `source`).
+    Note: If this number is prefixed with 'NICE', it means that the order was created
+    manually by niceshops (see 'source').
     *
-    * @var string|null
+    * @var mixed
     */
     protected $orderNumber;
     /**
     * The current status of the order.
-    - new: The order was created but not every required information was given. The order can not be processed without manual
-    intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have already been
-    transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
-    might be delayed and not yet reflect the status of the linked deliveries).
+    - new: The order was created but not every required information was given.
+    The order can not be processed without manual intervention.
+    - processing: The order is being processed. For split deliveries, some of the shipments might have
+    already been transferred to the delivery agent.
+    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
+    update to this status might be delayed and not yet reflect the status of the linked deliveries).
     - deleted: The order has been marked as deleted.
     - canceled: The order has been canceled.
     - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked. The order can not be processed without manual intervention.
+    - examination: The order has been manually locked. The order can not be processed without manual
+    intervention.
     *
     * @var string
     */
     protected $status;
     /**
-     * The create date for the order. Default is the current date. Format in ISO 8601
+     * The create date for the order. Format in ISO 8601
      *
      * @var \DateTime
      */
@@ -118,7 +117,7 @@ class Order extends \ArrayObject
      */
     protected $payment;
     /**
-     * Options regarding the shipping of the order
+     * Options regarding the shipping of the order.
      *
      * @var OrderShipping
      */
@@ -211,9 +210,8 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
-    single customer order.
+    * A not unique reference for the order which can be used for identifying a specific order or for
+    mapping to a third party app.
     *
     * @return string|null
     */
@@ -222,9 +220,8 @@ class Order extends \ArrayObject
         return $this->externalOrderId;
     }
     /**
-    * The external order ID e.g. from third party apps. This field does not have to be unique.
-    It can be used to link and refind multiple orders, for example, if there are multiple fulfilment orders possible for a
-    single customer order.
+    * A not unique reference for the order which can be used for identifying a specific order or for
+    mapping to a third party app.
     *
     * @param string|null $externalOrderId
     *
@@ -237,31 +234,7 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * A not unique reference for the order which can be used for identifiying a specific order or for
-    mapping to a third party app.
-    *
-    * @return string|null
-    */
-    public function getExternalOrderReference() : ?string
-    {
-        return $this->externalOrderReference;
-    }
-    /**
-    * A not unique reference for the order which can be used for identifiying a specific order or for
-    mapping to a third party app.
-    *
-    * @param string|null $externalOrderReference
-    *
-    * @return self
-    */
-    public function setExternalOrderReference(?string $externalOrderReference) : self
-    {
-        $this->initialized['externalOrderReference'] = true;
-        $this->externalOrderReference = $externalOrderReference;
-        return $this;
-    }
-    /**
-     * Notes for the delivery slip.
+     * Notes to be printed on the delivery slip.
      *
      * @return string|null
      */
@@ -270,7 +243,7 @@ class Order extends \ArrayObject
         return $this->deliverySlipNotes;
     }
     /**
-     * Notes for the delivery slip.
+     * Notes to be printed on the delivery slip.
      *
      * @param string|null $deliverySlipNotes
      *
@@ -283,7 +256,29 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * Order notes regarding the fulfillment
+     * External reference for the order
+     *
+     * @return string|null
+     */
+    public function getExternalOrderReference() : ?string
+    {
+        return $this->externalOrderReference;
+    }
+    /**
+     * External reference for the order
+     *
+     * @param string|null $externalOrderReference
+     *
+     * @return self
+     */
+    public function setExternalOrderReference(?string $externalOrderReference) : self
+    {
+        $this->initialized['externalOrderReference'] = true;
+        $this->externalOrderReference = $externalOrderReference;
+        return $this;
+    }
+    /**
+     * Notes for the steve team regarding the fulfillment.
      *
      * @return string|null
      */
@@ -292,7 +287,7 @@ class Order extends \ArrayObject
         return $this->orderNotes;
     }
     /**
-     * Order notes regarding the fulfillment
+     * Notes for the steve team regarding the fulfillment.
      *
      * @param string|null $orderNotes
      *
@@ -305,7 +300,7 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * The amazon order Id
+     * The amazon order id.
      *
      * @return string|null
      */
@@ -314,7 +309,7 @@ class Order extends \ArrayObject
         return $this->amazonOrderId;
     }
     /**
-     * The amazon order Id
+     * The amazon order id.
      *
      * @param string|null $amazonOrderId
      *
@@ -372,25 +367,25 @@ class Order extends \ArrayObject
     }
     /**
     * The order number.\
-    Note: If this number is prefixed with 'NICE', it means that the order was created was created manually by niceshops (see
-    `source`).
+    Note: If this number is prefixed with 'NICE', it means that the order was created
+    manually by niceshops (see 'source').
     *
-    * @return string|null
+    * @return mixed
     */
-    public function getOrderNumber() : ?string
+    public function getOrderNumber()
     {
         return $this->orderNumber;
     }
     /**
     * The order number.\
-    Note: If this number is prefixed with 'NICE', it means that the order was created was created manually by niceshops (see
-    `source`).
+    Note: If this number is prefixed with 'NICE', it means that the order was created
+    manually by niceshops (see 'source').
     *
-    * @param string|null $orderNumber
+    * @param mixed $orderNumber
     *
     * @return self
     */
-    public function setOrderNumber(?string $orderNumber) : self
+    public function setOrderNumber($orderNumber) : self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
@@ -398,16 +393,17 @@ class Order extends \ArrayObject
     }
     /**
     * The current status of the order.
-    - new: The order was created but not every required information was given. The order can not be processed without manual
-    intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have already been
-    transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
-    might be delayed and not yet reflect the status of the linked deliveries).
+    - new: The order was created but not every required information was given.
+    The order can not be processed without manual intervention.
+    - processing: The order is being processed. For split deliveries, some of the shipments might have
+    already been transferred to the delivery agent.
+    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
+    update to this status might be delayed and not yet reflect the status of the linked deliveries).
     - deleted: The order has been marked as deleted.
     - canceled: The order has been canceled.
     - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked. The order can not be processed without manual intervention.
+    - examination: The order has been manually locked. The order can not be processed without manual
+    intervention.
     *
     * @return string
     */
@@ -417,16 +413,17 @@ class Order extends \ArrayObject
     }
     /**
     * The current status of the order.
-    - new: The order was created but not every required information was given. The order can not be processed without manual
-    intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have already been
-    transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the update to this status
-    might be delayed and not yet reflect the status of the linked deliveries).
+    - new: The order was created but not every required information was given.
+    The order can not be processed without manual intervention.
+    - processing: The order is being processed. For split deliveries, some of the shipments might have
+    already been transferred to the delivery agent.
+    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
+    update to this status might be delayed and not yet reflect the status of the linked deliveries).
     - deleted: The order has been marked as deleted.
     - canceled: The order has been canceled.
     - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked. The order can not be processed without manual intervention.
+    - examination: The order has been manually locked. The order can not be processed without manual
+    intervention.
     *
     * @param string $status
     *
@@ -439,7 +436,7 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * The create date for the order. Default is the current date. Format in ISO 8601
+     * The create date for the order. Format in ISO 8601
      *
      * @return \DateTime
      */
@@ -448,7 +445,7 @@ class Order extends \ArrayObject
         return $this->orderDate;
     }
     /**
-     * The create date for the order. Default is the current date. Format in ISO 8601
+     * The create date for the order. Format in ISO 8601
      *
      * @param \DateTime $orderDate
      *
@@ -505,7 +502,7 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * Options regarding the shipping of the order
+     * Options regarding the shipping of the order.
      *
      * @return OrderShipping
      */
@@ -514,7 +511,7 @@ class Order extends \ArrayObject
         return $this->shipping;
     }
     /**
-     * Options regarding the shipping of the order
+     * Options regarding the shipping of the order.
      *
      * @param OrderShipping $shipping
      *

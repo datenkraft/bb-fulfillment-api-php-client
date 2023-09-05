@@ -129,6 +129,13 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] === null) {
             $object->setPurchasePrices(null);
         }
+        if (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] !== null) {
+            $object->setProductNumberManufacturer($data['productNumberManufacturer']);
+            unset($data['productNumberManufacturer']);
+        }
+        elseif (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] === null) {
+            $object->setProductNumberManufacturer(null);
+        }
         if (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] !== null) {
             $object->setManufacturerCountryCode($data['manufacturerCountryCode']);
             unset($data['manufacturerCountryCode']);
@@ -136,9 +143,12 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] === null) {
             $object->setManufacturerCountryCode(null);
         }
-        if (\array_key_exists('languageCode', $data)) {
+        if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
             $object->setLanguageCode($data['languageCode']);
             unset($data['languageCode']);
+        }
+        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
+            $object->setLanguageCode(null);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -192,6 +202,9 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['purchasePrices'] = $values;
+        }
+        if ($object->isInitialized('productNumberManufacturer') && null !== $object->getProductNumberManufacturer()) {
+            $data['productNumberManufacturer'] = $object->getProductNumberManufacturer();
         }
         if ($object->isInitialized('manufacturerCountryCode') && null !== $object->getManufacturerCountryCode()) {
             $data['manufacturerCountryCode'] = $object->getManufacturerCountryCode();

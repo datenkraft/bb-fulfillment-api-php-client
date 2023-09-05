@@ -67,19 +67,19 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('externalOrderId', $data) && $data['externalOrderId'] === null) {
             $object->setExternalOrderId(null);
         }
-        if (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] !== null) {
-            $object->setExternalOrderReference($data['externalOrderReference']);
-            unset($data['externalOrderReference']);
-        }
-        elseif (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] === null) {
-            $object->setExternalOrderReference(null);
-        }
         if (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] !== null) {
             $object->setDeliverySlipNotes($data['deliverySlipNotes']);
             unset($data['deliverySlipNotes']);
         }
         elseif (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] === null) {
             $object->setDeliverySlipNotes(null);
+        }
+        if (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] !== null) {
+            $object->setExternalOrderReference($data['externalOrderReference']);
+            unset($data['externalOrderReference']);
+        }
+        elseif (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] === null) {
+            $object->setExternalOrderReference(null);
         }
         if (\array_key_exists('orderNotes', $data) && $data['orderNotes'] !== null) {
             $object->setOrderNotes($data['orderNotes']);
@@ -142,11 +142,11 @@ class NewOrderNormalizer implements DenormalizerInterface, NormalizerInterface, 
         if ($object->isInitialized('externalOrderId') && null !== $object->getExternalOrderId()) {
             $data['externalOrderId'] = $object->getExternalOrderId();
         }
-        if ($object->isInitialized('externalOrderReference') && null !== $object->getExternalOrderReference()) {
-            $data['externalOrderReference'] = $object->getExternalOrderReference();
-        }
         if ($object->isInitialized('deliverySlipNotes') && null !== $object->getDeliverySlipNotes()) {
             $data['deliverySlipNotes'] = $object->getDeliverySlipNotes();
+        }
+        if ($object->isInitialized('externalOrderReference') && null !== $object->getExternalOrderReference()) {
+            $data['externalOrderReference'] = $object->getExternalOrderReference();
         }
         if ($object->isInitialized('orderNotes') && null !== $object->getOrderNotes()) {
             $data['orderNotes'] = $object->getOrderNotes();

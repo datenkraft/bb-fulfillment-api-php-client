@@ -13,7 +13,7 @@ class ShipmentLine extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * product number
+     * Product number
      *
      * @var string
      */
@@ -21,23 +21,23 @@ class ShipmentLine extends \ArrayObject
     /**
      * Number of items contained in the delivery
      *
-     * @var int
+     * @var float
      */
     protected $count;
     /**
-     * product unit
+     * Product unit
      *
      * @var string|null
      */
     protected $unit;
     /**
-     * serial numbers
+     * Serial numbers
      *
      * @var string[]
      */
     protected $serialNumbers;
     /**
-     * product number
+     * Product number
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class ShipmentLine extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * product number
+     * Product number
      *
      * @param string $productNumber
      *
@@ -61,27 +61,27 @@ class ShipmentLine extends \ArrayObject
     /**
      * Number of items contained in the delivery
      *
-     * @return int
+     * @return float
      */
-    public function getCount() : int
+    public function getCount() : float
     {
         return $this->count;
     }
     /**
      * Number of items contained in the delivery
      *
-     * @param int $count
+     * @param float $count
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(float $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
     /**
-     * product unit
+     * Product unit
      *
      * @return string|null
      */
@@ -90,7 +90,7 @@ class ShipmentLine extends \ArrayObject
         return $this->unit;
     }
     /**
-     * product unit
+     * Product unit
      *
      * @param string|null $unit
      *
@@ -103,7 +103,7 @@ class ShipmentLine extends \ArrayObject
         return $this;
     }
     /**
-     * serial numbers
+     * Serial numbers
      *
      * @return string[]
      */
@@ -112,7 +112,7 @@ class ShipmentLine extends \ArrayObject
         return $this->serialNumbers;
     }
     /**
-     * serial numbers
+     * Serial numbers
      *
      * @param string[] $serialNumbers
      *

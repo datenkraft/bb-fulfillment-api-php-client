@@ -13,13 +13,13 @@ class NewOrderItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * Valid product number
      *
      * @var string
      */
     protected $productNumber;
     /**
-     * Item title (optional)
+     * Item Title (optional)
      *
      * @var string|null
      */
@@ -37,10 +37,11 @@ class NewOrderItem extends \ArrayObject
      */
     protected $externalProductNumber;
     /**
-     * 
-     *
-     * @var NewOrderItemPrice|null
-     */
+    * The selling price of the item.\
+    Note: This field is required if the delivery address of the order requires customs clearance.
+    *
+    * @var NewOrderItemPrice|null
+    */
     protected $price;
     /**
      * Additional options (optional, TBD)
@@ -49,7 +50,7 @@ class NewOrderItem extends \ArrayObject
      */
     protected $options;
     /**
-     * 
+     * Valid product number
      *
      * @return string
      */
@@ -58,7 +59,7 @@ class NewOrderItem extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
+     * Valid product number
      *
      * @param string $productNumber
      *
@@ -71,7 +72,7 @@ class NewOrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Item title (optional)
+     * Item Title (optional)
      *
      * @return string|null
      */
@@ -80,7 +81,7 @@ class NewOrderItem extends \ArrayObject
         return $this->title;
     }
     /**
-     * Item title (optional)
+     * Item Title (optional)
      *
      * @param string|null $title
      *
@@ -137,21 +138,23 @@ class NewOrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
-     * @return NewOrderItemPrice|null
-     */
+    * The selling price of the item.\
+    Note: This field is required if the delivery address of the order requires customs clearance.
+    *
+    * @return NewOrderItemPrice|null
+    */
     public function getPrice() : ?NewOrderItemPrice
     {
         return $this->price;
     }
     /**
-     * 
-     *
-     * @param NewOrderItemPrice|null $price
-     *
-     * @return self
-     */
+    * The selling price of the item.\
+    Note: This field is required if the delivery address of the order requires customs clearance.
+    *
+    * @param NewOrderItemPrice|null $price
+    *
+    * @return self
+    */
     public function setPrice(?NewOrderItemPrice $price) : self
     {
         $this->initialized['price'] = true;

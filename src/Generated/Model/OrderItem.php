@@ -13,13 +13,13 @@ class OrderItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
+     * Valid product number
      *
      * @var string
      */
     protected $productNumber;
     /**
-     * Item title (optional)
+     * Item Title (optional)
      *
      * @var string|null
      */
@@ -50,7 +50,7 @@ class OrderItem extends \ArrayObject
      */
     protected $options;
     /**
-     * 
+     * Valid product number
      *
      * @return string
      */
@@ -59,7 +59,7 @@ class OrderItem extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
+     * Valid product number
      *
      * @param string $productNumber
      *
@@ -72,7 +72,7 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Item title (optional)
+     * Item Title (optional)
      *
      * @return string|null
      */
@@ -81,7 +81,7 @@ class OrderItem extends \ArrayObject
         return $this->title;
     }
     /**
-     * Item title (optional)
+     * Item Title (optional)
      *
      * @param string|null $title
      *
