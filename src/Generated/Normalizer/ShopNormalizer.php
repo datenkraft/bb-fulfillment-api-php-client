@@ -57,6 +57,10 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setEmail($data['email']);
             unset($data['email']);
         }
+        if (\array_key_exists('projectId', $data)) {
+            $object->setProjectId($data['projectId']);
+            unset($data['projectId']);
+        }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShopMeta', 'json', $context));
             unset($data['meta']);
@@ -88,6 +92,9 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         }
         if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
+        }
+        if ($object->isInitialized('projectId') && null !== $object->getProjectId()) {
+            $data['projectId'] = $object->getProjectId();
         }
         if ($object->isInitialized('meta') && null !== $object->getMeta()) {
             $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
