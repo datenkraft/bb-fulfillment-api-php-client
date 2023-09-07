@@ -37,6 +37,12 @@ class Shop extends \ArrayObject
      */
     protected $email;
     /**
+     * The id of the project to which the shop belongs.
+     *
+     * @var string
+     */
+    protected $projectId;
+    /**
      * Meta data of the shop.
      *
      * @var ShopMeta|null
@@ -128,6 +134,28 @@ class Shop extends \ArrayObject
     {
         $this->initialized['email'] = true;
         $this->email = $email;
+        return $this;
+    }
+    /**
+     * The id of the project to which the shop belongs.
+     *
+     * @return string
+     */
+    public function getProjectId() : string
+    {
+        return $this->projectId;
+    }
+    /**
+     * The id of the project to which the shop belongs.
+     *
+     * @param string $projectId
+     *
+     * @return self
+     */
+    public function setProjectId(string $projectId) : self
+    {
+        $this->initialized['projectId'] = true;
+        $this->projectId = $projectId;
         return $this;
     }
     /**
