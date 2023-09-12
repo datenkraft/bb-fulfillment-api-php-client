@@ -65,6 +65,14 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setReconsignmentDeliveryServiceCode($data['reconsignmentDeliveryServiceCode']);
             unset($data['reconsignmentDeliveryServiceCode']);
         }
+        if (\array_key_exists('reconsignmentWasPreAnnounced', $data)) {
+            $object->setReconsignmentWasPreAnnounced($data['reconsignmentWasPreAnnounced']);
+            unset($data['reconsignmentWasPreAnnounced']);
+        }
+        if (\array_key_exists('reconsignmentCountryCode', $data)) {
+            $object->setReconsignmentCountryCode($data['reconsignmentCountryCode']);
+            unset($data['reconsignmentCountryCode']);
+        }
         if (\array_key_exists('reconsignmentLines', $data)) {
             $values = array();
             foreach ($data['reconsignmentLines'] as $value) {
@@ -103,6 +111,12 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($object->isInitialized('reconsignmentDeliveryServiceCode') && null !== $object->getReconsignmentDeliveryServiceCode()) {
             $data['reconsignmentDeliveryServiceCode'] = $object->getReconsignmentDeliveryServiceCode();
+        }
+        if ($object->isInitialized('reconsignmentWasPreAnnounced') && null !== $object->getReconsignmentWasPreAnnounced()) {
+            $data['reconsignmentWasPreAnnounced'] = $object->getReconsignmentWasPreAnnounced();
+        }
+        if ($object->isInitialized('reconsignmentCountryCode') && null !== $object->getReconsignmentCountryCode()) {
+            $data['reconsignmentCountryCode'] = $object->getReconsignmentCountryCode();
         }
         if ($object->isInitialized('reconsignmentLines') && null !== $object->getReconsignmentLines()) {
             $values = array();

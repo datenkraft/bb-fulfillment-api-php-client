@@ -49,6 +49,18 @@ class Reconsignment extends \ArrayObject
      */
     protected $reconsignmentDeliveryServiceCode;
     /**
+     * Indicates whether the reconsignment was pre-announced or not.
+     *
+     * @var string
+     */
+    protected $reconsignmentWasPreAnnounced;
+    /**
+     * The country, from where the reconsignment was shipped (ISO 3166-1 alpha-2).
+     *
+     * @var string
+     */
+    protected $reconsignmentCountryCode;
+    /**
      * 
      *
      * @var ReconsignmentLine[]
@@ -184,6 +196,50 @@ class Reconsignment extends \ArrayObject
     {
         $this->initialized['reconsignmentDeliveryServiceCode'] = true;
         $this->reconsignmentDeliveryServiceCode = $reconsignmentDeliveryServiceCode;
+        return $this;
+    }
+    /**
+     * Indicates whether the reconsignment was pre-announced or not.
+     *
+     * @return string
+     */
+    public function getReconsignmentWasPreAnnounced() : string
+    {
+        return $this->reconsignmentWasPreAnnounced;
+    }
+    /**
+     * Indicates whether the reconsignment was pre-announced or not.
+     *
+     * @param string $reconsignmentWasPreAnnounced
+     *
+     * @return self
+     */
+    public function setReconsignmentWasPreAnnounced(string $reconsignmentWasPreAnnounced) : self
+    {
+        $this->initialized['reconsignmentWasPreAnnounced'] = true;
+        $this->reconsignmentWasPreAnnounced = $reconsignmentWasPreAnnounced;
+        return $this;
+    }
+    /**
+     * The country, from where the reconsignment was shipped (ISO 3166-1 alpha-2).
+     *
+     * @return string
+     */
+    public function getReconsignmentCountryCode() : string
+    {
+        return $this->reconsignmentCountryCode;
+    }
+    /**
+     * The country, from where the reconsignment was shipped (ISO 3166-1 alpha-2).
+     *
+     * @param string $reconsignmentCountryCode
+     *
+     * @return self
+     */
+    public function setReconsignmentCountryCode(string $reconsignmentCountryCode) : self
+    {
+        $this->initialized['reconsignmentCountryCode'] = true;
+        $this->reconsignmentCountryCode = $reconsignmentCountryCode;
         return $this;
     }
     /**
