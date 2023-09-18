@@ -490,6 +490,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryBulkImportTemplateUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryBulkImportTemplateNotAcceptableException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryBulkImportTemplateInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
     *
@@ -1076,7 +1078,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated. \
@@ -1106,7 +1108,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
-    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated. \
