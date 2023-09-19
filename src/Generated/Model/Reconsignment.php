@@ -51,7 +51,7 @@ class Reconsignment extends \ArrayObject
     /**
      * Indicates whether the reconsignment was pre-announced or not.
      *
-     * @var string
+     * @var bool
      */
     protected $reconsignmentWasPreAnnounced;
     /**
@@ -201,20 +201,20 @@ class Reconsignment extends \ArrayObject
     /**
      * Indicates whether the reconsignment was pre-announced or not.
      *
-     * @return string
+     * @return bool
      */
-    public function getReconsignmentWasPreAnnounced() : string
+    public function getReconsignmentWasPreAnnounced() : bool
     {
         return $this->reconsignmentWasPreAnnounced;
     }
     /**
      * Indicates whether the reconsignment was pre-announced or not.
      *
-     * @param string $reconsignmentWasPreAnnounced
+     * @param bool $reconsignmentWasPreAnnounced
      *
      * @return self
      */
-    public function setReconsignmentWasPreAnnounced(string $reconsignmentWasPreAnnounced) : self
+    public function setReconsignmentWasPreAnnounced(bool $reconsignmentWasPreAnnounced) : self
     {
         $this->initialized['reconsignmentWasPreAnnounced'] = true;
         $this->reconsignmentWasPreAnnounced = $reconsignmentWasPreAnnounced;
