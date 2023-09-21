@@ -41,17 +41,26 @@ class ProductJournalReferenceNormalizer implements DenormalizerInterface, Normal
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('companyName', $data)) {
+        if (\array_key_exists('companyName', $data) && $data['companyName'] !== null) {
             $object->setCompanyName($data['companyName']);
             unset($data['companyName']);
         }
-        if (\array_key_exists('inboundDeliveryNumber', $data)) {
+        elseif (\array_key_exists('companyName', $data) && $data['companyName'] === null) {
+            $object->setCompanyName(null);
+        }
+        if (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] !== null) {
             $object->setInboundDeliveryNumber($data['inboundDeliveryNumber']);
             unset($data['inboundDeliveryNumber']);
         }
-        if (\array_key_exists('orderNumber', $data)) {
+        elseif (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] === null) {
+            $object->setInboundDeliveryNumber(null);
+        }
+        if (\array_key_exists('orderNumber', $data) && $data['orderNumber'] !== null) {
             $object->setOrderNumber($data['orderNumber']);
             unset($data['orderNumber']);
+        }
+        elseif (\array_key_exists('orderNumber', $data) && $data['orderNumber'] === null) {
+            $object->setOrderNumber(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
