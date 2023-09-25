@@ -37,11 +37,18 @@ class ReportInventoryMovement extends \ArrayObject
      */
     protected $stockAdded;
     /**
-     * Stock subtracted in the period
+     * Stock subtracted (internal and external) in the period
      *
      * @var int
      */
     protected $stockSubtracted;
+    /**
+    * Stock subtracted in the period.\
+    Note: 'stockSubtracted' already contains 'stockSubtractedExternal'.
+    *
+    * @var int
+    */
+    protected $stockSubtractedExternal;
     /**
      * Stock corrections in the period
      *
@@ -55,11 +62,18 @@ class ReportInventoryMovement extends \ArrayObject
      */
     protected $stockUsedForOwnPurposes;
     /**
-     * Stock returned in the period
+     * Stock returned (internal and external) in the period
      *
      * @var int
      */
     protected $stockReturned;
+    /**
+    * Stock subtracted in the period.\
+    Note: 'stockReturned' already contains 'stockReturnedExternal'.
+    *
+    * @var int
+    */
+    protected $stockReturnedExternal;
     /**
      * 
      *
@@ -155,7 +169,7 @@ class ReportInventoryMovement extends \ArrayObject
         return $this;
     }
     /**
-     * Stock subtracted in the period
+     * Stock subtracted (internal and external) in the period
      *
      * @return int
      */
@@ -164,7 +178,7 @@ class ReportInventoryMovement extends \ArrayObject
         return $this->stockSubtracted;
     }
     /**
-     * Stock subtracted in the period
+     * Stock subtracted (internal and external) in the period
      *
      * @param int $stockSubtracted
      *
@@ -174,6 +188,30 @@ class ReportInventoryMovement extends \ArrayObject
     {
         $this->initialized['stockSubtracted'] = true;
         $this->stockSubtracted = $stockSubtracted;
+        return $this;
+    }
+    /**
+    * Stock subtracted in the period.\
+    Note: 'stockSubtracted' already contains 'stockSubtractedExternal'.
+    *
+    * @return int
+    */
+    public function getStockSubtractedExternal() : int
+    {
+        return $this->stockSubtractedExternal;
+    }
+    /**
+    * Stock subtracted in the period.\
+    Note: 'stockSubtracted' already contains 'stockSubtractedExternal'.
+    *
+    * @param int $stockSubtractedExternal
+    *
+    * @return self
+    */
+    public function setStockSubtractedExternal(int $stockSubtractedExternal) : self
+    {
+        $this->initialized['stockSubtractedExternal'] = true;
+        $this->stockSubtractedExternal = $stockSubtractedExternal;
         return $this;
     }
     /**
@@ -221,7 +259,7 @@ class ReportInventoryMovement extends \ArrayObject
         return $this;
     }
     /**
-     * Stock returned in the period
+     * Stock returned (internal and external) in the period
      *
      * @return int
      */
@@ -230,7 +268,7 @@ class ReportInventoryMovement extends \ArrayObject
         return $this->stockReturned;
     }
     /**
-     * Stock returned in the period
+     * Stock returned (internal and external) in the period
      *
      * @param int $stockReturned
      *
@@ -240,6 +278,30 @@ class ReportInventoryMovement extends \ArrayObject
     {
         $this->initialized['stockReturned'] = true;
         $this->stockReturned = $stockReturned;
+        return $this;
+    }
+    /**
+    * Stock subtracted in the period.\
+    Note: 'stockReturned' already contains 'stockReturnedExternal'.
+    *
+    * @return int
+    */
+    public function getStockReturnedExternal() : int
+    {
+        return $this->stockReturnedExternal;
+    }
+    /**
+    * Stock subtracted in the period.\
+    Note: 'stockReturned' already contains 'stockReturnedExternal'.
+    *
+    * @param int $stockReturnedExternal
+    *
+    * @return self
+    */
+    public function setStockReturnedExternal(int $stockReturnedExternal) : self
+    {
+        $this->initialized['stockReturnedExternal'] = true;
+        $this->stockReturnedExternal = $stockReturnedExternal;
         return $this;
     }
     /**
