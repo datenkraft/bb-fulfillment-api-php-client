@@ -38,7 +38,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionNotFoundException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthPermissionRoleCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
@@ -79,6 +79,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionForbiddenException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionConflictException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostAuthPermissionRoleCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
@@ -118,7 +119,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionForbiddenException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionNotFoundException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleIdentityCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
@@ -197,7 +197,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
      *
      * @param string $roleCode Identifier for the role
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleBadRequestException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleForbiddenException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteAuthRoleNotFoundException
@@ -360,6 +359,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
      *
      * @param string $format Openapi file format
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOpenApiInFormatBadRequestException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Psr\Http\Message\ResponseInterface
