@@ -61,6 +61,10 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
             $object->setStockSubtracted($data['stockSubtracted']);
             unset($data['stockSubtracted']);
         }
+        if (\array_key_exists('stockSubtractedExternal', $data)) {
+            $object->setStockSubtractedExternal($data['stockSubtractedExternal']);
+            unset($data['stockSubtractedExternal']);
+        }
         if (\array_key_exists('stockCorrected', $data)) {
             $object->setStockCorrected($data['stockCorrected']);
             unset($data['stockCorrected']);
@@ -72,6 +76,10 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
         if (\array_key_exists('stockReturned', $data)) {
             $object->setStockReturned($data['stockReturned']);
             unset($data['stockReturned']);
+        }
+        if (\array_key_exists('stockReturnedExternal', $data)) {
+            $object->setStockReturnedExternal($data['stockReturnedExternal']);
+            unset($data['stockReturnedExternal']);
         }
         if (\array_key_exists('movementEntries', $data)) {
             $values = array();
@@ -109,6 +117,9 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
         if ($object->isInitialized('stockSubtracted') && null !== $object->getStockSubtracted()) {
             $data['stockSubtracted'] = $object->getStockSubtracted();
         }
+        if ($object->isInitialized('stockSubtractedExternal') && null !== $object->getStockSubtractedExternal()) {
+            $data['stockSubtractedExternal'] = $object->getStockSubtractedExternal();
+        }
         if ($object->isInitialized('stockCorrected') && null !== $object->getStockCorrected()) {
             $data['stockCorrected'] = $object->getStockCorrected();
         }
@@ -117,6 +128,9 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
         }
         if ($object->isInitialized('stockReturned') && null !== $object->getStockReturned()) {
             $data['stockReturned'] = $object->getStockReturned();
+        }
+        if ($object->isInitialized('stockReturnedExternal') && null !== $object->getStockReturnedExternal()) {
+            $data['stockReturnedExternal'] = $object->getStockReturnedExternal();
         }
         if ($object->isInitialized('movementEntries') && null !== $object->getMovementEntries()) {
             $values = array();
