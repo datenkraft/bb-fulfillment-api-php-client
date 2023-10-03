@@ -37,6 +37,12 @@ class ShipmentLine extends \ArrayObject
      */
     protected $serialNumbers;
     /**
+     * Allows the traceability of the products in the deliveries.
+     *
+     * @var string[]
+     */
+    protected $traceCodes;
+    /**
      * Product number
      *
      * @return string
@@ -122,6 +128,28 @@ class ShipmentLine extends \ArrayObject
     {
         $this->initialized['serialNumbers'] = true;
         $this->serialNumbers = $serialNumbers;
+        return $this;
+    }
+    /**
+     * Allows the traceability of the products in the deliveries.
+     *
+     * @return string[]
+     */
+    public function getTraceCodes() : array
+    {
+        return $this->traceCodes;
+    }
+    /**
+     * Allows the traceability of the products in the deliveries.
+     *
+     * @param string[] $traceCodes
+     *
+     * @return self
+     */
+    public function setTraceCodes(array $traceCodes) : self
+    {
+        $this->initialized['traceCodes'] = true;
+        $this->traceCodes = $traceCodes;
         return $this;
     }
 }

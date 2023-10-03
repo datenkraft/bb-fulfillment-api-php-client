@@ -67,9 +67,17 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setSerialNumbers($values);
             unset($data['serialNumbers']);
         }
-        foreach ($data as $key => $value_1) {
+        if (\array_key_exists('traceCodes', $data)) {
+            $values_1 = array();
+            foreach ($data['traceCodes'] as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $object->setTraceCodes($values_1);
+            unset($data['traceCodes']);
+        }
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -96,9 +104,16 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $data['serialNumbers'] = $values;
         }
-        foreach ($object as $key => $value_1) {
+        if ($object->isInitialized('traceCodes') && null !== $object->getTraceCodes()) {
+            $values_1 = array();
+            foreach ($object->getTraceCodes() as $value_1) {
+                $values_1[] = $value_1;
+            }
+            $data['traceCodes'] = $values_1;
+        }
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value_2;
             }
         }
         return $data;
