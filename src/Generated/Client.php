@@ -895,7 +895,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[search] Filter for product search. \
     Usage:
-    - Provide one or multiple search terms to filter results. 
+    - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
     - The search is enabled for the fields productTitle, productNumber and ean.
@@ -942,37 +942,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     public function getProduct(string $productNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProduct($productNumber, $queryParameters), $fetch);
-    }
-    /**
-    * Add a new product referenced by the given productNumber. \
-    _Please note that due to necessary product compliance enabling by our steve team,
-    the product might not be usable immediately.
-    The product number is nevertheless reserved, even before the product can be queried in the GET endpoint._
-    *
-    * @param string $productNumber The number the product should be referred by. \
-    This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain any of the following character sequences:
-    '/', '%2F', '%2f', '?', '%3F', '%3f', '#', '%23', '&', '%26'.
-    Using any of these will result in the route not being handled correctly.
-    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody 
-    * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
-    _This code is optional, if your identity is assigned to only one shop.
-    Otherwise the response would be a 422 HTTP Error._
-    * }
-    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductBadRequestException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductUnauthorizedException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductForbiddenException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductUnprocessableEntityException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductInternalServerErrorException
-    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
-    *
-    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InformationResponse|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
-    */
-    public function postProduct(string $productNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProduct $requestBody, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
-    {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostProduct($productNumber, $requestBody, $queryParameters), $fetch);
     }
     /**
     * Read a journal collection for a specific product showing the history of stock changes.
