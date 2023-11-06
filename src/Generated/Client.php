@@ -881,6 +881,42 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\RedactOrder($orderNumber, $queryParameters), $fetch);
     }
     /**
+    * Import one or more new product draft(s).
+           The file type is controlled by the content type attribute of the uploaded file
+    *
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostBody $requestBody 
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\ProductDraftBulkImportBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\ProductDraftBulkImportUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\ProductDraftBulkImportForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\ProductDraftBulkImportInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item[]|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function productDraftBulkImport(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostBody $requestBody, string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\ProductDraftBulkImport($requestBody), $fetch);
+    }
+    /**
+    * Get a spreadsheet template for performing POST queries to the respective endpoint.
+           The file type is controlled by the accept header.
+           The fill-in help in the second line can be removed or remain.
+    *
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @param array $accept Accept content header text/csv|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductDraftBulkImportTemplateUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductDraftBulkImportTemplateNotAcceptableException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductDraftBulkImportTemplateInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getProductDraftBulkImportTemplate(string $fetch = self::FETCH_OBJECT, array $accept = array())
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductDraftBulkImportTemplate($accept), $fetch);
+    }
+    /**
      * Read a product draft collection. These are read in multiple pages with a defined page size.
      *
      * @param array $queryParameters {
