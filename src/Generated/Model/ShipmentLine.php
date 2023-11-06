@@ -43,6 +43,12 @@ class ShipmentLine extends \ArrayObject
      */
     protected $traceCodes;
     /**
+     * Batches
+     *
+     * @var Batch[]
+     */
+    protected $batches;
+    /**
      * Product number
      *
      * @return string
@@ -150,6 +156,28 @@ class ShipmentLine extends \ArrayObject
     {
         $this->initialized['traceCodes'] = true;
         $this->traceCodes = $traceCodes;
+        return $this;
+    }
+    /**
+     * Batches
+     *
+     * @return Batch[]
+     */
+    public function getBatches() : array
+    {
+        return $this->batches;
+    }
+    /**
+     * Batches
+     *
+     * @param Batch[] $batches
+     *
+     * @return self
+     */
+    public function setBatches(array $batches) : self
+    {
+        $this->initialized['batches'] = true;
+        $this->batches = $batches;
         return $this;
     }
 }
