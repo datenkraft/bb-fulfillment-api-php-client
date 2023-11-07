@@ -75,9 +75,17 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setTraceCodes($values_1);
             unset($data['traceCodes']);
         }
-        foreach ($data as $key => $value_2) {
+        if (\array_key_exists('batches', $data)) {
+            $values_2 = array();
+            foreach ($data['batches'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Batch', 'json', $context);
+            }
+            $object->setBatches($values_2);
+            unset($data['batches']);
+        }
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -111,9 +119,16 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $data['traceCodes'] = $values_1;
         }
-        foreach ($object as $key => $value_2) {
+        if ($object->isInitialized('batches') && null !== $object->getBatches()) {
+            $values_2 = array();
+            foreach ($object->getBatches() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            }
+            $data['batches'] = $values_2;
+        }
+        foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_2;
+                $data[$key] = $value_3;
             }
         }
         return $data;
