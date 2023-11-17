@@ -5,14 +5,20 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-     * Read a product draft collection. These are read in multiple pages with a defined page size.
-     *
-     * @param array $queryParameters {
-     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
-     *     @var string $filter[productNumber] Filter by a productNumber
-     *     @var string $filter[productDraftStatus] Filter by a product draft status
-     * }
-     */
+    * Read a product draft collection. These are read in multiple pages with a defined page size.
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated. \
+    This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
+    *     @var string $filter[productNumber] Filter by a productNumber
+    *     @var string $filter[productDraftStatus] Filter by a product draft status
+    * }
+    */
     public function __construct(array $queryParameters = array())
     {
         $this->queryParameters = $queryParameters;
@@ -37,9 +43,12 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('filter[shopCode]', 'filter[productNumber]', 'filter[productDraftStatus]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[productNumber]', 'filter[productDraftStatus]'));
         $optionsResolver->setRequired(array('filter[shopCode]'));
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
+        $optionsResolver->addAllowedTypes('page', array('int'));
+        $optionsResolver->addAllowedTypes('pageSize', array('int'));
+        $optionsResolver->addAllowedTypes('paginationMode', array('string'));
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[productNumber]', array('string'));
         $optionsResolver->addAllowedTypes('filter[productDraftStatus]', array('string'));

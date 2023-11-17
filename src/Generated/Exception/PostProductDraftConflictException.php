@@ -16,7 +16,7 @@ class PostProductDraftConflictException extends ConflictException
     {
         parent::__construct('Conflict\\
 Available message codes:
-- PRODUCT_DRAFT_ALREADY_EXISTS: There already exists a pending product draft with the given 
+- PRODUCT_DRAFT_ALREADY_EXISTS: There already exists a pending product draft with the given
 productNumber.
 - PRODUCT_ALREADY_EXISTS: There already exists a product with the given productNumber.');
         $this->errorResponse = $errorResponse;
