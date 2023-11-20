@@ -17,6 +17,7 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
     *     @var string $filter[productNumber] Filter by a productNumber
     *     @var string $filter[productDraftStatus] Filter by a product draft status
+    *     @var string $filter[search] Search for parts of a productNumber
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -43,7 +44,7 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[productNumber]', 'filter[productDraftStatus]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[productNumber]', 'filter[productDraftStatus]', 'filter[search]'));
         $optionsResolver->setRequired(array('filter[shopCode]'));
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -52,6 +53,7 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[productNumber]', array('string'));
         $optionsResolver->addAllowedTypes('filter[productDraftStatus]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[search]', array('string'));
         return $optionsResolver;
     }
     /**
