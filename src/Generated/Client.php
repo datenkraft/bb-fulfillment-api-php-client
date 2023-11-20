@@ -929,6 +929,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
     *     @var string $filter[productNumber] Filter by a productNumber
     *     @var string $filter[productDraftStatus] Filter by a product draft status
+    *     @var string $filter[search] Search for parts of a productNumber
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductDraftCollectionBadRequestException
