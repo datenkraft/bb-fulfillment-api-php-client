@@ -39,7 +39,7 @@ class InboundDelivery extends \ArrayObject
     protected $products;
     /**
     * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was 
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was
     created was created manually by niceshops.
     *
     * @var string
@@ -90,7 +90,7 @@ class InboundDelivery extends \ArrayObject
     * Number of the inbound delivery on the delivery slip.\
     If the field is empty or not set in the database
     (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
-    If an empty string ("") is returned, it means that no delivery slip number is 
+    If an empty string ("") is returned, it means that no delivery slip number is
     available for the inbound delivery.
     *
     * @var string|null
@@ -194,7 +194,7 @@ class InboundDelivery extends \ArrayObject
     }
     /**
     * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was 
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was
     created was created manually by niceshops.
     *
     * @return string
@@ -205,7 +205,7 @@ class InboundDelivery extends \ArrayObject
     }
     /**
     * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was 
+    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was
     created was created manually by niceshops.
     *
     * @param string $inboundDeliveryNumber
@@ -364,7 +364,7 @@ class InboundDelivery extends \ArrayObject
     * Number of the inbound delivery on the delivery slip.\
     If the field is empty or not set in the database
     (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
-    If an empty string ("") is returned, it means that no delivery slip number is 
+    If an empty string ("") is returned, it means that no delivery slip number is
     available for the inbound delivery.
     *
     * @return string|null
@@ -377,7 +377,7 @@ class InboundDelivery extends \ArrayObject
     * Number of the inbound delivery on the delivery slip.\
     If the field is empty or not set in the database
     (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
-    If an empty string ("") is returned, it means that no delivery slip number is 
+    If an empty string ("") is returned, it means that no delivery slip number is
     available for the inbound delivery.
     *
     * @param string|null $deliverySlipNumber

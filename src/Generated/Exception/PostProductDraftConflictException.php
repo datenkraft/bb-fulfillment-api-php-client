@@ -14,10 +14,10 @@ class PostProductDraftConflictException extends ConflictException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Conflict\\
-Available message codes:
-- PRODUCT_DRAFT_ALREADY_EXISTS: There already exists a pending product draft with the given
-productNumber.
+        parent::__construct('Conflict
+
+Error codes:
+- PRODUCT_DRAFT_ALREADY_EXISTS: There already exists a pending product draft with the given productNumber.
 - PRODUCT_ALREADY_EXISTS: There already exists a product with the given productNumber.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;

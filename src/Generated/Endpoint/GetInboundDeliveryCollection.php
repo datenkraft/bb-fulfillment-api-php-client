@@ -12,8 +12,10 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
     
     Available sort orders:
     - asc: ascending order
@@ -30,23 +32,30 @@ class GetInboundDeliveryCollection extends \Datenkraft\Backbone\Client\Fulfillme
     - in_progress: The inbound delivery is being processed in our warehouse.
     - completed: The inbound delivery has been processed in our warehouse.
     - deleted: The inbound delivery has been deleted.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
-    *     @var string $filter[expectedDeliveryDateFrom] The start date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
-    *     @var string $filter[expectedDeliveryDateTo] The end date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
-    *     @var string $filter[search] filter for inbound delivery search.\
-    \
+    *     @var string $filter[expectedDeliveryDateFrom] The start date (inclusive) in format Y-m-d for which inbound deliveries should be returned
+    (regarding the expected delivery date).
+    *     @var string $filter[expectedDeliveryDateTo] The end date (inclusive) in format Y-m-d for which inbound deliveries should be returned
+    (regarding the expected delivery date).
+    *     @var string $filter[search] filter for inbound delivery search.
+    
     Usage:
     - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the numberPrefix of the associated supplier).
-    - Each search term filters the response for inbound deliveries where at least one of the fields contains the search term.
-    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
+    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the
+    numberPrefix of the associated supplier).
+    - Each search term filters the response for inbound deliveries where at least one of the fields contains
+    the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found
+    in any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
-    *     @var string $filter[createDateFrom] The start date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
-    *     @var string $filter[createDateTo] The end date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
+    *     @var string $filter[createDateFrom] The start date (inclusive) in ISO 8601 format for which inbound deliveries should be returned
+    (regarding the creation date).
+    *     @var string $filter[createDateTo] The end date (inclusive) in ISO 8601 format for which inbound deliveries should be returned
+    (regarding the creation date).
     * }
     */
     public function __construct(array $queryParameters = array())

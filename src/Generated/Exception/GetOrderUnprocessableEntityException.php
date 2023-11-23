@@ -14,7 +14,10 @@ class GetOrderUnprocessableEntityException extends UnprocessableEntityException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Unprocessable Entity');
+        parent::__construct('Unprocessable Entity
+
+Error codes:
+- SHOP_NOT_FOUND: Shop not found.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

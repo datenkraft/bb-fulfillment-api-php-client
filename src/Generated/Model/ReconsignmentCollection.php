@@ -19,7 +19,7 @@ class ReconsignmentCollection extends \ArrayObject
      */
     protected $pagination;
     /**
-     * Class ReconsignmentResourceCollection
+     * 
      *
      * @var Reconsignment[]
      */
@@ -47,7 +47,7 @@ class ReconsignmentCollection extends \ArrayObject
         return $this;
     }
     /**
-     * Class ReconsignmentResourceCollection
+     * 
      *
      * @return Reconsignment[]
      */
@@ -56,7 +56,7 @@ class ReconsignmentCollection extends \ArrayObject
         return $this->data;
     }
     /**
-     * Class ReconsignmentResourceCollection
+     * 
      *
      * @param Reconsignment[] $data
      *

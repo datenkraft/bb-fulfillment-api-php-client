@@ -56,8 +56,8 @@ class ShopMeta extends \ArrayObject
     */
     protected $shopifyDefaultShop = true;
     /**
-    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify
-    installation that uses multiple shops.\
+    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify installation
+    that uses multiple shops.\
     If a Shopify order matches this country code, it will be assigned to this shop.
     *
     * @var string|null
@@ -77,10 +77,11 @@ class ShopMeta extends \ArrayObject
      */
     protected $defaultCurrency;
     /**
-     * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be used as default.
-     *
-     * @var bool|null
-     */
+    * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be
+    used as default.
+    *
+    * @var bool|null
+    */
     protected $shopifyOverwriteCustomerEmailEnabled;
     /**
      * Domain of the Shopify shop.
@@ -239,8 +240,8 @@ class ShopMeta extends \ArrayObject
         return $this;
     }
     /**
-    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify
-    installation that uses multiple shops.\
+    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify installation
+    that uses multiple shops.\
     If a Shopify order matches this country code, it will be assigned to this shop.
     *
     * @return string|null
@@ -250,8 +251,8 @@ class ShopMeta extends \ArrayObject
         return $this->shopifyOrderCountryCode;
     }
     /**
-    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify
-    installation that uses multiple shops.\
+    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify installation
+    that uses multiple shops.\
     If a Shopify order matches this country code, it will be assigned to this shop.
     *
     * @param string|null $shopifyOrderCountryCode
@@ -311,21 +312,23 @@ class ShopMeta extends \ArrayObject
         return $this;
     }
     /**
-     * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be used as default.
-     *
-     * @return bool|null
-     */
+    * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be
+    used as default.
+    *
+    * @return bool|null
+    */
     public function getShopifyOverwriteCustomerEmailEnabled() : ?bool
     {
         return $this->shopifyOverwriteCustomerEmailEnabled;
     }
     /**
-     * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be used as default.
-     *
-     * @param bool|null $shopifyOverwriteCustomerEmailEnabled
-     *
-     * @return self
-     */
+    * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be
+    used as default.
+    *
+    * @param bool|null $shopifyOverwriteCustomerEmailEnabled
+    *
+    * @return self
+    */
     public function setShopifyOverwriteCustomerEmailEnabled(?bool $shopifyOverwriteCustomerEmailEnabled) : self
     {
         $this->initialized['shopifyOverwriteCustomerEmailEnabled'] = true;

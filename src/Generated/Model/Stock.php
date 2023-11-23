@@ -33,7 +33,7 @@ class Stock extends \ArrayObject
     protected $reserved;
     /**
     * Amount available for orders
-    - the reserved amount for ongoing orders is subtracted\
+    - the reserved amount for ongoing orders is subtracted
     - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
     *
     * @var int
@@ -46,8 +46,8 @@ class Stock extends \ArrayObject
      */
     protected $incoming;
     /**
-    * Status regarding the possibility of overbooking
-    - possible: Overbooking is possible
+    * Status regarding the possibility of overbookinge
+    - possible: Overbooking is possiblee
     - not_possible: Overbooking is not possible
     - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
     *
@@ -124,7 +124,7 @@ class Stock extends \ArrayObject
     }
     /**
     * Amount available for orders
-    - the reserved amount for ongoing orders is subtracted\
+    - the reserved amount for ongoing orders is subtracted
     - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
     *
     * @return int
@@ -135,7 +135,7 @@ class Stock extends \ArrayObject
     }
     /**
     * Amount available for orders
-    - the reserved amount for ongoing orders is subtracted\
+    - the reserved amount for ongoing orders is subtracted
     - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
     *
     * @param int $available
@@ -171,8 +171,8 @@ class Stock extends \ArrayObject
         return $this;
     }
     /**
-    * Status regarding the possibility of overbooking
-    - possible: Overbooking is possible
+    * Status regarding the possibility of overbookinge
+    - possible: Overbooking is possiblee
     - not_possible: Overbooking is not possible
     - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
     *
@@ -183,8 +183,8 @@ class Stock extends \ArrayObject
         return $this->overbookingPossibilityStatus;
     }
     /**
-    * Status regarding the possibility of overbooking
-    - possible: Overbooking is possible
+    * Status regarding the possibility of overbookinge
+    - possible: Overbooking is possiblee
     - not_possible: Overbooking is not possible
     - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
     *

@@ -16,9 +16,9 @@ class RedactOrderConflictException extends ConflictException
     {
         parent::__construct('Conflict
 
-Available message codes:
-- ORDER_NOT_REDACTABLE: The order is not redactable because of status conflicts
-- ORDER_ALREADY_REDACTED: The order is already redacted');
+Error codes:
+- ORDER_NOT_REDACTABLE: The order is not redactable because of status conflicts.
+- ORDER_ALREADY_REDACTED: The order is already redacted.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

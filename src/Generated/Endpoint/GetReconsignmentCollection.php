@@ -10,8 +10,12 @@ class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\Fulfillment
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
-    *     @var string $paginationMode 'default': Total count will not be calculated. 'totalCount': The total number of entries for the request will be calculated. This can mean loss of performance. If not given, 'default' pagination mode is used.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
     
     Available sort orders:
     - asc: ascending order
@@ -53,7 +57,7 @@ class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\Fulfillment
         $optionsResolver = parent::getQueryOptionsResolver();
         $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[orderNumber]', 'filter[reconsignmentDateFrom]', 'filter[reconsignmentDateTo]'));
         $optionsResolver->setRequired(array());
-        $optionsResolver->setDefaults(array());
+        $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
         $optionsResolver->addAllowedTypes('pageSize', array('int'));
         $optionsResolver->addAllowedTypes('paginationMode', array('string'));

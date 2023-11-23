@@ -12,8 +12,10 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
     
     Available sort orders:
     - asc: ascending order
@@ -23,7 +25,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     - orderDate
     
     The default sort order is orderDate:desc.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[status] Filter for status/statuses (optional).
@@ -32,15 +34,18 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     *     @var string $filter[externalOrderReference] filter for externalOrderReference
     *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
     *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
-    *     @var string $filter[search] filter for order search.\
-    \
+    *     @var string $filter[search] filter for order search.
+    
     Usage:
     - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields 'externalOrderReference', 'orderNumber' and the tracking code of the orders shipments.
-    - Each search term filters the response for orders where at least one of the fields contains the search term.
-    - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in any field and 'term2' is also found in any field.\
+    - The search is enabled for the fields 'externalOrderReference', 'orderNumber' and the tracking code of
+    the orders shipments.
+    - Each search term filters the response for orders where at least one of the fields contains the search
+    term.
+    - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in
+    any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the order is not included in the results.
     * }
     */

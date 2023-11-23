@@ -12,7 +12,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. \
+    - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.

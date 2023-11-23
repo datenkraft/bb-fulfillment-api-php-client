@@ -37,25 +37,22 @@ class ProductJournal extends \ArrayObject
      */
     protected $reason;
     /**
-    * The change of the stock.\
-    Note: This might not be set for all reasons.
-    *
-    * @var int|null
-    */
+     * The change of the stock.\Note: This might not be set for all reasons.
+     *
+     * @var int|null
+     */
     protected $stockDelta;
     /**
-    * The old value of the stock before applying the delta.\
-    Note: This might not be set for all reasons.
-    *
-    * @var int|null
-    */
+     * The old value of the stock before applying the delta.\Note: This might not be set for all reasons.
+     *
+     * @var int|null
+     */
     protected $stockOld;
     /**
-    * The new value of the stock when the journal entry was created.\
-    Note: This might not be set for all reasons.
-    *
-    * @var int|null
-    */
+     * The new value of the stock when the journal entry was created.\Note: This might not be set for all reasons.
+     *
+     * @var int|null
+     */
     protected $stockNew;
     /**
      * 
@@ -152,23 +149,21 @@ class ProductJournal extends \ArrayObject
         return $this;
     }
     /**
-    * The change of the stock.\
-    Note: This might not be set for all reasons.
-    *
-    * @return int|null
-    */
+     * The change of the stock.\Note: This might not be set for all reasons.
+     *
+     * @return int|null
+     */
     public function getStockDelta() : ?int
     {
         return $this->stockDelta;
     }
     /**
-    * The change of the stock.\
-    Note: This might not be set for all reasons.
-    *
-    * @param int|null $stockDelta
-    *
-    * @return self
-    */
+     * The change of the stock.\Note: This might not be set for all reasons.
+     *
+     * @param int|null $stockDelta
+     *
+     * @return self
+     */
     public function setStockDelta(?int $stockDelta) : self
     {
         $this->initialized['stockDelta'] = true;
@@ -176,23 +171,21 @@ class ProductJournal extends \ArrayObject
         return $this;
     }
     /**
-    * The old value of the stock before applying the delta.\
-    Note: This might not be set for all reasons.
-    *
-    * @return int|null
-    */
+     * The old value of the stock before applying the delta.\Note: This might not be set for all reasons.
+     *
+     * @return int|null
+     */
     public function getStockOld() : ?int
     {
         return $this->stockOld;
     }
     /**
-    * The old value of the stock before applying the delta.\
-    Note: This might not be set for all reasons.
-    *
-    * @param int|null $stockOld
-    *
-    * @return self
-    */
+     * The old value of the stock before applying the delta.\Note: This might not be set for all reasons.
+     *
+     * @param int|null $stockOld
+     *
+     * @return self
+     */
     public function setStockOld(?int $stockOld) : self
     {
         $this->initialized['stockOld'] = true;
@@ -200,23 +193,21 @@ class ProductJournal extends \ArrayObject
         return $this;
     }
     /**
-    * The new value of the stock when the journal entry was created.\
-    Note: This might not be set for all reasons.
-    *
-    * @return int|null
-    */
+     * The new value of the stock when the journal entry was created.\Note: This might not be set for all reasons.
+     *
+     * @return int|null
+     */
     public function getStockNew() : ?int
     {
         return $this->stockNew;
     }
     /**
-    * The new value of the stock when the journal entry was created.\
-    Note: This might not be set for all reasons.
-    *
-    * @param int|null $stockNew
-    *
-    * @return self
-    */
+     * The new value of the stock when the journal entry was created.\Note: This might not be set for all reasons.
+     *
+     * @param int|null $stockNew
+     *
+     * @return self
+     */
     public function setStockNew(?int $stockNew) : self
     {
         $this->initialized['stockNew'] = true;

@@ -277,7 +277,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. \
+    - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
     * }
@@ -303,7 +303,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
@@ -330,7 +331,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryServiceCollectionUnauthorizedException
@@ -352,7 +354,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. \
+    - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
@@ -540,8 +542,10 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
     
     Available sort orders:
     - asc: ascending order
@@ -558,23 +562,30 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - in_progress: The inbound delivery is being processed in our warehouse.
     - completed: The inbound delivery has been processed in our warehouse.
     - deleted: The inbound delivery has been deleted.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
-    *     @var string $filter[expectedDeliveryDateFrom] The start date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
-    *     @var string $filter[expectedDeliveryDateTo] The end date (inclusive) in format Y-m-d for which inbound deliveries should be returned (regarding the expected delivery date).
-    *     @var string $filter[search] filter for inbound delivery search.\
-    \
+    *     @var string $filter[expectedDeliveryDateFrom] The start date (inclusive) in format Y-m-d for which inbound deliveries should be returned
+    (regarding the expected delivery date).
+    *     @var string $filter[expectedDeliveryDateTo] The end date (inclusive) in format Y-m-d for which inbound deliveries should be returned
+    (regarding the expected delivery date).
+    *     @var string $filter[search] filter for inbound delivery search.
+    
     Usage:
     - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the numberPrefix of the associated supplier).
-    - Each search term filters the response for inbound deliveries where at least one of the fields contains the search term.
-    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found in any field and 'term2' is also found in any field.\
+    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the
+    numberPrefix of the associated supplier).
+    - Each search term filters the response for inbound deliveries where at least one of the fields contains
+    the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found
+    in any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
-    *     @var string $filter[createDateFrom] The start date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
-    *     @var string $filter[createDateTo] The end date (inclusive) in ISO 8601 format for which inbound deliveries should be returned (regarding the creation date).
+    *     @var string $filter[createDateFrom] The start date (inclusive) in ISO 8601 format for which inbound deliveries should be returned
+    (regarding the creation date).
+    *     @var string $filter[createDateTo] The end date (inclusive) in ISO 8601 format for which inbound deliveries should be returned
+    (regarding the creation date).
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryCollectionUnauthorizedException
@@ -594,7 +605,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *
     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
@@ -617,13 +628,14 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Add a new inbound delivery referenced by the given deliveryNumber.
     *
-    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.\
-    This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
-    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
+    * @param string $inboundDeliveryNumber The number the inbound delivery should be referred by. \
+    This number is user defined, must be unique and has a maximum length (check maxLength field). \
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?',
+    '%3F', '%3f', '#', '%23', '&', '%26'. \
+    Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery $requestBody 
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
@@ -642,14 +654,14 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostInboundDelivery($inboundDeliveryNumber, $requestBody, $queryParameters), $fetch);
     }
     /**
-    * Cancel a inbound delivery referenced by the given inboundDeliveryNumber.\
-    An inboundDeliveryNumber from a canceled inbound delivery cannot be used for a new inbound delivery, because they must
-    always be unique.
+    * Cancel a inbound delivery referenced by the given inboundDeliveryNumber. \
+    An inboundDeliveryNumber from a canceled inbound delivery cannot be used for a new inbound delivery, because
+    they must always be unique.
     *
-    * @param string $inboundDeliveryNumber The number the inbound delivery should be refered by.
+    * @param string $inboundDeliveryNumber The number the inbound delivery should be referred by. \
     This number is user defined, must be unique and has a maximum length (check maxLength field).
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
@@ -673,22 +685,20 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     * Allows to download a document associated with the given inbound delivery.
     *
     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
-    * @param string $documentCode The document type to download. The file format is determined by the Accept request header.\
+    * @param string $documentCode The document type to download. The file format is determined by the Accept request header.
+    
     Note: only a limited amount of document type to file format combinations are available:
-    - supplierDeliveryLabel:\
-    the label to put on the inbound delivery for warehouse processing.\
+    - supplierDeliveryLabel: the label to put on the inbound delivery for warehouse processing.
     Accept header: application/pdf
-    - details:\
-    a spreadsheet containing details about the inbound delivery.\
+    - details: a spreadsheet containing details about the inbound delivery.
     Accept header: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-       
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
-    * @param array $accept Accept content header application/pdf|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
+    * @param array $accept Accept content header application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/pdf|application/json
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentBadRequestException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetInboundDeliveryDocumentForbiddenException
@@ -712,8 +722,9 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
@@ -738,8 +749,10 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
     
     Available sort orders:
     - asc: ascending order
@@ -749,7 +762,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - orderDate
     
     The default sort order is orderDate:desc.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[status] Filter for status/statuses (optional).
@@ -758,15 +771,18 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[externalOrderReference] filter for externalOrderReference
     *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
     *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
-    *     @var string $filter[search] filter for order search.\
-    \
+    *     @var string $filter[search] filter for order search.
+    
     Usage:
     - Provide one or multiple search terms to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields 'externalOrderReference', 'orderNumber' and the tracking code of the orders shipments.
-    - Each search term filters the response for orders where at least one of the fields contains the search term.
-    - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in any field and 'term2' is also found in any field.\
+    - The search is enabled for the fields 'externalOrderReference', 'orderNumber' and the tracking code of
+    the orders shipments.
+    - Each search term filters the response for orders where at least one of the fields contains the search
+    term.
+    - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in
+    any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the order is not included in the results.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
@@ -809,10 +825,11 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Add a new order referenced by the given orderNumber.
     *
-    * @param string $orderNumber The number the order should be refered by.\
-    This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?', '%3F', '%3f',
-    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
+    * @param string $orderNumber The number the order should be referred by. \
+    This number is user defined, must be unique and has a maximum length (check maxLength field). \
+    Please ensure that it does not contain any of the following character sequences: '/', '%2F', '%2f', '?',
+    '%3F', '%3f','#', '%23', '&', '%26'. \
+    Using any of these will result in the route not being handled correctly.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder $requestBody 
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderBadRequestException
@@ -829,10 +846,10 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostOrder($orderNumber, $requestBody), $fetch);
     }
     /**
-    * Cancel the order specified by the given order number (set in param orderNumber).\
+    * Cancel the order specified by the given order number (set in param orderNumber).
     An orderNumber from a canceled order cannot be used for a new order, because they must always be unique.
     *
-    * @param string $orderNumber The number the order is refered by.
+    * @param string $orderNumber The number the order is referred by.
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
@@ -855,15 +872,15 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\CancelOrder($orderNumber, $queryParameters), $fetch);
     }
     /**
-    * Redact the order and all other orders linked to the given order number (set in the param
-    orderNumber) in a GDPR article 17 conform way. \
+    * Redact the order and all other orders linked to the given order number (set in the param orderNumber) in a GDPR
+    article 17 conform way. \
     
     Only orders with one of the following statuses are redactable:
     - delivered
     - deleted
     - canceled
     *
-    * @param string $orderNumber The number the order is refered by.
+    * @param string $orderNumber The number the order is referred by.
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
@@ -929,7 +946,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. \
+    - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
     *     @var string $filter[productNumber] Filter by a productNumber
@@ -985,6 +1002,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftUnauthorizedException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftForbiddenException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftConflictException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftInternalServerErrorException
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
     *
@@ -1024,7 +1042,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
@@ -1050,7 +1069,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. \
+    - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
@@ -1152,8 +1171,12 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
-    *     @var string $paginationMode 'default': Total count will not be calculated. 'totalCount': The total number of entries for the request will be calculated. This can mean loss of performance. If not given, 'default' pagination mode is used.
-    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having priority.
+    *     @var string $paginationMode The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
     
     Available sort orders:
     - asc: ascending order
@@ -1212,7 +1235,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. \
+    - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
@@ -1243,7 +1266,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. \
+    - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
@@ -1274,7 +1297,8 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     *     @var string $filter[meta][shopifyShopDomain] A filter for the Shopify hostname of the shop.
     *     @var bool $filter[meta][shopifyDefaultShop] A filter for Shopify default shops.\
     Note: For shops that are part of a Shopify installation that uses multiple shops,
@@ -1296,7 +1320,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetShopCollection($queryParameters), $fetch);
     }
     /**
-     * Update one or more fields of a shop. Only a limited set of fields can be updated.
+     * Set one or more fields of a shop. Only a limited set of fields can be updated.
      *
      * @param string $shopId Shop Id
      * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop $requestBody 
@@ -1370,8 +1394,9 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var int $pageSize The maximum size per page is 100. Default is 20.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
-    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.\
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }

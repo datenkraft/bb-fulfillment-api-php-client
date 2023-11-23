@@ -6,15 +6,15 @@ class RedactOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
 {
     protected $orderNumber;
     /**
-    * Redact the order and all other orders linked to the given order number (set in the param
-    orderNumber) in a GDPR article 17 conform way. \
+    * Redact the order and all other orders linked to the given order number (set in the param orderNumber) in a GDPR
+    article 17 conform way. \
     
     Only orders with one of the following statuses are redactable:
     - delivered
     - deleted
     - canceled
     *
-    * @param string $orderNumber The number the order is refered by.
+    * @param string $orderNumber The number the order is referred by.
     * @param array $queryParameters {
     *     @var string $shopCode The shopCode used internally to distinguish between clients.\
     _This code is optional, if your identity is assigned to only one shop.

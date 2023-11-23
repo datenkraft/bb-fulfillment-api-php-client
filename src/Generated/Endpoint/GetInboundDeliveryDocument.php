@@ -11,21 +11,19 @@ class GetInboundDeliveryDocument extends \Datenkraft\Backbone\Client\Fulfillment
     * Allows to download a document associated with the given inbound delivery.
     *
     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
-    * @param string $documentCode The document type to download. The file format is determined by the Accept request header.\
+    * @param string $documentCode The document type to download. The file format is determined by the Accept request header.
+    
     Note: only a limited amount of document type to file format combinations are available:
-    - supplierDeliveryLabel:\
-    the label to put on the inbound delivery for warehouse processing.\
+    - supplierDeliveryLabel: the label to put on the inbound delivery for warehouse processing.
     Accept header: application/pdf
-    - details:\
-    a spreadsheet containing details about the inbound delivery.\
+    - details: a spreadsheet containing details about the inbound delivery.
     Accept header: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-       
     * @param array $queryParameters {
-    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
     * }
-    * @param array $accept Accept content header application/pdf|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/json
+    * @param array $accept Accept content header application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/pdf|application/json
     */
     public function __construct(string $inboundDeliveryNumber, string $documentCode, array $queryParameters = array(), array $accept = array())
     {
@@ -50,7 +48,7 @@ class GetInboundDeliveryDocument extends \Datenkraft\Backbone\Client\Fulfillment
     public function getExtraHeaders() : array
     {
         if (empty($this->accept)) {
-            return array('Accept' => array('application/pdf', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/json'));
+            return array('Accept' => array('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/pdf', 'application/json'));
         }
         return $this->accept;
     }
