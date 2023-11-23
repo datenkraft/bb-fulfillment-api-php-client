@@ -8,7 +8,7 @@ class CancelOrder extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\R
     /**
      * Cancel the order specified by the given order number (set in param orderNumber).
      *
-     * @param string $orderNumber The number the order is refered by.
+     * @param string $orderNumber The number the order is referred by.
      * @param array $queryParameters {
      *     @var string $shopCode The shopCode used in DISCO (optional).
      * }

@@ -26,7 +26,7 @@ class DeliveryShipment extends \ArrayObject
     */
     protected $status;
     /**
-    * The delivery service used to send this delivery.
+    * The delivery service used to send this delivery. \
     The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
     *
     * @var string|null
@@ -109,7 +109,7 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-    * The delivery service used to send this delivery.
+    * The delivery service used to send this delivery. \
     The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
     *
     * @return string|null
@@ -119,7 +119,7 @@ class DeliveryShipment extends \ArrayObject
         return $this->deliveryService;
     }
     /**
-    * The delivery service used to send this delivery.
+    * The delivery service used to send this delivery. \
     The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
     *
     * @param string|null $deliveryService
