@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetOrderForbiddenException extends ForbiddenException
+class GetDeliveryServiceCollectionForbiddenException extends ForbiddenException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse

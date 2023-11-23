@@ -38,12 +38,6 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItem();
-        if (\array_key_exists('value', $data) && \is_int($data['value'])) {
-            $data['value'] = (double) $data['value'];
-        }
-        if (\array_key_exists('vat', $data) && \is_int($data['vat'])) {
-            $data['vat'] = (double) $data['vat'];
-        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -63,7 +57,7 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             unset($data['count']);
         }
         if (\array_key_exists('price', $data) && $data['price'] !== null) {
-            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice', 'json', $context));
+            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderItemPrice', 'json', $context));
             unset($data['price']);
         }
         elseif (\array_key_exists('price', $data) && $data['price'] === null) {
@@ -79,22 +73,6 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
-        }
-        if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
-            unset($data['value']);
-        }
-        if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
-            unset($data['type']);
-        }
-        if (\array_key_exists('vat', $data)) {
-            $object->setVat($data['vat']);
-            unset($data['vat']);
-        }
-        if (\array_key_exists('currencyCode', $data)) {
-            $object->setCurrencyCode($data['currencyCode']);
-            unset($data['currencyCode']);
         }
         foreach ($data as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
@@ -124,12 +102,6 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             }
             $data['options'] = $values;
         }
-        $data['value'] = $object->getValue();
-        $data['type'] = $object->getType();
-        if ($object->isInitialized('vat') && null !== $object->getVat()) {
-            $data['vat'] = $object->getVat();
-        }
-        $data['currencyCode'] = $object->getCurrencyCode();
         foreach ($object as $key_1 => $value_1) {
             if (preg_match('/.*/', (string) $key_1)) {
                 $data[$key_1] = $value_1;

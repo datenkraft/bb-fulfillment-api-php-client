@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetOrderForbiddenException extends ForbiddenException
+class GetDeliveryServiceCollectionInternalServerErrorException extends InternalServerErrorException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -14,10 +14,10 @@ class GetOrderForbiddenException extends ForbiddenException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Forbidden
+        parent::__construct('Server error
 
 Error codes:
-- PERMISSIONS_MISSING: No authorization for the called action was found.');
+- SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

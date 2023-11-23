@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetOrderForbiddenException extends ForbiddenException
+class GetDeliveryServiceCollectionUnauthorizedException extends UnauthorizedException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -14,10 +14,10 @@ class GetOrderForbiddenException extends ForbiddenException
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Forbidden
+        parent::__construct('Unauthorized
 
 Error codes:
-- PERMISSIONS_MISSING: No authorization for the called action was found.');
+- AUTHORIZATION_MISSING: No valid authentication information was given.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

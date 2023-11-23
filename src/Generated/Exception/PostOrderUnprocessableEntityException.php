@@ -16,8 +16,8 @@ class PostOrderUnprocessableEntityException extends UnprocessableEntityException
     {
         parent::__construct('Unprocessable Entity
 
-Available message codes:
-- PRODUCT_NOT_FOUND: A product could not be found.
+Error codes:
+- PRODUCT_NOT_FOUND: Unknown productNumber.
 - DUPLICATED_PRODUCT: There are multiple orderItems with the same productNumber.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;

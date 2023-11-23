@@ -12,7 +12,8 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     *     @var int $pageSize The maximum size per page is 100. Default is 100.
     *     @var string $paginationMode The paginationMode to use:
     - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated. This can mean loss of performance.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
     *     @var string $filter[orderNumber] A filter with the orderNumber as given during the creation of the order.
     *     @var string $shopCode The shopCode used in DISCO (optional).
     * }
