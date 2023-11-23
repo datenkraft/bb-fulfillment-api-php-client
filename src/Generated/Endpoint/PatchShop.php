@@ -6,7 +6,7 @@ class PatchShop extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Run
 {
     protected $shopId;
     /**
-     * Update one or more fields of a shop. Only a limited set of fields can be updated.
+     * Set one or more fields of a shop. Only a limited set of fields can be updated.
      *
      * @param string $shopId Shop Id
      * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop $requestBody 

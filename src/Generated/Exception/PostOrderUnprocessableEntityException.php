@@ -16,13 +16,13 @@ class PostOrderUnprocessableEntityException extends UnprocessableEntityException
     {
         parent::__construct('Unprocessable Entity
 
-Available message codes:
-- PRODUCT_NOT_FOUND: A product could not be found.
+Error codes:
+- PRODUCT_NOT_FOUND: Unknown productNumber.
 - DUPLICATED_PRODUCT: There are multiple orderItems with the same productNumber.
 - ORDER_CUSTOMS_CLEARANCE_REQUIRED_FIELD_MISSING: A field required for customs clearance is missing.
-- ORDER_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The orderNumber starts with a prefix that is reserved for internal
-  references.
-- ORDER_INVALID_CURRENCY_CODE: An invalid currencyCode was given for the delivery country.');
+- ORDER_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The orderNumber starts with a prefix that is reserved for internal references.
+- ORDER_INVALID_CURRENCY_CODE: An invalid currencyCode was given for the delivery country.
+- ORDER_ITEM_NOT_ORDERABLE: A specific orderItem can not be ordered.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

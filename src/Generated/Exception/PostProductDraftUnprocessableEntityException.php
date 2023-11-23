@@ -14,8 +14,9 @@ class PostProductDraftUnprocessableEntityException extends UnprocessableEntityEx
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Unprocessable Entity\\
-Extract of the available message codes:
+        parent::__construct('Unprocessable Entity
+
+Error codes:
 - SUPPLIER_NOT_FOUND: Unknown supplierNumber.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;

@@ -16,7 +16,7 @@ class GetInboundDeliveryConflictException extends ConflictException
     {
         parent::__construct('Conflict
 
-Available message codes:
+Error codes:
 - AMBIGUOUS_INBOUND_DELIVERY: Multiple inbound deliveries were found.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;

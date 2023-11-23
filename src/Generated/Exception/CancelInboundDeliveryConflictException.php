@@ -16,7 +16,7 @@ class CancelInboundDeliveryConflictException extends ConflictException
     {
         parent::__construct('Conflict
 
-Available message codes:
+Error codes:
 - AMBIGUOUS_INBOUND_DELIVERY: Multiple inbound deliveries were found.
 - INBOUND_DELIVERY_ALREADY_CANCELED: The inbound delivery is already canceled.
 - INBOUND_DELIVERY_NOT_CANCELABLE: The inbound delivery could not be canceled.');

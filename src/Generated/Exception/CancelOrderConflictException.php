@@ -16,10 +16,10 @@ class CancelOrderConflictException extends ConflictException
     {
         parent::__construct('Conflict
 
-Available message codes:
-- ORDER_NOT_CANCELABLE: The order could not be canceled anymore
-- ORDER_ALREADY_CANCELED: The order is already canceled
-- ORDER_CANCELLATION_ALREADY_EXISTS: An order cancellation request already exists, which needs manual approval');
+Error codes:
+- ORDER_NOT_CANCELABLE: The order could not be canceled anymore.
+- ORDER_ALREADY_CANCELED: The order is already canceled.
+- ORDER_CANCELLATION_ALREADY_EXISTS: An order cancellation request already exists, which needs manual approval.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

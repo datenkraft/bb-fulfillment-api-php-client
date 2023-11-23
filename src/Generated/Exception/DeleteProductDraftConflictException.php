@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class GetProductUnitCollectionInternalServerErrorException extends InternalServerErrorException
+class DeleteProductDraftConflictException extends ConflictException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -14,10 +14,10 @@ class GetProductUnitCollectionInternalServerErrorException extends InternalServe
     private $response;
     public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
     {
-        parent::__construct('Server error
+        parent::__construct('Conflict
 
 Error codes:
-- SERVER_ERROR_OCCURRED: An internal server error occurred. Please try again later.');
+- PRODUCT_DRAFT_NOT_DELETABLE: The state of the product draft does not allow deleting.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
