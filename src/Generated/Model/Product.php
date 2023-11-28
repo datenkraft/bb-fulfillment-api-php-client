@@ -45,12 +45,12 @@ class Product extends \ArrayObject
      */
     protected $contentsAmount = 1;
     /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
     *
     * @var string|null
     */
-    protected $contentsUnit = 'stk';
+    protected $contentsUnit = 'piece';
     /**
      * Weight of the product contents in gram
      *
@@ -178,17 +178,14 @@ class Product extends \ArrayObject
     protected $listPriceEUR;
     /**
     * One of the available tax codes.
-    - std: Standard tax rate (AT 20%)
-    - spc: 1st tax rate (AT 13%)
-    - erm: 2nd tax rate (AT 10%)
-    - erm3: 3rd tax rate (AT 5%)
-    - nsp: not taxable (0%)\
-    
-    Note: This can be null if the product was not created via the API.
+    - default: Default tax rate (in e.g. Austria 20 %)
+    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+    - none: not taxable (0%)
     *
     * @var string|null
     */
-    protected $taxCode = 'std';
+    protected $taxCode = 'default';
     /**
     * Number of the manufacturer\
     Note: This can be null if the product was not created via the API.
@@ -327,8 +324,8 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
     *
     * @return string|null
     */
@@ -337,8 +334,8 @@ class Product extends \ArrayObject
         return $this->contentsUnit;
     }
     /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
     *
     * @param string|null $contentsUnit
     *
@@ -782,13 +779,10 @@ class Product extends \ArrayObject
     }
     /**
     * One of the available tax codes.
-    - std: Standard tax rate (AT 20%)
-    - spc: 1st tax rate (AT 13%)
-    - erm: 2nd tax rate (AT 10%)
-    - erm3: 3rd tax rate (AT 5%)
-    - nsp: not taxable (0%)\
-    
-    Note: This can be null if the product was not created via the API.
+    - default: Default tax rate (in e.g. Austria 20 %)
+    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+    - none: not taxable (0%)
     *
     * @return string|null
     */
@@ -798,13 +792,10 @@ class Product extends \ArrayObject
     }
     /**
     * One of the available tax codes.
-    - std: Standard tax rate (AT 20%)
-    - spc: 1st tax rate (AT 13%)
-    - erm: 2nd tax rate (AT 10%)
-    - erm3: 3rd tax rate (AT 5%)
-    - nsp: not taxable (0%)\
-    
-    Note: This can be null if the product was not created via the API.
+    - default: Default tax rate (in e.g. Austria 20 %)
+    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+    - none: not taxable (0%)
     *
     * @param string|null $taxCode
     *

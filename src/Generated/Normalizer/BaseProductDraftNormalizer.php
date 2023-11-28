@@ -62,10 +62,6 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setContentsAmount($data['contentsAmount']);
             unset($data['contentsAmount']);
         }
-        if (\array_key_exists('contentsUnit', $data)) {
-            $object->setContentsUnit($data['contentsUnit']);
-            unset($data['contentsUnit']);
-        }
         if (\array_key_exists('contentsWeightGram', $data)) {
             $object->setContentsWeightGram($data['contentsWeightGram']);
             unset($data['contentsWeightGram']);
@@ -130,9 +126,6 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if ($object->isInitialized('contentsAmount') && null !== $object->getContentsAmount()) {
             $data['contentsAmount'] = $object->getContentsAmount();
-        }
-        if ($object->isInitialized('contentsUnit') && null !== $object->getContentsUnit()) {
-            $data['contentsUnit'] = $object->getContentsUnit();
         }
         if ($object->isInitialized('contentsWeightGram') && null !== $object->getContentsWeightGram()) {
             $data['contentsWeightGram'] = $object->getContentsWeightGram();
