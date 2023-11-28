@@ -62,10 +62,6 @@ class NewProductDraftNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setContentsAmount($data['contentsAmount']);
             unset($data['contentsAmount']);
         }
-        if (\array_key_exists('contentsUnit', $data)) {
-            $object->setContentsUnit($data['contentsUnit']);
-            unset($data['contentsUnit']);
-        }
         if (\array_key_exists('contentsWeightGram', $data)) {
             $object->setContentsWeightGram($data['contentsWeightGram']);
             unset($data['contentsWeightGram']);
@@ -109,6 +105,10 @@ class NewProductDraftNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setBrandNumber($data['brandNumber']);
             unset($data['brandNumber']);
         }
+        if (\array_key_exists('contentsUnit', $data)) {
+            $object->setContentsUnit($data['contentsUnit']);
+            unset($data['contentsUnit']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -130,9 +130,6 @@ class NewProductDraftNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($object->isInitialized('contentsAmount') && null !== $object->getContentsAmount()) {
             $data['contentsAmount'] = $object->getContentsAmount();
-        }
-        if ($object->isInitialized('contentsUnit') && null !== $object->getContentsUnit()) {
-            $data['contentsUnit'] = $object->getContentsUnit();
         }
         if ($object->isInitialized('contentsWeightGram') && null !== $object->getContentsWeightGram()) {
             $data['contentsWeightGram'] = $object->getContentsWeightGram();
@@ -163,6 +160,9 @@ class NewProductDraftNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($object->isInitialized('brandNumber') && null !== $object->getBrandNumber()) {
             $data['brandNumber'] = $object->getBrandNumber();
+        }
+        if ($object->isInitialized('contentsUnit') && null !== $object->getContentsUnit()) {
+            $data['contentsUnit'] = $object->getContentsUnit();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

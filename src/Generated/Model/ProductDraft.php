@@ -31,13 +31,6 @@ class ProductDraft extends \ArrayObject
      */
     protected $contentsAmount = 1;
     /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
-    *
-    * @var string
-    */
-    protected $contentsUnit = 'stk';
-    /**
      * Weight of the product contents in gram
      *
      * @var int
@@ -133,6 +126,13 @@ class ProductDraft extends \ArrayObject
     */
     protected $productDraftStatus;
     /**
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
+    *
+    * @var string
+    */
+    protected $contentsUnit;
+    /**
      * Product number to be used for the final product
      *
      * @return string
@@ -196,30 +196,6 @@ class ProductDraft extends \ArrayObject
     {
         $this->initialized['contentsAmount'] = true;
         $this->contentsAmount = $contentsAmount;
-        return $this;
-    }
-    /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
-    *
-    * @return string
-    */
-    public function getContentsUnit() : string
-    {
-        return $this->contentsUnit;
-    }
-    /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
-    *
-    * @param string $contentsUnit
-    *
-    * @return self
-    */
-    public function setContentsUnit(string $contentsUnit) : self
-    {
-        $this->initialized['contentsUnit'] = true;
-        $this->contentsUnit = $contentsUnit;
         return $this;
     }
     /**
@@ -550,6 +526,30 @@ class ProductDraft extends \ArrayObject
     {
         $this->initialized['productDraftStatus'] = true;
         $this->productDraftStatus = $productDraftStatus;
+        return $this;
+    }
+    /**
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
+    *
+    * @return string
+    */
+    public function getContentsUnit() : string
+    {
+        return $this->contentsUnit;
+    }
+    /**
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
+    *
+    * @param string $contentsUnit
+    *
+    * @return self
+    */
+    public function setContentsUnit(string $contentsUnit) : self
+    {
+        $this->initialized['contentsUnit'] = true;
+        $this->contentsUnit = $contentsUnit;
         return $this;
     }
 }

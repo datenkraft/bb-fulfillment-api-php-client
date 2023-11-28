@@ -45,12 +45,12 @@ class BaseProduct extends \ArrayObject
      */
     protected $contentsAmount = 1;
     /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
     *
     * @var string|null
     */
-    protected $contentsUnit = 'stk';
+    protected $contentsUnit = 'piece';
     /**
      * Weight of the product contents in gram
      *
@@ -220,8 +220,8 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
     *
     * @return string|null
     */
@@ -230,8 +230,8 @@ class BaseProduct extends \ArrayObject
         return $this->contentsUnit;
     }
     /**
-    * Unit of the product contents ('stk' if no value is provided).\
-    Valid units can be queried with a GET /product-unit call
+    * Unit of the product contents.\
+    All units can be queried with a GET /product-unit call
     *
     * @param string|null $contentsUnit
     *
