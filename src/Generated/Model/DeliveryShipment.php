@@ -75,6 +75,12 @@ class DeliveryShipment extends \ArrayObject
      */
     protected $journal;
     /**
+     * Packaging dimensions
+     *
+     * @var DeliveryShipmentPackaging
+     */
+    protected $packaging;
+    /**
      * The shipment number
      *
      * @return string
@@ -296,6 +302,28 @@ class DeliveryShipment extends \ArrayObject
     {
         $this->initialized['journal'] = true;
         $this->journal = $journal;
+        return $this;
+    }
+    /**
+     * Packaging dimensions
+     *
+     * @return DeliveryShipmentPackaging
+     */
+    public function getPackaging() : DeliveryShipmentPackaging
+    {
+        return $this->packaging;
+    }
+    /**
+     * Packaging dimensions
+     *
+     * @param DeliveryShipmentPackaging $packaging
+     *
+     * @return self
+     */
+    public function setPackaging(DeliveryShipmentPackaging $packaging) : self
+    {
+        $this->initialized['packaging'] = true;
+        $this->packaging = $packaging;
         return $this;
     }
 }

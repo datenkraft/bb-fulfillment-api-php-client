@@ -98,6 +98,10 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setJournal($values_1);
             unset($data['journal']);
         }
+        if (\array_key_exists('packaging', $data)) {
+            $object->setPackaging($this->denormalizer->denormalize($data['packaging'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryShipmentPackaging', 'json', $context));
+            unset($data['packaging']);
+        }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_2;
@@ -148,6 +152,9 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $data['journal'] = $values_1;
+        }
+        if ($object->isInitialized('packaging') && null !== $object->getPackaging()) {
+            $data['packaging'] = $this->normalizer->normalize($object->getPackaging(), 'json', $context);
         }
         foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

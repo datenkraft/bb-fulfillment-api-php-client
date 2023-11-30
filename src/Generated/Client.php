@@ -572,7 +572,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[search] filter for inbound delivery search.
     
     Usage:
-    - Provide one or multiple search terms to filter results.
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
     - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the
@@ -774,7 +774,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[search] filter for order search.
     
     Usage:
-    - Provide one or multiple search terms to filter results.
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
     - The search is enabled for the fields 'externalOrderReference', 'orderNumber' and the tracking code of
@@ -951,7 +951,16 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
     *     @var string $filter[productNumber] Filter by a productNumber
     *     @var string $filter[productDraftStatus] Filter by a product draft status
-    *     @var string $filter[search] Search for parts of a productNumber
+    *     @var string $filter[search] Filter for product draft search. \
+    Usage:
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is only enabled for the productNumber.
+    - Each search term filters the response for products where the productNumber contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1'
+    is found in the productNumber and 'term2' is also found in the productNumber.
+    If only 'term1' or 'term2' is found in the productNumber, the product is not included in the results.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductDraftCollectionBadRequestException
@@ -1076,7 +1085,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[search] Filter for product search. \
     Usage:
-    - Provide one or multiple search terms to filter results.
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
     - The search is enabled for the fields productTitle, productNumber and ean.
