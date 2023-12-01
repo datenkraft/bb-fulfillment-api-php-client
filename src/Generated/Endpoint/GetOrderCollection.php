@@ -37,7 +37,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     *     @var string $filter[search] filter for order search.
     
     Usage:
-    - Provide one or multiple search terms to filter results.
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
     - The search is enabled for the fields 'externalOrderReference', 'orderNumber' and the tracking code of

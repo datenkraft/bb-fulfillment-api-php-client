@@ -17,7 +17,16 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients.
     *     @var string $filter[productNumber] Filter by a productNumber
     *     @var string $filter[productDraftStatus] Filter by a product draft status
-    *     @var string $filter[search] Search for parts of a productNumber
+    *     @var string $filter[search] Filter for product draft search. \
+    Usage:
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is only enabled for the productNumber.
+    - Each search term filters the response for products where the productNumber contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1'
+    is found in the productNumber and 'term2' is also found in the productNumber.
+    If only 'term1' or 'term2' is found in the productNumber, the product is not included in the results.
     * }
     */
     public function __construct(array $queryParameters = array())
