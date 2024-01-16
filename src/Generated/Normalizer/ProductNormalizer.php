@@ -235,6 +235,13 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setSource($data['source']);
             unset($data['source']);
         }
+        if (\array_key_exists('brandNumber', $data) && $data['brandNumber'] !== null) {
+            $object->setBrandNumber($data['brandNumber']);
+            unset($data['brandNumber']);
+        }
+        elseif (\array_key_exists('brandNumber', $data) && $data['brandNumber'] === null) {
+            $object->setBrandNumber(null);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -335,6 +342,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('source') && null !== $object->getSource()) {
             $data['source'] = $object->getSource();
+        }
+        if ($object->isInitialized('brandNumber') && null !== $object->getBrandNumber()) {
+            $data['brandNumber'] = $object->getBrandNumber();
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

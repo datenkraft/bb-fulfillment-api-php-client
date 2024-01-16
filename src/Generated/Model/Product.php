@@ -13,70 +13,68 @@ class Product extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Type of the product
+     * Type of the product.
      *
      * @var string
      */
     protected $productType = 'standard';
     /**
-    * The title of the article variant. \
-    Must not be set when the articleVariantType is 'standard_autotitle'.
-    *
-    * @var string|null
-    */
+     * The title of the article variant.
+     *
+     * @var string|null
+     */
     protected $articleVariantTitle;
     /**
-    * The type of the article variant. \
-    The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
-    *
-    * @var string|null
-    */
+     * The type of the article variant.
+     *
+     * @var string|null
+     */
     protected $articleVariantType = 'standard_autotitle';
     /**
-     * Status of the article regarding visibility ('active' if no value is provided)
+     * Status of the article regarding visibility.
      *
      * @var string|null
      */
     protected $articleStatus = 'active';
     /**
-     * Amount of the product contents (1 if no value is provided)
+     * Amount of the product contents.
      *
      * @var float|null
      */
     protected $contentsAmount = 1;
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
+    * Unit of the product contents. \
+    Units can be queried with a GET /product-unit call.
     *
     * @var string|null
     */
     protected $contentsUnit = 'piece';
     /**
-     * Weight of the product contents in gram
+     * Weight of the product contents in gram.
      *
      * @var int|null
      */
     protected $contentsWeightGram;
     /**
-     * Total weight of the product in gram
+     * Total weight of the product in gram.
      *
      * @var int|null
      */
     protected $weightGram;
     /**
-     * The variant group of the product
+     * The variant group of the product.
      *
      * @var mixed
      */
     protected $variantGroup = 'content';
     /**
-     * The EAN of the product
+     * The EAN of the product.
      *
      * @var string|null
      */
     protected $ean;
     /**
-     * The suggested retail price for the product in EUR
+     * The suggested retail price for the product in EUR.
      *
      * @var float|null
      */
@@ -88,19 +86,19 @@ class Product extends \ArrayObject
      */
     protected $purchasePrices;
     /**
-     * Product number of the manufacturer
+     * Product number of the manufacturer.
      *
      * @var string|null
      */
     protected $productNumberManufacturer;
     /**
-     * Country code of the manufacturer (ISO 3166-1 alpha-2)
+     * Country code of the manufacturer (ISO 3166-1 alpha-2).
      *
      * @var string|null
      */
     protected $manufacturerCountryCode = 'AT';
     /**
-     * The language code used for the product (ISO 639-1)
+     * The language code used for the product (ISO 639-1).
      *
      * @var string|null
      */
@@ -112,13 +110,13 @@ class Product extends \ArrayObject
      */
     protected $productNumber;
     /**
-     * The shop to which the product belongs
+     * The shop to which the product belongs.
      *
      * @var string
      */
     protected $shopCode;
     /**
-    * Status of the product regarding sales.\
+    * Status of the product regarding sales. \
     Available values:
     - enabled: Product is on sale
     - enabled_external_only: Product is only available in external stores
@@ -127,54 +125,46 @@ class Product extends \ArrayObject
     - expired: Product is expired
     - incorrect: Product was incorrectly created
     - internal: Product is available for internal sales only
-    - preparation: Product is in preparation for sale\
-    
-    Note: This can be null if the product was not created via the API.
+    - preparation: Product is in preparation for sale
     *
     * @var string|null
     */
     protected $productStatus;
     /**
-    * Title of the Product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @var string|null
-    */
+     * Title of the Product.
+     *
+     * @var string|null
+     */
     protected $productTitle;
     /**
-    * Original title of the Product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @var string|null
-    */
+     * Original title of the Product.
+     *
+     * @var string|null
+     */
     protected $productTitleOriginal;
     /**
-    * Short description of the article\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @var string|null
-    */
+     * Short description of the article.
+     *
+     * @var string|null
+     */
     protected $articleShortDescription;
     /**
-    * Long description of the article\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @var string|null
-    */
+     * Long description of the article.
+     *
+     * @var string|null
+     */
     protected $articleLongDescription;
     /**
-    * The TARIC Code of the product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @var string|null
-    */
+     * The TARIC Code of the product.
+     *
+     * @var string|null
+     */
     protected $taricCode;
     /**
-    * The list price of the product in EUR.\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @var float|null
-    */
+     * The list price of the product in EUR.
+     *
+     * @var float|null
+     */
     protected $listPriceEUR;
     /**
     * One of the available tax codes.
@@ -187,15 +177,17 @@ class Product extends \ArrayObject
     */
     protected $taxCode = 'default';
     /**
-    * Number of the manufacturer\
-    Note: This can be null if the product was not created via the API.
+    * Number of the manufacturer. \
+    Manufacturers can be queried with a GET /manufacturer call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
     *
     * @var string|null
     */
     protected $manufacturerNumber;
     /**
-    * Number of the supplier.\
-    Note: This can be null if the product was not created via the API.
+    * Number of the supplier. \
+    Suppliers can be queried with a GET /supplier call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
     *
     * @var string|null
     */
@@ -210,7 +202,15 @@ class Product extends \ArrayObject
     */
     protected $source;
     /**
-     * Type of the product
+    * Number of the brand. \
+    Brands can be queried with a GET /brand call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
+    *
+    * @var string|null
+    */
+    protected $brandNumber;
+    /**
+     * Type of the product.
      *
      * @return string
      */
@@ -219,7 +219,7 @@ class Product extends \ArrayObject
         return $this->productType;
     }
     /**
-     * Type of the product
+     * Type of the product.
      *
      * @param string $productType
      *
@@ -232,23 +232,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * The title of the article variant. \
-    Must not be set when the articleVariantType is 'standard_autotitle'.
-    *
-    * @return string|null
-    */
+     * The title of the article variant.
+     *
+     * @return string|null
+     */
     public function getArticleVariantTitle() : ?string
     {
         return $this->articleVariantTitle;
     }
     /**
-    * The title of the article variant. \
-    Must not be set when the articleVariantType is 'standard_autotitle'.
-    *
-    * @param string|null $articleVariantTitle
-    *
-    * @return self
-    */
+     * The title of the article variant.
+     *
+     * @param string|null $articleVariantTitle
+     *
+     * @return self
+     */
     public function setArticleVariantTitle(?string $articleVariantTitle) : self
     {
         $this->initialized['articleVariantTitle'] = true;
@@ -256,23 +254,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * The type of the article variant. \
-    The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
-    *
-    * @return string|null
-    */
+     * The type of the article variant.
+     *
+     * @return string|null
+     */
     public function getArticleVariantType() : ?string
     {
         return $this->articleVariantType;
     }
     /**
-    * The type of the article variant. \
-    The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
-    *
-    * @param string|null $articleVariantType
-    *
-    * @return self
-    */
+     * The type of the article variant.
+     *
+     * @param string|null $articleVariantType
+     *
+     * @return self
+     */
     public function setArticleVariantType(?string $articleVariantType) : self
     {
         $this->initialized['articleVariantType'] = true;
@@ -280,7 +276,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * Status of the article regarding visibility ('active' if no value is provided)
+     * Status of the article regarding visibility.
      *
      * @return string|null
      */
@@ -289,7 +285,7 @@ class Product extends \ArrayObject
         return $this->articleStatus;
     }
     /**
-     * Status of the article regarding visibility ('active' if no value is provided)
+     * Status of the article regarding visibility.
      *
      * @param string|null $articleStatus
      *
@@ -302,7 +298,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * Amount of the product contents (1 if no value is provided)
+     * Amount of the product contents.
      *
      * @return float|null
      */
@@ -311,7 +307,7 @@ class Product extends \ArrayObject
         return $this->contentsAmount;
     }
     /**
-     * Amount of the product contents (1 if no value is provided)
+     * Amount of the product contents.
      *
      * @param float|null $contentsAmount
      *
@@ -324,8 +320,8 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
+    * Unit of the product contents. \
+    Units can be queried with a GET /product-unit call.
     *
     * @return string|null
     */
@@ -334,8 +330,8 @@ class Product extends \ArrayObject
         return $this->contentsUnit;
     }
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
+    * Unit of the product contents. \
+    Units can be queried with a GET /product-unit call.
     *
     * @param string|null $contentsUnit
     *
@@ -348,7 +344,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * Weight of the product contents in gram
+     * Weight of the product contents in gram.
      *
      * @return int|null
      */
@@ -357,7 +353,7 @@ class Product extends \ArrayObject
         return $this->contentsWeightGram;
     }
     /**
-     * Weight of the product contents in gram
+     * Weight of the product contents in gram.
      *
      * @param int|null $contentsWeightGram
      *
@@ -370,7 +366,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * Total weight of the product in gram
+     * Total weight of the product in gram.
      *
      * @return int|null
      */
@@ -379,7 +375,7 @@ class Product extends \ArrayObject
         return $this->weightGram;
     }
     /**
-     * Total weight of the product in gram
+     * Total weight of the product in gram.
      *
      * @param int|null $weightGram
      *
@@ -392,7 +388,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * The variant group of the product
+     * The variant group of the product.
      *
      * @return mixed
      */
@@ -401,7 +397,7 @@ class Product extends \ArrayObject
         return $this->variantGroup;
     }
     /**
-     * The variant group of the product
+     * The variant group of the product.
      *
      * @param mixed $variantGroup
      *
@@ -414,7 +410,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * The EAN of the product
+     * The EAN of the product.
      *
      * @return string|null
      */
@@ -423,7 +419,7 @@ class Product extends \ArrayObject
         return $this->ean;
     }
     /**
-     * The EAN of the product
+     * The EAN of the product.
      *
      * @param string|null $ean
      *
@@ -436,7 +432,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * The suggested retail price for the product in EUR
+     * The suggested retail price for the product in EUR.
      *
      * @return float|null
      */
@@ -445,7 +441,7 @@ class Product extends \ArrayObject
         return $this->suggestedRetailPriceEUR;
     }
     /**
-     * The suggested retail price for the product in EUR
+     * The suggested retail price for the product in EUR.
      *
      * @param float|null $suggestedRetailPriceEUR
      *
@@ -480,7 +476,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * Product number of the manufacturer
+     * Product number of the manufacturer.
      *
      * @return string|null
      */
@@ -489,7 +485,7 @@ class Product extends \ArrayObject
         return $this->productNumberManufacturer;
     }
     /**
-     * Product number of the manufacturer
+     * Product number of the manufacturer.
      *
      * @param string|null $productNumberManufacturer
      *
@@ -502,7 +498,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * Country code of the manufacturer (ISO 3166-1 alpha-2)
+     * Country code of the manufacturer (ISO 3166-1 alpha-2).
      *
      * @return string|null
      */
@@ -511,7 +507,7 @@ class Product extends \ArrayObject
         return $this->manufacturerCountryCode;
     }
     /**
-     * Country code of the manufacturer (ISO 3166-1 alpha-2)
+     * Country code of the manufacturer (ISO 3166-1 alpha-2).
      *
      * @param string|null $manufacturerCountryCode
      *
@@ -524,7 +520,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * The language code used for the product (ISO 639-1)
+     * The language code used for the product (ISO 639-1).
      *
      * @return string|null
      */
@@ -533,7 +529,7 @@ class Product extends \ArrayObject
         return $this->languageCode;
     }
     /**
-     * The language code used for the product (ISO 639-1)
+     * The language code used for the product (ISO 639-1).
      *
      * @param string|null $languageCode
      *
@@ -568,7 +564,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * The shop to which the product belongs
+     * The shop to which the product belongs.
      *
      * @return string
      */
@@ -577,7 +573,7 @@ class Product extends \ArrayObject
         return $this->shopCode;
     }
     /**
-     * The shop to which the product belongs
+     * The shop to which the product belongs.
      *
      * @param string $shopCode
      *
@@ -590,7 +586,7 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the product regarding sales.\
+    * Status of the product regarding sales. \
     Available values:
     - enabled: Product is on sale
     - enabled_external_only: Product is only available in external stores
@@ -599,9 +595,7 @@ class Product extends \ArrayObject
     - expired: Product is expired
     - incorrect: Product was incorrectly created
     - internal: Product is available for internal sales only
-    - preparation: Product is in preparation for sale\
-    
-    Note: This can be null if the product was not created via the API.
+    - preparation: Product is in preparation for sale
     *
     * @return string|null
     */
@@ -610,7 +604,7 @@ class Product extends \ArrayObject
         return $this->productStatus;
     }
     /**
-    * Status of the product regarding sales.\
+    * Status of the product regarding sales. \
     Available values:
     - enabled: Product is on sale
     - enabled_external_only: Product is only available in external stores
@@ -619,9 +613,7 @@ class Product extends \ArrayObject
     - expired: Product is expired
     - incorrect: Product was incorrectly created
     - internal: Product is available for internal sales only
-    - preparation: Product is in preparation for sale\
-    
-    Note: This can be null if the product was not created via the API.
+    - preparation: Product is in preparation for sale
     *
     * @param string|null $productStatus
     *
@@ -634,23 +626,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Title of the Product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @return string|null
-    */
+     * Title of the Product.
+     *
+     * @return string|null
+     */
     public function getProductTitle() : ?string
     {
         return $this->productTitle;
     }
     /**
-    * Title of the Product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @param string|null $productTitle
-    *
-    * @return self
-    */
+     * Title of the Product.
+     *
+     * @param string|null $productTitle
+     *
+     * @return self
+     */
     public function setProductTitle(?string $productTitle) : self
     {
         $this->initialized['productTitle'] = true;
@@ -658,23 +648,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Original title of the Product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @return string|null
-    */
+     * Original title of the Product.
+     *
+     * @return string|null
+     */
     public function getProductTitleOriginal() : ?string
     {
         return $this->productTitleOriginal;
     }
     /**
-    * Original title of the Product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @param string|null $productTitleOriginal
-    *
-    * @return self
-    */
+     * Original title of the Product.
+     *
+     * @param string|null $productTitleOriginal
+     *
+     * @return self
+     */
     public function setProductTitleOriginal(?string $productTitleOriginal) : self
     {
         $this->initialized['productTitleOriginal'] = true;
@@ -682,23 +670,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Short description of the article\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @return string|null
-    */
+     * Short description of the article.
+     *
+     * @return string|null
+     */
     public function getArticleShortDescription() : ?string
     {
         return $this->articleShortDescription;
     }
     /**
-    * Short description of the article\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @param string|null $articleShortDescription
-    *
-    * @return self
-    */
+     * Short description of the article.
+     *
+     * @param string|null $articleShortDescription
+     *
+     * @return self
+     */
     public function setArticleShortDescription(?string $articleShortDescription) : self
     {
         $this->initialized['articleShortDescription'] = true;
@@ -706,23 +692,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Long description of the article\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @return string|null
-    */
+     * Long description of the article.
+     *
+     * @return string|null
+     */
     public function getArticleLongDescription() : ?string
     {
         return $this->articleLongDescription;
     }
     /**
-    * Long description of the article\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @param string|null $articleLongDescription
-    *
-    * @return self
-    */
+     * Long description of the article.
+     *
+     * @param string|null $articleLongDescription
+     *
+     * @return self
+     */
     public function setArticleLongDescription(?string $articleLongDescription) : self
     {
         $this->initialized['articleLongDescription'] = true;
@@ -730,23 +714,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * The TARIC Code of the product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @return string|null
-    */
+     * The TARIC Code of the product.
+     *
+     * @return string|null
+     */
     public function getTaricCode() : ?string
     {
         return $this->taricCode;
     }
     /**
-    * The TARIC Code of the product\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @param string|null $taricCode
-    *
-    * @return self
-    */
+     * The TARIC Code of the product.
+     *
+     * @param string|null $taricCode
+     *
+     * @return self
+     */
     public function setTaricCode(?string $taricCode) : self
     {
         $this->initialized['taricCode'] = true;
@@ -754,23 +736,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * The list price of the product in EUR.\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @return float|null
-    */
+     * The list price of the product in EUR.
+     *
+     * @return float|null
+     */
     public function getListPriceEUR() : ?float
     {
         return $this->listPriceEUR;
     }
     /**
-    * The list price of the product in EUR.\
-    Note: This can be null if the product was not created via the API.
-    *
-    * @param float|null $listPriceEUR
-    *
-    * @return self
-    */
+     * The list price of the product in EUR.
+     *
+     * @param float|null $listPriceEUR
+     *
+     * @return self
+     */
     public function setListPriceEUR(?float $listPriceEUR) : self
     {
         $this->initialized['listPriceEUR'] = true;
@@ -808,8 +788,9 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the manufacturer\
-    Note: This can be null if the product was not created via the API.
+    * Number of the manufacturer. \
+    Manufacturers can be queried with a GET /manufacturer call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
     *
     * @return string|null
     */
@@ -818,8 +799,9 @@ class Product extends \ArrayObject
         return $this->manufacturerNumber;
     }
     /**
-    * Number of the manufacturer\
-    Note: This can be null if the product was not created via the API.
+    * Number of the manufacturer. \
+    Manufacturers can be queried with a GET /manufacturer call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
     *
     * @param string|null $manufacturerNumber
     *
@@ -832,8 +814,9 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the supplier.\
-    Note: This can be null if the product was not created via the API.
+    * Number of the supplier. \
+    Suppliers can be queried with a GET /supplier call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
     *
     * @return string|null
     */
@@ -842,8 +825,9 @@ class Product extends \ArrayObject
         return $this->supplierNumber;
     }
     /**
-    * Number of the supplier.\
-    Note: This can be null if the product was not created via the API.
+    * Number of the supplier. \
+    Suppliers can be queried with a GET /supplier call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
     *
     * @param string|null $supplierNumber
     *
@@ -881,6 +865,32 @@ class Product extends \ArrayObject
     {
         $this->initialized['source'] = true;
         $this->source = $source;
+        return $this;
+    }
+    /**
+    * Number of the brand. \
+    Brands can be queried with a GET /brand call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
+    *
+    * @return string|null
+    */
+    public function getBrandNumber() : ?string
+    {
+        return $this->brandNumber;
+    }
+    /**
+    * Number of the brand. \
+    Brands can be queried with a GET /brand call. \
+    Note: This can be null in some cases (e.g. if the product is a bundle).
+    *
+    * @param string|null $brandNumber
+    *
+    * @return self
+    */
+    public function setBrandNumber(?string $brandNumber) : self
+    {
+        $this->initialized['brandNumber'] = true;
+        $this->brandNumber = $brandNumber;
         return $this;
     }
 }
