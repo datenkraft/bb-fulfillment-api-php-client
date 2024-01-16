@@ -13,25 +13,25 @@ class ProductPurchasePrice extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * The currency code (ISO 4217)
+     * The currency code (ISO 4217).
      *
      * @var string
      */
     protected $currencyCode;
     /**
-     * Amount of purchased products
+     * Amount of purchased products.
      *
      * @var int
      */
     protected $amount;
     /**
-     * The price per product unit
+     * The price per product unit.
      *
      * @var float
      */
     protected $pricePerUnit;
     /**
-     * The currency code (ISO 4217)
+     * The currency code (ISO 4217).
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class ProductPurchasePrice extends \ArrayObject
         return $this->currencyCode;
     }
     /**
-     * The currency code (ISO 4217)
+     * The currency code (ISO 4217).
      *
      * @param string $currencyCode
      *
@@ -53,7 +53,7 @@ class ProductPurchasePrice extends \ArrayObject
         return $this;
     }
     /**
-     * Amount of purchased products
+     * Amount of purchased products.
      *
      * @return int
      */
@@ -62,7 +62,7 @@ class ProductPurchasePrice extends \ArrayObject
         return $this->amount;
     }
     /**
-     * Amount of purchased products
+     * Amount of purchased products.
      *
      * @param int $amount
      *
@@ -75,7 +75,7 @@ class ProductPurchasePrice extends \ArrayObject
         return $this;
     }
     /**
-     * The price per product unit
+     * The price per product unit.
      *
      * @return float
      */
@@ -84,7 +84,7 @@ class ProductPurchasePrice extends \ArrayObject
         return $this->pricePerUnit;
     }
     /**
-     * The price per product unit
+     * The price per product unit.
      *
      * @param float $pricePerUnit
      *
