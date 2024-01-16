@@ -13,70 +13,68 @@ class BaseProduct extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Type of the product
+     * Type of the product.
      *
      * @var string
      */
     protected $productType = 'standard';
     /**
-    * The title of the article variant. \
-    Must not be set when the articleVariantType is 'standard_autotitle'.
-    *
-    * @var string|null
-    */
+     * The title of the article variant.
+     *
+     * @var string|null
+     */
     protected $articleVariantTitle;
     /**
-    * The type of the article variant. \
-    The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
-    *
-    * @var string|null
-    */
+     * The type of the article variant.
+     *
+     * @var string|null
+     */
     protected $articleVariantType = 'standard_autotitle';
     /**
-     * Status of the article regarding visibility ('active' if no value is provided)
+     * Status of the article regarding visibility.
      *
      * @var string|null
      */
     protected $articleStatus = 'active';
     /**
-     * Amount of the product contents (1 if no value is provided)
+     * Amount of the product contents.
      *
      * @var float|null
      */
     protected $contentsAmount = 1;
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
+    * Unit of the product contents. \
+    Units can be queried with a GET /product-unit call.
     *
     * @var string|null
     */
     protected $contentsUnit = 'piece';
     /**
-     * Weight of the product contents in gram
+     * Weight of the product contents in gram.
      *
      * @var int|null
      */
     protected $contentsWeightGram;
     /**
-     * Total weight of the product in gram
+     * Total weight of the product in gram.
      *
      * @var int|null
      */
     protected $weightGram;
     /**
-     * The variant group of the product
+     * The variant group of the product.
      *
      * @var mixed
      */
     protected $variantGroup = 'content';
     /**
-     * The EAN of the product
+     * The EAN of the product.
      *
      * @var string|null
      */
     protected $ean;
     /**
-     * The suggested retail price for the product in EUR
+     * The suggested retail price for the product in EUR.
      *
      * @var float|null
      */
@@ -88,25 +86,25 @@ class BaseProduct extends \ArrayObject
      */
     protected $purchasePrices;
     /**
-     * Product number of the manufacturer
+     * Product number of the manufacturer.
      *
      * @var string|null
      */
     protected $productNumberManufacturer;
     /**
-     * Country code of the manufacturer (ISO 3166-1 alpha-2)
+     * Country code of the manufacturer (ISO 3166-1 alpha-2).
      *
      * @var string|null
      */
     protected $manufacturerCountryCode = 'AT';
     /**
-     * The language code used for the product (ISO 639-1)
+     * The language code used for the product (ISO 639-1).
      *
      * @var string|null
      */
     protected $languageCode = 'de';
     /**
-     * Type of the product
+     * Type of the product.
      *
      * @return string
      */
@@ -115,7 +113,7 @@ class BaseProduct extends \ArrayObject
         return $this->productType;
     }
     /**
-     * Type of the product
+     * Type of the product.
      *
      * @param string $productType
      *
@@ -128,23 +126,21 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-    * The title of the article variant. \
-    Must not be set when the articleVariantType is 'standard_autotitle'.
-    *
-    * @return string|null
-    */
+     * The title of the article variant.
+     *
+     * @return string|null
+     */
     public function getArticleVariantTitle() : ?string
     {
         return $this->articleVariantTitle;
     }
     /**
-    * The title of the article variant. \
-    Must not be set when the articleVariantType is 'standard_autotitle'.
-    *
-    * @param string|null $articleVariantTitle
-    *
-    * @return self
-    */
+     * The title of the article variant.
+     *
+     * @param string|null $articleVariantTitle
+     *
+     * @return self
+     */
     public function setArticleVariantTitle(?string $articleVariantTitle) : self
     {
         $this->initialized['articleVariantTitle'] = true;
@@ -152,23 +148,21 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-    * The type of the article variant. \
-    The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
-    *
-    * @return string|null
-    */
+     * The type of the article variant.
+     *
+     * @return string|null
+     */
     public function getArticleVariantType() : ?string
     {
         return $this->articleVariantType;
     }
     /**
-    * The type of the article variant. \
-    The articleVariantType 'standard_autotitle' is only allowed for the variantGroup 'content'
-    *
-    * @param string|null $articleVariantType
-    *
-    * @return self
-    */
+     * The type of the article variant.
+     *
+     * @param string|null $articleVariantType
+     *
+     * @return self
+     */
     public function setArticleVariantType(?string $articleVariantType) : self
     {
         $this->initialized['articleVariantType'] = true;
@@ -176,7 +170,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Status of the article regarding visibility ('active' if no value is provided)
+     * Status of the article regarding visibility.
      *
      * @return string|null
      */
@@ -185,7 +179,7 @@ class BaseProduct extends \ArrayObject
         return $this->articleStatus;
     }
     /**
-     * Status of the article regarding visibility ('active' if no value is provided)
+     * Status of the article regarding visibility.
      *
      * @param string|null $articleStatus
      *
@@ -198,7 +192,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Amount of the product contents (1 if no value is provided)
+     * Amount of the product contents.
      *
      * @return float|null
      */
@@ -207,7 +201,7 @@ class BaseProduct extends \ArrayObject
         return $this->contentsAmount;
     }
     /**
-     * Amount of the product contents (1 if no value is provided)
+     * Amount of the product contents.
      *
      * @param float|null $contentsAmount
      *
@@ -220,8 +214,8 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
+    * Unit of the product contents. \
+    Units can be queried with a GET /product-unit call.
     *
     * @return string|null
     */
@@ -230,8 +224,8 @@ class BaseProduct extends \ArrayObject
         return $this->contentsUnit;
     }
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
+    * Unit of the product contents. \
+    Units can be queried with a GET /product-unit call.
     *
     * @param string|null $contentsUnit
     *
@@ -244,7 +238,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Weight of the product contents in gram
+     * Weight of the product contents in gram.
      *
      * @return int|null
      */
@@ -253,7 +247,7 @@ class BaseProduct extends \ArrayObject
         return $this->contentsWeightGram;
     }
     /**
-     * Weight of the product contents in gram
+     * Weight of the product contents in gram.
      *
      * @param int|null $contentsWeightGram
      *
@@ -266,7 +260,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Total weight of the product in gram
+     * Total weight of the product in gram.
      *
      * @return int|null
      */
@@ -275,7 +269,7 @@ class BaseProduct extends \ArrayObject
         return $this->weightGram;
     }
     /**
-     * Total weight of the product in gram
+     * Total weight of the product in gram.
      *
      * @param int|null $weightGram
      *
@@ -288,7 +282,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * The variant group of the product
+     * The variant group of the product.
      *
      * @return mixed
      */
@@ -297,7 +291,7 @@ class BaseProduct extends \ArrayObject
         return $this->variantGroup;
     }
     /**
-     * The variant group of the product
+     * The variant group of the product.
      *
      * @param mixed $variantGroup
      *
@@ -310,7 +304,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * The EAN of the product
+     * The EAN of the product.
      *
      * @return string|null
      */
@@ -319,7 +313,7 @@ class BaseProduct extends \ArrayObject
         return $this->ean;
     }
     /**
-     * The EAN of the product
+     * The EAN of the product.
      *
      * @param string|null $ean
      *
@@ -332,7 +326,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * The suggested retail price for the product in EUR
+     * The suggested retail price for the product in EUR.
      *
      * @return float|null
      */
@@ -341,7 +335,7 @@ class BaseProduct extends \ArrayObject
         return $this->suggestedRetailPriceEUR;
     }
     /**
-     * The suggested retail price for the product in EUR
+     * The suggested retail price for the product in EUR.
      *
      * @param float|null $suggestedRetailPriceEUR
      *
@@ -376,7 +370,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Product number of the manufacturer
+     * Product number of the manufacturer.
      *
      * @return string|null
      */
@@ -385,7 +379,7 @@ class BaseProduct extends \ArrayObject
         return $this->productNumberManufacturer;
     }
     /**
-     * Product number of the manufacturer
+     * Product number of the manufacturer.
      *
      * @param string|null $productNumberManufacturer
      *
@@ -398,7 +392,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * Country code of the manufacturer (ISO 3166-1 alpha-2)
+     * Country code of the manufacturer (ISO 3166-1 alpha-2).
      *
      * @return string|null
      */
@@ -407,7 +401,7 @@ class BaseProduct extends \ArrayObject
         return $this->manufacturerCountryCode;
     }
     /**
-     * Country code of the manufacturer (ISO 3166-1 alpha-2)
+     * Country code of the manufacturer (ISO 3166-1 alpha-2).
      *
      * @param string|null $manufacturerCountryCode
      *
@@ -420,7 +414,7 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * The language code used for the product (ISO 639-1)
+     * The language code used for the product (ISO 639-1).
      *
      * @return string|null
      */
@@ -429,7 +423,7 @@ class BaseProduct extends \ArrayObject
         return $this->languageCode;
     }
     /**
-     * The language code used for the product (ISO 639-1)
+     * The language code used for the product (ISO 639-1).
      *
      * @param string|null $languageCode
      *

@@ -43,12 +43,12 @@ class UpdateShopMeta extends \ArrayObject
      */
     protected $defaultCurrency;
     /**
-    * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be
-    used as default.
+    * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
+    If false the shop email will be used as default.
     *
     * @var bool|null
     */
-    protected $shopifyOverwriteCustomerEmailEnabled;
+    protected $overwriteCustomerEmailEnabled;
     /**
      * Domain of the Shopify shop.
      *
@@ -160,27 +160,27 @@ class UpdateShopMeta extends \ArrayObject
         return $this;
     }
     /**
-    * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be
-    used as default.
+    * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
+    If false the shop email will be used as default.
     *
     * @return bool|null
     */
-    public function getShopifyOverwriteCustomerEmailEnabled() : ?bool
+    public function getOverwriteCustomerEmailEnabled() : ?bool
     {
-        return $this->shopifyOverwriteCustomerEmailEnabled;
+        return $this->overwriteCustomerEmailEnabled;
     }
     /**
-    * Flag to mark if it is allowed to set a customer's email in shopify. If false the shop email will be
-    used as default.
+    * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
+    If false the shop email will be used as default.
     *
-    * @param bool|null $shopifyOverwriteCustomerEmailEnabled
+    * @param bool|null $overwriteCustomerEmailEnabled
     *
     * @return self
     */
-    public function setShopifyOverwriteCustomerEmailEnabled(?bool $shopifyOverwriteCustomerEmailEnabled) : self
+    public function setOverwriteCustomerEmailEnabled(?bool $overwriteCustomerEmailEnabled) : self
     {
-        $this->initialized['shopifyOverwriteCustomerEmailEnabled'] = true;
-        $this->shopifyOverwriteCustomerEmailEnabled = $shopifyOverwriteCustomerEmailEnabled;
+        $this->initialized['overwriteCustomerEmailEnabled'] = true;
+        $this->overwriteCustomerEmailEnabled = $overwriteCustomerEmailEnabled;
         return $this;
     }
 }

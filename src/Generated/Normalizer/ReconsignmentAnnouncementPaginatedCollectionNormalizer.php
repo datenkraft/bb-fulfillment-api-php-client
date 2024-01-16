@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ReconsignmentAnnouncementPaginatedCollectionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShop';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementPaginatedCollection';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShop';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementPaginatedCollection';
     }
     /**
      * @return mixed
@@ -37,24 +37,25 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementPaginatedCollection();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
-            unset($data['email']);
+        if (\array_key_exists('pagination', $data)) {
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CollectionPagination', 'json', $context));
+            unset($data['pagination']);
         }
-        if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta', 'json', $context));
-            unset($data['meta']);
+        if (\array_key_exists('data', $data)) {
+            $values = array();
+            foreach ($data['data'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncement', 'json', $context);
+            }
+            $object->setData($values);
+            unset($data['data']);
         }
-        elseif (\array_key_exists('meta', $data) && $data['meta'] === null) {
-            $object->setMeta(null);
-        }
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -65,15 +66,19 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if ($object->isInitialized('email') && null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
+        if ($object->isInitialized('pagination') && null !== $object->getPagination()) {
+            $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
         }
-        if ($object->isInitialized('meta') && null !== $object->getMeta()) {
-            $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
+        if ($object->isInitialized('data') && null !== $object->getData()) {
+            $values = array();
+            foreach ($object->getData() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['data'] = $values;
         }
-        foreach ($object as $key => $value) {
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $data[$key] = $value_1;
             }
         }
         return $data;

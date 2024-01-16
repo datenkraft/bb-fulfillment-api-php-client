@@ -76,12 +76,12 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] === null) {
             $object->setDefaultCurrency(null);
         }
-        if (\array_key_exists('shopifyOverwriteCustomerEmailEnabled', $data) && $data['shopifyOverwriteCustomerEmailEnabled'] !== null) {
-            $object->setShopifyOverwriteCustomerEmailEnabled($data['shopifyOverwriteCustomerEmailEnabled']);
-            unset($data['shopifyOverwriteCustomerEmailEnabled']);
+        if (\array_key_exists('overwriteCustomerEmailEnabled', $data) && $data['overwriteCustomerEmailEnabled'] !== null) {
+            $object->setOverwriteCustomerEmailEnabled($data['overwriteCustomerEmailEnabled']);
+            unset($data['overwriteCustomerEmailEnabled']);
         }
-        elseif (\array_key_exists('shopifyOverwriteCustomerEmailEnabled', $data) && $data['shopifyOverwriteCustomerEmailEnabled'] === null) {
-            $object->setShopifyOverwriteCustomerEmailEnabled(null);
+        elseif (\array_key_exists('overwriteCustomerEmailEnabled', $data) && $data['overwriteCustomerEmailEnabled'] === null) {
+            $object->setOverwriteCustomerEmailEnabled(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -111,8 +111,8 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         if ($object->isInitialized('defaultCurrency') && null !== $object->getDefaultCurrency()) {
             $data['defaultCurrency'] = $object->getDefaultCurrency();
         }
-        if ($object->isInitialized('shopifyOverwriteCustomerEmailEnabled') && null !== $object->getShopifyOverwriteCustomerEmailEnabled()) {
-            $data['shopifyOverwriteCustomerEmailEnabled'] = $object->getShopifyOverwriteCustomerEmailEnabled();
+        if ($object->isInitialized('overwriteCustomerEmailEnabled') && null !== $object->getOverwriteCustomerEmailEnabled()) {
+            $data['overwriteCustomerEmailEnabled'] = $object->getOverwriteCustomerEmailEnabled();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
