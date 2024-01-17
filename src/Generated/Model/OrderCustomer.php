@@ -73,7 +73,7 @@ class OrderCustomer extends \ArrayObject
      */
     protected $invoiceAddress;
     /**
-     * 
+     * If not given the invoice address is used for delivery.
      *
      * @var mixed|null
      */
@@ -311,7 +311,7 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
+     * If not given the invoice address is used for delivery.
      *
      * @return mixed
      */
@@ -320,7 +320,7 @@ class OrderCustomer extends \ArrayObject
         return $this->deliveryAddress;
     }
     /**
-     * 
+     * If not given the invoice address is used for delivery.
      *
      * @param mixed $deliveryAddress
      *
