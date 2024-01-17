@@ -27,7 +27,7 @@ class GetReconsignmentAnnouncement extends \Datenkraft\Backbone\Client\Fulfillme
     }
     public function getUri() : string
     {
-        return str_replace(array('{reconsignmentAnnouncementNumber}'), array($this->reconsignmentAnnouncementNumber), '/reconsignmentAnnouncement/{reconsignmentAnnouncementNumber}');
+        return str_replace(array('{reconsignmentAnnouncementNumber}'), array($this->reconsignmentAnnouncementNumber), '/reconsignment-announcement/{reconsignmentAnnouncementNumber}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
