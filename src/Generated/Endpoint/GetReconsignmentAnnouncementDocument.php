@@ -36,7 +36,7 @@ class GetReconsignmentAnnouncementDocument extends \Datenkraft\Backbone\Client\F
     }
     public function getUri() : string
     {
-        return str_replace(array('{reconsignmentAnnouncementNumber}', '{documentCode}'), array($this->reconsignmentAnnouncementNumber, $this->documentCode), '/reconsignmentAnnouncement/{reconsignmentAnnouncementNumber}/document/{documentCode}');
+        return str_replace(array('{reconsignmentAnnouncementNumber}', '{documentCode}'), array($this->reconsignmentAnnouncementNumber, $this->documentCode), '/reconsignment-announcement/{reconsignmentAnnouncementNumber}/document/{documentCode}');
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {

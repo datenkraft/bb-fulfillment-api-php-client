@@ -32,7 +32,7 @@ class GetReconsignmentAnnouncementCollection extends \Datenkraft\Backbone\Client
     }
     public function getUri() : string
     {
-        return '/reconsignmentAnnouncement';
+        return '/reconsignment-announcement';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
