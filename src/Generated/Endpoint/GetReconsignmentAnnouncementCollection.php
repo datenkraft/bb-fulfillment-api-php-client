@@ -14,6 +14,17 @@ class GetReconsignmentAnnouncementCollection extends \Datenkraft\Backbone\Client
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - reconsignmentAnnouncementDate
+    
+    The default sort order is reconsignmentAnnouncementDate:desc.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
@@ -45,12 +56,13 @@ class GetReconsignmentAnnouncementCollection extends \Datenkraft\Backbone\Client
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[orderNumber]', 'filter[reconsignmentAnnouncementCompleted]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[orderNumber]', 'filter[reconsignmentAnnouncementCompleted]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
         $optionsResolver->addAllowedTypes('pageSize', array('int'));
         $optionsResolver->addAllowedTypes('paginationMode', array('string'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[orderNumber]', array('string'));
         $optionsResolver->addAllowedTypes('filter[reconsignmentAnnouncementCompleted]', array('bool'));
