@@ -65,6 +65,10 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
             $object->setReconsignmentTrackingCode($data['reconsignmentTrackingCode']);
             unset($data['reconsignmentTrackingCode']);
         }
+        if (\array_key_exists('reconsignmentTrackingLink', $data)) {
+            $object->setReconsignmentTrackingLink($data['reconsignmentTrackingLink']);
+            unset($data['reconsignmentTrackingLink']);
+        }
         if (\array_key_exists('reconsignmentAnnouncementCompleted', $data)) {
             $object->setReconsignmentAnnouncementCompleted($data['reconsignmentAnnouncementCompleted']);
             unset($data['reconsignmentAnnouncementCompleted']);
@@ -115,6 +119,9 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
         }
         if ($object->isInitialized('reconsignmentTrackingCode') && null !== $object->getReconsignmentTrackingCode()) {
             $data['reconsignmentTrackingCode'] = $object->getReconsignmentTrackingCode();
+        }
+        if ($object->isInitialized('reconsignmentTrackingLink') && null !== $object->getReconsignmentTrackingLink()) {
+            $data['reconsignmentTrackingLink'] = $object->getReconsignmentTrackingLink();
         }
         if ($object->isInitialized('reconsignmentAnnouncementCompleted') && null !== $object->getReconsignmentAnnouncementCompleted()) {
             $data['reconsignmentAnnouncementCompleted'] = $object->getReconsignmentAnnouncementCompleted();

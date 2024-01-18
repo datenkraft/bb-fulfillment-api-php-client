@@ -49,6 +49,12 @@ class ReconsignmentAnnouncement extends \ArrayObject
      */
     protected $reconsignmentTrackingCode;
     /**
+     * The tracking link for the reconsignment.
+     *
+     * @var string
+     */
+    protected $reconsignmentTrackingLink;
+    /**
      * Indicates whether the reconsignment announcement is completed.
      *
      * @var bool
@@ -202,6 +208,28 @@ class ReconsignmentAnnouncement extends \ArrayObject
     {
         $this->initialized['reconsignmentTrackingCode'] = true;
         $this->reconsignmentTrackingCode = $reconsignmentTrackingCode;
+        return $this;
+    }
+    /**
+     * The tracking link for the reconsignment.
+     *
+     * @return string
+     */
+    public function getReconsignmentTrackingLink() : string
+    {
+        return $this->reconsignmentTrackingLink;
+    }
+    /**
+     * The tracking link for the reconsignment.
+     *
+     * @param string $reconsignmentTrackingLink
+     *
+     * @return self
+     */
+    public function setReconsignmentTrackingLink(string $reconsignmentTrackingLink) : self
+    {
+        $this->initialized['reconsignmentTrackingLink'] = true;
+        $this->reconsignmentTrackingLink = $reconsignmentTrackingLink;
         return $this;
     }
     /**
