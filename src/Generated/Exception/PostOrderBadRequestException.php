@@ -17,7 +17,8 @@ class PostOrderBadRequestException extends BadRequestException
         parent::__construct('Bad Request
 
 Error codes:
-- DATA_INVALID: Invalid data was given.');
+- DATA_INVALID: Invalid data was given.
+- CUSTOMER_EMAIL_REQUIRED: The customer email address is required for this order because the delivery address seems to be a pick up station of a shipping carrier which requires the email address of the customer.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
