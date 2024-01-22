@@ -172,6 +172,8 @@ class Product extends \ArrayObject
     - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
     - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
     - none: not taxable (0%)
+    
+    Note: This can be null if the tax code could not be determined.
     *
     * @var string|null
     */
@@ -763,6 +765,8 @@ class Product extends \ArrayObject
     - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
     - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
     - none: not taxable (0%)
+    
+    Note: This can be null if the tax code could not be determined.
     *
     * @return string|null
     */
@@ -776,6 +780,8 @@ class Product extends \ArrayObject
     - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
     - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
     - none: not taxable (0%)
+    
+    Note: This can be null if the tax code could not be determined.
     *
     * @param string|null $taxCode
     *
