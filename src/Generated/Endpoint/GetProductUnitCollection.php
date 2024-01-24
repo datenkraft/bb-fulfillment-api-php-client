@@ -55,6 +55,7 @@ class GetProductUnitCollection extends \Datenkraft\Backbone\Client\FulfillmentAp
     /**
      * {@inheritdoc}
      *
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionBadRequestException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionForbiddenException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionUnprocessableEntityException
@@ -69,6 +70,9 @@ class GetProductUnitCollection extends \Datenkraft\Backbone\Client\FulfillmentAp
         $body = (string) $response->getBody();
         if (is_null($contentType) === false && (200 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductUnitCollection', 'json');
+        }
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductUnitCollectionUnauthorizedException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'), $response);

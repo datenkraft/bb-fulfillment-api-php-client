@@ -39,6 +39,7 @@ class GetOrderBulkImportTemplate extends \Datenkraft\Backbone\Client\Fulfillment
     /**
      * {@inheritdoc}
      *
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderBulkImportTemplateBadRequestException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderBulkImportTemplateUnauthorizedException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderBulkImportTemplateNotAcceptableException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderBulkImportTemplateInternalServerErrorException
@@ -51,6 +52,9 @@ class GetOrderBulkImportTemplate extends \Datenkraft\Backbone\Client\Fulfillment
         $status = $response->getStatusCode();
         $body = (string) $response->getBody();
         if (200 === $status) {
+        }
+        if (is_null($contentType) === false && (400 === $status && mb_strpos($contentType, 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderBulkImportTemplateBadRequestException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'), $response);
         }
         if (is_null($contentType) === false && (401 === $status && mb_strpos($contentType, 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderBulkImportTemplateUnauthorizedException($serializer->deserialize($body, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse', 'json'), $response);
