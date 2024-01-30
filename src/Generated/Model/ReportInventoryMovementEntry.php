@@ -25,6 +25,12 @@ class ReportInventoryMovementEntry extends \ArrayObject
      */
     protected $stock;
     /**
+     * The reference of the movement entry
+     *
+     * @var ReportInventoryMovementEntryReference
+     */
+    protected $reference;
+    /**
      * The type code of the movement entry
      *
      * @return string
@@ -66,6 +72,28 @@ class ReportInventoryMovementEntry extends \ArrayObject
     {
         $this->initialized['stock'] = true;
         $this->stock = $stock;
+        return $this;
+    }
+    /**
+     * The reference of the movement entry
+     *
+     * @return ReportInventoryMovementEntryReference
+     */
+    public function getReference() : ReportInventoryMovementEntryReference
+    {
+        return $this->reference;
+    }
+    /**
+     * The reference of the movement entry
+     *
+     * @param ReportInventoryMovementEntryReference $reference
+     *
+     * @return self
+     */
+    public function setReference(ReportInventoryMovementEntryReference $reference) : self
+    {
+        $this->initialized['reference'] = true;
+        $this->reference = $reference;
         return $this;
     }
 }
