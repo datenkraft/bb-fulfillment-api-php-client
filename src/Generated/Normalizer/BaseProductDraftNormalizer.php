@@ -41,8 +41,8 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
         if (\array_key_exists('contentsAmount', $data) && \is_int($data['contentsAmount'])) {
             $data['contentsAmount'] = (double) $data['contentsAmount'];
         }
-        if (\array_key_exists('suggestedRetailPriceEUR', $data) && \is_int($data['suggestedRetailPriceEUR'])) {
-            $data['suggestedRetailPriceEUR'] = (double) $data['suggestedRetailPriceEUR'];
+        if (\array_key_exists('supplierPurchasePriceEUR', $data) && \is_int($data['supplierPurchasePriceEUR'])) {
+            $data['supplierPurchasePriceEUR'] = (double) $data['supplierPurchasePriceEUR'];
         }
         if (\array_key_exists('listPriceEUR', $data) && \is_int($data['listPriceEUR'])) {
             $data['listPriceEUR'] = (double) $data['listPriceEUR'];
@@ -81,9 +81,9 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setTaricCode($data['taricCode']);
             unset($data['taricCode']);
         }
-        if (\array_key_exists('suggestedRetailPriceEUR', $data)) {
-            $object->setSuggestedRetailPriceEUR($data['suggestedRetailPriceEUR']);
-            unset($data['suggestedRetailPriceEUR']);
+        if (\array_key_exists('supplierPurchasePriceEUR', $data)) {
+            $object->setSupplierPurchasePriceEUR($data['supplierPurchasePriceEUR']);
+            unset($data['supplierPurchasePriceEUR']);
         }
         if (\array_key_exists('listPriceEUR', $data)) {
             $object->setListPriceEUR($data['listPriceEUR']);
@@ -139,8 +139,8 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
         if ($object->isInitialized('taricCode') && null !== $object->getTaricCode()) {
             $data['taricCode'] = $object->getTaricCode();
         }
-        if ($object->isInitialized('suggestedRetailPriceEUR') && null !== $object->getSuggestedRetailPriceEUR()) {
-            $data['suggestedRetailPriceEUR'] = $object->getSuggestedRetailPriceEUR();
+        if ($object->isInitialized('supplierPurchasePriceEUR') && null !== $object->getSupplierPurchasePriceEUR()) {
+            $data['supplierPurchasePriceEUR'] = $object->getSupplierPurchasePriceEUR();
         }
         if ($object->isInitialized('listPriceEUR') && null !== $object->getListPriceEUR()) {
             $data['listPriceEUR'] = $object->getListPriceEUR();

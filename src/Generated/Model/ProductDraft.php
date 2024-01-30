@@ -55,11 +55,11 @@ class ProductDraft extends \ArrayObject
      */
     protected $taricCode;
     /**
-     * The suggested retail price for the product in EUR
+     * The purchase price for the product in EUR
      *
      * @var float
      */
-    protected $suggestedRetailPriceEUR;
+    protected $supplierPurchasePriceEUR;
     /**
      * The net list price of the product in EUR
      *
@@ -287,25 +287,25 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-     * The suggested retail price for the product in EUR
+     * The purchase price for the product in EUR
      *
      * @return float
      */
-    public function getSuggestedRetailPriceEUR() : float
+    public function getSupplierPurchasePriceEUR() : float
     {
-        return $this->suggestedRetailPriceEUR;
+        return $this->supplierPurchasePriceEUR;
     }
     /**
-     * The suggested retail price for the product in EUR
+     * The purchase price for the product in EUR
      *
-     * @param float $suggestedRetailPriceEUR
+     * @param float $supplierPurchasePriceEUR
      *
      * @return self
      */
-    public function setSuggestedRetailPriceEUR(float $suggestedRetailPriceEUR) : self
+    public function setSupplierPurchasePriceEUR(float $supplierPurchasePriceEUR) : self
     {
-        $this->initialized['suggestedRetailPriceEUR'] = true;
-        $this->suggestedRetailPriceEUR = $suggestedRetailPriceEUR;
+        $this->initialized['supplierPurchasePriceEUR'] = true;
+        $this->supplierPurchasePriceEUR = $supplierPurchasePriceEUR;
         return $this;
     }
     /**
