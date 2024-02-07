@@ -17,7 +17,8 @@ class GetReconsignmentAnnouncementDocumentBadRequestException extends BadRequest
         parent::__construct('Bad Request
 
 Error codes:
-- DATA_INVALID: Invalid data was given.');
+- DATA_INVALID: Invalid data was given.
+- RECONSIGNMENT_ANNOUNCEMENT_ALREADY_COMPLETED: The document can not be downloaded anymore, because the reconsignment announcement has already been completed.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
