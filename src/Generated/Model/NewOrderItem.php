@@ -31,6 +31,24 @@ class NewOrderItem extends \ArrayObject
      */
     protected $count;
     /**
+     * Number of canceled items
+     *
+     * @var int
+     */
+    protected $canceledCount;
+    /**
+     * Number of delivered items
+     *
+     * @var int
+     */
+    protected $deliveredCount;
+    /**
+     * Number of returned items
+     *
+     * @var int
+     */
+    protected $returnedCount;
+    /**
      * Product number of the customer
      *
      * @var string|null
@@ -113,6 +131,72 @@ class NewOrderItem extends \ArrayObject
     {
         $this->initialized['count'] = true;
         $this->count = $count;
+        return $this;
+    }
+    /**
+     * Number of canceled items
+     *
+     * @return int
+     */
+    public function getCanceledCount() : int
+    {
+        return $this->canceledCount;
+    }
+    /**
+     * Number of canceled items
+     *
+     * @param int $canceledCount
+     *
+     * @return self
+     */
+    public function setCanceledCount(int $canceledCount) : self
+    {
+        $this->initialized['canceledCount'] = true;
+        $this->canceledCount = $canceledCount;
+        return $this;
+    }
+    /**
+     * Number of delivered items
+     *
+     * @return int
+     */
+    public function getDeliveredCount() : int
+    {
+        return $this->deliveredCount;
+    }
+    /**
+     * Number of delivered items
+     *
+     * @param int $deliveredCount
+     *
+     * @return self
+     */
+    public function setDeliveredCount(int $deliveredCount) : self
+    {
+        $this->initialized['deliveredCount'] = true;
+        $this->deliveredCount = $deliveredCount;
+        return $this;
+    }
+    /**
+     * Number of returned items
+     *
+     * @return int
+     */
+    public function getReturnedCount() : int
+    {
+        return $this->returnedCount;
+    }
+    /**
+     * Number of returned items
+     *
+     * @param int $returnedCount
+     *
+     * @return self
+     */
+    public function setReturnedCount(int $returnedCount) : self
+    {
+        $this->initialized['returnedCount'] = true;
+        $this->returnedCount = $returnedCount;
         return $this;
     }
     /**
