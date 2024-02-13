@@ -94,6 +94,7 @@ class Order extends \ArrayObject
     - locked: The order is locked. The order can not be processed without manual intervention.
     - examination: The order has been manually locked. The order can not be processed without manual
     intervention.
+    - redacted: The order has been redacted for GDPR reasons.
     *
     * @var string
     */
@@ -404,6 +405,7 @@ class Order extends \ArrayObject
     - locked: The order is locked. The order can not be processed without manual intervention.
     - examination: The order has been manually locked. The order can not be processed without manual
     intervention.
+    - redacted: The order has been redacted for GDPR reasons.
     *
     * @return string
     */
@@ -424,6 +426,7 @@ class Order extends \ArrayObject
     - locked: The order is locked. The order can not be processed without manual intervention.
     - examination: The order has been manually locked. The order can not be processed without manual
     intervention.
+    - redacted: The order has been redacted for GDPR reasons.
     *
     * @param string $status
     *
