@@ -61,11 +61,17 @@ class ReconsignmentAnnouncement extends \ArrayObject
      */
     protected $reconsignmentAnnouncementCompleted;
     /**
-     * The order number. Note: This can be null if the order was not created via the API.
+     * The order number.
      *
      * @var string
      */
     protected $orderNumber;
+    /**
+     * External reference for the order.
+     *
+     * @var string|null
+     */
+    protected $externalOrderReference;
     /**
      * The delivery number associated with the reconsignment.
      *
@@ -255,7 +261,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
         return $this;
     }
     /**
-     * The order number. Note: This can be null if the order was not created via the API.
+     * The order number.
      *
      * @return string
      */
@@ -264,7 +270,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
         return $this->orderNumber;
     }
     /**
-     * The order number. Note: This can be null if the order was not created via the API.
+     * The order number.
      *
      * @param string $orderNumber
      *
@@ -274,6 +280,28 @@ class ReconsignmentAnnouncement extends \ArrayObject
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
+        return $this;
+    }
+    /**
+     * External reference for the order.
+     *
+     * @return string|null
+     */
+    public function getExternalOrderReference() : ?string
+    {
+        return $this->externalOrderReference;
+    }
+    /**
+     * External reference for the order.
+     *
+     * @param string|null $externalOrderReference
+     *
+     * @return self
+     */
+    public function setExternalOrderReference(?string $externalOrderReference) : self
+    {
+        $this->initialized['externalOrderReference'] = true;
+        $this->externalOrderReference = $externalOrderReference;
         return $this;
     }
     /**

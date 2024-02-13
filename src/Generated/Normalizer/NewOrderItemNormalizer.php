@@ -56,6 +56,18 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setCount($data['count']);
             unset($data['count']);
         }
+        if (\array_key_exists('canceledCount', $data)) {
+            $object->setCanceledCount($data['canceledCount']);
+            unset($data['canceledCount']);
+        }
+        if (\array_key_exists('deliveredCount', $data)) {
+            $object->setDeliveredCount($data['deliveredCount']);
+            unset($data['deliveredCount']);
+        }
+        if (\array_key_exists('returnedCount', $data)) {
+            $object->setReturnedCount($data['returnedCount']);
+            unset($data['returnedCount']);
+        }
         if (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] !== null) {
             $object->setExternalProductNumber($data['externalProductNumber']);
             unset($data['externalProductNumber']);
@@ -99,6 +111,15 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['title'] = $object->getTitle();
         }
         $data['count'] = $object->getCount();
+        if ($object->isInitialized('canceledCount') && null !== $object->getCanceledCount()) {
+            $data['canceledCount'] = $object->getCanceledCount();
+        }
+        if ($object->isInitialized('deliveredCount') && null !== $object->getDeliveredCount()) {
+            $data['deliveredCount'] = $object->getDeliveredCount();
+        }
+        if ($object->isInitialized('returnedCount') && null !== $object->getReturnedCount()) {
+            $data['returnedCount'] = $object->getReturnedCount();
+        }
         if ($object->isInitialized('externalProductNumber') && null !== $object->getExternalProductNumber()) {
             $data['externalProductNumber'] = $object->getExternalProductNumber();
         }

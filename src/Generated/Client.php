@@ -577,8 +577,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - Provide one or multiple search terms (min. 2 characters) to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber (without the
-    numberPrefix of the associated supplier).
+    - The search is enabled for the fields inboundDeliveryName and inboundDeliveryNumber.
     - Each search term filters the response for inbound deliveries where at least one of the fields contains
     the search term.
     - For example, filter[search]='term1 term2' will filter the result for products where 'term1' is found
@@ -1334,6 +1333,22 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     Otherwise the response would be a 422 HTTP Error._
     *     @var string $filter[orderNumber] Filter for a single order number.
     *     @var bool $filter[reconsignmentAnnouncementCompleted] Filter for completed or not completed reconsignment announcements.
+    *     @var string $filter[reconsignmentAnnouncementDateFrom] Filter for reconsignmentAnnouncementDate (from)
+    *     @var string $filter[reconsignmentAnnouncementDateTo] Filter for reconsignmentAnnouncementDate (to)
+    *     @var string $filter[search] Filter for reconsignment announcement search.
+    
+    Usage:
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is enabled for the fields reconsignmentAnnouncementNumber, orderNumber,
+    externalOrderReference and reconsignmentTrackingCode.
+    - Each search term filters the response for reconsignment announcements where at least one of the fields
+    contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for reconsignment announcements where
+    'term1' is found in any field and 'term2' is also found in any field.\
+    If only 'term1' or 'term2' is found in the fields, the reconsignment announcement is not included in the
+    results.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentAnnouncementCollectionBadRequestException

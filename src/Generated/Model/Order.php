@@ -25,7 +25,7 @@ class Order extends \ArrayObject
      */
     protected $customer;
     /**
-     * Note: canceled orderItems are NOT included.
+     * 
      *
      * @var OrderItem[]
      */
@@ -189,7 +189,7 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * Note: canceled orderItems are NOT included.
+     * 
      *
      * @return OrderItem[]
      */
@@ -198,7 +198,7 @@ class Order extends \ArrayObject
         return $this->orderItems;
     }
     /**
-     * Note: canceled orderItems are NOT included.
+     * 
      *
      * @param OrderItem[] $orderItems
      *

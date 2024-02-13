@@ -77,6 +77,13 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
             $object->setOrderNumber($data['orderNumber']);
             unset($data['orderNumber']);
         }
+        if (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] !== null) {
+            $object->setExternalOrderReference($data['externalOrderReference']);
+            unset($data['externalOrderReference']);
+        }
+        elseif (\array_key_exists('externalOrderReference', $data) && $data['externalOrderReference'] === null) {
+            $object->setExternalOrderReference(null);
+        }
         if (\array_key_exists('deliveryNumber', $data)) {
             $object->setDeliveryNumber($data['deliveryNumber']);
             unset($data['deliveryNumber']);
@@ -128,6 +135,9 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
         }
         if ($object->isInitialized('orderNumber') && null !== $object->getOrderNumber()) {
             $data['orderNumber'] = $object->getOrderNumber();
+        }
+        if ($object->isInitialized('externalOrderReference') && null !== $object->getExternalOrderReference()) {
+            $data['externalOrderReference'] = $object->getExternalOrderReference();
         }
         if ($object->isInitialized('deliveryNumber') && null !== $object->getDeliveryNumber()) {
             $data['deliveryNumber'] = $object->getDeliveryNumber();
