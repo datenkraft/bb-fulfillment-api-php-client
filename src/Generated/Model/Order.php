@@ -25,10 +25,11 @@ class Order extends \ArrayObject
      */
     protected $customer;
     /**
-     * 
-     *
-     * @var OrderItem[]
-     */
+    * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
+    together if all orderItem data is the same.
+    *
+    * @var OrderItem[]
+    */
     protected $orderItems;
     /**
     * A not unique reference for the order which can be used for identifying a specific order or for
@@ -189,21 +190,23 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
-     * @return OrderItem[]
-     */
+    * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
+    together if all orderItem data is the same.
+    *
+    * @return OrderItem[]
+    */
     public function getOrderItems() : array
     {
         return $this->orderItems;
     }
     /**
-     * 
-     *
-     * @param OrderItem[] $orderItems
-     *
-     * @return self
-     */
+    * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
+    together if all orderItem data is the same.
+    *
+    * @param OrderItem[] $orderItems
+    *
+    * @return self
+    */
     public function setOrderItems(array $orderItems) : self
     {
         $this->initialized['orderItems'] = true;
