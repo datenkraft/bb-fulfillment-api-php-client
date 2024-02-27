@@ -43,10 +43,13 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      */
     protected $city;
     /**
-     * Province code (ISO 3166-2)
-     *
-     * @var string|null
-     */
+    * Mandatory if province codes for country exist
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+    provided.
+    *
+    * @var string|null
+    */
     protected $provinceCode;
     /**
      * Country code (ISO 3166-1 alpha-2)
@@ -177,21 +180,27 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
         return $this;
     }
     /**
-     * Province code (ISO 3166-2)
-     *
-     * @return string|null
-     */
+    * Mandatory if province codes for country exist
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+    provided.
+    *
+    * @return string|null
+    */
     public function getProvinceCode() : ?string
     {
         return $this->provinceCode;
     }
     /**
-     * Province code (ISO 3166-2)
-     *
-     * @param string|null $provinceCode
-     *
-     * @return self
-     */
+    * Mandatory if province codes for country exist
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+    provided.
+    *
+    * @param string|null $provinceCode
+    *
+    * @return self
+    */
     public function setProvinceCode(?string $provinceCode) : self
     {
         $this->initialized['provinceCode'] = true;
