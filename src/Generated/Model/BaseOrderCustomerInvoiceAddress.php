@@ -44,7 +44,9 @@ class BaseOrderCustomerInvoiceAddress extends \ArrayObject
     protected $city;
     /**
     * Mandatory if province codes for country (GET /country) exist
-    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+    provided.
     *
     * @var string|null
     */
@@ -167,7 +169,9 @@ class BaseOrderCustomerInvoiceAddress extends \ArrayObject
     }
     /**
     * Mandatory if province codes for country (GET /country) exist
-    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+    provided.
     *
     * @return string|null
     */
@@ -177,7 +181,9 @@ class BaseOrderCustomerInvoiceAddress extends \ArrayObject
     }
     /**
     * Mandatory if province codes for country (GET /country) exist
-    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html
+    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+    provided.
     *
     * @param string|null $provinceCode
     *
