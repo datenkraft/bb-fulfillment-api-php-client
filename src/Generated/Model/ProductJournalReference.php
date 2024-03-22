@@ -19,13 +19,14 @@ class ProductJournalReference extends \ArrayObject
      */
     protected $companyName;
     /**
-     * Inbound delivery number. Is provided if Journal entry reason is 'inbound'.
-     *
-     * @var string|null
-     */
+    * Inbound delivery number. Is provided if Journal entry reason is 'inbound' and an inboundDeliveryNumber is
+    set.
+    *
+    * @var string|null
+    */
     protected $inboundDeliveryNumber;
     /**
-     * Order number. Is provided if Journal entry reason is 'fulfillment' or 'return'.
+     * Order number. Is provided if Journal entry reason is 'fulfillment' or 'return' and an orderNumber is set.
      *
      * @var string|null
      */
@@ -53,21 +54,23 @@ class ProductJournalReference extends \ArrayObject
         return $this;
     }
     /**
-     * Inbound delivery number. Is provided if Journal entry reason is 'inbound'.
-     *
-     * @return string|null
-     */
+    * Inbound delivery number. Is provided if Journal entry reason is 'inbound' and an inboundDeliveryNumber is
+    set.
+    *
+    * @return string|null
+    */
     public function getInboundDeliveryNumber() : ?string
     {
         return $this->inboundDeliveryNumber;
     }
     /**
-     * Inbound delivery number. Is provided if Journal entry reason is 'inbound'.
-     *
-     * @param string|null $inboundDeliveryNumber
-     *
-     * @return self
-     */
+    * Inbound delivery number. Is provided if Journal entry reason is 'inbound' and an inboundDeliveryNumber is
+    set.
+    *
+    * @param string|null $inboundDeliveryNumber
+    *
+    * @return self
+    */
     public function setInboundDeliveryNumber(?string $inboundDeliveryNumber) : self
     {
         $this->initialized['inboundDeliveryNumber'] = true;
@@ -75,7 +78,7 @@ class ProductJournalReference extends \ArrayObject
         return $this;
     }
     /**
-     * Order number. Is provided if Journal entry reason is 'fulfillment' or 'return'.
+     * Order number. Is provided if Journal entry reason is 'fulfillment' or 'return' and an orderNumber is set.
      *
      * @return string|null
      */
@@ -84,7 +87,7 @@ class ProductJournalReference extends \ArrayObject
         return $this->orderNumber;
     }
     /**
-     * Order number. Is provided if Journal entry reason is 'fulfillment' or 'return'.
+     * Order number. Is provided if Journal entry reason is 'fulfillment' or 'return' and an orderNumber is set.
      *
      * @param string|null $orderNumber
      *
