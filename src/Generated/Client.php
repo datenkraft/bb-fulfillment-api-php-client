@@ -825,6 +825,11 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in
     any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the order is not included in the results.
+    *     @var string $filter[deliverabilityStatus] filter for deliverabilityStatus
+    
+    By default, all orders are returned.
+    Use 'allOrderItems' to return all deliverable orders ('availableCount' of all 'orderItems' is greater or equal than the ordered 'count')
+    Use 'notAllOrderItems' to specifically return not deliverable orders ('availableCount' of at least one 'orderItem' is smaller than the ordered 'count'
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetOrderCollectionUnauthorizedException

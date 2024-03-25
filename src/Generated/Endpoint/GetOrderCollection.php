@@ -47,6 +47,11 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in
     any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the order is not included in the results.
+    *     @var string $filter[deliverabilityStatus] filter for deliverabilityStatus
+    
+    By default, all orders are returned.
+    Use 'allOrderItems' to return all deliverable orders ('availableCount' of all 'orderItems' is greater or equal than the ordered 'count')
+    Use 'notAllOrderItems' to specifically return not deliverable orders ('availableCount' of at least one 'orderItem' is smaller than the ordered 'count'
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -73,7 +78,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]', 'filter[externalOrderReference]', 'filter[orderDateFrom]', 'filter[orderDateTo]', 'filter[search]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]', 'filter[externalOrderReference]', 'filter[orderDateFrom]', 'filter[orderDateTo]', 'filter[search]', 'filter[deliverabilityStatus]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -88,6 +93,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
         $optionsResolver->addAllowedTypes('filter[orderDateFrom]', array('string'));
         $optionsResolver->addAllowedTypes('filter[orderDateTo]', array('string'));
         $optionsResolver->addAllowedTypes('filter[search]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[deliverabilityStatus]', array('string'));
         return $optionsResolver;
     }
     /**

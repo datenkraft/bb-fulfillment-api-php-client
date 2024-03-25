@@ -31,11 +31,23 @@ class OrderItem extends \ArrayObject
      */
     protected $count;
     /**
+     * Product number of the customer
+     *
+     * @var string|null
+     */
+    protected $externalProductNumber;
+    /**
      * Number of canceled items
      *
      * @var int
      */
     protected $canceledCount;
+    /**
+     * Number of available items
+     *
+     * @var int
+     */
+    protected $availableCount;
     /**
      * Number of delivered items
      *
@@ -48,12 +60,6 @@ class OrderItem extends \ArrayObject
      * @var int
      */
     protected $returnedCount;
-    /**
-     * Product number of the customer
-     *
-     * @var string|null
-     */
-    protected $externalProductNumber;
     /**
     * The selling price of the item.\
     Note: This field is required if the delivery address of the order requires customs clearance.
@@ -134,6 +140,28 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
+     * Product number of the customer
+     *
+     * @return string|null
+     */
+    public function getExternalProductNumber() : ?string
+    {
+        return $this->externalProductNumber;
+    }
+    /**
+     * Product number of the customer
+     *
+     * @param string|null $externalProductNumber
+     *
+     * @return self
+     */
+    public function setExternalProductNumber(?string $externalProductNumber) : self
+    {
+        $this->initialized['externalProductNumber'] = true;
+        $this->externalProductNumber = $externalProductNumber;
+        return $this;
+    }
+    /**
      * Number of canceled items
      *
      * @return int
@@ -153,6 +181,28 @@ class OrderItem extends \ArrayObject
     {
         $this->initialized['canceledCount'] = true;
         $this->canceledCount = $canceledCount;
+        return $this;
+    }
+    /**
+     * Number of available items
+     *
+     * @return int
+     */
+    public function getAvailableCount() : int
+    {
+        return $this->availableCount;
+    }
+    /**
+     * Number of available items
+     *
+     * @param int $availableCount
+     *
+     * @return self
+     */
+    public function setAvailableCount(int $availableCount) : self
+    {
+        $this->initialized['availableCount'] = true;
+        $this->availableCount = $availableCount;
         return $this;
     }
     /**
@@ -197,28 +247,6 @@ class OrderItem extends \ArrayObject
     {
         $this->initialized['returnedCount'] = true;
         $this->returnedCount = $returnedCount;
-        return $this;
-    }
-    /**
-     * Product number of the customer
-     *
-     * @return string|null
-     */
-    public function getExternalProductNumber() : ?string
-    {
-        return $this->externalProductNumber;
-    }
-    /**
-     * Product number of the customer
-     *
-     * @param string|null $externalProductNumber
-     *
-     * @return self
-     */
-    public function setExternalProductNumber(?string $externalProductNumber) : self
-    {
-        $this->initialized['externalProductNumber'] = true;
-        $this->externalProductNumber = $externalProductNumber;
         return $this;
     }
     /**

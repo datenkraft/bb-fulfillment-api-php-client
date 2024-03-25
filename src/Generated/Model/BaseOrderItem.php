@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewOrderItem extends \ArrayObject
+class BaseOrderItem extends \ArrayObject
 {
     /**
      * @var array
@@ -36,13 +36,6 @@ class NewOrderItem extends \ArrayObject
      * @var string|null
      */
     protected $externalProductNumber;
-    /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @var NewOrderItemPrice|null
-    */
-    protected $price;
     /**
      * Valid product number
      *
@@ -129,30 +122,6 @@ class NewOrderItem extends \ArrayObject
     {
         $this->initialized['externalProductNumber'] = true;
         $this->externalProductNumber = $externalProductNumber;
-        return $this;
-    }
-    /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @return NewOrderItemPrice|null
-    */
-    public function getPrice() : ?NewOrderItemPrice
-    {
-        return $this->price;
-    }
-    /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @param NewOrderItemPrice|null $price
-    *
-    * @return self
-    */
-    public function setPrice(?NewOrderItemPrice $price) : self
-    {
-        $this->initialized['price'] = true;
-        $this->price = $price;
         return $this;
     }
 }

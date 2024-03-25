@@ -56,18 +56,6 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setCount($data['count']);
             unset($data['count']);
         }
-        if (\array_key_exists('canceledCount', $data)) {
-            $object->setCanceledCount($data['canceledCount']);
-            unset($data['canceledCount']);
-        }
-        if (\array_key_exists('deliveredCount', $data)) {
-            $object->setDeliveredCount($data['deliveredCount']);
-            unset($data['deliveredCount']);
-        }
-        if (\array_key_exists('returnedCount', $data)) {
-            $object->setReturnedCount($data['returnedCount']);
-            unset($data['returnedCount']);
-        }
         if (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] !== null) {
             $object->setExternalProductNumber($data['externalProductNumber']);
             unset($data['externalProductNumber']);
@@ -82,20 +70,9 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('price', $data) && $data['price'] === null) {
             $object->setPrice(null);
         }
-        if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['options'] as $key => $value) {
-                $values[$key] = $value;
-            }
-            $object->setOptions($values);
-            unset($data['options']);
-        }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
-        }
-        foreach ($data as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_1;
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -106,19 +83,14 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        $data['productNumber'] = $object->getProductNumber();
+        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
+            $data['productNumber'] = $object->getProductNumber();
+        }
         if ($object->isInitialized('title') && null !== $object->getTitle()) {
             $data['title'] = $object->getTitle();
         }
-        $data['count'] = $object->getCount();
-        if ($object->isInitialized('canceledCount') && null !== $object->getCanceledCount()) {
-            $data['canceledCount'] = $object->getCanceledCount();
-        }
-        if ($object->isInitialized('deliveredCount') && null !== $object->getDeliveredCount()) {
-            $data['deliveredCount'] = $object->getDeliveredCount();
-        }
-        if ($object->isInitialized('returnedCount') && null !== $object->getReturnedCount()) {
-            $data['returnedCount'] = $object->getReturnedCount();
+        if ($object->isInitialized('count') && null !== $object->getCount()) {
+            $data['count'] = $object->getCount();
         }
         if ($object->isInitialized('externalProductNumber') && null !== $object->getExternalProductNumber()) {
             $data['externalProductNumber'] = $object->getExternalProductNumber();
@@ -126,16 +98,9 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($object->isInitialized('price') && null !== $object->getPrice()) {
             $data['price'] = $this->normalizer->normalize($object->getPrice(), 'json', $context);
         }
-        if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values = array();
-            foreach ($object->getOptions() as $key => $value) {
-                $values[$key] = $value;
-            }
-            $data['options'] = $values;
-        }
-        foreach ($object as $key_1 => $value_1) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $data[$key_1] = $value_1;
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
         return $data;
