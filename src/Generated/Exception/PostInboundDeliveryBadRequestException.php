@@ -17,7 +17,8 @@ class PostInboundDeliveryBadRequestException extends BadRequestException
         parent::__construct('Bad Request
 
 Error codes:
-- DATA_INVALID: Invalid data was given.');
+- DATA_INVALID: Invalid data was given.
+- INBOUND_DELIVERY_NUMBER_HAS_SPACES_AT_START_OR_END: The inboundDeliveryNumber has spaces at the start or end.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

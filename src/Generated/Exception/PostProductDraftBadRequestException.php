@@ -20,7 +20,8 @@ Error codes:
 - PRODUCT_UNIT_NOT_FOUND: Unknown product unit in field contentsUnit.
 - TARIC_CODE_NOT_FOUND: Unknown taricCode.
 - MANUFACTURER_NOT_FOUND: Unknown manufacturerNumber.
-- BRAND_NOT_FOUND: Unknown brandNumber.');
+- BRAND_NOT_FOUND: Unknown brandNumber.
+- PRODUCT_NUMBER_HAS_SPACES_AT_START_OR_END: The productNumber has spaces at the start or end.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

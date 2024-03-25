@@ -18,7 +18,8 @@ class PostOrderBadRequestException extends BadRequestException
 
 Error codes:
 - DATA_INVALID: Invalid data was given.
-- CUSTOMER_EMAIL_REQUIRED: The customer email address is required for this order because the delivery address seems to be a pick up station of a shipping carrier which requires the email address of the customer.');
+- CUSTOMER_EMAIL_REQUIRED: The customer email address is required for this order because the delivery address seems to be a pick up station of a shipping carrier which requires the email address of the customer.
+- ORDER_NUMBER_HAS_SPACES_AT_START_OR_END: The orderNumber has spaces at the start or end.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
