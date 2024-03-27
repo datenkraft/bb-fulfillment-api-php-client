@@ -8475,7 +8475,7 @@
                         "nullable": true
                     },
                     "status": {
-                        "description": "Status of the delivery.\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "description": "Status of the delivery.\n- delivered: The delivery is packed and ready to be picked up by the delivery service.",
                         "type": "string",
                         "enum": [
                             "delivered"
@@ -8555,7 +8555,7 @@
                         "type": "string"
                     },
                     "status": {
-                        "description": "Status of the delivery.\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "description": "Status of the delivery.\n- delivered: The delivery is packed and ready to be picked up by the delivery service.",
                         "type": "string",
                         "enum": [
                             "delivered"
@@ -9409,7 +9409,7 @@
                         "type": "string"
                     },
                     "status": {
-                        "description": "Status of the delivery.\n- delivered: The delivery has been transferred to the delivery agent.",
+                        "description": "Status of the delivery.\n- delivered: The delivery is packed and ready to be picked up by the delivery service.",
                         "type": "string",
                         "enum": [
                             "delivered"
