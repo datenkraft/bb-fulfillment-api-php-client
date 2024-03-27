@@ -20,7 +20,7 @@ class DeliveryShipment extends \ArrayObject
     protected $number;
     /**
     * Status of the delivery.
-    - delivered: The delivery has been transferred to the delivery agent.
+    - delivered: The delivery is packed and ready to be picked up by the delivery service.
     *
     * @var string
     */
@@ -86,7 +86,7 @@ class DeliveryShipment extends \ArrayObject
     }
     /**
     * Status of the delivery.
-    - delivered: The delivery has been transferred to the delivery agent.
+    - delivered: The delivery is packed and ready to be picked up by the delivery service.
     *
     * @return string
     */
@@ -96,7 +96,7 @@ class DeliveryShipment extends \ArrayObject
     }
     /**
     * Status of the delivery.
-    - delivered: The delivery has been transferred to the delivery agent.
+    - delivered: The delivery is packed and ready to be picked up by the delivery service.
     *
     * @param string $status
     *
