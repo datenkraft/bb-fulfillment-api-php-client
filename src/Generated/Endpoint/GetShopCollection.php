@@ -21,6 +21,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     All shops that are used for a single shop Shopify installation will also be considered as default shops.
     *     @var string $filter[meta][shopifyOrderCountryCode] A filter for the Shopify order country code (ISO 3166-1 alpha-2).
     *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
+    *     @var string $filter[projectId] A filter for the projectId of a shop (optional).
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -47,7 +48,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[meta][shopifyShopDomain]', 'filter[meta][shopifyDefaultShop]', 'filter[meta][shopifyOrderCountryCode]', 'filter[shopCode]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[meta][shopifyShopDomain]', 'filter[meta][shopifyDefaultShop]', 'filter[meta][shopifyOrderCountryCode]', 'filter[shopCode]', 'filter[projectId]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -57,6 +58,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
         $optionsResolver->addAllowedTypes('filter[meta][shopifyDefaultShop]', array('bool'));
         $optionsResolver->addAllowedTypes('filter[meta][shopifyOrderCountryCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[projectId]', array('string'));
         return $optionsResolver;
     }
     /**

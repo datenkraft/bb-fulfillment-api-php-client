@@ -1524,6 +1524,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     All shops that are used for a single shop Shopify installation will also be considered as default shops.
     *     @var string $filter[meta][shopifyOrderCountryCode] A filter for the Shopify order country code (ISO 3166-1 alpha-2).
     *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
+    *     @var string $filter[projectId] A filter for the projectId of a shop (optional).
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionBadRequestException
