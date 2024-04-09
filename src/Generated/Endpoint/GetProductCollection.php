@@ -14,6 +14,21 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - productNumber
+    - stocked
+    - reserved
+    - available
+    - incoming
+    
+    The default sort order is stocked:desc.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
@@ -29,6 +44,11 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     is found in any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
     *     @var string $filter[source] Filter for product source.
+    *     @var string $filter[productNumber] Filter for product number(s).
+    *     @var string $filter[productAvailabilityStatus] Filter for productAvailabilityStatus \
+    By default, all products are returned. \
+    Use '_availableOrInStock' to only return products that are available or in stock. \
+    Use '_notAvailableAndOutOfStock' to only return products that are not available and out of stock.
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -55,15 +75,18 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[search]', 'filter[source]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[search]', 'filter[source]', 'filter[productNumber]', 'filter[productAvailabilityStatus]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
         $optionsResolver->addAllowedTypes('pageSize', array('int'));
         $optionsResolver->addAllowedTypes('paginationMode', array('string'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[search]', array('string'));
         $optionsResolver->addAllowedTypes('filter[source]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[productNumber]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[productAvailabilityStatus]', array('string'));
         return $optionsResolver;
     }
     /**

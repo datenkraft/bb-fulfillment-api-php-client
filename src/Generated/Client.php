@@ -1158,6 +1158,21 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - default: The total number of items in the collection will not be calculated.
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - productNumber
+    - stocked
+    - reserved
+    - available
+    - incoming
+    
+    The default sort order is stocked:desc.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
@@ -1173,6 +1188,11 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     is found in any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
     *     @var string $filter[source] Filter for product source.
+    *     @var string $filter[productNumber] Filter for product number(s).
+    *     @var string $filter[productAvailabilityStatus] Filter for productAvailabilityStatus \
+    By default, all products are returned. \
+    Use '_availableOrInStock' to only return products that are available or in stock. \
+    Use '_notAvailableAndOutOfStock' to only return products that are not available and out of stock.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionBadRequestException
@@ -1486,6 +1506,17 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - stockReturnedExternal
     
     The default sort order is stockEnd:desc.
+    *     @var string $filter[search] Filter for inventory movement search. \
+    Usage:
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is enabled for the fields productTitle and productNumber.
+    - Each search term filters the response for products where at least one of the
+    fields contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1'
+    is found in any field and 'term2' is also found in any field.
+    If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._

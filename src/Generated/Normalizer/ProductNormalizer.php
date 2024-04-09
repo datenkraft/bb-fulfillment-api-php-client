@@ -242,6 +242,26 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('brandNumber', $data) && $data['brandNumber'] === null) {
             $object->setBrandNumber(null);
         }
+        if (\array_key_exists('stocked', $data)) {
+            $object->setStocked($data['stocked']);
+            unset($data['stocked']);
+        }
+        if (\array_key_exists('reserved', $data)) {
+            $object->setReserved($data['reserved']);
+            unset($data['reserved']);
+        }
+        if (\array_key_exists('available', $data)) {
+            $object->setAvailable($data['available']);
+            unset($data['available']);
+        }
+        if (\array_key_exists('incoming', $data)) {
+            $object->setIncoming($data['incoming']);
+            unset($data['incoming']);
+        }
+        if (\array_key_exists('overbookingPossibilityStatus', $data)) {
+            $object->setOverbookingPossibilityStatus($data['overbookingPossibilityStatus']);
+            unset($data['overbookingPossibilityStatus']);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -345,6 +365,21 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('brandNumber') && null !== $object->getBrandNumber()) {
             $data['brandNumber'] = $object->getBrandNumber();
+        }
+        if ($object->isInitialized('stocked') && null !== $object->getStocked()) {
+            $data['stocked'] = $object->getStocked();
+        }
+        if ($object->isInitialized('reserved') && null !== $object->getReserved()) {
+            $data['reserved'] = $object->getReserved();
+        }
+        if ($object->isInitialized('available') && null !== $object->getAvailable()) {
+            $data['available'] = $object->getAvailable();
+        }
+        if ($object->isInitialized('incoming') && null !== $object->getIncoming()) {
+            $data['incoming'] = $object->getIncoming();
+        }
+        if ($object->isInitialized('overbookingPossibilityStatus') && null !== $object->getOverbookingPossibilityStatus()) {
+            $data['overbookingPossibilityStatus'] = $object->getOverbookingPossibilityStatus();
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
