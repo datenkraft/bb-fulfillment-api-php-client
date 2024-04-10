@@ -5568,6 +5568,15 @@
                         }
                     },
                     {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "Sort the results by one or more comma-separated sort criteria, with the criterion specified first having\npriority.\n\nAvailable sort orders:\n- asc: ascending order\n- desc: descending order\n\nAvailable fields for sorting:\n- productNumber\n- stocked\n- reserved\n- available\n- incoming\n\nThe default sort order is stocked:desc.",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "incoming:desc,productNumber:asc"
+                    },
+                    {
                         "name": "filter[shopCode]",
                         "in": "query",
                         "description": "The shopCode used internally to distinguish between clients. \\\n_This code is optional, if your identity is assigned to only one shop.\nOtherwise the response would be a 422 HTTP Error._",
@@ -5600,6 +5609,38 @@
                             ]
                         },
                         "example": "self"
+                    },
+                    {
+                        "name": "filter[productNumber]",
+                        "in": "query",
+                        "description": "Filter for product number(s).",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "single product number": {
+                                "summary": "single product number",
+                                "value": "test-1"
+                            },
+                            "multiple product numbers": {
+                                "summary": "multiple product numbers",
+                                "value": "test-1,test-2,test-3"
+                            }
+                        }
+                    },
+                    {
+                        "name": "filter[productAvailabilityStatus]",
+                        "in": "query",
+                        "description": "Filter for productAvailabilityStatus \\\nBy default, all products are returned. \\\nUse '_availableOrInStock' to only return products that are available or in stock. \\\nUse '_notAvailableAndOutOfStock' to only return products that are not available and out of stock.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "_availableOrInStock",
+                                "_notAvailableAndOutOfStock"
+                            ]
+                        }
                     }
                 ],
                 "responses": {
@@ -6932,6 +6973,15 @@
                             "type": "string"
                         },
                         "example": "stockStart:desc,productNumber:asc"
+                    },
+                    {
+                        "name": "filter[search]",
+                        "in": "query",
+                        "description": "Filter for inventory movement search. \\\nUsage:\n- Provide one or multiple search terms (min. 2 characters) to filter results.\n- Multiple search terms are separated by spaces.\n- The search is not case sensitive.\n- The search is enabled for the fields productTitle and productNumber.\n- Each search term filters the response for products where at least one of the\nfields contains the search term.\n- For example, filter[search]='term1 term2' will filter the result for products where 'term1'\nis found in any field and 'term2' is also found in any field.\nIf only 'term1' or 'term2' is found in the fields, the product is not included in the results.",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "filter[shopCode]",
@@ -9687,6 +9737,31 @@
                                 "description": "Number of the brand. \\\nBrands can be queried with a GET /brand call. \\\nNote: This can be null in some cases (e.g. if the product is a bundle).",
                                 "type": "string",
                                 "nullable": true
+                            },
+                            "stocked": {
+                                "description": "Amount stocked in the warehouse\n- the reserved amount for ongoing orders is NOT subtracted",
+                                "type": "integer"
+                            },
+                            "reserved": {
+                                "description": "Amount reserved for ongoing orders",
+                                "type": "integer"
+                            },
+                            "available": {
+                                "description": "Amount available for orders\n- the reserved amount for ongoing orders is subtracted\n- if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added",
+                                "type": "integer"
+                            },
+                            "incoming": {
+                                "description": "Amount of ongoing inbound deliveries",
+                                "type": "integer"
+                            },
+                            "overbookingPossibilityStatus": {
+                                "description": "Status regarding the possibility of overbooking\n- possible: Overbooking is possible\n- not_possible: Overbooking is not possible\n- only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries",
+                                "type": "string",
+                                "enum": [
+                                    "possible",
+                                    "not_possible",
+                                    "only_inbound_deliveries"
+                                ]
                             }
                         },
                         "type": "object"
@@ -10351,6 +10426,16 @@
                     }
                 ]
             },
+            "reservedFor": {
+                "description": "Reserved stock of a product for a specific source",
+                "properties": {
+                    "shopify": {
+                        "description": "Reserved stock of a product for shopify",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
             "shipmentLine": {
                 "title": "shipmentLine",
                 "description": "One piece of content in a shipment",
@@ -10539,13 +10624,16 @@
                         "type": "integer"
                     },
                     "overbookingPossibilityStatus": {
-                        "description": "Status regarding the possibility of overbookinge\n- possible: Overbooking is possiblee\n- not_possible: Overbooking is not possible\n- only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries",
+                        "description": "Status regarding the possibility of overbooking\n- possible: Overbooking is possible\n- not_possible: Overbooking is not possible\n- only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries",
                         "type": "string",
                         "enum": [
                             "possible",
                             "not_possible",
                             "only_inbound_deliveries"
                         ]
+                    },
+                    "reservedFor": {
+                        "$ref": "#/components/schemas/reservedFor"
                     }
                 },
                 "type": "object"

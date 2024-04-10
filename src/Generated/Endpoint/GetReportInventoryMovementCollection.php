@@ -35,6 +35,17 @@ class GetReportInventoryMovementCollection extends \Datenkraft\Backbone\Client\F
     - stockReturnedExternal
     
     The default sort order is stockEnd:desc.
+    *     @var string $filter[search] Filter for inventory movement search. \
+    Usage:
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is enabled for the fields productTitle and productNumber.
+    - Each search term filters the response for products where at least one of the
+    fields contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for products where 'term1'
+    is found in any field and 'term2' is also found in any field.
+    If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
     _This code is optional, if your identity is assigned to only one shop.
     Otherwise the response would be a 422 HTTP Error._
@@ -67,13 +78,14 @@ class GetReportInventoryMovementCollection extends \Datenkraft\Backbone\Client\F
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[year]', 'filter[month]', 'filter[productNumbers]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[search]', 'filter[shopCode]', 'filter[year]', 'filter[month]', 'filter[productNumbers]'));
         $optionsResolver->setRequired(array('filter[year]', 'filter[month]'));
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
         $optionsResolver->addAllowedTypes('pageSize', array('int'));
         $optionsResolver->addAllowedTypes('paginationMode', array('string'));
         $optionsResolver->addAllowedTypes('sortBy', array('string'));
+        $optionsResolver->addAllowedTypes('filter[search]', array('string'));
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[year]', array('int'));
         $optionsResolver->addAllowedTypes('filter[month]', array('int'));

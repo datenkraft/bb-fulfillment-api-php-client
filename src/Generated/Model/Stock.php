@@ -46,14 +46,20 @@ class Stock extends \ArrayObject
      */
     protected $incoming;
     /**
-    * Status regarding the possibility of overbookinge
-    - possible: Overbooking is possiblee
+    * Status regarding the possibility of overbooking
+    - possible: Overbooking is possible
     - not_possible: Overbooking is not possible
     - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
     *
     * @var string
     */
     protected $overbookingPossibilityStatus;
+    /**
+     * Reserved stock of a product for a specific source
+     *
+     * @var ReservedFor
+     */
+    protected $reservedFor;
     /**
      * Product number
      *
@@ -171,8 +177,8 @@ class Stock extends \ArrayObject
         return $this;
     }
     /**
-    * Status regarding the possibility of overbookinge
-    - possible: Overbooking is possiblee
+    * Status regarding the possibility of overbooking
+    - possible: Overbooking is possible
     - not_possible: Overbooking is not possible
     - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
     *
@@ -183,8 +189,8 @@ class Stock extends \ArrayObject
         return $this->overbookingPossibilityStatus;
     }
     /**
-    * Status regarding the possibility of overbookinge
-    - possible: Overbooking is possiblee
+    * Status regarding the possibility of overbooking
+    - possible: Overbooking is possible
     - not_possible: Overbooking is not possible
     - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
     *
@@ -196,6 +202,28 @@ class Stock extends \ArrayObject
     {
         $this->initialized['overbookingPossibilityStatus'] = true;
         $this->overbookingPossibilityStatus = $overbookingPossibilityStatus;
+        return $this;
+    }
+    /**
+     * Reserved stock of a product for a specific source
+     *
+     * @return ReservedFor
+     */
+    public function getReservedFor() : ReservedFor
+    {
+        return $this->reservedFor;
+    }
+    /**
+     * Reserved stock of a product for a specific source
+     *
+     * @param ReservedFor $reservedFor
+     *
+     * @return self
+     */
+    public function setReservedFor(ReservedFor $reservedFor) : self
+    {
+        $this->initialized['reservedFor'] = true;
+        $this->reservedFor = $reservedFor;
         return $this;
     }
 }
