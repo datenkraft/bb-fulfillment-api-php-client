@@ -45,6 +45,13 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
             $object->setProductNumber($data['productNumber']);
             unset($data['productNumber']);
         }
+        if (\array_key_exists('productTitle', $data) && $data['productTitle'] !== null) {
+            $object->setProductTitle($data['productTitle']);
+            unset($data['productTitle']);
+        }
+        elseif (\array_key_exists('productTitle', $data) && $data['productTitle'] === null) {
+            $object->setProductTitle(null);
+        }
         if (\array_key_exists('stockStart', $data)) {
             $object->setStockStart($data['stockStart']);
             unset($data['stockStart']);
@@ -104,6 +111,9 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
         $data = array();
         if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
             $data['productNumber'] = $object->getProductNumber();
+        }
+        if ($object->isInitialized('productTitle') && null !== $object->getProductTitle()) {
+            $data['productTitle'] = $object->getProductTitle();
         }
         if ($object->isInitialized('stockStart') && null !== $object->getStockStart()) {
             $data['stockStart'] = $object->getStockStart();

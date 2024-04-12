@@ -19,6 +19,12 @@ class ReportInventoryMovement extends \ArrayObject
      */
     protected $productNumber;
     /**
+     * Title of the product
+     *
+     * @var string|null
+     */
+    protected $productTitle;
+    /**
      * Stock at the start of the period
      *
      * @var int
@@ -100,6 +106,28 @@ class ReportInventoryMovement extends \ArrayObject
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
+        return $this;
+    }
+    /**
+     * Title of the product
+     *
+     * @return string|null
+     */
+    public function getProductTitle() : ?string
+    {
+        return $this->productTitle;
+    }
+    /**
+     * Title of the product
+     *
+     * @param string|null $productTitle
+     *
+     * @return self
+     */
+    public function setProductTitle(?string $productTitle) : self
+    {
+        $this->initialized['productTitle'] = true;
+        $this->productTitle = $productTitle;
         return $this;
     }
     /**
