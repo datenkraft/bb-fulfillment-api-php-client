@@ -27,6 +27,7 @@ class GetStockCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     - reserved
     - available
     - incoming
+    - locked
     
     The default sort order is stocked:desc.
     *     @var string $filter[productNumber] Filter for product number(s) (optional).

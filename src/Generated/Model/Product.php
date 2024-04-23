@@ -239,6 +239,12 @@ class Product extends \ArrayObject
      */
     protected $incoming;
     /**
+     * Amount processed in the receiving area but not yet shelved
+     *
+     * @var int
+     */
+    protected $locked;
+    /**
     * Status regarding the possibility of overbooking
     - possible: Overbooking is possible
     - not_possible: Overbooking is not possible
@@ -1027,6 +1033,28 @@ class Product extends \ArrayObject
     {
         $this->initialized['incoming'] = true;
         $this->incoming = $incoming;
+        return $this;
+    }
+    /**
+     * Amount processed in the receiving area but not yet shelved
+     *
+     * @return int
+     */
+    public function getLocked() : int
+    {
+        return $this->locked;
+    }
+    /**
+     * Amount processed in the receiving area but not yet shelved
+     *
+     * @param int $locked
+     *
+     * @return self
+     */
+    public function setLocked(int $locked) : self
+    {
+        $this->initialized['locked'] = true;
+        $this->locked = $locked;
         return $this;
     }
     /**

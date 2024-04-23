@@ -27,6 +27,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     - reserved
     - available
     - incoming
+    - locked
     
     The default sort order is stocked:desc.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
