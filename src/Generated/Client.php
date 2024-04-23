@@ -1171,6 +1171,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - reserved
     - available
     - incoming
+    - locked
     
     The default sort order is stocked:desc.
     *     @var string $filter[shopCode] The shopCode used internally to distinguish between clients. \
@@ -1612,6 +1613,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - reserved
     - available
     - incoming
+    - locked
     
     The default sort order is stocked:desc.
     *     @var string $filter[productNumber] Filter for product number(s) (optional).

@@ -61,6 +61,10 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setIncoming($data['incoming']);
             unset($data['incoming']);
         }
+        if (\array_key_exists('locked', $data)) {
+            $object->setLocked($data['locked']);
+            unset($data['locked']);
+        }
         if (\array_key_exists('overbookingPossibilityStatus', $data)) {
             $object->setOverbookingPossibilityStatus($data['overbookingPossibilityStatus']);
             unset($data['overbookingPossibilityStatus']);
@@ -96,6 +100,9 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if ($object->isInitialized('incoming') && null !== $object->getIncoming()) {
             $data['incoming'] = $object->getIncoming();
+        }
+        if ($object->isInitialized('locked') && null !== $object->getLocked()) {
+            $data['locked'] = $object->getLocked();
         }
         if ($object->isInitialized('overbookingPossibilityStatus') && null !== $object->getOverbookingPossibilityStatus()) {
             $data['overbookingPossibilityStatus'] = $object->getOverbookingPossibilityStatus();
