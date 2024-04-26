@@ -254,6 +254,12 @@ class Product extends \ArrayObject
     */
     protected $overbookingPossibilityStatus;
     /**
+     * Reserved stock of a product for a specific source
+     *
+     * @var ReservedFor
+     */
+    protected $reservedFor;
+    /**
      * Type of the product.
      *
      * @return string
@@ -1083,6 +1089,28 @@ class Product extends \ArrayObject
     {
         $this->initialized['overbookingPossibilityStatus'] = true;
         $this->overbookingPossibilityStatus = $overbookingPossibilityStatus;
+        return $this;
+    }
+    /**
+     * Reserved stock of a product for a specific source
+     *
+     * @return ReservedFor
+     */
+    public function getReservedFor() : ReservedFor
+    {
+        return $this->reservedFor;
+    }
+    /**
+     * Reserved stock of a product for a specific source
+     *
+     * @param ReservedFor $reservedFor
+     *
+     * @return self
+     */
+    public function setReservedFor(ReservedFor $reservedFor) : self
+    {
+        $this->initialized['reservedFor'] = true;
+        $this->reservedFor = $reservedFor;
         return $this;
     }
 }
