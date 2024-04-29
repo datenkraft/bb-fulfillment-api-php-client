@@ -266,6 +266,10 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setOverbookingPossibilityStatus($data['overbookingPossibilityStatus']);
             unset($data['overbookingPossibilityStatus']);
         }
+        if (\array_key_exists('reservedFor', $data)) {
+            $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReservedFor', 'json', $context));
+            unset($data['reservedFor']);
+        }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_1;
@@ -387,6 +391,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('overbookingPossibilityStatus') && null !== $object->getOverbookingPossibilityStatus()) {
             $data['overbookingPossibilityStatus'] = $object->getOverbookingPossibilityStatus();
+        }
+        if ($object->isInitialized('reservedFor') && null !== $object->getReservedFor()) {
+            $data['reservedFor'] = $this->normalizer->normalize($object->getReservedFor(), 'json', $context);
         }
         foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
