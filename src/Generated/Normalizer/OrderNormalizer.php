@@ -159,6 +159,10 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setCancelable($data['cancelable']);
             unset($data['cancelable']);
         }
+        if (\array_key_exists('orderItemsCancelable', $data)) {
+            $object->setOrderItemsCancelable($data['orderItemsCancelable']);
+            unset($data['orderItemsCancelable']);
+        }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_3;
@@ -240,6 +244,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if ($object->isInitialized('cancelable') && null !== $object->getCancelable()) {
             $data['cancelable'] = $object->getCancelable();
+        }
+        if ($object->isInitialized('orderItemsCancelable') && null !== $object->getOrderItemsCancelable()) {
+            $data['orderItemsCancelable'] = $object->getOrderItemsCancelable();
         }
         foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

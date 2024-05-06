@@ -146,6 +146,12 @@ class Order extends \ArrayObject
      */
     protected $cancelable;
     /**
+     * Indicates whether orderItems that are not delivered yet can be canceled or not
+     *
+     * @var bool
+     */
+    protected $orderItemsCancelable;
+    /**
      * The shopCode used internally to distinguish between clients.
      *
      * @return string|null
@@ -599,6 +605,28 @@ class Order extends \ArrayObject
     {
         $this->initialized['cancelable'] = true;
         $this->cancelable = $cancelable;
+        return $this;
+    }
+    /**
+     * Indicates whether orderItems that are not delivered yet can be canceled or not
+     *
+     * @return bool
+     */
+    public function getOrderItemsCancelable() : bool
+    {
+        return $this->orderItemsCancelable;
+    }
+    /**
+     * Indicates whether orderItems that are not delivered yet can be canceled or not
+     *
+     * @param bool $orderItemsCancelable
+     *
+     * @return self
+     */
+    public function setOrderItemsCancelable(bool $orderItemsCancelable) : self
+    {
+        $this->initialized['orderItemsCancelable'] = true;
+        $this->orderItemsCancelable = $orderItemsCancelable;
         return $this;
     }
 }
