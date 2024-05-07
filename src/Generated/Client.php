@@ -919,6 +919,30 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\CancelOrder($orderNumber, $queryParameters), $fetch);
     }
     /**
+    * Cancel all open order items of the order specified by the given order number (set in param orderNumber).
+    *
+    * @param string $orderNumber The number the order is referred by.
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelOpenOrderItemsUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelOpenOrderItemsForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelOpenOrderItemsNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelOpenOrderItemsConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelOpenOrderItemsUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelOpenOrderItemsInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function postOrderCancelOpenOrderItems(string $orderNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostOrderCancelOpenOrderItems($orderNumber, $queryParameters), $fetch);
+    }
+    /**
     * Create reconsignment announcements for an order. \
     
     Only delivered orders are reconsignable. \
