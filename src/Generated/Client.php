@@ -943,6 +943,31 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostOrderCancelOpenOrderItems($orderNumber, $queryParameters), $fetch);
     }
     /**
+    * Trigger partial delivery for the order specified by the given order number (set in param orderNumber).
+    *
+    * @param string $orderNumber The number the order is referred by.
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderPartialDeliveryBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderPartialDeliveryUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderPartialDeliveryForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderPartialDeliveryNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderPartialDeliveryConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderPartialDeliveryUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderPartialDeliveryInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function postOrderPartialDelivery(string $orderNumber, array $queryParameters = array(), string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostOrderPartialDelivery($orderNumber, $queryParameters), $fetch);
+    }
+    /**
     * Create reconsignment announcements for an order. \
     
     Only delivered orders are reconsignable. \

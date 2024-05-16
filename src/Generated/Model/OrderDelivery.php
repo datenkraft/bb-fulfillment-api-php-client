@@ -26,6 +26,12 @@ class OrderDelivery extends \ArrayObject
     */
     protected $status;
     /**
+     * Indicates whether the delivery was delivered partially or not
+     *
+     * @var bool
+     */
+    protected $deliveredPartially;
+    /**
      * 
      *
      * @return string
@@ -69,6 +75,28 @@ class OrderDelivery extends \ArrayObject
     {
         $this->initialized['status'] = true;
         $this->status = $status;
+        return $this;
+    }
+    /**
+     * Indicates whether the delivery was delivered partially or not
+     *
+     * @return bool
+     */
+    public function getDeliveredPartially() : bool
+    {
+        return $this->deliveredPartially;
+    }
+    /**
+     * Indicates whether the delivery was delivered partially or not
+     *
+     * @param bool $deliveredPartially
+     *
+     * @return self
+     */
+    public function setDeliveredPartially(bool $deliveredPartially) : self
+    {
+        $this->initialized['deliveredPartially'] = true;
+        $this->deliveredPartially = $deliveredPartially;
         return $this;
     }
 }

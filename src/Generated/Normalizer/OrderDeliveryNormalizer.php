@@ -49,6 +49,10 @@ class OrderDeliveryNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setStatus($data['status']);
             unset($data['status']);
         }
+        if (\array_key_exists('deliveredPartially', $data)) {
+            $object->setDeliveredPartially($data['deliveredPartially']);
+            unset($data['deliveredPartially']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -67,6 +71,9 @@ class OrderDeliveryNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
+        }
+        if ($object->isInitialized('deliveredPartially') && null !== $object->getDeliveredPartially()) {
+            $data['deliveredPartially'] = $object->getDeliveredPartially();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
