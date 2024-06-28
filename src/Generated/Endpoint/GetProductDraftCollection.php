@@ -27,6 +27,19 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
     - For example, filter[search]='term1 term2' will filter the result for products where 'term1'
     is found in the productNumber and 'term2' is also found in the productNumber.
     If only 'term1' or 'term2' is found in the productNumber, the product is not included in the results.
+    *     @var string $filter[productDraftDateFrom] Filter for productDraftDate Format Y-m-d
+    *     @var string $filter[productDraftDateTo] Filter for productDraftDate Format Y-m-d
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - productDraftDate
+    
+    The default sort order is productDraftDate:desc.
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -53,7 +66,7 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[productNumber]', 'filter[productDraftStatus]', 'filter[search]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[shopCode]', 'filter[productNumber]', 'filter[productDraftStatus]', 'filter[search]', 'filter[productDraftDateFrom]', 'filter[productDraftDateTo]', 'sortBy'));
         $optionsResolver->setRequired(array('filter[shopCode]'));
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -63,6 +76,9 @@ class GetProductDraftCollection extends \Datenkraft\Backbone\Client\FulfillmentA
         $optionsResolver->addAllowedTypes('filter[productNumber]', array('string'));
         $optionsResolver->addAllowedTypes('filter[productDraftStatus]', array('string'));
         $optionsResolver->addAllowedTypes('filter[search]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[productDraftDateFrom]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[productDraftDateTo]', array('string'));
+        $optionsResolver->addAllowedTypes('sortBy', array('string'));
         return $optionsResolver;
     }
     /**
