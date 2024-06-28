@@ -121,6 +121,10 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setProductDraftStatus($data['productDraftStatus']);
             unset($data['productDraftStatus']);
         }
+        if (\array_key_exists('productDraftDate', $data)) {
+            $object->setProductDraftDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['productDraftDate']));
+            unset($data['productDraftDate']);
+        }
         if (\array_key_exists('contentsUnit', $data)) {
             $object->setContentsUnit($data['contentsUnit']);
             unset($data['contentsUnit']);
@@ -188,6 +192,9 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if ($object->isInitialized('productDraftStatus') && null !== $object->getProductDraftStatus()) {
             $data['productDraftStatus'] = $object->getProductDraftStatus();
+        }
+        if ($object->isInitialized('productDraftDate') && null !== $object->getProductDraftDate()) {
+            $data['productDraftDate'] = $object->getProductDraftDate()->format('Y-m-d\\TH:i:sP');
         }
         if ($object->isInitialized('contentsUnit') && null !== $object->getContentsUnit()) {
             $data['contentsUnit'] = $object->getContentsUnit();

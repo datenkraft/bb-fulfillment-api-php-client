@@ -1087,6 +1087,19 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - For example, filter[search]='term1 term2' will filter the result for products where 'term1'
     is found in the productNumber and 'term2' is also found in the productNumber.
     If only 'term1' or 'term2' is found in the productNumber, the product is not included in the results.
+    *     @var string $filter[productDraftDateFrom] Filter for productDraftDate Format Y-m-d
+    *     @var string $filter[productDraftDateTo] Filter for productDraftDate Format Y-m-d
+    *     @var string $sortBy Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+    priority.
+    
+    Available sort orders:
+    - asc: ascending order
+    - desc: descending order
+    
+    Available fields for sorting:
+    - productDraftDate
+    
+    The default sort order is productDraftDate:desc.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductDraftCollectionBadRequestException

@@ -126,6 +126,12 @@ class ProductDraft extends \ArrayObject
     */
     protected $productDraftStatus;
     /**
+     * The create date for the product draft. Format in ISO 8601
+     *
+     * @var \DateTime
+     */
+    protected $productDraftDate;
+    /**
     * Unit of the product contents.\
     All units can be queried with a GET /product-unit call
     *
@@ -526,6 +532,28 @@ class ProductDraft extends \ArrayObject
     {
         $this->initialized['productDraftStatus'] = true;
         $this->productDraftStatus = $productDraftStatus;
+        return $this;
+    }
+    /**
+     * The create date for the product draft. Format in ISO 8601
+     *
+     * @return \DateTime
+     */
+    public function getProductDraftDate() : \DateTime
+    {
+        return $this->productDraftDate;
+    }
+    /**
+     * The create date for the product draft. Format in ISO 8601
+     *
+     * @param \DateTime $productDraftDate
+     *
+     * @return self
+     */
+    public function setProductDraftDate(\DateTime $productDraftDate) : self
+    {
+        $this->initialized['productDraftDate'] = true;
+        $this->productDraftDate = $productDraftDate;
         return $this;
     }
     /**
