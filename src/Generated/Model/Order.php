@@ -101,6 +101,12 @@ class Order extends \ArrayObject
     */
     protected $status;
     /**
+     * Describes why the order is locked
+     *
+     * @var string|null
+     */
+    protected $lockReason;
+    /**
      * The create date for the order. Format in ISO 8601
      *
      * @var \DateTime
@@ -151,6 +157,14 @@ class Order extends \ArrayObject
      * @var bool
      */
     protected $orderItemsCancelable;
+    /**
+    * Indicates whether a partial delivery is pending or not.
+    Note: If true, it means that a partial delivery has been requested but not yet processed.
+    If false, it means that no partial delivery is currently pending.
+    *
+    * @var bool
+    */
+    protected $partialDeliveryPending;
     /**
      * The shopCode used internally to distinguish between clients.
      *
@@ -448,6 +462,28 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
+     * Describes why the order is locked
+     *
+     * @return string|null
+     */
+    public function getLockReason() : ?string
+    {
+        return $this->lockReason;
+    }
+    /**
+     * Describes why the order is locked
+     *
+     * @param string|null $lockReason
+     *
+     * @return self
+     */
+    public function setLockReason(?string $lockReason) : self
+    {
+        $this->initialized['lockReason'] = true;
+        $this->lockReason = $lockReason;
+        return $this;
+    }
+    /**
      * The create date for the order. Format in ISO 8601
      *
      * @return \DateTime
@@ -627,6 +663,32 @@ class Order extends \ArrayObject
     {
         $this->initialized['orderItemsCancelable'] = true;
         $this->orderItemsCancelable = $orderItemsCancelable;
+        return $this;
+    }
+    /**
+    * Indicates whether a partial delivery is pending or not.
+    Note: If true, it means that a partial delivery has been requested but not yet processed.
+    If false, it means that no partial delivery is currently pending.
+    *
+    * @return bool
+    */
+    public function getPartialDeliveryPending() : bool
+    {
+        return $this->partialDeliveryPending;
+    }
+    /**
+    * Indicates whether a partial delivery is pending or not.
+    Note: If true, it means that a partial delivery has been requested but not yet processed.
+    If false, it means that no partial delivery is currently pending.
+    *
+    * @param bool $partialDeliveryPending
+    *
+    * @return self
+    */
+    public function setPartialDeliveryPending(bool $partialDeliveryPending) : self
+    {
+        $this->initialized['partialDeliveryPending'] = true;
+        $this->partialDeliveryPending = $partialDeliveryPending;
         return $this;
     }
 }
