@@ -9601,6 +9601,11 @@
                                     "redacted"
                                 ]
                             },
+                            "lockReason": {
+                                "description": "Describes why the order is locked",
+                                "type": "string",
+                                "nullable": true
+                            },
                             "orderDate": {
                                 "description": "The create date for the order. Format in ISO 8601",
                                 "type": "string",
@@ -9641,6 +9646,10 @@
                             },
                             "orderItemsCancelable": {
                                 "description": "Indicates whether orderItems that are not delivered yet can be canceled or not",
+                                "type": "boolean"
+                            },
+                            "partialDeliveryPending": {
+                                "description": "Indicates whether a partial delivery is pending or not.\nNote: If true, it means that a partial delivery has been requested but not yet processed.\nIf false, it means that no partial delivery is currently pending.",
                                 "type": "boolean"
                             }
                         },

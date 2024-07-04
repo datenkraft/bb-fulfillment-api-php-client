@@ -121,6 +121,13 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setStatus($data['status']);
             unset($data['status']);
         }
+        if (\array_key_exists('lockReason', $data) && $data['lockReason'] !== null) {
+            $object->setLockReason($data['lockReason']);
+            unset($data['lockReason']);
+        }
+        elseif (\array_key_exists('lockReason', $data) && $data['lockReason'] === null) {
+            $object->setLockReason(null);
+        }
         if (\array_key_exists('orderDate', $data)) {
             $object->setOrderDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['orderDate']));
             unset($data['orderDate']);
@@ -162,6 +169,10 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('orderItemsCancelable', $data)) {
             $object->setOrderItemsCancelable($data['orderItemsCancelable']);
             unset($data['orderItemsCancelable']);
+        }
+        if (\array_key_exists('partialDeliveryPending', $data)) {
+            $object->setPartialDeliveryPending($data['partialDeliveryPending']);
+            unset($data['partialDeliveryPending']);
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
@@ -220,6 +231,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($object->isInitialized('status') && null !== $object->getStatus()) {
             $data['status'] = $object->getStatus();
         }
+        if ($object->isInitialized('lockReason') && null !== $object->getLockReason()) {
+            $data['lockReason'] = $object->getLockReason();
+        }
         if ($object->isInitialized('orderDate') && null !== $object->getOrderDate()) {
             $data['orderDate'] = $object->getOrderDate()->format('Y-m-d\\TH:i:sP');
         }
@@ -247,6 +261,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if ($object->isInitialized('orderItemsCancelable') && null !== $object->getOrderItemsCancelable()) {
             $data['orderItemsCancelable'] = $object->getOrderItemsCancelable();
+        }
+        if ($object->isInitialized('partialDeliveryPending') && null !== $object->getPartialDeliveryPending()) {
+            $data['partialDeliveryPending'] = $object->getPartialDeliveryPending();
         }
         foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
