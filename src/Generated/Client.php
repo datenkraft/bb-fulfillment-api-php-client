@@ -1256,6 +1256,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     By default, all products are returned. \
     Use '_availableOrInStock' to only return products that are available or in stock. \
     Use '_notAvailableAndOutOfStock' to only return products that are not available and out of stock.
+    *     @var string $filter[productType] Filter for product type.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionBadRequestException

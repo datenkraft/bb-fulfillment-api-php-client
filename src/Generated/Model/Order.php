@@ -51,10 +51,11 @@ class Order extends \ArrayObject
      */
     protected $externalOrderReference;
     /**
-     * Notes for the steve team regarding the fulfillment.
-     *
-     * @var string|null
-     */
+    * Notes for the steve team regarding the fulfillment. \
+    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
+    *
+    * @var string|null
+    */
     protected $orderNotes;
     /**
      * The amazon order id.
@@ -302,21 +303,23 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * Notes for the steve team regarding the fulfillment.
-     *
-     * @return string|null
-     */
+    * Notes for the steve team regarding the fulfillment. \
+    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
+    *
+    * @return string|null
+    */
     public function getOrderNotes() : ?string
     {
         return $this->orderNotes;
     }
     /**
-     * Notes for the steve team regarding the fulfillment.
-     *
-     * @param string|null $orderNotes
-     *
-     * @return self
-     */
+    * Notes for the steve team regarding the fulfillment. \
+    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
+    *
+    * @param string|null $orderNotes
+    *
+    * @return self
+    */
     public function setOrderNotes(?string $orderNotes) : self
     {
         $this->initialized['orderNotes'] = true;

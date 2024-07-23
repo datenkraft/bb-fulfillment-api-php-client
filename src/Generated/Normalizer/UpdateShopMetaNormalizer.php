@@ -83,6 +83,13 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         elseif (\array_key_exists('overwriteCustomerEmailEnabled', $data) && $data['overwriteCustomerEmailEnabled'] === null) {
             $object->setOverwriteCustomerEmailEnabled(null);
         }
+        if (\array_key_exists('orderNotesPrecedingText', $data) && $data['orderNotesPrecedingText'] !== null) {
+            $object->setOrderNotesPrecedingText($data['orderNotesPrecedingText']);
+            unset($data['orderNotesPrecedingText']);
+        }
+        elseif (\array_key_exists('orderNotesPrecedingText', $data) && $data['orderNotesPrecedingText'] === null) {
+            $object->setOrderNotesPrecedingText(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -113,6 +120,9 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if ($object->isInitialized('overwriteCustomerEmailEnabled') && null !== $object->getOverwriteCustomerEmailEnabled()) {
             $data['overwriteCustomerEmailEnabled'] = $object->getOverwriteCustomerEmailEnabled();
+        }
+        if ($object->isInitialized('orderNotesPrecedingText') && null !== $object->getOrderNotesPrecedingText()) {
+            $data['orderNotesPrecedingText'] = $object->getOrderNotesPrecedingText();
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

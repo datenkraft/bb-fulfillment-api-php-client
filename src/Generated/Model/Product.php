@@ -86,6 +86,12 @@ class Product extends \ArrayObject
      */
     protected $purchasePrices;
     /**
+     * 
+     *
+     * @var ProductBundledProduct[]|null
+     */
+    protected $bundledProducts;
+    /**
      * Product number of the manufacturer.
      *
      * @var string|null
@@ -523,6 +529,28 @@ class Product extends \ArrayObject
     {
         $this->initialized['purchasePrices'] = true;
         $this->purchasePrices = $purchasePrices;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return ProductBundledProduct[]|null
+     */
+    public function getBundledProducts() : ?array
+    {
+        return $this->bundledProducts;
+    }
+    /**
+     * 
+     *
+     * @param ProductBundledProduct[]|null $bundledProducts
+     *
+     * @return self
+     */
+    public function setBundledProducts(?array $bundledProducts) : self
+    {
+        $this->initialized['bundledProducts'] = true;
+        $this->bundledProducts = $bundledProducts;
         return $this;
     }
     /**
