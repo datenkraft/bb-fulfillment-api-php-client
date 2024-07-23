@@ -5924,6 +5924,40 @@
                                 "_notAvailableAndOutOfStock"
                             ]
                         }
+                    },
+                    {
+                        "name": "filter[productType]",
+                        "in": "query",
+                        "description": "Filter for product type.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "standard",
+                                "sample",
+                                "sellable_sample",
+                                "tester",
+                                "packing_material",
+                                "booking_seminar",
+                                "booking_appointment",
+                                "promo_material",
+                                "raw_material",
+                                "working_material",
+                                "service_principal",
+                                "service_ancillary",
+                                "inquiry_testdrive",
+                                "inquiry_raffle",
+                                "chilled_product",
+                                "limited_edition",
+                                "voucher_print",
+                                "voucher_digital",
+                                "bundle",
+                                "print_greetingcard",
+                                "personalized",
+                                "other_services"
+                            ]
+                        },
+                        "example": "standard"
                     }
                 ],
                 "responses": {
@@ -8257,9 +8291,9 @@
                         "nullable": true
                     },
                     "orderNotes": {
-                        "description": "Notes for the steve team regarding the fulfillment.",
+                        "description": "Notes for the steve team regarding the fulfillment. \\\nIf `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.",
                         "type": "string",
-                        "maxLength": 500,
+                        "maxLength": 250,
                         "nullable": true
                     },
                     "amazonOrderId": {
@@ -8528,6 +8562,13 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/productPurchasePrice"
+                        },
+                        "nullable": true
+                    },
+                    "bundledProducts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/productBundledProduct"
                         },
                         "nullable": true
                     },
@@ -10086,6 +10127,20 @@
                     }
                 ]
             },
+            "productBundledProduct": {
+                "title": "productBundledProduct",
+                "properties": {
+                    "productNumber": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "description": "Number of items included in the bundle.",
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "type": "object"
+            },
             "productCollection": {
                 "title": "productCollection",
                 "description": "A collection of products",
@@ -10900,6 +10955,11 @@
                                 "description": "Flag to mark if it is allowed to set a customer's email in a third party app or via the API.\nIf false the shop email will be used as default.",
                                 "type": "boolean",
                                 "nullable": true
+                            },
+                            "orderNotesPrecedingText": {
+                                "description": "Text to be added to the beginning of the orderNotes of every order created for the shop.",
+                                "type": "string",
+                                "nullable": true
                             }
                         },
                         "type": "object",
@@ -11093,6 +11153,12 @@
                             "overwriteCustomerEmailEnabled": {
                                 "description": "Flag to mark if it is allowed to set a customer's email in a third party app or via the API.\nIf false the shop email will be used as default.",
                                 "type": "boolean",
+                                "nullable": true
+                            },
+                            "orderNotesPrecedingText": {
+                                "description": "Text to be added to the beginning of the orderNotes of every order created for the shop.",
+                                "type": "string",
+                                "maxLength": 247,
                                 "nullable": true
                             }
                         },

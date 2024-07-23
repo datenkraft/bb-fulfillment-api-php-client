@@ -84,6 +84,12 @@ class ShopMeta extends \ArrayObject
     */
     protected $overwriteCustomerEmailEnabled;
     /**
+     * Text to be added to the beginning of the orderNotes of every order created for the shop.
+     *
+     * @var string|null
+     */
+    protected $orderNotesPrecedingText;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -333,6 +339,28 @@ class ShopMeta extends \ArrayObject
     {
         $this->initialized['overwriteCustomerEmailEnabled'] = true;
         $this->overwriteCustomerEmailEnabled = $overwriteCustomerEmailEnabled;
+        return $this;
+    }
+    /**
+     * Text to be added to the beginning of the orderNotes of every order created for the shop.
+     *
+     * @return string|null
+     */
+    public function getOrderNotesPrecedingText() : ?string
+    {
+        return $this->orderNotesPrecedingText;
+    }
+    /**
+     * Text to be added to the beginning of the orderNotes of every order created for the shop.
+     *
+     * @param string|null $orderNotesPrecedingText
+     *
+     * @return self
+     */
+    public function setOrderNotesPrecedingText(?string $orderNotesPrecedingText) : self
+    {
+        $this->initialized['orderNotesPrecedingText'] = true;
+        $this->orderNotesPrecedingText = $orderNotesPrecedingText;
         return $this;
     }
 }

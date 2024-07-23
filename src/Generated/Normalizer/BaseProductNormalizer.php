@@ -129,6 +129,17 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] === null) {
             $object->setPurchasePrices(null);
         }
+        if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
+            $values_1 = array();
+            foreach ($data['bundledProducts'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductBundledProduct', 'json', $context);
+            }
+            $object->setBundledProducts($values_1);
+            unset($data['bundledProducts']);
+        }
+        elseif (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] === null) {
+            $object->setBundledProducts(null);
+        }
         if (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] !== null) {
             $object->setProductNumberManufacturer($data['productNumberManufacturer']);
             unset($data['productNumberManufacturer']);
@@ -150,9 +161,9 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
             $object->setLanguageCode(null);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -203,6 +214,13 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
             }
             $data['purchasePrices'] = $values;
         }
+        if ($object->isInitialized('bundledProducts') && null !== $object->getBundledProducts()) {
+            $values_1 = array();
+            foreach ($object->getBundledProducts() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['bundledProducts'] = $values_1;
+        }
         if ($object->isInitialized('productNumberManufacturer') && null !== $object->getProductNumberManufacturer()) {
             $data['productNumberManufacturer'] = $object->getProductNumberManufacturer();
         }
@@ -212,9 +230,9 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value_2;
             }
         }
         return $data;

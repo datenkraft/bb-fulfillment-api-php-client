@@ -132,6 +132,17 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] === null) {
             $object->setPurchasePrices(null);
         }
+        if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
+            $values_1 = array();
+            foreach ($data['bundledProducts'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductBundledProduct', 'json', $context);
+            }
+            $object->setBundledProducts($values_1);
+            unset($data['bundledProducts']);
+        }
+        elseif (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] === null) {
+            $object->setBundledProducts(null);
+        }
         if (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] !== null) {
             $object->setProductNumberManufacturer($data['productNumberManufacturer']);
             unset($data['productNumberManufacturer']);
@@ -270,9 +281,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReservedFor', 'json', $context));
             unset($data['reservedFor']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -322,6 +333,13 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $data['purchasePrices'] = $values;
+        }
+        if ($object->isInitialized('bundledProducts') && null !== $object->getBundledProducts()) {
+            $values_1 = array();
+            foreach ($object->getBundledProducts() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $data['bundledProducts'] = $values_1;
         }
         if ($object->isInitialized('productNumberManufacturer') && null !== $object->getProductNumberManufacturer()) {
             $data['productNumberManufacturer'] = $object->getProductNumberManufacturer();
@@ -395,9 +413,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($object->isInitialized('reservedFor') && null !== $object->getReservedFor()) {
             $data['reservedFor'] = $this->normalizer->normalize($object->getReservedFor(), 'json', $context);
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value_2;
             }
         }
         return $data;
