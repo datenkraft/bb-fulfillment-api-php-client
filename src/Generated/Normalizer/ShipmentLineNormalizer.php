@@ -48,9 +48,12 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setProductNumber($data['productNumber']);
             unset($data['productNumber']);
         }
-        if (\array_key_exists('productNumberBundle', $data)) {
+        if (\array_key_exists('productNumberBundle', $data) && $data['productNumberBundle'] !== null) {
             $object->setProductNumberBundle($data['productNumberBundle']);
             unset($data['productNumberBundle']);
+        }
+        elseif (\array_key_exists('productNumberBundle', $data) && $data['productNumberBundle'] === null) {
+            $object->setProductNumberBundle(null);
         }
         if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
