@@ -25,54 +25,59 @@ class OrderItem extends \ArrayObject
      */
     protected $title;
     /**
-     * Positive number of items to order
+     * Positive number of items. Always null for bundles
      *
      * @var int
      */
     protected $count;
     /**
-     * Product number of the customer
+     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
      *
      * @var string|null
      */
     protected $externalProductNumber;
     /**
-     * Number of canceled items
+     * Number of canceled items, null for bundles.
      *
      * @var int
      */
     protected $canceledCount;
     /**
-     * Number of available items
+     * Number of available items, null for bundles.
      *
      * @var int
      */
     protected $availableCount;
     /**
-     * Number of delivered items
+     * Number of delivered items, null for bundles.
      *
      * @var int
      */
     protected $deliveredCount;
     /**
-     * Number of returned items
+     * Number of returned items, null for bundles.
      *
      * @var int
      */
     protected $returnedCount;
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @var OrderItemPrice|null
-    */
+     * The selling price of the item.
+     *
+     * @var OrderItemPrice
+     */
     protected $price;
     /**
-     * Additional options (optional, TBD)
+     * Additional options
      *
      * @var mixed[]|null
      */
     protected $options;
+    /**
+     * 
+     *
+     * @var BundledOrderItem[]
+     */
+    protected $bundledProducts;
     /**
      * Valid product number
      *
@@ -118,7 +123,7 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Positive number of items to order
+     * Positive number of items. Always null for bundles
      *
      * @return int
      */
@@ -127,7 +132,7 @@ class OrderItem extends \ArrayObject
         return $this->count;
     }
     /**
-     * Positive number of items to order
+     * Positive number of items. Always null for bundles
      *
      * @param int $count
      *
@@ -140,7 +145,7 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Product number of the customer
+     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
      *
      * @return string|null
      */
@@ -149,7 +154,7 @@ class OrderItem extends \ArrayObject
         return $this->externalProductNumber;
     }
     /**
-     * Product number of the customer
+     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
      *
      * @param string|null $externalProductNumber
      *
@@ -162,7 +167,7 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Number of canceled items
+     * Number of canceled items, null for bundles.
      *
      * @return int
      */
@@ -171,7 +176,7 @@ class OrderItem extends \ArrayObject
         return $this->canceledCount;
     }
     /**
-     * Number of canceled items
+     * Number of canceled items, null for bundles.
      *
      * @param int $canceledCount
      *
@@ -184,7 +189,7 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Number of available items
+     * Number of available items, null for bundles.
      *
      * @return int
      */
@@ -193,7 +198,7 @@ class OrderItem extends \ArrayObject
         return $this->availableCount;
     }
     /**
-     * Number of available items
+     * Number of available items, null for bundles.
      *
      * @param int $availableCount
      *
@@ -206,7 +211,7 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Number of delivered items
+     * Number of delivered items, null for bundles.
      *
      * @return int
      */
@@ -215,7 +220,7 @@ class OrderItem extends \ArrayObject
         return $this->deliveredCount;
     }
     /**
-     * Number of delivered items
+     * Number of delivered items, null for bundles.
      *
      * @param int $deliveredCount
      *
@@ -228,7 +233,7 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Number of returned items
+     * Number of returned items, null for bundles.
      *
      * @return int
      */
@@ -237,7 +242,7 @@ class OrderItem extends \ArrayObject
         return $this->returnedCount;
     }
     /**
-     * Number of returned items
+     * Number of returned items, null for bundles.
      *
      * @param int $returnedCount
      *
@@ -250,31 +255,29 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @return OrderItemPrice|null
-    */
-    public function getPrice() : ?OrderItemPrice
+     * The selling price of the item.
+     *
+     * @return OrderItemPrice
+     */
+    public function getPrice() : OrderItemPrice
     {
         return $this->price;
     }
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @param OrderItemPrice|null $price
-    *
-    * @return self
-    */
-    public function setPrice(?OrderItemPrice $price) : self
+     * The selling price of the item.
+     *
+     * @param OrderItemPrice $price
+     *
+     * @return self
+     */
+    public function setPrice(OrderItemPrice $price) : self
     {
         $this->initialized['price'] = true;
         $this->price = $price;
         return $this;
     }
     /**
-     * Additional options (optional, TBD)
+     * Additional options
      *
      * @return mixed[]|null
      */
@@ -283,7 +286,7 @@ class OrderItem extends \ArrayObject
         return $this->options;
     }
     /**
-     * Additional options (optional, TBD)
+     * Additional options
      *
      * @param mixed[]|null $options
      *
@@ -293,6 +296,28 @@ class OrderItem extends \ArrayObject
     {
         $this->initialized['options'] = true;
         $this->options = $options;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return BundledOrderItem[]
+     */
+    public function getBundledProducts() : array
+    {
+        return $this->bundledProducts;
+    }
+    /**
+     * 
+     *
+     * @param BundledOrderItem[] $bundledProducts
+     *
+     * @return self
+     */
+    public function setBundledProducts(array $bundledProducts) : self
+    {
+        $this->initialized['bundledProducts'] = true;
+        $this->bundledProducts = $bundledProducts;
         return $this;
     }
 }

@@ -25,13 +25,13 @@ class BaseOrderItem extends \ArrayObject
      */
     protected $title;
     /**
-     * Positive number of items to order
+     * Positive number of items. Always null for bundles
      *
      * @var int
      */
     protected $count;
     /**
-     * Product number of the customer
+     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
      *
      * @var string|null
      */
@@ -81,7 +81,7 @@ class BaseOrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Positive number of items to order
+     * Positive number of items. Always null for bundles
      *
      * @return int
      */
@@ -90,7 +90,7 @@ class BaseOrderItem extends \ArrayObject
         return $this->count;
     }
     /**
-     * Positive number of items to order
+     * Positive number of items. Always null for bundles
      *
      * @param int $count
      *
@@ -103,7 +103,7 @@ class BaseOrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Product number of the customer
+     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
      *
      * @return string|null
      */
@@ -112,7 +112,7 @@ class BaseOrderItem extends \ArrayObject
         return $this->externalProductNumber;
     }
     /**
-     * Product number of the customer
+     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
      *
      * @param string|null $externalProductNumber
      *

@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewOrderItem extends \ArrayObject
+class BundledOrderItem extends \ArrayObject
 {
     /**
      * @var array
@@ -37,12 +37,35 @@ class NewOrderItem extends \ArrayObject
      */
     protected $externalProductNumber;
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @var NewOrderItemPrice|null
-    */
+     * The selling price of the item.
+     *
+     * @var BundledOrderItemPrice
+     */
     protected $price;
+    /**
+     * Number of canceled items
+     *
+     * @var int
+     */
+    protected $canceledCount;
+    /**
+     * Number of available items
+     *
+     * @var int
+     */
+    protected $availableCount;
+    /**
+     * Number of delivered items
+     *
+     * @var int
+     */
+    protected $deliveredCount;
+    /**
+     * Number of returned items
+     *
+     * @var int
+     */
+    protected $returnedCount;
     /**
      * Valid product number
      *
@@ -132,27 +155,113 @@ class NewOrderItem extends \ArrayObject
         return $this;
     }
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @return NewOrderItemPrice|null
-    */
-    public function getPrice() : ?NewOrderItemPrice
+     * The selling price of the item.
+     *
+     * @return BundledOrderItemPrice
+     */
+    public function getPrice() : BundledOrderItemPrice
     {
         return $this->price;
     }
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @param NewOrderItemPrice|null $price
-    *
-    * @return self
-    */
-    public function setPrice(?NewOrderItemPrice $price) : self
+     * The selling price of the item.
+     *
+     * @param BundledOrderItemPrice $price
+     *
+     * @return self
+     */
+    public function setPrice(BundledOrderItemPrice $price) : self
     {
         $this->initialized['price'] = true;
         $this->price = $price;
+        return $this;
+    }
+    /**
+     * Number of canceled items
+     *
+     * @return int
+     */
+    public function getCanceledCount() : int
+    {
+        return $this->canceledCount;
+    }
+    /**
+     * Number of canceled items
+     *
+     * @param int $canceledCount
+     *
+     * @return self
+     */
+    public function setCanceledCount(int $canceledCount) : self
+    {
+        $this->initialized['canceledCount'] = true;
+        $this->canceledCount = $canceledCount;
+        return $this;
+    }
+    /**
+     * Number of available items
+     *
+     * @return int
+     */
+    public function getAvailableCount() : int
+    {
+        return $this->availableCount;
+    }
+    /**
+     * Number of available items
+     *
+     * @param int $availableCount
+     *
+     * @return self
+     */
+    public function setAvailableCount(int $availableCount) : self
+    {
+        $this->initialized['availableCount'] = true;
+        $this->availableCount = $availableCount;
+        return $this;
+    }
+    /**
+     * Number of delivered items
+     *
+     * @return int
+     */
+    public function getDeliveredCount() : int
+    {
+        return $this->deliveredCount;
+    }
+    /**
+     * Number of delivered items
+     *
+     * @param int $deliveredCount
+     *
+     * @return self
+     */
+    public function setDeliveredCount(int $deliveredCount) : self
+    {
+        $this->initialized['deliveredCount'] = true;
+        $this->deliveredCount = $deliveredCount;
+        return $this;
+    }
+    /**
+     * Number of returned items
+     *
+     * @return int
+     */
+    public function getReturnedCount() : int
+    {
+        return $this->returnedCount;
+    }
+    /**
+     * Number of returned items
+     *
+     * @param int $returnedCount
+     *
+     * @return self
+     */
+    public function setReturnedCount(int $returnedCount) : self
+    {
+        $this->initialized['returnedCount'] = true;
+        $this->returnedCount = $returnedCount;
         return $this;
     }
 }

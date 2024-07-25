@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class OrderDeliveryCosts extends \ArrayObject
+class BundledOrderItemPrice extends \ArrayObject
 {
     /**
      * @var array
@@ -13,15 +13,10 @@ class OrderDeliveryCosts extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator.
-    Note:
-    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
-    for all ordered bundles.
-    - Other Products: This price value refers to a single unit and is not an aggregated price value,
-    which may be calculated by multiplying this price value by the corresponding item count.
-    *
-    * @var float
-    */
+     * The price value rounded to 2 decimals with a dot used as separator.
+     *
+     * @var float
+     */
     protected $value;
     /**
      * The price type
@@ -30,7 +25,7 @@ class OrderDeliveryCosts extends \ArrayObject
      */
     protected $type;
     /**
-     * The VAT in percent (might be validated for country)
+     * The VAT in percent.
      *
      * @var float
      */
@@ -42,37 +37,21 @@ class OrderDeliveryCosts extends \ArrayObject
      */
     protected $currencyCode;
     /**
-     * 
+     * The price value rounded to 2 decimals with a dot used as separator.
      *
-     * @var string|null
+     * @return float
      */
-    protected $title;
-    /**
-    * The price value rounded to 2 decimals with a dot used as separator.
-    Note:
-    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
-    for all ordered bundles.
-    - Other Products: This price value refers to a single unit and is not an aggregated price value,
-    which may be calculated by multiplying this price value by the corresponding item count.
-    *
-    * @return float
-    */
     public function getValue() : float
     {
         return $this->value;
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator.
-    Note:
-    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
-    for all ordered bundles.
-    - Other Products: This price value refers to a single unit and is not an aggregated price value,
-    which may be calculated by multiplying this price value by the corresponding item count.
-    *
-    * @param float $value
-    *
-    * @return self
-    */
+     * The price value rounded to 2 decimals with a dot used as separator.
+     *
+     * @param float $value
+     *
+     * @return self
+     */
     public function setValue(float $value) : self
     {
         $this->initialized['value'] = true;
@@ -102,7 +81,7 @@ class OrderDeliveryCosts extends \ArrayObject
         return $this;
     }
     /**
-     * The VAT in percent (might be validated for country)
+     * The VAT in percent.
      *
      * @return float
      */
@@ -111,7 +90,7 @@ class OrderDeliveryCosts extends \ArrayObject
         return $this->vat;
     }
     /**
-     * The VAT in percent (might be validated for country)
+     * The VAT in percent.
      *
      * @param float $vat
      *
@@ -143,28 +122,6 @@ class OrderDeliveryCosts extends \ArrayObject
     {
         $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;
-        return $this;
-    }
-    /**
-     * 
-     *
-     * @return string|null
-     */
-    public function getTitle() : ?string
-    {
-        return $this->title;
-    }
-    /**
-     * 
-     *
-     * @param string|null $title
-     *
-     * @return self
-     */
-    public function setTitle(?string $title) : self
-    {
-        $this->initialized['title'] = true;
-        $this->title = $title;
         return $this;
     }
 }

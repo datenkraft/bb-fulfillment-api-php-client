@@ -19,6 +19,12 @@ class ShipmentLine extends \ArrayObject
      */
     protected $productNumber;
     /**
+     * Product number of the bundle which the product of the shipment line is part of.
+     *
+     * @var string
+     */
+    protected $productNumberBundle;
+    /**
      * Number of items contained in the delivery
      *
      * @var float
@@ -68,6 +74,28 @@ class ShipmentLine extends \ArrayObject
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
+        return $this;
+    }
+    /**
+     * Product number of the bundle which the product of the shipment line is part of.
+     *
+     * @return string
+     */
+    public function getProductNumberBundle() : string
+    {
+        return $this->productNumberBundle;
+    }
+    /**
+     * Product number of the bundle which the product of the shipment line is part of.
+     *
+     * @param string $productNumberBundle
+     *
+     * @return self
+     */
+    public function setProductNumberBundle(string $productNumberBundle) : self
+    {
+        $this->initialized['productNumberBundle'] = true;
+        $this->productNumberBundle = $productNumberBundle;
         return $this;
     }
     /**
