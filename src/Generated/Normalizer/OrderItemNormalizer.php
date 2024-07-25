@@ -52,9 +52,12 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
-        if (\array_key_exists('count', $data)) {
+        if (\array_key_exists('count', $data) && $data['count'] !== null) {
             $object->setCount($data['count']);
             unset($data['count']);
+        }
+        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
+            $object->setCount(null);
         }
         if (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] !== null) {
             $object->setExternalProductNumber($data['externalProductNumber']);
@@ -63,21 +66,33 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] === null) {
             $object->setExternalProductNumber(null);
         }
-        if (\array_key_exists('canceledCount', $data)) {
+        if (\array_key_exists('canceledCount', $data) && $data['canceledCount'] !== null) {
             $object->setCanceledCount($data['canceledCount']);
             unset($data['canceledCount']);
         }
-        if (\array_key_exists('availableCount', $data)) {
+        elseif (\array_key_exists('canceledCount', $data) && $data['canceledCount'] === null) {
+            $object->setCanceledCount(null);
+        }
+        if (\array_key_exists('availableCount', $data) && $data['availableCount'] !== null) {
             $object->setAvailableCount($data['availableCount']);
             unset($data['availableCount']);
         }
-        if (\array_key_exists('deliveredCount', $data)) {
+        elseif (\array_key_exists('availableCount', $data) && $data['availableCount'] === null) {
+            $object->setAvailableCount(null);
+        }
+        if (\array_key_exists('deliveredCount', $data) && $data['deliveredCount'] !== null) {
             $object->setDeliveredCount($data['deliveredCount']);
             unset($data['deliveredCount']);
         }
-        if (\array_key_exists('returnedCount', $data)) {
+        elseif (\array_key_exists('deliveredCount', $data) && $data['deliveredCount'] === null) {
+            $object->setDeliveredCount(null);
+        }
+        if (\array_key_exists('returnedCount', $data) && $data['returnedCount'] !== null) {
             $object->setReturnedCount($data['returnedCount']);
             unset($data['returnedCount']);
+        }
+        elseif (\array_key_exists('returnedCount', $data) && $data['returnedCount'] === null) {
+            $object->setReturnedCount(null);
         }
         if (\array_key_exists('price', $data)) {
             $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice', 'json', $context));
@@ -94,13 +109,16 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
             $object->setOptions(null);
         }
-        if (\array_key_exists('bundledProducts', $data)) {
+        if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
             $values_1 = array();
             foreach ($data['bundledProducts'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItem', 'json', $context);
             }
             $object->setBundledProducts($values_1);
             unset($data['bundledProducts']);
+        }
+        elseif (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] === null) {
+            $object->setBundledProducts(null);
         }
         foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {

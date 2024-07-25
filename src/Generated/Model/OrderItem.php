@@ -27,7 +27,7 @@ class OrderItem extends \ArrayObject
     /**
      * Positive number of items. Always null for bundles
      *
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
@@ -39,25 +39,25 @@ class OrderItem extends \ArrayObject
     /**
      * Number of canceled items, null for bundles.
      *
-     * @var int
+     * @var int|null
      */
     protected $canceledCount;
     /**
      * Number of available items, null for bundles.
      *
-     * @var int
+     * @var int|null
      */
     protected $availableCount;
     /**
      * Number of delivered items, null for bundles.
      *
-     * @var int
+     * @var int|null
      */
     protected $deliveredCount;
     /**
      * Number of returned items, null for bundles.
      *
-     * @var int
+     * @var int|null
      */
     protected $returnedCount;
     /**
@@ -75,7 +75,7 @@ class OrderItem extends \ArrayObject
     /**
      * 
      *
-     * @var BundledOrderItem[]
+     * @var BundledOrderItem[]|null
      */
     protected $bundledProducts;
     /**
@@ -125,20 +125,20 @@ class OrderItem extends \ArrayObject
     /**
      * Positive number of items. Always null for bundles
      *
-     * @return int
+     * @return int|null
      */
-    public function getCount() : int
+    public function getCount() : ?int
     {
         return $this->count;
     }
     /**
      * Positive number of items. Always null for bundles
      *
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(?int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -169,20 +169,20 @@ class OrderItem extends \ArrayObject
     /**
      * Number of canceled items, null for bundles.
      *
-     * @return int
+     * @return int|null
      */
-    public function getCanceledCount() : int
+    public function getCanceledCount() : ?int
     {
         return $this->canceledCount;
     }
     /**
      * Number of canceled items, null for bundles.
      *
-     * @param int $canceledCount
+     * @param int|null $canceledCount
      *
      * @return self
      */
-    public function setCanceledCount(int $canceledCount) : self
+    public function setCanceledCount(?int $canceledCount) : self
     {
         $this->initialized['canceledCount'] = true;
         $this->canceledCount = $canceledCount;
@@ -191,20 +191,20 @@ class OrderItem extends \ArrayObject
     /**
      * Number of available items, null for bundles.
      *
-     * @return int
+     * @return int|null
      */
-    public function getAvailableCount() : int
+    public function getAvailableCount() : ?int
     {
         return $this->availableCount;
     }
     /**
      * Number of available items, null for bundles.
      *
-     * @param int $availableCount
+     * @param int|null $availableCount
      *
      * @return self
      */
-    public function setAvailableCount(int $availableCount) : self
+    public function setAvailableCount(?int $availableCount) : self
     {
         $this->initialized['availableCount'] = true;
         $this->availableCount = $availableCount;
@@ -213,20 +213,20 @@ class OrderItem extends \ArrayObject
     /**
      * Number of delivered items, null for bundles.
      *
-     * @return int
+     * @return int|null
      */
-    public function getDeliveredCount() : int
+    public function getDeliveredCount() : ?int
     {
         return $this->deliveredCount;
     }
     /**
      * Number of delivered items, null for bundles.
      *
-     * @param int $deliveredCount
+     * @param int|null $deliveredCount
      *
      * @return self
      */
-    public function setDeliveredCount(int $deliveredCount) : self
+    public function setDeliveredCount(?int $deliveredCount) : self
     {
         $this->initialized['deliveredCount'] = true;
         $this->deliveredCount = $deliveredCount;
@@ -235,20 +235,20 @@ class OrderItem extends \ArrayObject
     /**
      * Number of returned items, null for bundles.
      *
-     * @return int
+     * @return int|null
      */
-    public function getReturnedCount() : int
+    public function getReturnedCount() : ?int
     {
         return $this->returnedCount;
     }
     /**
      * Number of returned items, null for bundles.
      *
-     * @param int $returnedCount
+     * @param int|null $returnedCount
      *
      * @return self
      */
-    public function setReturnedCount(int $returnedCount) : self
+    public function setReturnedCount(?int $returnedCount) : self
     {
         $this->initialized['returnedCount'] = true;
         $this->returnedCount = $returnedCount;
@@ -301,20 +301,20 @@ class OrderItem extends \ArrayObject
     /**
      * 
      *
-     * @return BundledOrderItem[]
+     * @return BundledOrderItem[]|null
      */
-    public function getBundledProducts() : array
+    public function getBundledProducts() : ?array
     {
         return $this->bundledProducts;
     }
     /**
      * 
      *
-     * @param BundledOrderItem[] $bundledProducts
+     * @param BundledOrderItem[]|null $bundledProducts
      *
      * @return self
      */
-    public function setBundledProducts(array $bundledProducts) : self
+    public function setBundledProducts(?array $bundledProducts) : self
     {
         $this->initialized['bundledProducts'] = true;
         $this->bundledProducts = $bundledProducts;

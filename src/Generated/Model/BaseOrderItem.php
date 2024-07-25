@@ -27,7 +27,7 @@ class BaseOrderItem extends \ArrayObject
     /**
      * Positive number of items. Always null for bundles
      *
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
@@ -83,20 +83,20 @@ class BaseOrderItem extends \ArrayObject
     /**
      * Positive number of items. Always null for bundles
      *
-     * @return int
+     * @return int|null
      */
-    public function getCount() : int
+    public function getCount() : ?int
     {
         return $this->count;
     }
     /**
      * Positive number of items. Always null for bundles
      *
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(?int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
