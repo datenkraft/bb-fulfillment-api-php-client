@@ -8573,7 +8573,8 @@
                     "count": {
                         "description": "Positive number of items. Always null for bundles",
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "nullable": true
                     },
                     "externalProductNumber": {
                         "description": "Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.",
@@ -10127,22 +10128,26 @@
                             "canceledCount": {
                                 "description": "Number of canceled items, null for bundles.",
                                 "type": "integer",
-                                "format": "int32"
+                                "format": "int32",
+                                "nullable": true
                             },
                             "availableCount": {
                                 "description": "Number of available items, null for bundles.",
                                 "type": "integer",
-                                "format": "int32"
+                                "format": "int32",
+                                "nullable": true
                             },
                             "deliveredCount": {
                                 "description": "Number of delivered items, null for bundles.",
                                 "type": "integer",
-                                "format": "int32"
+                                "format": "int32",
+                                "nullable": true
                             },
                             "returnedCount": {
                                 "description": "Number of returned items, null for bundles.",
                                 "type": "integer",
-                                "format": "int32"
+                                "format": "int32",
+                                "nullable": true
                             },
                             "price": {
                                 "$ref": "#/components/schemas/orderItemPrice"
@@ -10156,7 +10161,8 @@
                                 "type": "array",
                                 "items": {
                                     "$ref": "#/components/schemas/bundledOrderItem"
-                                }
+                                },
+                                "nullable": true
                             }
                         },
                         "type": "object"
