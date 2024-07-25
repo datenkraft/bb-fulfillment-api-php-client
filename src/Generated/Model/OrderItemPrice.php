@@ -13,9 +13,12 @@ class OrderItemPrice extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
-    value by the corresponding item count.
+    * The price value rounded to 2 decimals with a dot used as separator.
+    Note:
+    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
+    for all ordered bundles.
+    - Other Products: This price value refers to a single unit and is not an aggregated price value,
+    which may be calculated by multiplying this price value by the corresponding item count.
     *
     * @var float
     */
@@ -27,7 +30,7 @@ class OrderItemPrice extends \ArrayObject
      */
     protected $type;
     /**
-     * The VAT in percent. Can be null in case of bundle products with mixedVAT percentages. (might be validated for country)
+     * The VAT in percent. Null for bundles, bundled products may have divergent VATs. VAT percentages.
      *
      * @var float|null
      */
@@ -39,9 +42,12 @@ class OrderItemPrice extends \ArrayObject
      */
     protected $currencyCode;
     /**
-    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
-    value by the corresponding item count.
+    * The price value rounded to 2 decimals with a dot used as separator.
+    Note:
+    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
+    for all ordered bundles.
+    - Other Products: This price value refers to a single unit and is not an aggregated price value,
+    which may be calculated by multiplying this price value by the corresponding item count.
     *
     * @return float
     */
@@ -50,9 +56,12 @@ class OrderItemPrice extends \ArrayObject
         return $this->value;
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
-    value by the corresponding item count.
+    * The price value rounded to 2 decimals with a dot used as separator.
+    Note:
+    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
+    for all ordered bundles.
+    - Other Products: This price value refers to a single unit and is not an aggregated price value,
+    which may be calculated by multiplying this price value by the corresponding item count.
     *
     * @param float $value
     *
@@ -87,7 +96,7 @@ class OrderItemPrice extends \ArrayObject
         return $this;
     }
     /**
-     * The VAT in percent. Can be null in case of bundle products with mixedVAT percentages. (might be validated for country)
+     * The VAT in percent. Null for bundles, bundled products may have divergent VATs. VAT percentages.
      *
      * @return float|null
      */
@@ -96,7 +105,7 @@ class OrderItemPrice extends \ArrayObject
         return $this->vat;
     }
     /**
-     * The VAT in percent. Can be null in case of bundle products with mixedVAT percentages. (might be validated for country)
+     * The VAT in percent. Null for bundles, bundled products may have divergent VATs. VAT percentages.
      *
      * @param float|null $vat
      *

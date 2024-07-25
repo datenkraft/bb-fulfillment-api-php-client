@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BundledOrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInter
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItemPrice';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItemPrice';
     }
     /**
      * @return mixed
@@ -37,7 +37,7 @@ class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItemPrice();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItemPrice();
         if (\array_key_exists('value', $data) && \is_int($data['value'])) {
             $data['value'] = (double) $data['value'];
         }
@@ -55,12 +55,9 @@ class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setType($data['type']);
             unset($data['type']);
         }
-        if (\array_key_exists('vat', $data) && $data['vat'] !== null) {
+        if (\array_key_exists('vat', $data)) {
             $object->setVat($data['vat']);
             unset($data['vat']);
-        }
-        elseif (\array_key_exists('vat', $data) && $data['vat'] === null) {
-            $object->setVat(null);
         }
         if (\array_key_exists('currencyCode', $data)) {
             $object->setCurrencyCode($data['currencyCode']);

@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BundledOrderItemNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItem';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItem';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItem';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItem';
     }
     /**
      * @return mixed
@@ -37,7 +37,7 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItem();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -63,6 +63,10 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] === null) {
             $object->setExternalProductNumber(null);
         }
+        if (\array_key_exists('price', $data)) {
+            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItemPrice', 'json', $context));
+            unset($data['price']);
+        }
         if (\array_key_exists('canceledCount', $data)) {
             $object->setCanceledCount($data['canceledCount']);
             unset($data['canceledCount']);
@@ -79,32 +83,9 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setReturnedCount($data['returnedCount']);
             unset($data['returnedCount']);
         }
-        if (\array_key_exists('price', $data)) {
-            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice', 'json', $context));
-            unset($data['price']);
-        }
-        if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
-            foreach ($data['options'] as $key => $value) {
-                $values[$key] = $value;
-            }
-            $object->setOptions($values);
-            unset($data['options']);
-        }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
-        }
-        if (\array_key_exists('bundledProducts', $data)) {
-            $values_1 = array();
-            foreach ($data['bundledProducts'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItem', 'json', $context);
-            }
-            $object->setBundledProducts($values_1);
-            unset($data['bundledProducts']);
-        }
-        foreach ($data as $key_1 => $value_2) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $object[$key_1] = $value_2;
+        foreach ($data as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -127,6 +108,9 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($object->isInitialized('externalProductNumber') && null !== $object->getExternalProductNumber()) {
             $data['externalProductNumber'] = $object->getExternalProductNumber();
         }
+        if ($object->isInitialized('price') && null !== $object->getPrice()) {
+            $data['price'] = $this->normalizer->normalize($object->getPrice(), 'json', $context);
+        }
         if ($object->isInitialized('canceledCount') && null !== $object->getCanceledCount()) {
             $data['canceledCount'] = $object->getCanceledCount();
         }
@@ -139,26 +123,9 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($object->isInitialized('returnedCount') && null !== $object->getReturnedCount()) {
             $data['returnedCount'] = $object->getReturnedCount();
         }
-        if ($object->isInitialized('price') && null !== $object->getPrice()) {
-            $data['price'] = $this->normalizer->normalize($object->getPrice(), 'json', $context);
-        }
-        if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values = array();
-            foreach ($object->getOptions() as $key => $value) {
-                $values[$key] = $value;
-            }
-            $data['options'] = $values;
-        }
-        if ($object->isInitialized('bundledProducts') && null !== $object->getBundledProducts()) {
-            $values_1 = array();
-            foreach ($object->getBundledProducts() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
-            }
-            $data['bundledProducts'] = $values_1;
-        }
-        foreach ($object as $key_1 => $value_2) {
-            if (preg_match('/.*/', (string) $key_1)) {
-                $data[$key_1] = $value_2;
+        foreach ($object as $key => $value) {
+            if (preg_match('/.*/', (string) $key)) {
+                $data[$key] = $value;
             }
         }
         return $data;
