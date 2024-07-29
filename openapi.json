@@ -8452,7 +8452,7 @@
                     "orderNotes": {
                         "description": "Notes for the steve team regarding the fulfillment. \\\nIf `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.",
                         "type": "string",
-                        "maxLength": 250,
+                        "maxLength": 350,
                         "nullable": true
                     },
                     "amazonOrderId": {
@@ -9679,6 +9679,18 @@
                             }
                         },
                         "type": "object"
+                    },
+                    {
+                        "properties": {
+                            "count": {
+                                "description": "Positive number of items.",
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 2,
+                                "nullable": false
+                            }
+                        },
+                        "type": "object"
                     }
                 ]
             },
@@ -10189,7 +10201,7 @@
                         "example": "gross"
                     },
                     "vat": {
-                        "description": "The VAT in percent. Null for bundles, bundled products may have divergent VATs. VAT percentages.",
+                        "description": "The VAT in percent. Null for bundles, bundled products may have divergent VAT percentages.",
                         "type": "number",
                         "format": "float",
                         "example": 20,
@@ -11521,7 +11533,7 @@
                             "orderNotesPrecedingText": {
                                 "description": "Text to be added to the beginning of the orderNotes of every order created for the shop.",
                                 "type": "string",
-                                "maxLength": 247,
+                                "maxLength": 147,
                                 "nullable": true
                             }
                         },
