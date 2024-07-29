@@ -30,7 +30,7 @@ class OrderItemPrice extends \ArrayObject
      */
     protected $type;
     /**
-     * The VAT in percent. Null for bundles, bundled products may have divergent VATs. VAT percentages.
+     * The VAT in percent. Null for bundles, bundled products may have divergent VAT percentages.
      *
      * @var float|null
      */
@@ -96,7 +96,7 @@ class OrderItemPrice extends \ArrayObject
         return $this;
     }
     /**
-     * The VAT in percent. Null for bundles, bundled products may have divergent VATs. VAT percentages.
+     * The VAT in percent. Null for bundles, bundled products may have divergent VAT percentages.
      *
      * @return float|null
      */
@@ -105,7 +105,7 @@ class OrderItemPrice extends \ArrayObject
         return $this->vat;
     }
     /**
-     * The VAT in percent. Null for bundles, bundled products may have divergent VATs. VAT percentages.
+     * The VAT in percent. Null for bundles, bundled products may have divergent VAT percentages.
      *
      * @param float|null $vat
      *
