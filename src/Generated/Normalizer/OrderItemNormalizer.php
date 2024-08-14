@@ -52,12 +52,9 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
-        if (\array_key_exists('count', $data) && $data['count'] !== null) {
+        if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
             unset($data['count']);
-        }
-        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
-            $object->setCount(null);
         }
         if (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] !== null) {
             $object->setExternalProductNumber($data['externalProductNumber']);
@@ -73,12 +70,9 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('canceledCount', $data) && $data['canceledCount'] === null) {
             $object->setCanceledCount(null);
         }
-        if (\array_key_exists('availableCount', $data) && $data['availableCount'] !== null) {
+        if (\array_key_exists('availableCount', $data)) {
             $object->setAvailableCount($data['availableCount']);
             unset($data['availableCount']);
-        }
-        elseif (\array_key_exists('availableCount', $data) && $data['availableCount'] === null) {
-            $object->setAvailableCount(null);
         }
         if (\array_key_exists('deliveredCount', $data) && $data['deliveredCount'] !== null) {
             $object->setDeliveredCount($data['deliveredCount']);

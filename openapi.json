@@ -8571,10 +8571,10 @@
                         "nullable": true
                     },
                     "count": {
-                        "description": "Positive number of items. Always null for bundles",
+                        "description": "Positive number of items",
                         "type": "integer",
                         "format": "int32",
-                        "nullable": true
+                        "nullable": false
                     },
                     "externalProductNumber": {
                         "description": "Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.",
@@ -10144,10 +10144,10 @@
                                 "nullable": true
                             },
                             "availableCount": {
-                                "description": "Number of available items, null for bundles.",
+                                "description": "Number of available items",
                                 "type": "integer",
                                 "format": "int32",
-                                "nullable": true
+                                "nullable": false
                             },
                             "deliveredCount": {
                                 "description": "Number of delivered items, null for bundles.",
@@ -10242,7 +10242,7 @@
                 ],
                 "properties": {
                     "value": {
-                        "description": "The price value rounded to 2 decimals with a dot used as separator.\nNote:\n- For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value\nfor all ordered bundles.\n- Other Products: This price value refers to a single unit and is not an aggregated price value,\nwhich may be calculated by multiplying this price value by the corresponding item count.",
+                        "description": "The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to\na single unit and is not an aggregated price value, which may be calculated by multiplying this price\nvalue by the corresponding item count.",
                         "type": "number",
                         "format": "float",
                         "example": 10.99

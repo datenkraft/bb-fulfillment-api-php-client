@@ -25,9 +25,9 @@ class OrderItem extends \ArrayObject
      */
     protected $title;
     /**
-     * Positive number of items. Always null for bundles
+     * Positive number of items
      *
-     * @var int|null
+     * @var int
      */
     protected $count;
     /**
@@ -43,9 +43,9 @@ class OrderItem extends \ArrayObject
      */
     protected $canceledCount;
     /**
-     * Number of available items, null for bundles.
+     * Number of available items
      *
-     * @var int|null
+     * @var int
      */
     protected $availableCount;
     /**
@@ -123,22 +123,22 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Positive number of items. Always null for bundles
+     * Positive number of items
      *
-     * @return int|null
+     * @return int
      */
-    public function getCount() : ?int
+    public function getCount() : int
     {
         return $this->count;
     }
     /**
-     * Positive number of items. Always null for bundles
+     * Positive number of items
      *
-     * @param int|null $count
+     * @param int $count
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -189,22 +189,22 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * Number of available items, null for bundles.
+     * Number of available items
      *
-     * @return int|null
+     * @return int
      */
-    public function getAvailableCount() : ?int
+    public function getAvailableCount() : int
     {
         return $this->availableCount;
     }
     /**
-     * Number of available items, null for bundles.
+     * Number of available items
      *
-     * @param int|null $availableCount
+     * @param int $availableCount
      *
      * @return self
      */
-    public function setAvailableCount(?int $availableCount) : self
+    public function setAvailableCount(int $availableCount) : self
     {
         $this->initialized['availableCount'] = true;
         $this->availableCount = $availableCount;

@@ -52,12 +52,9 @@ class BaseOrderItemNormalizer implements DenormalizerInterface, NormalizerInterf
         elseif (\array_key_exists('title', $data) && $data['title'] === null) {
             $object->setTitle(null);
         }
-        if (\array_key_exists('count', $data) && $data['count'] !== null) {
+        if (\array_key_exists('count', $data)) {
             $object->setCount($data['count']);
             unset($data['count']);
-        }
-        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
-            $object->setCount(null);
         }
         if (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] !== null) {
             $object->setExternalProductNumber($data['externalProductNumber']);
