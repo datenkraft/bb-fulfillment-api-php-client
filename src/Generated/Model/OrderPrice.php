@@ -13,12 +13,9 @@ class OrderPrice extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator.
-    Note:
-    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
-    for all ordered bundles.
-    - Other Products: This price value refers to a single unit and is not an aggregated price value,
-    which may be calculated by multiplying this price value by the corresponding item count.
+    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+    value by the corresponding item count.
     *
     * @var float
     */
@@ -42,12 +39,9 @@ class OrderPrice extends \ArrayObject
      */
     protected $currencyCode;
     /**
-    * The price value rounded to 2 decimals with a dot used as separator.
-    Note:
-    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
-    for all ordered bundles.
-    - Other Products: This price value refers to a single unit and is not an aggregated price value,
-    which may be calculated by multiplying this price value by the corresponding item count.
+    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+    value by the corresponding item count.
     *
     * @return float
     */
@@ -56,12 +50,9 @@ class OrderPrice extends \ArrayObject
         return $this->value;
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator.
-    Note:
-    - For Bundles: For products of productType 'bundle' this price value refers to and an aggregated price value
-    for all ordered bundles.
-    - Other Products: This price value refers to a single unit and is not an aggregated price value,
-    which may be calculated by multiplying this price value by the corresponding item count.
+    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+    value by the corresponding item count.
     *
     * @param float $value
     *
