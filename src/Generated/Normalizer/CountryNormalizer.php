@@ -53,6 +53,10 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setPhoneRequired($data['phoneRequired']);
             unset($data['phoneRequired']);
         }
+        if (\array_key_exists('streetNumberRequired', $data)) {
+            $object->setStreetNumberRequired($data['streetNumberRequired']);
+            unset($data['streetNumberRequired']);
+        }
         if (\array_key_exists('customsClearanceRequired', $data)) {
             $object->setCustomsClearanceRequired($data['customsClearanceRequired']);
             unset($data['customsClearanceRequired']);
@@ -93,6 +97,9 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('phoneRequired') && null !== $object->getPhoneRequired()) {
             $data['phoneRequired'] = $object->getPhoneRequired();
+        }
+        if ($object->isInitialized('streetNumberRequired') && null !== $object->getStreetNumberRequired()) {
+            $data['streetNumberRequired'] = $object->getStreetNumberRequired();
         }
         if ($object->isInitialized('customsClearanceRequired') && null !== $object->getCustomsClearanceRequired()) {
             $data['customsClearanceRequired'] = $object->getCustomsClearanceRequired();

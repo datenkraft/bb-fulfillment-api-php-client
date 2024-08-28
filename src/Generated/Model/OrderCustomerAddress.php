@@ -19,10 +19,12 @@ class OrderCustomerAddress extends \ArrayObject
      */
     protected $street;
     /**
-     * Note: Must not contain more than 5 letters
-     *
-     * @var string
-     */
+    * Must not contain more than 5 letters.\
+    The field is optional for addresses in certain countries (check with the `GET /country` endpoint), where the
+    street number should be provided in the `street` field.
+    *
+    * @var string|null
+    */
     protected $streetNumber;
     /**
      * 
@@ -80,22 +82,26 @@ class OrderCustomerAddress extends \ArrayObject
         return $this;
     }
     /**
-     * Note: Must not contain more than 5 letters
-     *
-     * @return string
-     */
-    public function getStreetNumber() : string
+    * Must not contain more than 5 letters.\
+    The field is optional for addresses in certain countries (check with the `GET /country` endpoint), where the
+    street number should be provided in the `street` field.
+    *
+    * @return string|null
+    */
+    public function getStreetNumber() : ?string
     {
         return $this->streetNumber;
     }
     /**
-     * Note: Must not contain more than 5 letters
-     *
-     * @param string $streetNumber
-     *
-     * @return self
-     */
-    public function setStreetNumber(string $streetNumber) : self
+    * Must not contain more than 5 letters.\
+    The field is optional for addresses in certain countries (check with the `GET /country` endpoint), where the
+    street number should be provided in the `street` field.
+    *
+    * @param string|null $streetNumber
+    *
+    * @return self
+    */
+    public function setStreetNumber(?string $streetNumber) : self
     {
         $this->initialized['streetNumber'] = true;
         $this->streetNumber = $streetNumber;
