@@ -25,11 +25,17 @@ class Country extends \ArrayObject
      */
     protected $name;
     /**
-     * Specifies whether or not a phone number is required when using a shipping address in the country
+     * Specifies whether or not a phone number is required when using a shipping address in this country
      *
      * @var bool
      */
     protected $phoneRequired;
+    /**
+     * Specifies whether or not a street number is required for addresses in this country
+     *
+     * @var bool
+     */
+    protected $streetNumberRequired;
     /**
      * Specifies whether or not customs clearance is necessary
      *
@@ -93,7 +99,7 @@ class Country extends \ArrayObject
         return $this;
     }
     /**
-     * Specifies whether or not a phone number is required when using a shipping address in the country
+     * Specifies whether or not a phone number is required when using a shipping address in this country
      *
      * @return bool
      */
@@ -102,7 +108,7 @@ class Country extends \ArrayObject
         return $this->phoneRequired;
     }
     /**
-     * Specifies whether or not a phone number is required when using a shipping address in the country
+     * Specifies whether or not a phone number is required when using a shipping address in this country
      *
      * @param bool $phoneRequired
      *
@@ -112,6 +118,28 @@ class Country extends \ArrayObject
     {
         $this->initialized['phoneRequired'] = true;
         $this->phoneRequired = $phoneRequired;
+        return $this;
+    }
+    /**
+     * Specifies whether or not a street number is required for addresses in this country
+     *
+     * @return bool
+     */
+    public function getStreetNumberRequired() : bool
+    {
+        return $this->streetNumberRequired;
+    }
+    /**
+     * Specifies whether or not a street number is required for addresses in this country
+     *
+     * @param bool $streetNumberRequired
+     *
+     * @return self
+     */
+    public function setStreetNumberRequired(bool $streetNumberRequired) : self
+    {
+        $this->initialized['streetNumberRequired'] = true;
+        $this->streetNumberRequired = $streetNumberRequired;
         return $this;
     }
     /**

@@ -45,9 +45,12 @@ class NewOrderCustomerinvoiceAddressNormalizer implements DenormalizerInterface,
             $object->setStreet($data['street']);
             unset($data['street']);
         }
-        if (\array_key_exists('streetNumber', $data)) {
+        if (\array_key_exists('streetNumber', $data) && $data['streetNumber'] !== null) {
             $object->setStreetNumber($data['streetNumber']);
             unset($data['streetNumber']);
+        }
+        elseif (\array_key_exists('streetNumber', $data) && $data['streetNumber'] === null) {
+            $object->setStreetNumber(null);
         }
         if (\array_key_exists('zipCode', $data)) {
             $object->setZipCode($data['zipCode']);
@@ -89,7 +92,9 @@ class NewOrderCustomerinvoiceAddressNormalizer implements DenormalizerInterface,
     {
         $data = array();
         $data['street'] = $object->getStreet();
-        $data['streetNumber'] = $object->getStreetNumber();
+        if ($object->isInitialized('streetNumber') && null !== $object->getStreetNumber()) {
+            $data['streetNumber'] = $object->getStreetNumber();
+        }
         $data['zipCode'] = $object->getZipCode();
         if ($object->isInitialized('district') && null !== $object->getDistrict()) {
             $data['district'] = $object->getDistrict();
