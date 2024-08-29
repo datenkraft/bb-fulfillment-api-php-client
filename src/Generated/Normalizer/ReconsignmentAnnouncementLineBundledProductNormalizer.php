@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ReconsignmentAnnouncementLineCollectionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ReconsignmentAnnouncementLineBundledProductNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class ReconsignmentAnnouncementLineCollectionNormalizer implements DenormalizerI
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLineCollection';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLineBundledProduct';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLineCollection';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLineBundledProduct';
     }
     /**
      * @return mixed
@@ -37,25 +37,21 @@ class ReconsignmentAnnouncementLineCollectionNormalizer implements DenormalizerI
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementLineCollection();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementLineBundledProduct();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('pagination', $data)) {
-            $object->setPagination($this->denormalizer->denormalize($data['pagination'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CollectionPagination', 'json', $context));
-            unset($data['pagination']);
+        if (\array_key_exists('productNumber', $data)) {
+            $object->setProductNumber($data['productNumber']);
+            unset($data['productNumber']);
         }
-        if (\array_key_exists('data', $data)) {
-            $values = array();
-            foreach ($data['data'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLine', 'json', $context);
-            }
-            $object->setData($values);
-            unset($data['data']);
+        if (\array_key_exists('count', $data)) {
+            $object->setCount($data['count']);
+            unset($data['count']);
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value;
             }
         }
         return $object;
@@ -66,19 +62,11 @@ class ReconsignmentAnnouncementLineCollectionNormalizer implements DenormalizerI
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if ($object->isInitialized('pagination') && null !== $object->getPagination()) {
-            $data['pagination'] = $this->normalizer->normalize($object->getPagination(), 'json', $context);
-        }
-        if ($object->isInitialized('data') && null !== $object->getData()) {
-            $values = array();
-            foreach ($object->getData() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
-            }
-            $data['data'] = $values;
-        }
-        foreach ($object as $key => $value_1) {
+        $data['productNumber'] = $object->getProductNumber();
+        $data['count'] = $object->getCount();
+        foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $data[$key] = $value;
             }
         }
         return $data;
