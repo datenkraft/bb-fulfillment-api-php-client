@@ -19,35 +19,41 @@ class ReconsignmentLine extends \ArrayObject
      */
     protected $productNumber;
     /**
-     * Number of items which have been put back to stock.
+     * Number of items which have been put back to stock. Null for bundles
      *
-     * @var int
+     * @var int|null
      */
     protected $putBackToStockCount;
     /**
-     * Number of items included in the reconsignment.
+     * Number of items included in the reconsignment. Null for bundles
      *
-     * @var int
+     * @var int|null
      */
     protected $count;
     /**
-     * Product unit
+     * Product unit.  Null for bundles
      *
-     * @var string
+     * @var string|null
      */
     protected $unit;
     /**
-     * Weight of a single product
+     * Weight of a single product.  Null for bundles
      *
-     * @var float
+     * @var float|null
      */
     protected $productWeight;
     /**
-     * Product weight unit
+     * Product weight unit.  Null for bundles
      *
-     * @var string
+     * @var string|null
      */
     protected $productWeightUnit;
+    /**
+     * 
+     *
+     * @var ReconsignmentLineBundledProduct[]|null
+     */
+    protected $bundledProducts;
     /**
      * 
      *
@@ -71,113 +77,135 @@ class ReconsignmentLine extends \ArrayObject
         return $this;
     }
     /**
-     * Number of items which have been put back to stock.
+     * Number of items which have been put back to stock. Null for bundles
      *
-     * @return int
+     * @return int|null
      */
-    public function getPutBackToStockCount() : int
+    public function getPutBackToStockCount() : ?int
     {
         return $this->putBackToStockCount;
     }
     /**
-     * Number of items which have been put back to stock.
+     * Number of items which have been put back to stock. Null for bundles
      *
-     * @param int $putBackToStockCount
+     * @param int|null $putBackToStockCount
      *
      * @return self
      */
-    public function setPutBackToStockCount(int $putBackToStockCount) : self
+    public function setPutBackToStockCount(?int $putBackToStockCount) : self
     {
         $this->initialized['putBackToStockCount'] = true;
         $this->putBackToStockCount = $putBackToStockCount;
         return $this;
     }
     /**
-     * Number of items included in the reconsignment.
+     * Number of items included in the reconsignment. Null for bundles
      *
-     * @return int
+     * @return int|null
      */
-    public function getCount() : int
+    public function getCount() : ?int
     {
         return $this->count;
     }
     /**
-     * Number of items included in the reconsignment.
+     * Number of items included in the reconsignment. Null for bundles
      *
-     * @param int $count
+     * @param int|null $count
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(?int $count) : self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
         return $this;
     }
     /**
-     * Product unit
+     * Product unit.  Null for bundles
      *
-     * @return string
+     * @return string|null
      */
-    public function getUnit() : string
+    public function getUnit() : ?string
     {
         return $this->unit;
     }
     /**
-     * Product unit
+     * Product unit.  Null for bundles
      *
-     * @param string $unit
+     * @param string|null $unit
      *
      * @return self
      */
-    public function setUnit(string $unit) : self
+    public function setUnit(?string $unit) : self
     {
         $this->initialized['unit'] = true;
         $this->unit = $unit;
         return $this;
     }
     /**
-     * Weight of a single product
+     * Weight of a single product.  Null for bundles
      *
-     * @return float
+     * @return float|null
      */
-    public function getProductWeight() : float
+    public function getProductWeight() : ?float
     {
         return $this->productWeight;
     }
     /**
-     * Weight of a single product
+     * Weight of a single product.  Null for bundles
      *
-     * @param float $productWeight
+     * @param float|null $productWeight
      *
      * @return self
      */
-    public function setProductWeight(float $productWeight) : self
+    public function setProductWeight(?float $productWeight) : self
     {
         $this->initialized['productWeight'] = true;
         $this->productWeight = $productWeight;
         return $this;
     }
     /**
-     * Product weight unit
+     * Product weight unit.  Null for bundles
      *
-     * @return string
+     * @return string|null
      */
-    public function getProductWeightUnit() : string
+    public function getProductWeightUnit() : ?string
     {
         return $this->productWeightUnit;
     }
     /**
-     * Product weight unit
+     * Product weight unit.  Null for bundles
      *
-     * @param string $productWeightUnit
+     * @param string|null $productWeightUnit
      *
      * @return self
      */
-    public function setProductWeightUnit(string $productWeightUnit) : self
+    public function setProductWeightUnit(?string $productWeightUnit) : self
     {
         $this->initialized['productWeightUnit'] = true;
         $this->productWeightUnit = $productWeightUnit;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return ReconsignmentLineBundledProduct[]|null
+     */
+    public function getBundledProducts() : ?array
+    {
+        return $this->bundledProducts;
+    }
+    /**
+     * 
+     *
+     * @param ReconsignmentLineBundledProduct[]|null $bundledProducts
+     *
+     * @return self
+     */
+    public function setBundledProducts(?array $bundledProducts) : self
+    {
+        $this->initialized['bundledProducts'] = true;
+        $this->bundledProducts = $bundledProducts;
         return $this;
     }
 }

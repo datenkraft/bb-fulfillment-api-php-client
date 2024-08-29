@@ -45,13 +45,27 @@ class ReconsignmentAnnouncementLineNormalizer implements DenormalizerInterface, 
             $object->setProductNumber($data['productNumber']);
             unset($data['productNumber']);
         }
-        if (\array_key_exists('count', $data)) {
+        if (\array_key_exists('count', $data) && $data['count'] !== null) {
             $object->setCount($data['count']);
             unset($data['count']);
         }
-        foreach ($data as $key => $value) {
+        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
+            $object->setCount(null);
+        }
+        if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
+            $values = array();
+            foreach ($data['bundledProducts'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLineBundledProduct', 'json', $context);
+            }
+            $object->setBundledProducts($values);
+            unset($data['bundledProducts']);
+        }
+        elseif (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] === null) {
+            $object->setBundledProducts(null);
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -63,10 +77,19 @@ class ReconsignmentAnnouncementLineNormalizer implements DenormalizerInterface, 
     {
         $data = array();
         $data['productNumber'] = $object->getProductNumber();
-        $data['count'] = $object->getCount();
-        foreach ($object as $key => $value) {
+        if ($object->isInitialized('count') && null !== $object->getCount()) {
+            $data['count'] = $object->getCount();
+        }
+        if ($object->isInitialized('bundledProducts') && null !== $object->getBundledProducts()) {
+            $values = array();
+            foreach ($object->getBundledProducts() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $data['bundledProducts'] = $values;
+        }
+        foreach ($object as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $data[$key] = $value_1;
             }
         }
         return $data;
