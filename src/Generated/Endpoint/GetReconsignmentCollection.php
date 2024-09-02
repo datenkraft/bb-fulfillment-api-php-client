@@ -27,6 +27,17 @@ class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\Fulfillment
     The default sort order is reconsignmentDate:desc.
     *     @var string $filter[shopCode] The shop to which the reconsignments belongs to.
     *     @var string $filter[orderNumber] The order number which the reconsignments belong to.
+    *     @var bool $filter[reconsignmentWasPreAnnounced] Filter for reconsignments that were pre-announced (true) or not (false).
+    *     @var string $filter[search] Filter for reconsignment search.
+    
+    Usage:
+    - Provide one or multiple search terms (min. 2 characters) to filter results.
+    - Multiple search terms are separated by spaces.
+    - The search is not case sensitive.
+    - The search is enabled for the fields 'reconsignmentNumber' and 'orderNumber'.
+    - Each search term filters the response for reconsignment announcements where at least one of the fields contains the search term.
+    - For example, filter[search]='term1 term2' will filter the result for reconsignment announcements where 'term1' is found in any field and 'term2' is also found in any field.\
+    If only 'term1' or 'term2' is found in the fields, the reconsignment announcement is not included in the results.
     *     @var string $filter[reconsignmentDateFrom] filter for reconsignmentDate format in ISO 8601 with UTC offsets
     *     @var string $filter[reconsignmentDateTo] filter for reconsignmentDate format in ISO 8601 with UTC offsets
     * }
@@ -55,7 +66,7 @@ class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\Fulfillment
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[orderNumber]', 'filter[reconsignmentDateFrom]', 'filter[reconsignmentDateTo]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[orderNumber]', 'filter[reconsignmentWasPreAnnounced]', 'filter[search]', 'filter[reconsignmentDateFrom]', 'filter[reconsignmentDateTo]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -64,6 +75,8 @@ class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\Fulfillment
         $optionsResolver->addAllowedTypes('sortBy', array('string'));
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[orderNumber]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[reconsignmentWasPreAnnounced]', array('bool'));
+        $optionsResolver->addAllowedTypes('filter[search]', array('string'));
         $optionsResolver->addAllowedTypes('filter[reconsignmentDateFrom]', array('string'));
         $optionsResolver->addAllowedTypes('filter[reconsignmentDateTo]', array('string'));
         return $optionsResolver;
