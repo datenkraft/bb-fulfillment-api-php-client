@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class BaseReconsignmentAnnouncementNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BaseReconsignmentAnnouncementOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class BaseReconsignmentAnnouncementNormalizer implements DenormalizerInterface, 
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseReconsignmentAnnouncement';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseReconsignmentAnnouncementOptions';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseReconsignmentAnnouncement';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseReconsignmentAnnouncementOptions';
     }
     /**
      * @return mixed
@@ -37,20 +37,9 @@ class BaseReconsignmentAnnouncementNormalizer implements DenormalizerInterface, 
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncement();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncementOptions();
         if (null === $data || false === \is_array($data)) {
             return $object;
-        }
-        if (\array_key_exists('reconsignmentReason', $data)) {
-            $object->setReconsignmentReason($data['reconsignmentReason']);
-            unset($data['reconsignmentReason']);
-        }
-        if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseReconsignmentAnnouncementOptions', 'json', $context));
-            unset($data['options']);
-        }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -65,12 +54,6 @@ class BaseReconsignmentAnnouncementNormalizer implements DenormalizerInterface, 
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if ($object->isInitialized('reconsignmentReason') && null !== $object->getReconsignmentReason()) {
-            $data['reconsignmentReason'] = $object->getReconsignmentReason();
-        }
-        if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $data['options'] = $this->normalizer->normalize($object->getOptions(), 'json', $context);
-        }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

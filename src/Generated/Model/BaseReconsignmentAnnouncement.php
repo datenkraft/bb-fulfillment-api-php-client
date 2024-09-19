@@ -19,6 +19,12 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
      */
     protected $reconsignmentReason;
     /**
+     * Additional options for a reconsignment announcement (optional).
+     *
+     * @var BaseReconsignmentAnnouncementOptions|null
+     */
+    protected $options;
+    /**
      * The reason for reconsignment.
      *
      * @return string
@@ -38,6 +44,28 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
     {
         $this->initialized['reconsignmentReason'] = true;
         $this->reconsignmentReason = $reconsignmentReason;
+        return $this;
+    }
+    /**
+     * Additional options for a reconsignment announcement (optional).
+     *
+     * @return BaseReconsignmentAnnouncementOptions|null
+     */
+    public function getOptions() : ?BaseReconsignmentAnnouncementOptions
+    {
+        return $this->options;
+    }
+    /**
+     * Additional options for a reconsignment announcement (optional).
+     *
+     * @param BaseReconsignmentAnnouncementOptions|null $options
+     *
+     * @return self
+     */
+    public function setOptions(?BaseReconsignmentAnnouncementOptions $options) : self
+    {
+        $this->initialized['options'] = true;
+        $this->options = $options;
         return $this;
     }
 }
