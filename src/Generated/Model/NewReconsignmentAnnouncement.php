@@ -19,6 +19,12 @@ class NewReconsignmentAnnouncement extends \ArrayObject
      */
     protected $reconsignmentReason;
     /**
+     * Additional options for a new reconsignment announcement (optional).
+     *
+     * @var NewReconsignmentAnnouncementOptions|null
+     */
+    protected $options;
+    /**
      * 
      *
      * @var NewReconsignmentAnnouncementLine[]
@@ -44,6 +50,28 @@ class NewReconsignmentAnnouncement extends \ArrayObject
     {
         $this->initialized['reconsignmentReason'] = true;
         $this->reconsignmentReason = $reconsignmentReason;
+        return $this;
+    }
+    /**
+     * Additional options for a new reconsignment announcement (optional).
+     *
+     * @return NewReconsignmentAnnouncementOptions|null
+     */
+    public function getOptions() : ?NewReconsignmentAnnouncementOptions
+    {
+        return $this->options;
+    }
+    /**
+     * Additional options for a new reconsignment announcement (optional).
+     *
+     * @param NewReconsignmentAnnouncementOptions|null $options
+     *
+     * @return self
+     */
+    public function setOptions(?NewReconsignmentAnnouncementOptions $options) : self
+    {
+        $this->initialized['options'] = true;
+        $this->options = $options;
         return $this;
     }
     /**
