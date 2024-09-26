@@ -5,7 +5,7 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-    * Get deliveries filtered by a single or multiple order numbers.
+    * Get a collection of deliveries.
     *
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
@@ -21,6 +21,7 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     - The filter can contain a maximum of 100 order numbers.
     - The order numbers in the filter must be unique.
     - A single order number can have a maximum length of 59 characters.
+    *     @var bool $filter[allShipmentsHaveExternalShipmentIds] A filter to only return deliveries where all shipments have an external shipment ID or not.
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -47,14 +48,15 @@ class GetDeliveryCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'shopCode', 'filter[orderNumber]'));
-        $optionsResolver->setRequired(array('filter[orderNumber]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'shopCode', 'filter[orderNumber]', 'filter[allShipmentsHaveExternalShipmentIds]'));
+        $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
         $optionsResolver->addAllowedTypes('pageSize', array('int'));
         $optionsResolver->addAllowedTypes('paginationMode', array('string'));
         $optionsResolver->addAllowedTypes('shopCode', array('string'));
         $optionsResolver->addAllowedTypes('filter[orderNumber]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[allShipmentsHaveExternalShipmentIds]', array('bool'));
         return $optionsResolver;
     }
     /**

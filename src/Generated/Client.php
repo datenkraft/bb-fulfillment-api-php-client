@@ -348,7 +348,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetDeliveryServiceCollection($queryParameters), $fetch);
     }
     /**
-    * Get deliveries filtered by a single or multiple order numbers.
+    * Get a collection of deliveries.
     *
     * @param array $queryParameters {
     *     @var int $page The page to read. Default is the first page.
@@ -364,6 +364,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - The filter can contain a maximum of 100 order numbers.
     - The order numbers in the filter must be unique.
     - A single order number can have a maximum length of 59 characters.
+    *     @var bool $filter[allShipmentsHaveExternalShipmentIds] A filter to only return deliveries where all shipments have an external shipment ID or not.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetDeliveryCollectionBadRequestException
