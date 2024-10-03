@@ -43,10 +43,11 @@ class NewOrderCustomer extends \ArrayObject
      */
     protected $email;
     /**
-     * The customer's phone number, preferably in the DIN 5008 format, like: +43 2236 123456-7890
-     *
-     * @var string|null
-     */
+    * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
+    Parenthesis for example are not valid.
+    *
+    * @var string|null
+    */
     protected $phone;
     /**
     * The customer's first name.\
@@ -212,21 +213,23 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * The customer's phone number, preferably in the DIN 5008 format, like: +43 2236 123456-7890
-     *
-     * @return string|null
-     */
+    * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
+    Parenthesis for example are not valid.
+    *
+    * @return string|null
+    */
     public function getPhone() : ?string
     {
         return $this->phone;
     }
     /**
-     * The customer's phone number, preferably in the DIN 5008 format, like: +43 2236 123456-7890
-     *
-     * @param string|null $phone
-     *
-     * @return self
-     */
+    * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
+    Parenthesis for example are not valid.
+    *
+    * @param string|null $phone
+    *
+    * @return self
+    */
     public function setPhone(?string $phone) : self
     {
         $this->initialized['phone'] = true;
