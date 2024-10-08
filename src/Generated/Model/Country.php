@@ -31,12 +31,6 @@ class Country extends \ArrayObject
      */
     protected $phoneRequired;
     /**
-     * Specifies whether or not a street number is required for addresses in this country
-     *
-     * @var bool
-     */
-    protected $streetNumberRequired;
-    /**
      * Specifies whether or not customs clearance is necessary
      *
      * @var bool
@@ -118,28 +112,6 @@ class Country extends \ArrayObject
     {
         $this->initialized['phoneRequired'] = true;
         $this->phoneRequired = $phoneRequired;
-        return $this;
-    }
-    /**
-     * Specifies whether or not a street number is required for addresses in this country
-     *
-     * @return bool
-     */
-    public function getStreetNumberRequired() : bool
-    {
-        return $this->streetNumberRequired;
-    }
-    /**
-     * Specifies whether or not a street number is required for addresses in this country
-     *
-     * @param bool $streetNumberRequired
-     *
-     * @return self
-     */
-    public function setStreetNumberRequired(bool $streetNumberRequired) : self
-    {
-        $this->initialized['streetNumberRequired'] = true;
-        $this->streetNumberRequired = $streetNumberRequired;
         return $this;
     }
     /**

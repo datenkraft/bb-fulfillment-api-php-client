@@ -20,8 +20,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
     protected $street;
     /**
     * Must not contain more than 5 letters.\
-    The field is optional for addresses in certain countries (check with the `GET /country` endpoint), where the
-    street number should be provided in the `street` field.
+    Providing the street number separately is optional.
     *
     * @var string|null
     */
@@ -95,8 +94,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
     }
     /**
     * Must not contain more than 5 letters.\
-    The field is optional for addresses in certain countries (check with the `GET /country` endpoint), where the
-    street number should be provided in the `street` field.
+    Providing the street number separately is optional.
     *
     * @return string|null
     */
@@ -106,8 +104,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
     }
     /**
     * Must not contain more than 5 letters.\
-    The field is optional for addresses in certain countries (check with the `GET /country` endpoint), where the
-    street number should be provided in the `street` field.
+    Providing the street number separately is optional.
     *
     * @param string|null $streetNumber
     *
