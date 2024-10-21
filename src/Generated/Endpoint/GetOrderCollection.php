@@ -34,6 +34,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     *     @var string $filter[externalOrderReference] filter for externalOrderReference
     *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
     *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
+    *     @var string $filter[orderNumber] Filter for order number(s).
     *     @var string $filter[search] filter for order search.
     
     Usage:
@@ -78,7 +79,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]', 'filter[externalOrderReference]', 'filter[orderDateFrom]', 'filter[orderDateTo]', 'filter[search]', 'filter[deliverabilityStatus]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[status]', 'filter[externalOrderId]', 'filter[externalCustomerId]', 'filter[externalOrderReference]', 'filter[orderDateFrom]', 'filter[orderDateTo]', 'filter[orderNumber]', 'filter[search]', 'filter[deliverabilityStatus]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -92,6 +93,7 @@ class GetOrderCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gene
         $optionsResolver->addAllowedTypes('filter[externalOrderReference]', array('string'));
         $optionsResolver->addAllowedTypes('filter[orderDateFrom]', array('string'));
         $optionsResolver->addAllowedTypes('filter[orderDateTo]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[orderNumber]', array('string'));
         $optionsResolver->addAllowedTypes('filter[search]', array('string'));
         $optionsResolver->addAllowedTypes('filter[deliverabilityStatus]', array('string'));
         return $optionsResolver;

@@ -812,6 +812,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[externalOrderReference] filter for externalOrderReference
     *     @var string $filter[orderDateFrom] filter for orderDate format in ISO 8601 with UTC offsets
     *     @var string $filter[orderDateTo] filter for orderDate format in ISO 8601 with UTC offsets
+    *     @var string $filter[orderNumber] Filter for order number(s).
     *     @var string $filter[search] filter for order search.
     
     Usage:
