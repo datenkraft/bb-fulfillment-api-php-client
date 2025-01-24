@@ -105,6 +105,10 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setBrandNumber($data['brandNumber']);
             unset($data['brandNumber']);
         }
+        if (\array_key_exists('dimensions', $data)) {
+            $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDraftDimensions', 'json', $context));
+            unset($data['dimensions']);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -156,6 +160,9 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if ($object->isInitialized('brandNumber') && null !== $object->getBrandNumber()) {
             $data['brandNumber'] = $object->getBrandNumber();
+        }
+        if ($object->isInitialized('dimensions') && null !== $object->getDimensions()) {
+            $data['dimensions'] = $this->normalizer->normalize($object->getDimensions(), 'json', $context);
         }
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

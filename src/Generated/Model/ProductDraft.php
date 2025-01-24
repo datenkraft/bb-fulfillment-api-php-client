@@ -98,6 +98,12 @@ class ProductDraft extends \ArrayObject
     */
     protected $brandNumber;
     /**
+     * Dimensions of the product
+     *
+     * @var BaseProductDraftDimensions
+     */
+    protected $dimensions;
+    /**
      * The shop to which the product belongs
      *
      * @var string
@@ -436,6 +442,28 @@ class ProductDraft extends \ArrayObject
     {
         $this->initialized['brandNumber'] = true;
         $this->brandNumber = $brandNumber;
+        return $this;
+    }
+    /**
+     * Dimensions of the product
+     *
+     * @return BaseProductDraftDimensions
+     */
+    public function getDimensions() : BaseProductDraftDimensions
+    {
+        return $this->dimensions;
+    }
+    /**
+     * Dimensions of the product
+     *
+     * @param BaseProductDraftDimensions $dimensions
+     *
+     * @return self
+     */
+    public function setDimensions(BaseProductDraftDimensions $dimensions) : self
+    {
+        $this->initialized['dimensions'] = true;
+        $this->dimensions = $dimensions;
         return $this;
     }
     /**

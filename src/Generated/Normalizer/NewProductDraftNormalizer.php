@@ -105,6 +105,10 @@ class NewProductDraftNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setBrandNumber($data['brandNumber']);
             unset($data['brandNumber']);
         }
+        if (\array_key_exists('dimensions', $data)) {
+            $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDraftDimensions', 'json', $context));
+            unset($data['dimensions']);
+        }
         if (\array_key_exists('contentsUnit', $data)) {
             $object->setContentsUnit($data['contentsUnit']);
             unset($data['contentsUnit']);
@@ -160,6 +164,9 @@ class NewProductDraftNormalizer implements DenormalizerInterface, NormalizerInte
         }
         if ($object->isInitialized('brandNumber') && null !== $object->getBrandNumber()) {
             $data['brandNumber'] = $object->getBrandNumber();
+        }
+        if ($object->isInitialized('dimensions') && null !== $object->getDimensions()) {
+            $data['dimensions'] = $this->normalizer->normalize($object->getDimensions(), 'json', $context);
         }
         if ($object->isInitialized('contentsUnit') && null !== $object->getContentsUnit()) {
             $data['contentsUnit'] = $object->getContentsUnit();
