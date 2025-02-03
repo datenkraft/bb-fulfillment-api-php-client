@@ -13,25 +13,25 @@ class BaseProductDraftDimensions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Width of the product
+     * Width of the product in cm
      *
      * @var float|null
      */
     protected $width;
     /**
-     * Height of the product
+     * Height of the product in cm
      *
      * @var float|null
      */
     protected $height;
     /**
-     * Depth of the product
+     * Depth of the product in cm
      *
      * @var float|null
      */
     protected $depth;
     /**
-     * Width of the product
+     * Width of the product in cm
      *
      * @return float|null
      */
@@ -40,7 +40,7 @@ class BaseProductDraftDimensions extends \ArrayObject
         return $this->width;
     }
     /**
-     * Width of the product
+     * Width of the product in cm
      *
      * @param float|null $width
      *
@@ -53,7 +53,7 @@ class BaseProductDraftDimensions extends \ArrayObject
         return $this;
     }
     /**
-     * Height of the product
+     * Height of the product in cm
      *
      * @return float|null
      */
@@ -62,7 +62,7 @@ class BaseProductDraftDimensions extends \ArrayObject
         return $this->height;
     }
     /**
-     * Height of the product
+     * Height of the product in cm
      *
      * @param float|null $height
      *
@@ -75,7 +75,7 @@ class BaseProductDraftDimensions extends \ArrayObject
         return $this;
     }
     /**
-     * Depth of the product
+     * Depth of the product in cm
      *
      * @return float|null
      */
@@ -84,7 +84,7 @@ class BaseProductDraftDimensions extends \ArrayObject
         return $this->depth;
     }
     /**
-     * Depth of the product
+     * Depth of the product in cm
      *
      * @param float|null $depth
      *
