@@ -149,6 +149,12 @@ class Product extends \ArrayObject
      */
     protected $productTitleOriginal;
     /**
+     * 
+     *
+     * @var ProductImage
+     */
+    protected $image;
+    /**
      * Short description of the article.
      *
      * @var string|null
@@ -745,6 +751,28 @@ class Product extends \ArrayObject
     {
         $this->initialized['productTitleOriginal'] = true;
         $this->productTitleOriginal = $productTitleOriginal;
+        return $this;
+    }
+    /**
+     * 
+     *
+     * @return ProductImage
+     */
+    public function getImage() : ProductImage
+    {
+        return $this->image;
+    }
+    /**
+     * 
+     *
+     * @param ProductImage $image
+     *
+     * @return self
+     */
+    public function setImage(ProductImage $image) : self
+    {
+        $this->initialized['image'] = true;
+        $this->image = $image;
         return $this;
     }
     /**

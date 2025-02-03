@@ -51,6 +51,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     Use '_availableOrInStock' to only return products that are available or in stock. \
     Use '_notAvailableAndOutOfStock' to only return products that are not available and out of stock.
     *     @var string $filter[productType] Filter for product type.
+    *     @var bool $filter[hasProductImage] A filter to only return products where a product image is present.
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -77,7 +78,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[search]', 'filter[source]', 'filter[productNumber]', 'filter[productAvailabilityStatus]', 'filter[productType]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'sortBy', 'filter[shopCode]', 'filter[search]', 'filter[source]', 'filter[productNumber]', 'filter[productAvailabilityStatus]', 'filter[productType]', 'filter[hasProductImage]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -90,6 +91,7 @@ class GetProductCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Ge
         $optionsResolver->addAllowedTypes('filter[productNumber]', array('string'));
         $optionsResolver->addAllowedTypes('filter[productAvailabilityStatus]', array('string'));
         $optionsResolver->addAllowedTypes('filter[productType]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[hasProductImage]', array('bool'));
         return $optionsResolver;
     }
     /**

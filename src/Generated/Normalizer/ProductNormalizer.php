@@ -193,6 +193,10 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('productTitleOriginal', $data) && $data['productTitleOriginal'] === null) {
             $object->setProductTitleOriginal(null);
         }
+        if (\array_key_exists('image', $data)) {
+            $object->setImage($this->denormalizer->denormalize($data['image'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImage', 'json', $context));
+            unset($data['image']);
+        }
         if (\array_key_exists('articleShortDescription', $data) && $data['articleShortDescription'] !== null) {
             $object->setArticleShortDescription($data['articleShortDescription']);
             unset($data['articleShortDescription']);
@@ -364,6 +368,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('productTitleOriginal') && null !== $object->getProductTitleOriginal()) {
             $data['productTitleOriginal'] = $object->getProductTitleOriginal();
+        }
+        if ($object->isInitialized('image') && null !== $object->getImage()) {
+            $data['image'] = $this->normalizer->normalize($object->getImage(), 'json', $context);
         }
         if ($object->isInitialized('articleShortDescription') && null !== $object->getArticleShortDescription()) {
             $data['articleShortDescription'] = $object->getArticleShortDescription();

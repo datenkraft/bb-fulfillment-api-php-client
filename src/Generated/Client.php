@@ -1258,6 +1258,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     Use '_availableOrInStock' to only return products that are available or in stock. \
     Use '_notAvailableAndOutOfStock' to only return products that are not available and out of stock.
     *     @var string $filter[productType] Filter for product type.
+    *     @var bool $filter[hasProductImage] A filter to only return products where a product image is present.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductCollectionBadRequestException
