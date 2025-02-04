@@ -819,8 +819,9 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - Provide one or multiple search terms (min. 2 characters) to filter results.
     - Multiple search terms are separated by spaces.
     - The search is not case sensitive.
-    - The search is enabled for the fields 'externalOrderReference', 'orderNumber' and the tracking code of
-    the orders shipments.
+    - The search is enabled for the fields 'externalOrderReference', 'externalOrderId',
+    'customer.deliveryAddress.nameLine1', 'customer.deliveryAddress.nameLine2', 'orderNumber' and the
+    tracking code of the orders shipments.
     - Each search term filters the response for orders where at least one of the fields contains the search
     term.
     - For example, filter[search]='term1 term2' will filter the result for orders where 'term1' is found in
