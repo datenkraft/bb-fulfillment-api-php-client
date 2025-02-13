@@ -45,7 +45,7 @@ class ProductDraft extends \ArrayObject
     /**
      * The EAN of the product
      *
-     * @var string|null
+     * @var string
      */
     protected $ean;
     /**
@@ -257,20 +257,20 @@ class ProductDraft extends \ArrayObject
     /**
      * The EAN of the product
      *
-     * @return string|null
+     * @return string
      */
-    public function getEan() : ?string
+    public function getEan() : string
     {
         return $this->ean;
     }
     /**
      * The EAN of the product
      *
-     * @param string|null $ean
+     * @param string $ean
      *
      * @return self
      */
-    public function setEan(?string $ean) : self
+    public function setEan(string $ean) : self
     {
         $this->initialized['ean'] = true;
         $this->ean = $ean;

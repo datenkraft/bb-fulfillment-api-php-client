@@ -50,26 +50,17 @@ class BaseProductDraftDimensionsNormalizer implements DenormalizerInterface, Nor
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
-        if (\array_key_exists('width', $data) && $data['width'] !== null) {
+        if (\array_key_exists('width', $data)) {
             $object->setWidth($data['width']);
             unset($data['width']);
         }
-        elseif (\array_key_exists('width', $data) && $data['width'] === null) {
-            $object->setWidth(null);
-        }
-        if (\array_key_exists('height', $data) && $data['height'] !== null) {
+        if (\array_key_exists('height', $data)) {
             $object->setHeight($data['height']);
             unset($data['height']);
         }
-        elseif (\array_key_exists('height', $data) && $data['height'] === null) {
-            $object->setHeight(null);
-        }
-        if (\array_key_exists('depth', $data) && $data['depth'] !== null) {
+        if (\array_key_exists('depth', $data)) {
             $object->setDepth($data['depth']);
             unset($data['depth']);
-        }
-        elseif (\array_key_exists('depth', $data) && $data['depth'] === null) {
-            $object->setDepth(null);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -84,15 +75,9 @@ class BaseProductDraftDimensionsNormalizer implements DenormalizerInterface, Nor
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if ($object->isInitialized('width') && null !== $object->getWidth()) {
-            $data['width'] = $object->getWidth();
-        }
-        if ($object->isInitialized('height') && null !== $object->getHeight()) {
-            $data['height'] = $object->getHeight();
-        }
-        if ($object->isInitialized('depth') && null !== $object->getDepth()) {
-            $data['depth'] = $object->getDepth();
-        }
+        $data['width'] = $object->getWidth();
+        $data['height'] = $object->getHeight();
+        $data['depth'] = $object->getDepth();
         foreach ($object as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $data[$key] = $value;

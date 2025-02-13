@@ -70,12 +70,9 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setWeightGram($data['weightGram']);
             unset($data['weightGram']);
         }
-        if (\array_key_exists('ean', $data) && $data['ean'] !== null) {
+        if (\array_key_exists('ean', $data)) {
             $object->setEan($data['ean']);
             unset($data['ean']);
-        }
-        elseif (\array_key_exists('ean', $data) && $data['ean'] === null) {
-            $object->setEan(null);
         }
         if (\array_key_exists('taricCode', $data)) {
             $object->setTaricCode($data['taricCode']);
