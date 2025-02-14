@@ -15,38 +15,38 @@ class BaseProductDraftDimensions extends \ArrayObject
     /**
      * Width of the product in cm
      *
-     * @var float|null
+     * @var float
      */
     protected $width;
     /**
      * Height of the product in cm
      *
-     * @var float|null
+     * @var float
      */
     protected $height;
     /**
      * Depth of the product in cm
      *
-     * @var float|null
+     * @var float
      */
     protected $depth;
     /**
      * Width of the product in cm
      *
-     * @return float|null
+     * @return float
      */
-    public function getWidth() : ?float
+    public function getWidth() : float
     {
         return $this->width;
     }
     /**
      * Width of the product in cm
      *
-     * @param float|null $width
+     * @param float $width
      *
      * @return self
      */
-    public function setWidth(?float $width) : self
+    public function setWidth(float $width) : self
     {
         $this->initialized['width'] = true;
         $this->width = $width;
@@ -55,20 +55,20 @@ class BaseProductDraftDimensions extends \ArrayObject
     /**
      * Height of the product in cm
      *
-     * @return float|null
+     * @return float
      */
-    public function getHeight() : ?float
+    public function getHeight() : float
     {
         return $this->height;
     }
     /**
      * Height of the product in cm
      *
-     * @param float|null $height
+     * @param float $height
      *
      * @return self
      */
-    public function setHeight(?float $height) : self
+    public function setHeight(float $height) : self
     {
         $this->initialized['height'] = true;
         $this->height = $height;
@@ -77,20 +77,20 @@ class BaseProductDraftDimensions extends \ArrayObject
     /**
      * Depth of the product in cm
      *
-     * @return float|null
+     * @return float
      */
-    public function getDepth() : ?float
+    public function getDepth() : float
     {
         return $this->depth;
     }
     /**
      * Depth of the product in cm
      *
-     * @param float|null $depth
+     * @param float $depth
      *
      * @return self
      */
-    public function setDepth(?float $depth) : self
+    public function setDepth(float $depth) : self
     {
         $this->initialized['depth'] = true;
         $this->depth = $depth;
