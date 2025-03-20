@@ -285,6 +285,10 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReservedFor', 'json', $context));
             unset($data['reservedFor']);
         }
+        if (\array_key_exists('productOptions', $data)) {
+            $object->setProductOptions($data['productOptions']);
+            unset($data['productOptions']);
+        }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_2;
@@ -419,6 +423,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('reservedFor') && null !== $object->getReservedFor()) {
             $data['reservedFor'] = $this->normalizer->normalize($object->getReservedFor(), 'json', $context);
+        }
+        if ($object->isInitialized('productOptions') && null !== $object->getProductOptions()) {
+            $data['productOptions'] = $object->getProductOptions();
         }
         foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {

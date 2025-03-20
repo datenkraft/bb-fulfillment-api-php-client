@@ -272,6 +272,23 @@ class Product extends \ArrayObject
      */
     protected $reservedFor;
     /**
+    * Options for the product
+    - no_external_sales: Product is not available for external sales
+    - no_airmail_shipping: Product is not available for airmail shipping
+    - serial_number_required: Serial number is required for the product
+    - shipped_in_original_packaging: Product is shipped in original packaging
+    - extra_shipping_only: Extra shipping is required for the product
+    - dangerous_goods: Product is classified as dangerous goods
+    - trace_code_required: Trace code is required for the product
+    - refrigerated_product: Product is refrigerated
+    - heat_sensitive: Product is heat sensitive
+    - spedition_shipping_only: Product is only available for spedition shipping
+    - batch_required: Batch is required for the product
+    *
+    * @var string
+    */
+    protected $productOptions;
+    /**
      * Type of the product.
      *
      * @return string
@@ -1167,6 +1184,50 @@ class Product extends \ArrayObject
     {
         $this->initialized['reservedFor'] = true;
         $this->reservedFor = $reservedFor;
+        return $this;
+    }
+    /**
+    * Options for the product
+    - no_external_sales: Product is not available for external sales
+    - no_airmail_shipping: Product is not available for airmail shipping
+    - serial_number_required: Serial number is required for the product
+    - shipped_in_original_packaging: Product is shipped in original packaging
+    - extra_shipping_only: Extra shipping is required for the product
+    - dangerous_goods: Product is classified as dangerous goods
+    - trace_code_required: Trace code is required for the product
+    - refrigerated_product: Product is refrigerated
+    - heat_sensitive: Product is heat sensitive
+    - spedition_shipping_only: Product is only available for spedition shipping
+    - batch_required: Batch is required for the product
+    *
+    * @return string
+    */
+    public function getProductOptions() : string
+    {
+        return $this->productOptions;
+    }
+    /**
+    * Options for the product
+    - no_external_sales: Product is not available for external sales
+    - no_airmail_shipping: Product is not available for airmail shipping
+    - serial_number_required: Serial number is required for the product
+    - shipped_in_original_packaging: Product is shipped in original packaging
+    - extra_shipping_only: Extra shipping is required for the product
+    - dangerous_goods: Product is classified as dangerous goods
+    - trace_code_required: Trace code is required for the product
+    - refrigerated_product: Product is refrigerated
+    - heat_sensitive: Product is heat sensitive
+    - spedition_shipping_only: Product is only available for spedition shipping
+    - batch_required: Batch is required for the product
+    *
+    * @param string $productOptions
+    *
+    * @return self
+    */
+    public function setProductOptions(string $productOptions) : self
+    {
+        $this->initialized['productOptions'] = true;
+        $this->productOptions = $productOptions;
         return $this;
     }
 }
