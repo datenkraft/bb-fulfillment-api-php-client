@@ -57,11 +57,23 @@ class NewOrder extends \ArrayObject
     */
     protected $orderNotes;
     /**
-     * The amazon order id.
+     * The Amazon seller order id used when the order is coming from the Amazon marketplace.
      *
      * @var string|null
      */
-    protected $amazonOrderId;
+    protected $amazonSellerOrderId;
+    /**
+     * The Amazon vendor order id when sending orders to an Amazon warehouse for sales by Amazon.
+     *
+     * @var string|null
+     */
+    protected $amazonVendorOrderId;
+    /**
+     * The Amazon seller shipment id when sending a delivery to an Amazon warehouse for fulfillment by Amazon.
+     *
+     * @var string|null
+     */
+    protected $amazonFbaShipmentId;
     /**
      * 
      *
@@ -233,25 +245,69 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-     * The amazon order id.
+     * The Amazon seller order id used when the order is coming from the Amazon marketplace.
      *
      * @return string|null
      */
-    public function getAmazonOrderId() : ?string
+    public function getAmazonSellerOrderId() : ?string
     {
-        return $this->amazonOrderId;
+        return $this->amazonSellerOrderId;
     }
     /**
-     * The amazon order id.
+     * The Amazon seller order id used when the order is coming from the Amazon marketplace.
      *
-     * @param string|null $amazonOrderId
+     * @param string|null $amazonSellerOrderId
      *
      * @return self
      */
-    public function setAmazonOrderId(?string $amazonOrderId) : self
+    public function setAmazonSellerOrderId(?string $amazonSellerOrderId) : self
     {
-        $this->initialized['amazonOrderId'] = true;
-        $this->amazonOrderId = $amazonOrderId;
+        $this->initialized['amazonSellerOrderId'] = true;
+        $this->amazonSellerOrderId = $amazonSellerOrderId;
+        return $this;
+    }
+    /**
+     * The Amazon vendor order id when sending orders to an Amazon warehouse for sales by Amazon.
+     *
+     * @return string|null
+     */
+    public function getAmazonVendorOrderId() : ?string
+    {
+        return $this->amazonVendorOrderId;
+    }
+    /**
+     * The Amazon vendor order id when sending orders to an Amazon warehouse for sales by Amazon.
+     *
+     * @param string|null $amazonVendorOrderId
+     *
+     * @return self
+     */
+    public function setAmazonVendorOrderId(?string $amazonVendorOrderId) : self
+    {
+        $this->initialized['amazonVendorOrderId'] = true;
+        $this->amazonVendorOrderId = $amazonVendorOrderId;
+        return $this;
+    }
+    /**
+     * The Amazon seller shipment id when sending a delivery to an Amazon warehouse for fulfillment by Amazon.
+     *
+     * @return string|null
+     */
+    public function getAmazonFbaShipmentId() : ?string
+    {
+        return $this->amazonFbaShipmentId;
+    }
+    /**
+     * The Amazon seller shipment id when sending a delivery to an Amazon warehouse for fulfillment by Amazon.
+     *
+     * @param string|null $amazonFbaShipmentId
+     *
+     * @return self
+     */
+    public function setAmazonFbaShipmentId(?string $amazonFbaShipmentId) : self
+    {
+        $this->initialized['amazonFbaShipmentId'] = true;
+        $this->amazonFbaShipmentId = $amazonFbaShipmentId;
         return $this;
     }
     /**
