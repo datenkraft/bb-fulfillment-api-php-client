@@ -285,7 +285,7 @@ class Product extends \ArrayObject
     - spedition_shipping_only: Product is only available for spedition shipping
     - batch_required: Batch is required for the product
     *
-    * @var string
+    * @var string[]
     */
     protected $productOptions;
     /**
@@ -1200,9 +1200,9 @@ class Product extends \ArrayObject
     - spedition_shipping_only: Product is only available for spedition shipping
     - batch_required: Batch is required for the product
     *
-    * @return string
+    * @return string[]
     */
-    public function getProductOptions() : string
+    public function getProductOptions() : array
     {
         return $this->productOptions;
     }
@@ -1220,11 +1220,11 @@ class Product extends \ArrayObject
     - spedition_shipping_only: Product is only available for spedition shipping
     - batch_required: Batch is required for the product
     *
-    * @param string $productOptions
+    * @param string[] $productOptions
     *
     * @return self
     */
-    public function setProductOptions(string $productOptions) : self
+    public function setProductOptions(array $productOptions) : self
     {
         $this->initialized['productOptions'] = true;
         $this->productOptions = $productOptions;

@@ -286,12 +286,16 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             unset($data['reservedFor']);
         }
         if (\array_key_exists('productOptions', $data)) {
-            $object->setProductOptions($data['productOptions']);
+            $values_2 = array();
+            foreach ($data['productOptions'] as $value_2) {
+                $values_2[] = $value_2;
+            }
+            $object->setProductOptions($values_2);
             unset($data['productOptions']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -425,11 +429,15 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['reservedFor'] = $this->normalizer->normalize($object->getReservedFor(), 'json', $context);
         }
         if ($object->isInitialized('productOptions') && null !== $object->getProductOptions()) {
-            $data['productOptions'] = $object->getProductOptions();
+            $values_2 = array();
+            foreach ($object->getProductOptions() as $value_2) {
+                $values_2[] = $value_2;
+            }
+            $data['productOptions'] = $values_2;
         }
-        foreach ($object as $key => $value_2) {
+        foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_2;
+                $data[$key] = $value_3;
             }
         }
         return $data;
