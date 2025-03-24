@@ -88,12 +88,26 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
             $object->setOrderNotes(null);
         }
-        if (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] !== null) {
-            $object->setAmazonOrderId($data['amazonOrderId']);
-            unset($data['amazonOrderId']);
+        if (\array_key_exists('amazonSellerOrderId', $data) && $data['amazonSellerOrderId'] !== null) {
+            $object->setAmazonSellerOrderId($data['amazonSellerOrderId']);
+            unset($data['amazonSellerOrderId']);
         }
-        elseif (\array_key_exists('amazonOrderId', $data) && $data['amazonOrderId'] === null) {
-            $object->setAmazonOrderId(null);
+        elseif (\array_key_exists('amazonSellerOrderId', $data) && $data['amazonSellerOrderId'] === null) {
+            $object->setAmazonSellerOrderId(null);
+        }
+        if (\array_key_exists('amazonVendorOrderId', $data) && $data['amazonVendorOrderId'] !== null) {
+            $object->setAmazonVendorOrderId($data['amazonVendorOrderId']);
+            unset($data['amazonVendorOrderId']);
+        }
+        elseif (\array_key_exists('amazonVendorOrderId', $data) && $data['amazonVendorOrderId'] === null) {
+            $object->setAmazonVendorOrderId(null);
+        }
+        if (\array_key_exists('amazonFbaShipmentId', $data) && $data['amazonFbaShipmentId'] !== null) {
+            $object->setAmazonFbaShipmentId($data['amazonFbaShipmentId']);
+            unset($data['amazonFbaShipmentId']);
+        }
+        elseif (\array_key_exists('amazonFbaShipmentId', $data) && $data['amazonFbaShipmentId'] === null) {
+            $object->setAmazonFbaShipmentId(null);
         }
         if (\array_key_exists('deliveryCosts', $data) && $data['deliveryCosts'] !== null) {
             $values_1 = array();
@@ -212,8 +226,14 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($object->isInitialized('orderNotes') && null !== $object->getOrderNotes()) {
             $data['orderNotes'] = $object->getOrderNotes();
         }
-        if ($object->isInitialized('amazonOrderId') && null !== $object->getAmazonOrderId()) {
-            $data['amazonOrderId'] = $object->getAmazonOrderId();
+        if ($object->isInitialized('amazonSellerOrderId') && null !== $object->getAmazonSellerOrderId()) {
+            $data['amazonSellerOrderId'] = $object->getAmazonSellerOrderId();
+        }
+        if ($object->isInitialized('amazonVendorOrderId') && null !== $object->getAmazonVendorOrderId()) {
+            $data['amazonVendorOrderId'] = $object->getAmazonVendorOrderId();
+        }
+        if ($object->isInitialized('amazonFbaShipmentId') && null !== $object->getAmazonFbaShipmentId()) {
+            $data['amazonFbaShipmentId'] = $object->getAmazonFbaShipmentId();
         }
         if ($object->isInitialized('deliveryCosts') && null !== $object->getDeliveryCosts()) {
             $values_1 = array();
