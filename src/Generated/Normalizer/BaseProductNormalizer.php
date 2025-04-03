@@ -161,6 +161,10 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
             $object->setLanguageCode(null);
         }
+        if (\array_key_exists('dimensions', $data)) {
+            $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDimensions', 'json', $context));
+            unset($data['dimensions']);
+        }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_2;
@@ -229,6 +233,9 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         }
         if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
             $data['languageCode'] = $object->getLanguageCode();
+        }
+        if ($object->isInitialized('dimensions') && null !== $object->getDimensions()) {
+            $data['dimensions'] = $this->normalizer->normalize($object->getDimensions(), 'json', $context);
         }
         foreach ($object as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
