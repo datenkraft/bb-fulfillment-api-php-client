@@ -112,7 +112,7 @@ class Product extends \ArrayObject
     /**
      * Dimensions of the product
      *
-     * @var BaseProductDimensions
+     * @var BaseProductDimensions|null
      */
     protected $dimensions;
     /**
@@ -651,20 +651,20 @@ class Product extends \ArrayObject
     /**
      * Dimensions of the product
      *
-     * @return BaseProductDimensions
+     * @return BaseProductDimensions|null
      */
-    public function getDimensions() : BaseProductDimensions
+    public function getDimensions() : ?BaseProductDimensions
     {
         return $this->dimensions;
     }
     /**
      * Dimensions of the product
      *
-     * @param BaseProductDimensions $dimensions
+     * @param BaseProductDimensions|null $dimensions
      *
      * @return self
      */
-    public function setDimensions(BaseProductDimensions $dimensions) : self
+    public function setDimensions(?BaseProductDimensions $dimensions) : self
     {
         $this->initialized['dimensions'] = true;
         $this->dimensions = $dimensions;

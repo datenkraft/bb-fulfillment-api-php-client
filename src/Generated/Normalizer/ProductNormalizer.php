@@ -164,9 +164,12 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
             $object->setLanguageCode(null);
         }
-        if (\array_key_exists('dimensions', $data)) {
+        if (\array_key_exists('dimensions', $data) && $data['dimensions'] !== null) {
             $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDimensions', 'json', $context));
             unset($data['dimensions']);
+        }
+        elseif (\array_key_exists('dimensions', $data) && $data['dimensions'] === null) {
+            $object->setDimensions(null);
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
