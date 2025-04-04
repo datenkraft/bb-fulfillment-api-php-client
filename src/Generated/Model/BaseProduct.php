@@ -110,6 +110,12 @@ class BaseProduct extends \ArrayObject
      */
     protected $languageCode = 'de';
     /**
+     * Dimensions of the product
+     *
+     * @var BaseProductDimensions
+     */
+    protected $dimensions;
+    /**
      * Type of the product.
      *
      * @return string
@@ -461,6 +467,28 @@ class BaseProduct extends \ArrayObject
     {
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
+        return $this;
+    }
+    /**
+     * Dimensions of the product
+     *
+     * @return BaseProductDimensions
+     */
+    public function getDimensions() : BaseProductDimensions
+    {
+        return $this->dimensions;
+    }
+    /**
+     * Dimensions of the product
+     *
+     * @param BaseProductDimensions $dimensions
+     *
+     * @return self
+     */
+    public function setDimensions(BaseProductDimensions $dimensions) : self
+    {
+        $this->initialized['dimensions'] = true;
+        $this->dimensions = $dimensions;
         return $this;
     }
 }
