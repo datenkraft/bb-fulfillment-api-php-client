@@ -185,6 +185,12 @@ class Product extends \ArrayObject
      */
     protected $listPriceEUR;
     /**
+     * Gross or net.
+     *
+     * @var string
+     */
+    protected $priceType = 'gross';
+    /**
     * One of the available tax codes.
     - default: Default tax rate (in e.g. Austria 20 %)
     - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
@@ -906,6 +912,28 @@ class Product extends \ArrayObject
     {
         $this->initialized['listPriceEUR'] = true;
         $this->listPriceEUR = $listPriceEUR;
+        return $this;
+    }
+    /**
+     * Gross or net.
+     *
+     * @return string
+     */
+    public function getPriceType() : string
+    {
+        return $this->priceType;
+    }
+    /**
+     * Gross or net.
+     *
+     * @param string $priceType
+     *
+     * @return self
+     */
+    public function setPriceType(string $priceType) : self
+    {
+        $this->initialized['priceType'] = true;
+        $this->priceType = $priceType;
         return $this;
     }
     /**

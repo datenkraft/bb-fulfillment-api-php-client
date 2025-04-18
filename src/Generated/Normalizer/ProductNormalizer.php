@@ -232,6 +232,10 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('listPriceEUR', $data) && $data['listPriceEUR'] === null) {
             $object->setListPriceEUR(null);
         }
+        if (\array_key_exists('priceType', $data)) {
+            $object->setPriceType($data['priceType']);
+            unset($data['priceType']);
+        }
         if (\array_key_exists('taxCode', $data) && $data['taxCode'] !== null) {
             $object->setTaxCode($data['taxCode']);
             unset($data['taxCode']);
@@ -401,6 +405,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($object->isInitialized('listPriceEUR') && null !== $object->getListPriceEUR()) {
             $data['listPriceEUR'] = $object->getListPriceEUR();
+        }
+        if ($object->isInitialized('priceType') && null !== $object->getPriceType()) {
+            $data['priceType'] = $object->getPriceType();
         }
         if ($object->isInitialized('taxCode') && null !== $object->getTaxCode()) {
             $data['taxCode'] = $object->getTaxCode();
