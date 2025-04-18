@@ -65,7 +65,7 @@ class NewProductDraft extends \ArrayObject
      */
     protected $supplierPurchasePriceEUR;
     /**
-     * The net list price of the product in EUR
+     * The gross list price of the product in EUR
      *
      * @var float
      */
@@ -299,7 +299,7 @@ class NewProductDraft extends \ArrayObject
         return $this;
     }
     /**
-     * The net list price of the product in EUR
+     * The gross list price of the product in EUR
      *
      * @return float
      */
@@ -308,7 +308,7 @@ class NewProductDraft extends \ArrayObject
         return $this->listPriceEUR;
     }
     /**
-     * The net list price of the product in EUR
+     * The gross list price of the product in EUR
      *
      * @param float $listPriceEUR
      *
