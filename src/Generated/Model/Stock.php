@@ -34,19 +34,19 @@ class Stock extends \ArrayObject
     /**
     * Amount available for orders
     - the reserved amount for ongoing orders is subtracted
-    - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
+    - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
     *
     * @var int
     */
     protected $available;
     /**
-     * Amount of ongoing inbound deliveries
+     * Amount in ongoing inbound deliveries and processed in the receiving area but not yet stocked
      *
      * @var int
      */
     protected $incoming;
     /**
-     * Amount processed in the receiving area but not yet shelved
+     * Amount processed in the receiving area but not yet stocked
      *
      * @var int
      */
@@ -137,7 +137,7 @@ class Stock extends \ArrayObject
     /**
     * Amount available for orders
     - the reserved amount for ongoing orders is subtracted
-    - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
+    - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
     *
     * @return int
     */
@@ -148,7 +148,7 @@ class Stock extends \ArrayObject
     /**
     * Amount available for orders
     - the reserved amount for ongoing orders is subtracted
-    - if the overbookingPossibilityStatus is 'only_inbound_deliveries', the incoming amount is added
+    - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
     *
     * @param int $available
     *
@@ -161,7 +161,7 @@ class Stock extends \ArrayObject
         return $this;
     }
     /**
-     * Amount of ongoing inbound deliveries
+     * Amount in ongoing inbound deliveries and processed in the receiving area but not yet stocked
      *
      * @return int
      */
@@ -170,7 +170,7 @@ class Stock extends \ArrayObject
         return $this->incoming;
     }
     /**
-     * Amount of ongoing inbound deliveries
+     * Amount in ongoing inbound deliveries and processed in the receiving area but not yet stocked
      *
      * @param int $incoming
      *
@@ -183,7 +183,7 @@ class Stock extends \ArrayObject
         return $this;
     }
     /**
-     * Amount processed in the receiving area but not yet shelved
+     * Amount processed in the receiving area but not yet stocked
      *
      * @return int
      */
@@ -192,7 +192,7 @@ class Stock extends \ArrayObject
         return $this->locked;
     }
     /**
-     * Amount processed in the receiving area but not yet shelved
+     * Amount processed in the receiving area but not yet stocked
      *
      * @param int $locked
      *
