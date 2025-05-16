@@ -76,27 +76,6 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         elseif (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] === null) {
             $object->setAddTestSuffixToInternalReference(null);
         }
-        if (\array_key_exists('shopifyMultiShop', $data) && $data['shopifyMultiShop'] !== null) {
-            $object->setShopifyMultiShop($data['shopifyMultiShop']);
-            unset($data['shopifyMultiShop']);
-        }
-        elseif (\array_key_exists('shopifyMultiShop', $data) && $data['shopifyMultiShop'] === null) {
-            $object->setShopifyMultiShop(null);
-        }
-        if (\array_key_exists('shopifyDefaultShop', $data) && $data['shopifyDefaultShop'] !== null) {
-            $object->setShopifyDefaultShop($data['shopifyDefaultShop']);
-            unset($data['shopifyDefaultShop']);
-        }
-        elseif (\array_key_exists('shopifyDefaultShop', $data) && $data['shopifyDefaultShop'] === null) {
-            $object->setShopifyDefaultShop(null);
-        }
-        if (\array_key_exists('shopifyOrderCountryCode', $data) && $data['shopifyOrderCountryCode'] !== null) {
-            $object->setShopifyOrderCountryCode($data['shopifyOrderCountryCode']);
-            unset($data['shopifyOrderCountryCode']);
-        }
-        elseif (\array_key_exists('shopifyOrderCountryCode', $data) && $data['shopifyOrderCountryCode'] === null) {
-            $object->setShopifyOrderCountryCode(null);
-        }
         if (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] !== null) {
             $object->setInvoiceEnabled($data['invoiceEnabled']);
             unset($data['invoiceEnabled']);
@@ -152,15 +131,6 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
         }
         if ($object->isInitialized('addTestSuffixToInternalReference') && null !== $object->getAddTestSuffixToInternalReference()) {
             $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
-        }
-        if ($object->isInitialized('shopifyMultiShop') && null !== $object->getShopifyMultiShop()) {
-            $data['shopifyMultiShop'] = $object->getShopifyMultiShop();
-        }
-        if ($object->isInitialized('shopifyDefaultShop') && null !== $object->getShopifyDefaultShop()) {
-            $data['shopifyDefaultShop'] = $object->getShopifyDefaultShop();
-        }
-        if ($object->isInitialized('shopifyOrderCountryCode') && null !== $object->getShopifyOrderCountryCode()) {
-            $data['shopifyOrderCountryCode'] = $object->getShopifyOrderCountryCode();
         }
         if ($object->isInitialized('invoiceEnabled') && null !== $object->getInvoiceEnabled()) {
             $data['invoiceEnabled'] = $object->getInvoiceEnabled();

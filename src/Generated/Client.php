@@ -1658,11 +1658,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     - totalCount: The total number of items in the collection will be calculated.
     This can mean loss of performance.
     *     @var string $filter[meta][shopifyShopDomain] A filter for the Shopify hostname of the shop.
-    *     @var bool $filter[meta][shopifyDefaultShop] A filter for Shopify default shops.\
-    Note: For shops that are part of a Shopify installation that uses multiple shops,
-    only shops where meta.shopifyShopDefault is true will be considered as default shops.\
-    All shops that are used for a single shop Shopify installation will also be considered as default shops.
-    *     @var string $filter[meta][shopifyOrderCountryCode] A filter for the Shopify order country code (ISO 3166-1 alpha-2).
     *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
     *     @var string $filter[projectId] A filter for the projectId of a shop (optional).
     * }
