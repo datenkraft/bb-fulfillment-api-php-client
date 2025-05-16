@@ -43,27 +43,6 @@ class ShopMeta extends \ArrayObject
      */
     protected $addTestSuffixToInternalReference = false;
     /**
-     * Flag to mark the shop as part of a Shopify installation that uses multiple shops.
-     *
-     * @var bool|null
-     */
-    protected $shopifyMultiShop = false;
-    /**
-    * Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\
-    The default shop is used for e.g. fetching stock levels.
-    *
-    * @var bool|null
-    */
-    protected $shopifyDefaultShop = true;
-    /**
-    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify installation
-    that uses multiple shops.\
-    If a Shopify order matches this country code, it will be assigned to this shop.
-    *
-    * @var string|null
-    */
-    protected $shopifyOrderCountryCode;
-    /**
     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
     customers or not.
     *
@@ -197,78 +176,6 @@ class ShopMeta extends \ArrayObject
     {
         $this->initialized['addTestSuffixToInternalReference'] = true;
         $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
-        return $this;
-    }
-    /**
-     * Flag to mark the shop as part of a Shopify installation that uses multiple shops.
-     *
-     * @return bool|null
-     */
-    public function getShopifyMultiShop() : ?bool
-    {
-        return $this->shopifyMultiShop;
-    }
-    /**
-     * Flag to mark the shop as part of a Shopify installation that uses multiple shops.
-     *
-     * @param bool|null $shopifyMultiShop
-     *
-     * @return self
-     */
-    public function setShopifyMultiShop(?bool $shopifyMultiShop) : self
-    {
-        $this->initialized['shopifyMultiShop'] = true;
-        $this->shopifyMultiShop = $shopifyMultiShop;
-        return $this;
-    }
-    /**
-    * Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\
-    The default shop is used for e.g. fetching stock levels.
-    *
-    * @return bool|null
-    */
-    public function getShopifyDefaultShop() : ?bool
-    {
-        return $this->shopifyDefaultShop;
-    }
-    /**
-    * Flag to mark the shop as the default shop for a Shopify installation that uses multiple shops.\
-    The default shop is used for e.g. fetching stock levels.
-    *
-    * @param bool|null $shopifyDefaultShop
-    *
-    * @return self
-    */
-    public function setShopifyDefaultShop(?bool $shopifyDefaultShop) : self
-    {
-        $this->initialized['shopifyDefaultShop'] = true;
-        $this->shopifyDefaultShop = $shopifyDefaultShop;
-        return $this;
-    }
-    /**
-    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify installation
-    that uses multiple shops.\
-    If a Shopify order matches this country code, it will be assigned to this shop.
-    *
-    * @return string|null
-    */
-    public function getShopifyOrderCountryCode() : ?string
-    {
-        return $this->shopifyOrderCountryCode;
-    }
-    /**
-    * The order country code (ISO 3166-1 alpha-2) to identify which shop to use in a Shopify installation
-    that uses multiple shops.\
-    If a Shopify order matches this country code, it will be assigned to this shop.
-    *
-    * @param string|null $shopifyOrderCountryCode
-    *
-    * @return self
-    */
-    public function setShopifyOrderCountryCode(?string $shopifyOrderCountryCode) : self
-    {
-        $this->initialized['shopifyOrderCountryCode'] = true;
-        $this->shopifyOrderCountryCode = $shopifyOrderCountryCode;
         return $this;
     }
     /**
