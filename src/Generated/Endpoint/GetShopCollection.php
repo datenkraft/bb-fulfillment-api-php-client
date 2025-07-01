@@ -17,6 +17,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     *     @var string $filter[meta][shopifyShopDomain] A filter for the Shopify hostname of the shop.
     *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
     *     @var string $filter[projectId] A filter for the projectId of a shop (optional).
+    *     @var bool $filter[isActive] A filter to only return shops that are active or not.
     * }
     */
     public function __construct(array $queryParameters = array())
@@ -43,7 +44,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
     protected function getQueryOptionsResolver() : \Symfony\Component\OptionsResolver\OptionsResolver
     {
         $optionsResolver = parent::getQueryOptionsResolver();
-        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[meta][shopifyShopDomain]', 'filter[shopCode]', 'filter[projectId]'));
+        $optionsResolver->setDefined(array('page', 'pageSize', 'paginationMode', 'filter[meta][shopifyShopDomain]', 'filter[shopCode]', 'filter[projectId]', 'filter[isActive]'));
         $optionsResolver->setRequired(array());
         $optionsResolver->setDefaults(array('paginationMode' => 'default'));
         $optionsResolver->addAllowedTypes('page', array('int'));
@@ -52,6 +53,7 @@ class GetShopCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Gener
         $optionsResolver->addAllowedTypes('filter[meta][shopifyShopDomain]', array('string'));
         $optionsResolver->addAllowedTypes('filter[shopCode]', array('string'));
         $optionsResolver->addAllowedTypes('filter[projectId]', array('string'));
+        $optionsResolver->addAllowedTypes('filter[isActive]', array('bool'));
         return $optionsResolver;
     }
     /**

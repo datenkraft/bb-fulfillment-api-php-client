@@ -45,6 +45,10 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setEmail($data['email']);
             unset($data['email']);
         }
+        if (\array_key_exists('active', $data)) {
+            $object->setActive($data['active']);
+            unset($data['active']);
+        }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta', 'json', $context));
             unset($data['meta']);
@@ -67,6 +71,9 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
         $data = array();
         if ($object->isInitialized('email') && null !== $object->getEmail()) {
             $data['email'] = $object->getEmail();
+        }
+        if ($object->isInitialized('active') && null !== $object->getActive()) {
+            $data['active'] = $object->getActive();
         }
         if ($object->isInitialized('meta') && null !== $object->getMeta()) {
             $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);

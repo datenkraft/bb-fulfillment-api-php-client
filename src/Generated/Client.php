@@ -1660,6 +1660,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *     @var string $filter[meta][shopifyShopDomain] A filter for the Shopify hostname of the shop.
     *     @var string $filter[shopCode] A filter for one or more shopCode(s) of the shop(s) (optional).
     *     @var string $filter[projectId] A filter for the projectId of a shop (optional).
+    *     @var bool $filter[isActive] A filter to only return shops that are active or not.
     * }
     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopCollectionBadRequestException
