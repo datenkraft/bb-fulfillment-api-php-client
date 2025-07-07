@@ -50,7 +50,7 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['active']);
         }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta', 'json', $context));
+            $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopmeta', 'json', $context));
             unset($data['meta']);
         }
         elseif (\array_key_exists('meta', $data) && $data['meta'] === null) {

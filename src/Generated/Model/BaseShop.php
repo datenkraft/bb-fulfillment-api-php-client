@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class UpdateShop extends \ArrayObject
+class BaseShop extends \ArrayObject
 {
     /**
      * @var array
@@ -24,12 +24,6 @@ class UpdateShop extends \ArrayObject
      * @var bool
      */
     protected $active;
-    /**
-     * Meta data of the shop.
-     *
-     * @var UpdateShopmeta|null
-     */
-    protected $meta;
     /**
      * The email used internally.
      *
@@ -72,28 +66,6 @@ class UpdateShop extends \ArrayObject
     {
         $this->initialized['active'] = true;
         $this->active = $active;
-        return $this;
-    }
-    /**
-     * Meta data of the shop.
-     *
-     * @return UpdateShopmeta|null
-     */
-    public function getMeta() : ?UpdateShopmeta
-    {
-        return $this->meta;
-    }
-    /**
-     * Meta data of the shop.
-     *
-     * @param UpdateShopmeta|null $meta
-     *
-     * @return self
-     */
-    public function setMeta(?UpdateShopmeta $meta) : self
-    {
-        $this->initialized['meta'] = true;
-        $this->meta = $meta;
         return $this;
     }
 }

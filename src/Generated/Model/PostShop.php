@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Shop extends \ArrayObject
+class PostShop extends \ArrayObject
 {
     /**
      * @var array
@@ -12,12 +12,6 @@ class Shop extends \ArrayObject
     {
         return array_key_exists($property, $this->initialized);
     }
-    /**
-     * Id
-     *
-     * @var string
-     */
-    protected $id;
     /**
      * The shopCode used internally to distinguish between clients
      *
@@ -39,7 +33,7 @@ class Shop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @var Shopmeta|null
+     * @var PostShopmeta|null
      */
     protected $meta;
     /**
@@ -54,28 +48,6 @@ class Shop extends \ArrayObject
      * @var bool
      */
     protected $active;
-    /**
-     * Id
-     *
-     * @return string
-     */
-    public function getId() : string
-    {
-        return $this->id;
-    }
-    /**
-     * Id
-     *
-     * @param string $id
-     *
-     * @return self
-     */
-    public function setId(string $id) : self
-    {
-        $this->initialized['id'] = true;
-        $this->id = $id;
-        return $this;
-    }
     /**
      * The shopCode used internally to distinguish between clients
      *
@@ -145,20 +117,20 @@ class Shop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @return Shopmeta|null
+     * @return PostShopmeta|null
      */
-    public function getMeta() : ?Shopmeta
+    public function getMeta() : ?PostShopmeta
     {
         return $this->meta;
     }
     /**
      * Meta data of the shop.
      *
-     * @param Shopmeta|null $meta
+     * @param PostShopmeta|null $meta
      *
      * @return self
      */
-    public function setMeta(?Shopmeta $meta) : self
+    public function setMeta(?PostShopmeta $meta) : self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;

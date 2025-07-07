@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ShopMeta extends \ArrayObject
+class UpdateShopmeta extends \ArrayObject
 {
     /**
      * @var array
@@ -18,12 +18,6 @@ class ShopMeta extends \ArrayObject
      * @var string|null
      */
     protected $shopifyShopDomain;
-    /**
-     * Flag to mark a shop used for testing.
-     *
-     * @var bool|null
-     */
-    protected $testShop = false;
     /**
      * Date time to indicate that the test shop will not be reset before this time.
      *
@@ -42,13 +36,6 @@ class ShopMeta extends \ArrayObject
      * @var bool|null
      */
     protected $addTestSuffixToInternalReference = false;
-    /**
-    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
-    customers or not.
-    *
-    * @var bool|null
-    */
-    protected $invoiceEnabled = false;
     /**
      * Overwrite currency of shopify orders.
      *
@@ -88,28 +75,6 @@ class ShopMeta extends \ArrayObject
     {
         $this->initialized['shopifyShopDomain'] = true;
         $this->shopifyShopDomain = $shopifyShopDomain;
-        return $this;
-    }
-    /**
-     * Flag to mark a shop used for testing.
-     *
-     * @return bool|null
-     */
-    public function getTestShop() : ?bool
-    {
-        return $this->testShop;
-    }
-    /**
-     * Flag to mark a shop used for testing.
-     *
-     * @param bool|null $testShop
-     *
-     * @return self
-     */
-    public function setTestShop(?bool $testShop) : self
-    {
-        $this->initialized['testShop'] = true;
-        $this->testShop = $testShop;
         return $this;
     }
     /**
@@ -176,30 +141,6 @@ class ShopMeta extends \ArrayObject
     {
         $this->initialized['addTestSuffixToInternalReference'] = true;
         $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
-        return $this;
-    }
-    /**
-    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
-    customers or not.
-    *
-    * @return bool|null
-    */
-    public function getInvoiceEnabled() : ?bool
-    {
-        return $this->invoiceEnabled;
-    }
-    /**
-    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
-    customers or not.
-    *
-    * @param bool|null $invoiceEnabled
-    *
-    * @return self
-    */
-    public function setInvoiceEnabled(?bool $invoiceEnabled) : self
-    {
-        $this->initialized['invoiceEnabled'] = true;
-        $this->invoiceEnabled = $invoiceEnabled;
         return $this;
     }
     /**
