@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class PostShopNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shop';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\PostShop';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shop';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\PostShop';
     }
     /**
      * @return mixed
@@ -37,13 +37,9 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop();
         if (null === $data || false === \is_array($data)) {
             return $object;
-        }
-        if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
-            unset($data['id']);
         }
         if (\array_key_exists('shopCode', $data)) {
             $object->setShopCode($data['shopCode']);
@@ -58,7 +54,7 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             unset($data['projectId']);
         }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shopmeta', 'json', $context));
+            $object->setMeta($this->denormalizer->denormalize($data['meta'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\PostShopmeta', 'json', $context));
             unset($data['meta']);
         }
         elseif (\array_key_exists('meta', $data) && $data['meta'] === null) {
@@ -85,18 +81,9 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize($object, $format = null, array $context = array())
     {
         $data = array();
-        if ($object->isInitialized('id') && null !== $object->getId()) {
-            $data['id'] = $object->getId();
-        }
-        if ($object->isInitialized('shopCode') && null !== $object->getShopCode()) {
-            $data['shopCode'] = $object->getShopCode();
-        }
-        if ($object->isInitialized('internalReferencePrefix') && null !== $object->getInternalReferencePrefix()) {
-            $data['internalReferencePrefix'] = $object->getInternalReferencePrefix();
-        }
-        if ($object->isInitialized('projectId') && null !== $object->getProjectId()) {
-            $data['projectId'] = $object->getProjectId();
-        }
+        $data['shopCode'] = $object->getShopCode();
+        $data['internalReferencePrefix'] = $object->getInternalReferencePrefix();
+        $data['projectId'] = $object->getProjectId();
         if ($object->isInitialized('meta') && null !== $object->getMeta()) {
             $data['meta'] = $this->normalizer->normalize($object->getMeta(), 'json', $context);
         }

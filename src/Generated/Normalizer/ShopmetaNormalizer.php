@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class ShopmetaNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -20,11 +20,11 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
     use ValidatorTrait;
     public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta';
+        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shopmeta';
     }
     public function supportsNormalization($data, $format = null, array $context = array()) : bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopMeta';
+        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shopmeta';
     }
     /**
      * @return mixed
@@ -37,7 +37,7 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopMeta();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -47,6 +47,13 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] === null) {
             $object->setShopifyShopDomain(null);
+        }
+        if (\array_key_exists('testShop', $data) && $data['testShop'] !== null) {
+            $object->setTestShop($data['testShop']);
+            unset($data['testShop']);
+        }
+        elseif (\array_key_exists('testShop', $data) && $data['testShop'] === null) {
+            $object->setTestShop(null);
         }
         if (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] !== null) {
             $object->setTestShopResetNotBefore(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['testShopResetNotBefore']));
@@ -68,6 +75,13 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         }
         elseif (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] === null) {
             $object->setAddTestSuffixToInternalReference(null);
+        }
+        if (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] !== null) {
+            $object->setInvoiceEnabled($data['invoiceEnabled']);
+            unset($data['invoiceEnabled']);
+        }
+        elseif (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] === null) {
+            $object->setInvoiceEnabled(null);
         }
         if (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] !== null) {
             $object->setDefaultCurrency($data['defaultCurrency']);
@@ -106,6 +120,9 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         if ($object->isInitialized('shopifyShopDomain') && null !== $object->getShopifyShopDomain()) {
             $data['shopifyShopDomain'] = $object->getShopifyShopDomain();
         }
+        if ($object->isInitialized('testShop') && null !== $object->getTestShop()) {
+            $data['testShop'] = $object->getTestShop();
+        }
         if ($object->isInitialized('testShopResetNotBefore') && null !== $object->getTestShopResetNotBefore()) {
             $data['testShopResetNotBefore'] = $object->getTestShopResetNotBefore()->format('Y-m-d\\TH:i:sP');
         }
@@ -114,6 +131,9 @@ class UpdateShopMetaNormalizer implements DenormalizerInterface, NormalizerInter
         }
         if ($object->isInitialized('addTestSuffixToInternalReference') && null !== $object->getAddTestSuffixToInternalReference()) {
             $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
+        }
+        if ($object->isInitialized('invoiceEnabled') && null !== $object->getInvoiceEnabled()) {
+            $data['invoiceEnabled'] = $object->getInvoiceEnabled();
         }
         if ($object->isInitialized('defaultCurrency') && null !== $object->getDefaultCurrency()) {
             $data['defaultCurrency'] = $object->getDefaultCurrency();
