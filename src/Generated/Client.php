@@ -1678,7 +1678,6 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
      * Post a new shop.
      *
-     * @param string $shopId Shop Id
      * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop $requestBody 
      * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostShopBadRequestException
@@ -1691,9 +1690,9 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
      *
      * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
      */
-    public function postShop(string $shopId, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop $requestBody, string $fetch = self::FETCH_OBJECT)
+    public function postShop(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop $requestBody, string $fetch = self::FETCH_OBJECT)
     {
-        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostShop($shopId, $requestBody), $fetch);
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostShop($requestBody), $fetch);
     }
     /**
      * Set one or more fields of a shop. Only a limited set of fields can be updated.
