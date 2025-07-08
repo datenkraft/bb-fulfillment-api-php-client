@@ -4,16 +4,13 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 
 class PostShop extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
-    protected $shopId;
     /**
      * Post a new shop.
      *
-     * @param string $shopId Shop Id
      * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop $requestBody 
      */
-    public function __construct(string $shopId, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop $requestBody)
+    public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop $requestBody)
     {
-        $this->shopId = $shopId;
         $this->body = $requestBody;
     }
     use \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\EndpointTrait;
@@ -23,7 +20,7 @@ class PostShop extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runt
     }
     public function getUri() : string
     {
-        return str_replace(array('{shopId}'), array($this->shopId), '/shop');
+        return '/shop';
     }
     public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null) : array
     {
