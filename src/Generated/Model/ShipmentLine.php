@@ -7,8 +7,8 @@ class ShipmentLine extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -39,19 +39,19 @@ class ShipmentLine extends \ArrayObject
     /**
      * Serial numbers
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $serialNumbers;
     /**
      * Allows the traceability of the products in the deliveries.
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $traceCodes;
     /**
      * Batches
      *
-     * @var Batch[]
+     * @var list<Batch>
      */
     protected $batches;
     /**
@@ -59,7 +59,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -70,7 +70,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -81,7 +81,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return string|null
      */
-    public function getProductNumberBundle() : ?string
+    public function getProductNumberBundle(): ?string
     {
         return $this->productNumberBundle;
     }
@@ -92,7 +92,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumberBundle(?string $productNumberBundle) : self
+    public function setProductNumberBundle(?string $productNumberBundle): self
     {
         $this->initialized['productNumberBundle'] = true;
         $this->productNumberBundle = $productNumberBundle;
@@ -103,7 +103,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return float
      */
-    public function getCount() : float
+    public function getCount(): float
     {
         return $this->count;
     }
@@ -114,7 +114,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(float $count) : self
+    public function setCount(float $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -125,7 +125,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return string|null
      */
-    public function getUnit() : ?string
+    public function getUnit(): ?string
     {
         return $this->unit;
     }
@@ -136,7 +136,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setUnit(?string $unit) : self
+    public function setUnit(?string $unit): self
     {
         $this->initialized['unit'] = true;
         $this->unit = $unit;
@@ -145,20 +145,20 @@ class ShipmentLine extends \ArrayObject
     /**
      * Serial numbers
      *
-     * @return string[]
+     * @return list<string>
      */
-    public function getSerialNumbers() : array
+    public function getSerialNumbers(): array
     {
         return $this->serialNumbers;
     }
     /**
      * Serial numbers
      *
-     * @param string[] $serialNumbers
+     * @param list<string> $serialNumbers
      *
      * @return self
      */
-    public function setSerialNumbers(array $serialNumbers) : self
+    public function setSerialNumbers(array $serialNumbers): self
     {
         $this->initialized['serialNumbers'] = true;
         $this->serialNumbers = $serialNumbers;
@@ -167,20 +167,20 @@ class ShipmentLine extends \ArrayObject
     /**
      * Allows the traceability of the products in the deliveries.
      *
-     * @return string[]
+     * @return list<string>
      */
-    public function getTraceCodes() : array
+    public function getTraceCodes(): array
     {
         return $this->traceCodes;
     }
     /**
      * Allows the traceability of the products in the deliveries.
      *
-     * @param string[] $traceCodes
+     * @param list<string> $traceCodes
      *
      * @return self
      */
-    public function setTraceCodes(array $traceCodes) : self
+    public function setTraceCodes(array $traceCodes): self
     {
         $this->initialized['traceCodes'] = true;
         $this->traceCodes = $traceCodes;
@@ -189,20 +189,20 @@ class ShipmentLine extends \ArrayObject
     /**
      * Batches
      *
-     * @return Batch[]
+     * @return list<Batch>
      */
-    public function getBatches() : array
+    public function getBatches(): array
     {
         return $this->batches;
     }
     /**
      * Batches
      *
-     * @param Batch[] $batches
+     * @param list<Batch> $batches
      *
      * @return self
      */
-    public function setBatches(array $batches) : self
+    public function setBatches(array $batches): self
     {
         $this->initialized['batches'] = true;
         $this->batches = $batches;

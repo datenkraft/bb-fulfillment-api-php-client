@@ -7,8 +7,8 @@ class Order extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -28,7 +28,7 @@ class Order extends \ArrayObject
     * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
     together if all orderItem data is the same.
     *
-    * @var OrderItem[]
+    * @var list<OrderItem>
     */
     protected $orderItems;
     /**
@@ -78,7 +78,7 @@ class Order extends \ArrayObject
     /**
      * 
      *
-     * @var OrderDeliveryCosts[]|null
+     * @var list<OrderDeliveryCosts>|null
      */
     protected $deliveryCosts;
     /**
@@ -128,7 +128,7 @@ class Order extends \ArrayObject
     /**
      * Note that only deliveries with status 'delivered' are shown in this list.
      *
-     * @var OrderDelivery[]|null
+     * @var list<OrderDelivery>|null
      */
     protected $delivery;
     /**
@@ -183,7 +183,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getShopCode() : ?string
+    public function getShopCode(): ?string
     {
         return $this->shopCode;
     }
@@ -194,7 +194,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setShopCode(?string $shopCode) : self
+    public function setShopCode(?string $shopCode): self
     {
         $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
@@ -205,7 +205,7 @@ class Order extends \ArrayObject
      *
      * @return OrderCustomer
      */
-    public function getCustomer() : OrderCustomer
+    public function getCustomer(): OrderCustomer
     {
         return $this->customer;
     }
@@ -216,7 +216,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setCustomer(OrderCustomer $customer) : self
+    public function setCustomer(OrderCustomer $customer): self
     {
         $this->initialized['customer'] = true;
         $this->customer = $customer;
@@ -226,9 +226,9 @@ class Order extends \ArrayObject
     * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
     together if all orderItem data is the same.
     *
-    * @return OrderItem[]
+    * @return list<OrderItem>
     */
-    public function getOrderItems() : array
+    public function getOrderItems(): array
     {
         return $this->orderItems;
     }
@@ -236,11 +236,11 @@ class Order extends \ArrayObject
     * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
     together if all orderItem data is the same.
     *
-    * @param OrderItem[] $orderItems
+    * @param list<OrderItem> $orderItems
     *
     * @return self
     */
-    public function setOrderItems(array $orderItems) : self
+    public function setOrderItems(array $orderItems): self
     {
         $this->initialized['orderItems'] = true;
         $this->orderItems = $orderItems;
@@ -252,7 +252,7 @@ class Order extends \ArrayObject
     *
     * @return string|null
     */
-    public function getExternalOrderId() : ?string
+    public function getExternalOrderId(): ?string
     {
         return $this->externalOrderId;
     }
@@ -264,7 +264,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setExternalOrderId(?string $externalOrderId) : self
+    public function setExternalOrderId(?string $externalOrderId): self
     {
         $this->initialized['externalOrderId'] = true;
         $this->externalOrderId = $externalOrderId;
@@ -275,7 +275,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDeliverySlipNotes() : ?string
+    public function getDeliverySlipNotes(): ?string
     {
         return $this->deliverySlipNotes;
     }
@@ -286,7 +286,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setDeliverySlipNotes(?string $deliverySlipNotes) : self
+    public function setDeliverySlipNotes(?string $deliverySlipNotes): self
     {
         $this->initialized['deliverySlipNotes'] = true;
         $this->deliverySlipNotes = $deliverySlipNotes;
@@ -297,7 +297,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getExternalOrderReference() : ?string
+    public function getExternalOrderReference(): ?string
     {
         return $this->externalOrderReference;
     }
@@ -308,7 +308,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setExternalOrderReference(?string $externalOrderReference) : self
+    public function setExternalOrderReference(?string $externalOrderReference): self
     {
         $this->initialized['externalOrderReference'] = true;
         $this->externalOrderReference = $externalOrderReference;
@@ -320,7 +320,7 @@ class Order extends \ArrayObject
     *
     * @return string|null
     */
-    public function getOrderNotes() : ?string
+    public function getOrderNotes(): ?string
     {
         return $this->orderNotes;
     }
@@ -332,7 +332,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setOrderNotes(?string $orderNotes) : self
+    public function setOrderNotes(?string $orderNotes): self
     {
         $this->initialized['orderNotes'] = true;
         $this->orderNotes = $orderNotes;
@@ -343,7 +343,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAmazonSellerOrderId() : ?string
+    public function getAmazonSellerOrderId(): ?string
     {
         return $this->amazonSellerOrderId;
     }
@@ -354,7 +354,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setAmazonSellerOrderId(?string $amazonSellerOrderId) : self
+    public function setAmazonSellerOrderId(?string $amazonSellerOrderId): self
     {
         $this->initialized['amazonSellerOrderId'] = true;
         $this->amazonSellerOrderId = $amazonSellerOrderId;
@@ -365,7 +365,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAmazonVendorOrderId() : ?string
+    public function getAmazonVendorOrderId(): ?string
     {
         return $this->amazonVendorOrderId;
     }
@@ -376,7 +376,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setAmazonVendorOrderId(?string $amazonVendorOrderId) : self
+    public function setAmazonVendorOrderId(?string $amazonVendorOrderId): self
     {
         $this->initialized['amazonVendorOrderId'] = true;
         $this->amazonVendorOrderId = $amazonVendorOrderId;
@@ -387,7 +387,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getAmazonFbaShipmentId() : ?string
+    public function getAmazonFbaShipmentId(): ?string
     {
         return $this->amazonFbaShipmentId;
     }
@@ -398,7 +398,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setAmazonFbaShipmentId(?string $amazonFbaShipmentId) : self
+    public function setAmazonFbaShipmentId(?string $amazonFbaShipmentId): self
     {
         $this->initialized['amazonFbaShipmentId'] = true;
         $this->amazonFbaShipmentId = $amazonFbaShipmentId;
@@ -407,20 +407,20 @@ class Order extends \ArrayObject
     /**
      * 
      *
-     * @return OrderDeliveryCosts[]|null
+     * @return list<OrderDeliveryCosts>|null
      */
-    public function getDeliveryCosts() : ?array
+    public function getDeliveryCosts(): ?array
     {
         return $this->deliveryCosts;
     }
     /**
      * 
      *
-     * @param OrderDeliveryCosts[]|null $deliveryCosts
+     * @param list<OrderDeliveryCosts>|null $deliveryCosts
      *
      * @return self
      */
-    public function setDeliveryCosts(?array $deliveryCosts) : self
+    public function setDeliveryCosts(?array $deliveryCosts): self
     {
         $this->initialized['deliveryCosts'] = true;
         $this->deliveryCosts = $deliveryCosts;
@@ -442,7 +442,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setOptions($options) : self
+    public function setOptions($options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
@@ -468,7 +468,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setOrderNumber($orderNumber) : self
+    public function setOrderNumber($orderNumber): self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
@@ -491,7 +491,7 @@ class Order extends \ArrayObject
     *
     * @return string
     */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -514,7 +514,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
@@ -525,7 +525,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getLockReason() : ?string
+    public function getLockReason(): ?string
     {
         return $this->lockReason;
     }
@@ -536,7 +536,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setLockReason(?string $lockReason) : self
+    public function setLockReason(?string $lockReason): self
     {
         $this->initialized['lockReason'] = true;
         $this->lockReason = $lockReason;
@@ -547,7 +547,7 @@ class Order extends \ArrayObject
      *
      * @return \DateTime
      */
-    public function getOrderDate() : \DateTime
+    public function getOrderDate(): \DateTime
     {
         return $this->orderDate;
     }
@@ -558,7 +558,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderDate(\DateTime $orderDate) : self
+    public function setOrderDate(\DateTime $orderDate): self
     {
         $this->initialized['orderDate'] = true;
         $this->orderDate = $orderDate;
@@ -567,20 +567,20 @@ class Order extends \ArrayObject
     /**
      * Note that only deliveries with status 'delivered' are shown in this list.
      *
-     * @return OrderDelivery[]|null
+     * @return list<OrderDelivery>|null
      */
-    public function getDelivery() : ?array
+    public function getDelivery(): ?array
     {
         return $this->delivery;
     }
     /**
      * Note that only deliveries with status 'delivered' are shown in this list.
      *
-     * @param OrderDelivery[]|null $delivery
+     * @param list<OrderDelivery>|null $delivery
      *
      * @return self
      */
-    public function setDelivery(?array $delivery) : self
+    public function setDelivery(?array $delivery): self
     {
         $this->initialized['delivery'] = true;
         $this->delivery = $delivery;
@@ -591,7 +591,7 @@ class Order extends \ArrayObject
      *
      * @return OrderPayment
      */
-    public function getPayment() : OrderPayment
+    public function getPayment(): OrderPayment
     {
         return $this->payment;
     }
@@ -602,7 +602,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setPayment(OrderPayment $payment) : self
+    public function setPayment(OrderPayment $payment): self
     {
         $this->initialized['payment'] = true;
         $this->payment = $payment;
@@ -613,7 +613,7 @@ class Order extends \ArrayObject
      *
      * @return OrderShipping
      */
-    public function getShipping() : OrderShipping
+    public function getShipping(): OrderShipping
     {
         return $this->shipping;
     }
@@ -624,7 +624,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setShipping(OrderShipping $shipping) : self
+    public function setShipping(OrderShipping $shipping): self
     {
         $this->initialized['shipping'] = true;
         $this->shipping = $shipping;
@@ -638,7 +638,7 @@ class Order extends \ArrayObject
     *
     * @return string
     */
-    public function getSource() : string
+    public function getSource(): string
     {
         return $this->source;
     }
@@ -652,7 +652,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setSource(string $source) : self
+    public function setSource(string $source): self
     {
         $this->initialized['source'] = true;
         $this->source = $source;
@@ -663,7 +663,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getSourceLink() : ?string
+    public function getSourceLink(): ?string
     {
         return $this->sourceLink;
     }
@@ -674,7 +674,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setSourceLink(?string $sourceLink) : self
+    public function setSourceLink(?string $sourceLink): self
     {
         $this->initialized['sourceLink'] = true;
         $this->sourceLink = $sourceLink;
@@ -685,7 +685,7 @@ class Order extends \ArrayObject
      *
      * @return bool
      */
-    public function getCancelable() : bool
+    public function getCancelable(): bool
     {
         return $this->cancelable;
     }
@@ -696,7 +696,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setCancelable(bool $cancelable) : self
+    public function setCancelable(bool $cancelable): self
     {
         $this->initialized['cancelable'] = true;
         $this->cancelable = $cancelable;
@@ -707,7 +707,7 @@ class Order extends \ArrayObject
      *
      * @return bool
      */
-    public function getOrderItemsCancelable() : bool
+    public function getOrderItemsCancelable(): bool
     {
         return $this->orderItemsCancelable;
     }
@@ -718,7 +718,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderItemsCancelable(bool $orderItemsCancelable) : self
+    public function setOrderItemsCancelable(bool $orderItemsCancelable): self
     {
         $this->initialized['orderItemsCancelable'] = true;
         $this->orderItemsCancelable = $orderItemsCancelable;
@@ -731,7 +731,7 @@ class Order extends \ArrayObject
     *
     * @return bool
     */
-    public function getPartialDeliveryPending() : bool
+    public function getPartialDeliveryPending(): bool
     {
         return $this->partialDeliveryPending;
     }
@@ -744,7 +744,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setPartialDeliveryPending(bool $partialDeliveryPending) : self
+    public function setPartialDeliveryPending(bool $partialDeliveryPending): self
     {
         $this->initialized['partialDeliveryPending'] = true;
         $this->partialDeliveryPending = $partialDeliveryPending;

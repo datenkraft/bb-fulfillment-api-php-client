@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Stock';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Stock';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -70,7 +66,7 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             unset($data['overbookingPossibilityStatus']);
         }
         if (\array_key_exists('reservedFor', $data)) {
-            $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReservedFor', 'json', $context));
+            $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReservedFor::class, 'json', $context));
             unset($data['reservedFor']);
         }
         foreach ($data as $key => $value) {
@@ -80,41 +76,42 @@ class StockNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
+        $dataArray = [];
+        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
+            $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($object->isInitialized('stocked') && null !== $object->getStocked()) {
-            $data['stocked'] = $object->getStocked();
+        if ($data->isInitialized('stocked') && null !== $data->getStocked()) {
+            $dataArray['stocked'] = $data->getStocked();
         }
-        if ($object->isInitialized('reserved') && null !== $object->getReserved()) {
-            $data['reserved'] = $object->getReserved();
+        if ($data->isInitialized('reserved') && null !== $data->getReserved()) {
+            $dataArray['reserved'] = $data->getReserved();
         }
-        if ($object->isInitialized('available') && null !== $object->getAvailable()) {
-            $data['available'] = $object->getAvailable();
+        if ($data->isInitialized('available') && null !== $data->getAvailable()) {
+            $dataArray['available'] = $data->getAvailable();
         }
-        if ($object->isInitialized('incoming') && null !== $object->getIncoming()) {
-            $data['incoming'] = $object->getIncoming();
+        if ($data->isInitialized('incoming') && null !== $data->getIncoming()) {
+            $dataArray['incoming'] = $data->getIncoming();
         }
-        if ($object->isInitialized('locked') && null !== $object->getLocked()) {
-            $data['locked'] = $object->getLocked();
+        if ($data->isInitialized('locked') && null !== $data->getLocked()) {
+            $dataArray['locked'] = $data->getLocked();
         }
-        if ($object->isInitialized('overbookingPossibilityStatus') && null !== $object->getOverbookingPossibilityStatus()) {
-            $data['overbookingPossibilityStatus'] = $object->getOverbookingPossibilityStatus();
+        if ($data->isInitialized('overbookingPossibilityStatus') && null !== $data->getOverbookingPossibilityStatus()) {
+            $dataArray['overbookingPossibilityStatus'] = $data->getOverbookingPossibilityStatus();
         }
-        if ($object->isInitialized('reservedFor') && null !== $object->getReservedFor()) {
-            $data['reservedFor'] = $this->normalizer->normalize($object->getReservedFor(), 'json', $context);
+        if ($data->isInitialized('reservedFor') && null !== $data->getReservedFor()) {
+            $dataArray['reservedFor'] = $this->normalizer->normalize($data->getReservedFor(), 'json', $context);
         }
-        foreach ($object as $key => $value) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class => false];
     }
 }

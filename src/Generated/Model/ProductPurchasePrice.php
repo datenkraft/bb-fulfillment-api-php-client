@@ -7,8 +7,8 @@ class ProductPurchasePrice extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class ProductPurchasePrice extends \ArrayObject
      *
      * @return string
      */
-    public function getCurrencyCode() : string
+    public function getCurrencyCode(): string
     {
         return $this->currencyCode;
     }
@@ -46,7 +46,7 @@ class ProductPurchasePrice extends \ArrayObject
      *
      * @return self
      */
-    public function setCurrencyCode(string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode): self
     {
         $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;
@@ -57,7 +57,7 @@ class ProductPurchasePrice extends \ArrayObject
      *
      * @return int
      */
-    public function getAmount() : int
+    public function getAmount(): int
     {
         return $this->amount;
     }
@@ -68,7 +68,7 @@ class ProductPurchasePrice extends \ArrayObject
      *
      * @return self
      */
-    public function setAmount(int $amount) : self
+    public function setAmount(int $amount): self
     {
         $this->initialized['amount'] = true;
         $this->amount = $amount;
@@ -79,7 +79,7 @@ class ProductPurchasePrice extends \ArrayObject
      *
      * @return float
      */
-    public function getPricePerUnit() : float
+    public function getPricePerUnit(): float
     {
         return $this->pricePerUnit;
     }
@@ -90,7 +90,7 @@ class ProductPurchasePrice extends \ArrayObject
      *
      * @return self
      */
-    public function setPricePerUnit(float $pricePerUnit) : self
+    public function setPricePerUnit(float $pricePerUnit): self
     {
         $this->initialized['pricePerUnit'] = true;
         $this->pricePerUnit = $pricePerUnit;

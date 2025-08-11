@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomer';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomer';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -57,7 +53,7 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setExternalCustomerId(null);
         }
         if (\array_key_exists('deliveryAddress', $data)) {
-            $object->setDeliveryAddress($this->denormalizer->denormalize($data['deliveryAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress', 'json', $context));
+            $object->setDeliveryAddress($this->denormalizer->denormalize($data['deliveryAddress'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerDeliveryAddress::class, 'json', $context));
             unset($data['deliveryAddress']);
         }
         if (\array_key_exists('email', $data) && $data['email'] !== null) {
@@ -110,7 +106,7 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setCompanyVatNumber(null);
         }
         if (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] !== null) {
-            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomerinvoiceAddress', 'json', $context));
+            $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class, 'json', $context));
             unset($data['invoiceAddress']);
         }
         elseif (\array_key_exists('invoiceAddress', $data) && $data['invoiceAddress'] === null) {
@@ -123,47 +119,48 @@ class NewOrderCustomerNormalizer implements DenormalizerInterface, NormalizerInt
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        $data['gender'] = $object->getGender();
-        $data['languageCode'] = $object->getLanguageCode();
-        if ($object->isInitialized('externalCustomerId') && null !== $object->getExternalCustomerId()) {
-            $data['externalCustomerId'] = $object->getExternalCustomerId();
+        $dataArray = [];
+        $dataArray['gender'] = $data->getGender();
+        $dataArray['languageCode'] = $data->getLanguageCode();
+        if ($data->isInitialized('externalCustomerId') && null !== $data->getExternalCustomerId()) {
+            $dataArray['externalCustomerId'] = $data->getExternalCustomerId();
         }
-        $data['deliveryAddress'] = $this->normalizer->normalize($object->getDeliveryAddress(), 'json', $context);
-        if ($object->isInitialized('email') && null !== $object->getEmail()) {
-            $data['email'] = $object->getEmail();
+        $dataArray['deliveryAddress'] = $this->normalizer->normalize($data->getDeliveryAddress(), 'json', $context);
+        if ($data->isInitialized('email') && null !== $data->getEmail()) {
+            $dataArray['email'] = $data->getEmail();
         }
-        if ($object->isInitialized('phone') && null !== $object->getPhone()) {
-            $data['phone'] = $object->getPhone();
+        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
+            $dataArray['phone'] = $data->getPhone();
         }
-        if ($object->isInitialized('firstname') && null !== $object->getFirstname()) {
-            $data['firstname'] = $object->getFirstname();
+        if ($data->isInitialized('firstname') && null !== $data->getFirstname()) {
+            $dataArray['firstname'] = $data->getFirstname();
         }
-        if ($object->isInitialized('lastname') && null !== $object->getLastname()) {
-            $data['lastname'] = $object->getLastname();
+        if ($data->isInitialized('lastname') && null !== $data->getLastname()) {
+            $dataArray['lastname'] = $data->getLastname();
         }
-        if ($object->isInitialized('title') && null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
+        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+            $dataArray['title'] = $data->getTitle();
         }
-        if ($object->isInitialized('company') && null !== $object->getCompany()) {
-            $data['company'] = $object->getCompany();
+        if ($data->isInitialized('company') && null !== $data->getCompany()) {
+            $dataArray['company'] = $data->getCompany();
         }
-        if ($object->isInitialized('companyVatNumber') && null !== $object->getCompanyVatNumber()) {
-            $data['companyVatNumber'] = $object->getCompanyVatNumber();
+        if ($data->isInitialized('companyVatNumber') && null !== $data->getCompanyVatNumber()) {
+            $dataArray['companyVatNumber'] = $data->getCompanyVatNumber();
         }
-        if ($object->isInitialized('invoiceAddress') && null !== $object->getInvoiceAddress()) {
-            $data['invoiceAddress'] = $this->normalizer->normalize($object->getInvoiceAddress(), 'json', $context);
+        if ($data->isInitialized('invoiceAddress') && null !== $data->getInvoiceAddress()) {
+            $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
         }
-        foreach ($object as $key => $value) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class => false];
     }
 }

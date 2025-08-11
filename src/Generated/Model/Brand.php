@@ -7,8 +7,8 @@ class Brand extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class Brand extends \ArrayObject
      *
      * @return string
      */
-    public function getBrandNumber() : string
+    public function getBrandNumber(): string
     {
         return $this->brandNumber;
     }
@@ -40,7 +40,7 @@ class Brand extends \ArrayObject
      *
      * @return self
      */
-    public function setBrandNumber(string $brandNumber) : self
+    public function setBrandNumber(string $brandNumber): self
     {
         $this->initialized['brandNumber'] = true;
         $this->brandNumber = $brandNumber;
@@ -51,7 +51,7 @@ class Brand extends \ArrayObject
      *
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -62,7 +62,7 @@ class Brand extends \ArrayObject
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;

@@ -7,8 +7,8 @@ class ProductDraft extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -149,7 +149,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -160,7 +160,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -171,7 +171,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return string
      */
-    public function getProductTitle() : string
+    public function getProductTitle(): string
     {
         return $this->productTitle;
     }
@@ -182,7 +182,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setProductTitle(string $productTitle) : self
+    public function setProductTitle(string $productTitle): self
     {
         $this->initialized['productTitle'] = true;
         $this->productTitle = $productTitle;
@@ -193,7 +193,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return float
      */
-    public function getContentsAmount() : float
+    public function getContentsAmount(): float
     {
         return $this->contentsAmount;
     }
@@ -204,7 +204,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setContentsAmount(float $contentsAmount) : self
+    public function setContentsAmount(float $contentsAmount): self
     {
         $this->initialized['contentsAmount'] = true;
         $this->contentsAmount = $contentsAmount;
@@ -215,7 +215,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return int
      */
-    public function getContentsWeightGram() : int
+    public function getContentsWeightGram(): int
     {
         return $this->contentsWeightGram;
     }
@@ -226,7 +226,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setContentsWeightGram(int $contentsWeightGram) : self
+    public function setContentsWeightGram(int $contentsWeightGram): self
     {
         $this->initialized['contentsWeightGram'] = true;
         $this->contentsWeightGram = $contentsWeightGram;
@@ -237,7 +237,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return int
      */
-    public function getWeightGram() : int
+    public function getWeightGram(): int
     {
         return $this->weightGram;
     }
@@ -248,7 +248,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setWeightGram(int $weightGram) : self
+    public function setWeightGram(int $weightGram): self
     {
         $this->initialized['weightGram'] = true;
         $this->weightGram = $weightGram;
@@ -259,7 +259,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return string
      */
-    public function getEan() : string
+    public function getEan(): string
     {
         return $this->ean;
     }
@@ -270,7 +270,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setEan(string $ean) : self
+    public function setEan(string $ean): self
     {
         $this->initialized['ean'] = true;
         $this->ean = $ean;
@@ -281,7 +281,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return string
      */
-    public function getTaricCode() : string
+    public function getTaricCode(): string
     {
         return $this->taricCode;
     }
@@ -292,7 +292,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setTaricCode(string $taricCode) : self
+    public function setTaricCode(string $taricCode): self
     {
         $this->initialized['taricCode'] = true;
         $this->taricCode = $taricCode;
@@ -303,7 +303,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return float
      */
-    public function getSupplierPurchasePriceEUR() : float
+    public function getSupplierPurchasePriceEUR(): float
     {
         return $this->supplierPurchasePriceEUR;
     }
@@ -314,7 +314,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setSupplierPurchasePriceEUR(float $supplierPurchasePriceEUR) : self
+    public function setSupplierPurchasePriceEUR(float $supplierPurchasePriceEUR): self
     {
         $this->initialized['supplierPurchasePriceEUR'] = true;
         $this->supplierPurchasePriceEUR = $supplierPurchasePriceEUR;
@@ -325,7 +325,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return float
      */
-    public function getListPriceEUR() : float
+    public function getListPriceEUR(): float
     {
         return $this->listPriceEUR;
     }
@@ -336,7 +336,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setListPriceEUR(float $listPriceEUR) : self
+    public function setListPriceEUR(float $listPriceEUR): self
     {
         $this->initialized['listPriceEUR'] = true;
         $this->listPriceEUR = $listPriceEUR;
@@ -351,7 +351,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return string
     */
-    public function getTaxCode() : string
+    public function getTaxCode(): string
     {
         return $this->taxCode;
     }
@@ -366,7 +366,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return self
     */
-    public function setTaxCode(string $taxCode) : self
+    public function setTaxCode(string $taxCode): self
     {
         $this->initialized['taxCode'] = true;
         $this->taxCode = $taxCode;
@@ -378,7 +378,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return string
     */
-    public function getSupplierNumber() : string
+    public function getSupplierNumber(): string
     {
         return $this->supplierNumber;
     }
@@ -390,7 +390,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return self
     */
-    public function setSupplierNumber(string $supplierNumber) : self
+    public function setSupplierNumber(string $supplierNumber): self
     {
         $this->initialized['supplierNumber'] = true;
         $this->supplierNumber = $supplierNumber;
@@ -402,7 +402,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return string
     */
-    public function getManufacturerNumber() : string
+    public function getManufacturerNumber(): string
     {
         return $this->manufacturerNumber;
     }
@@ -414,7 +414,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return self
     */
-    public function setManufacturerNumber(string $manufacturerNumber) : self
+    public function setManufacturerNumber(string $manufacturerNumber): self
     {
         $this->initialized['manufacturerNumber'] = true;
         $this->manufacturerNumber = $manufacturerNumber;
@@ -426,7 +426,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return string
     */
-    public function getBrandNumber() : string
+    public function getBrandNumber(): string
     {
         return $this->brandNumber;
     }
@@ -438,7 +438,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return self
     */
-    public function setBrandNumber(string $brandNumber) : self
+    public function setBrandNumber(string $brandNumber): self
     {
         $this->initialized['brandNumber'] = true;
         $this->brandNumber = $brandNumber;
@@ -449,7 +449,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return BaseProductDraftDimensions
      */
-    public function getDimensions() : BaseProductDraftDimensions
+    public function getDimensions(): BaseProductDraftDimensions
     {
         return $this->dimensions;
     }
@@ -460,7 +460,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setDimensions(BaseProductDraftDimensions $dimensions) : self
+    public function setDimensions(BaseProductDraftDimensions $dimensions): self
     {
         $this->initialized['dimensions'] = true;
         $this->dimensions = $dimensions;
@@ -471,7 +471,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return string
      */
-    public function getShopCode() : string
+    public function getShopCode(): string
     {
         return $this->shopCode;
     }
@@ -482,7 +482,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setShopCode(string $shopCode) : self
+    public function setShopCode(string $shopCode): self
     {
         $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
@@ -493,7 +493,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return string
      */
-    public function getSource() : string
+    public function getSource(): string
     {
         return $this->source;
     }
@@ -504,7 +504,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setSource(string $source) : self
+    public function setSource(string $source): self
     {
         $this->initialized['source'] = true;
         $this->source = $source;
@@ -515,7 +515,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return string
      */
-    public function getProductDraftId() : string
+    public function getProductDraftId(): string
     {
         return $this->productDraftId;
     }
@@ -526,7 +526,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setProductDraftId(string $productDraftId) : self
+    public function setProductDraftId(string $productDraftId): self
     {
         $this->initialized['productDraftId'] = true;
         $this->productDraftId = $productDraftId;
@@ -541,7 +541,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return string
     */
-    public function getProductDraftStatus() : string
+    public function getProductDraftStatus(): string
     {
         return $this->productDraftStatus;
     }
@@ -556,7 +556,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return self
     */
-    public function setProductDraftStatus(string $productDraftStatus) : self
+    public function setProductDraftStatus(string $productDraftStatus): self
     {
         $this->initialized['productDraftStatus'] = true;
         $this->productDraftStatus = $productDraftStatus;
@@ -567,7 +567,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return \DateTime
      */
-    public function getProductDraftDate() : \DateTime
+    public function getProductDraftDate(): \DateTime
     {
         return $this->productDraftDate;
     }
@@ -578,7 +578,7 @@ class ProductDraft extends \ArrayObject
      *
      * @return self
      */
-    public function setProductDraftDate(\DateTime $productDraftDate) : self
+    public function setProductDraftDate(\DateTime $productDraftDate): self
     {
         $this->initialized['productDraftDate'] = true;
         $this->productDraftDate = $productDraftDate;
@@ -590,7 +590,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return string
     */
-    public function getContentsUnit() : string
+    public function getContentsUnit(): string
     {
         return $this->contentsUnit;
     }
@@ -602,7 +602,7 @@ class ProductDraft extends \ArrayObject
     *
     * @return self
     */
-    public function setContentsUnit(string $contentsUnit) : self
+    public function setContentsUnit(string $contentsUnit): self
     {
         $this->initialized['contentsUnit'] = true;
         $this->contentsUnit = $contentsUnit;

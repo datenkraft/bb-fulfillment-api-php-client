@@ -7,8 +7,8 @@ class ProductJournalReference extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -36,7 +36,7 @@ class ProductJournalReference extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCompanyName() : ?string
+    public function getCompanyName(): ?string
     {
         return $this->companyName;
     }
@@ -47,7 +47,7 @@ class ProductJournalReference extends \ArrayObject
      *
      * @return self
      */
-    public function setCompanyName(?string $companyName) : self
+    public function setCompanyName(?string $companyName): self
     {
         $this->initialized['companyName'] = true;
         $this->companyName = $companyName;
@@ -59,7 +59,7 @@ class ProductJournalReference extends \ArrayObject
     *
     * @return string|null
     */
-    public function getInboundDeliveryNumber() : ?string
+    public function getInboundDeliveryNumber(): ?string
     {
         return $this->inboundDeliveryNumber;
     }
@@ -71,7 +71,7 @@ class ProductJournalReference extends \ArrayObject
     *
     * @return self
     */
-    public function setInboundDeliveryNumber(?string $inboundDeliveryNumber) : self
+    public function setInboundDeliveryNumber(?string $inboundDeliveryNumber): self
     {
         $this->initialized['inboundDeliveryNumber'] = true;
         $this->inboundDeliveryNumber = $inboundDeliveryNumber;
@@ -82,7 +82,7 @@ class ProductJournalReference extends \ArrayObject
      *
      * @return string|null
      */
-    public function getOrderNumber() : ?string
+    public function getOrderNumber(): ?string
     {
         return $this->orderNumber;
     }
@@ -93,7 +93,7 @@ class ProductJournalReference extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderNumber(?string $orderNumber) : self
+    public function setOrderNumber(?string $orderNumber): self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;

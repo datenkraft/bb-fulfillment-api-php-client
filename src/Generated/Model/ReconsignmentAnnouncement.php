@@ -7,8 +7,8 @@ class ReconsignmentAnnouncement extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -87,7 +87,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
     /**
      * 
      *
-     * @var ReconsignmentAnnouncementLine[]
+     * @var list<ReconsignmentAnnouncementLine>
      */
     protected $reconsignmentAnnouncementLines;
     /**
@@ -95,7 +95,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentReason() : string
+    public function getReconsignmentReason(): string
     {
         return $this->reconsignmentReason;
     }
@@ -106,7 +106,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentReason(string $reconsignmentReason) : self
+    public function setReconsignmentReason(string $reconsignmentReason): self
     {
         $this->initialized['reconsignmentReason'] = true;
         $this->reconsignmentReason = $reconsignmentReason;
@@ -117,7 +117,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return BaseReconsignmentAnnouncementOptions|null
      */
-    public function getOptions() : ?BaseReconsignmentAnnouncementOptions
+    public function getOptions(): ?BaseReconsignmentAnnouncementOptions
     {
         return $this->options;
     }
@@ -128,7 +128,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setOptions(?BaseReconsignmentAnnouncementOptions $options) : self
+    public function setOptions(?BaseReconsignmentAnnouncementOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
@@ -139,7 +139,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentAnnouncementNumber() : string
+    public function getReconsignmentAnnouncementNumber(): string
     {
         return $this->reconsignmentAnnouncementNumber;
     }
@@ -150,7 +150,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentAnnouncementNumber(string $reconsignmentAnnouncementNumber) : self
+    public function setReconsignmentAnnouncementNumber(string $reconsignmentAnnouncementNumber): self
     {
         $this->initialized['reconsignmentAnnouncementNumber'] = true;
         $this->reconsignmentAnnouncementNumber = $reconsignmentAnnouncementNumber;
@@ -161,7 +161,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentAnnouncementDate() : string
+    public function getReconsignmentAnnouncementDate(): string
     {
         return $this->reconsignmentAnnouncementDate;
     }
@@ -172,7 +172,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentAnnouncementDate(string $reconsignmentAnnouncementDate) : self
+    public function setReconsignmentAnnouncementDate(string $reconsignmentAnnouncementDate): self
     {
         $this->initialized['reconsignmentAnnouncementDate'] = true;
         $this->reconsignmentAnnouncementDate = $reconsignmentAnnouncementDate;
@@ -183,7 +183,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentCountryCode() : string
+    public function getReconsignmentCountryCode(): string
     {
         return $this->reconsignmentCountryCode;
     }
@@ -194,7 +194,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentCountryCode(string $reconsignmentCountryCode) : self
+    public function setReconsignmentCountryCode(string $reconsignmentCountryCode): self
     {
         $this->initialized['reconsignmentCountryCode'] = true;
         $this->reconsignmentCountryCode = $reconsignmentCountryCode;
@@ -205,7 +205,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentDeliveryServiceCode() : string
+    public function getReconsignmentDeliveryServiceCode(): string
     {
         return $this->reconsignmentDeliveryServiceCode;
     }
@@ -216,7 +216,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentDeliveryServiceCode(string $reconsignmentDeliveryServiceCode) : self
+    public function setReconsignmentDeliveryServiceCode(string $reconsignmentDeliveryServiceCode): self
     {
         $this->initialized['reconsignmentDeliveryServiceCode'] = true;
         $this->reconsignmentDeliveryServiceCode = $reconsignmentDeliveryServiceCode;
@@ -227,7 +227,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentTrackingCode() : string
+    public function getReconsignmentTrackingCode(): string
     {
         return $this->reconsignmentTrackingCode;
     }
@@ -238,7 +238,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentTrackingCode(string $reconsignmentTrackingCode) : self
+    public function setReconsignmentTrackingCode(string $reconsignmentTrackingCode): self
     {
         $this->initialized['reconsignmentTrackingCode'] = true;
         $this->reconsignmentTrackingCode = $reconsignmentTrackingCode;
@@ -249,7 +249,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentTrackingLink() : string
+    public function getReconsignmentTrackingLink(): string
     {
         return $this->reconsignmentTrackingLink;
     }
@@ -260,7 +260,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentTrackingLink(string $reconsignmentTrackingLink) : self
+    public function setReconsignmentTrackingLink(string $reconsignmentTrackingLink): self
     {
         $this->initialized['reconsignmentTrackingLink'] = true;
         $this->reconsignmentTrackingLink = $reconsignmentTrackingLink;
@@ -271,7 +271,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return bool
      */
-    public function getReconsignmentAnnouncementCompleted() : bool
+    public function getReconsignmentAnnouncementCompleted(): bool
     {
         return $this->reconsignmentAnnouncementCompleted;
     }
@@ -282,7 +282,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentAnnouncementCompleted(bool $reconsignmentAnnouncementCompleted) : self
+    public function setReconsignmentAnnouncementCompleted(bool $reconsignmentAnnouncementCompleted): self
     {
         $this->initialized['reconsignmentAnnouncementCompleted'] = true;
         $this->reconsignmentAnnouncementCompleted = $reconsignmentAnnouncementCompleted;
@@ -293,7 +293,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getOrderNumber() : string
+    public function getOrderNumber(): string
     {
         return $this->orderNumber;
     }
@@ -304,7 +304,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderNumber(string $orderNumber) : self
+    public function setOrderNumber(string $orderNumber): self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
@@ -315,7 +315,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string|null
      */
-    public function getExternalOrderReference() : ?string
+    public function getExternalOrderReference(): ?string
     {
         return $this->externalOrderReference;
     }
@@ -326,7 +326,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setExternalOrderReference(?string $externalOrderReference) : self
+    public function setExternalOrderReference(?string $externalOrderReference): self
     {
         $this->initialized['externalOrderReference'] = true;
         $this->externalOrderReference = $externalOrderReference;
@@ -337,7 +337,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getDeliveryNumber() : string
+    public function getDeliveryNumber(): string
     {
         return $this->deliveryNumber;
     }
@@ -348,7 +348,7 @@ class ReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setDeliveryNumber(string $deliveryNumber) : self
+    public function setDeliveryNumber(string $deliveryNumber): self
     {
         $this->initialized['deliveryNumber'] = true;
         $this->deliveryNumber = $deliveryNumber;
@@ -357,20 +357,20 @@ class ReconsignmentAnnouncement extends \ArrayObject
     /**
      * 
      *
-     * @return ReconsignmentAnnouncementLine[]
+     * @return list<ReconsignmentAnnouncementLine>
      */
-    public function getReconsignmentAnnouncementLines() : array
+    public function getReconsignmentAnnouncementLines(): array
     {
         return $this->reconsignmentAnnouncementLines;
     }
     /**
      * 
      *
-     * @param ReconsignmentAnnouncementLine[] $reconsignmentAnnouncementLines
+     * @param list<ReconsignmentAnnouncementLine> $reconsignmentAnnouncementLines
      *
      * @return self
      */
-    public function setReconsignmentAnnouncementLines(array $reconsignmentAnnouncementLines) : self
+    public function setReconsignmentAnnouncementLines(array $reconsignmentAnnouncementLines): self
     {
         $this->initialized['reconsignmentAnnouncementLines'] = true;
         $this->reconsignmentAnnouncementLines = $reconsignmentAnnouncementLines;

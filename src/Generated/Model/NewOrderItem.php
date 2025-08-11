@@ -7,8 +7,8 @@ class NewOrderItem extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -48,7 +48,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -59,7 +59,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -70,7 +70,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -81,7 +81,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
@@ -92,7 +92,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return int
      */
-    public function getCount() : int
+    public function getCount(): int
     {
         return $this->count;
     }
@@ -103,7 +103,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -114,7 +114,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return string|null
      */
-    public function getExternalProductNumber() : ?string
+    public function getExternalProductNumber(): ?string
     {
         return $this->externalProductNumber;
     }
@@ -125,7 +125,7 @@ class NewOrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setExternalProductNumber(?string $externalProductNumber) : self
+    public function setExternalProductNumber(?string $externalProductNumber): self
     {
         $this->initialized['externalProductNumber'] = true;
         $this->externalProductNumber = $externalProductNumber;
@@ -137,7 +137,7 @@ class NewOrderItem extends \ArrayObject
     *
     * @return NewOrderItemPrice|null
     */
-    public function getPrice() : ?NewOrderItemPrice
+    public function getPrice(): ?NewOrderItemPrice
     {
         return $this->price;
     }
@@ -149,7 +149,7 @@ class NewOrderItem extends \ArrayObject
     *
     * @return self
     */
-    public function setPrice(?NewOrderItemPrice $price) : self
+    public function setPrice(?NewOrderItemPrice $price): self
     {
         $this->initialized['price'] = true;
         $this->price = $price;

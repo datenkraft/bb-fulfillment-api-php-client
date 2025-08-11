@@ -7,8 +7,8 @@ class BaseProductDraftDimensions extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class BaseProductDraftDimensions extends \ArrayObject
      *
      * @return float
      */
-    public function getWidth() : float
+    public function getWidth(): float
     {
         return $this->width;
     }
@@ -46,7 +46,7 @@ class BaseProductDraftDimensions extends \ArrayObject
      *
      * @return self
      */
-    public function setWidth(float $width) : self
+    public function setWidth(float $width): self
     {
         $this->initialized['width'] = true;
         $this->width = $width;
@@ -57,7 +57,7 @@ class BaseProductDraftDimensions extends \ArrayObject
      *
      * @return float
      */
-    public function getHeight() : float
+    public function getHeight(): float
     {
         return $this->height;
     }
@@ -68,7 +68,7 @@ class BaseProductDraftDimensions extends \ArrayObject
      *
      * @return self
      */
-    public function setHeight(float $height) : self
+    public function setHeight(float $height): self
     {
         $this->initialized['height'] = true;
         $this->height = $height;
@@ -79,7 +79,7 @@ class BaseProductDraftDimensions extends \ArrayObject
      *
      * @return float
      */
-    public function getDepth() : float
+    public function getDepth(): float
     {
         return $this->depth;
     }
@@ -90,7 +90,7 @@ class BaseProductDraftDimensions extends \ArrayObject
      *
      * @return self
      */
-    public function setDepth(float $depth) : self
+    public function setDepth(float $depth): self
     {
         $this->initialized['depth'] = true;
         $this->depth = $depth;

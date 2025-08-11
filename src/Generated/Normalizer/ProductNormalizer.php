@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Product';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Product';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -122,9 +118,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setSuggestedRetailPriceEUR(null);
         }
         if (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] !== null) {
-            $values = array();
+            $values = [];
             foreach ($data['purchasePrices'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductPurchasePrice', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductPurchasePrice::class, 'json', $context);
             }
             $object->setPurchasePrices($values);
             unset($data['purchasePrices']);
@@ -133,9 +129,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setPurchasePrices(null);
         }
         if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
-            $values_1 = array();
+            $values_1 = [];
             foreach ($data['bundledProducts'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductBundledProduct', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductBundledProduct::class, 'json', $context);
             }
             $object->setBundledProducts($values_1);
             unset($data['bundledProducts']);
@@ -165,7 +161,7 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setLanguageCode(null);
         }
         if (\array_key_exists('dimensions', $data) && $data['dimensions'] !== null) {
-            $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDimensions', 'json', $context));
+            $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDimensions::class, 'json', $context));
             unset($data['dimensions']);
         }
         elseif (\array_key_exists('dimensions', $data) && $data['dimensions'] === null) {
@@ -201,7 +197,7 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setProductTitleOriginal(null);
         }
         if (\array_key_exists('image', $data)) {
-            $object->setImage($this->denormalizer->denormalize($data['image'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImage', 'json', $context));
+            $object->setImage($this->denormalizer->denormalize($data['image'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImage::class, 'json', $context));
             unset($data['image']);
         }
         if (\array_key_exists('articleShortDescription', $data) && $data['articleShortDescription'] !== null) {
@@ -293,11 +289,11 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             unset($data['overbookingPossibilityStatus']);
         }
         if (\array_key_exists('reservedFor', $data)) {
-            $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReservedFor', 'json', $context));
+            $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReservedFor::class, 'json', $context));
             unset($data['reservedFor']);
         }
         if (\array_key_exists('productOptions', $data)) {
-            $values_2 = array();
+            $values_2 = [];
             foreach ($data['productOptions'] as $value_2) {
                 $values_2[] = $value_2;
             }
@@ -311,152 +307,153 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('productType') && null !== $object->getProductType()) {
-            $data['productType'] = $object->getProductType();
+        $dataArray = [];
+        if ($data->isInitialized('productType') && null !== $data->getProductType()) {
+            $dataArray['productType'] = $data->getProductType();
         }
-        if ($object->isInitialized('articleVariantTitle') && null !== $object->getArticleVariantTitle()) {
-            $data['articleVariantTitle'] = $object->getArticleVariantTitle();
+        if ($data->isInitialized('articleVariantTitle') && null !== $data->getArticleVariantTitle()) {
+            $dataArray['articleVariantTitle'] = $data->getArticleVariantTitle();
         }
-        if ($object->isInitialized('articleVariantType') && null !== $object->getArticleVariantType()) {
-            $data['articleVariantType'] = $object->getArticleVariantType();
+        if ($data->isInitialized('articleVariantType') && null !== $data->getArticleVariantType()) {
+            $dataArray['articleVariantType'] = $data->getArticleVariantType();
         }
-        if ($object->isInitialized('articleStatus') && null !== $object->getArticleStatus()) {
-            $data['articleStatus'] = $object->getArticleStatus();
+        if ($data->isInitialized('articleStatus') && null !== $data->getArticleStatus()) {
+            $dataArray['articleStatus'] = $data->getArticleStatus();
         }
-        if ($object->isInitialized('contentsAmount') && null !== $object->getContentsAmount()) {
-            $data['contentsAmount'] = $object->getContentsAmount();
+        if ($data->isInitialized('contentsAmount') && null !== $data->getContentsAmount()) {
+            $dataArray['contentsAmount'] = $data->getContentsAmount();
         }
-        if ($object->isInitialized('contentsUnit') && null !== $object->getContentsUnit()) {
-            $data['contentsUnit'] = $object->getContentsUnit();
+        if ($data->isInitialized('contentsUnit') && null !== $data->getContentsUnit()) {
+            $dataArray['contentsUnit'] = $data->getContentsUnit();
         }
-        if ($object->isInitialized('contentsWeightGram') && null !== $object->getContentsWeightGram()) {
-            $data['contentsWeightGram'] = $object->getContentsWeightGram();
+        if ($data->isInitialized('contentsWeightGram') && null !== $data->getContentsWeightGram()) {
+            $dataArray['contentsWeightGram'] = $data->getContentsWeightGram();
         }
-        if ($object->isInitialized('weightGram') && null !== $object->getWeightGram()) {
-            $data['weightGram'] = $object->getWeightGram();
+        if ($data->isInitialized('weightGram') && null !== $data->getWeightGram()) {
+            $dataArray['weightGram'] = $data->getWeightGram();
         }
-        if ($object->isInitialized('variantGroup') && null !== $object->getVariantGroup()) {
-            $data['variantGroup'] = $object->getVariantGroup();
+        if ($data->isInitialized('variantGroup') && null !== $data->getVariantGroup()) {
+            $dataArray['variantGroup'] = $data->getVariantGroup();
         }
-        if ($object->isInitialized('ean') && null !== $object->getEan()) {
-            $data['ean'] = $object->getEan();
+        if ($data->isInitialized('ean') && null !== $data->getEan()) {
+            $dataArray['ean'] = $data->getEan();
         }
-        if ($object->isInitialized('suggestedRetailPriceEUR') && null !== $object->getSuggestedRetailPriceEUR()) {
-            $data['suggestedRetailPriceEUR'] = $object->getSuggestedRetailPriceEUR();
+        if ($data->isInitialized('suggestedRetailPriceEUR') && null !== $data->getSuggestedRetailPriceEUR()) {
+            $dataArray['suggestedRetailPriceEUR'] = $data->getSuggestedRetailPriceEUR();
         }
-        if ($object->isInitialized('purchasePrices') && null !== $object->getPurchasePrices()) {
-            $values = array();
-            foreach ($object->getPurchasePrices() as $value) {
+        if ($data->isInitialized('purchasePrices') && null !== $data->getPurchasePrices()) {
+            $values = [];
+            foreach ($data->getPurchasePrices() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['purchasePrices'] = $values;
+            $dataArray['purchasePrices'] = $values;
         }
-        if ($object->isInitialized('bundledProducts') && null !== $object->getBundledProducts()) {
-            $values_1 = array();
-            foreach ($object->getBundledProducts() as $value_1) {
+        if ($data->isInitialized('bundledProducts') && null !== $data->getBundledProducts()) {
+            $values_1 = [];
+            foreach ($data->getBundledProducts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['bundledProducts'] = $values_1;
+            $dataArray['bundledProducts'] = $values_1;
         }
-        if ($object->isInitialized('productNumberManufacturer') && null !== $object->getProductNumberManufacturer()) {
-            $data['productNumberManufacturer'] = $object->getProductNumberManufacturer();
+        if ($data->isInitialized('productNumberManufacturer') && null !== $data->getProductNumberManufacturer()) {
+            $dataArray['productNumberManufacturer'] = $data->getProductNumberManufacturer();
         }
-        if ($object->isInitialized('manufacturerCountryCode') && null !== $object->getManufacturerCountryCode()) {
-            $data['manufacturerCountryCode'] = $object->getManufacturerCountryCode();
+        if ($data->isInitialized('manufacturerCountryCode') && null !== $data->getManufacturerCountryCode()) {
+            $dataArray['manufacturerCountryCode'] = $data->getManufacturerCountryCode();
         }
-        if ($object->isInitialized('languageCode') && null !== $object->getLanguageCode()) {
-            $data['languageCode'] = $object->getLanguageCode();
+        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
+            $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        if ($object->isInitialized('dimensions') && null !== $object->getDimensions()) {
-            $data['dimensions'] = $this->normalizer->normalize($object->getDimensions(), 'json', $context);
+        if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
+            $dataArray['dimensions'] = $this->normalizer->normalize($data->getDimensions(), 'json', $context);
         }
-        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
+        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
+            $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($object->isInitialized('shopCode') && null !== $object->getShopCode()) {
-            $data['shopCode'] = $object->getShopCode();
+        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
+            $dataArray['shopCode'] = $data->getShopCode();
         }
-        if ($object->isInitialized('productStatus') && null !== $object->getProductStatus()) {
-            $data['productStatus'] = $object->getProductStatus();
+        if ($data->isInitialized('productStatus') && null !== $data->getProductStatus()) {
+            $dataArray['productStatus'] = $data->getProductStatus();
         }
-        if ($object->isInitialized('productTitle') && null !== $object->getProductTitle()) {
-            $data['productTitle'] = $object->getProductTitle();
+        if ($data->isInitialized('productTitle') && null !== $data->getProductTitle()) {
+            $dataArray['productTitle'] = $data->getProductTitle();
         }
-        if ($object->isInitialized('productTitleOriginal') && null !== $object->getProductTitleOriginal()) {
-            $data['productTitleOriginal'] = $object->getProductTitleOriginal();
+        if ($data->isInitialized('productTitleOriginal') && null !== $data->getProductTitleOriginal()) {
+            $dataArray['productTitleOriginal'] = $data->getProductTitleOriginal();
         }
-        if ($object->isInitialized('image') && null !== $object->getImage()) {
-            $data['image'] = $this->normalizer->normalize($object->getImage(), 'json', $context);
+        if ($data->isInitialized('image') && null !== $data->getImage()) {
+            $dataArray['image'] = $this->normalizer->normalize($data->getImage(), 'json', $context);
         }
-        if ($object->isInitialized('articleShortDescription') && null !== $object->getArticleShortDescription()) {
-            $data['articleShortDescription'] = $object->getArticleShortDescription();
+        if ($data->isInitialized('articleShortDescription') && null !== $data->getArticleShortDescription()) {
+            $dataArray['articleShortDescription'] = $data->getArticleShortDescription();
         }
-        if ($object->isInitialized('articleLongDescription') && null !== $object->getArticleLongDescription()) {
-            $data['articleLongDescription'] = $object->getArticleLongDescription();
+        if ($data->isInitialized('articleLongDescription') && null !== $data->getArticleLongDescription()) {
+            $dataArray['articleLongDescription'] = $data->getArticleLongDescription();
         }
-        if ($object->isInitialized('taricCode') && null !== $object->getTaricCode()) {
-            $data['taricCode'] = $object->getTaricCode();
+        if ($data->isInitialized('taricCode') && null !== $data->getTaricCode()) {
+            $dataArray['taricCode'] = $data->getTaricCode();
         }
-        if ($object->isInitialized('listPriceEUR') && null !== $object->getListPriceEUR()) {
-            $data['listPriceEUR'] = $object->getListPriceEUR();
+        if ($data->isInitialized('listPriceEUR') && null !== $data->getListPriceEUR()) {
+            $dataArray['listPriceEUR'] = $data->getListPriceEUR();
         }
-        if ($object->isInitialized('priceType') && null !== $object->getPriceType()) {
-            $data['priceType'] = $object->getPriceType();
+        if ($data->isInitialized('priceType') && null !== $data->getPriceType()) {
+            $dataArray['priceType'] = $data->getPriceType();
         }
-        if ($object->isInitialized('taxCode') && null !== $object->getTaxCode()) {
-            $data['taxCode'] = $object->getTaxCode();
+        if ($data->isInitialized('taxCode') && null !== $data->getTaxCode()) {
+            $dataArray['taxCode'] = $data->getTaxCode();
         }
-        if ($object->isInitialized('manufacturerNumber') && null !== $object->getManufacturerNumber()) {
-            $data['manufacturerNumber'] = $object->getManufacturerNumber();
+        if ($data->isInitialized('manufacturerNumber') && null !== $data->getManufacturerNumber()) {
+            $dataArray['manufacturerNumber'] = $data->getManufacturerNumber();
         }
-        if ($object->isInitialized('supplierNumber') && null !== $object->getSupplierNumber()) {
-            $data['supplierNumber'] = $object->getSupplierNumber();
+        if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
+            $dataArray['supplierNumber'] = $data->getSupplierNumber();
         }
-        if ($object->isInitialized('source') && null !== $object->getSource()) {
-            $data['source'] = $object->getSource();
+        if ($data->isInitialized('source') && null !== $data->getSource()) {
+            $dataArray['source'] = $data->getSource();
         }
-        if ($object->isInitialized('brandNumber') && null !== $object->getBrandNumber()) {
-            $data['brandNumber'] = $object->getBrandNumber();
+        if ($data->isInitialized('brandNumber') && null !== $data->getBrandNumber()) {
+            $dataArray['brandNumber'] = $data->getBrandNumber();
         }
-        if ($object->isInitialized('stocked') && null !== $object->getStocked()) {
-            $data['stocked'] = $object->getStocked();
+        if ($data->isInitialized('stocked') && null !== $data->getStocked()) {
+            $dataArray['stocked'] = $data->getStocked();
         }
-        if ($object->isInitialized('reserved') && null !== $object->getReserved()) {
-            $data['reserved'] = $object->getReserved();
+        if ($data->isInitialized('reserved') && null !== $data->getReserved()) {
+            $dataArray['reserved'] = $data->getReserved();
         }
-        if ($object->isInitialized('available') && null !== $object->getAvailable()) {
-            $data['available'] = $object->getAvailable();
+        if ($data->isInitialized('available') && null !== $data->getAvailable()) {
+            $dataArray['available'] = $data->getAvailable();
         }
-        if ($object->isInitialized('incoming') && null !== $object->getIncoming()) {
-            $data['incoming'] = $object->getIncoming();
+        if ($data->isInitialized('incoming') && null !== $data->getIncoming()) {
+            $dataArray['incoming'] = $data->getIncoming();
         }
-        if ($object->isInitialized('locked') && null !== $object->getLocked()) {
-            $data['locked'] = $object->getLocked();
+        if ($data->isInitialized('locked') && null !== $data->getLocked()) {
+            $dataArray['locked'] = $data->getLocked();
         }
-        if ($object->isInitialized('overbookingPossibilityStatus') && null !== $object->getOverbookingPossibilityStatus()) {
-            $data['overbookingPossibilityStatus'] = $object->getOverbookingPossibilityStatus();
+        if ($data->isInitialized('overbookingPossibilityStatus') && null !== $data->getOverbookingPossibilityStatus()) {
+            $dataArray['overbookingPossibilityStatus'] = $data->getOverbookingPossibilityStatus();
         }
-        if ($object->isInitialized('reservedFor') && null !== $object->getReservedFor()) {
-            $data['reservedFor'] = $this->normalizer->normalize($object->getReservedFor(), 'json', $context);
+        if ($data->isInitialized('reservedFor') && null !== $data->getReservedFor()) {
+            $dataArray['reservedFor'] = $this->normalizer->normalize($data->getReservedFor(), 'json', $context);
         }
-        if ($object->isInitialized('productOptions') && null !== $object->getProductOptions()) {
-            $values_2 = array();
-            foreach ($object->getProductOptions() as $value_2) {
+        if ($data->isInitialized('productOptions') && null !== $data->getProductOptions()) {
+            $values_2 = [];
+            foreach ($data->getProductOptions() as $value_2) {
                 $values_2[] = $value_2;
             }
-            $data['productOptions'] = $values_2;
+            $dataArray['productOptions'] = $values_2;
         }
-        foreach ($object as $key => $value_3) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_3;
+                $dataArray[$key] = $value_3;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class => false];
     }
 }

@@ -7,8 +7,8 @@ class OrderItem extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -69,13 +69,13 @@ class OrderItem extends \ArrayObject
     /**
      * Additional options
      *
-     * @var mixed[]|null
+     * @var array<string, mixed>|null
      */
     protected $options;
     /**
      * 
      *
-     * @var BundledOrderItem[]|null
+     * @var list<BundledOrderItem>|null
      */
     protected $bundledProducts;
     /**
@@ -83,7 +83,7 @@ class OrderItem extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -94,7 +94,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -105,7 +105,7 @@ class OrderItem extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -116,7 +116,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
@@ -127,7 +127,7 @@ class OrderItem extends \ArrayObject
      *
      * @return int
      */
-    public function getCount() : int
+    public function getCount(): int
     {
         return $this->count;
     }
@@ -138,7 +138,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -149,7 +149,7 @@ class OrderItem extends \ArrayObject
      *
      * @return string|null
      */
-    public function getExternalProductNumber() : ?string
+    public function getExternalProductNumber(): ?string
     {
         return $this->externalProductNumber;
     }
@@ -160,7 +160,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setExternalProductNumber(?string $externalProductNumber) : self
+    public function setExternalProductNumber(?string $externalProductNumber): self
     {
         $this->initialized['externalProductNumber'] = true;
         $this->externalProductNumber = $externalProductNumber;
@@ -171,7 +171,7 @@ class OrderItem extends \ArrayObject
      *
      * @return int|null
      */
-    public function getCanceledCount() : ?int
+    public function getCanceledCount(): ?int
     {
         return $this->canceledCount;
     }
@@ -182,7 +182,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setCanceledCount(?int $canceledCount) : self
+    public function setCanceledCount(?int $canceledCount): self
     {
         $this->initialized['canceledCount'] = true;
         $this->canceledCount = $canceledCount;
@@ -193,7 +193,7 @@ class OrderItem extends \ArrayObject
      *
      * @return int
      */
-    public function getAvailableCount() : int
+    public function getAvailableCount(): int
     {
         return $this->availableCount;
     }
@@ -204,7 +204,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setAvailableCount(int $availableCount) : self
+    public function setAvailableCount(int $availableCount): self
     {
         $this->initialized['availableCount'] = true;
         $this->availableCount = $availableCount;
@@ -215,7 +215,7 @@ class OrderItem extends \ArrayObject
      *
      * @return int|null
      */
-    public function getDeliveredCount() : ?int
+    public function getDeliveredCount(): ?int
     {
         return $this->deliveredCount;
     }
@@ -226,7 +226,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setDeliveredCount(?int $deliveredCount) : self
+    public function setDeliveredCount(?int $deliveredCount): self
     {
         $this->initialized['deliveredCount'] = true;
         $this->deliveredCount = $deliveredCount;
@@ -237,7 +237,7 @@ class OrderItem extends \ArrayObject
      *
      * @return int|null
      */
-    public function getReturnedCount() : ?int
+    public function getReturnedCount(): ?int
     {
         return $this->returnedCount;
     }
@@ -248,7 +248,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setReturnedCount(?int $returnedCount) : self
+    public function setReturnedCount(?int $returnedCount): self
     {
         $this->initialized['returnedCount'] = true;
         $this->returnedCount = $returnedCount;
@@ -259,7 +259,7 @@ class OrderItem extends \ArrayObject
      *
      * @return OrderItemPrice
      */
-    public function getPrice() : OrderItemPrice
+    public function getPrice(): OrderItemPrice
     {
         return $this->price;
     }
@@ -270,7 +270,7 @@ class OrderItem extends \ArrayObject
      *
      * @return self
      */
-    public function setPrice(OrderItemPrice $price) : self
+    public function setPrice(OrderItemPrice $price): self
     {
         $this->initialized['price'] = true;
         $this->price = $price;
@@ -279,20 +279,20 @@ class OrderItem extends \ArrayObject
     /**
      * Additional options
      *
-     * @return mixed[]|null
+     * @return array<string, mixed>|null
      */
-    public function getOptions() : ?iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
     /**
      * Additional options
      *
-     * @param mixed[]|null $options
+     * @param array<string, mixed>|null $options
      *
      * @return self
      */
-    public function setOptions(?iterable $options) : self
+    public function setOptions(?iterable $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
@@ -301,20 +301,20 @@ class OrderItem extends \ArrayObject
     /**
      * 
      *
-     * @return BundledOrderItem[]|null
+     * @return list<BundledOrderItem>|null
      */
-    public function getBundledProducts() : ?array
+    public function getBundledProducts(): ?array
     {
         return $this->bundledProducts;
     }
     /**
      * 
      *
-     * @param BundledOrderItem[]|null $bundledProducts
+     * @param list<BundledOrderItem>|null $bundledProducts
      *
      * @return self
      */
-    public function setBundledProducts(?array $bundledProducts) : self
+    public function setBundledProducts(?array $bundledProducts): self
     {
         $this->initialized['bundledProducts'] = true;
         $this->bundledProducts = $bundledProducts;

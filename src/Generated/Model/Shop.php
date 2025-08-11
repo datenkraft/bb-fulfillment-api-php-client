@@ -7,8 +7,8 @@ class Shop extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -59,7 +59,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getId() : string
+    public function getId(): string
     {
         return $this->id;
     }
@@ -70,7 +70,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -81,7 +81,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getShopCode() : string
+    public function getShopCode(): string
     {
         return $this->shopCode;
     }
@@ -92,7 +92,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setShopCode(string $shopCode) : self
+    public function setShopCode(string $shopCode): self
     {
         $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
@@ -103,7 +103,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getInternalReferencePrefix() : string
+    public function getInternalReferencePrefix(): string
     {
         return $this->internalReferencePrefix;
     }
@@ -114,7 +114,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setInternalReferencePrefix(string $internalReferencePrefix) : self
+    public function setInternalReferencePrefix(string $internalReferencePrefix): self
     {
         $this->initialized['internalReferencePrefix'] = true;
         $this->internalReferencePrefix = $internalReferencePrefix;
@@ -125,7 +125,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getProjectId() : string
+    public function getProjectId(): string
     {
         return $this->projectId;
     }
@@ -136,7 +136,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setProjectId(string $projectId) : self
+    public function setProjectId(string $projectId): self
     {
         $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
@@ -147,7 +147,7 @@ class Shop extends \ArrayObject
      *
      * @return Shopmeta|null
      */
-    public function getMeta() : ?Shopmeta
+    public function getMeta(): ?Shopmeta
     {
         return $this->meta;
     }
@@ -158,7 +158,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setMeta(?Shopmeta $meta) : self
+    public function setMeta(?Shopmeta $meta): self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;
@@ -169,7 +169,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -180,7 +180,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -191,7 +191,7 @@ class Shop extends \ArrayObject
      *
      * @return bool
      */
-    public function getActive() : bool
+    public function getActive(): bool
     {
         return $this->active;
     }
@@ -202,7 +202,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;

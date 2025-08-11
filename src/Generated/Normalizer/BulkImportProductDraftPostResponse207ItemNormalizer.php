@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class BulkImportProductDraftPostResponse207ItemNormalizer implements Denormalize
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportProductDraftPostResponse207Item';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportProductDraftPostResponse207Item';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -50,7 +46,7 @@ class BulkImportProductDraftPostResponse207ItemNormalizer implements Denormalize
             unset($data['message']);
         }
         if (\array_key_exists('reference', $data)) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['reference'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -58,7 +54,7 @@ class BulkImportProductDraftPostResponse207ItemNormalizer implements Denormalize
             unset($data['reference']);
         }
         if (\array_key_exists('content', $data)) {
-            $values_1 = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['content'] as $key_1 => $value_1) {
                 $values_1[$key_1] = $value_1;
             }
@@ -72,29 +68,30 @@ class BulkImportProductDraftPostResponse207ItemNormalizer implements Denormalize
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        $data['code'] = $object->getCode();
-        $data['message'] = $object->getMessage();
-        $values = array();
-        foreach ($object->getReference() as $key => $value) {
+        $dataArray = [];
+        $dataArray['code'] = $data->getCode();
+        $dataArray['message'] = $data->getMessage();
+        $values = [];
+        foreach ($data->getReference() as $key => $value) {
             $values[$key] = $value;
         }
-        $data['reference'] = $values;
-        $values_1 = array();
-        foreach ($object->getContent() as $key_1 => $value_1) {
+        $dataArray['reference'] = $values;
+        $values_1 = [];
+        foreach ($data->getContent() as $key_1 => $value_1) {
             $values_1[$key_1] = $value_1;
         }
-        $data['content'] = $values_1;
-        foreach ($object as $key_2 => $value_2) {
+        $dataArray['content'] = $values_1;
+        foreach ($data as $key_2 => $value_2) {
             if (preg_match('/.*/', (string) $key_2)) {
-                $data[$key_2] = $value_2;
+                $dataArray[$key_2] = $value_2;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item::class => false];
     }
 }

@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDelivery';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDelivery';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -57,9 +53,9 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
             unset($data['expectedDeliveryDate']);
         }
         if (\array_key_exists('products', $data)) {
-            $values = array();
+            $values = [];
             foreach ($data['products'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDeliveryProduct', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct::class, 'json', $context);
             }
             $object->setProducts($values);
             unset($data['products']);
@@ -71,27 +67,28 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('inboundDeliveryName') && null !== $object->getInboundDeliveryName()) {
-            $data['inboundDeliveryName'] = $object->getInboundDeliveryName();
+        $dataArray = [];
+        if ($data->isInitialized('inboundDeliveryName') && null !== $data->getInboundDeliveryName()) {
+            $dataArray['inboundDeliveryName'] = $data->getInboundDeliveryName();
         }
-        $data['supplierNumber'] = $object->getSupplierNumber();
-        $data['expectedDeliveryDate'] = $object->getExpectedDeliveryDate()->format('Y-m-d');
-        $values = array();
-        foreach ($object->getProducts() as $value) {
+        $dataArray['supplierNumber'] = $data->getSupplierNumber();
+        $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()?->format('Y-m-d');
+        $values = [];
+        foreach ($data->getProducts() as $value) {
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
-        $data['products'] = $values;
-        foreach ($object as $key => $value_1) {
+        $dataArray['products'] = $values;
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery::class => false];
     }
 }

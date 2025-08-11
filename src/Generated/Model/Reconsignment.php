@@ -7,8 +7,8 @@ class Reconsignment extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -63,7 +63,7 @@ class Reconsignment extends \ArrayObject
     /**
      * 
      *
-     * @var ReconsignmentLine[]
+     * @var list<ReconsignmentLine>
      */
     protected $reconsignmentLines;
     /**
@@ -71,7 +71,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentNumber() : string
+    public function getReconsignmentNumber(): string
     {
         return $this->reconsignmentNumber;
     }
@@ -82,7 +82,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentNumber(string $reconsignmentNumber) : self
+    public function setReconsignmentNumber(string $reconsignmentNumber): self
     {
         $this->initialized['reconsignmentNumber'] = true;
         $this->reconsignmentNumber = $reconsignmentNumber;
@@ -93,7 +93,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentDate() : string
+    public function getReconsignmentDate(): string
     {
         return $this->reconsignmentDate;
     }
@@ -104,7 +104,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentDate(string $reconsignmentDate) : self
+    public function setReconsignmentDate(string $reconsignmentDate): self
     {
         $this->initialized['reconsignmentDate'] = true;
         $this->reconsignmentDate = $reconsignmentDate;
@@ -115,7 +115,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentReason() : string
+    public function getReconsignmentReason(): string
     {
         return $this->reconsignmentReason;
     }
@@ -126,7 +126,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentReason(string $reconsignmentReason) : self
+    public function setReconsignmentReason(string $reconsignmentReason): self
     {
         $this->initialized['reconsignmentReason'] = true;
         $this->reconsignmentReason = $reconsignmentReason;
@@ -137,7 +137,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return string
      */
-    public function getOrderNumber() : string
+    public function getOrderNumber(): string
     {
         return $this->orderNumber;
     }
@@ -148,7 +148,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderNumber(string $orderNumber) : self
+    public function setOrderNumber(string $orderNumber): self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
@@ -159,7 +159,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return string
      */
-    public function getOrderDeliveryServiceCode() : string
+    public function getOrderDeliveryServiceCode(): string
     {
         return $this->orderDeliveryServiceCode;
     }
@@ -170,7 +170,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderDeliveryServiceCode(string $orderDeliveryServiceCode) : self
+    public function setOrderDeliveryServiceCode(string $orderDeliveryServiceCode): self
     {
         $this->initialized['orderDeliveryServiceCode'] = true;
         $this->orderDeliveryServiceCode = $orderDeliveryServiceCode;
@@ -181,7 +181,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentDeliveryServiceCode() : string
+    public function getReconsignmentDeliveryServiceCode(): string
     {
         return $this->reconsignmentDeliveryServiceCode;
     }
@@ -192,7 +192,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentDeliveryServiceCode(string $reconsignmentDeliveryServiceCode) : self
+    public function setReconsignmentDeliveryServiceCode(string $reconsignmentDeliveryServiceCode): self
     {
         $this->initialized['reconsignmentDeliveryServiceCode'] = true;
         $this->reconsignmentDeliveryServiceCode = $reconsignmentDeliveryServiceCode;
@@ -203,7 +203,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return bool
      */
-    public function getReconsignmentWasPreAnnounced() : bool
+    public function getReconsignmentWasPreAnnounced(): bool
     {
         return $this->reconsignmentWasPreAnnounced;
     }
@@ -214,7 +214,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentWasPreAnnounced(bool $reconsignmentWasPreAnnounced) : self
+    public function setReconsignmentWasPreAnnounced(bool $reconsignmentWasPreAnnounced): self
     {
         $this->initialized['reconsignmentWasPreAnnounced'] = true;
         $this->reconsignmentWasPreAnnounced = $reconsignmentWasPreAnnounced;
@@ -225,7 +225,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentCountryCode() : string
+    public function getReconsignmentCountryCode(): string
     {
         return $this->reconsignmentCountryCode;
     }
@@ -236,7 +236,7 @@ class Reconsignment extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentCountryCode(string $reconsignmentCountryCode) : self
+    public function setReconsignmentCountryCode(string $reconsignmentCountryCode): self
     {
         $this->initialized['reconsignmentCountryCode'] = true;
         $this->reconsignmentCountryCode = $reconsignmentCountryCode;
@@ -245,20 +245,20 @@ class Reconsignment extends \ArrayObject
     /**
      * 
      *
-     * @return ReconsignmentLine[]
+     * @return list<ReconsignmentLine>
      */
-    public function getReconsignmentLines() : array
+    public function getReconsignmentLines(): array
     {
         return $this->reconsignmentLines;
     }
     /**
      * 
      *
-     * @param ReconsignmentLine[] $reconsignmentLines
+     * @param list<ReconsignmentLine> $reconsignmentLines
      *
      * @return self
      */
-    public function setReconsignmentLines(array $reconsignmentLines) : self
+    public function setReconsignmentLines(array $reconsignmentLines): self
     {
         $this->initialized['reconsignmentLines'] = true;
         $this->reconsignmentLines = $reconsignmentLines;

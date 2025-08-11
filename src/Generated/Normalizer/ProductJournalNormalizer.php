@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournal';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournal::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournal';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournal::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -46,7 +42,7 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
             unset($data['journalId']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['date']));
+            $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
             unset($data['date']);
         }
         if (\array_key_exists('productNumber', $data)) {
@@ -79,7 +75,7 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
             $object->setStockNew(null);
         }
         if (\array_key_exists('reference', $data)) {
-            $object->setReference($this->denormalizer->denormalize($data['reference'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournalReference', 'json', $context));
+            $object->setReference($this->denormalizer->denormalize($data['reference'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalReference::class, 'json', $context));
             unset($data['reference']);
         }
         foreach ($data as $key => $value) {
@@ -89,41 +85,42 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('journalId') && null !== $object->getJournalId()) {
-            $data['journalId'] = $object->getJournalId();
+        $dataArray = [];
+        if ($data->isInitialized('journalId') && null !== $data->getJournalId()) {
+            $dataArray['journalId'] = $data->getJournalId();
         }
-        if ($object->isInitialized('date') && null !== $object->getDate()) {
-            $data['date'] = $object->getDate()->format('Y-m-d\\TH:i:sP');
+        if ($data->isInitialized('date') && null !== $data->getDate()) {
+            $dataArray['date'] = $data->getDate()?->format('Y-m-d\TH:i:sP');
         }
-        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
+        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
+            $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($object->isInitialized('reason') && null !== $object->getReason()) {
-            $data['reason'] = $object->getReason();
+        if ($data->isInitialized('reason') && null !== $data->getReason()) {
+            $dataArray['reason'] = $data->getReason();
         }
-        if ($object->isInitialized('stockDelta') && null !== $object->getStockDelta()) {
-            $data['stockDelta'] = $object->getStockDelta();
+        if ($data->isInitialized('stockDelta') && null !== $data->getStockDelta()) {
+            $dataArray['stockDelta'] = $data->getStockDelta();
         }
-        if ($object->isInitialized('stockOld') && null !== $object->getStockOld()) {
-            $data['stockOld'] = $object->getStockOld();
+        if ($data->isInitialized('stockOld') && null !== $data->getStockOld()) {
+            $dataArray['stockOld'] = $data->getStockOld();
         }
-        if ($object->isInitialized('stockNew') && null !== $object->getStockNew()) {
-            $data['stockNew'] = $object->getStockNew();
+        if ($data->isInitialized('stockNew') && null !== $data->getStockNew()) {
+            $dataArray['stockNew'] = $data->getStockNew();
         }
-        if ($object->isInitialized('reference') && null !== $object->getReference()) {
-            $data['reference'] = $this->normalizer->normalize($object->getReference(), 'json', $context);
+        if ($data->isInitialized('reference') && null !== $data->getReference()) {
+            $dataArray['reference'] = $this->normalizer->normalize($data->getReference(), 'json', $context);
         }
-        foreach ($object as $key => $value) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournal::class => false];
     }
 }

@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItem';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItem';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -89,11 +85,11 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setReturnedCount(null);
         }
         if (\array_key_exists('price', $data)) {
-            $object->setPrice($this->denormalizer->denormalize($data['price'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice', 'json', $context));
+            $object->setPrice($this->denormalizer->denormalize($data['price'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItemPrice::class, 'json', $context));
             unset($data['price']);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $values = new \ArrayObject(array(), \ArrayObject::ARRAY_AS_PROPS);
+            $values = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data['options'] as $key => $value) {
                 $values[$key] = $value;
             }
@@ -104,9 +100,9 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setOptions(null);
         }
         if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
-            $values_1 = array();
+            $values_1 = [];
             foreach ($data['bundledProducts'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItem', 'json', $context);
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItem::class, 'json', $context);
             }
             $object->setBundledProducts($values_1);
             unset($data['bundledProducts']);
@@ -121,58 +117,59 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
+        $dataArray = [];
+        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
+            $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($object->isInitialized('title') && null !== $object->getTitle()) {
-            $data['title'] = $object->getTitle();
+        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+            $dataArray['title'] = $data->getTitle();
         }
-        if ($object->isInitialized('count') && null !== $object->getCount()) {
-            $data['count'] = $object->getCount();
+        if ($data->isInitialized('count') && null !== $data->getCount()) {
+            $dataArray['count'] = $data->getCount();
         }
-        if ($object->isInitialized('externalProductNumber') && null !== $object->getExternalProductNumber()) {
-            $data['externalProductNumber'] = $object->getExternalProductNumber();
+        if ($data->isInitialized('externalProductNumber') && null !== $data->getExternalProductNumber()) {
+            $dataArray['externalProductNumber'] = $data->getExternalProductNumber();
         }
-        if ($object->isInitialized('canceledCount') && null !== $object->getCanceledCount()) {
-            $data['canceledCount'] = $object->getCanceledCount();
+        if ($data->isInitialized('canceledCount') && null !== $data->getCanceledCount()) {
+            $dataArray['canceledCount'] = $data->getCanceledCount();
         }
-        if ($object->isInitialized('availableCount') && null !== $object->getAvailableCount()) {
-            $data['availableCount'] = $object->getAvailableCount();
+        if ($data->isInitialized('availableCount') && null !== $data->getAvailableCount()) {
+            $dataArray['availableCount'] = $data->getAvailableCount();
         }
-        if ($object->isInitialized('deliveredCount') && null !== $object->getDeliveredCount()) {
-            $data['deliveredCount'] = $object->getDeliveredCount();
+        if ($data->isInitialized('deliveredCount') && null !== $data->getDeliveredCount()) {
+            $dataArray['deliveredCount'] = $data->getDeliveredCount();
         }
-        if ($object->isInitialized('returnedCount') && null !== $object->getReturnedCount()) {
-            $data['returnedCount'] = $object->getReturnedCount();
+        if ($data->isInitialized('returnedCount') && null !== $data->getReturnedCount()) {
+            $dataArray['returnedCount'] = $data->getReturnedCount();
         }
-        if ($object->isInitialized('price') && null !== $object->getPrice()) {
-            $data['price'] = $this->normalizer->normalize($object->getPrice(), 'json', $context);
+        if ($data->isInitialized('price') && null !== $data->getPrice()) {
+            $dataArray['price'] = $this->normalizer->normalize($data->getPrice(), 'json', $context);
         }
-        if ($object->isInitialized('options') && null !== $object->getOptions()) {
-            $values = array();
-            foreach ($object->getOptions() as $key => $value) {
+        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+            $values = [];
+            foreach ($data->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
-            $data['options'] = $values;
+            $dataArray['options'] = $values;
         }
-        if ($object->isInitialized('bundledProducts') && null !== $object->getBundledProducts()) {
-            $values_1 = array();
-            foreach ($object->getBundledProducts() as $value_1) {
+        if ($data->isInitialized('bundledProducts') && null !== $data->getBundledProducts()) {
+            $values_1 = [];
+            foreach ($data->getBundledProducts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
-            $data['bundledProducts'] = $values_1;
+            $dataArray['bundledProducts'] = $values_1;
         }
-        foreach ($object as $key_1 => $value_2) {
+        foreach ($data as $key_1 => $value_2) {
             if (preg_match('/.*/', (string) $key_1)) {
-                $data[$key_1] = $value_2;
+                $dataArray[$key_1] = $value_2;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem::class => false];
     }
 }

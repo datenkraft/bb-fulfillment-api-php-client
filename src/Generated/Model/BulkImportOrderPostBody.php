@@ -7,8 +7,8 @@ class BulkImportOrderPostBody extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class BulkImportOrderPostBody extends \ArrayObject
      *
      * @return string
      */
-    public function getFile() : string
+    public function getFile(): string
     {
         return $this->file;
     }
@@ -34,7 +34,7 @@ class BulkImportOrderPostBody extends \ArrayObject
      *
      * @return self
      */
-    public function setFile(string $file) : self
+    public function setFile(string $file): self
     {
         $this->initialized['file'] = true;
         $this->file = $file;

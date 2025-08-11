@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class PostShopmetaNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\PostShopmeta';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\PostShopmeta';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -38,6 +34,21 @@ class PostShopmetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta();
+        if (\array_key_exists('testShop', $data) && \is_int($data['testShop'])) {
+            $data['testShop'] = (bool) $data['testShop'];
+        }
+        if (\array_key_exists('sandboxMode', $data) && \is_int($data['sandboxMode'])) {
+            $data['sandboxMode'] = (bool) $data['sandboxMode'];
+        }
+        if (\array_key_exists('addTestSuffixToInternalReference', $data) && \is_int($data['addTestSuffixToInternalReference'])) {
+            $data['addTestSuffixToInternalReference'] = (bool) $data['addTestSuffixToInternalReference'];
+        }
+        if (\array_key_exists('invoiceEnabled', $data) && \is_int($data['invoiceEnabled'])) {
+            $data['invoiceEnabled'] = (bool) $data['invoiceEnabled'];
+        }
+        if (\array_key_exists('overwriteCustomerEmailEnabled', $data) && \is_int($data['overwriteCustomerEmailEnabled'])) {
+            $data['overwriteCustomerEmailEnabled'] = (bool) $data['overwriteCustomerEmailEnabled'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -56,7 +67,7 @@ class PostShopmetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setTestShop(null);
         }
         if (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] !== null) {
-            $object->setTestShopResetNotBefore(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['testShopResetNotBefore']));
+            $object->setTestShopResetNotBefore(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['testShopResetNotBefore']));
             unset($data['testShopResetNotBefore']);
         }
         elseif (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] === null) {
@@ -111,44 +122,45 @@ class PostShopmetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('shopifyShopDomain') && null !== $object->getShopifyShopDomain()) {
-            $data['shopifyShopDomain'] = $object->getShopifyShopDomain();
+        $dataArray = [];
+        if ($data->isInitialized('shopifyShopDomain') && null !== $data->getShopifyShopDomain()) {
+            $dataArray['shopifyShopDomain'] = $data->getShopifyShopDomain();
         }
-        if ($object->isInitialized('testShop') && null !== $object->getTestShop()) {
-            $data['testShop'] = $object->getTestShop();
+        if ($data->isInitialized('testShop') && null !== $data->getTestShop()) {
+            $dataArray['testShop'] = $data->getTestShop();
         }
-        if ($object->isInitialized('testShopResetNotBefore') && null !== $object->getTestShopResetNotBefore()) {
-            $data['testShopResetNotBefore'] = $object->getTestShopResetNotBefore()->format('Y-m-d\\TH:i:sP');
+        if ($data->isInitialized('testShopResetNotBefore') && null !== $data->getTestShopResetNotBefore()) {
+            $dataArray['testShopResetNotBefore'] = $data->getTestShopResetNotBefore()->format('Y-m-d\TH:i:sP');
         }
-        if ($object->isInitialized('sandboxMode') && null !== $object->getSandboxMode()) {
-            $data['sandboxMode'] = $object->getSandboxMode();
+        if ($data->isInitialized('sandboxMode') && null !== $data->getSandboxMode()) {
+            $dataArray['sandboxMode'] = $data->getSandboxMode();
         }
-        if ($object->isInitialized('addTestSuffixToInternalReference') && null !== $object->getAddTestSuffixToInternalReference()) {
-            $data['addTestSuffixToInternalReference'] = $object->getAddTestSuffixToInternalReference();
+        if ($data->isInitialized('addTestSuffixToInternalReference') && null !== $data->getAddTestSuffixToInternalReference()) {
+            $dataArray['addTestSuffixToInternalReference'] = $data->getAddTestSuffixToInternalReference();
         }
-        if ($object->isInitialized('invoiceEnabled') && null !== $object->getInvoiceEnabled()) {
-            $data['invoiceEnabled'] = $object->getInvoiceEnabled();
+        if ($data->isInitialized('invoiceEnabled') && null !== $data->getInvoiceEnabled()) {
+            $dataArray['invoiceEnabled'] = $data->getInvoiceEnabled();
         }
-        if ($object->isInitialized('defaultCurrency') && null !== $object->getDefaultCurrency()) {
-            $data['defaultCurrency'] = $object->getDefaultCurrency();
+        if ($data->isInitialized('defaultCurrency') && null !== $data->getDefaultCurrency()) {
+            $dataArray['defaultCurrency'] = $data->getDefaultCurrency();
         }
-        if ($object->isInitialized('overwriteCustomerEmailEnabled') && null !== $object->getOverwriteCustomerEmailEnabled()) {
-            $data['overwriteCustomerEmailEnabled'] = $object->getOverwriteCustomerEmailEnabled();
+        if ($data->isInitialized('overwriteCustomerEmailEnabled') && null !== $data->getOverwriteCustomerEmailEnabled()) {
+            $dataArray['overwriteCustomerEmailEnabled'] = $data->getOverwriteCustomerEmailEnabled();
         }
-        if ($object->isInitialized('orderNotesPrecedingText') && null !== $object->getOrderNotesPrecedingText()) {
-            $data['orderNotesPrecedingText'] = $object->getOrderNotesPrecedingText();
+        if ($data->isInitialized('orderNotesPrecedingText') && null !== $data->getOrderNotesPrecedingText()) {
+            $dataArray['orderNotesPrecedingText'] = $data->getOrderNotesPrecedingText();
         }
-        foreach ($object as $key => $value) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class => false];
     }
 }

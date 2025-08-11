@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDelivery';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDelivery';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -57,9 +53,9 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
             unset($data['expectedDeliveryDate']);
         }
         if (\array_key_exists('products', $data)) {
-            $values = array();
+            $values = [];
             foreach ($data['products'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryProduct', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryProduct::class, 'json', $context);
             }
             $object->setProducts($values);
             unset($data['products']);
@@ -109,7 +105,7 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setDeliverySlipNumber(null);
         }
         if (\array_key_exists('createDate', $data)) {
-            $object->setCreateDate(\DateTime::createFromFormat('Y-m-d\\TH:i:sP', $data['createDate']));
+            $object->setCreateDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createDate']));
             unset($data['createDate']);
         }
         foreach ($data as $key => $value_1) {
@@ -119,56 +115,57 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('inboundDeliveryName') && null !== $object->getInboundDeliveryName()) {
-            $data['inboundDeliveryName'] = $object->getInboundDeliveryName();
+        $dataArray = [];
+        if ($data->isInitialized('inboundDeliveryName') && null !== $data->getInboundDeliveryName()) {
+            $dataArray['inboundDeliveryName'] = $data->getInboundDeliveryName();
         }
-        $data['supplierNumber'] = $object->getSupplierNumber();
-        $data['expectedDeliveryDate'] = $object->getExpectedDeliveryDate()->format('Y-m-d');
-        if ($object->isInitialized('products') && null !== $object->getProducts()) {
-            $values = array();
-            foreach ($object->getProducts() as $value) {
+        $dataArray['supplierNumber'] = $data->getSupplierNumber();
+        $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()?->format('Y-m-d');
+        if ($data->isInitialized('products') && null !== $data->getProducts()) {
+            $values = [];
+            foreach ($data->getProducts() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['products'] = $values;
+            $dataArray['products'] = $values;
         }
-        if ($object->isInitialized('inboundDeliveryNumber') && null !== $object->getInboundDeliveryNumber()) {
-            $data['inboundDeliveryNumber'] = $object->getInboundDeliveryNumber();
+        if ($data->isInitialized('inboundDeliveryNumber') && null !== $data->getInboundDeliveryNumber()) {
+            $dataArray['inboundDeliveryNumber'] = $data->getInboundDeliveryNumber();
         }
-        if ($object->isInitialized('inboundDeliveryNote') && null !== $object->getInboundDeliveryNote()) {
-            $data['inboundDeliveryNote'] = $object->getInboundDeliveryNote();
+        if ($data->isInitialized('inboundDeliveryNote') && null !== $data->getInboundDeliveryNote()) {
+            $dataArray['inboundDeliveryNote'] = $data->getInboundDeliveryNote();
         }
-        if ($object->isInitialized('shopWAWIDeliveryId') && null !== $object->getShopWAWIDeliveryId()) {
-            $data['shopWAWIDeliveryId'] = $object->getShopWAWIDeliveryId();
+        if ($data->isInitialized('shopWAWIDeliveryId') && null !== $data->getShopWAWIDeliveryId()) {
+            $dataArray['shopWAWIDeliveryId'] = $data->getShopWAWIDeliveryId();
         }
-        if ($object->isInitialized('status') && null !== $object->getStatus()) {
-            $data['status'] = $object->getStatus();
+        if ($data->isInitialized('status') && null !== $data->getStatus()) {
+            $dataArray['status'] = $data->getStatus();
         }
-        if ($object->isInitialized('shopCode') && null !== $object->getShopCode()) {
-            $data['shopCode'] = $object->getShopCode();
+        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
+            $dataArray['shopCode'] = $data->getShopCode();
         }
-        if ($object->isInitialized('startDate') && null !== $object->getStartDate()) {
-            $data['startDate'] = $object->getStartDate()->format('Y-m-d');
+        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
+            $dataArray['startDate'] = $data->getStartDate()->format('Y-m-d');
         }
-        if ($object->isInitialized('endDate') && null !== $object->getEndDate()) {
-            $data['endDate'] = $object->getEndDate()->format('Y-m-d');
+        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
+            $dataArray['endDate'] = $data->getEndDate()->format('Y-m-d');
         }
-        if ($object->isInitialized('deliverySlipNumber') && null !== $object->getDeliverySlipNumber()) {
-            $data['deliverySlipNumber'] = $object->getDeliverySlipNumber();
+        if ($data->isInitialized('deliverySlipNumber') && null !== $data->getDeliverySlipNumber()) {
+            $dataArray['deliverySlipNumber'] = $data->getDeliverySlipNumber();
         }
-        if ($object->isInitialized('createDate') && null !== $object->getCreateDate()) {
-            $data['createDate'] = $object->getCreateDate()->format('Y-m-d\\TH:i:sP');
+        if ($data->isInitialized('createDate') && null !== $data->getCreateDate()) {
+            $dataArray['createDate'] = $data->getCreateDate()?->format('Y-m-d\TH:i:sP');
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class => false];
     }
 }

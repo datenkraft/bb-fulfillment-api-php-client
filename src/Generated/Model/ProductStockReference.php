@@ -7,8 +7,8 @@ class ProductStockReference extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -41,7 +41,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -52,7 +52,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -63,7 +63,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return string
      */
-    public function getTypeCode() : string
+    public function getTypeCode(): string
     {
         return $this->typeCode;
     }
@@ -74,7 +74,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return self
      */
-    public function setTypeCode(string $typeCode) : self
+    public function setTypeCode(string $typeCode): self
     {
         $this->initialized['typeCode'] = true;
         $this->typeCode = $typeCode;
@@ -85,7 +85,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return int
      */
-    public function getCount() : int
+    public function getCount(): int
     {
         return $this->count;
     }
@@ -96,7 +96,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -107,7 +107,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return ProductStockReferenceReference
      */
-    public function getReference() : ProductStockReferenceReference
+    public function getReference(): ProductStockReferenceReference
     {
         return $this->reference;
     }
@@ -118,7 +118,7 @@ class ProductStockReference extends \ArrayObject
      *
      * @return self
      */
-    public function setReference(ProductStockReferenceReference $reference) : self
+    public function setReference(ProductStockReferenceReference $reference): self
     {
         $this->initialized['reference'] = true;
         $this->reference = $reference;

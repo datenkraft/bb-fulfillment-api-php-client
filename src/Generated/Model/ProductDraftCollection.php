@@ -7,8 +7,8 @@ class ProductDraftCollection extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -21,7 +21,7 @@ class ProductDraftCollection extends \ArrayObject
     /**
      * Data of the collection
      *
-     * @var ProductDraft[]
+     * @var list<ProductDraft>
      */
     protected $data;
     /**
@@ -29,7 +29,7 @@ class ProductDraftCollection extends \ArrayObject
      *
      * @return CollectionPagination
      */
-    public function getPagination() : CollectionPagination
+    public function getPagination(): CollectionPagination
     {
         return $this->pagination;
     }
@@ -40,7 +40,7 @@ class ProductDraftCollection extends \ArrayObject
      *
      * @return self
      */
-    public function setPagination(CollectionPagination $pagination) : self
+    public function setPagination(CollectionPagination $pagination): self
     {
         $this->initialized['pagination'] = true;
         $this->pagination = $pagination;
@@ -49,20 +49,20 @@ class ProductDraftCollection extends \ArrayObject
     /**
      * Data of the collection
      *
-     * @return ProductDraft[]
+     * @return list<ProductDraft>
      */
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
     /**
      * Data of the collection
      *
-     * @param ProductDraft[] $data
+     * @param list<ProductDraft> $data
      *
      * @return self
      */
-    public function setData(array $data) : self
+    public function setData(array $data): self
     {
         $this->initialized['data'] = true;
         $this->data = $data;

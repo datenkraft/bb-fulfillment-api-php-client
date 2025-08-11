@@ -7,8 +7,8 @@ class Shopmeta extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -73,7 +73,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return string|null
      */
-    public function getShopifyShopDomain() : ?string
+    public function getShopifyShopDomain(): ?string
     {
         return $this->shopifyShopDomain;
     }
@@ -84,7 +84,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return self
      */
-    public function setShopifyShopDomain(?string $shopifyShopDomain) : self
+    public function setShopifyShopDomain(?string $shopifyShopDomain): self
     {
         $this->initialized['shopifyShopDomain'] = true;
         $this->shopifyShopDomain = $shopifyShopDomain;
@@ -95,7 +95,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getTestShop() : ?bool
+    public function getTestShop(): ?bool
     {
         return $this->testShop;
     }
@@ -106,7 +106,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return self
      */
-    public function setTestShop(?bool $testShop) : self
+    public function setTestShop(?bool $testShop): self
     {
         $this->initialized['testShop'] = true;
         $this->testShop = $testShop;
@@ -117,7 +117,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return \DateTime|null
      */
-    public function getTestShopResetNotBefore() : ?\DateTime
+    public function getTestShopResetNotBefore(): ?\DateTime
     {
         return $this->testShopResetNotBefore;
     }
@@ -128,7 +128,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return self
      */
-    public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore) : self
+    public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore): self
     {
         $this->initialized['testShopResetNotBefore'] = true;
         $this->testShopResetNotBefore = $testShopResetNotBefore;
@@ -139,7 +139,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getSandboxMode() : ?bool
+    public function getSandboxMode(): ?bool
     {
         return $this->sandboxMode;
     }
@@ -150,7 +150,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return self
      */
-    public function setSandboxMode(?bool $sandboxMode) : self
+    public function setSandboxMode(?bool $sandboxMode): self
     {
         $this->initialized['sandboxMode'] = true;
         $this->sandboxMode = $sandboxMode;
@@ -161,7 +161,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getAddTestSuffixToInternalReference() : ?bool
+    public function getAddTestSuffixToInternalReference(): ?bool
     {
         return $this->addTestSuffixToInternalReference;
     }
@@ -172,7 +172,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return self
      */
-    public function setAddTestSuffixToInternalReference(?bool $addTestSuffixToInternalReference) : self
+    public function setAddTestSuffixToInternalReference(?bool $addTestSuffixToInternalReference): self
     {
         $this->initialized['addTestSuffixToInternalReference'] = true;
         $this->addTestSuffixToInternalReference = $addTestSuffixToInternalReference;
@@ -184,7 +184,7 @@ class Shopmeta extends \ArrayObject
     *
     * @return bool|null
     */
-    public function getInvoiceEnabled() : ?bool
+    public function getInvoiceEnabled(): ?bool
     {
         return $this->invoiceEnabled;
     }
@@ -196,7 +196,7 @@ class Shopmeta extends \ArrayObject
     *
     * @return self
     */
-    public function setInvoiceEnabled(?bool $invoiceEnabled) : self
+    public function setInvoiceEnabled(?bool $invoiceEnabled): self
     {
         $this->initialized['invoiceEnabled'] = true;
         $this->invoiceEnabled = $invoiceEnabled;
@@ -207,7 +207,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDefaultCurrency() : ?string
+    public function getDefaultCurrency(): ?string
     {
         return $this->defaultCurrency;
     }
@@ -218,7 +218,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return self
      */
-    public function setDefaultCurrency(?string $defaultCurrency) : self
+    public function setDefaultCurrency(?string $defaultCurrency): self
     {
         $this->initialized['defaultCurrency'] = true;
         $this->defaultCurrency = $defaultCurrency;
@@ -230,7 +230,7 @@ class Shopmeta extends \ArrayObject
     *
     * @return bool|null
     */
-    public function getOverwriteCustomerEmailEnabled() : ?bool
+    public function getOverwriteCustomerEmailEnabled(): ?bool
     {
         return $this->overwriteCustomerEmailEnabled;
     }
@@ -242,7 +242,7 @@ class Shopmeta extends \ArrayObject
     *
     * @return self
     */
-    public function setOverwriteCustomerEmailEnabled(?bool $overwriteCustomerEmailEnabled) : self
+    public function setOverwriteCustomerEmailEnabled(?bool $overwriteCustomerEmailEnabled): self
     {
         $this->initialized['overwriteCustomerEmailEnabled'] = true;
         $this->overwriteCustomerEmailEnabled = $overwriteCustomerEmailEnabled;
@@ -253,7 +253,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return string|null
      */
-    public function getOrderNotesPrecedingText() : ?string
+    public function getOrderNotesPrecedingText(): ?string
     {
         return $this->orderNotesPrecedingText;
     }
@@ -264,7 +264,7 @@ class Shopmeta extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderNotesPrecedingText(?string $orderNotesPrecedingText) : self
+    public function setOrderNotesPrecedingText(?string $orderNotesPrecedingText): self
     {
         $this->initialized['orderNotesPrecedingText'] = true;
         $this->orderNotesPrecedingText = $orderNotesPrecedingText;

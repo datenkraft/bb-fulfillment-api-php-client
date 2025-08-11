@@ -7,8 +7,8 @@ class ReportClearingOrder extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -41,7 +41,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return string
      */
-    public function getOrderNumber() : string
+    public function getOrderNumber(): string
     {
         return $this->orderNumber;
     }
@@ -52,7 +52,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderNumber(string $orderNumber) : self
+    public function setOrderNumber(string $orderNumber): self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
@@ -63,7 +63,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return int
      */
-    public function getShopOrderId() : int
+    public function getShopOrderId(): int
     {
         return $this->shopOrderId;
     }
@@ -74,7 +74,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return self
      */
-    public function setShopOrderId(int $shopOrderId) : self
+    public function setShopOrderId(int $shopOrderId): self
     {
         $this->initialized['shopOrderId'] = true;
         $this->shopOrderId = $shopOrderId;
@@ -85,7 +85,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return string
      */
-    public function getDeliveryZipCode() : string
+    public function getDeliveryZipCode(): string
     {
         return $this->deliveryZipCode;
     }
@@ -96,7 +96,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return self
      */
-    public function setDeliveryZipCode(string $deliveryZipCode) : self
+    public function setDeliveryZipCode(string $deliveryZipCode): self
     {
         $this->initialized['deliveryZipCode'] = true;
         $this->deliveryZipCode = $deliveryZipCode;
@@ -107,7 +107,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return string
      */
-    public function getDeliveryCountryCode() : string
+    public function getDeliveryCountryCode(): string
     {
         return $this->deliveryCountryCode;
     }
@@ -118,7 +118,7 @@ class ReportClearingOrder extends \ArrayObject
      *
      * @return self
      */
-    public function setDeliveryCountryCode(string $deliveryCountryCode) : self
+    public function setDeliveryCountryCode(string $deliveryCountryCode): self
     {
         $this->initialized['deliveryCountryCode'] = true;
         $this->deliveryCountryCode = $deliveryCountryCode;

@@ -7,8 +7,8 @@ class NewInboundDelivery extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -34,7 +34,7 @@ class NewInboundDelivery extends \ArrayObject
     /**
      * Products in the inbound delivery
      *
-     * @var NewInboundDeliveryProduct[]
+     * @var list<NewInboundDeliveryProduct>
      */
     protected $products;
     /**
@@ -42,7 +42,7 @@ class NewInboundDelivery extends \ArrayObject
      *
      * @return string|null
      */
-    public function getInboundDeliveryName() : ?string
+    public function getInboundDeliveryName(): ?string
     {
         return $this->inboundDeliveryName;
     }
@@ -53,7 +53,7 @@ class NewInboundDelivery extends \ArrayObject
      *
      * @return self
      */
-    public function setInboundDeliveryName(?string $inboundDeliveryName) : self
+    public function setInboundDeliveryName(?string $inboundDeliveryName): self
     {
         $this->initialized['inboundDeliveryName'] = true;
         $this->inboundDeliveryName = $inboundDeliveryName;
@@ -65,7 +65,7 @@ class NewInboundDelivery extends \ArrayObject
     *
     * @return string
     */
-    public function getSupplierNumber() : string
+    public function getSupplierNumber(): string
     {
         return $this->supplierNumber;
     }
@@ -77,7 +77,7 @@ class NewInboundDelivery extends \ArrayObject
     *
     * @return self
     */
-    public function setSupplierNumber(string $supplierNumber) : self
+    public function setSupplierNumber(string $supplierNumber): self
     {
         $this->initialized['supplierNumber'] = true;
         $this->supplierNumber = $supplierNumber;
@@ -88,7 +88,7 @@ class NewInboundDelivery extends \ArrayObject
      *
      * @return \DateTime
      */
-    public function getExpectedDeliveryDate() : \DateTime
+    public function getExpectedDeliveryDate(): \DateTime
     {
         return $this->expectedDeliveryDate;
     }
@@ -99,7 +99,7 @@ class NewInboundDelivery extends \ArrayObject
      *
      * @return self
      */
-    public function setExpectedDeliveryDate(\DateTime $expectedDeliveryDate) : self
+    public function setExpectedDeliveryDate(\DateTime $expectedDeliveryDate): self
     {
         $this->initialized['expectedDeliveryDate'] = true;
         $this->expectedDeliveryDate = $expectedDeliveryDate;
@@ -108,20 +108,20 @@ class NewInboundDelivery extends \ArrayObject
     /**
      * Products in the inbound delivery
      *
-     * @return NewInboundDeliveryProduct[]
+     * @return list<NewInboundDeliveryProduct>
      */
-    public function getProducts() : array
+    public function getProducts(): array
     {
         return $this->products;
     }
     /**
      * Products in the inbound delivery
      *
-     * @param NewInboundDeliveryProduct[] $products
+     * @param list<NewInboundDeliveryProduct> $products
      *
      * @return self
      */
-    public function setProducts(array $products) : self
+    public function setProducts(array $products): self
     {
         $this->initialized['products'] = true;
         $this->products = $products;

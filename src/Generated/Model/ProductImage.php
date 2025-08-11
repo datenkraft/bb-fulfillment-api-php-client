@@ -7,8 +7,8 @@ class ProductImage extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class ProductImage extends \ArrayObject
      *
      * @return ProductImageDetail
      */
-    public function getDetail() : ProductImageDetail
+    public function getDetail(): ProductImageDetail
     {
         return $this->detail;
     }
@@ -40,7 +40,7 @@ class ProductImage extends \ArrayObject
      *
      * @return self
      */
-    public function setDetail(ProductImageDetail $detail) : self
+    public function setDetail(ProductImageDetail $detail): self
     {
         $this->initialized['detail'] = true;
         $this->detail = $detail;
@@ -51,7 +51,7 @@ class ProductImage extends \ArrayObject
      *
      * @return ProductImageDetail
      */
-    public function getThumbnail() : ProductImageDetail
+    public function getThumbnail(): ProductImageDetail
     {
         return $this->thumbnail;
     }
@@ -62,7 +62,7 @@ class ProductImage extends \ArrayObject
      *
      * @return self
      */
-    public function setThumbnail(ProductImageDetail $thumbnail) : self
+    public function setThumbnail(ProductImageDetail $thumbnail): self
     {
         $this->initialized['thumbnail'] = true;
         $this->thumbnail = $thumbnail;

@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class ProductImageNormalizer implements DenormalizerInterface, NormalizerInterfa
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImage';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImage::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImage';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImage::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -42,11 +38,11 @@ class ProductImageNormalizer implements DenormalizerInterface, NormalizerInterfa
             return $object;
         }
         if (\array_key_exists('detail', $data)) {
-            $object->setDetail($this->denormalizer->denormalize($data['detail'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImageDetail', 'json', $context));
+            $object->setDetail($this->denormalizer->denormalize($data['detail'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class, 'json', $context));
             unset($data['detail']);
         }
         if (\array_key_exists('thumbnail', $data)) {
-            $object->setThumbnail($this->denormalizer->denormalize($data['thumbnail'], 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImageDetail', 'json', $context));
+            $object->setThumbnail($this->denormalizer->denormalize($data['thumbnail'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class, 'json', $context));
             unset($data['thumbnail']);
         }
         foreach ($data as $key => $value) {
@@ -56,23 +52,24 @@ class ProductImageNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('detail') && null !== $object->getDetail()) {
-            $data['detail'] = $this->normalizer->normalize($object->getDetail(), 'json', $context);
+        $dataArray = [];
+        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
+            $dataArray['detail'] = $this->normalizer->normalize($data->getDetail(), 'json', $context);
         }
-        if ($object->isInitialized('thumbnail') && null !== $object->getThumbnail()) {
-            $data['thumbnail'] = $this->normalizer->normalize($object->getThumbnail(), 'json', $context);
+        if ($data->isInitialized('thumbnail') && null !== $data->getThumbnail()) {
+            $dataArray['thumbnail'] = $this->normalizer->normalize($data->getThumbnail(), 'json', $context);
         }
-        foreach ($object as $key => $value) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImage::class => false];
     }
 }

@@ -7,8 +7,8 @@ class UpdateShop extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class UpdateShop extends \ArrayObject
      *
      * @return string
      */
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -46,7 +46,7 @@ class UpdateShop extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -57,7 +57,7 @@ class UpdateShop extends \ArrayObject
      *
      * @return bool
      */
-    public function getActive() : bool
+    public function getActive(): bool
     {
         return $this->active;
     }
@@ -68,7 +68,7 @@ class UpdateShop extends \ArrayObject
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;
@@ -79,7 +79,7 @@ class UpdateShop extends \ArrayObject
      *
      * @return UpdateShopmeta|null
      */
-    public function getMeta() : ?UpdateShopmeta
+    public function getMeta(): ?UpdateShopmeta
     {
         return $this->meta;
     }
@@ -90,7 +90,7 @@ class UpdateShop extends \ArrayObject
      *
      * @return self
      */
-    public function setMeta(?UpdateShopmeta $meta) : self
+    public function setMeta(?UpdateShopmeta $meta): self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;

@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class ReconsignmentLineNormalizer implements DenormalizerInterface, NormalizerIn
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentLine';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentLine';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -84,9 +80,9 @@ class ReconsignmentLineNormalizer implements DenormalizerInterface, NormalizerIn
             $object->setProductWeightUnit(null);
         }
         if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
-            $values = array();
+            $values = [];
             foreach ($data['bundledProducts'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentLineBundledProduct', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLineBundledProduct::class, 'json', $context);
             }
             $object->setBundledProducts($values);
             unset($data['bundledProducts']);
@@ -101,42 +97,43 @@ class ReconsignmentLineNormalizer implements DenormalizerInterface, NormalizerIn
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
+        $dataArray = [];
+        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
+            $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($object->isInitialized('putBackToStockCount') && null !== $object->getPutBackToStockCount()) {
-            $data['putBackToStockCount'] = $object->getPutBackToStockCount();
+        if ($data->isInitialized('putBackToStockCount') && null !== $data->getPutBackToStockCount()) {
+            $dataArray['putBackToStockCount'] = $data->getPutBackToStockCount();
         }
-        if ($object->isInitialized('count') && null !== $object->getCount()) {
-            $data['count'] = $object->getCount();
+        if ($data->isInitialized('count') && null !== $data->getCount()) {
+            $dataArray['count'] = $data->getCount();
         }
-        if ($object->isInitialized('unit') && null !== $object->getUnit()) {
-            $data['unit'] = $object->getUnit();
+        if ($data->isInitialized('unit') && null !== $data->getUnit()) {
+            $dataArray['unit'] = $data->getUnit();
         }
-        if ($object->isInitialized('productWeight') && null !== $object->getProductWeight()) {
-            $data['productWeight'] = $object->getProductWeight();
+        if ($data->isInitialized('productWeight') && null !== $data->getProductWeight()) {
+            $dataArray['productWeight'] = $data->getProductWeight();
         }
-        if ($object->isInitialized('productWeightUnit') && null !== $object->getProductWeightUnit()) {
-            $data['productWeightUnit'] = $object->getProductWeightUnit();
+        if ($data->isInitialized('productWeightUnit') && null !== $data->getProductWeightUnit()) {
+            $dataArray['productWeightUnit'] = $data->getProductWeightUnit();
         }
-        if ($object->isInitialized('bundledProducts') && null !== $object->getBundledProducts()) {
-            $values = array();
-            foreach ($object->getBundledProducts() as $value) {
+        if ($data->isInitialized('bundledProducts') && null !== $data->getBundledProducts()) {
+            $values = [];
+            foreach ($data->getBundledProducts() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['bundledProducts'] = $values;
+            $dataArray['bundledProducts'] = $values;
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine::class => false];
     }
 }

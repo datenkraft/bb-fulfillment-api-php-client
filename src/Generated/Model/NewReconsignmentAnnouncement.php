@@ -7,8 +7,8 @@ class NewReconsignmentAnnouncement extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -27,7 +27,7 @@ class NewReconsignmentAnnouncement extends \ArrayObject
     /**
      * 
      *
-     * @var NewReconsignmentAnnouncementLine[]
+     * @var list<NewReconsignmentAnnouncementLine>
      */
     protected $reconsignmentAnnouncementLines;
     /**
@@ -35,7 +35,7 @@ class NewReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentReason() : string
+    public function getReconsignmentReason(): string
     {
         return $this->reconsignmentReason;
     }
@@ -46,7 +46,7 @@ class NewReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentReason(string $reconsignmentReason) : self
+    public function setReconsignmentReason(string $reconsignmentReason): self
     {
         $this->initialized['reconsignmentReason'] = true;
         $this->reconsignmentReason = $reconsignmentReason;
@@ -57,7 +57,7 @@ class NewReconsignmentAnnouncement extends \ArrayObject
      *
      * @return NewReconsignmentAnnouncementOptions|null
      */
-    public function getOptions() : ?NewReconsignmentAnnouncementOptions
+    public function getOptions(): ?NewReconsignmentAnnouncementOptions
     {
         return $this->options;
     }
@@ -68,7 +68,7 @@ class NewReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setOptions(?NewReconsignmentAnnouncementOptions $options) : self
+    public function setOptions(?NewReconsignmentAnnouncementOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
@@ -77,20 +77,20 @@ class NewReconsignmentAnnouncement extends \ArrayObject
     /**
      * 
      *
-     * @return NewReconsignmentAnnouncementLine[]
+     * @return list<NewReconsignmentAnnouncementLine>
      */
-    public function getReconsignmentAnnouncementLines() : array
+    public function getReconsignmentAnnouncementLines(): array
     {
         return $this->reconsignmentAnnouncementLines;
     }
     /**
      * 
      *
-     * @param NewReconsignmentAnnouncementLine[] $reconsignmentAnnouncementLines
+     * @param list<NewReconsignmentAnnouncementLine> $reconsignmentAnnouncementLines
      *
      * @return self
      */
-    public function setReconsignmentAnnouncementLines(array $reconsignmentAnnouncementLines) : self
+    public function setReconsignmentAnnouncementLines(array $reconsignmentAnnouncementLines): self
     {
         $this->initialized['reconsignmentAnnouncementLines'] = true;
         $this->reconsignmentAnnouncementLines = $reconsignmentAnnouncementLines;

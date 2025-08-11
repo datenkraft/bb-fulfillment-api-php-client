@@ -7,8 +7,8 @@ class Country extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -39,7 +39,7 @@ class Country extends \ArrayObject
     /**
      * 
      *
-     * @var CountryProvinces[]|null
+     * @var list<CountryProvinces>|null
      */
     protected $provinces;
     /**
@@ -53,7 +53,7 @@ class Country extends \ArrayObject
      *
      * @return string
      */
-    public function getCountryCode() : string
+    public function getCountryCode(): string
     {
         return $this->countryCode;
     }
@@ -64,7 +64,7 @@ class Country extends \ArrayObject
      *
      * @return self
      */
-    public function setCountryCode(string $countryCode) : self
+    public function setCountryCode(string $countryCode): self
     {
         $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
@@ -75,7 +75,7 @@ class Country extends \ArrayObject
      *
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -86,7 +86,7 @@ class Country extends \ArrayObject
      *
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->initialized['name'] = true;
         $this->name = $name;
@@ -97,7 +97,7 @@ class Country extends \ArrayObject
      *
      * @return bool
      */
-    public function getPhoneRequired() : bool
+    public function getPhoneRequired(): bool
     {
         return $this->phoneRequired;
     }
@@ -108,7 +108,7 @@ class Country extends \ArrayObject
      *
      * @return self
      */
-    public function setPhoneRequired(bool $phoneRequired) : self
+    public function setPhoneRequired(bool $phoneRequired): self
     {
         $this->initialized['phoneRequired'] = true;
         $this->phoneRequired = $phoneRequired;
@@ -119,7 +119,7 @@ class Country extends \ArrayObject
      *
      * @return bool
      */
-    public function getCustomsClearanceRequired() : bool
+    public function getCustomsClearanceRequired(): bool
     {
         return $this->customsClearanceRequired;
     }
@@ -130,7 +130,7 @@ class Country extends \ArrayObject
      *
      * @return self
      */
-    public function setCustomsClearanceRequired(bool $customsClearanceRequired) : self
+    public function setCustomsClearanceRequired(bool $customsClearanceRequired): self
     {
         $this->initialized['customsClearanceRequired'] = true;
         $this->customsClearanceRequired = $customsClearanceRequired;
@@ -139,20 +139,20 @@ class Country extends \ArrayObject
     /**
      * 
      *
-     * @return CountryProvinces[]|null
+     * @return list<CountryProvinces>|null
      */
-    public function getProvinces() : ?array
+    public function getProvinces(): ?array
     {
         return $this->provinces;
     }
     /**
      * 
      *
-     * @param CountryProvinces[]|null $provinces
+     * @param list<CountryProvinces>|null $provinces
      *
      * @return self
      */
-    public function setProvinces(?array $provinces) : self
+    public function setProvinces(?array $provinces): self
     {
         $this->initialized['provinces'] = true;
         $this->provinces = $provinces;
@@ -163,7 +163,7 @@ class Country extends \ArrayObject
      *
      * @return string
      */
-    public function getCurrencyCode() : string
+    public function getCurrencyCode(): string
     {
         return $this->currencyCode;
     }
@@ -174,7 +174,7 @@ class Country extends \ArrayObject
      *
      * @return self
      */
-    public function setCurrencyCode(string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode): self
     {
         $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;

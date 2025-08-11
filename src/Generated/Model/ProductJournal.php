@@ -7,8 +7,8 @@ class ProductJournal extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -65,7 +65,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return int
      */
-    public function getJournalId() : int
+    public function getJournalId(): int
     {
         return $this->journalId;
     }
@@ -76,7 +76,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setJournalId(int $journalId) : self
+    public function setJournalId(int $journalId): self
     {
         $this->initialized['journalId'] = true;
         $this->journalId = $journalId;
@@ -87,7 +87,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return \DateTime
      */
-    public function getDate() : \DateTime
+    public function getDate(): \DateTime
     {
         return $this->date;
     }
@@ -98,7 +98,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setDate(\DateTime $date) : self
+    public function setDate(\DateTime $date): self
     {
         $this->initialized['date'] = true;
         $this->date = $date;
@@ -109,7 +109,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -120,7 +120,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -131,7 +131,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return string
      */
-    public function getReason() : string
+    public function getReason(): string
     {
         return $this->reason;
     }
@@ -142,7 +142,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setReason(string $reason) : self
+    public function setReason(string $reason): self
     {
         $this->initialized['reason'] = true;
         $this->reason = $reason;
@@ -153,7 +153,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return int|null
      */
-    public function getStockDelta() : ?int
+    public function getStockDelta(): ?int
     {
         return $this->stockDelta;
     }
@@ -164,7 +164,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setStockDelta(?int $stockDelta) : self
+    public function setStockDelta(?int $stockDelta): self
     {
         $this->initialized['stockDelta'] = true;
         $this->stockDelta = $stockDelta;
@@ -175,7 +175,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return int|null
      */
-    public function getStockOld() : ?int
+    public function getStockOld(): ?int
     {
         return $this->stockOld;
     }
@@ -186,7 +186,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setStockOld(?int $stockOld) : self
+    public function setStockOld(?int $stockOld): self
     {
         $this->initialized['stockOld'] = true;
         $this->stockOld = $stockOld;
@@ -197,7 +197,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return int|null
      */
-    public function getStockNew() : ?int
+    public function getStockNew(): ?int
     {
         return $this->stockNew;
     }
@@ -208,7 +208,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setStockNew(?int $stockNew) : self
+    public function setStockNew(?int $stockNew): self
     {
         $this->initialized['stockNew'] = true;
         $this->stockNew = $stockNew;
@@ -219,7 +219,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return ProductJournalReference
      */
-    public function getReference() : ProductJournalReference
+    public function getReference(): ProductJournalReference
     {
         return $this->reference;
     }
@@ -230,7 +230,7 @@ class ProductJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setReference(ProductJournalReference $reference) : self
+    public function setReference(ProductJournalReference $reference): self
     {
         $this->initialized['reference'] = true;
         $this->reference = $reference;

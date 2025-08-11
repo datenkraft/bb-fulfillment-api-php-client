@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportInventoryMovement';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovement::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportInventoryMovement';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovement::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -89,9 +85,9 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
             unset($data['stockReturnedExternal']);
         }
         if (\array_key_exists('movementEntries', $data)) {
-            $values = array();
+            $values = [];
             foreach ($data['movementEntries'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportInventoryMovementEntry', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntry::class, 'json', $context);
             }
             $object->setMovementEntries($values);
             unset($data['movementEntries']);
@@ -103,57 +99,58 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('productNumber') && null !== $object->getProductNumber()) {
-            $data['productNumber'] = $object->getProductNumber();
+        $dataArray = [];
+        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
+            $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($object->isInitialized('productTitle') && null !== $object->getProductTitle()) {
-            $data['productTitle'] = $object->getProductTitle();
+        if ($data->isInitialized('productTitle') && null !== $data->getProductTitle()) {
+            $dataArray['productTitle'] = $data->getProductTitle();
         }
-        if ($object->isInitialized('stockStart') && null !== $object->getStockStart()) {
-            $data['stockStart'] = $object->getStockStart();
+        if ($data->isInitialized('stockStart') && null !== $data->getStockStart()) {
+            $dataArray['stockStart'] = $data->getStockStart();
         }
-        if ($object->isInitialized('stockEnd') && null !== $object->getStockEnd()) {
-            $data['stockEnd'] = $object->getStockEnd();
+        if ($data->isInitialized('stockEnd') && null !== $data->getStockEnd()) {
+            $dataArray['stockEnd'] = $data->getStockEnd();
         }
-        if ($object->isInitialized('stockAdded') && null !== $object->getStockAdded()) {
-            $data['stockAdded'] = $object->getStockAdded();
+        if ($data->isInitialized('stockAdded') && null !== $data->getStockAdded()) {
+            $dataArray['stockAdded'] = $data->getStockAdded();
         }
-        if ($object->isInitialized('stockSubtracted') && null !== $object->getStockSubtracted()) {
-            $data['stockSubtracted'] = $object->getStockSubtracted();
+        if ($data->isInitialized('stockSubtracted') && null !== $data->getStockSubtracted()) {
+            $dataArray['stockSubtracted'] = $data->getStockSubtracted();
         }
-        if ($object->isInitialized('stockSubtractedExternal') && null !== $object->getStockSubtractedExternal()) {
-            $data['stockSubtractedExternal'] = $object->getStockSubtractedExternal();
+        if ($data->isInitialized('stockSubtractedExternal') && null !== $data->getStockSubtractedExternal()) {
+            $dataArray['stockSubtractedExternal'] = $data->getStockSubtractedExternal();
         }
-        if ($object->isInitialized('stockCorrected') && null !== $object->getStockCorrected()) {
-            $data['stockCorrected'] = $object->getStockCorrected();
+        if ($data->isInitialized('stockCorrected') && null !== $data->getStockCorrected()) {
+            $dataArray['stockCorrected'] = $data->getStockCorrected();
         }
-        if ($object->isInitialized('stockUsedForOwnPurposes') && null !== $object->getStockUsedForOwnPurposes()) {
-            $data['stockUsedForOwnPurposes'] = $object->getStockUsedForOwnPurposes();
+        if ($data->isInitialized('stockUsedForOwnPurposes') && null !== $data->getStockUsedForOwnPurposes()) {
+            $dataArray['stockUsedForOwnPurposes'] = $data->getStockUsedForOwnPurposes();
         }
-        if ($object->isInitialized('stockReturned') && null !== $object->getStockReturned()) {
-            $data['stockReturned'] = $object->getStockReturned();
+        if ($data->isInitialized('stockReturned') && null !== $data->getStockReturned()) {
+            $dataArray['stockReturned'] = $data->getStockReturned();
         }
-        if ($object->isInitialized('stockReturnedExternal') && null !== $object->getStockReturnedExternal()) {
-            $data['stockReturnedExternal'] = $object->getStockReturnedExternal();
+        if ($data->isInitialized('stockReturnedExternal') && null !== $data->getStockReturnedExternal()) {
+            $dataArray['stockReturnedExternal'] = $data->getStockReturnedExternal();
         }
-        if ($object->isInitialized('movementEntries') && null !== $object->getMovementEntries()) {
-            $values = array();
-            foreach ($object->getMovementEntries() as $value) {
+        if ($data->isInitialized('movementEntries') && null !== $data->getMovementEntries()) {
+            $values = [];
+            foreach ($data->getMovementEntries() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['movementEntries'] = $values;
+            $dataArray['movementEntries'] = $values;
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovement::class => false];
     }
 }

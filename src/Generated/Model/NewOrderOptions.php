@@ -7,8 +7,8 @@ class NewOrderOptions extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -49,7 +49,7 @@ class NewOrderOptions extends \ArrayObject
     *
     * @return string
     */
-    public function getAutoProcessState() : string
+    public function getAutoProcessState(): string
     {
         return $this->autoProcessState;
     }
@@ -73,7 +73,7 @@ class NewOrderOptions extends \ArrayObject
     *
     * @return self
     */
-    public function setAutoProcessState(string $autoProcessState) : self
+    public function setAutoProcessState(string $autoProcessState): self
     {
         $this->initialized['autoProcessState'] = true;
         $this->autoProcessState = $autoProcessState;

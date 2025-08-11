@@ -7,8 +7,8 @@ class BundledOrderItemPrice extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -41,7 +41,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return float
      */
-    public function getValue() : float
+    public function getValue(): float
     {
         return $this->value;
     }
@@ -52,7 +52,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return self
      */
-    public function setValue(float $value) : self
+    public function setValue(float $value): self
     {
         $this->initialized['value'] = true;
         $this->value = $value;
@@ -63,7 +63,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return string
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -74,7 +74,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -85,7 +85,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return float
      */
-    public function getVat() : float
+    public function getVat(): float
     {
         return $this->vat;
     }
@@ -96,7 +96,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return self
      */
-    public function setVat(float $vat) : self
+    public function setVat(float $vat): self
     {
         $this->initialized['vat'] = true;
         $this->vat = $vat;
@@ -107,7 +107,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return string
      */
-    public function getCurrencyCode() : string
+    public function getCurrencyCode(): string
     {
         return $this->currencyCode;
     }
@@ -118,7 +118,7 @@ class BundledOrderItemPrice extends \ArrayObject
      *
      * @return self
      */
-    public function setCurrencyCode(string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode): self
     {
         $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;

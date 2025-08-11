@@ -7,8 +7,8 @@ class ReservedFor extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class ReservedFor extends \ArrayObject
      *
      * @return int
      */
-    public function getShopify() : int
+    public function getShopify(): int
     {
         return $this->shopify;
     }
@@ -34,7 +34,7 @@ class ReservedFor extends \ArrayObject
      *
      * @return self
      */
-    public function setShopify(int $shopify) : self
+    public function setShopify(int $shopify): self
     {
         $this->initialized['shopify'] = true;
         $this->shopify = $shopify;

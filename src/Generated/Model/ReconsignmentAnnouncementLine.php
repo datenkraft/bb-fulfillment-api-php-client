@@ -7,8 +7,8 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -27,7 +27,7 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
     /**
      * 
      *
-     * @var ReconsignmentAnnouncementLineBundledProduct[]|null
+     * @var list<ReconsignmentAnnouncementLineBundledProduct>|null
      */
     protected $bundledProducts;
     /**
@@ -35,7 +35,7 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -46,7 +46,7 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -57,7 +57,7 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
      *
      * @return int|null
      */
-    public function getCount() : ?int
+    public function getCount(): ?int
     {
         return $this->count;
     }
@@ -68,7 +68,7 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(?int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -77,20 +77,20 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
     /**
      * 
      *
-     * @return ReconsignmentAnnouncementLineBundledProduct[]|null
+     * @return list<ReconsignmentAnnouncementLineBundledProduct>|null
      */
-    public function getBundledProducts() : ?array
+    public function getBundledProducts(): ?array
     {
         return $this->bundledProducts;
     }
     /**
      * 
      *
-     * @param ReconsignmentAnnouncementLineBundledProduct[]|null $bundledProducts
+     * @param list<ReconsignmentAnnouncementLineBundledProduct>|null $bundledProducts
      *
      * @return self
      */
-    public function setBundledProducts(?array $bundledProducts) : self
+    public function setBundledProducts(?array $bundledProducts): self
     {
         $this->initialized['bundledProducts'] = true;
         $this->bundledProducts = $bundledProducts;

@@ -7,8 +7,8 @@ class ReportInventoryMovementEntry extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class ReportInventoryMovementEntry extends \ArrayObject
      *
      * @return string
      */
-    public function getTypeCode() : string
+    public function getTypeCode(): string
     {
         return $this->typeCode;
     }
@@ -46,7 +46,7 @@ class ReportInventoryMovementEntry extends \ArrayObject
      *
      * @return self
      */
-    public function setTypeCode(string $typeCode) : self
+    public function setTypeCode(string $typeCode): self
     {
         $this->initialized['typeCode'] = true;
         $this->typeCode = $typeCode;
@@ -57,7 +57,7 @@ class ReportInventoryMovementEntry extends \ArrayObject
      *
      * @return int
      */
-    public function getStock() : int
+    public function getStock(): int
     {
         return $this->stock;
     }
@@ -68,7 +68,7 @@ class ReportInventoryMovementEntry extends \ArrayObject
      *
      * @return self
      */
-    public function setStock(int $stock) : self
+    public function setStock(int $stock): self
     {
         $this->initialized['stock'] = true;
         $this->stock = $stock;
@@ -79,7 +79,7 @@ class ReportInventoryMovementEntry extends \ArrayObject
      *
      * @return ReportInventoryMovementEntryReference
      */
-    public function getReference() : ReportInventoryMovementEntryReference
+    public function getReference(): ReportInventoryMovementEntryReference
     {
         return $this->reference;
     }
@@ -90,7 +90,7 @@ class ReportInventoryMovementEntry extends \ArrayObject
      *
      * @return self
      */
-    public function setReference(ReportInventoryMovementEntryReference $reference) : self
+    public function setReference(ReportInventoryMovementEntryReference $reference): self
     {
         $this->initialized['reference'] = true;
         $this->reference = $reference;

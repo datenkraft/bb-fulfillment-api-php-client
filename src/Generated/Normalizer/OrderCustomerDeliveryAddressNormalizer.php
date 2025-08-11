@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class OrderCustomerDeliveryAddressNormalizer implements DenormalizerInterface, N
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerDeliveryAddress::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerDeliveryAddress::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -96,36 +92,37 @@ class OrderCustomerDeliveryAddressNormalizer implements DenormalizerInterface, N
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        $data['street'] = $object->getStreet();
-        if ($object->isInitialized('streetNumber') && null !== $object->getStreetNumber()) {
-            $data['streetNumber'] = $object->getStreetNumber();
+        $dataArray = [];
+        $dataArray['street'] = $data->getStreet();
+        if ($data->isInitialized('streetNumber') && null !== $data->getStreetNumber()) {
+            $dataArray['streetNumber'] = $data->getStreetNumber();
         }
-        $data['zipCode'] = $object->getZipCode();
-        if ($object->isInitialized('district') && null !== $object->getDistrict()) {
-            $data['district'] = $object->getDistrict();
+        $dataArray['zipCode'] = $data->getZipCode();
+        if ($data->isInitialized('district') && null !== $data->getDistrict()) {
+            $dataArray['district'] = $data->getDistrict();
         }
-        $data['city'] = $object->getCity();
-        if ($object->isInitialized('provinceCode') && null !== $object->getProvinceCode()) {
-            $data['provinceCode'] = $object->getProvinceCode();
+        $dataArray['city'] = $data->getCity();
+        if ($data->isInitialized('provinceCode') && null !== $data->getProvinceCode()) {
+            $dataArray['provinceCode'] = $data->getProvinceCode();
         }
-        $data['countryCode'] = $object->getCountryCode();
-        if ($object->isInitialized('nameLine1') && null !== $object->getNameLine1()) {
-            $data['nameLine1'] = $object->getNameLine1();
+        $dataArray['countryCode'] = $data->getCountryCode();
+        if ($data->isInitialized('nameLine1') && null !== $data->getNameLine1()) {
+            $dataArray['nameLine1'] = $data->getNameLine1();
         }
-        if ($object->isInitialized('nameLine2') && null !== $object->getNameLine2()) {
-            $data['nameLine2'] = $object->getNameLine2();
+        if ($data->isInitialized('nameLine2') && null !== $data->getNameLine2()) {
+            $dataArray['nameLine2'] = $data->getNameLine2();
         }
-        foreach ($object as $key => $value) {
+        foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value;
+                $dataArray[$key] = $value;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerDeliveryAddress::class => false];
     }
 }

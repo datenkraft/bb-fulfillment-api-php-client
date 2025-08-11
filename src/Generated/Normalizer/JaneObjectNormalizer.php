@@ -16,32 +16,279 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    protected $normalizers = array('Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuditLog' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuditLogNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuditLogCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuditLogCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuthPermissionResource' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuthPermissionResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuthPermissionRolePaginatedCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuthPermissionRolePaginatedCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuthPermissionRoleResource' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuthPermissionRoleResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuthRoleCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuthRoleCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuthRoleIdentityPaginatedCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuthRoleIdentityPaginatedCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuthRoleIdentityResource' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuthRoleIdentityResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\AuthRoleResource' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\AuthRoleResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrder' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseOrderNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomer' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseOrderCustomerNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderCustomerInvoiceAddress' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseOrderCustomerInvoiceAddressNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseOrderItem' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseOrderItemNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProduct' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseProductNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDimensions' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseProductDimensionsNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDraft' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseProductDraftNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseProductDraftDimensions' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseProductDraftDimensionsNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseReconsignmentAnnouncement' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseReconsignmentAnnouncementNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseReconsignmentAnnouncementOptions' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseReconsignmentAnnouncementOptionsNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BaseShop' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BaseShopNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Batch' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BatchNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Brand' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BrandNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BrandCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BrandCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItem' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BundledOrderItemNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BundledOrderItemPrice' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BundledOrderItemPriceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Collection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\CollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CollectionPagination' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\CollectionPaginationNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\CountryNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\CountryCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryProvinces' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\CountryProvincesNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Delivery' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\DeliveryNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\DeliveryCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryService' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\DeliveryServiceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryServiceCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\DeliveryServiceCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryShipment' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\DeliveryShipmentNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryShipmentPackaging' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\DeliveryShipmentPackagingNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\DeliveryShipmentJournal' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\DeliveryShipmentJournalNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Error' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ErrorNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorReferencesItem' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ErrorReferencesItemNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ErrorResponse' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ErrorResponseNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\GetAuthPermissionCollectionResponse' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\GetAuthPermissionCollectionResponseNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDelivery' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\InboundDeliveryNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\InboundDeliveryCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InboundDeliveryProduct' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\InboundDeliveryProductNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Information' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\InformationNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\InformationResponse' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\InformationResponseNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Manufacturer' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ManufacturerNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ManufacturerCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ManufacturerCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewAuthRoleResource' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewAuthRoleResourceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDelivery' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewInboundDeliveryNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewInboundDeliveryProduct' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewInboundDeliveryProductNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrder' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewOrderNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomer' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewOrderCustomerNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderCustomerinvoiceAddress' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewOrderCustomerinvoiceAddressNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderItem' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewOrderItemNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderItemPrice' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewOrderItemPriceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderOptions' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewOrderOptionsNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewOrderPrice' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewOrderPriceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewProductDraft' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewProductDraftNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewProductStockAdd' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewProductStockAddNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewReconsignmentAnnouncement' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewReconsignmentAnnouncementNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewReconsignmentAnnouncementLine' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewReconsignmentAnnouncementLineNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\NewReconsignmentAnnouncementOptions' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\NewReconsignmentAnnouncementOptionsNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Order' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomer' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderCustomerNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerAddress' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderCustomerAddressNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderCustomerDeliveryAddress' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderCustomerDeliveryAddressNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDelivery' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderDeliveryNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderDeliveryCosts' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderDeliveryCostsNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItem' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderItemNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderItemPrice' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderItemPriceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderPayment' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderPaymentNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderPrice' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderPriceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\OrderShipping' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\OrderShippingNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\PostShop' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\PostShopNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\PostShopmeta' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\PostShopmetaNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Product' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductBundledProduct' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductBundledProductNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductDraft' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductDraftNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductDraftCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductDraftCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImage' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductImageNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductImageDetail' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductImageDetailNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournal' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductJournalNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournalCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductJournalCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductJournalReference' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductJournalReferenceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductPurchasePrice' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductPurchasePriceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductStockReference' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductStockReferenceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductStockReferenceCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductStockReferenceCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductStockReferenceReference' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductStockReferenceReferenceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductUnit' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductUnitNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ProductUnitCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ProductUnitCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Reconsignment' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncement' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentAnnouncementNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLine' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentAnnouncementLineNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementLineBundledProduct' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentAnnouncementLineBundledProductNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentAnnouncementPaginatedCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentAnnouncementPaginatedCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentLine' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentLineNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentLineBundledProduct' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReconsignmentLineBundledProductNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportClearingOrder' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReportClearingOrderNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportClearingOrderCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReportClearingOrderCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportInventoryMovement' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReportInventoryMovementNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportInventoryMovementEntry' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReportInventoryMovementEntryNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportInventoryMovementEntryReference' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReportInventoryMovementEntryReferenceNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReportInventoryMovementEntryCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReportInventoryMovementEntryCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReservedFor' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ReservedForNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShipmentLine' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ShipmentLineNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shop' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ShopNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Shopmeta' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ShopmetaNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ShopCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\ShopCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Stock' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\StockNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\StockCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\StockCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Supplier' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\SupplierNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\SupplierCollection' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\SupplierCollectionNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateDeliveryShipment' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\UpdateDeliveryShipmentNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShop' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\UpdateShopNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\UpdateShopmeta' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\UpdateShopmetaNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostBody' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BulkImportInboundDeliveryPostBodyNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportInboundDeliveryPostResponse207Item' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BulkImportInboundDeliveryPostResponse207ItemNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportOrderPostBody' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BulkImportOrderPostBodyNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportOrderPostResponse207Item' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BulkImportOrderPostResponse207ItemNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportProductDraftPostBody' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BulkImportProductDraftPostBodyNormalizer', 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\BulkImportProductDraftPostResponse207Item' => 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Normalizer\\BulkImportProductDraftPostResponse207ItemNormalizer', '\\Jane\\Component\\JsonSchemaRuntime\\Reference' => '\\Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Runtime\\Normalizer\\ReferenceNormalizer'), $normalizersCache = array();
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    protected $normalizers = [
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuditLog::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuditLogNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuditLogCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuditLogCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionResource::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuthPermissionResourceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRolePaginatedCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuthPermissionRolePaginatedCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuthPermissionRoleResourceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuthRoleCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityPaginatedCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuthRoleIdentityPaginatedCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuthRoleIdentityResourceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleResource::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\AuthRoleResourceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrder::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseOrderNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomer::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseOrderCustomerNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomerInvoiceAddress::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseOrderCustomerInvoiceAddressNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseOrderItemNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDimensions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseProductDimensionsNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraft::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseProductDraftNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraftDimensions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseProductDraftDimensionsNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncement::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseReconsignmentAnnouncementNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncementOptions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseReconsignmentAnnouncementOptionsNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseShopNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Batch::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BatchNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Brand::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BrandNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BrandCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BrandCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BundledOrderItemNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItemPrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BundledOrderItemPriceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Collection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\CollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CollectionPagination::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\CollectionPaginationNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\CountryNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\CountryCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryProvinces::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\CountryProvincesNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Delivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryService::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryServiceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryServiceCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryServiceCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryShipmentNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryShipmentPackagingNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentJournal::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryShipmentJournalNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ErrorNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorReferencesItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ErrorReferencesItemNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ErrorResponseNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\GetAuthPermissionCollectionResponse::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\GetAuthPermissionCollectionResponseNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InboundDeliveryNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InboundDeliveryCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InboundDeliveryProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Information::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InformationNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InformationResponse::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InformationResponseNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Manufacturer::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ManufacturerNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ManufacturerCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ManufacturerCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewAuthRoleResource::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewAuthRoleResourceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewInboundDeliveryNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewInboundDeliveryProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderCustomerNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderCustomerinvoiceAddressNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderItemNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItemPrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderItemPriceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderOptions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderOptionsNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderPrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderPriceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProductDraft::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewProductDraftNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProductStockAdd::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewProductStockAddNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncement::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewReconsignmentAnnouncementNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementLine::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewReconsignmentAnnouncementLineNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewReconsignmentAnnouncementOptionsNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomer::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderCustomerNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerAddress::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderCustomerAddressNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerDeliveryAddress::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderCustomerDeliveryAddressNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderDelivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderDeliveryNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderDeliveryCosts::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderDeliveryCostsNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderItemNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItemPrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderItemPriceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPayment::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderPaymentNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderPriceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderShipping::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderShippingNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopmetaNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductBundledProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductBundledProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductDraft::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductDraftNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductDraftCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductDraftCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImage::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductImageNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductImageDetailNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournal::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductJournalNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductJournalCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalReference::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductJournalReferenceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductPurchasePrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductPurchasePriceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductStockReference::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductStockReferenceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductStockReferenceCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductStockReferenceCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductStockReferenceReference::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductStockReferenceReferenceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductUnit::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductUnitNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductUnitCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductUnitCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncement::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentAnnouncementNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementLine::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentAnnouncementLineNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementLineBundledProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentAnnouncementLineBundledProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementPaginatedCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentAnnouncementPaginatedCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentLineNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLineBundledProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReconsignmentLineBundledProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportClearingOrder::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReportClearingOrderNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportClearingOrderCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReportClearingOrderCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovement::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReportInventoryMovementNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntry::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReportInventoryMovementEntryNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryReference::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReportInventoryMovementEntryReferenceNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReportInventoryMovementEntryCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReservedFor::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ReservedForNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShipmentLine::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShipmentLineNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopmetaNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Supplier::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\SupplierNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\SupplierCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\SupplierCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\UpdateDeliveryShipmentNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\UpdateShopNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\UpdateShopmetaNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportInboundDeliveryPostBodyNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostResponse207Item::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportInboundDeliveryPostResponse207ItemNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostBody::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportOrderPostBodyNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostResponse207Item::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportOrderPostResponse207ItemNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostBody::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportProductDraftPostBodyNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportProductDraftPostResponse207ItemNormalizer::class,
+        
+        \Jane\Component\JsonSchemaRuntime\Reference::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ReferenceNormalizer::class,
+    ], $normalizersCache = [];
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
         return array_key_exists($type, $this->normalizers);
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
         return is_object($data) && array_key_exists(get_class($data), $this->normalizers);
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $normalizerClass = $this->normalizers[get_class($object)];
+        $normalizerClass = $this->normalizers[get_class($data)];
         $normalizer = $this->getNormalizer($normalizerClass);
-        return $normalizer->normalize($object, $format, $context);
+        return $normalizer->normalize($data, $format, $context);
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $denormalizerClass = $this->normalizers[$class];
+        $denormalizerClass = $this->normalizers[$type];
         $denormalizer = $this->getNormalizer($denormalizerClass);
-        return $denormalizer->denormalize($data, $class, $format, $context);
+        return $denormalizer->denormalize($data, $type, $format, $context);
     }
     private function getNormalizer(string $normalizerClass)
     {
@@ -54,5 +301,137 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         $normalizer->setDenormalizer($this->denormalizer);
         $this->normalizersCache[$normalizerClass] = $normalizer;
         return $normalizer;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [
+            
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuditLog::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuditLogCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionResource::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRolePaginatedCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthPermissionRoleResource::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityPaginatedCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleIdentityResource::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\AuthRoleResource::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrder::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomer::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomerInvoiceAddress::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderItem::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDimensions::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraft::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraftDimensions::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncement::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncementOptions::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseShop::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Batch::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Brand::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BrandCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItem::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItemPrice::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Collection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CollectionPagination::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryProvinces::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Delivery::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryService::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryServiceCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentJournal::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorReferencesItem::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\GetAuthPermissionCollectionResponse::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Information::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InformationResponse::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Manufacturer::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ManufacturerCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewAuthRoleResource::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItem::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItemPrice::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderOptions::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderPrice::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProductDraft::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewProductStockAdd::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncement::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementLine::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomer::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerAddress::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerDeliveryAddress::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderDelivery::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderDeliveryCosts::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItemPrice::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPayment::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPrice::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderShipping::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductBundledProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductDraft::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductDraftCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImage::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournal::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalReference::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductPurchasePrice::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductStockReference::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductStockReferenceCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductStockReferenceReference::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductUnit::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductUnitCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncement::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementLine::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementLineBundledProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementPaginatedCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLineBundledProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportClearingOrder::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportClearingOrderCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovement::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntry::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryReference::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReservedFor::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShipmentLine::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Supplier::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\SupplierCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostResponse207Item::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostBody::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostResponse207Item::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostBody::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item::class => false,
+            \Jane\Component\JsonSchemaRuntime\Reference::class => false,
+        ];
     }
 }

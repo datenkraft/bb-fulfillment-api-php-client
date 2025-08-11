@@ -7,8 +7,8 @@ class ReportInventoryMovementEntryReference extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class ReportInventoryMovementEntryReference extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCompanyName() : ?string
+    public function getCompanyName(): ?string
     {
         return $this->companyName;
     }
@@ -34,7 +34,7 @@ class ReportInventoryMovementEntryReference extends \ArrayObject
      *
      * @return self
      */
-    public function setCompanyName(?string $companyName) : self
+    public function setCompanyName(?string $companyName): self
     {
         $this->initialized['companyName'] = true;
         $this->companyName = $companyName;

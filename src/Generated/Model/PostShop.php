@@ -7,8 +7,8 @@ class PostShop extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -53,7 +53,7 @@ class PostShop extends \ArrayObject
      *
      * @return string
      */
-    public function getShopCode() : string
+    public function getShopCode(): string
     {
         return $this->shopCode;
     }
@@ -64,7 +64,7 @@ class PostShop extends \ArrayObject
      *
      * @return self
      */
-    public function setShopCode(string $shopCode) : self
+    public function setShopCode(string $shopCode): self
     {
         $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
@@ -75,7 +75,7 @@ class PostShop extends \ArrayObject
      *
      * @return string
      */
-    public function getInternalReferencePrefix() : string
+    public function getInternalReferencePrefix(): string
     {
         return $this->internalReferencePrefix;
     }
@@ -86,7 +86,7 @@ class PostShop extends \ArrayObject
      *
      * @return self
      */
-    public function setInternalReferencePrefix(string $internalReferencePrefix) : self
+    public function setInternalReferencePrefix(string $internalReferencePrefix): self
     {
         $this->initialized['internalReferencePrefix'] = true;
         $this->internalReferencePrefix = $internalReferencePrefix;
@@ -97,7 +97,7 @@ class PostShop extends \ArrayObject
      *
      * @return string
      */
-    public function getProjectId() : string
+    public function getProjectId(): string
     {
         return $this->projectId;
     }
@@ -108,7 +108,7 @@ class PostShop extends \ArrayObject
      *
      * @return self
      */
-    public function setProjectId(string $projectId) : self
+    public function setProjectId(string $projectId): self
     {
         $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
@@ -119,7 +119,7 @@ class PostShop extends \ArrayObject
      *
      * @return PostShopmeta|null
      */
-    public function getMeta() : ?PostShopmeta
+    public function getMeta(): ?PostShopmeta
     {
         return $this->meta;
     }
@@ -130,7 +130,7 @@ class PostShop extends \ArrayObject
      *
      * @return self
      */
-    public function setMeta(?PostShopmeta $meta) : self
+    public function setMeta(?PostShopmeta $meta): self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;
@@ -141,7 +141,7 @@ class PostShop extends \ArrayObject
      *
      * @return string
      */
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -152,7 +152,7 @@ class PostShop extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -163,7 +163,7 @@ class PostShop extends \ArrayObject
      *
      * @return bool
      */
-    public function getActive() : bool
+    public function getActive(): bool
     {
         return $this->active;
     }
@@ -174,7 +174,7 @@ class PostShop extends \ArrayObject
      *
      * @return self
      */
-    public function setActive(bool $active) : self
+    public function setActive(bool $active): self
     {
         $this->initialized['active'] = true;
         $this->active = $active;

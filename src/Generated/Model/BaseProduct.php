@@ -7,8 +7,8 @@ class BaseProduct extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -82,13 +82,13 @@ class BaseProduct extends \ArrayObject
     /**
      * 
      *
-     * @var ProductPurchasePrice[]|null
+     * @var list<ProductPurchasePrice>|null
      */
     protected $purchasePrices;
     /**
      * 
      *
-     * @var ProductBundledProduct[]|null
+     * @var list<ProductBundledProduct>|null
      */
     protected $bundledProducts;
     /**
@@ -120,7 +120,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string
      */
-    public function getProductType() : string
+    public function getProductType(): string
     {
         return $this->productType;
     }
@@ -131,7 +131,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setProductType(string $productType) : self
+    public function setProductType(string $productType): self
     {
         $this->initialized['productType'] = true;
         $this->productType = $productType;
@@ -142,7 +142,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string|null
      */
-    public function getArticleVariantTitle() : ?string
+    public function getArticleVariantTitle(): ?string
     {
         return $this->articleVariantTitle;
     }
@@ -153,7 +153,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setArticleVariantTitle(?string $articleVariantTitle) : self
+    public function setArticleVariantTitle(?string $articleVariantTitle): self
     {
         $this->initialized['articleVariantTitle'] = true;
         $this->articleVariantTitle = $articleVariantTitle;
@@ -164,7 +164,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string|null
      */
-    public function getArticleVariantType() : ?string
+    public function getArticleVariantType(): ?string
     {
         return $this->articleVariantType;
     }
@@ -175,7 +175,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setArticleVariantType(?string $articleVariantType) : self
+    public function setArticleVariantType(?string $articleVariantType): self
     {
         $this->initialized['articleVariantType'] = true;
         $this->articleVariantType = $articleVariantType;
@@ -186,7 +186,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string|null
      */
-    public function getArticleStatus() : ?string
+    public function getArticleStatus(): ?string
     {
         return $this->articleStatus;
     }
@@ -197,7 +197,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setArticleStatus(?string $articleStatus) : self
+    public function setArticleStatus(?string $articleStatus): self
     {
         $this->initialized['articleStatus'] = true;
         $this->articleStatus = $articleStatus;
@@ -208,7 +208,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return float|null
      */
-    public function getContentsAmount() : ?float
+    public function getContentsAmount(): ?float
     {
         return $this->contentsAmount;
     }
@@ -219,7 +219,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setContentsAmount(?float $contentsAmount) : self
+    public function setContentsAmount(?float $contentsAmount): self
     {
         $this->initialized['contentsAmount'] = true;
         $this->contentsAmount = $contentsAmount;
@@ -231,7 +231,7 @@ class BaseProduct extends \ArrayObject
     *
     * @return string|null
     */
-    public function getContentsUnit() : ?string
+    public function getContentsUnit(): ?string
     {
         return $this->contentsUnit;
     }
@@ -243,7 +243,7 @@ class BaseProduct extends \ArrayObject
     *
     * @return self
     */
-    public function setContentsUnit(?string $contentsUnit) : self
+    public function setContentsUnit(?string $contentsUnit): self
     {
         $this->initialized['contentsUnit'] = true;
         $this->contentsUnit = $contentsUnit;
@@ -254,7 +254,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return int|null
      */
-    public function getContentsWeightGram() : ?int
+    public function getContentsWeightGram(): ?int
     {
         return $this->contentsWeightGram;
     }
@@ -265,7 +265,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setContentsWeightGram(?int $contentsWeightGram) : self
+    public function setContentsWeightGram(?int $contentsWeightGram): self
     {
         $this->initialized['contentsWeightGram'] = true;
         $this->contentsWeightGram = $contentsWeightGram;
@@ -276,7 +276,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return int|null
      */
-    public function getWeightGram() : ?int
+    public function getWeightGram(): ?int
     {
         return $this->weightGram;
     }
@@ -287,7 +287,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setWeightGram(?int $weightGram) : self
+    public function setWeightGram(?int $weightGram): self
     {
         $this->initialized['weightGram'] = true;
         $this->weightGram = $weightGram;
@@ -309,7 +309,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setVariantGroup($variantGroup) : self
+    public function setVariantGroup($variantGroup): self
     {
         $this->initialized['variantGroup'] = true;
         $this->variantGroup = $variantGroup;
@@ -320,7 +320,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string|null
      */
-    public function getEan() : ?string
+    public function getEan(): ?string
     {
         return $this->ean;
     }
@@ -331,7 +331,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setEan(?string $ean) : self
+    public function setEan(?string $ean): self
     {
         $this->initialized['ean'] = true;
         $this->ean = $ean;
@@ -342,7 +342,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return float|null
      */
-    public function getSuggestedRetailPriceEUR() : ?float
+    public function getSuggestedRetailPriceEUR(): ?float
     {
         return $this->suggestedRetailPriceEUR;
     }
@@ -353,7 +353,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setSuggestedRetailPriceEUR(?float $suggestedRetailPriceEUR) : self
+    public function setSuggestedRetailPriceEUR(?float $suggestedRetailPriceEUR): self
     {
         $this->initialized['suggestedRetailPriceEUR'] = true;
         $this->suggestedRetailPriceEUR = $suggestedRetailPriceEUR;
@@ -362,20 +362,20 @@ class BaseProduct extends \ArrayObject
     /**
      * 
      *
-     * @return ProductPurchasePrice[]|null
+     * @return list<ProductPurchasePrice>|null
      */
-    public function getPurchasePrices() : ?array
+    public function getPurchasePrices(): ?array
     {
         return $this->purchasePrices;
     }
     /**
      * 
      *
-     * @param ProductPurchasePrice[]|null $purchasePrices
+     * @param list<ProductPurchasePrice>|null $purchasePrices
      *
      * @return self
      */
-    public function setPurchasePrices(?array $purchasePrices) : self
+    public function setPurchasePrices(?array $purchasePrices): self
     {
         $this->initialized['purchasePrices'] = true;
         $this->purchasePrices = $purchasePrices;
@@ -384,20 +384,20 @@ class BaseProduct extends \ArrayObject
     /**
      * 
      *
-     * @return ProductBundledProduct[]|null
+     * @return list<ProductBundledProduct>|null
      */
-    public function getBundledProducts() : ?array
+    public function getBundledProducts(): ?array
     {
         return $this->bundledProducts;
     }
     /**
      * 
      *
-     * @param ProductBundledProduct[]|null $bundledProducts
+     * @param list<ProductBundledProduct>|null $bundledProducts
      *
      * @return self
      */
-    public function setBundledProducts(?array $bundledProducts) : self
+    public function setBundledProducts(?array $bundledProducts): self
     {
         $this->initialized['bundledProducts'] = true;
         $this->bundledProducts = $bundledProducts;
@@ -408,7 +408,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string|null
      */
-    public function getProductNumberManufacturer() : ?string
+    public function getProductNumberManufacturer(): ?string
     {
         return $this->productNumberManufacturer;
     }
@@ -419,7 +419,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumberManufacturer(?string $productNumberManufacturer) : self
+    public function setProductNumberManufacturer(?string $productNumberManufacturer): self
     {
         $this->initialized['productNumberManufacturer'] = true;
         $this->productNumberManufacturer = $productNumberManufacturer;
@@ -430,7 +430,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string|null
      */
-    public function getManufacturerCountryCode() : ?string
+    public function getManufacturerCountryCode(): ?string
     {
         return $this->manufacturerCountryCode;
     }
@@ -441,7 +441,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setManufacturerCountryCode(?string $manufacturerCountryCode) : self
+    public function setManufacturerCountryCode(?string $manufacturerCountryCode): self
     {
         $this->initialized['manufacturerCountryCode'] = true;
         $this->manufacturerCountryCode = $manufacturerCountryCode;
@@ -452,7 +452,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return string|null
      */
-    public function getLanguageCode() : ?string
+    public function getLanguageCode(): ?string
     {
         return $this->languageCode;
     }
@@ -463,7 +463,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setLanguageCode(?string $languageCode) : self
+    public function setLanguageCode(?string $languageCode): self
     {
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
@@ -474,7 +474,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return BaseProductDimensions|null
      */
-    public function getDimensions() : ?BaseProductDimensions
+    public function getDimensions(): ?BaseProductDimensions
     {
         return $this->dimensions;
     }
@@ -485,7 +485,7 @@ class BaseProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setDimensions(?BaseProductDimensions $dimensions) : self
+    public function setDimensions(?BaseProductDimensions $dimensions): self
     {
         $this->initialized['dimensions'] = true;
         $this->dimensions = $dimensions;

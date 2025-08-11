@@ -7,8 +7,8 @@ class Stock extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -71,7 +71,7 @@ class Stock extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -82,7 +82,7 @@ class Stock extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -94,7 +94,7 @@ class Stock extends \ArrayObject
     *
     * @return int
     */
-    public function getStocked() : int
+    public function getStocked(): int
     {
         return $this->stocked;
     }
@@ -106,7 +106,7 @@ class Stock extends \ArrayObject
     *
     * @return self
     */
-    public function setStocked(int $stocked) : self
+    public function setStocked(int $stocked): self
     {
         $this->initialized['stocked'] = true;
         $this->stocked = $stocked;
@@ -117,7 +117,7 @@ class Stock extends \ArrayObject
      *
      * @return int
      */
-    public function getReserved() : int
+    public function getReserved(): int
     {
         return $this->reserved;
     }
@@ -128,7 +128,7 @@ class Stock extends \ArrayObject
      *
      * @return self
      */
-    public function setReserved(int $reserved) : self
+    public function setReserved(int $reserved): self
     {
         $this->initialized['reserved'] = true;
         $this->reserved = $reserved;
@@ -141,7 +141,7 @@ class Stock extends \ArrayObject
     *
     * @return int
     */
-    public function getAvailable() : int
+    public function getAvailable(): int
     {
         return $this->available;
     }
@@ -154,7 +154,7 @@ class Stock extends \ArrayObject
     *
     * @return self
     */
-    public function setAvailable(int $available) : self
+    public function setAvailable(int $available): self
     {
         $this->initialized['available'] = true;
         $this->available = $available;
@@ -165,7 +165,7 @@ class Stock extends \ArrayObject
      *
      * @return int
      */
-    public function getIncoming() : int
+    public function getIncoming(): int
     {
         return $this->incoming;
     }
@@ -176,7 +176,7 @@ class Stock extends \ArrayObject
      *
      * @return self
      */
-    public function setIncoming(int $incoming) : self
+    public function setIncoming(int $incoming): self
     {
         $this->initialized['incoming'] = true;
         $this->incoming = $incoming;
@@ -187,7 +187,7 @@ class Stock extends \ArrayObject
      *
      * @return int
      */
-    public function getLocked() : int
+    public function getLocked(): int
     {
         return $this->locked;
     }
@@ -198,7 +198,7 @@ class Stock extends \ArrayObject
      *
      * @return self
      */
-    public function setLocked(int $locked) : self
+    public function setLocked(int $locked): self
     {
         $this->initialized['locked'] = true;
         $this->locked = $locked;
@@ -212,7 +212,7 @@ class Stock extends \ArrayObject
     *
     * @return string
     */
-    public function getOverbookingPossibilityStatus() : string
+    public function getOverbookingPossibilityStatus(): string
     {
         return $this->overbookingPossibilityStatus;
     }
@@ -226,7 +226,7 @@ class Stock extends \ArrayObject
     *
     * @return self
     */
-    public function setOverbookingPossibilityStatus(string $overbookingPossibilityStatus) : self
+    public function setOverbookingPossibilityStatus(string $overbookingPossibilityStatus): self
     {
         $this->initialized['overbookingPossibilityStatus'] = true;
         $this->overbookingPossibilityStatus = $overbookingPossibilityStatus;
@@ -237,7 +237,7 @@ class Stock extends \ArrayObject
      *
      * @return ReservedFor
      */
-    public function getReservedFor() : ReservedFor
+    public function getReservedFor(): ReservedFor
     {
         return $this->reservedFor;
     }
@@ -248,7 +248,7 @@ class Stock extends \ArrayObject
      *
      * @return self
      */
-    public function setReservedFor(ReservedFor $reservedFor) : self
+    public function setReservedFor(ReservedFor $reservedFor): self
     {
         $this->initialized['reservedFor'] = true;
         $this->reservedFor = $reservedFor;

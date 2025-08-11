@@ -7,8 +7,8 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -27,13 +27,13 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
     /**
      * Reference for the entry tried to post represented by a key-value pair.
      *
-     * @var string[]
+     * @var array<string, string>
      */
     protected $reference;
     /**
      * 
      *
-     * @var mixed[]
+     * @var array<string, mixed>
      */
     protected $content;
     /**
@@ -41,7 +41,7 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
      *
      * @return int
      */
-    public function getCode() : int
+    public function getCode(): int
     {
         return $this->code;
     }
@@ -52,7 +52,7 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
      *
      * @return self
      */
-    public function setCode(int $code) : self
+    public function setCode(int $code): self
     {
         $this->initialized['code'] = true;
         $this->code = $code;
@@ -63,7 +63,7 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
      *
      * @return string
      */
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return $this->message;
     }
@@ -74,7 +74,7 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
      *
      * @return self
      */
-    public function setMessage(string $message) : self
+    public function setMessage(string $message): self
     {
         $this->initialized['message'] = true;
         $this->message = $message;
@@ -83,20 +83,20 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
     /**
      * Reference for the entry tried to post represented by a key-value pair.
      *
-     * @return string[]
+     * @return array<string, string>
      */
-    public function getReference() : iterable
+    public function getReference(): iterable
     {
         return $this->reference;
     }
     /**
      * Reference for the entry tried to post represented by a key-value pair.
      *
-     * @param string[] $reference
+     * @param array<string, string> $reference
      *
      * @return self
      */
-    public function setReference(iterable $reference) : self
+    public function setReference(iterable $reference): self
     {
         $this->initialized['reference'] = true;
         $this->reference = $reference;
@@ -105,20 +105,20 @@ class BulkImportProductDraftPostResponse207Item extends \ArrayObject
     /**
      * 
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
-    public function getContent() : iterable
+    public function getContent(): iterable
     {
         return $this->content;
     }
     /**
      * 
      *
-     * @param mixed[] $content
+     * @param array<string, mixed> $content
      *
      * @return self
      */
-    public function setContent(iterable $content) : self
+    public function setContent(iterable $content): self
     {
         $this->initialized['content'] = true;
         $this->content = $content;

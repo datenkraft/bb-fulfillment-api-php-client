@@ -7,8 +7,8 @@ class ReconsignmentLine extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -51,7 +51,7 @@ class ReconsignmentLine extends \ArrayObject
     /**
      * 
      *
-     * @var ReconsignmentLineBundledProduct[]|null
+     * @var list<ReconsignmentLineBundledProduct>|null
      */
     protected $bundledProducts;
     /**
@@ -59,7 +59,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -70,7 +70,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -81,7 +81,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return int|null
      */
-    public function getPutBackToStockCount() : ?int
+    public function getPutBackToStockCount(): ?int
     {
         return $this->putBackToStockCount;
     }
@@ -92,7 +92,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setPutBackToStockCount(?int $putBackToStockCount) : self
+    public function setPutBackToStockCount(?int $putBackToStockCount): self
     {
         $this->initialized['putBackToStockCount'] = true;
         $this->putBackToStockCount = $putBackToStockCount;
@@ -103,7 +103,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return int|null
      */
-    public function getCount() : ?int
+    public function getCount(): ?int
     {
         return $this->count;
     }
@@ -114,7 +114,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(?int $count) : self
+    public function setCount(?int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -125,7 +125,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return string|null
      */
-    public function getUnit() : ?string
+    public function getUnit(): ?string
     {
         return $this->unit;
     }
@@ -136,7 +136,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setUnit(?string $unit) : self
+    public function setUnit(?string $unit): self
     {
         $this->initialized['unit'] = true;
         $this->unit = $unit;
@@ -147,7 +147,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return float|null
      */
-    public function getProductWeight() : ?float
+    public function getProductWeight(): ?float
     {
         return $this->productWeight;
     }
@@ -158,7 +158,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setProductWeight(?float $productWeight) : self
+    public function setProductWeight(?float $productWeight): self
     {
         $this->initialized['productWeight'] = true;
         $this->productWeight = $productWeight;
@@ -169,7 +169,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return string|null
      */
-    public function getProductWeightUnit() : ?string
+    public function getProductWeightUnit(): ?string
     {
         return $this->productWeightUnit;
     }
@@ -180,7 +180,7 @@ class ReconsignmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setProductWeightUnit(?string $productWeightUnit) : self
+    public function setProductWeightUnit(?string $productWeightUnit): self
     {
         $this->initialized['productWeightUnit'] = true;
         $this->productWeightUnit = $productWeightUnit;
@@ -189,20 +189,20 @@ class ReconsignmentLine extends \ArrayObject
     /**
      * 
      *
-     * @return ReconsignmentLineBundledProduct[]|null
+     * @return list<ReconsignmentLineBundledProduct>|null
      */
-    public function getBundledProducts() : ?array
+    public function getBundledProducts(): ?array
     {
         return $this->bundledProducts;
     }
     /**
      * 
      *
-     * @param ReconsignmentLineBundledProduct[]|null $bundledProducts
+     * @param list<ReconsignmentLineBundledProduct>|null $bundledProducts
      *
      * @return self
      */
-    public function setBundledProducts(?array $bundledProducts) : self
+    public function setBundledProducts(?array $bundledProducts): self
     {
         $this->initialized['bundledProducts'] = true;
         $this->bundledProducts = $bundledProducts;

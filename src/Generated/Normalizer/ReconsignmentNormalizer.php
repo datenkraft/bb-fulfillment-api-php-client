@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Reconsignment';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Reconsignment';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -38,6 +34,9 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment();
+        if (\array_key_exists('reconsignmentWasPreAnnounced', $data) && \is_int($data['reconsignmentWasPreAnnounced'])) {
+            $data['reconsignmentWasPreAnnounced'] = (bool) $data['reconsignmentWasPreAnnounced'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -74,9 +73,9 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
             unset($data['reconsignmentCountryCode']);
         }
         if (\array_key_exists('reconsignmentLines', $data)) {
-            $values = array();
+            $values = [];
             foreach ($data['reconsignmentLines'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\ReconsignmentLine', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine::class, 'json', $context);
             }
             $object->setReconsignmentLines($values);
             unset($data['reconsignmentLines']);
@@ -88,48 +87,49 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('reconsignmentNumber') && null !== $object->getReconsignmentNumber()) {
-            $data['reconsignmentNumber'] = $object->getReconsignmentNumber();
+        $dataArray = [];
+        if ($data->isInitialized('reconsignmentNumber') && null !== $data->getReconsignmentNumber()) {
+            $dataArray['reconsignmentNumber'] = $data->getReconsignmentNumber();
         }
-        if ($object->isInitialized('reconsignmentDate') && null !== $object->getReconsignmentDate()) {
-            $data['reconsignmentDate'] = $object->getReconsignmentDate();
+        if ($data->isInitialized('reconsignmentDate') && null !== $data->getReconsignmentDate()) {
+            $dataArray['reconsignmentDate'] = $data->getReconsignmentDate();
         }
-        if ($object->isInitialized('reconsignmentReason') && null !== $object->getReconsignmentReason()) {
-            $data['reconsignmentReason'] = $object->getReconsignmentReason();
+        if ($data->isInitialized('reconsignmentReason') && null !== $data->getReconsignmentReason()) {
+            $dataArray['reconsignmentReason'] = $data->getReconsignmentReason();
         }
-        if ($object->isInitialized('orderNumber') && null !== $object->getOrderNumber()) {
-            $data['orderNumber'] = $object->getOrderNumber();
+        if ($data->isInitialized('orderNumber') && null !== $data->getOrderNumber()) {
+            $dataArray['orderNumber'] = $data->getOrderNumber();
         }
-        if ($object->isInitialized('orderDeliveryServiceCode') && null !== $object->getOrderDeliveryServiceCode()) {
-            $data['orderDeliveryServiceCode'] = $object->getOrderDeliveryServiceCode();
+        if ($data->isInitialized('orderDeliveryServiceCode') && null !== $data->getOrderDeliveryServiceCode()) {
+            $dataArray['orderDeliveryServiceCode'] = $data->getOrderDeliveryServiceCode();
         }
-        if ($object->isInitialized('reconsignmentDeliveryServiceCode') && null !== $object->getReconsignmentDeliveryServiceCode()) {
-            $data['reconsignmentDeliveryServiceCode'] = $object->getReconsignmentDeliveryServiceCode();
+        if ($data->isInitialized('reconsignmentDeliveryServiceCode') && null !== $data->getReconsignmentDeliveryServiceCode()) {
+            $dataArray['reconsignmentDeliveryServiceCode'] = $data->getReconsignmentDeliveryServiceCode();
         }
-        if ($object->isInitialized('reconsignmentWasPreAnnounced') && null !== $object->getReconsignmentWasPreAnnounced()) {
-            $data['reconsignmentWasPreAnnounced'] = $object->getReconsignmentWasPreAnnounced();
+        if ($data->isInitialized('reconsignmentWasPreAnnounced') && null !== $data->getReconsignmentWasPreAnnounced()) {
+            $dataArray['reconsignmentWasPreAnnounced'] = $data->getReconsignmentWasPreAnnounced();
         }
-        if ($object->isInitialized('reconsignmentCountryCode') && null !== $object->getReconsignmentCountryCode()) {
-            $data['reconsignmentCountryCode'] = $object->getReconsignmentCountryCode();
+        if ($data->isInitialized('reconsignmentCountryCode') && null !== $data->getReconsignmentCountryCode()) {
+            $dataArray['reconsignmentCountryCode'] = $data->getReconsignmentCountryCode();
         }
-        if ($object->isInitialized('reconsignmentLines') && null !== $object->getReconsignmentLines()) {
-            $values = array();
-            foreach ($object->getReconsignmentLines() as $value) {
+        if ($data->isInitialized('reconsignmentLines') && null !== $data->getReconsignmentLines()) {
+            $values = [];
+            foreach ($data->getReconsignmentLines() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['reconsignmentLines'] = $values;
+            $dataArray['reconsignmentLines'] = $values;
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment::class => false];
     }
 }

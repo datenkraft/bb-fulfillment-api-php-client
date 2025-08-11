@@ -7,8 +7,8 @@ class ReportInventoryMovement extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -83,7 +83,7 @@ class ReportInventoryMovement extends \ArrayObject
     /**
      * 
      *
-     * @var ReportInventoryMovementEntry[]
+     * @var list<ReportInventoryMovementEntry>
      */
     protected $movementEntries;
     /**
@@ -91,7 +91,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -102,7 +102,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -113,7 +113,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return string|null
      */
-    public function getProductTitle() : ?string
+    public function getProductTitle(): ?string
     {
         return $this->productTitle;
     }
@@ -124,7 +124,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setProductTitle(?string $productTitle) : self
+    public function setProductTitle(?string $productTitle): self
     {
         $this->initialized['productTitle'] = true;
         $this->productTitle = $productTitle;
@@ -135,7 +135,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return int
      */
-    public function getStockStart() : int
+    public function getStockStart(): int
     {
         return $this->stockStart;
     }
@@ -146,7 +146,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setStockStart(int $stockStart) : self
+    public function setStockStart(int $stockStart): self
     {
         $this->initialized['stockStart'] = true;
         $this->stockStart = $stockStart;
@@ -157,7 +157,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return int
      */
-    public function getStockEnd() : int
+    public function getStockEnd(): int
     {
         return $this->stockEnd;
     }
@@ -168,7 +168,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setStockEnd(int $stockEnd) : self
+    public function setStockEnd(int $stockEnd): self
     {
         $this->initialized['stockEnd'] = true;
         $this->stockEnd = $stockEnd;
@@ -179,7 +179,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return int
      */
-    public function getStockAdded() : int
+    public function getStockAdded(): int
     {
         return $this->stockAdded;
     }
@@ -190,7 +190,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setStockAdded(int $stockAdded) : self
+    public function setStockAdded(int $stockAdded): self
     {
         $this->initialized['stockAdded'] = true;
         $this->stockAdded = $stockAdded;
@@ -201,7 +201,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return int
      */
-    public function getStockSubtracted() : int
+    public function getStockSubtracted(): int
     {
         return $this->stockSubtracted;
     }
@@ -212,7 +212,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setStockSubtracted(int $stockSubtracted) : self
+    public function setStockSubtracted(int $stockSubtracted): self
     {
         $this->initialized['stockSubtracted'] = true;
         $this->stockSubtracted = $stockSubtracted;
@@ -224,7 +224,7 @@ class ReportInventoryMovement extends \ArrayObject
     *
     * @return int
     */
-    public function getStockSubtractedExternal() : int
+    public function getStockSubtractedExternal(): int
     {
         return $this->stockSubtractedExternal;
     }
@@ -236,7 +236,7 @@ class ReportInventoryMovement extends \ArrayObject
     *
     * @return self
     */
-    public function setStockSubtractedExternal(int $stockSubtractedExternal) : self
+    public function setStockSubtractedExternal(int $stockSubtractedExternal): self
     {
         $this->initialized['stockSubtractedExternal'] = true;
         $this->stockSubtractedExternal = $stockSubtractedExternal;
@@ -247,7 +247,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return int
      */
-    public function getStockCorrected() : int
+    public function getStockCorrected(): int
     {
         return $this->stockCorrected;
     }
@@ -258,7 +258,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setStockCorrected(int $stockCorrected) : self
+    public function setStockCorrected(int $stockCorrected): self
     {
         $this->initialized['stockCorrected'] = true;
         $this->stockCorrected = $stockCorrected;
@@ -269,7 +269,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return int
      */
-    public function getStockUsedForOwnPurposes() : int
+    public function getStockUsedForOwnPurposes(): int
     {
         return $this->stockUsedForOwnPurposes;
     }
@@ -280,7 +280,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setStockUsedForOwnPurposes(int $stockUsedForOwnPurposes) : self
+    public function setStockUsedForOwnPurposes(int $stockUsedForOwnPurposes): self
     {
         $this->initialized['stockUsedForOwnPurposes'] = true;
         $this->stockUsedForOwnPurposes = $stockUsedForOwnPurposes;
@@ -291,7 +291,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return int
      */
-    public function getStockReturned() : int
+    public function getStockReturned(): int
     {
         return $this->stockReturned;
     }
@@ -302,7 +302,7 @@ class ReportInventoryMovement extends \ArrayObject
      *
      * @return self
      */
-    public function setStockReturned(int $stockReturned) : self
+    public function setStockReturned(int $stockReturned): self
     {
         $this->initialized['stockReturned'] = true;
         $this->stockReturned = $stockReturned;
@@ -314,7 +314,7 @@ class ReportInventoryMovement extends \ArrayObject
     *
     * @return int
     */
-    public function getStockReturnedExternal() : int
+    public function getStockReturnedExternal(): int
     {
         return $this->stockReturnedExternal;
     }
@@ -326,7 +326,7 @@ class ReportInventoryMovement extends \ArrayObject
     *
     * @return self
     */
-    public function setStockReturnedExternal(int $stockReturnedExternal) : self
+    public function setStockReturnedExternal(int $stockReturnedExternal): self
     {
         $this->initialized['stockReturnedExternal'] = true;
         $this->stockReturnedExternal = $stockReturnedExternal;
@@ -335,20 +335,20 @@ class ReportInventoryMovement extends \ArrayObject
     /**
      * 
      *
-     * @return ReportInventoryMovementEntry[]
+     * @return list<ReportInventoryMovementEntry>
      */
-    public function getMovementEntries() : array
+    public function getMovementEntries(): array
     {
         return $this->movementEntries;
     }
     /**
      * 
      *
-     * @param ReportInventoryMovementEntry[] $movementEntries
+     * @param list<ReportInventoryMovementEntry> $movementEntries
      *
      * @return self
      */
-    public function setMovementEntries(array $movementEntries) : self
+    public function setMovementEntries(array $movementEntries): self
     {
         $this->initialized['movementEntries'] = true;
         $this->movementEntries = $movementEntries;

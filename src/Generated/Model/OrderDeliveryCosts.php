@@ -7,8 +7,8 @@ class OrderDeliveryCosts extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -51,7 +51,7 @@ class OrderDeliveryCosts extends \ArrayObject
     *
     * @return float
     */
-    public function getValue() : float
+    public function getValue(): float
     {
         return $this->value;
     }
@@ -64,7 +64,7 @@ class OrderDeliveryCosts extends \ArrayObject
     *
     * @return self
     */
-    public function setValue(float $value) : self
+    public function setValue(float $value): self
     {
         $this->initialized['value'] = true;
         $this->value = $value;
@@ -75,7 +75,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return string
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -86,7 +86,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
@@ -97,7 +97,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return float
      */
-    public function getVat() : float
+    public function getVat(): float
     {
         return $this->vat;
     }
@@ -108,7 +108,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return self
      */
-    public function setVat(float $vat) : self
+    public function setVat(float $vat): self
     {
         $this->initialized['vat'] = true;
         $this->vat = $vat;
@@ -119,7 +119,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return string
      */
-    public function getCurrencyCode() : string
+    public function getCurrencyCode(): string
     {
         return $this->currencyCode;
     }
@@ -130,7 +130,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return self
      */
-    public function setCurrencyCode(string $currencyCode) : self
+    public function setCurrencyCode(string $currencyCode): self
     {
         $this->initialized['currencyCode'] = true;
         $this->currencyCode = $currencyCode;
@@ -141,7 +141,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -152,7 +152,7 @@ class OrderDeliveryCosts extends \ArrayObject
      *
      * @return self
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;

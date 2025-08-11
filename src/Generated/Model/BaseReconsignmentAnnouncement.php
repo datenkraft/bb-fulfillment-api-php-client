@@ -7,8 +7,8 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
      *
      * @return string
      */
-    public function getReconsignmentReason() : string
+    public function getReconsignmentReason(): string
     {
         return $this->reconsignmentReason;
     }
@@ -40,7 +40,7 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setReconsignmentReason(string $reconsignmentReason) : self
+    public function setReconsignmentReason(string $reconsignmentReason): self
     {
         $this->initialized['reconsignmentReason'] = true;
         $this->reconsignmentReason = $reconsignmentReason;
@@ -51,7 +51,7 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
      *
      * @return BaseReconsignmentAnnouncementOptions|null
      */
-    public function getOptions() : ?BaseReconsignmentAnnouncementOptions
+    public function getOptions(): ?BaseReconsignmentAnnouncementOptions
     {
         return $this->options;
     }
@@ -62,7 +62,7 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
      *
      * @return self
      */
-    public function setOptions(?BaseReconsignmentAnnouncementOptions $options) : self
+    public function setOptions(?BaseReconsignmentAnnouncementOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

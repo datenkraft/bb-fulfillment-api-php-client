@@ -7,8 +7,8 @@ class NewInboundDeliveryProduct extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class NewInboundDeliveryProduct extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -40,7 +40,7 @@ class NewInboundDeliveryProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -51,7 +51,7 @@ class NewInboundDeliveryProduct extends \ArrayObject
      *
      * @return int
      */
-    public function getAnnouncedCount() : int
+    public function getAnnouncedCount(): int
     {
         return $this->announcedCount;
     }
@@ -62,7 +62,7 @@ class NewInboundDeliveryProduct extends \ArrayObject
      *
      * @return self
      */
-    public function setAnnouncedCount(int $announcedCount) : self
+    public function setAnnouncedCount(int $announcedCount): self
     {
         $this->initialized['announcedCount'] = true;
         $this->announcedCount = $announcedCount;

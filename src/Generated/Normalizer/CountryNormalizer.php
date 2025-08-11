@@ -5,7 +5,6 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer;
 use Jane\Component\JsonSchemaRuntime\Reference;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\CheckArray;
 use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ValidatorTrait;
-use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
@@ -18,18 +17,15 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     use NormalizerAwareTrait;
     use CheckArray;
     use ValidatorTrait;
-    public function supportsDenormalization($data, $type, $format = null, array $context = array()) : bool
+    public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country::class;
     }
-    public function supportsNormalization($data, $format = null, array $context = array()) : bool
+    public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\Country';
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country::class;
     }
-    /**
-     * @return mixed
-     */
-    public function denormalize($data, $class, $format = null, array $context = array())
+    public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
         if (isset($data['$ref'])) {
             return new Reference($data['$ref'], $context['document-origin']);
@@ -38,6 +34,12 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country();
+        if (\array_key_exists('phoneRequired', $data) && \is_int($data['phoneRequired'])) {
+            $data['phoneRequired'] = (bool) $data['phoneRequired'];
+        }
+        if (\array_key_exists('customsClearanceRequired', $data) && \is_int($data['customsClearanceRequired'])) {
+            $data['customsClearanceRequired'] = (bool) $data['customsClearanceRequired'];
+        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -58,9 +60,9 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             unset($data['customsClearanceRequired']);
         }
         if (\array_key_exists('provinces', $data) && $data['provinces'] !== null) {
-            $values = array();
+            $values = [];
             foreach ($data['provinces'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, 'Datenkraft\\Backbone\\Client\\FulfillmentApi\\Generated\\Model\\CountryProvinces', 'json', $context);
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryProvinces::class, 'json', $context);
             }
             $object->setProvinces($values);
             unset($data['provinces']);
@@ -79,39 +81,40 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         return $object;
     }
-    /**
-     * @return array|string|int|float|bool|\ArrayObject|null
-     */
-    public function normalize($object, $format = null, array $context = array())
+    public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
-        $data = array();
-        if ($object->isInitialized('countryCode') && null !== $object->getCountryCode()) {
-            $data['countryCode'] = $object->getCountryCode();
+        $dataArray = [];
+        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
+            $dataArray['countryCode'] = $data->getCountryCode();
         }
-        if ($object->isInitialized('name') && null !== $object->getName()) {
-            $data['name'] = $object->getName();
+        if ($data->isInitialized('name') && null !== $data->getName()) {
+            $dataArray['name'] = $data->getName();
         }
-        if ($object->isInitialized('phoneRequired') && null !== $object->getPhoneRequired()) {
-            $data['phoneRequired'] = $object->getPhoneRequired();
+        if ($data->isInitialized('phoneRequired') && null !== $data->getPhoneRequired()) {
+            $dataArray['phoneRequired'] = $data->getPhoneRequired();
         }
-        if ($object->isInitialized('customsClearanceRequired') && null !== $object->getCustomsClearanceRequired()) {
-            $data['customsClearanceRequired'] = $object->getCustomsClearanceRequired();
+        if ($data->isInitialized('customsClearanceRequired') && null !== $data->getCustomsClearanceRequired()) {
+            $dataArray['customsClearanceRequired'] = $data->getCustomsClearanceRequired();
         }
-        if ($object->isInitialized('provinces') && null !== $object->getProvinces()) {
-            $values = array();
-            foreach ($object->getProvinces() as $value) {
+        if ($data->isInitialized('provinces') && null !== $data->getProvinces()) {
+            $values = [];
+            foreach ($data->getProvinces() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $data['provinces'] = $values;
+            $dataArray['provinces'] = $values;
         }
-        if ($object->isInitialized('currencyCode') && null !== $object->getCurrencyCode()) {
-            $data['currencyCode'] = $object->getCurrencyCode();
+        if ($data->isInitialized('currencyCode') && null !== $data->getCurrencyCode()) {
+            $dataArray['currencyCode'] = $data->getCurrencyCode();
         }
-        foreach ($object as $key => $value_1) {
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $data[$key] = $value_1;
+                $dataArray[$key] = $value_1;
             }
         }
-        return $data;
+        return $dataArray;
+    }
+    public function getSupportedTypes(?string $format = null): array
+    {
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country::class => false];
     }
 }

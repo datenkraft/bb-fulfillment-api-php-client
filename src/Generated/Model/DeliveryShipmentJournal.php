@@ -7,8 +7,8 @@ class DeliveryShipmentJournal extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class DeliveryShipmentJournal extends \ArrayObject
      *
      * @return \DateTime
      */
-    public function getDate() : \DateTime
+    public function getDate(): \DateTime
     {
         return $this->date;
     }
@@ -40,7 +40,7 @@ class DeliveryShipmentJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setDate(\DateTime $date) : self
+    public function setDate(\DateTime $date): self
     {
         $this->initialized['date'] = true;
         $this->date = $date;
@@ -51,7 +51,7 @@ class DeliveryShipmentJournal extends \ArrayObject
      *
      * @return string
      */
-    public function getTypeCode() : string
+    public function getTypeCode(): string
     {
         return $this->typeCode;
     }
@@ -62,7 +62,7 @@ class DeliveryShipmentJournal extends \ArrayObject
      *
      * @return self
      */
-    public function setTypeCode(string $typeCode) : self
+    public function setTypeCode(string $typeCode): self
     {
         $this->initialized['typeCode'] = true;
         $this->typeCode = $typeCode;

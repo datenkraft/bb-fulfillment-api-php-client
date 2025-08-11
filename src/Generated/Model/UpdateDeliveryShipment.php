@@ -7,8 +7,8 @@ class UpdateDeliveryShipment extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class UpdateDeliveryShipment extends \ArrayObject
      *
      * @return string|null
      */
-    public function getExternalShipmentId() : ?string
+    public function getExternalShipmentId(): ?string
     {
         return $this->externalShipmentId;
     }
@@ -34,7 +34,7 @@ class UpdateDeliveryShipment extends \ArrayObject
      *
      * @return self
      */
-    public function setExternalShipmentId(?string $externalShipmentId) : self
+    public function setExternalShipmentId(?string $externalShipmentId): self
     {
         $this->initialized['externalShipmentId'] = true;
         $this->externalShipmentId = $externalShipmentId;

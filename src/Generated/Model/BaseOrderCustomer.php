@@ -7,8 +7,8 @@ class BaseOrderCustomer extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -102,7 +102,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return string
      */
-    public function getGender() : string
+    public function getGender(): string
     {
         return $this->gender;
     }
@@ -113,7 +113,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setGender(string $gender) : self
+    public function setGender(string $gender): self
     {
         $this->initialized['gender'] = true;
         $this->gender = $gender;
@@ -124,7 +124,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return string
      */
-    public function getLanguageCode() : string
+    public function getLanguageCode(): string
     {
         return $this->languageCode;
     }
@@ -135,7 +135,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setLanguageCode(string $languageCode) : self
+    public function setLanguageCode(string $languageCode): self
     {
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
@@ -146,7 +146,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getExternalCustomerId() : ?string
+    public function getExternalCustomerId(): ?string
     {
         return $this->externalCustomerId;
     }
@@ -157,7 +157,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setExternalCustomerId(?string $externalCustomerId) : self
+    public function setExternalCustomerId(?string $externalCustomerId): self
     {
         $this->initialized['externalCustomerId'] = true;
         $this->externalCustomerId = $externalCustomerId;
@@ -168,7 +168,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return OrderCustomerDeliveryAddress
      */
-    public function getDeliveryAddress() : OrderCustomerDeliveryAddress
+    public function getDeliveryAddress(): OrderCustomerDeliveryAddress
     {
         return $this->deliveryAddress;
     }
@@ -179,7 +179,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress) : self
+    public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress): self
     {
         $this->initialized['deliveryAddress'] = true;
         $this->deliveryAddress = $deliveryAddress;
@@ -190,7 +190,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getEmail() : ?string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -201,7 +201,7 @@ class BaseOrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(?string $email) : self
+    public function setEmail(?string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -213,7 +213,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return string|null
     */
-    public function getPhone() : ?string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -225,7 +225,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return self
     */
-    public function setPhone(?string $phone) : self
+    public function setPhone(?string $phone): self
     {
         $this->initialized['phone'] = true;
         $this->phone = $phone;
@@ -238,7 +238,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return string|null
     */
-    public function getFirstname() : ?string
+    public function getFirstname(): ?string
     {
         return $this->firstname;
     }
@@ -251,7 +251,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return self
     */
-    public function setFirstname(?string $firstname) : self
+    public function setFirstname(?string $firstname): self
     {
         $this->initialized['firstname'] = true;
         $this->firstname = $firstname;
@@ -264,7 +264,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return string|null
     */
-    public function getLastname() : ?string
+    public function getLastname(): ?string
     {
         return $this->lastname;
     }
@@ -277,7 +277,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return self
     */
-    public function setLastname(?string $lastname) : self
+    public function setLastname(?string $lastname): self
     {
         $this->initialized['lastname'] = true;
         $this->lastname = $lastname;
@@ -290,7 +290,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return string|null
     */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -303,7 +303,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return self
     */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
@@ -316,7 +316,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return string|null
     */
-    public function getCompany() : ?string
+    public function getCompany(): ?string
     {
         return $this->company;
     }
@@ -329,7 +329,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return self
     */
-    public function setCompany(?string $company) : self
+    public function setCompany(?string $company): self
     {
         $this->initialized['company'] = true;
         $this->company = $company;
@@ -342,7 +342,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return string|null
     */
-    public function getCompanyVatNumber() : ?string
+    public function getCompanyVatNumber(): ?string
     {
         return $this->companyVatNumber;
     }
@@ -355,7 +355,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return self
     */
-    public function setCompanyVatNumber(?string $companyVatNumber) : self
+    public function setCompanyVatNumber(?string $companyVatNumber): self
     {
         $this->initialized['companyVatNumber'] = true;
         $this->companyVatNumber = $companyVatNumber;
@@ -368,7 +368,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return BaseOrderCustomerInvoiceAddress|null
     */
-    public function getInvoiceAddress() : ?BaseOrderCustomerInvoiceAddress
+    public function getInvoiceAddress(): ?BaseOrderCustomerInvoiceAddress
     {
         return $this->invoiceAddress;
     }
@@ -381,7 +381,7 @@ class BaseOrderCustomer extends \ArrayObject
     *
     * @return self
     */
-    public function setInvoiceAddress(?BaseOrderCustomerInvoiceAddress $invoiceAddress) : self
+    public function setInvoiceAddress(?BaseOrderCustomerInvoiceAddress $invoiceAddress): self
     {
         $this->initialized['invoiceAddress'] = true;
         $this->invoiceAddress = $invoiceAddress;

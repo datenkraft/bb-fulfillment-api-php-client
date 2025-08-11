@@ -7,8 +7,8 @@ class NewReconsignmentAnnouncementOptions extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class NewReconsignmentAnnouncementOptions extends \ArrayObject
     *
     * @return string|null
     */
-    public function getAutoProcessState() : ?string
+    public function getAutoProcessState(): ?string
     {
         return $this->autoProcessState;
     }
@@ -52,7 +52,7 @@ class NewReconsignmentAnnouncementOptions extends \ArrayObject
     *
     * @return self
     */
-    public function setAutoProcessState(?string $autoProcessState) : self
+    public function setAutoProcessState(?string $autoProcessState): self
     {
         $this->initialized['autoProcessState'] = true;
         $this->autoProcessState = $autoProcessState;
