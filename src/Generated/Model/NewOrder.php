@@ -7,8 +7,8 @@ class NewOrder extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -27,13 +27,13 @@ class NewOrder extends \ArrayObject
     /**
      * 
      *
-     * @var NewOrderItem[]
+     * @var list<NewOrderItem>
      */
     protected $orderItems;
     /**
      * Additional options (optional, TBD)
      *
-     * @var mixed[]|null
+     * @var array<string, mixed>|null
      */
     protected $options;
     /**
@@ -41,7 +41,7 @@ class NewOrder extends \ArrayObject
      *
      * @return string|null
      */
-    public function getShopCode() : ?string
+    public function getShopCode(): ?string
     {
         return $this->shopCode;
     }
@@ -52,7 +52,7 @@ class NewOrder extends \ArrayObject
      *
      * @return self
      */
-    public function setShopCode(?string $shopCode) : self
+    public function setShopCode(?string $shopCode): self
     {
         $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
@@ -63,7 +63,7 @@ class NewOrder extends \ArrayObject
      *
      * @return NewOrderCustomer
      */
-    public function getCustomer() : NewOrderCustomer
+    public function getCustomer(): NewOrderCustomer
     {
         return $this->customer;
     }
@@ -74,7 +74,7 @@ class NewOrder extends \ArrayObject
      *
      * @return self
      */
-    public function setCustomer(NewOrderCustomer $customer) : self
+    public function setCustomer(NewOrderCustomer $customer): self
     {
         $this->initialized['customer'] = true;
         $this->customer = $customer;
@@ -83,20 +83,20 @@ class NewOrder extends \ArrayObject
     /**
      * 
      *
-     * @return NewOrderItem[]
+     * @return list<NewOrderItem>
      */
-    public function getOrderItems() : array
+    public function getOrderItems(): array
     {
         return $this->orderItems;
     }
     /**
      * 
      *
-     * @param NewOrderItem[] $orderItems
+     * @param list<NewOrderItem> $orderItems
      *
      * @return self
      */
-    public function setOrderItems(array $orderItems) : self
+    public function setOrderItems(array $orderItems): self
     {
         $this->initialized['orderItems'] = true;
         $this->orderItems = $orderItems;
@@ -105,20 +105,20 @@ class NewOrder extends \ArrayObject
     /**
      * Additional options (optional, TBD)
      *
-     * @return mixed[]|null
+     * @return array<string, mixed>|null
      */
-    public function getOptions() : ?iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
     /**
      * Additional options (optional, TBD)
      *
-     * @param mixed[]|null $options
+     * @param array<string, mixed>|null $options
      *
      * @return self
      */
-    public function setOptions(?iterable $options) : self
+    public function setOptions(?iterable $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;

@@ -7,8 +7,8 @@ class Delivery extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -34,7 +34,7 @@ class Delivery extends \ArrayObject
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @var DeliveryShipment[]
+     * @var list<DeliveryShipment>
      */
     protected $shipments;
     /**
@@ -42,7 +42,7 @@ class Delivery extends \ArrayObject
      *
      * @return string
      */
-    public function getNumber() : string
+    public function getNumber(): string
     {
         return $this->number;
     }
@@ -53,7 +53,7 @@ class Delivery extends \ArrayObject
      *
      * @return self
      */
-    public function setNumber(string $number) : self
+    public function setNumber(string $number): self
     {
         $this->initialized['number'] = true;
         $this->number = $number;
@@ -64,7 +64,7 @@ class Delivery extends \ArrayObject
      *
      * @return string|null
      */
-    public function getOrderNumber() : ?string
+    public function getOrderNumber(): ?string
     {
         return $this->orderNumber;
     }
@@ -75,7 +75,7 @@ class Delivery extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderNumber(?string $orderNumber) : self
+    public function setOrderNumber(?string $orderNumber): self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
@@ -87,7 +87,7 @@ class Delivery extends \ArrayObject
     *
     * @return string
     */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -99,7 +99,7 @@ class Delivery extends \ArrayObject
     *
     * @return self
     */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
@@ -108,20 +108,20 @@ class Delivery extends \ArrayObject
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @return DeliveryShipment[]
+     * @return list<DeliveryShipment>
      */
-    public function getShipments() : array
+    public function getShipments(): array
     {
         return $this->shipments;
     }
     /**
      * List of shipments (= package, parcel, pallet, ...)
      *
-     * @param DeliveryShipment[] $shipments
+     * @param list<DeliveryShipment> $shipments
      *
      * @return self
      */
-    public function setShipments(array $shipments) : self
+    public function setShipments(array $shipments): self
     {
         $this->initialized['shipments'] = true;
         $this->shipments = $shipments;

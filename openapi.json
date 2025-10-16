@@ -3521,5 +3521,51 @@
                 "scheme": "bearer"
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "shop",
+            "description": "shop"
+        },
+        {
+            "name": "stock",
+            "description": "stock"
+        },
+        {
+            "name": "delivery",
+            "description": "delivery"
+        },
+        {
+            "name": "order",
+            "description": "order"
+        },
+        {
+            "name": "delivery-service",
+            "description": "delivery-service"
+        },
+        {
+            "name": "auth-permission-role",
+            "description": "auth-permission-role"
+        },
+        {
+            "name": "auth-role-identity",
+            "description": "auth-role-identity"
+        },
+        {
+            "name": "auth-permission",
+            "description": "auth-permission"
+        },
+        {
+            "name": "audit-log",
+            "description": "audit-log"
+        },
+        {
+            "name": "auth-role",
+            "description": "auth-role"
+        },
+        {
+            "name": "docs",
+            "description": "docs"
+        }
+    ]
 }

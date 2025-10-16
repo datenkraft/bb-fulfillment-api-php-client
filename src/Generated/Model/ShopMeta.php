@@ -7,8 +7,8 @@ class ShopMeta extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -35,7 +35,7 @@ class ShopMeta extends \ArrayObject
      *
      * @return string|null
      */
-    public function getShopifyShopDomain() : ?string
+    public function getShopifyShopDomain(): ?string
     {
         return $this->shopifyShopDomain;
     }
@@ -46,7 +46,7 @@ class ShopMeta extends \ArrayObject
      *
      * @return self
      */
-    public function setShopifyShopDomain(?string $shopifyShopDomain) : self
+    public function setShopifyShopDomain(?string $shopifyShopDomain): self
     {
         $this->initialized['shopifyShopDomain'] = true;
         $this->shopifyShopDomain = $shopifyShopDomain;
@@ -57,7 +57,7 @@ class ShopMeta extends \ArrayObject
      *
      * @return bool|null
      */
-    public function getTestShop() : ?bool
+    public function getTestShop(): ?bool
     {
         return $this->testShop;
     }
@@ -68,7 +68,7 @@ class ShopMeta extends \ArrayObject
      *
      * @return self
      */
-    public function setTestShop(?bool $testShop) : self
+    public function setTestShop(?bool $testShop): self
     {
         $this->initialized['testShop'] = true;
         $this->testShop = $testShop;
@@ -79,7 +79,7 @@ class ShopMeta extends \ArrayObject
      *
      * @return \DateTime|null
      */
-    public function getTestShopResetNotBefore() : ?\DateTime
+    public function getTestShopResetNotBefore(): ?\DateTime
     {
         return $this->testShopResetNotBefore;
     }
@@ -90,7 +90,7 @@ class ShopMeta extends \ArrayObject
      *
      * @return self
      */
-    public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore) : self
+    public function setTestShopResetNotBefore(?\DateTime $testShopResetNotBefore): self
     {
         $this->initialized['testShopResetNotBefore'] = true;
         $this->testShopResetNotBefore = $testShopResetNotBefore;

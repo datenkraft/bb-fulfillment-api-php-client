@@ -7,8 +7,8 @@ class Order extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -27,13 +27,13 @@ class Order extends \ArrayObject
     /**
      * Note: canceled orderItems are NOT included.
      *
-     * @var OrderItem[]
+     * @var list<OrderItem>
      */
     protected $orderItems;
     /**
      * Additional options (optional, TBD)
      *
-     * @var mixed[]|null
+     * @var array<string, mixed>|null
      */
     protected $options;
     /**
@@ -71,7 +71,7 @@ class Order extends \ArrayObject
     /**
      * Note that only deliveries with status 'delivered' are shown in this list.
      *
-     * @var OrderDelivery[]|null
+     * @var list<OrderDelivery>|null
      */
     protected $delivery;
     /**
@@ -91,7 +91,7 @@ class Order extends \ArrayObject
      *
      * @return string|null
      */
-    public function getShopCode() : ?string
+    public function getShopCode(): ?string
     {
         return $this->shopCode;
     }
@@ -102,7 +102,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setShopCode(?string $shopCode) : self
+    public function setShopCode(?string $shopCode): self
     {
         $this->initialized['shopCode'] = true;
         $this->shopCode = $shopCode;
@@ -113,7 +113,7 @@ class Order extends \ArrayObject
      *
      * @return OrderCustomer
      */
-    public function getCustomer() : OrderCustomer
+    public function getCustomer(): OrderCustomer
     {
         return $this->customer;
     }
@@ -124,7 +124,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setCustomer(OrderCustomer $customer) : self
+    public function setCustomer(OrderCustomer $customer): self
     {
         $this->initialized['customer'] = true;
         $this->customer = $customer;
@@ -133,20 +133,20 @@ class Order extends \ArrayObject
     /**
      * Note: canceled orderItems are NOT included.
      *
-     * @return OrderItem[]
+     * @return list<OrderItem>
      */
-    public function getOrderItems() : array
+    public function getOrderItems(): array
     {
         return $this->orderItems;
     }
     /**
      * Note: canceled orderItems are NOT included.
      *
-     * @param OrderItem[] $orderItems
+     * @param list<OrderItem> $orderItems
      *
      * @return self
      */
-    public function setOrderItems(array $orderItems) : self
+    public function setOrderItems(array $orderItems): self
     {
         $this->initialized['orderItems'] = true;
         $this->orderItems = $orderItems;
@@ -155,20 +155,20 @@ class Order extends \ArrayObject
     /**
      * Additional options (optional, TBD)
      *
-     * @return mixed[]|null
+     * @return array<string, mixed>|null
      */
-    public function getOptions() : ?iterable
+    public function getOptions(): ?iterable
     {
         return $this->options;
     }
     /**
      * Additional options (optional, TBD)
      *
-     * @param mixed[]|null $options
+     * @param array<string, mixed>|null $options
      *
      * @return self
      */
-    public function setOptions(?iterable $options) : self
+    public function setOptions(?iterable $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
@@ -181,7 +181,7 @@ class Order extends \ArrayObject
     *
     * @return string|null
     */
-    public function getOrderNumber() : ?string
+    public function getOrderNumber(): ?string
     {
         return $this->orderNumber;
     }
@@ -194,7 +194,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setOrderNumber(?string $orderNumber) : self
+    public function setOrderNumber(?string $orderNumber): self
     {
         $this->initialized['orderNumber'] = true;
         $this->orderNumber = $orderNumber;
@@ -217,7 +217,7 @@ class Order extends \ArrayObject
     *
     * @return string
     */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -240,7 +240,7 @@ class Order extends \ArrayObject
     *
     * @return self
     */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
@@ -251,7 +251,7 @@ class Order extends \ArrayObject
      *
      * @return \DateTime
      */
-    public function getOrderDate() : \DateTime
+    public function getOrderDate(): \DateTime
     {
         return $this->orderDate;
     }
@@ -262,7 +262,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setOrderDate(\DateTime $orderDate) : self
+    public function setOrderDate(\DateTime $orderDate): self
     {
         $this->initialized['orderDate'] = true;
         $this->orderDate = $orderDate;
@@ -271,20 +271,20 @@ class Order extends \ArrayObject
     /**
      * Note that only deliveries with status 'delivered' are shown in this list.
      *
-     * @return OrderDelivery[]|null
+     * @return list<OrderDelivery>|null
      */
-    public function getDelivery() : ?array
+    public function getDelivery(): ?array
     {
         return $this->delivery;
     }
     /**
      * Note that only deliveries with status 'delivered' are shown in this list.
      *
-     * @param OrderDelivery[]|null $delivery
+     * @param list<OrderDelivery>|null $delivery
      *
      * @return self
      */
-    public function setDelivery(?array $delivery) : self
+    public function setDelivery(?array $delivery): self
     {
         $this->initialized['delivery'] = true;
         $this->delivery = $delivery;
@@ -295,7 +295,7 @@ class Order extends \ArrayObject
      *
      * @return OrderPayment
      */
-    public function getPayment() : OrderPayment
+    public function getPayment(): OrderPayment
     {
         return $this->payment;
     }
@@ -306,7 +306,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setPayment(OrderPayment $payment) : self
+    public function setPayment(OrderPayment $payment): self
     {
         $this->initialized['payment'] = true;
         $this->payment = $payment;
@@ -317,7 +317,7 @@ class Order extends \ArrayObject
      *
      * @return OrderShipping
      */
-    public function getShipping() : OrderShipping
+    public function getShipping(): OrderShipping
     {
         return $this->shipping;
     }
@@ -328,7 +328,7 @@ class Order extends \ArrayObject
      *
      * @return self
      */
-    public function setShipping(OrderShipping $shipping) : self
+    public function setShipping(OrderShipping $shipping): self
     {
         $this->initialized['shipping'] = true;
         $this->shipping = $shipping;

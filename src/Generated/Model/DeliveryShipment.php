@@ -7,8 +7,8 @@ class DeliveryShipment extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -59,7 +59,7 @@ class DeliveryShipment extends \ArrayObject
     /**
      * Shipment lines
      *
-     * @var ShipmentLine[]
+     * @var list<ShipmentLine>
      */
     protected $shipmentLines;
     /**
@@ -67,7 +67,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return string
      */
-    public function getNumber() : string
+    public function getNumber(): string
     {
         return $this->number;
     }
@@ -78,7 +78,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return self
      */
-    public function setNumber(string $number) : self
+    public function setNumber(string $number): self
     {
         $this->initialized['number'] = true;
         $this->number = $number;
@@ -90,7 +90,7 @@ class DeliveryShipment extends \ArrayObject
     *
     * @return string
     */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -102,7 +102,7 @@ class DeliveryShipment extends \ArrayObject
     *
     * @return self
     */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
@@ -114,7 +114,7 @@ class DeliveryShipment extends \ArrayObject
     *
     * @return string|null
     */
-    public function getDeliveryService() : ?string
+    public function getDeliveryService(): ?string
     {
         return $this->deliveryService;
     }
@@ -126,7 +126,7 @@ class DeliveryShipment extends \ArrayObject
     *
     * @return self
     */
-    public function setDeliveryService(?string $deliveryService) : self
+    public function setDeliveryService(?string $deliveryService): self
     {
         $this->initialized['deliveryService'] = true;
         $this->deliveryService = $deliveryService;
@@ -137,7 +137,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return string
      */
-    public function getCode() : string
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -148,7 +148,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return self
      */
-    public function setCode(string $code) : self
+    public function setCode(string $code): self
     {
         $this->initialized['code'] = true;
         $this->code = $code;
@@ -159,7 +159,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return string
      */
-    public function getLink() : string
+    public function getLink(): string
     {
         return $this->link;
     }
@@ -170,7 +170,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return self
      */
-    public function setLink(string $link) : self
+    public function setLink(string $link): self
     {
         $this->initialized['link'] = true;
         $this->link = $link;
@@ -181,7 +181,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return float
      */
-    public function getWeight() : float
+    public function getWeight(): float
     {
         return $this->weight;
     }
@@ -192,7 +192,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return self
      */
-    public function setWeight(float $weight) : self
+    public function setWeight(float $weight): self
     {
         $this->initialized['weight'] = true;
         $this->weight = $weight;
@@ -203,7 +203,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return string
      */
-    public function getWeightUnit() : string
+    public function getWeightUnit(): string
     {
         return $this->weightUnit;
     }
@@ -214,7 +214,7 @@ class DeliveryShipment extends \ArrayObject
      *
      * @return self
      */
-    public function setWeightUnit(string $weightUnit) : self
+    public function setWeightUnit(string $weightUnit): self
     {
         $this->initialized['weightUnit'] = true;
         $this->weightUnit = $weightUnit;
@@ -223,20 +223,20 @@ class DeliveryShipment extends \ArrayObject
     /**
      * Shipment lines
      *
-     * @return ShipmentLine[]
+     * @return list<ShipmentLine>
      */
-    public function getShipmentLines() : array
+    public function getShipmentLines(): array
     {
         return $this->shipmentLines;
     }
     /**
      * Shipment lines
      *
-     * @param ShipmentLine[] $shipmentLines
+     * @param list<ShipmentLine> $shipmentLines
      *
      * @return self
      */
-    public function setShipmentLines(array $shipmentLines) : self
+    public function setShipmentLines(array $shipmentLines): self
     {
         $this->initialized['shipmentLines'] = true;
         $this->shipmentLines = $shipmentLines;
