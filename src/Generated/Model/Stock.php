@@ -7,8 +7,8 @@ class Stock extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -29,7 +29,7 @@ class Stock extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -40,7 +40,7 @@ class Stock extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -51,7 +51,7 @@ class Stock extends \ArrayObject
      *
      * @return int
      */
-    public function getStock() : int
+    public function getStock(): int
     {
         return $this->stock;
     }
@@ -62,7 +62,7 @@ class Stock extends \ArrayObject
      *
      * @return self
      */
-    public function setStock(int $stock) : self
+    public function setStock(int $stock): self
     {
         $this->initialized['stock'] = true;
         $this->stock = $stock;

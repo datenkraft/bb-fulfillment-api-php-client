@@ -7,8 +7,8 @@ class OrderShipping extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -25,7 +25,7 @@ class OrderShipping extends \ArrayObject
     *
     * @return string
     */
-    public function getDeliveryService() : string
+    public function getDeliveryService(): string
     {
         return $this->deliveryService;
     }
@@ -37,7 +37,7 @@ class OrderShipping extends \ArrayObject
     *
     * @return self
     */
-    public function setDeliveryService(string $deliveryService) : self
+    public function setDeliveryService(string $deliveryService): self
     {
         $this->initialized['deliveryService'] = true;
         $this->deliveryService = $deliveryService;

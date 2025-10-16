@@ -7,8 +7,8 @@ class ShipmentLine extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -33,7 +33,7 @@ class ShipmentLine extends \ArrayObject
     /**
      * serial numbers
      *
-     * @var string[]
+     * @var list<string>
      */
     protected $serialNumbers;
     /**
@@ -41,7 +41,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return string
      */
-    public function getProductNumber() : string
+    public function getProductNumber(): string
     {
         return $this->productNumber;
     }
@@ -52,7 +52,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setProductNumber(string $productNumber) : self
+    public function setProductNumber(string $productNumber): self
     {
         $this->initialized['productNumber'] = true;
         $this->productNumber = $productNumber;
@@ -63,7 +63,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return int
      */
-    public function getCount() : int
+    public function getCount(): int
     {
         return $this->count;
     }
@@ -74,7 +74,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setCount(int $count) : self
+    public function setCount(int $count): self
     {
         $this->initialized['count'] = true;
         $this->count = $count;
@@ -85,7 +85,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return string|null
      */
-    public function getUnit() : ?string
+    public function getUnit(): ?string
     {
         return $this->unit;
     }
@@ -96,7 +96,7 @@ class ShipmentLine extends \ArrayObject
      *
      * @return self
      */
-    public function setUnit(?string $unit) : self
+    public function setUnit(?string $unit): self
     {
         $this->initialized['unit'] = true;
         $this->unit = $unit;
@@ -105,20 +105,20 @@ class ShipmentLine extends \ArrayObject
     /**
      * serial numbers
      *
-     * @return string[]
+     * @return list<string>
      */
-    public function getSerialNumbers() : array
+    public function getSerialNumbers(): array
     {
         return $this->serialNumbers;
     }
     /**
      * serial numbers
      *
-     * @param string[] $serialNumbers
+     * @param list<string> $serialNumbers
      *
      * @return self
      */
-    public function setSerialNumbers(array $serialNumbers) : self
+    public function setSerialNumbers(array $serialNumbers): self
     {
         $this->initialized['serialNumbers'] = true;
         $this->serialNumbers = $serialNumbers;

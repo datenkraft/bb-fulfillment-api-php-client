@@ -7,8 +7,8 @@ class OrderCustomer extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -95,7 +95,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string
      */
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -106,7 +106,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -117,7 +117,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string
      */
-    public function getFirstname() : string
+    public function getFirstname(): string
     {
         return $this->firstname;
     }
@@ -128,7 +128,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setFirstname(string $firstname) : self
+    public function setFirstname(string $firstname): self
     {
         $this->initialized['firstname'] = true;
         $this->firstname = $firstname;
@@ -139,7 +139,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string
      */
-    public function getLastname() : string
+    public function getLastname(): string
     {
         return $this->lastname;
     }
@@ -150,7 +150,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setLastname(string $lastname) : self
+    public function setLastname(string $lastname): self
     {
         $this->initialized['lastname'] = true;
         $this->lastname = $lastname;
@@ -161,7 +161,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string
      */
-    public function getGender() : string
+    public function getGender(): string
     {
         return $this->gender;
     }
@@ -172,7 +172,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setGender(string $gender) : self
+    public function setGender(string $gender): self
     {
         $this->initialized['gender'] = true;
         $this->gender = $gender;
@@ -183,7 +183,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getTitle() : ?string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -194,7 +194,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setTitle(?string $title) : self
+    public function setTitle(?string $title): self
     {
         $this->initialized['title'] = true;
         $this->title = $title;
@@ -205,7 +205,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getPhone() : ?string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -216,7 +216,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setPhone(?string $phone) : self
+    public function setPhone(?string $phone): self
     {
         $this->initialized['phone'] = true;
         $this->phone = $phone;
@@ -227,7 +227,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string
      */
-    public function getLanguageCode() : string
+    public function getLanguageCode(): string
     {
         return $this->languageCode;
     }
@@ -238,7 +238,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setLanguageCode(string $languageCode) : self
+    public function setLanguageCode(string $languageCode): self
     {
         $this->initialized['languageCode'] = true;
         $this->languageCode = $languageCode;
@@ -249,7 +249,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCompany() : ?string
+    public function getCompany(): ?string
     {
         return $this->company;
     }
@@ -260,7 +260,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setCompany(?string $company) : self
+    public function setCompany(?string $company): self
     {
         $this->initialized['company'] = true;
         $this->company = $company;
@@ -271,7 +271,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getCompanyVatNumber() : ?string
+    public function getCompanyVatNumber(): ?string
     {
         return $this->companyVatNumber;
     }
@@ -282,7 +282,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setCompanyVatNumber(?string $companyVatNumber) : self
+    public function setCompanyVatNumber(?string $companyVatNumber): self
     {
         $this->initialized['companyVatNumber'] = true;
         $this->companyVatNumber = $companyVatNumber;
@@ -293,7 +293,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return OrderCustomerInvoiceAddress
      */
-    public function getInvoiceAddress() : OrderCustomerInvoiceAddress
+    public function getInvoiceAddress(): OrderCustomerInvoiceAddress
     {
         return $this->invoiceAddress;
     }
@@ -304,7 +304,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setInvoiceAddress(OrderCustomerInvoiceAddress $invoiceAddress) : self
+    public function setInvoiceAddress(OrderCustomerInvoiceAddress $invoiceAddress): self
     {
         $this->initialized['invoiceAddress'] = true;
         $this->invoiceAddress = $invoiceAddress;
@@ -326,7 +326,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setDeliveryAddress($deliveryAddress) : self
+    public function setDeliveryAddress($deliveryAddress): self
     {
         $this->initialized['deliveryAddress'] = true;
         $this->deliveryAddress = $deliveryAddress;
@@ -337,7 +337,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getNumber() : ?string
+    public function getNumber(): ?string
     {
         return $this->number;
     }
@@ -348,7 +348,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setNumber(?string $number) : self
+    public function setNumber(?string $number): self
     {
         $this->initialized['number'] = true;
         $this->number = $number;
@@ -359,7 +359,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return string|null
      */
-    public function getType() : ?string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -370,7 +370,7 @@ class OrderCustomer extends \ArrayObject
      *
      * @return self
      */
-    public function setType(?string $type) : self
+    public function setType(?string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;

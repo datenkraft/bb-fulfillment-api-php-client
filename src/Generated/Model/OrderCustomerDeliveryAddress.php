@@ -7,8 +7,8 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -74,7 +74,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string
      */
-    public function getStreet() : string
+    public function getStreet(): string
     {
         return $this->street;
     }
@@ -85,7 +85,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setStreet(string $street) : self
+    public function setStreet(string $street): self
     {
         $this->initialized['street'] = true;
         $this->street = $street;
@@ -96,7 +96,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string
      */
-    public function getStreetNumber() : string
+    public function getStreetNumber(): string
     {
         return $this->streetNumber;
     }
@@ -107,7 +107,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setStreetNumber(string $streetNumber) : self
+    public function setStreetNumber(string $streetNumber): self
     {
         $this->initialized['streetNumber'] = true;
         $this->streetNumber = $streetNumber;
@@ -118,7 +118,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string
      */
-    public function getZipCode() : string
+    public function getZipCode(): string
     {
         return $this->zipCode;
     }
@@ -129,7 +129,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setZipCode(string $zipCode) : self
+    public function setZipCode(string $zipCode): self
     {
         $this->initialized['zipCode'] = true;
         $this->zipCode = $zipCode;
@@ -140,7 +140,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getDistrict() : ?string
+    public function getDistrict(): ?string
     {
         return $this->district;
     }
@@ -151,7 +151,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setDistrict(?string $district) : self
+    public function setDistrict(?string $district): self
     {
         $this->initialized['district'] = true;
         $this->district = $district;
@@ -162,7 +162,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string
      */
-    public function getCity() : string
+    public function getCity(): string
     {
         return $this->city;
     }
@@ -173,7 +173,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setCity(string $city) : self
+    public function setCity(string $city): self
     {
         $this->initialized['city'] = true;
         $this->city = $city;
@@ -187,7 +187,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
     *
     * @return string|null
     */
-    public function getProvinceCode() : ?string
+    public function getProvinceCode(): ?string
     {
         return $this->provinceCode;
     }
@@ -201,7 +201,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
     *
     * @return self
     */
-    public function setProvinceCode(?string $provinceCode) : self
+    public function setProvinceCode(?string $provinceCode): self
     {
         $this->initialized['provinceCode'] = true;
         $this->provinceCode = $provinceCode;
@@ -212,7 +212,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string
      */
-    public function getCountryCode() : string
+    public function getCountryCode(): string
     {
         return $this->countryCode;
     }
@@ -223,7 +223,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setCountryCode(string $countryCode) : self
+    public function setCountryCode(string $countryCode): self
     {
         $this->initialized['countryCode'] = true;
         $this->countryCode = $countryCode;
@@ -234,7 +234,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string
      */
-    public function getNameLine1() : string
+    public function getNameLine1(): string
     {
         return $this->nameLine1;
     }
@@ -245,7 +245,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setNameLine1(string $nameLine1) : self
+    public function setNameLine1(string $nameLine1): self
     {
         $this->initialized['nameLine1'] = true;
         $this->nameLine1 = $nameLine1;
@@ -256,7 +256,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return string|null
      */
-    public function getNameLine2() : ?string
+    public function getNameLine2(): ?string
     {
         return $this->nameLine2;
     }
@@ -267,7 +267,7 @@ class OrderCustomerDeliveryAddress extends \ArrayObject
      *
      * @return self
      */
-    public function setNameLine2(?string $nameLine2) : self
+    public function setNameLine2(?string $nameLine2): self
     {
         $this->initialized['nameLine2'] = true;
         $this->nameLine2 = $nameLine2;

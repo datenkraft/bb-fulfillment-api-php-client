@@ -7,8 +7,8 @@ class Shop extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -53,7 +53,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getId() : string
+    public function getId(): string
     {
         return $this->id;
     }
@@ -64,7 +64,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setId(string $id) : self
+    public function setId(string $id): self
     {
         $this->initialized['id'] = true;
         $this->id = $id;
@@ -75,7 +75,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getDiscoShopCode() : string
+    public function getDiscoShopCode(): string
     {
         return $this->discoShopCode;
     }
@@ -86,7 +86,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setDiscoShopCode(string $discoShopCode) : self
+    public function setDiscoShopCode(string $discoShopCode): self
     {
         $this->initialized['discoShopCode'] = true;
         $this->discoShopCode = $discoShopCode;
@@ -97,7 +97,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getDiscoOrderReferencePrefix() : string
+    public function getDiscoOrderReferencePrefix(): string
     {
         return $this->discoOrderReferencePrefix;
     }
@@ -108,7 +108,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setDiscoOrderReferencePrefix(string $discoOrderReferencePrefix) : self
+    public function setDiscoOrderReferencePrefix(string $discoOrderReferencePrefix): self
     {
         $this->initialized['discoOrderReferencePrefix'] = true;
         $this->discoOrderReferencePrefix = $discoOrderReferencePrefix;
@@ -119,7 +119,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getEmail() : string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -130,7 +130,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setEmail(string $email) : self
+    public function setEmail(string $email): self
     {
         $this->initialized['email'] = true;
         $this->email = $email;
@@ -141,7 +141,7 @@ class Shop extends \ArrayObject
      *
      * @return string
      */
-    public function getProjectId() : string
+    public function getProjectId(): string
     {
         return $this->projectId;
     }
@@ -152,7 +152,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setProjectId(string $projectId) : self
+    public function setProjectId(string $projectId): self
     {
         $this->initialized['projectId'] = true;
         $this->projectId = $projectId;
@@ -163,7 +163,7 @@ class Shop extends \ArrayObject
      *
      * @return ShopMeta|null
      */
-    public function getMeta() : ?ShopMeta
+    public function getMeta(): ?ShopMeta
     {
         return $this->meta;
     }
@@ -174,7 +174,7 @@ class Shop extends \ArrayObject
      *
      * @return self
      */
-    public function setMeta(?ShopMeta $meta) : self
+    public function setMeta(?ShopMeta $meta): self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;

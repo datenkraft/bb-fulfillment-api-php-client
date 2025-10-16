@@ -7,8 +7,8 @@ class OrderDelivery extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -30,7 +30,7 @@ class OrderDelivery extends \ArrayObject
      *
      * @return string
      */
-    public function getNumber() : string
+    public function getNumber(): string
     {
         return $this->number;
     }
@@ -41,7 +41,7 @@ class OrderDelivery extends \ArrayObject
      *
      * @return self
      */
-    public function setNumber(string $number) : self
+    public function setNumber(string $number): self
     {
         $this->initialized['number'] = true;
         $this->number = $number;
@@ -53,7 +53,7 @@ class OrderDelivery extends \ArrayObject
     *
     * @return string
     */
-    public function getStatus() : string
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -65,7 +65,7 @@ class OrderDelivery extends \ArrayObject
     *
     * @return self
     */
-    public function setStatus(string $status) : self
+    public function setStatus(string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;

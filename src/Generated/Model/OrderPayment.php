@@ -7,8 +7,8 @@ class OrderPayment extends \ArrayObject
     /**
      * @var array
      */
-    protected $initialized = array();
-    public function isInitialized($property) : bool
+    protected $initialized = [];
+    public function isInitialized($property): bool
     {
         return array_key_exists($property, $this->initialized);
     }
@@ -23,7 +23,7 @@ class OrderPayment extends \ArrayObject
      *
      * @return string
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -34,7 +34,7 @@ class OrderPayment extends \ArrayObject
      *
      * @return self
      */
-    public function setType(string $type) : self
+    public function setType(string $type): self
     {
         $this->initialized['type'] = true;
         $this->type = $type;
