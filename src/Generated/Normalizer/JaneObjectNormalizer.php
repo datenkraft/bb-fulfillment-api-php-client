@@ -82,6 +82,12 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryCollectionNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryExpense::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryExpenseNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryExpenseCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryExpenseCollectionNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryExpensePrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryExpensePriceNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryService::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryServiceNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryServiceCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryServiceCollectionNormalizer::class,
@@ -338,6 +344,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryProvinces::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Delivery::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryExpense::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryExpenseCollection::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryExpensePrice::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryService::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryServiceCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment::class => false,

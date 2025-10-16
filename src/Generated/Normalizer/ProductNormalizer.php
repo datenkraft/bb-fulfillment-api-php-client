@@ -300,6 +300,13 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setProductOptions($values_2);
             unset($data['productOptions']);
         }
+        if (\array_key_exists('articleItemStatus', $data) && $data['articleItemStatus'] !== null) {
+            $object->setArticleItemStatus($data['articleItemStatus']);
+            unset($data['articleItemStatus']);
+        }
+        elseif (\array_key_exists('articleItemStatus', $data) && $data['articleItemStatus'] === null) {
+            $object->setArticleItemStatus(null);
+        }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_3;
@@ -444,6 +451,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
                 $values_2[] = $value_2;
             }
             $dataArray['productOptions'] = $values_2;
+        }
+        if ($data->isInitialized('articleItemStatus') && null !== $data->getArticleItemStatus()) {
+            $dataArray['articleItemStatus'] = $data->getArticleItemStatus();
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

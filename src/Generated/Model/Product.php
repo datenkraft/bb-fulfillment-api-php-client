@@ -301,6 +301,12 @@ class Product extends \ArrayObject
     */
     protected $productOptions;
     /**
+     * Status of the article item regarding visibility.
+     *
+     * @var string|null
+     */
+    protected $articleItemStatus;
+    /**
      * Type of the product.
      *
      * @return string
@@ -1284,6 +1290,28 @@ class Product extends \ArrayObject
     {
         $this->initialized['productOptions'] = true;
         $this->productOptions = $productOptions;
+        return $this;
+    }
+    /**
+     * Status of the article item regarding visibility.
+     *
+     * @return string|null
+     */
+    public function getArticleItemStatus(): ?string
+    {
+        return $this->articleItemStatus;
+    }
+    /**
+     * Status of the article item regarding visibility.
+     *
+     * @param string|null $articleItemStatus
+     *
+     * @return self
+     */
+    public function setArticleItemStatus(?string $articleItemStatus): self
+    {
+        $this->initialized['articleItemStatus'] = true;
+        $this->articleItemStatus = $articleItemStatus;
         return $this;
     }
 }
