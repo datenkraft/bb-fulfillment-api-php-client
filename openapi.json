@@ -6111,7 +6111,7 @@
                     {
                         "name": "filter[productNumber]",
                         "in": "query",
-                        "description": "Filter for product number(s).",
+                        "description": "Filter for product number(s) (comma-separated, max. 100).",
                         "required": false,
                         "schema": {
                             "type": "string"
@@ -12323,88 +12323,80 @@
     },
     "tags": [
         {
-            "name": "reconsignmentAnnouncement",
-            "description": "reconsignmentAnnouncement"
-        },
-        {
-            "name": "product-unit",
-            "description": "product-unit"
-        },
-        {
-            "name": "stock",
-            "description": "stock"
-        },
-        {
-            "name": "delivery",
-            "description": "delivery"
-        },
-        {
-            "name": "product-draft",
-            "description": "product-draft"
-        },
-        {
-            "name": "product",
-            "description": "product"
-        },
-        {
-            "name": "brand",
-            "description": "brand"
-        },
-        {
-            "name": "manufacturer",
-            "description": "manufacturer"
-        },
-        {
-            "name": "inbound-delivery",
-            "description": "inbound-delivery"
-        },
-        {
-            "name": "report",
-            "description": "report"
-        },
-        {
-            "name": "supplier",
-            "description": "supplier"
-        },
-        {
-            "name": "order",
-            "description": "order"
-        },
-        {
-            "name": "delivery-service",
-            "description": "delivery-service"
-        },
-        {
-            "name": "auth-permission-role",
-            "description": "auth-permission-role"
-        },
-        {
-            "name": "auth-role-identity",
-            "description": "auth-role-identity"
+            "name": "audit-log",
+            "description": "audit-log"
         },
         {
             "name": "auth-permission",
             "description": "auth-permission"
         },
         {
-            "name": "audit-log",
-            "description": "audit-log"
+            "name": "auth-permission-role",
+            "description": "auth-permission-role"
         },
         {
             "name": "auth-role",
             "description": "auth-role"
         },
         {
+            "name": "auth-role-identity",
+            "description": "auth-role-identity"
+        },
+        {
             "name": "docs",
             "description": "docs"
         },
         {
-            "name": "reconsignment",
-            "description": "reconsignment"
+            "name": "brand",
+            "description": "brand"
         },
         {
-            "name": "shop",
-            "description": "shop"
+            "name": "delivery",
+            "description": "delivery"
+        },
+        {
+            "name": "delivery-service",
+            "description": "delivery-service"
+        },
+        {
+            "name": "inbound-delivery",
+            "description": "inbound-delivery"
+        },
+        {
+            "name": "manufacturer",
+            "description": "manufacturer"
+        },
+        {
+            "name": "order",
+            "description": "order"
+        },
+        {
+            "name": "product",
+            "description": "product"
+        },
+        {
+            "name": "product-draft",
+            "description": "product-draft"
+        },
+        {
+            "name": "product-unit",
+            "description": "product-unit"
+        },
+        {
+            "name": "reconsignmentAnnouncement",
+            "description": "reconsignmentAnnouncement"
+        },
+        {
+            "name": "report",
+            "description": "report"
+        },
+        {
+            "name": "stock",
+            "description": "stock"
+        },
+        {
+            "name": "supplier",
+            "description": "supplier"
         },
         {
             "name": "country",
@@ -12413,6 +12405,14 @@
         {
             "name": "delivery-expense",
             "description": "delivery-expense"
+        },
+        {
+            "name": "reconsignment",
+            "description": "reconsignment"
+        },
+        {
+            "name": "shop",
+            "description": "shop"
         }
     ]
 }

@@ -1286,7 +1286,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     is found in any field and 'term2' is also found in any field.
     If only 'term1' or 'term2' is found in the fields, the product is not included in the results.
     *     @var string $filter[source] Filter for product source.
-    *     @var string $filter[productNumber] Filter for product number(s).
+    *     @var string $filter[productNumber] Filter for product number(s) (comma-separated, max. 100).
     *     @var string $filter[productAvailabilityStatus] Filter for productAvailabilityStatus \
     By default, all products are returned. \
     Use '_availableOrInStock' to only return products that are available or in stock. \
