@@ -22,7 +22,8 @@ Error codes:
 - DUPLICATED_PRODUCT: There are multiple products with the same productNumber.
 - PRODUCT_COULD_NOT_BE_ADDED_FOR_SUPPLIER: At least one of the the given products could not be added for the supplier.
 - INBOUND_DELIVERY_NOTIFICATION_NOT_SENDABLE: Could not send the delivery notification to the supplier. The inbound delivery has been deleted.
-- INBOUND_DELIVERY_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The inboundDeliveryNumber starts with a prefix that is reserved for internal references.');
+- INBOUND_DELIVERY_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The inboundDeliveryNumber starts with a prefix that is reserved for internal references.
+- SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }

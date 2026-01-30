@@ -3295,7 +3295,7 @@
                         }
                     },
                     "422": {
-                        "description": "Unprocessable Entity\n\nError codes:\n- SUPPLIER_NOT_FOUND: Unknown supplierNumber.\n- PRODUCT_NOT_FOUND: Unknown productNumber.\n- DUPLICATED_PRODUCT: There are multiple products with the same productNumber.\n- PRODUCT_COULD_NOT_BE_ADDED_FOR_SUPPLIER: At least one of the the given products could not be added for the supplier.\n- INBOUND_DELIVERY_NOTIFICATION_NOT_SENDABLE: Could not send the delivery notification to the supplier. The inbound delivery has been deleted.\n- INBOUND_DELIVERY_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The inboundDeliveryNumber starts with a prefix that is reserved for internal references.",
+                        "description": "Unprocessable Entity\n\nError codes:\n- SUPPLIER_NOT_FOUND: Unknown supplierNumber.\n- PRODUCT_NOT_FOUND: Unknown productNumber.\n- DUPLICATED_PRODUCT: There are multiple products with the same productNumber.\n- PRODUCT_COULD_NOT_BE_ADDED_FOR_SUPPLIER: At least one of the the given products could not be added for the supplier.\n- INBOUND_DELIVERY_NOTIFICATION_NOT_SENDABLE: Could not send the delivery notification to the supplier. The inbound delivery has been deleted.\n- INBOUND_DELIVERY_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The inboundDeliveryNumber starts with a prefix that is reserved for internal references.\n- SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -4940,7 +4940,7 @@
                         }
                     },
                     "422": {
-                        "description": "Unprocessable Entity\n\nError codes:\n- SHOP_NOT_FOUND: Shop not found.\n- COUNTRY_NOT_ALLOWED_FOR_RECONSIGNMENT:  The country cannot be used for a reconsignment announcement.\n- DELIVERY_SERVICE_NOT_ALLOWED_FOR_RECONSIGNMENT: The determined delivery service cannot be used for a reconsignment announcement.\n- RECONSIGNMENT_ANNOUNCEMENT_LINE_NOT_RECONSIGNABLE: A reconsignment announcement line is not reconsignable.\n- ORDER_NOT_RECONSIGNABLE_DUE_TO_GDPR_REDACTION: The order is not reconsignable due to GDPR redaction.\n- ORDER_NOT_RECONSIGNABLE_DUE_TO_DELIVERY_STATUS: The order is not reconsignable because it is not delivered.",
+                        "description": "Unprocessable Entity\n\nError codes:\n- SHOP_NOT_FOUND: Shop not found.\n- COUNTRY_NOT_ALLOWED_FOR_RECONSIGNMENT:  The country cannot be used for a reconsignment announcement.\n- DELIVERY_SERVICE_NOT_ALLOWED_FOR_RECONSIGNMENT: The determined delivery service cannot be used for a reconsignment announcement.\n- RECONSIGNMENT_ANNOUNCEMENT_LINE_NOT_RECONSIGNABLE: A reconsignment announcement line is not reconsignable.\n- ORDER_NOT_RECONSIGNABLE_DUE_TO_GDPR_REDACTION: The order is not reconsignable due to GDPR redaction.\n- ORDER_NOT_RECONSIGNABLE_DUE_TO_DELIVERY_STATUS: The order is not reconsignable because it is not delivered.\n- SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -11491,6 +11491,8 @@
                         "enum": [
                             "reconsignment_other_default",
                             "reconsignment_other_unknown",
+                            "reconsignment_other_unpack",
+                            "reconsignment_other_no_reason",
                             "reconsignment_product_damage",
                             "reconsignment_product_defect",
                             "reconsignment_product_dislike",
@@ -12323,28 +12325,68 @@
     },
     "tags": [
         {
-            "name": "audit-log",
-            "description": "audit-log"
+            "name": "order",
+            "description": "order"
         },
         {
-            "name": "auth-permission",
-            "description": "auth-permission"
+            "name": "shop",
+            "description": "shop"
         },
         {
-            "name": "auth-permission-role",
-            "description": "auth-permission-role"
+            "name": "product",
+            "description": "product"
         },
         {
-            "name": "auth-role",
-            "description": "auth-role"
+            "name": "reconsignment",
+            "description": "reconsignment"
+        },
+        {
+            "name": "reconsignmentAnnouncement",
+            "description": "reconsignmentAnnouncement"
+        },
+        {
+            "name": "delivery-expense",
+            "description": "delivery-expense"
+        },
+        {
+            "name": "country",
+            "description": "country"
         },
         {
             "name": "auth-role-identity",
             "description": "auth-role-identity"
         },
         {
+            "name": "auth-permission-role",
+            "description": "auth-permission-role"
+        },
+        {
+            "name": "audit-log",
+            "description": "audit-log"
+        },
+        {
+            "name": "auth-role",
+            "description": "auth-role"
+        },
+        {
             "name": "docs",
             "description": "docs"
+        },
+        {
+            "name": "auth-permission",
+            "description": "auth-permission"
+        },
+        {
+            "name": "stock",
+            "description": "stock"
+        },
+        {
+            "name": "manufacturer",
+            "description": "manufacturer"
+        },
+        {
+            "name": "report",
+            "description": "report"
         },
         {
             "name": "brand",
@@ -12355,64 +12397,24 @@
             "description": "delivery"
         },
         {
-            "name": "delivery-service",
-            "description": "delivery-service"
-        },
-        {
             "name": "inbound-delivery",
             "description": "inbound-delivery"
         },
         {
-            "name": "manufacturer",
-            "description": "manufacturer"
-        },
-        {
-            "name": "order",
-            "description": "order"
-        },
-        {
-            "name": "product",
-            "description": "product"
-        },
-        {
-            "name": "product-draft",
-            "description": "product-draft"
+            "name": "delivery-service",
+            "description": "delivery-service"
         },
         {
             "name": "product-unit",
             "description": "product-unit"
         },
         {
-            "name": "reconsignmentAnnouncement",
-            "description": "reconsignmentAnnouncement"
-        },
-        {
-            "name": "report",
-            "description": "report"
-        },
-        {
-            "name": "stock",
-            "description": "stock"
-        },
-        {
             "name": "supplier",
             "description": "supplier"
         },
         {
-            "name": "country",
-            "description": "country"
-        },
-        {
-            "name": "delivery-expense",
-            "description": "delivery-expense"
-        },
-        {
-            "name": "reconsignment",
-            "description": "reconsignment"
-        },
-        {
-            "name": "shop",
-            "description": "shop"
+            "name": "product-draft",
+            "description": "product-draft"
         }
     ]
 }
