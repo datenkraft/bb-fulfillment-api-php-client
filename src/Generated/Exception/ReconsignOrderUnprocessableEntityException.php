@@ -22,7 +22,8 @@ Error codes:
 - DELIVERY_SERVICE_NOT_ALLOWED_FOR_RECONSIGNMENT: The determined delivery service cannot be used for a reconsignment announcement.
 - RECONSIGNMENT_ANNOUNCEMENT_LINE_NOT_RECONSIGNABLE: A reconsignment announcement line is not reconsignable.
 - ORDER_NOT_RECONSIGNABLE_DUE_TO_GDPR_REDACTION: The order is not reconsignable due to GDPR redaction.
-- ORDER_NOT_RECONSIGNABLE_DUE_TO_DELIVERY_STATUS: The order is not reconsignable because it is not delivered.');
+- ORDER_NOT_RECONSIGNABLE_DUE_TO_DELIVERY_STATUS: The order is not reconsignable because it is not delivered.
+- SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
