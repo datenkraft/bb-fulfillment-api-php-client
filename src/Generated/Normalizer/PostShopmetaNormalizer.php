@@ -115,6 +115,13 @@ class PostShopmetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('orderNotesPrecedingText', $data) && $data['orderNotesPrecedingText'] === null) {
             $object->setOrderNotesPrecedingText(null);
         }
+        if (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] !== null) {
+            $object->setDeliverySlipNotes($data['deliverySlipNotes']);
+            unset($data['deliverySlipNotes']);
+        }
+        elseif (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] === null) {
+            $object->setDeliverySlipNotes(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -151,6 +158,9 @@ class PostShopmetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if ($data->isInitialized('orderNotesPrecedingText') && null !== $data->getOrderNotesPrecedingText()) {
             $dataArray['orderNotesPrecedingText'] = $data->getOrderNotesPrecedingText();
+        }
+        if ($data->isInitialized('deliverySlipNotes') && null !== $data->getDeliverySlipNotes()) {
+            $dataArray['deliverySlipNotes'] = $data->getDeliverySlipNotes();
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

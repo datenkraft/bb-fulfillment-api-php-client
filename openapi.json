@@ -8775,9 +8775,9 @@
                         "nullable": true
                     },
                     "deliverySlipNotes": {
-                        "description": "Notes to be printed on the delivery slip.",
+                        "description": "Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be\nused as a fallback.",
                         "type": "string",
-                        "maxLength": 500,
+                        "maxLength": 1024,
                         "nullable": true
                     },
                     "externalOrderReference": {
@@ -10891,6 +10891,12 @@
                                         "description": "Text to be added to the beginning of the orderNotes of every order created for the shop.",
                                         "type": "string",
                                         "nullable": true
+                                    },
+                                    "deliverySlipNotes": {
+                                        "description": "Default notes to be printed on the delivery slip when an order is created without\ndeliverySlipNotes.",
+                                        "type": "string",
+                                        "maxLength": 1024,
+                                        "nullable": true
                                     }
                                 },
                                 "type": "object",
@@ -12063,6 +12069,12 @@
                                         "description": "Text to be added to the beginning of the orderNotes of every order created for the shop.",
                                         "type": "string",
                                         "nullable": true
+                                    },
+                                    "deliverySlipNotes": {
+                                        "description": "Default notes to be printed on the delivery slip when an order is created without\ndeliverySlipNotes.",
+                                        "type": "string",
+                                        "maxLength": 1024,
+                                        "nullable": true
                                     }
                                 },
                                 "type": "object",
@@ -12281,6 +12293,12 @@
                                         "type": "string",
                                         "maxLength": 147,
                                         "nullable": true
+                                    },
+                                    "deliverySlipNotes": {
+                                        "description": "Default notes to be printed on the delivery slip when an order is created without\ndeliverySlipNotes.",
+                                        "type": "string",
+                                        "maxLength": 1024,
+                                        "nullable": true
                                     }
                                 },
                                 "type": "object",
@@ -12325,68 +12343,28 @@
     },
     "tags": [
         {
-            "name": "order",
-            "description": "order"
-        },
-        {
-            "name": "shop",
-            "description": "shop"
-        },
-        {
-            "name": "product",
-            "description": "product"
-        },
-        {
-            "name": "reconsignment",
-            "description": "reconsignment"
-        },
-        {
-            "name": "reconsignmentAnnouncement",
-            "description": "reconsignmentAnnouncement"
-        },
-        {
-            "name": "delivery-expense",
-            "description": "delivery-expense"
-        },
-        {
-            "name": "country",
-            "description": "country"
-        },
-        {
-            "name": "auth-role-identity",
-            "description": "auth-role-identity"
-        },
-        {
-            "name": "auth-permission-role",
-            "description": "auth-permission-role"
-        },
-        {
             "name": "audit-log",
             "description": "audit-log"
-        },
-        {
-            "name": "auth-role",
-            "description": "auth-role"
-        },
-        {
-            "name": "docs",
-            "description": "docs"
         },
         {
             "name": "auth-permission",
             "description": "auth-permission"
         },
         {
-            "name": "stock",
-            "description": "stock"
+            "name": "auth-permission-role",
+            "description": "auth-permission-role"
         },
         {
-            "name": "manufacturer",
-            "description": "manufacturer"
+            "name": "auth-role",
+            "description": "auth-role"
         },
         {
-            "name": "report",
-            "description": "report"
+            "name": "auth-role-identity",
+            "description": "auth-role-identity"
+        },
+        {
+            "name": "docs",
+            "description": "docs"
         },
         {
             "name": "brand",
@@ -12397,24 +12375,64 @@
             "description": "delivery"
         },
         {
+            "name": "delivery-service",
+            "description": "delivery-service"
+        },
+        {
             "name": "inbound-delivery",
             "description": "inbound-delivery"
         },
         {
-            "name": "delivery-service",
-            "description": "delivery-service"
+            "name": "manufacturer",
+            "description": "manufacturer"
+        },
+        {
+            "name": "order",
+            "description": "order"
+        },
+        {
+            "name": "product",
+            "description": "product"
+        },
+        {
+            "name": "product-draft",
+            "description": "product-draft"
         },
         {
             "name": "product-unit",
             "description": "product-unit"
         },
         {
+            "name": "reconsignmentAnnouncement",
+            "description": "reconsignmentAnnouncement"
+        },
+        {
+            "name": "report",
+            "description": "report"
+        },
+        {
+            "name": "stock",
+            "description": "stock"
+        },
+        {
             "name": "supplier",
             "description": "supplier"
         },
         {
-            "name": "product-draft",
-            "description": "product-draft"
+            "name": "country",
+            "description": "country"
+        },
+        {
+            "name": "delivery-expense",
+            "description": "delivery-expense"
+        },
+        {
+            "name": "reconsignment",
+            "description": "reconsignment"
+        },
+        {
+            "name": "shop",
+            "description": "shop"
         }
     ]
 }

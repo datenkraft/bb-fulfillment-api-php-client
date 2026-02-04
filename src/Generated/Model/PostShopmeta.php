@@ -69,6 +69,13 @@ class PostShopmeta extends \ArrayObject
      */
     protected $orderNotesPrecedingText;
     /**
+    * Default notes to be printed on the delivery slip when an order is created without
+    deliverySlipNotes.
+    *
+    * @var string|null
+    */
+    protected $deliverySlipNotes;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -268,6 +275,30 @@ class PostShopmeta extends \ArrayObject
     {
         $this->initialized['orderNotesPrecedingText'] = true;
         $this->orderNotesPrecedingText = $orderNotesPrecedingText;
+        return $this;
+    }
+    /**
+    * Default notes to be printed on the delivery slip when an order is created without
+    deliverySlipNotes.
+    *
+    * @return string|null
+    */
+    public function getDeliverySlipNotes(): ?string
+    {
+        return $this->deliverySlipNotes;
+    }
+    /**
+    * Default notes to be printed on the delivery slip when an order is created without
+    deliverySlipNotes.
+    *
+    * @param string|null $deliverySlipNotes
+    *
+    * @return self
+    */
+    public function setDeliverySlipNotes(?string $deliverySlipNotes): self
+    {
+        $this->initialized['deliverySlipNotes'] = true;
+        $this->deliverySlipNotes = $deliverySlipNotes;
         return $this;
     }
 }
