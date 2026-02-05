@@ -38,10 +38,11 @@ class BaseOrder extends \ArrayObject
     */
     protected $externalOrderId;
     /**
-     * Notes to be printed on the delivery slip.
-     *
-     * @var string|null
-     */
+    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
+    used as a fallback.
+    *
+    * @var string|null
+    */
     protected $deliverySlipNotes;
     /**
      * External reference for the order
@@ -177,21 +178,23 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-     * Notes to be printed on the delivery slip.
-     *
-     * @return string|null
-     */
+    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
+    used as a fallback.
+    *
+    * @return string|null
+    */
     public function getDeliverySlipNotes(): ?string
     {
         return $this->deliverySlipNotes;
     }
     /**
-     * Notes to be printed on the delivery slip.
-     *
-     * @param string|null $deliverySlipNotes
-     *
-     * @return self
-     */
+    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
+    used as a fallback.
+    *
+    * @param string|null $deliverySlipNotes
+    *
+    * @return self
+    */
     public function setDeliverySlipNotes(?string $deliverySlipNotes): self
     {
         $this->initialized['deliverySlipNotes'] = true;
