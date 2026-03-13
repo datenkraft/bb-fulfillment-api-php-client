@@ -98,6 +98,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentJournal::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryShipmentJournalNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DiscoShopNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShopCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DiscoShopCollectionNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ErrorNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorReferencesItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ErrorReferencesItemNormalizer::class,
@@ -352,6 +356,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentJournal::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShop::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShopCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorReferencesItem::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse::class => false,
