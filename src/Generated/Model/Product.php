@@ -195,6 +195,7 @@ class Product extends \ArrayObject
     - default: Default tax rate (in e.g. Austria 20 %)
     - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
     - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+    - reduced3: 3rd reduced tax rate (in e.g. Austria 5 %)
     - none: not taxable (0%)
     
     Note: This can be null if the tax code could not be determined.
@@ -947,6 +948,7 @@ class Product extends \ArrayObject
     - default: Default tax rate (in e.g. Austria 20 %)
     - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
     - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+    - reduced3: 3rd reduced tax rate (in e.g. Austria 5 %)
     - none: not taxable (0%)
     
     Note: This can be null if the tax code could not be determined.
@@ -962,6 +964,7 @@ class Product extends \ArrayObject
     - default: Default tax rate (in e.g. Austria 20 %)
     - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
     - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+    - reduced3: 3rd reduced tax rate (in e.g. Austria 5 %)
     - none: not taxable (0%)
     
     Note: This can be null if the tax code could not be determined.
