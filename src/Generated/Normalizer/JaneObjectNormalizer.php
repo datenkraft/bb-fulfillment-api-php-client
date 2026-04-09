@@ -178,6 +178,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderShipping::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderShippingNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchInboundDeliveryNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDeliveryProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchInboundDeliveryProductNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopmetaNormalizer::class,
@@ -396,6 +400,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPayment::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPrice::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderShipping::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDeliveryProduct::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class => false,
