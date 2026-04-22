@@ -76,10 +76,12 @@ class NewOrder extends \ArrayObject
      */
     protected $amazonFbaShipmentId;
     /**
-     * 
-     *
-     * @var list<OrderDeliveryCosts>|null
-     */
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if the delivery address country requires customs clearance
+    (see `customsClearanceRequired` on the `country` resource).
+    *
+    * @var list<OrderDeliveryCosts>|null
+    */
     protected $deliveryCosts;
     /**
      * Additional optional options for a new order.
@@ -314,21 +316,25 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
-     * @return list<OrderDeliveryCosts>|null
-     */
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if the delivery address country requires customs clearance
+    (see `customsClearanceRequired` on the `country` resource).
+    *
+    * @return list<OrderDeliveryCosts>|null
+    */
     public function getDeliveryCosts(): ?array
     {
         return $this->deliveryCosts;
     }
     /**
-     * 
-     *
-     * @param list<OrderDeliveryCosts>|null $deliveryCosts
-     *
-     * @return self
-     */
+    * The delivery costs of the order, which will be charged to the customer.\
+    Note: This field is required if the delivery address country requires customs clearance
+    (see `customsClearanceRequired` on the `country` resource).
+    *
+    * @param list<OrderDeliveryCosts>|null $deliveryCosts
+    *
+    * @return self
+    */
     public function setDeliveryCosts(?array $deliveryCosts): self
     {
         $this->initialized['deliveryCosts'] = true;
