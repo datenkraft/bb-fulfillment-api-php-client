@@ -43,7 +43,7 @@ class Country extends \ArrayObject
      */
     protected $provinces;
     /**
-     * The currency code which should be used for orders to the country (ISO 4217)
+     * The currency code which must be used for orders to the country (ISO 4217)
      *
      * @var string
      */
@@ -159,7 +159,7 @@ class Country extends \ArrayObject
         return $this;
     }
     /**
-     * The currency code which should be used for orders to the country (ISO 4217)
+     * The currency code which must be used for orders to the country (ISO 4217)
      *
      * @return string
      */
@@ -168,7 +168,7 @@ class Country extends \ArrayObject
         return $this->currencyCode;
     }
     /**
-     * The currency code which should be used for orders to the country (ISO 4217)
+     * The currency code which must be used for orders to the country (ISO 4217)
      *
      * @param string $currencyCode
      *
