@@ -25,8 +25,6 @@ class NewReconsignmentAnnouncement extends \ArrayObject
      */
     protected $options;
     /**
-     * 
-     *
      * @var list<NewReconsignmentAnnouncementLine>
      */
     protected $reconsignmentAnnouncementLines;
@@ -75,8 +73,6 @@ class NewReconsignmentAnnouncement extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<NewReconsignmentAnnouncementLine>
      */
     public function getReconsignmentAnnouncementLines(): array
@@ -84,8 +80,6 @@ class NewReconsignmentAnnouncement extends \ArrayObject
         return $this->reconsignmentAnnouncementLines;
     }
     /**
-     * 
-     *
      * @param list<NewReconsignmentAnnouncementLine> $reconsignmentAnnouncementLines
      *
      * @return self

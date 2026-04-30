@@ -27,13 +27,16 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product();
         if (\array_key_exists('contentsAmount', $data) && \is_int($data['contentsAmount'])) {
             $data['contentsAmount'] = (double) $data['contentsAmount'];
         }
@@ -42,9 +45,6 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if (\array_key_exists('listPriceEUR', $data) && \is_int($data['listPriceEUR'])) {
             $data['listPriceEUR'] = (double) $data['listPriceEUR'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productType', $data)) {
             $object->setProductType($data['productType']);
@@ -307,6 +307,13 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('articleItemStatus', $data) && $data['articleItemStatus'] === null) {
             $object->setArticleItemStatus(null);
         }
+        if (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] !== null) {
+            $object->setMinAvailableStock($data['minAvailableStock']);
+            unset($data['minAvailableStock']);
+        }
+        elseif (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] === null) {
+            $object->setMinAvailableStock(null);
+        }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_3;
@@ -320,60 +327,60 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('productType') && null !== $data->getProductType()) {
             $dataArray['productType'] = $data->getProductType();
         }
-        if ($data->isInitialized('articleVariantTitle') && null !== $data->getArticleVariantTitle()) {
+        if ($data->isInitialized('articleVariantTitle')) {
             $dataArray['articleVariantTitle'] = $data->getArticleVariantTitle();
         }
-        if ($data->isInitialized('articleVariantType') && null !== $data->getArticleVariantType()) {
+        if ($data->isInitialized('articleVariantType')) {
             $dataArray['articleVariantType'] = $data->getArticleVariantType();
         }
-        if ($data->isInitialized('articleStatus') && null !== $data->getArticleStatus()) {
+        if ($data->isInitialized('articleStatus')) {
             $dataArray['articleStatus'] = $data->getArticleStatus();
         }
-        if ($data->isInitialized('contentsAmount') && null !== $data->getContentsAmount()) {
+        if ($data->isInitialized('contentsAmount')) {
             $dataArray['contentsAmount'] = $data->getContentsAmount();
         }
-        if ($data->isInitialized('contentsUnit') && null !== $data->getContentsUnit()) {
+        if ($data->isInitialized('contentsUnit')) {
             $dataArray['contentsUnit'] = $data->getContentsUnit();
         }
-        if ($data->isInitialized('contentsWeightGram') && null !== $data->getContentsWeightGram()) {
+        if ($data->isInitialized('contentsWeightGram')) {
             $dataArray['contentsWeightGram'] = $data->getContentsWeightGram();
         }
-        if ($data->isInitialized('weightGram') && null !== $data->getWeightGram()) {
+        if ($data->isInitialized('weightGram')) {
             $dataArray['weightGram'] = $data->getWeightGram();
         }
         if ($data->isInitialized('variantGroup') && null !== $data->getVariantGroup()) {
             $dataArray['variantGroup'] = $data->getVariantGroup();
         }
-        if ($data->isInitialized('ean') && null !== $data->getEan()) {
+        if ($data->isInitialized('ean')) {
             $dataArray['ean'] = $data->getEan();
         }
-        if ($data->isInitialized('suggestedRetailPriceEUR') && null !== $data->getSuggestedRetailPriceEUR()) {
+        if ($data->isInitialized('suggestedRetailPriceEUR')) {
             $dataArray['suggestedRetailPriceEUR'] = $data->getSuggestedRetailPriceEUR();
         }
-        if ($data->isInitialized('purchasePrices') && null !== $data->getPurchasePrices()) {
+        if ($data->isInitialized('purchasePrices')) {
             $values = [];
             foreach ($data->getPurchasePrices() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['purchasePrices'] = $values;
         }
-        if ($data->isInitialized('bundledProducts') && null !== $data->getBundledProducts()) {
+        if ($data->isInitialized('bundledProducts')) {
             $values_1 = [];
             foreach ($data->getBundledProducts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['bundledProducts'] = $values_1;
         }
-        if ($data->isInitialized('productNumberManufacturer') && null !== $data->getProductNumberManufacturer()) {
+        if ($data->isInitialized('productNumberManufacturer')) {
             $dataArray['productNumberManufacturer'] = $data->getProductNumberManufacturer();
         }
-        if ($data->isInitialized('manufacturerCountryCode') && null !== $data->getManufacturerCountryCode()) {
+        if ($data->isInitialized('manufacturerCountryCode')) {
             $dataArray['manufacturerCountryCode'] = $data->getManufacturerCountryCode();
         }
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
+        if ($data->isInitialized('languageCode')) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
+        if ($data->isInitialized('dimensions')) {
             $dataArray['dimensions'] = $this->normalizer->normalize($data->getDimensions(), 'json', $context);
         }
         if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
@@ -382,46 +389,46 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
             $dataArray['shopCode'] = $data->getShopCode();
         }
-        if ($data->isInitialized('productStatus') && null !== $data->getProductStatus()) {
+        if ($data->isInitialized('productStatus')) {
             $dataArray['productStatus'] = $data->getProductStatus();
         }
-        if ($data->isInitialized('productTitle') && null !== $data->getProductTitle()) {
+        if ($data->isInitialized('productTitle')) {
             $dataArray['productTitle'] = $data->getProductTitle();
         }
-        if ($data->isInitialized('productTitleOriginal') && null !== $data->getProductTitleOriginal()) {
+        if ($data->isInitialized('productTitleOriginal')) {
             $dataArray['productTitleOriginal'] = $data->getProductTitleOriginal();
         }
         if ($data->isInitialized('image') && null !== $data->getImage()) {
             $dataArray['image'] = $this->normalizer->normalize($data->getImage(), 'json', $context);
         }
-        if ($data->isInitialized('articleShortDescription') && null !== $data->getArticleShortDescription()) {
+        if ($data->isInitialized('articleShortDescription')) {
             $dataArray['articleShortDescription'] = $data->getArticleShortDescription();
         }
-        if ($data->isInitialized('articleLongDescription') && null !== $data->getArticleLongDescription()) {
+        if ($data->isInitialized('articleLongDescription')) {
             $dataArray['articleLongDescription'] = $data->getArticleLongDescription();
         }
-        if ($data->isInitialized('taricCode') && null !== $data->getTaricCode()) {
+        if ($data->isInitialized('taricCode')) {
             $dataArray['taricCode'] = $data->getTaricCode();
         }
-        if ($data->isInitialized('listPriceEUR') && null !== $data->getListPriceEUR()) {
+        if ($data->isInitialized('listPriceEUR')) {
             $dataArray['listPriceEUR'] = $data->getListPriceEUR();
         }
         if ($data->isInitialized('priceType') && null !== $data->getPriceType()) {
             $dataArray['priceType'] = $data->getPriceType();
         }
-        if ($data->isInitialized('taxCode') && null !== $data->getTaxCode()) {
+        if ($data->isInitialized('taxCode')) {
             $dataArray['taxCode'] = $data->getTaxCode();
         }
-        if ($data->isInitialized('manufacturerNumber') && null !== $data->getManufacturerNumber()) {
+        if ($data->isInitialized('manufacturerNumber')) {
             $dataArray['manufacturerNumber'] = $data->getManufacturerNumber();
         }
-        if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
+        if ($data->isInitialized('supplierNumber')) {
             $dataArray['supplierNumber'] = $data->getSupplierNumber();
         }
         if ($data->isInitialized('source') && null !== $data->getSource()) {
             $dataArray['source'] = $data->getSource();
         }
-        if ($data->isInitialized('brandNumber') && null !== $data->getBrandNumber()) {
+        if ($data->isInitialized('brandNumber')) {
             $dataArray['brandNumber'] = $data->getBrandNumber();
         }
         if ($data->isInitialized('stocked') && null !== $data->getStocked()) {
@@ -452,8 +459,11 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             }
             $dataArray['productOptions'] = $values_2;
         }
-        if ($data->isInitialized('articleItemStatus') && null !== $data->getArticleItemStatus()) {
+        if ($data->isInitialized('articleItemStatus')) {
             $dataArray['articleItemStatus'] = $data->getArticleItemStatus();
+        }
+        if ($data->isInitialized('minAvailableStock')) {
+            $dataArray['minAvailableStock'] = $data->getMinAvailableStock();
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {

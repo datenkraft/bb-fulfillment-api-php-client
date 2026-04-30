@@ -13,18 +13,18 @@ class OrderShipping extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The delivery service to recommend for usage.\
-    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
-    *
-    * @var string
-    */
+     * The delivery service to recommend for usage.\
+     * The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
+     *
+     * @var string
+     */
     protected $deliveryService;
     /**
-    * The delivery service to recommend for usage.\
-    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
-    *
-    * @return string
-    */
+     * The delivery service to recommend for usage.\
+     * The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
+     *
+     * @return string
+     */
     public function getDeliveryService(): string
     {
         return $this->deliveryService;

@@ -13,8 +13,6 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $productNumber;
@@ -25,14 +23,10 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
      */
     protected $count;
     /**
-     * 
-     *
      * @var list<ReconsignmentAnnouncementLineBundledProduct>|null
      */
     protected $bundledProducts;
     /**
-     * 
-     *
      * @return string
      */
     public function getProductNumber(): string
@@ -40,8 +34,6 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
-     *
      * @param string $productNumber
      *
      * @return self
@@ -75,8 +67,6 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ReconsignmentAnnouncementLineBundledProduct>|null
      */
     public function getBundledProducts(): ?array
@@ -84,8 +74,6 @@ class ReconsignmentAnnouncementLine extends \ArrayObject
         return $this->bundledProducts;
     }
     /**
-     * 
-     *
      * @param list<ReconsignmentAnnouncementLineBundledProduct>|null $bundledProducts
      *
      * @return self

@@ -27,15 +27,15 @@ class OrderCustomerAddressNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerAddress();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerAddress();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('street', $data)) {
             $object->setStreet($data['street']);
@@ -85,15 +85,15 @@ class OrderCustomerAddressNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         $dataArray['street'] = $data->getStreet();
-        if ($data->isInitialized('streetNumber') && null !== $data->getStreetNumber()) {
+        if ($data->isInitialized('streetNumber')) {
             $dataArray['streetNumber'] = $data->getStreetNumber();
         }
         $dataArray['zipCode'] = $data->getZipCode();
-        if ($data->isInitialized('district') && null !== $data->getDistrict()) {
+        if ($data->isInitialized('district')) {
             $dataArray['district'] = $data->getDistrict();
         }
         $dataArray['city'] = $data->getCity();
-        if ($data->isInitialized('provinceCode') && null !== $data->getProvinceCode()) {
+        if ($data->isInitialized('provinceCode')) {
             $dataArray['provinceCode'] = $data->getProvinceCode();
         }
         $dataArray['countryCode'] = $data->getCountryCode();

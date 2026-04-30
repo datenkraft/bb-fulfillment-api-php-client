@@ -13,8 +13,6 @@ class ProductStockReference extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $productNumber;
@@ -31,14 +29,10 @@ class ProductStockReference extends \ArrayObject
      */
     protected $count;
     /**
-     * 
-     *
      * @var ProductStockReferenceReference
      */
     protected $reference;
     /**
-     * 
-     *
      * @return string
      */
     public function getProductNumber(): string
@@ -46,8 +40,6 @@ class ProductStockReference extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
-     *
      * @param string $productNumber
      *
      * @return self
@@ -103,8 +95,6 @@ class ProductStockReference extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProductStockReferenceReference
      */
     public function getReference(): ProductStockReferenceReference
@@ -112,8 +102,6 @@ class ProductStockReference extends \ArrayObject
         return $this->reference;
     }
     /**
-     * 
-     *
      * @param ProductStockReferenceReference $reference
      *
      * @return self

@@ -13,20 +13,14 @@ class ProductImage extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var ProductImageDetail
      */
     protected $detail;
     /**
-     * 
-     *
      * @var ProductImageDetail
      */
     protected $thumbnail;
     /**
-     * 
-     *
      * @return ProductImageDetail
      */
     public function getDetail(): ProductImageDetail
@@ -34,8 +28,6 @@ class ProductImage extends \ArrayObject
         return $this->detail;
     }
     /**
-     * 
-     *
      * @param ProductImageDetail $detail
      *
      * @return self
@@ -47,8 +39,6 @@ class ProductImage extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProductImageDetail
      */
     public function getThumbnail(): ProductImageDetail
@@ -56,8 +46,6 @@ class ProductImage extends \ArrayObject
         return $this->thumbnail;
     }
     /**
-     * 
-     *
      * @param ProductImageDetail $thumbnail
      *
      * @return self

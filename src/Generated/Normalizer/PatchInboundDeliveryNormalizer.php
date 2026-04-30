@@ -27,15 +27,15 @@ class PatchInboundDeliveryNormalizer implements DenormalizerInterface, Normalize
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('expectedDeliveryDate', $data)) {
             $object->setExpectedDeliveryDate(\DateTime::createFromFormat('Y-m-d', $data['expectedDeliveryDate'])->setTime(0, 0, 0));
@@ -71,12 +71,12 @@ class PatchInboundDeliveryNormalizer implements DenormalizerInterface, Normalize
     {
         $dataArray = [];
         if ($data->isInitialized('expectedDeliveryDate') && null !== $data->getExpectedDeliveryDate()) {
-            $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()?->format('Y-m-d');
+            $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()->format('Y-m-d');
         }
         if ($data->isInitialized('inboundDeliveryName') && null !== $data->getInboundDeliveryName()) {
             $dataArray['inboundDeliveryName'] = $data->getInboundDeliveryName();
         }
-        if ($data->isInitialized('inboundDeliveryNote') && null !== $data->getInboundDeliveryNote()) {
+        if ($data->isInitialized('inboundDeliveryNote')) {
             $dataArray['inboundDeliveryNote'] = $data->getInboundDeliveryNote();
         }
         if ($data->isInitialized('products') && null !== $data->getProducts()) {

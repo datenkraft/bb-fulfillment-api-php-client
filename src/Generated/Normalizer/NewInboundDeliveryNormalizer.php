@@ -27,15 +27,15 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] !== null) {
             $object->setInboundDeliveryName($data['inboundDeliveryName']);
@@ -70,11 +70,11 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inboundDeliveryName') && null !== $data->getInboundDeliveryName()) {
+        if ($data->isInitialized('inboundDeliveryName')) {
             $dataArray['inboundDeliveryName'] = $data->getInboundDeliveryName();
         }
         $dataArray['supplierNumber'] = $data->getSupplierNumber();
-        $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()?->format('Y-m-d');
+        $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()->format('Y-m-d');
         $values = [];
         foreach ($data->getProducts() as $value) {
             $values[] = $this->normalizer->normalize($value, 'json', $context);

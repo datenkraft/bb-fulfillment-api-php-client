@@ -67,35 +67,35 @@ class BaseProductDraft extends \ArrayObject
      */
     protected $listPriceEUR;
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
-    *
-    * @var string
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - none: not taxable (0%)
+     *
+     * @var string
+     */
     protected $taxCode = 'default';
     /**
-    * Number of the supplier.\
-    Valid suppliers can be queried with a GET /supplier call
-    *
-    * @var string
-    */
+     * Number of the supplier.\
+     * Valid suppliers can be queried with a GET /supplier call
+     *
+     * @var string
+     */
     protected $supplierNumber;
     /**
-    * Number of the manufacturer.\
-    Valid manufacturers can be queried with a GET /manufacturer call
-    *
-    * @var string
-    */
+     * Number of the manufacturer.\
+     * Valid manufacturers can be queried with a GET /manufacturer call
+     *
+     * @var string
+     */
     protected $manufacturerNumber;
     /**
-    * Number of the brand.\
-    Valid brands can be queried with a GET /brand call
-    *
-    * @var string
-    */
+     * Number of the brand.\
+     * Valid brands can be queried with a GET /brand call
+     *
+     * @var string
+     */
     protected $brandNumber;
     /**
      * Dimensions of the product
@@ -302,14 +302,14 @@ class BaseProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
-    *
-    * @return string
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - none: not taxable (0%)
+     *
+     * @return string
+     */
     public function getTaxCode(): string
     {
         return $this->taxCode;
@@ -332,11 +332,11 @@ class BaseProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the supplier.\
-    Valid suppliers can be queried with a GET /supplier call
-    *
-    * @return string
-    */
+     * Number of the supplier.\
+     * Valid suppliers can be queried with a GET /supplier call
+     *
+     * @return string
+     */
     public function getSupplierNumber(): string
     {
         return $this->supplierNumber;
@@ -356,11 +356,11 @@ class BaseProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the manufacturer.\
-    Valid manufacturers can be queried with a GET /manufacturer call
-    *
-    * @return string
-    */
+     * Number of the manufacturer.\
+     * Valid manufacturers can be queried with a GET /manufacturer call
+     *
+     * @return string
+     */
     public function getManufacturerNumber(): string
     {
         return $this->manufacturerNumber;
@@ -380,11 +380,11 @@ class BaseProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the brand.\
-    Valid brands can be queried with a GET /brand call
-    *
-    * @return string
-    */
+     * Number of the brand.\
+     * Valid brands can be queried with a GET /brand call
+     *
+     * @return string
+     */
     public function getBrandNumber(): string
     {
         return $this->brandNumber;

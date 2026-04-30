@@ -61,8 +61,6 @@ class Reconsignment extends \ArrayObject
      */
     protected $reconsignmentCountryCode;
     /**
-     * 
-     *
      * @var list<ReconsignmentLine>
      */
     protected $reconsignmentLines;
@@ -243,8 +241,6 @@ class Reconsignment extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ReconsignmentLine>
      */
     public function getReconsignmentLines(): array
@@ -252,8 +248,6 @@ class Reconsignment extends \ArrayObject
         return $this->reconsignmentLines;
     }
     /**
-     * 
-     *
      * @param list<ReconsignmentLine> $reconsignmentLines
      *
      * @return self

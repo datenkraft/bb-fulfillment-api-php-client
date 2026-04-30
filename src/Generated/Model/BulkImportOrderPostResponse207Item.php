@@ -31,8 +31,6 @@ class BulkImportOrderPostResponse207Item extends \ArrayObject
      */
     protected $reference;
     /**
-     * 
-     *
      * @var array<string, mixed>
      */
     protected $content;
@@ -103,8 +101,6 @@ class BulkImportOrderPostResponse207Item extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return array<string, mixed>
      */
     public function getContent(): iterable
@@ -112,8 +108,6 @@ class BulkImportOrderPostResponse207Item extends \ArrayObject
         return $this->content;
     }
     /**
-     * 
-     *
      * @param array<string, mixed> $content
      *
      * @return self

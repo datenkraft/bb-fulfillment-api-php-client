@@ -33,7 +33,7 @@ class PostShop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @var PostShopmeta|null
+     * @var PostShopMeta|null
      */
     protected $meta;
     /**
@@ -117,20 +117,20 @@ class PostShop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @return PostShopmeta|null
+     * @return PostShopMeta|null
      */
-    public function getMeta(): ?PostShopmeta
+    public function getMeta(): ?PostShopMeta
     {
         return $this->meta;
     }
     /**
      * Meta data of the shop.
      *
-     * @param PostShopmeta|null $meta
+     * @param PostShopMeta|null $meta
      *
      * @return self
      */
-    public function setMeta(?PostShopmeta $meta): self
+    public function setMeta(?PostShopMeta $meta): self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;

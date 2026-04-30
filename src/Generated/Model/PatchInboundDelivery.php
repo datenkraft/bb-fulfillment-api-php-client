@@ -31,13 +31,13 @@ class PatchInboundDelivery extends \ArrayObject
      */
     protected $inboundDeliveryNote;
     /**
-    * Products to update, add, or remove. Only listed products are affected; unlisted products remain unchanged.
-    - To update a product's announced count: include the product with the new announcedCount.
-    - To remove a product: include the product with announcedCount set to 0.
-    - To add a new product: include the product with a positive announcedCount.
-    *
-    * @var list<PatchInboundDeliveryProduct>
-    */
+     * Products to update, add, or remove. Only listed products are affected; unlisted products remain unchanged.
+     * - To update a product's announced count: include the product with the new announcedCount.
+     * - To remove a product: include the product with announcedCount set to 0.
+     * - To add a new product: include the product with a positive announcedCount.
+     *
+     * @var list<PatchInboundDeliveryProduct>
+     */
     protected $products;
     /**
      * Updated expected date of arrival in the warehouse (timezone CET/CEST)
@@ -106,13 +106,13 @@ class PatchInboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * Products to update, add, or remove. Only listed products are affected; unlisted products remain unchanged.
-    - To update a product's announced count: include the product with the new announcedCount.
-    - To remove a product: include the product with announcedCount set to 0.
-    - To add a new product: include the product with a positive announcedCount.
-    *
-    * @return list<PatchInboundDeliveryProduct>
-    */
+     * Products to update, add, or remove. Only listed products are affected; unlisted products remain unchanged.
+     * - To update a product's announced count: include the product with the new announcedCount.
+     * - To remove a product: include the product with announcedCount set to 0.
+     * - To add a new product: include the product with a positive announcedCount.
+     *
+     * @return list<PatchInboundDeliveryProduct>
+     */
     public function getProducts(): array
     {
         return $this->products;

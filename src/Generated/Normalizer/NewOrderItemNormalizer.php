@@ -27,15 +27,15 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItem();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
@@ -79,16 +79,16 @@ class NewOrderItemNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
             $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title')) {
             $dataArray['title'] = $data->getTitle();
         }
         if ($data->isInitialized('count') && null !== $data->getCount()) {
             $dataArray['count'] = $data->getCount();
         }
-        if ($data->isInitialized('externalProductNumber') && null !== $data->getExternalProductNumber()) {
+        if ($data->isInitialized('externalProductNumber')) {
             $dataArray['externalProductNumber'] = $data->getExternalProductNumber();
         }
-        if ($data->isInitialized('price') && null !== $data->getPrice()) {
+        if ($data->isInitialized('price')) {
             $dataArray['price'] = $this->normalizer->normalize($data->getPrice(), 'json', $context);
         }
         foreach ($data as $key => $value) {

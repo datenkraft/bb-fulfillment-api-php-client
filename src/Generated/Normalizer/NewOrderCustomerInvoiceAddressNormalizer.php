@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class NewOrderCustomerinvoiceAddressNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class NewOrderCustomerInvoiceAddressNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,23 +19,23 @@ class NewOrderCustomerinvoiceAddressNormalizer implements DenormalizerInterface,
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class;
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerInvoiceAddress::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class;
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerInvoiceAddress::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerInvoiceAddress();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('street', $data)) {
             $object->setStreet($data['street']);
@@ -85,15 +85,15 @@ class NewOrderCustomerinvoiceAddressNormalizer implements DenormalizerInterface,
     {
         $dataArray = [];
         $dataArray['street'] = $data->getStreet();
-        if ($data->isInitialized('streetNumber') && null !== $data->getStreetNumber()) {
+        if ($data->isInitialized('streetNumber')) {
             $dataArray['streetNumber'] = $data->getStreetNumber();
         }
         $dataArray['zipCode'] = $data->getZipCode();
-        if ($data->isInitialized('district') && null !== $data->getDistrict()) {
+        if ($data->isInitialized('district')) {
             $dataArray['district'] = $data->getDistrict();
         }
         $dataArray['city'] = $data->getCity();
-        if ($data->isInitialized('provinceCode') && null !== $data->getProvinceCode()) {
+        if ($data->isInitialized('provinceCode')) {
             $dataArray['provinceCode'] = $data->getProvinceCode();
         }
         $dataArray['countryCode'] = $data->getCountryCode();
@@ -106,6 +106,6 @@ class NewOrderCustomerinvoiceAddressNormalizer implements DenormalizerInterface,
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class => false];
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerInvoiceAddress::class => false];
     }
 }

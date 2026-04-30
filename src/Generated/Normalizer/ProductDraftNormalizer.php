@@ -27,13 +27,16 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductDraft();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductDraft();
         if (\array_key_exists('contentsAmount', $data) && \is_int($data['contentsAmount'])) {
             $data['contentsAmount'] = (double) $data['contentsAmount'];
         }
@@ -42,9 +45,6 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if (\array_key_exists('listPriceEUR', $data) && \is_int($data['listPriceEUR'])) {
             $data['listPriceEUR'] = (double) $data['listPriceEUR'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
@@ -191,7 +191,7 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
             $dataArray['productDraftStatus'] = $data->getProductDraftStatus();
         }
         if ($data->isInitialized('productDraftDate') && null !== $data->getProductDraftDate()) {
-            $dataArray['productDraftDate'] = $data->getProductDraftDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['productDraftDate'] = $data->getProductDraftDate()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('contentsUnit') && null !== $data->getContentsUnit()) {
             $dataArray['contentsUnit'] = $data->getContentsUnit();

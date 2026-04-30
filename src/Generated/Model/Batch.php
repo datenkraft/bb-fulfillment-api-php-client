@@ -19,8 +19,6 @@ class Batch extends \ArrayObject
      */
     protected $number;
     /**
-     * 
-     *
      * @var \DateTime
      */
     protected $expirationDate;
@@ -47,8 +45,6 @@ class Batch extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return \DateTime
      */
     public function getExpirationDate(): \DateTime
@@ -56,8 +52,6 @@ class Batch extends \ArrayObject
         return $this->expirationDate;
     }
     /**
-     * 
-     *
      * @param \DateTime $expirationDate
      *
      * @return self

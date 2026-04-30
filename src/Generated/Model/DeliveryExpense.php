@@ -25,8 +25,6 @@ class DeliveryExpense extends \ArrayObject
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @var list<DeliveryExpensePrice>
      */
     protected $price;
@@ -99,8 +97,6 @@ class DeliveryExpense extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<DeliveryExpensePrice>
      */
     public function getPrice(): array
@@ -108,8 +104,6 @@ class DeliveryExpense extends \ArrayObject
         return $this->price;
     }
     /**
-     * 
-     *
      * @param list<DeliveryExpensePrice> $price
      *
      * @return self

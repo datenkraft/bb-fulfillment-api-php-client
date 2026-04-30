@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Shopmeta extends \ArrayObject
+class UpdateShopMeta extends \ArrayObject
 {
     /**
      * @var array
@@ -43,11 +43,11 @@ class Shopmeta extends \ArrayObject
      */
     protected $addTestSuffixToInternalReference = false;
     /**
-    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
-    customers or not.
-    *
-    * @var bool|null
-    */
+     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
+     * customers or not.
+     *
+     * @var bool|null
+     */
     protected $invoiceEnabled = false;
     /**
      * Overwrite currency of shopify orders.
@@ -56,11 +56,11 @@ class Shopmeta extends \ArrayObject
      */
     protected $defaultCurrency;
     /**
-    * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
-    If false the shop email will be used as default.
-    *
-    * @var bool|null
-    */
+     * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
+     * If false the shop email will be used as default.
+     *
+     * @var bool|null
+     */
     protected $overwriteCustomerEmailEnabled;
     /**
      * Text to be added to the beginning of the orderNotes of every order created for the shop.
@@ -69,11 +69,11 @@ class Shopmeta extends \ArrayObject
      */
     protected $orderNotesPrecedingText;
     /**
-    * Default notes to be printed on the delivery slip when an order is created without
-    deliverySlipNotes.
-    *
-    * @var string|null
-    */
+     * Default notes to be printed on the delivery slip when an order is created without
+     * deliverySlipNotes.
+     *
+     * @var string|null
+     */
     protected $deliverySlipNotes;
     /**
      * Domain of the Shopify shop.
@@ -186,11 +186,11 @@ class Shopmeta extends \ArrayObject
         return $this;
     }
     /**
-    * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
-    customers or not.
-    *
-    * @return bool|null
-    */
+     * Flag to indicate whether firstname, lastname, and invoiceAddress fields are available for order
+     * customers or not.
+     *
+     * @return bool|null
+     */
     public function getInvoiceEnabled(): ?bool
     {
         return $this->invoiceEnabled;
@@ -232,11 +232,11 @@ class Shopmeta extends \ArrayObject
         return $this;
     }
     /**
-    * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
-    If false the shop email will be used as default.
-    *
-    * @return bool|null
-    */
+     * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
+     * If false the shop email will be used as default.
+     *
+     * @return bool|null
+     */
     public function getOverwriteCustomerEmailEnabled(): ?bool
     {
         return $this->overwriteCustomerEmailEnabled;
@@ -278,11 +278,11 @@ class Shopmeta extends \ArrayObject
         return $this;
     }
     /**
-    * Default notes to be printed on the delivery slip when an order is created without
-    deliverySlipNotes.
-    *
-    * @return string|null
-    */
+     * Default notes to be printed on the delivery slip when an order is created without
+     * deliverySlipNotes.
+     *
+     * @return string|null
+     */
     public function getDeliverySlipNotes(): ?string
     {
         return $this->deliverySlipNotes;

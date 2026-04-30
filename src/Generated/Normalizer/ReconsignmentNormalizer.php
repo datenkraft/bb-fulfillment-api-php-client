@@ -27,18 +27,18 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Reconsignment();
         if (\array_key_exists('reconsignmentWasPreAnnounced', $data) && \is_int($data['reconsignmentWasPreAnnounced'])) {
             $data['reconsignmentWasPreAnnounced'] = (bool) $data['reconsignmentWasPreAnnounced'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('reconsignmentNumber', $data)) {
             $object->setReconsignmentNumber($data['reconsignmentNumber']);

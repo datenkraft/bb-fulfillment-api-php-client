@@ -27,21 +27,21 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProduct();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProduct();
         if (\array_key_exists('contentsAmount', $data) && \is_int($data['contentsAmount'])) {
             $data['contentsAmount'] = (double) $data['contentsAmount'];
         }
         if (\array_key_exists('suggestedRetailPriceEUR', $data) && \is_int($data['suggestedRetailPriceEUR'])) {
             $data['suggestedRetailPriceEUR'] = (double) $data['suggestedRetailPriceEUR'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productType', $data)) {
             $object->setProductType($data['productType']);
@@ -177,60 +177,60 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
         if ($data->isInitialized('productType') && null !== $data->getProductType()) {
             $dataArray['productType'] = $data->getProductType();
         }
-        if ($data->isInitialized('articleVariantTitle') && null !== $data->getArticleVariantTitle()) {
+        if ($data->isInitialized('articleVariantTitle')) {
             $dataArray['articleVariantTitle'] = $data->getArticleVariantTitle();
         }
-        if ($data->isInitialized('articleVariantType') && null !== $data->getArticleVariantType()) {
+        if ($data->isInitialized('articleVariantType')) {
             $dataArray['articleVariantType'] = $data->getArticleVariantType();
         }
-        if ($data->isInitialized('articleStatus') && null !== $data->getArticleStatus()) {
+        if ($data->isInitialized('articleStatus')) {
             $dataArray['articleStatus'] = $data->getArticleStatus();
         }
-        if ($data->isInitialized('contentsAmount') && null !== $data->getContentsAmount()) {
+        if ($data->isInitialized('contentsAmount')) {
             $dataArray['contentsAmount'] = $data->getContentsAmount();
         }
-        if ($data->isInitialized('contentsUnit') && null !== $data->getContentsUnit()) {
+        if ($data->isInitialized('contentsUnit')) {
             $dataArray['contentsUnit'] = $data->getContentsUnit();
         }
-        if ($data->isInitialized('contentsWeightGram') && null !== $data->getContentsWeightGram()) {
+        if ($data->isInitialized('contentsWeightGram')) {
             $dataArray['contentsWeightGram'] = $data->getContentsWeightGram();
         }
-        if ($data->isInitialized('weightGram') && null !== $data->getWeightGram()) {
+        if ($data->isInitialized('weightGram')) {
             $dataArray['weightGram'] = $data->getWeightGram();
         }
         if ($data->isInitialized('variantGroup') && null !== $data->getVariantGroup()) {
             $dataArray['variantGroup'] = $data->getVariantGroup();
         }
-        if ($data->isInitialized('ean') && null !== $data->getEan()) {
+        if ($data->isInitialized('ean')) {
             $dataArray['ean'] = $data->getEan();
         }
-        if ($data->isInitialized('suggestedRetailPriceEUR') && null !== $data->getSuggestedRetailPriceEUR()) {
+        if ($data->isInitialized('suggestedRetailPriceEUR')) {
             $dataArray['suggestedRetailPriceEUR'] = $data->getSuggestedRetailPriceEUR();
         }
-        if ($data->isInitialized('purchasePrices') && null !== $data->getPurchasePrices()) {
+        if ($data->isInitialized('purchasePrices')) {
             $values = [];
             foreach ($data->getPurchasePrices() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
             $dataArray['purchasePrices'] = $values;
         }
-        if ($data->isInitialized('bundledProducts') && null !== $data->getBundledProducts()) {
+        if ($data->isInitialized('bundledProducts')) {
             $values_1 = [];
             foreach ($data->getBundledProducts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['bundledProducts'] = $values_1;
         }
-        if ($data->isInitialized('productNumberManufacturer') && null !== $data->getProductNumberManufacturer()) {
+        if ($data->isInitialized('productNumberManufacturer')) {
             $dataArray['productNumberManufacturer'] = $data->getProductNumberManufacturer();
         }
-        if ($data->isInitialized('manufacturerCountryCode') && null !== $data->getManufacturerCountryCode()) {
+        if ($data->isInitialized('manufacturerCountryCode')) {
             $dataArray['manufacturerCountryCode'] = $data->getManufacturerCountryCode();
         }
-        if ($data->isInitialized('languageCode') && null !== $data->getLanguageCode()) {
+        if ($data->isInitialized('languageCode')) {
             $dataArray['languageCode'] = $data->getLanguageCode();
         }
-        if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
+        if ($data->isInitialized('dimensions')) {
             $dataArray['dimensions'] = $this->normalizer->normalize($data->getDimensions(), 'json', $context);
         }
         foreach ($data as $key => $value_2) {

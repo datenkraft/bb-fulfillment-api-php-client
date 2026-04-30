@@ -13,14 +13,14 @@ class NewProductDraft extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * Product number to be used for the final product\
-    This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain any of the following character sequences:
-    '/', '%2F', '%2f', '?', '%3F', '%3f',
-    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
-    *
-    * @var string
-    */
+     * Product number to be used for the final product\
+     * This number is user defined, must be unique and has a maximum length (check maxLength field).\
+     * Please ensure that it does not contain any of the following character sequences:
+     * '/', '%2F', '%2f', '?', '%3F', '%3f',
+     * '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
+     *
+     * @var string
+     */
     protected $productNumber;
     /**
      * Title of the Product
@@ -71,35 +71,35 @@ class NewProductDraft extends \ArrayObject
      */
     protected $listPriceEUR;
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
-    *
-    * @var string
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - none: not taxable (0%)
+     *
+     * @var string
+     */
     protected $taxCode = 'default';
     /**
-    * Number of the supplier.\
-    Valid suppliers can be queried with a GET /supplier call
-    *
-    * @var string
-    */
+     * Number of the supplier.\
+     * Valid suppliers can be queried with a GET /supplier call
+     *
+     * @var string
+     */
     protected $supplierNumber;
     /**
-    * Number of the manufacturer.\
-    Valid manufacturers can be queried with a GET /manufacturer call
-    *
-    * @var string
-    */
+     * Number of the manufacturer.\
+     * Valid manufacturers can be queried with a GET /manufacturer call
+     *
+     * @var string
+     */
     protected $manufacturerNumber;
     /**
-    * Number of the brand.\
-    Valid brands can be queried with a GET /brand call
-    *
-    * @var string
-    */
+     * Number of the brand.\
+     * Valid brands can be queried with a GET /brand call
+     *
+     * @var string
+     */
     protected $brandNumber;
     /**
      * Dimensions of the product
@@ -108,21 +108,21 @@ class NewProductDraft extends \ArrayObject
      */
     protected $dimensions;
     /**
-    * Unit of the product contents.\
-    Must be one of the available values specified in the enum.
-    *
-    * @var string
-    */
+     * Unit of the product contents.\
+     * Must be one of the available values specified in the enum.
+     *
+     * @var string
+     */
     protected $contentsUnit = 'piece';
     /**
-    * Product number to be used for the final product\
-    This number is user defined, must be unique and has a maximum length (check maxLength field).\
-    Please ensure that it does not contain any of the following character sequences:
-    '/', '%2F', '%2f', '?', '%3F', '%3f',
-    '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
-    *
-    * @return string
-    */
+     * Product number to be used for the final product\
+     * This number is user defined, must be unique and has a maximum length (check maxLength field).\
+     * Please ensure that it does not contain any of the following character sequences:
+     * '/', '%2F', '%2f', '?', '%3F', '%3f',
+     * '#', '%23', '&', '%26'. Using any of these will result in the route not being handled correctly.
+     *
+     * @return string
+     */
     public function getProductNumber(): string
     {
         return $this->productNumber;
@@ -321,14 +321,14 @@ class NewProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
-    *
-    * @return string
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - none: not taxable (0%)
+     *
+     * @return string
+     */
     public function getTaxCode(): string
     {
         return $this->taxCode;
@@ -351,11 +351,11 @@ class NewProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the supplier.\
-    Valid suppliers can be queried with a GET /supplier call
-    *
-    * @return string
-    */
+     * Number of the supplier.\
+     * Valid suppliers can be queried with a GET /supplier call
+     *
+     * @return string
+     */
     public function getSupplierNumber(): string
     {
         return $this->supplierNumber;
@@ -375,11 +375,11 @@ class NewProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the manufacturer.\
-    Valid manufacturers can be queried with a GET /manufacturer call
-    *
-    * @return string
-    */
+     * Number of the manufacturer.\
+     * Valid manufacturers can be queried with a GET /manufacturer call
+     *
+     * @return string
+     */
     public function getManufacturerNumber(): string
     {
         return $this->manufacturerNumber;
@@ -399,11 +399,11 @@ class NewProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the brand.\
-    Valid brands can be queried with a GET /brand call
-    *
-    * @return string
-    */
+     * Number of the brand.\
+     * Valid brands can be queried with a GET /brand call
+     *
+     * @return string
+     */
     public function getBrandNumber(): string
     {
         return $this->brandNumber;
@@ -445,11 +445,11 @@ class NewProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents.\
-    Must be one of the available values specified in the enum.
-    *
-    * @return string
-    */
+     * Unit of the product contents.\
+     * Must be one of the available values specified in the enum.
+     *
+     * @return string
+     */
     public function getContentsUnit(): string
     {
         return $this->contentsUnit;

@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewOrderCustomerinvoiceAddress extends \ArrayObject
+class NewOrderCustomerInvoiceAddress extends \ArrayObject
 {
     /**
      * @var array
@@ -13,44 +13,36 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $street;
     /**
-    * Must not contain more than 5 letters.\
-    Providing the street number separately is optional.
-    *
-    * @var string|null
-    */
+     * Must not contain more than 5 letters.\
+     * Providing the street number separately is optional.
+     *
+     * @var string|null
+     */
     protected $streetNumber;
     /**
-     * 
-     *
      * @var string
      */
     protected $zipCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $district;
     /**
-     * 
-     *
      * @var string
      */
     protected $city;
     /**
-    * Mandatory if province codes for country (GET /country) exist
-    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
-    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
-    provided.
-    *
-    * @var string|null
-    */
+     * Mandatory if province codes for country (GET /country) exist
+     * (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+     * Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+     * provided.
+     *
+     * @var string|null
+     */
     protected $provinceCode;
     /**
      * Country code (ISO 3166-1 alpha-2)
@@ -59,8 +51,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
      */
     protected $countryCode;
     /**
-     * 
-     *
      * @return string
      */
     public function getStreet(): string
@@ -68,8 +58,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this->street;
     }
     /**
-     * 
-     *
      * @param string $street
      *
      * @return self
@@ -81,11 +69,11 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this;
     }
     /**
-    * Must not contain more than 5 letters.\
-    Providing the street number separately is optional.
-    *
-    * @return string|null
-    */
+     * Must not contain more than 5 letters.\
+     * Providing the street number separately is optional.
+     *
+     * @return string|null
+     */
     public function getStreetNumber(): ?string
     {
         return $this->streetNumber;
@@ -105,8 +93,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getZipCode(): string
@@ -114,8 +100,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this->zipCode;
     }
     /**
-     * 
-     *
      * @param string $zipCode
      *
      * @return self
@@ -127,8 +111,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getDistrict(): ?string
@@ -136,8 +118,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this->district;
     }
     /**
-     * 
-     *
      * @param string|null $district
      *
      * @return self
@@ -149,8 +129,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCity(): string
@@ -158,8 +136,6 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this->city;
     }
     /**
-     * 
-     *
      * @param string $city
      *
      * @return self
@@ -171,13 +147,13 @@ class NewOrderCustomerinvoiceAddress extends \ArrayObject
         return $this;
     }
     /**
-    * Mandatory if province codes for country (GET /country) exist
-    (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
-    Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
-    provided.
-    *
-    * @return string|null
-    */
+     * Mandatory if province codes for country (GET /country) exist
+     * (ISO 3166-2) - https://www.iso.org/iso-3166-country-codes.html \
+     * Note: For addresses in Italy (IT), the province code is optional and will be detected automatically if not
+     * provided.
+     *
+     * @return string|null
+     */
     public function getProvinceCode(): ?string
     {
         return $this->provinceCode;

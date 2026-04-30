@@ -73,8 +73,6 @@ class OrderItem extends \ArrayObject
      */
     protected $options;
     /**
-     * 
-     *
      * @var list<BundledOrderItem>|null
      */
     protected $bundledProducts;
@@ -299,8 +297,6 @@ class OrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<BundledOrderItem>|null
      */
     public function getBundledProducts(): ?array
@@ -308,8 +304,6 @@ class OrderItem extends \ArrayObject
         return $this->bundledProducts;
     }
     /**
-     * 
-     *
      * @param list<BundledOrderItem>|null $bundledProducts
      *
      * @return self

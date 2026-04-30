@@ -37,11 +37,11 @@ class NewOrderItem extends \ArrayObject
      */
     protected $externalProductNumber;
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @var NewOrderItemPrice|null
-    */
+     * The selling price of the item.\
+     * Note: This field is required if the delivery address of the order requires customs clearance.
+     *
+     * @var NewOrderItemPrice|null
+     */
     protected $price;
     /**
      * Valid product number
@@ -132,11 +132,11 @@ class NewOrderItem extends \ArrayObject
         return $this;
     }
     /**
-    * The selling price of the item.\
-    Note: This field is required if the delivery address of the order requires customs clearance.
-    *
-    * @return NewOrderItemPrice|null
-    */
+     * The selling price of the item.\
+     * Note: This field is required if the delivery address of the order requires customs clearance.
+     *
+     * @return NewOrderItemPrice|null
+     */
     public function getPrice(): ?NewOrderItemPrice
     {
         return $this->price;

@@ -27,15 +27,15 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrder();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrder();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
             $object->setShopCode($data['shopCode']);
@@ -133,7 +133,7 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
+        if ($data->isInitialized('shopCode')) {
             $dataArray['shopCode'] = $data->getShopCode();
         }
         $dataArray['customer'] = $this->normalizer->normalize($data->getCustomer(), 'json', $context);
@@ -142,35 +142,35 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $dataArray['orderItems'] = $values;
-        if ($data->isInitialized('externalOrderId') && null !== $data->getExternalOrderId()) {
+        if ($data->isInitialized('externalOrderId')) {
             $dataArray['externalOrderId'] = $data->getExternalOrderId();
         }
-        if ($data->isInitialized('deliverySlipNotes') && null !== $data->getDeliverySlipNotes()) {
+        if ($data->isInitialized('deliverySlipNotes')) {
             $dataArray['deliverySlipNotes'] = $data->getDeliverySlipNotes();
         }
-        if ($data->isInitialized('externalOrderReference') && null !== $data->getExternalOrderReference()) {
+        if ($data->isInitialized('externalOrderReference')) {
             $dataArray['externalOrderReference'] = $data->getExternalOrderReference();
         }
-        if ($data->isInitialized('orderNotes') && null !== $data->getOrderNotes()) {
+        if ($data->isInitialized('orderNotes')) {
             $dataArray['orderNotes'] = $data->getOrderNotes();
         }
-        if ($data->isInitialized('amazonSellerOrderId') && null !== $data->getAmazonSellerOrderId()) {
+        if ($data->isInitialized('amazonSellerOrderId')) {
             $dataArray['amazonSellerOrderId'] = $data->getAmazonSellerOrderId();
         }
-        if ($data->isInitialized('amazonVendorOrderId') && null !== $data->getAmazonVendorOrderId()) {
+        if ($data->isInitialized('amazonVendorOrderId')) {
             $dataArray['amazonVendorOrderId'] = $data->getAmazonVendorOrderId();
         }
-        if ($data->isInitialized('amazonFbaShipmentId') && null !== $data->getAmazonFbaShipmentId()) {
+        if ($data->isInitialized('amazonFbaShipmentId')) {
             $dataArray['amazonFbaShipmentId'] = $data->getAmazonFbaShipmentId();
         }
-        if ($data->isInitialized('deliveryCosts') && null !== $data->getDeliveryCosts()) {
+        if ($data->isInitialized('deliveryCosts')) {
             $values_1 = [];
             foreach ($data->getDeliveryCosts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['deliveryCosts'] = $values_1;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if ($data->isInitialized('options')) {
             $dataArray['options'] = $data->getOptions();
         }
         foreach ($data as $key => $value_2) {

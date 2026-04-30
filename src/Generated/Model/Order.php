@@ -19,31 +19,29 @@ class Order extends \ArrayObject
      */
     protected $shopCode;
     /**
-     * 
-     *
      * @var OrderCustomer
      */
     protected $customer;
     /**
-    * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
-    together if all orderItem data is the same.
-    *
-    * @var list<OrderItem>
-    */
+     * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
+     * together if all orderItem data is the same.
+     *
+     * @var list<OrderItem>
+     */
     protected $orderItems;
     /**
-    * A not unique reference for the order which can be used for identifying a specific order or for
-    mapping to a third party app.
-    *
-    * @var string|null
-    */
+     * A not unique reference for the order which can be used for identifying a specific order or for
+     * mapping to a third party app.
+     *
+     * @var string|null
+     */
     protected $externalOrderId;
     /**
-    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
-    used as a fallback.
-    *
-    * @var string|null
-    */
+     * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
+     * used as a fallback.
+     *
+     * @var string|null
+     */
     protected $deliverySlipNotes;
     /**
      * External reference for the order
@@ -52,11 +50,11 @@ class Order extends \ArrayObject
      */
     protected $externalOrderReference;
     /**
-    * Notes for the steve team regarding the fulfillment. \
-    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
-    *
-    * @var string|null
-    */
+     * Notes for the steve team regarding the fulfillment. \
+     * If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
+     *
+     * @var string|null
+     */
     protected $orderNotes;
     /**
      * The Amazon seller order id used when the order is coming from the Amazon marketplace.
@@ -77,12 +75,12 @@ class Order extends \ArrayObject
      */
     protected $amazonFbaShipmentId;
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if the delivery address country requires customs clearance
-    (see `customsClearanceRequired` on the `country` resource).
-    *
-    * @var list<OrderDeliveryCosts>|null
-    */
+     * The delivery costs of the order, which will be charged to the customer.\
+     * Note: This field is required if the delivery address country requires customs clearance
+     * (see `customsClearanceRequired` on the `country` resource).
+     *
+     * @var list<OrderDeliveryCosts>|null
+     */
     protected $deliveryCosts;
     /**
      * Additional optional options for the order.
@@ -91,30 +89,30 @@ class Order extends \ArrayObject
      */
     protected $options;
     /**
-    * The order number.\
-    Note: If this number is prefixed with 'NICE', it means that the order was created
-    manually by niceshops (see 'source').
-    *
-    * @var mixed
-    */
+     * The order number.\
+     * Note: If this number is prefixed with 'NICE', it means that the order was created
+     * manually by niceshops (see 'source').
+     *
+     * @var mixed
+     */
     protected $orderNumber;
     /**
-    * The current status of the order.
-    - new: The order was created but not every required information was given.
-    The order can not be processed without manual intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have
-    already been transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
-    update to this status might be delayed and not yet reflect the status of the linked deliveries).
-    - deleted: The order has been marked as deleted.
-    - canceled: The order has been canceled.
-    - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked. The order can not be processed without manual
-    intervention.
-    - redacted: The order has been redacted for GDPR reasons.
-    *
-    * @var string
-    */
+     * The current status of the order.
+     * - new: The order was created but not every required information was given.
+     * The order can not be processed without manual intervention.
+     * - processing: The order is being processed. For split deliveries, some of the shipments might have
+     * already been transferred to the delivery agent.
+     * - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
+     * update to this status might be delayed and not yet reflect the status of the linked deliveries).
+     * - deleted: The order has been marked as deleted.
+     * - canceled: The order has been canceled.
+     * - locked: The order is locked. The order can not be processed without manual intervention.
+     * - examination: The order has been manually locked. The order can not be processed without manual
+     * intervention.
+     * - redacted: The order has been redacted for GDPR reasons.
+     *
+     * @var string
+     */
     protected $status;
     /**
      * Describes why the order is locked
@@ -147,13 +145,13 @@ class Order extends \ArrayObject
      */
     protected $shipping;
     /**
-    * The source of the order.
-    - shopify: This order was created via the steve by niceshops Shopify application
-    - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API
-    *
-    * @var string
-    */
+     * The source of the order.
+     * - shopify: This order was created via the steve by niceshops Shopify application
+     * - nice: This order was created manually by niceshops
+     * - api: This order was created via the Fulfillment API
+     *
+     * @var string
+     */
     protected $source;
     /**
      * If available, a hyperlink to the application where this order was created is provided
@@ -174,12 +172,12 @@ class Order extends \ArrayObject
      */
     protected $orderItemsCancelable;
     /**
-    * Indicates whether a partial delivery is pending or not.
-    Note: If true, it means that a partial delivery has been requested but not yet processed.
-    If false, it means that no partial delivery is currently pending.
-    *
-    * @var bool
-    */
+     * Indicates whether a partial delivery is pending or not.
+     * Note: If true, it means that a partial delivery has been requested but not yet processed.
+     * If false, it means that no partial delivery is currently pending.
+     *
+     * @var bool
+     */
     protected $partialDeliveryPending;
     /**
      * The shopCode used internally to distinguish between clients.
@@ -204,8 +202,6 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return OrderCustomer
      */
     public function getCustomer(): OrderCustomer
@@ -213,8 +209,6 @@ class Order extends \ArrayObject
         return $this->customer;
     }
     /**
-     * 
-     *
      * @param OrderCustomer $customer
      *
      * @return self
@@ -226,11 +220,11 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
-    together if all orderItem data is the same.
-    *
-    * @return list<OrderItem>
-    */
+     * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
+     * together if all orderItem data is the same.
+     *
+     * @return list<OrderItem>
+     */
     public function getOrderItems(): array
     {
         return $this->orderItems;
@@ -250,11 +244,11 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * A not unique reference for the order which can be used for identifying a specific order or for
-    mapping to a third party app.
-    *
-    * @return string|null
-    */
+     * A not unique reference for the order which can be used for identifying a specific order or for
+     * mapping to a third party app.
+     *
+     * @return string|null
+     */
     public function getExternalOrderId(): ?string
     {
         return $this->externalOrderId;
@@ -274,11 +268,11 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
-    used as a fallback.
-    *
-    * @return string|null
-    */
+     * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
+     * used as a fallback.
+     *
+     * @return string|null
+     */
     public function getDeliverySlipNotes(): ?string
     {
         return $this->deliverySlipNotes;
@@ -320,11 +314,11 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * Notes for the steve team regarding the fulfillment. \
-    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
-    *
-    * @return string|null
-    */
+     * Notes for the steve team regarding the fulfillment. \
+     * If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
+     *
+     * @return string|null
+     */
     public function getOrderNotes(): ?string
     {
         return $this->orderNotes;
@@ -410,12 +404,12 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if the delivery address country requires customs clearance
-    (see `customsClearanceRequired` on the `country` resource).
-    *
-    * @return list<OrderDeliveryCosts>|null
-    */
+     * The delivery costs of the order, which will be charged to the customer.\
+     * Note: This field is required if the delivery address country requires customs clearance
+     * (see `customsClearanceRequired` on the `country` resource).
+     *
+     * @return list<OrderDeliveryCosts>|null
+     */
     public function getDeliveryCosts(): ?array
     {
         return $this->deliveryCosts;
@@ -458,12 +452,12 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * The order number.\
-    Note: If this number is prefixed with 'NICE', it means that the order was created
-    manually by niceshops (see 'source').
-    *
-    * @return mixed
-    */
+     * The order number.\
+     * Note: If this number is prefixed with 'NICE', it means that the order was created
+     * manually by niceshops (see 'source').
+     *
+     * @return mixed
+     */
     public function getOrderNumber()
     {
         return $this->orderNumber;
@@ -484,22 +478,22 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * The current status of the order.
-    - new: The order was created but not every required information was given.
-    The order can not be processed without manual intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have
-    already been transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
-    update to this status might be delayed and not yet reflect the status of the linked deliveries).
-    - deleted: The order has been marked as deleted.
-    - canceled: The order has been canceled.
-    - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked. The order can not be processed without manual
-    intervention.
-    - redacted: The order has been redacted for GDPR reasons.
-    *
-    * @return string
-    */
+     * The current status of the order.
+     * - new: The order was created but not every required information was given.
+     * The order can not be processed without manual intervention.
+     * - processing: The order is being processed. For split deliveries, some of the shipments might have
+     * already been transferred to the delivery agent.
+     * - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
+     * update to this status might be delayed and not yet reflect the status of the linked deliveries).
+     * - deleted: The order has been marked as deleted.
+     * - canceled: The order has been canceled.
+     * - locked: The order is locked. The order can not be processed without manual intervention.
+     * - examination: The order has been manually locked. The order can not be processed without manual
+     * intervention.
+     * - redacted: The order has been redacted for GDPR reasons.
+     *
+     * @return string
+     */
     public function getStatus(): string
     {
         return $this->status;
@@ -640,13 +634,13 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * The source of the order.
-    - shopify: This order was created via the steve by niceshops Shopify application
-    - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API
-    *
-    * @return string
-    */
+     * The source of the order.
+     * - shopify: This order was created via the steve by niceshops Shopify application
+     * - nice: This order was created manually by niceshops
+     * - api: This order was created via the Fulfillment API
+     *
+     * @return string
+     */
     public function getSource(): string
     {
         return $this->source;
@@ -734,12 +728,12 @@ class Order extends \ArrayObject
         return $this;
     }
     /**
-    * Indicates whether a partial delivery is pending or not.
-    Note: If true, it means that a partial delivery has been requested but not yet processed.
-    If false, it means that no partial delivery is currently pending.
-    *
-    * @return bool
-    */
+     * Indicates whether a partial delivery is pending or not.
+     * Note: If true, it means that a partial delivery has been requested but not yet processed.
+     * If false, it means that no partial delivery is currently pending.
+     *
+     * @return bool
+     */
     public function getPartialDeliveryPending(): bool
     {
         return $this->partialDeliveryPending;

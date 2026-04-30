@@ -13,8 +13,6 @@ class Brand extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $brandNumber;
@@ -25,8 +23,6 @@ class Brand extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @return string
      */
     public function getBrandNumber(): string
@@ -34,8 +30,6 @@ class Brand extends \ArrayObject
         return $this->brandNumber;
     }
     /**
-     * 
-     *
      * @param string $brandNumber
      *
      * @return self

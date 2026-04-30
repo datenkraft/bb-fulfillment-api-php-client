@@ -39,7 +39,7 @@ class Shop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @var Shopmeta|null
+     * @var ShopMeta|null
      */
     protected $meta;
     /**
@@ -145,20 +145,20 @@ class Shop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @return Shopmeta|null
+     * @return ShopMeta|null
      */
-    public function getMeta(): ?Shopmeta
+    public function getMeta(): ?ShopMeta
     {
         return $this->meta;
     }
     /**
      * Meta data of the shop.
      *
-     * @param Shopmeta|null $meta
+     * @param ShopMeta|null $meta
      *
      * @return self
      */
-    public function setMeta(?Shopmeta $meta): self
+    public function setMeta(?ShopMeta $meta): self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;
