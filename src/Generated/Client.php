@@ -1392,6 +1392,32 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProduct($productNumber, $queryParameters), $fetch);
     }
     /**
+    * Patch a product. \
+    All fields in the request body are optional. Only provided fields will be updated.
+    *
+    * @param string $productNumber The product number as defined during the creation of the product.
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchProduct $requestBody 
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchProductBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchProductUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchProductForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchProductNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchProductUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchProductInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function patchProduct(string $productNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchProduct $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PatchProduct($productNumber, $requestBody, $queryParameters), $fetch);
+    }
+    /**
     * Read a journal collection for a specific product showing the history of stock changes.
     _Only products with the source 'self' can be queried._
     *
