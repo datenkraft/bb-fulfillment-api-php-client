@@ -13,8 +13,6 @@ class NewOrderItem extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $productNumber;
@@ -31,8 +29,6 @@ class NewOrderItem extends \ArrayObject
      */
     protected $count;
     /**
-     * 
-     *
      * @var NewOrderItemPrice|null
      */
     protected $price;
@@ -43,8 +39,6 @@ class NewOrderItem extends \ArrayObject
      */
     protected $options;
     /**
-     * 
-     *
      * @return string
      */
     public function getProductNumber(): string
@@ -52,8 +46,6 @@ class NewOrderItem extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
-     *
      * @param string $productNumber
      *
      * @return self
@@ -109,8 +101,6 @@ class NewOrderItem extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return NewOrderItemPrice|null
      */
     public function getPrice(): ?NewOrderItemPrice
@@ -118,8 +108,6 @@ class NewOrderItem extends \ArrayObject
         return $this->price;
     }
     /**
-     * 
-     *
      * @param NewOrderItemPrice|null $price
      *
      * @return self

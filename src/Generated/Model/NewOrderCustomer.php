@@ -13,38 +13,26 @@ class NewOrderCustomer extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $email;
     /**
-     * 
-     *
      * @var string
      */
     protected $firstname;
     /**
-     * 
-     *
      * @var string
      */
     protected $lastname;
     /**
-     * 
-     *
      * @var string
      */
     protected $gender;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $phone;
@@ -55,8 +43,6 @@ class NewOrderCustomer extends \ArrayObject
      */
     protected $languageCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $company;
@@ -67,8 +53,6 @@ class NewOrderCustomer extends \ArrayObject
      */
     protected $companyVatNumber;
     /**
-     * 
-     *
      * @var OrderCustomerInvoiceAddress
      */
     protected $invoiceAddress;
@@ -79,8 +63,6 @@ class NewOrderCustomer extends \ArrayObject
      */
     protected $deliveryAddress;
     /**
-     * 
-     *
      * @return string
      */
     public function getEmail(): string
@@ -88,8 +70,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->email;
     }
     /**
-     * 
-     *
      * @param string $email
      *
      * @return self
@@ -101,8 +81,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getFirstname(): string
@@ -110,8 +88,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->firstname;
     }
     /**
-     * 
-     *
      * @param string $firstname
      *
      * @return self
@@ -123,8 +99,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getLastname(): string
@@ -132,8 +106,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->lastname;
     }
     /**
-     * 
-     *
      * @param string $lastname
      *
      * @return self
@@ -145,8 +117,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getGender(): string
@@ -154,8 +124,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->gender;
     }
     /**
-     * 
-     *
      * @param string $gender
      *
      * @return self
@@ -167,8 +135,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle(): ?string
@@ -176,8 +142,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self
@@ -189,8 +153,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getPhone(): ?string
@@ -198,8 +160,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->phone;
     }
     /**
-     * 
-     *
      * @param string|null $phone
      *
      * @return self
@@ -233,8 +193,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getCompany(): ?string
@@ -242,8 +200,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->company;
     }
     /**
-     * 
-     *
      * @param string|null $company
      *
      * @return self
@@ -277,8 +233,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return OrderCustomerInvoiceAddress
      */
     public function getInvoiceAddress(): OrderCustomerInvoiceAddress
@@ -286,8 +240,6 @@ class NewOrderCustomer extends \ArrayObject
         return $this->invoiceAddress;
     }
     /**
-     * 
-     *
      * @param OrderCustomerInvoiceAddress $invoiceAddress
      *
      * @return self

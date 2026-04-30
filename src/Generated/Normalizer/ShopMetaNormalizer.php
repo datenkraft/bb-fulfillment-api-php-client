@@ -27,18 +27,18 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta();
         if (\array_key_exists('testShop', $data) && \is_int($data['testShop'])) {
             $data['testShop'] = (bool) $data['testShop'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] !== null) {
             $object->setShopifyShopDomain($data['shopifyShopDomain']);
@@ -71,14 +71,14 @@ class ShopMetaNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shopifyShopDomain') && null !== $data->getShopifyShopDomain()) {
+        if ($data->isInitialized('shopifyShopDomain')) {
             $dataArray['shopifyShopDomain'] = $data->getShopifyShopDomain();
         }
-        if ($data->isInitialized('testShop') && null !== $data->getTestShop()) {
+        if ($data->isInitialized('testShop')) {
             $dataArray['testShop'] = $data->getTestShop();
         }
-        if ($data->isInitialized('testShopResetNotBefore') && null !== $data->getTestShopResetNotBefore()) {
-            $dataArray['testShopResetNotBefore'] = $data->getTestShopResetNotBefore()->format('Y-m-d\TH:i:sP');
+        if ($data->isInitialized('testShopResetNotBefore')) {
+            $dataArray['testShopResetNotBefore'] = $data->getTestShopResetNotBefore()?->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

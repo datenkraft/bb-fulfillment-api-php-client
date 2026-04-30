@@ -13,12 +13,12 @@ class OrderItemPrice extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    single unit and is not an aggregated price value, which may be calculated by multiplying this price value by
-    the corresponding item count.
-    *
-    * @var float
-    */
+     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+     * single unit and is not an aggregated price value, which may be calculated by multiplying this price value by
+     * the corresponding item count.
+     *
+     * @var float
+     */
     protected $value;
     /**
      * The price type
@@ -39,12 +39,12 @@ class OrderItemPrice extends \ArrayObject
      */
     protected $currencyCode;
     /**
-    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    single unit and is not an aggregated price value, which may be calculated by multiplying this price value by
-    the corresponding item count.
-    *
-    * @return float
-    */
+     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+     * single unit and is not an aggregated price value, which may be calculated by multiplying this price value by
+     * the corresponding item count.
+     *
+     * @return float
+     */
     public function getValue(): float
     {
         return $this->value;

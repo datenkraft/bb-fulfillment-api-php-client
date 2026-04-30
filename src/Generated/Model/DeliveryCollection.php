@@ -13,20 +13,14 @@ class DeliveryCollection extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var CollectionPagination
      */
     protected $pagination;
     /**
-     * 
-     *
      * @var list<Delivery>
      */
     protected $data;
     /**
-     * 
-     *
      * @return CollectionPagination
      */
     public function getPagination(): CollectionPagination
@@ -34,8 +28,6 @@ class DeliveryCollection extends \ArrayObject
         return $this->pagination;
     }
     /**
-     * 
-     *
      * @param CollectionPagination $pagination
      *
      * @return self
@@ -47,8 +39,6 @@ class DeliveryCollection extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<Delivery>
      */
     public function getData(): array
@@ -56,8 +46,6 @@ class DeliveryCollection extends \ArrayObject
         return $this->data;
     }
     /**
-     * 
-     *
      * @param list<Delivery> $data
      *
      * @return self

@@ -3524,48 +3524,48 @@
     },
     "tags": [
         {
-            "name": "shop",
-            "description": "shop"
-        },
-        {
-            "name": "stock",
-            "description": "stock"
-        },
-        {
-            "name": "delivery",
-            "description": "delivery"
-        },
-        {
-            "name": "order",
-            "description": "order"
-        },
-        {
-            "name": "delivery-service",
-            "description": "delivery-service"
-        },
-        {
-            "name": "auth-permission-role",
-            "description": "auth-permission-role"
-        },
-        {
-            "name": "auth-role-identity",
-            "description": "auth-role-identity"
+            "name": "audit-log",
+            "description": "audit-log"
         },
         {
             "name": "auth-permission",
             "description": "auth-permission"
         },
         {
-            "name": "audit-log",
-            "description": "audit-log"
+            "name": "auth-permission-role",
+            "description": "auth-permission-role"
         },
         {
             "name": "auth-role",
             "description": "auth-role"
         },
         {
+            "name": "auth-role-identity",
+            "description": "auth-role-identity"
+        },
+        {
+            "name": "delivery",
+            "description": "delivery"
+        },
+        {
+            "name": "delivery-service",
+            "description": "delivery-service"
+        },
+        {
             "name": "docs",
             "description": "docs"
+        },
+        {
+            "name": "order",
+            "description": "order"
+        },
+        {
+            "name": "shop",
+            "description": "shop"
+        },
+        {
+            "name": "stock",
+            "description": "stock"
         }
     ]
 }

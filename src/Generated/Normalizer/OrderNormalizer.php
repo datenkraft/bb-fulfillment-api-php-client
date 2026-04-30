@@ -27,15 +27,15 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
             $object->setShopCode($data['shopCode']);
@@ -111,7 +111,7 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
+        if ($data->isInitialized('shopCode')) {
             $dataArray['shopCode'] = $data->getShopCode();
         }
         if ($data->isInitialized('customer') && null !== $data->getCustomer()) {
@@ -124,23 +124,23 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
             $dataArray['orderItems'] = $values;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if ($data->isInitialized('options')) {
             $values_1 = [];
             foreach ($data->getOptions() as $key => $value_1) {
                 $values_1[$key] = $value_1;
             }
             $dataArray['options'] = $values_1;
         }
-        if ($data->isInitialized('orderNumber') && null !== $data->getOrderNumber()) {
+        if ($data->isInitialized('orderNumber')) {
             $dataArray['orderNumber'] = $data->getOrderNumber();
         }
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();
         }
         if ($data->isInitialized('orderDate') && null !== $data->getOrderDate()) {
-            $dataArray['orderDate'] = $data->getOrderDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['orderDate'] = $data->getOrderDate()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('delivery') && null !== $data->getDelivery()) {
+        if ($data->isInitialized('delivery')) {
             $values_2 = [];
             foreach ($data->getDelivery() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
