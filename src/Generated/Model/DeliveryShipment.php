@@ -19,18 +19,18 @@ class DeliveryShipment extends \ArrayObject
      */
     protected $number;
     /**
-    * Status of the delivery.
-    - delivered: The delivery is packed and ready to be picked up by the delivery service.
-    *
-    * @var string
-    */
+     * Status of the delivery.
+     * - delivered: The delivery is packed and ready to be picked up by the delivery service.
+     *
+     * @var string
+     */
     protected $status;
     /**
-    * The delivery service used to send this delivery. \
-    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
-    *
-    * @var string|null
-    */
+     * The delivery service used to send this delivery. \
+     * The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
+     *
+     * @var string|null
+     */
     protected $deliveryService;
     /**
      * Carrier specific tracking code
@@ -85,11 +85,11 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the delivery.
-    - delivered: The delivery is packed and ready to be picked up by the delivery service.
-    *
-    * @return string
-    */
+     * Status of the delivery.
+     * - delivered: The delivery is packed and ready to be picked up by the delivery service.
+     *
+     * @return string
+     */
     public function getStatus(): string
     {
         return $this->status;
@@ -109,11 +109,11 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-    * The delivery service used to send this delivery. \
-    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
-    *
-    * @return string|null
-    */
+     * The delivery service used to send this delivery. \
+     * The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
+     *
+     * @return string|null
+     */
     public function getDeliveryService(): ?string
     {
         return $this->deliveryService;

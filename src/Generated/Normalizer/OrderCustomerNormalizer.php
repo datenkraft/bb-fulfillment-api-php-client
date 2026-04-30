@@ -27,15 +27,15 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomer();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomer();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
@@ -124,27 +124,27 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
         $dataArray['firstname'] = $data->getFirstname();
         $dataArray['lastname'] = $data->getLastname();
         $dataArray['gender'] = $data->getGender();
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title')) {
             $dataArray['title'] = $data->getTitle();
         }
-        if ($data->isInitialized('phone') && null !== $data->getPhone()) {
+        if ($data->isInitialized('phone')) {
             $dataArray['phone'] = $data->getPhone();
         }
         $dataArray['languageCode'] = $data->getLanguageCode();
-        if ($data->isInitialized('company') && null !== $data->getCompany()) {
+        if ($data->isInitialized('company')) {
             $dataArray['company'] = $data->getCompany();
         }
-        if ($data->isInitialized('companyVatNumber') && null !== $data->getCompanyVatNumber()) {
+        if ($data->isInitialized('companyVatNumber')) {
             $dataArray['companyVatNumber'] = $data->getCompanyVatNumber();
         }
         $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
-        if ($data->isInitialized('deliveryAddress') && null !== $data->getDeliveryAddress()) {
+        if ($data->isInitialized('deliveryAddress')) {
             $dataArray['deliveryAddress'] = $data->getDeliveryAddress();
         }
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
+        if ($data->isInitialized('number')) {
             $dataArray['number'] = $data->getNumber();
         }
-        if ($data->isInitialized('type') && null !== $data->getType()) {
+        if ($data->isInitialized('type')) {
             $dataArray['type'] = $data->getType();
         }
         foreach ($data as $key => $value) {

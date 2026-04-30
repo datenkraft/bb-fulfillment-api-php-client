@@ -27,18 +27,18 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment();
         if (\array_key_exists('weight', $data) && \is_int($data['weight'])) {
             $data['weight'] = (double) $data['weight'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('number', $data)) {
             $object->setNumber($data['number']);
@@ -95,7 +95,7 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('deliveryService') && null !== $data->getDeliveryService()) {
+        if ($data->isInitialized('deliveryService')) {
             $dataArray['deliveryService'] = $data->getDeliveryService();
         }
         if ($data->isInitialized('code') && null !== $data->getCode()) {

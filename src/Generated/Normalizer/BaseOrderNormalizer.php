@@ -27,15 +27,15 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrder();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrder();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
             $object->setShopCode($data['shopCode']);
@@ -77,7 +77,7 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
+        if ($data->isInitialized('shopCode')) {
             $dataArray['shopCode'] = $data->getShopCode();
         }
         $dataArray['customer'] = $this->normalizer->normalize($data->getCustomer(), 'json', $context);
@@ -86,7 +86,7 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
             $values[] = $this->normalizer->normalize($value, 'json', $context);
         }
         $dataArray['orderItems'] = $values;
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if ($data->isInitialized('options')) {
             $values_1 = [];
             foreach ($data->getOptions() as $key => $value_1) {
                 $values_1[$key] = $value_1;

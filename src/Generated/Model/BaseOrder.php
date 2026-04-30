@@ -19,14 +19,10 @@ class BaseOrder extends \ArrayObject
      */
     protected $shopCode;
     /**
-     * 
-     *
      * @var BaseOrderCustomer
      */
     protected $customer;
     /**
-     * 
-     *
      * @var list<OrderItem>
      */
     protected $orderItems;
@@ -59,8 +55,6 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BaseOrderCustomer
      */
     public function getCustomer(): BaseOrderCustomer
@@ -68,8 +62,6 @@ class BaseOrder extends \ArrayObject
         return $this->customer;
     }
     /**
-     * 
-     *
      * @param BaseOrderCustomer $customer
      *
      * @return self
@@ -81,8 +73,6 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<OrderItem>
      */
     public function getOrderItems(): array
@@ -90,8 +80,6 @@ class BaseOrder extends \ArrayObject
         return $this->orderItems;
     }
     /**
-     * 
-     *
      * @param list<OrderItem> $orderItems
      *
      * @return self

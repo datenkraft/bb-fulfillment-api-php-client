@@ -27,15 +27,15 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
@@ -81,14 +81,14 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
     {
         $dataArray = [];
         $dataArray['productNumber'] = $data->getProductNumber();
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title')) {
             $dataArray['title'] = $data->getTitle();
         }
         $dataArray['count'] = $data->getCount();
-        if ($data->isInitialized('price') && null !== $data->getPrice()) {
+        if ($data->isInitialized('price')) {
             $dataArray['price'] = $this->normalizer->normalize($data->getPrice(), 'json', $context);
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if ($data->isInitialized('options')) {
             $values = [];
             foreach ($data->getOptions() as $key => $value) {
                 $values[$key] = $value;

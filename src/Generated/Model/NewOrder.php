@@ -19,14 +19,10 @@ class NewOrder extends \ArrayObject
      */
     protected $shopCode;
     /**
-     * 
-     *
      * @var NewOrderCustomer
      */
     protected $customer;
     /**
-     * 
-     *
      * @var list<NewOrderItem>
      */
     protected $orderItems;
@@ -59,8 +55,6 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return NewOrderCustomer
      */
     public function getCustomer(): NewOrderCustomer
@@ -68,8 +62,6 @@ class NewOrder extends \ArrayObject
         return $this->customer;
     }
     /**
-     * 
-     *
      * @param NewOrderCustomer $customer
      *
      * @return self
@@ -81,8 +73,6 @@ class NewOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<NewOrderItem>
      */
     public function getOrderItems(): array
@@ -90,8 +80,6 @@ class NewOrder extends \ArrayObject
         return $this->orderItems;
     }
     /**
-     * 
-     *
      * @param list<NewOrderItem> $orderItems
      *
      * @return self
