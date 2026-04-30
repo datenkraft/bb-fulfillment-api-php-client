@@ -134,7 +134,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderCustomerNormalizer::class,
         
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderCustomerinvoiceAddressNormalizer::class,
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerInvoiceAddress::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderCustomerInvoiceAddressNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderItemNormalizer::class,
         
@@ -182,9 +182,11 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDeliveryProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchInboundDeliveryProductNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchProductNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopNormalizer::class,
         
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopmetaNormalizer::class,
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopMeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopMetaNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ProductNormalizer::class,
         
@@ -252,7 +254,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopNormalizer::class,
         
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopmetaNormalizer::class,
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopMetaNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopCollectionNormalizer::class,
         
@@ -268,7 +270,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\UpdateShopNormalizer::class,
         
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\UpdateShopmetaNormalizer::class,
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopMeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\UpdateShopMetaNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportInboundDeliveryPostBodyNormalizer::class,
         
@@ -378,7 +380,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerinvoiceAddress::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerInvoiceAddress::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItem::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderItemPrice::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderOptions::class => false,
@@ -402,8 +404,9 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderShipping::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDeliveryProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchProduct::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopmeta::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopMeta::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Product::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductBundledProduct::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductCollection::class => false,
@@ -437,7 +440,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReservedFor::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShipmentLine::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCollection::class => false,
@@ -445,7 +448,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\SupplierCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopMeta::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostResponse207Item::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostBody::class => false,

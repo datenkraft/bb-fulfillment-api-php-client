@@ -27,18 +27,18 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncement();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncement();
         if (\array_key_exists('reconsignmentAnnouncementCompleted', $data) && \is_int($data['reconsignmentAnnouncementCompleted'])) {
             $data['reconsignmentAnnouncementCompleted'] = (bool) $data['reconsignmentAnnouncementCompleted'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('reconsignmentReason', $data)) {
             $object->setReconsignmentReason($data['reconsignmentReason']);
@@ -115,7 +115,7 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('reconsignmentReason') && null !== $data->getReconsignmentReason()) {
             $dataArray['reconsignmentReason'] = $data->getReconsignmentReason();
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if ($data->isInitialized('options')) {
             $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
         }
         if ($data->isInitialized('reconsignmentAnnouncementNumber') && null !== $data->getReconsignmentAnnouncementNumber()) {
@@ -142,7 +142,7 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('orderNumber') && null !== $data->getOrderNumber()) {
             $dataArray['orderNumber'] = $data->getOrderNumber();
         }
-        if ($data->isInitialized('externalOrderReference') && null !== $data->getExternalOrderReference()) {
+        if ($data->isInitialized('externalOrderReference')) {
             $dataArray['externalOrderReference'] = $data->getExternalOrderReference();
         }
         if ($data->isInitialized('deliveryNumber') && null !== $data->getDeliveryNumber()) {

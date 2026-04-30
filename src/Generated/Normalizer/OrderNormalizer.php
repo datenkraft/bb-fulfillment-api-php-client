@@ -27,13 +27,16 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order();
         if (\array_key_exists('cancelable', $data) && \is_int($data['cancelable'])) {
             $data['cancelable'] = (bool) $data['cancelable'];
         }
@@ -42,9 +45,6 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if (\array_key_exists('partialDeliveryPending', $data) && \is_int($data['partialDeliveryPending'])) {
             $data['partialDeliveryPending'] = (bool) $data['partialDeliveryPending'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('shopCode', $data) && $data['shopCode'] !== null) {
             $object->setShopCode($data['shopCode']);
@@ -203,7 +203,7 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
+        if ($data->isInitialized('shopCode')) {
             $dataArray['shopCode'] = $data->getShopCode();
         }
         if ($data->isInitialized('customer') && null !== $data->getCustomer()) {
@@ -216,35 +216,35 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             }
             $dataArray['orderItems'] = $values;
         }
-        if ($data->isInitialized('externalOrderId') && null !== $data->getExternalOrderId()) {
+        if ($data->isInitialized('externalOrderId')) {
             $dataArray['externalOrderId'] = $data->getExternalOrderId();
         }
-        if ($data->isInitialized('deliverySlipNotes') && null !== $data->getDeliverySlipNotes()) {
+        if ($data->isInitialized('deliverySlipNotes')) {
             $dataArray['deliverySlipNotes'] = $data->getDeliverySlipNotes();
         }
-        if ($data->isInitialized('externalOrderReference') && null !== $data->getExternalOrderReference()) {
+        if ($data->isInitialized('externalOrderReference')) {
             $dataArray['externalOrderReference'] = $data->getExternalOrderReference();
         }
-        if ($data->isInitialized('orderNotes') && null !== $data->getOrderNotes()) {
+        if ($data->isInitialized('orderNotes')) {
             $dataArray['orderNotes'] = $data->getOrderNotes();
         }
-        if ($data->isInitialized('amazonSellerOrderId') && null !== $data->getAmazonSellerOrderId()) {
+        if ($data->isInitialized('amazonSellerOrderId')) {
             $dataArray['amazonSellerOrderId'] = $data->getAmazonSellerOrderId();
         }
-        if ($data->isInitialized('amazonVendorOrderId') && null !== $data->getAmazonVendorOrderId()) {
+        if ($data->isInitialized('amazonVendorOrderId')) {
             $dataArray['amazonVendorOrderId'] = $data->getAmazonVendorOrderId();
         }
-        if ($data->isInitialized('amazonFbaShipmentId') && null !== $data->getAmazonFbaShipmentId()) {
+        if ($data->isInitialized('amazonFbaShipmentId')) {
             $dataArray['amazonFbaShipmentId'] = $data->getAmazonFbaShipmentId();
         }
-        if ($data->isInitialized('deliveryCosts') && null !== $data->getDeliveryCosts()) {
+        if ($data->isInitialized('deliveryCosts')) {
             $values_1 = [];
             foreach ($data->getDeliveryCosts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
             }
             $dataArray['deliveryCosts'] = $values_1;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if ($data->isInitialized('options')) {
             $dataArray['options'] = $data->getOptions();
         }
         if ($data->isInitialized('orderNumber') && null !== $data->getOrderNumber()) {
@@ -253,13 +253,13 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('status') && null !== $data->getStatus()) {
             $dataArray['status'] = $data->getStatus();
         }
-        if ($data->isInitialized('lockReason') && null !== $data->getLockReason()) {
+        if ($data->isInitialized('lockReason')) {
             $dataArray['lockReason'] = $data->getLockReason();
         }
         if ($data->isInitialized('orderDate') && null !== $data->getOrderDate()) {
-            $dataArray['orderDate'] = $data->getOrderDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['orderDate'] = $data->getOrderDate()->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('delivery') && null !== $data->getDelivery()) {
+        if ($data->isInitialized('delivery')) {
             $values_2 = [];
             foreach ($data->getDelivery() as $value_2) {
                 $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
@@ -275,7 +275,7 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if ($data->isInitialized('source') && null !== $data->getSource()) {
             $dataArray['source'] = $data->getSource();
         }
-        if ($data->isInitialized('sourceLink') && null !== $data->getSourceLink()) {
+        if ($data->isInitialized('sourceLink')) {
             $dataArray['sourceLink'] = $data->getSourceLink();
         }
         if ($data->isInitialized('cancelable') && null !== $data->getCancelable()) {

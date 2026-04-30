@@ -27,15 +27,15 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] !== null) {
             $object->setInboundDeliveryName($data['inboundDeliveryName']);
@@ -118,11 +118,11 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inboundDeliveryName') && null !== $data->getInboundDeliveryName()) {
+        if ($data->isInitialized('inboundDeliveryName')) {
             $dataArray['inboundDeliveryName'] = $data->getInboundDeliveryName();
         }
         $dataArray['supplierNumber'] = $data->getSupplierNumber();
-        $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()?->format('Y-m-d');
+        $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()->format('Y-m-d');
         if ($data->isInitialized('products') && null !== $data->getProducts()) {
             $values = [];
             foreach ($data->getProducts() as $value) {
@@ -133,7 +133,7 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('inboundDeliveryNumber') && null !== $data->getInboundDeliveryNumber()) {
             $dataArray['inboundDeliveryNumber'] = $data->getInboundDeliveryNumber();
         }
-        if ($data->isInitialized('inboundDeliveryNote') && null !== $data->getInboundDeliveryNote()) {
+        if ($data->isInitialized('inboundDeliveryNote')) {
             $dataArray['inboundDeliveryNote'] = $data->getInboundDeliveryNote();
         }
         if ($data->isInitialized('shopWAWIDeliveryId') && null !== $data->getShopWAWIDeliveryId()) {
@@ -145,17 +145,17 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
             $dataArray['shopCode'] = $data->getShopCode();
         }
-        if ($data->isInitialized('startDate') && null !== $data->getStartDate()) {
-            $dataArray['startDate'] = $data->getStartDate()->format('Y-m-d');
+        if ($data->isInitialized('startDate')) {
+            $dataArray['startDate'] = $data->getStartDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('endDate') && null !== $data->getEndDate()) {
-            $dataArray['endDate'] = $data->getEndDate()->format('Y-m-d');
+        if ($data->isInitialized('endDate')) {
+            $dataArray['endDate'] = $data->getEndDate()?->format('Y-m-d');
         }
-        if ($data->isInitialized('deliverySlipNumber') && null !== $data->getDeliverySlipNumber()) {
+        if ($data->isInitialized('deliverySlipNumber')) {
             $dataArray['deliverySlipNumber'] = $data->getDeliverySlipNumber();
         }
         if ($data->isInitialized('createDate') && null !== $data->getCreateDate()) {
-            $dataArray['createDate'] = $data->getCreateDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['createDate'] = $data->getCreateDate()->format('Y-m-d\TH:i:sP');
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {

@@ -19,30 +19,26 @@ class BaseOrder extends \ArrayObject
      */
     protected $shopCode;
     /**
-     * 
-     *
      * @var BaseOrderCustomer
      */
     protected $customer;
     /**
-     * 
-     *
      * @var list<NewOrderItem>
      */
     protected $orderItems;
     /**
-    * A not unique reference for the order which can be used for identifying a specific order or for
-    mapping to a third party app.
-    *
-    * @var string|null
-    */
+     * A not unique reference for the order which can be used for identifying a specific order or for
+     * mapping to a third party app.
+     *
+     * @var string|null
+     */
     protected $externalOrderId;
     /**
-    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
-    used as a fallback.
-    *
-    * @var string|null
-    */
+     * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
+     * used as a fallback.
+     *
+     * @var string|null
+     */
     protected $deliverySlipNotes;
     /**
      * External reference for the order
@@ -51,11 +47,11 @@ class BaseOrder extends \ArrayObject
      */
     protected $externalOrderReference;
     /**
-    * Notes for the steve team regarding the fulfillment. \
-    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
-    *
-    * @var string|null
-    */
+     * Notes for the steve team regarding the fulfillment. \
+     * If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
+     *
+     * @var string|null
+     */
     protected $orderNotes;
     /**
      * The Amazon seller order id used when the order is coming from the Amazon marketplace.
@@ -76,12 +72,12 @@ class BaseOrder extends \ArrayObject
      */
     protected $amazonFbaShipmentId;
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if the delivery address country requires customs clearance
-    (see `customsClearanceRequired` on the `country` resource).
-    *
-    * @var list<OrderDeliveryCosts>|null
-    */
+     * The delivery costs of the order, which will be charged to the customer.\
+     * Note: This field is required if the delivery address country requires customs clearance
+     * (see `customsClearanceRequired` on the `country` resource).
+     *
+     * @var list<OrderDeliveryCosts>|null
+     */
     protected $deliveryCosts;
     /**
      * Additional optional options for the order.
@@ -112,8 +108,6 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return BaseOrderCustomer
      */
     public function getCustomer(): BaseOrderCustomer
@@ -121,8 +115,6 @@ class BaseOrder extends \ArrayObject
         return $this->customer;
     }
     /**
-     * 
-     *
      * @param BaseOrderCustomer $customer
      *
      * @return self
@@ -134,8 +126,6 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<NewOrderItem>
      */
     public function getOrderItems(): array
@@ -143,8 +133,6 @@ class BaseOrder extends \ArrayObject
         return $this->orderItems;
     }
     /**
-     * 
-     *
      * @param list<NewOrderItem> $orderItems
      *
      * @return self
@@ -156,11 +144,11 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-    * A not unique reference for the order which can be used for identifying a specific order or for
-    mapping to a third party app.
-    *
-    * @return string|null
-    */
+     * A not unique reference for the order which can be used for identifying a specific order or for
+     * mapping to a third party app.
+     *
+     * @return string|null
+     */
     public function getExternalOrderId(): ?string
     {
         return $this->externalOrderId;
@@ -180,11 +168,11 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
-    used as a fallback.
-    *
-    * @return string|null
-    */
+     * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
+     * used as a fallback.
+     *
+     * @return string|null
+     */
     public function getDeliverySlipNotes(): ?string
     {
         return $this->deliverySlipNotes;
@@ -226,11 +214,11 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-    * Notes for the steve team regarding the fulfillment. \
-    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
-    *
-    * @return string|null
-    */
+     * Notes for the steve team regarding the fulfillment. \
+     * If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
+     *
+     * @return string|null
+     */
     public function getOrderNotes(): ?string
     {
         return $this->orderNotes;
@@ -316,12 +304,12 @@ class BaseOrder extends \ArrayObject
         return $this;
     }
     /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if the delivery address country requires customs clearance
-    (see `customsClearanceRequired` on the `country` resource).
-    *
-    * @return list<OrderDeliveryCosts>|null
-    */
+     * The delivery costs of the order, which will be charged to the customer.\
+     * Note: This field is required if the delivery address country requires customs clearance
+     * (see `customsClearanceRequired` on the `country` resource).
+     *
+     * @return list<OrderDeliveryCosts>|null
+     */
     public function getDeliveryCosts(): ?array
     {
         return $this->deliveryCosts;

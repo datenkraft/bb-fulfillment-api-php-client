@@ -55,8 +55,6 @@ class ProductJournal extends \ArrayObject
      */
     protected $stockNew;
     /**
-     * 
-     *
      * @var ProductJournalReference
      */
     protected $reference;
@@ -215,8 +213,6 @@ class ProductJournal extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProductJournalReference
      */
     public function getReference(): ProductJournalReference
@@ -224,8 +220,6 @@ class ProductJournal extends \ArrayObject
         return $this->reference;
     }
     /**
-     * 
-     *
      * @param ProductJournalReference $reference
      *
      * @return self

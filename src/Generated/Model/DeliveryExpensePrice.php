@@ -19,8 +19,6 @@ class DeliveryExpensePrice extends \ArrayObject
      */
     protected $value;
     /**
-     * 
-     *
      * @var string
      */
     protected $currency;
@@ -47,8 +45,6 @@ class DeliveryExpensePrice extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getCurrency(): string
@@ -56,8 +52,6 @@ class DeliveryExpensePrice extends \ArrayObject
         return $this->currency;
     }
     /**
-     * 
-     *
      * @param string $currency
      *
      * @return self

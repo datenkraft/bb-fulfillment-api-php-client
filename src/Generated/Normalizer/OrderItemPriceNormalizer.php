@@ -27,21 +27,21 @@ class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItemPrice();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItemPrice();
         if (\array_key_exists('value', $data) && \is_int($data['value'])) {
             $data['value'] = (double) $data['value'];
         }
         if (\array_key_exists('vat', $data) && \is_int($data['vat'])) {
             $data['vat'] = (double) $data['vat'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('value', $data)) {
             $object->setValue($data['value']);
@@ -78,7 +78,7 @@ class OrderItemPriceNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('type') && null !== $data->getType()) {
             $dataArray['type'] = $data->getType();
         }
-        if ($data->isInitialized('vat') && null !== $data->getVat()) {
+        if ($data->isInitialized('vat')) {
             $dataArray['vat'] = $data->getVat();
         }
         if ($data->isInitialized('currencyCode') && null !== $data->getCurrencyCode()) {

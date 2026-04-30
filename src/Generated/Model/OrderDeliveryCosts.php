@@ -13,12 +13,12 @@ class OrderDeliveryCosts extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
-    value by the corresponding item count.
-    *
-    * @var float
-    */
+     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+     * a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+     * value by the corresponding item count.
+     *
+     * @var float
+     */
     protected $value;
     /**
      * The price type
@@ -39,18 +39,16 @@ class OrderDeliveryCosts extends \ArrayObject
      */
     protected $currencyCode;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $title;
     /**
-    * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
-    a single unit and is not an aggregated price value, which may be calculated by multiplying this price
-    value by the corresponding item count.
-    *
-    * @return float
-    */
+     * The price value rounded to 2 decimals with a dot used as separator. Note: This price value refers to
+     * a single unit and is not an aggregated price value, which may be calculated by multiplying this price
+     * value by the corresponding item count.
+     *
+     * @return float
+     */
     public function getValue(): float
     {
         return $this->value;
@@ -137,8 +135,6 @@ class OrderDeliveryCosts extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getTitle(): ?string
@@ -146,8 +142,6 @@ class OrderDeliveryCosts extends \ArrayObject
         return $this->title;
     }
     /**
-     * 
-     *
      * @param string|null $title
      *
      * @return self

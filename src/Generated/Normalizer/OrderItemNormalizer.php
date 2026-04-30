@@ -27,15 +27,15 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderItem();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
@@ -123,38 +123,38 @@ class OrderItemNormalizer implements DenormalizerInterface, NormalizerInterface,
         if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
             $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($data->isInitialized('title') && null !== $data->getTitle()) {
+        if ($data->isInitialized('title')) {
             $dataArray['title'] = $data->getTitle();
         }
         if ($data->isInitialized('count') && null !== $data->getCount()) {
             $dataArray['count'] = $data->getCount();
         }
-        if ($data->isInitialized('externalProductNumber') && null !== $data->getExternalProductNumber()) {
+        if ($data->isInitialized('externalProductNumber')) {
             $dataArray['externalProductNumber'] = $data->getExternalProductNumber();
         }
-        if ($data->isInitialized('canceledCount') && null !== $data->getCanceledCount()) {
+        if ($data->isInitialized('canceledCount')) {
             $dataArray['canceledCount'] = $data->getCanceledCount();
         }
         if ($data->isInitialized('availableCount') && null !== $data->getAvailableCount()) {
             $dataArray['availableCount'] = $data->getAvailableCount();
         }
-        if ($data->isInitialized('deliveredCount') && null !== $data->getDeliveredCount()) {
+        if ($data->isInitialized('deliveredCount')) {
             $dataArray['deliveredCount'] = $data->getDeliveredCount();
         }
-        if ($data->isInitialized('returnedCount') && null !== $data->getReturnedCount()) {
+        if ($data->isInitialized('returnedCount')) {
             $dataArray['returnedCount'] = $data->getReturnedCount();
         }
         if ($data->isInitialized('price') && null !== $data->getPrice()) {
             $dataArray['price'] = $this->normalizer->normalize($data->getPrice(), 'json', $context);
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
+        if ($data->isInitialized('options')) {
             $values = [];
             foreach ($data->getOptions() as $key => $value) {
                 $values[$key] = $value;
             }
             $dataArray['options'] = $values;
         }
-        if ($data->isInitialized('bundledProducts') && null !== $data->getBundledProducts()) {
+        if ($data->isInitialized('bundledProducts')) {
             $values_1 = [];
             foreach ($data->getBundledProducts() as $value_1) {
                 $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);

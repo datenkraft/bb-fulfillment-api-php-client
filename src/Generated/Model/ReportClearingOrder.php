@@ -25,14 +25,10 @@ class ReportClearingOrder extends \ArrayObject
      */
     protected $shopOrderId;
     /**
-     * 
-     *
      * @var string
      */
     protected $deliveryZipCode;
     /**
-     * 
-     *
      * @var string
      */
     protected $deliveryCountryCode;
@@ -81,8 +77,6 @@ class ReportClearingOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDeliveryZipCode(): string
@@ -90,8 +84,6 @@ class ReportClearingOrder extends \ArrayObject
         return $this->deliveryZipCode;
     }
     /**
-     * 
-     *
      * @param string $deliveryZipCode
      *
      * @return self
@@ -103,8 +95,6 @@ class ReportClearingOrder extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getDeliveryCountryCode(): string
@@ -112,8 +102,6 @@ class ReportClearingOrder extends \ArrayObject
         return $this->deliveryCountryCode;
     }
     /**
-     * 
-     *
      * @param string $deliveryCountryCode
      *
      * @return self

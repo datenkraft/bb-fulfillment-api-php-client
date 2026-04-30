@@ -27,18 +27,18 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop();
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
@@ -49,7 +49,7 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
             unset($data['active']);
         }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class, 'json', $context));
+            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopMeta::class, 'json', $context));
             unset($data['meta']);
         }
         elseif (\array_key_exists('meta', $data) && $data['meta'] === null) {
@@ -71,7 +71,7 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
         if ($data->isInitialized('active') && null !== $data->getActive()) {
             $dataArray['active'] = $data->getActive();
         }
-        if ($data->isInitialized('meta') && null !== $data->getMeta()) {
+        if ($data->isInitialized('meta')) {
             $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
         }
         foreach ($data as $key => $value) {

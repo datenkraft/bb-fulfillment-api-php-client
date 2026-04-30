@@ -27,15 +27,15 @@ class BatchNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Batch();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Batch();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('number', $data)) {
             $object->setNumber($data['number']);
@@ -56,7 +56,7 @@ class BatchNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     {
         $dataArray = [];
         $dataArray['number'] = $data->getNumber();
-        $dataArray['expirationDate'] = $data->getExpirationDate()?->format('Y-m-d');
+        $dataArray['expirationDate'] = $data->getExpirationDate()->format('Y-m-d');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

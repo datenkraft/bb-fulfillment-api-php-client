@@ -19,11 +19,11 @@ class Stock extends \ArrayObject
      */
     protected $productNumber;
     /**
-    * Amount stocked in the warehouse
-    - the reserved amount for ongoing orders is NOT subtracted
-    *
-    * @var int
-    */
+     * Amount stocked in the warehouse
+     * - the reserved amount for ongoing orders is NOT subtracted
+     *
+     * @var int
+     */
     protected $stocked;
     /**
      * Amount reserved for ongoing orders
@@ -32,12 +32,12 @@ class Stock extends \ArrayObject
      */
     protected $reserved;
     /**
-    * Amount available for orders
-    - the reserved amount for ongoing orders is subtracted
-    - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
-    *
-    * @var int
-    */
+     * Amount available for orders
+     * - the reserved amount for ongoing orders is subtracted
+     * - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
+     *
+     * @var int
+     */
     protected $available;
     /**
      * Amount in ongoing inbound deliveries and processed in the receiving area but not yet stocked
@@ -52,13 +52,13 @@ class Stock extends \ArrayObject
      */
     protected $locked;
     /**
-    * Status regarding the possibility of overbooking
-    - possible: Overbooking is possible
-    - not_possible: Overbooking is not possible
-    - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
-    *
-    * @var string
-    */
+     * Status regarding the possibility of overbooking
+     * - possible: Overbooking is possible
+     * - not_possible: Overbooking is not possible
+     * - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
+     *
+     * @var string
+     */
     protected $overbookingPossibilityStatus;
     /**
      * Reserved stock of a product for a specific source
@@ -89,11 +89,11 @@ class Stock extends \ArrayObject
         return $this;
     }
     /**
-    * Amount stocked in the warehouse
-    - the reserved amount for ongoing orders is NOT subtracted
-    *
-    * @return int
-    */
+     * Amount stocked in the warehouse
+     * - the reserved amount for ongoing orders is NOT subtracted
+     *
+     * @return int
+     */
     public function getStocked(): int
     {
         return $this->stocked;
@@ -135,12 +135,12 @@ class Stock extends \ArrayObject
         return $this;
     }
     /**
-    * Amount available for orders
-    - the reserved amount for ongoing orders is subtracted
-    - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
-    *
-    * @return int
-    */
+     * Amount available for orders
+     * - the reserved amount for ongoing orders is subtracted
+     * - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
+     *
+     * @return int
+     */
     public function getAvailable(): int
     {
         return $this->available;
@@ -205,13 +205,13 @@ class Stock extends \ArrayObject
         return $this;
     }
     /**
-    * Status regarding the possibility of overbooking
-    - possible: Overbooking is possible
-    - not_possible: Overbooking is not possible
-    - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
-    *
-    * @return string
-    */
+     * Status regarding the possibility of overbooking
+     * - possible: Overbooking is possible
+     * - not_possible: Overbooking is not possible
+     * - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
+     *
+     * @return string
+     */
     public function getOverbookingPossibilityStatus(): string
     {
         return $this->overbookingPossibilityStatus;

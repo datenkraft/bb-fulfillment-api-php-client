@@ -27,21 +27,21 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Country();
         if (\array_key_exists('phoneRequired', $data) && \is_int($data['phoneRequired'])) {
             $data['phoneRequired'] = (bool) $data['phoneRequired'];
         }
         if (\array_key_exists('customsClearanceRequired', $data) && \is_int($data['customsClearanceRequired'])) {
             $data['customsClearanceRequired'] = (bool) $data['customsClearanceRequired'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('countryCode', $data)) {
             $object->setCountryCode($data['countryCode']);
@@ -96,7 +96,7 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('customsClearanceRequired') && null !== $data->getCustomsClearanceRequired()) {
             $dataArray['customsClearanceRequired'] = $data->getCustomsClearanceRequired();
         }
-        if ($data->isInitialized('provinces') && null !== $data->getProvinces()) {
+        if ($data->isInitialized('provinces')) {
             $values = [];
             foreach ($data->getProvinces() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

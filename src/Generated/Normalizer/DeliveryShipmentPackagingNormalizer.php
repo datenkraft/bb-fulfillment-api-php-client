@@ -27,13 +27,16 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging();
         if (\array_key_exists('height', $data) && \is_int($data['height'])) {
             $data['height'] = (double) $data['height'];
         }
@@ -42,9 +45,6 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
         }
         if (\array_key_exists('depth', $data) && \is_int($data['depth'])) {
             $data['depth'] = (double) $data['depth'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('height', $data)) {
             $object->setHeight($data['height']);

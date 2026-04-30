@@ -27,15 +27,15 @@ class ReportInventoryMovementEntryReferenceNormalizer implements DenormalizerInt
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryReference();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryReference();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('companyName', $data) && $data['companyName'] !== null) {
             $object->setCompanyName($data['companyName']);
@@ -54,7 +54,7 @@ class ReportInventoryMovementEntryReferenceNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('companyName') && null !== $data->getCompanyName()) {
+        if ($data->isInitialized('companyName')) {
             $dataArray['companyName'] = $data->getCompanyName();
         }
         foreach ($data as $key => $value) {

@@ -13,8 +13,6 @@ class Supplier extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $supplierNumber;
@@ -25,8 +23,6 @@ class Supplier extends \ArrayObject
      */
     protected $name;
     /**
-     * 
-     *
      * @return string
      */
     public function getSupplierNumber(): string
@@ -34,8 +30,6 @@ class Supplier extends \ArrayObject
         return $this->supplierNumber;
     }
     /**
-     * 
-     *
      * @param string $supplierNumber
      *
      * @return self

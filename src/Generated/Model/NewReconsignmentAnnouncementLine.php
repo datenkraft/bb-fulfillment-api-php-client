@@ -13,8 +13,6 @@ class NewReconsignmentAnnouncementLine extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $productNumber;
@@ -25,8 +23,6 @@ class NewReconsignmentAnnouncementLine extends \ArrayObject
      */
     protected $count;
     /**
-     * 
-     *
      * @return string
      */
     public function getProductNumber(): string
@@ -34,8 +30,6 @@ class NewReconsignmentAnnouncementLine extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
-     *
      * @param string $productNumber
      *
      * @return self

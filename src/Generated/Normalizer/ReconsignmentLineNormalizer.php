@@ -27,18 +27,18 @@ class ReconsignmentLineNormalizer implements DenormalizerInterface, NormalizerIn
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine();
         if (\array_key_exists('productWeight', $data) && \is_int($data['productWeight'])) {
             $data['productWeight'] = (double) $data['productWeight'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
@@ -103,22 +103,22 @@ class ReconsignmentLineNormalizer implements DenormalizerInterface, NormalizerIn
         if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
             $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($data->isInitialized('putBackToStockCount') && null !== $data->getPutBackToStockCount()) {
+        if ($data->isInitialized('putBackToStockCount')) {
             $dataArray['putBackToStockCount'] = $data->getPutBackToStockCount();
         }
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
+        if ($data->isInitialized('count')) {
             $dataArray['count'] = $data->getCount();
         }
-        if ($data->isInitialized('unit') && null !== $data->getUnit()) {
+        if ($data->isInitialized('unit')) {
             $dataArray['unit'] = $data->getUnit();
         }
-        if ($data->isInitialized('productWeight') && null !== $data->getProductWeight()) {
+        if ($data->isInitialized('productWeight')) {
             $dataArray['productWeight'] = $data->getProductWeight();
         }
-        if ($data->isInitialized('productWeightUnit') && null !== $data->getProductWeightUnit()) {
+        if ($data->isInitialized('productWeightUnit')) {
             $dataArray['productWeightUnit'] = $data->getProductWeightUnit();
         }
-        if ($data->isInitialized('bundledProducts') && null !== $data->getBundledProducts()) {
+        if ($data->isInitialized('bundledProducts')) {
             $values = [];
             foreach ($data->getBundledProducts() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);

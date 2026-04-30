@@ -13,8 +13,6 @@ class OrderCustomer extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $gender;
@@ -31,8 +29,6 @@ class OrderCustomer extends \ArrayObject
      */
     protected $externalCustomerId;
     /**
-     * 
-     *
      * @var OrderCustomerDeliveryAddress
      */
     protected $deliveryAddress;
@@ -43,63 +39,61 @@ class OrderCustomer extends \ArrayObject
      */
     protected $email;
     /**
-    * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
-    Parenthesis for example are not valid.
-    *
-    * @var string|null
-    */
+     * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
+     * Parenthesis for example are not valid.
+     *
+     * @var string|null
+     */
     protected $phone;
     /**
-    * The customer's first name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var string|null
-    */
+     * The customer's first name.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @var string|null
+     */
     protected $firstname;
     /**
-    * The customer's last name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var string|null
-    */
+     * The customer's last name.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @var string|null
+     */
     protected $lastname;
     /**
-    * The customer's title.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var string|null
-    */
+     * The customer's title.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @var string|null
+     */
     protected $title;
     /**
-    * The customer's company name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var string|null
-    */
+     * The customer's company name.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @var string|null
+     */
     protected $company;
     /**
-    * The customer's company vat number (might be validated).\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var string|null
-    */
+     * The customer's company vat number (might be validated).\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @var string|null
+     */
     protected $companyVatNumber;
     /**
-    * The customer's invoice address.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @var BaseOrderCustomerInvoiceAddress|null
-    */
+     * The customer's invoice address.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @var BaseOrderCustomerInvoiceAddress|null
+     */
     protected $invoiceAddress;
     /**
-     * 
-     *
      * @var string|null
      */
     protected $number;
@@ -110,8 +104,6 @@ class OrderCustomer extends \ArrayObject
      */
     protected $type;
     /**
-     * 
-     *
      * @return string
      */
     public function getGender(): string
@@ -119,8 +111,6 @@ class OrderCustomer extends \ArrayObject
         return $this->gender;
     }
     /**
-     * 
-     *
      * @param string $gender
      *
      * @return self
@@ -176,8 +166,6 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return OrderCustomerDeliveryAddress
      */
     public function getDeliveryAddress(): OrderCustomerDeliveryAddress
@@ -185,8 +173,6 @@ class OrderCustomer extends \ArrayObject
         return $this->deliveryAddress;
     }
     /**
-     * 
-     *
      * @param OrderCustomerDeliveryAddress $deliveryAddress
      *
      * @return self
@@ -220,11 +206,11 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
-    Parenthesis for example are not valid.
-    *
-    * @return string|null
-    */
+     * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
+     * Parenthesis for example are not valid.
+     *
+     * @return string|null
+     */
     public function getPhone(): ?string
     {
         return $this->phone;
@@ -244,12 +230,12 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer's first name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return string|null
-    */
+     * The customer's first name.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @return string|null
+     */
     public function getFirstname(): ?string
     {
         return $this->firstname;
@@ -270,12 +256,12 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer's last name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return string|null
-    */
+     * The customer's last name.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @return string|null
+     */
     public function getLastname(): ?string
     {
         return $this->lastname;
@@ -296,12 +282,12 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer's title.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return string|null
-    */
+     * The customer's title.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
@@ -322,12 +308,12 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer's company name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return string|null
-    */
+     * The customer's company name.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @return string|null
+     */
     public function getCompany(): ?string
     {
         return $this->company;
@@ -348,12 +334,12 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer's company vat number (might be validated).\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return string|null
-    */
+     * The customer's company vat number (might be validated).\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @return string|null
+     */
     public function getCompanyVatNumber(): ?string
     {
         return $this->companyVatNumber;
@@ -374,12 +360,12 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-    * The customer's invoice address.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @return BaseOrderCustomerInvoiceAddress|null
-    */
+     * The customer's invoice address.\
+     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
+     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
+     *
+     * @return BaseOrderCustomerInvoiceAddress|null
+     */
     public function getInvoiceAddress(): ?BaseOrderCustomerInvoiceAddress
     {
         return $this->invoiceAddress;
@@ -400,8 +386,6 @@ class OrderCustomer extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string|null
      */
     public function getNumber(): ?string
@@ -409,8 +393,6 @@ class OrderCustomer extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param string|null $number
      *
      * @return self

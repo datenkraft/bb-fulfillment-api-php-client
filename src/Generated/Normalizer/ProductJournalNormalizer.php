@@ -27,15 +27,15 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournal();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournal();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('journalId', $data)) {
             $object->setJournalId($data['journalId']);
@@ -92,7 +92,7 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
             $dataArray['journalId'] = $data->getJournalId();
         }
         if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()?->format('Y-m-d\TH:i:sP');
+            $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
         }
         if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
             $dataArray['productNumber'] = $data->getProductNumber();
@@ -100,13 +100,13 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
         if ($data->isInitialized('reason') && null !== $data->getReason()) {
             $dataArray['reason'] = $data->getReason();
         }
-        if ($data->isInitialized('stockDelta') && null !== $data->getStockDelta()) {
+        if ($data->isInitialized('stockDelta')) {
             $dataArray['stockDelta'] = $data->getStockDelta();
         }
-        if ($data->isInitialized('stockOld') && null !== $data->getStockOld()) {
+        if ($data->isInitialized('stockOld')) {
             $dataArray['stockOld'] = $data->getStockOld();
         }
-        if ($data->isInitialized('stockNew') && null !== $data->getStockNew()) {
+        if ($data->isInitialized('stockNew')) {
             $dataArray['stockNew'] = $data->getStockNew();
         }
         if ($data->isInitialized('reference') && null !== $data->getReference()) {

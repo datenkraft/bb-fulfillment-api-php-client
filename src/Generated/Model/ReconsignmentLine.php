@@ -13,8 +13,6 @@ class ReconsignmentLine extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $productNumber;
@@ -49,14 +47,10 @@ class ReconsignmentLine extends \ArrayObject
      */
     protected $productWeightUnit;
     /**
-     * 
-     *
      * @var list<ReconsignmentLineBundledProduct>|null
      */
     protected $bundledProducts;
     /**
-     * 
-     *
      * @return string
      */
     public function getProductNumber(): string
@@ -64,8 +58,6 @@ class ReconsignmentLine extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
-     *
      * @param string $productNumber
      *
      * @return self
@@ -187,8 +179,6 @@ class ReconsignmentLine extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ReconsignmentLineBundledProduct>|null
      */
     public function getBundledProducts(): ?array
@@ -196,8 +186,6 @@ class ReconsignmentLine extends \ArrayObject
         return $this->bundledProducts;
     }
     /**
-     * 
-     *
      * @param list<ReconsignmentLineBundledProduct>|null $bundledProducts
      *
      * @return self

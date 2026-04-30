@@ -43,11 +43,11 @@ class Product extends \ArrayObject
      */
     protected $contentsAmount = 1;
     /**
-    * Unit of the product contents. \
-    Units can be queried with a GET /product-unit call.
-    *
-    * @var string|null
-    */
+     * Unit of the product contents. \
+     * Units can be queried with a GET /product-unit call.
+     *
+     * @var string|null
+     */
     protected $contentsUnit = 'piece';
     /**
      * Weight of the product contents in gram.
@@ -80,14 +80,10 @@ class Product extends \ArrayObject
      */
     protected $suggestedRetailPriceEUR;
     /**
-     * 
-     *
      * @var list<ProductPurchasePrice>|null
      */
     protected $purchasePrices;
     /**
-     * 
-     *
      * @var list<ProductBundledProduct>|null
      */
     protected $bundledProducts;
@@ -116,8 +112,6 @@ class Product extends \ArrayObject
      */
     protected $dimensions;
     /**
-     * 
-     *
      * @var string
      */
     protected $productNumber;
@@ -128,19 +122,19 @@ class Product extends \ArrayObject
      */
     protected $shopCode;
     /**
-    * Status of the product regarding sales. \
-    Available values:
-    - enabled: Product is on sale
-    - enabled_external_only: Product is only available in external stores
-    - deleted: Product is deleted
-    - discontinued: Product is discontinued
-    - expired: Product is expired
-    - incorrect: Product was incorrectly created
-    - internal: Product is available for internal sales only
-    - preparation: Product is in preparation for sale
-    *
-    * @var string|null
-    */
+     * Status of the product regarding sales. \
+     * Available values:
+     * - enabled: Product is on sale
+     * - enabled_external_only: Product is only available in external stores
+     * - deleted: Product is deleted
+     * - discontinued: Product is discontinued
+     * - expired: Product is expired
+     * - incorrect: Product was incorrectly created
+     * - internal: Product is available for internal sales only
+     * - preparation: Product is in preparation for sale
+     *
+     * @var string|null
+     */
     protected $productStatus;
     /**
      * Title of the Product.
@@ -155,8 +149,6 @@ class Product extends \ArrayObject
      */
     protected $productTitleOriginal;
     /**
-     * 
-     *
      * @var ProductImage
      */
     protected $image;
@@ -191,57 +183,57 @@ class Product extends \ArrayObject
      */
     protected $priceType = 'gross';
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - reduced3: 3rd reduced tax rate (in e.g. Austria 5 %)
-    - none: not taxable (0%)
-    
-    Note: This can be null if the tax code could not be determined.
-    *
-    * @var string|null
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - reduced3: 3rd reduced tax rate (in e.g. Austria 5 %)
+     * - none: not taxable (0%)
+     * 
+     * Note: This can be null if the tax code could not be determined.
+     *
+     * @var string|null
+     */
     protected $taxCode = 'default';
     /**
-    * Number of the manufacturer. \
-    Manufacturers can be queried with a GET /manufacturer call. \
-    Note: This can be null in some cases (e.g. if the product is a bundle).
-    *
-    * @var string|null
-    */
+     * Number of the manufacturer. \
+     * Manufacturers can be queried with a GET /manufacturer call. \
+     * Note: This can be null in some cases (e.g. if the product is a bundle).
+     *
+     * @var string|null
+     */
     protected $manufacturerNumber;
     /**
-    * Number of the supplier. \
-    Suppliers can be queried with a GET /supplier call. \
-    Note: This can be null in some cases (e.g. if the product is a bundle).
-    *
-    * @var string|null
-    */
+     * Number of the supplier. \
+     * Suppliers can be queried with a GET /supplier call. \
+     * Note: This can be null in some cases (e.g. if the product is a bundle).
+     *
+     * @var string|null
+     */
     protected $supplierNumber;
     /**
-    * The source of the product.
-    - self: Own product
-    - nice: Product of another supplier
-    - bundle: Product that is composed of individual positions
-    *
-    * @var string
-    */
+     * The source of the product.
+     * - self: Own product
+     * - nice: Product of another supplier
+     * - bundle: Product that is composed of individual positions
+     *
+     * @var string
+     */
     protected $source;
     /**
-    * Number of the brand. \
-    Brands can be queried with a GET /brand call. \
-    Note: This can be null in some cases (e.g. if the product is a bundle).
-    *
-    * @var string|null
-    */
+     * Number of the brand. \
+     * Brands can be queried with a GET /brand call. \
+     * Note: This can be null in some cases (e.g. if the product is a bundle).
+     *
+     * @var string|null
+     */
     protected $brandNumber;
     /**
-    * Amount stocked in the warehouse
-    - the reserved amount for ongoing orders is NOT subtracted
-    *
-    * @var int
-    */
+     * Amount stocked in the warehouse
+     * - the reserved amount for ongoing orders is NOT subtracted
+     *
+     * @var int
+     */
     protected $stocked;
     /**
      * Amount reserved for ongoing orders
@@ -250,12 +242,12 @@ class Product extends \ArrayObject
      */
     protected $reserved;
     /**
-    * Amount available for orders
-    - the reserved amount for ongoing orders is subtracted
-    - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
-    *
-    * @var int
-    */
+     * Amount available for orders
+     * - the reserved amount for ongoing orders is subtracted
+     * - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
+     *
+     * @var int
+     */
     protected $available;
     /**
      * Amount in ongoing inbound deliveries and processed in the receiving area but not yet stocked
@@ -270,13 +262,13 @@ class Product extends \ArrayObject
      */
     protected $locked;
     /**
-    * Status regarding the possibility of overbooking
-    - possible: Overbooking is possible
-    - not_possible: Overbooking is not possible
-    - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
-    *
-    * @var string
-    */
+     * Status regarding the possibility of overbooking
+     * - possible: Overbooking is possible
+     * - not_possible: Overbooking is not possible
+     * - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
+     *
+     * @var string
+     */
     protected $overbookingPossibilityStatus;
     /**
      * Reserved stock of a product for a specific source
@@ -285,21 +277,21 @@ class Product extends \ArrayObject
      */
     protected $reservedFor;
     /**
-    * Options for the product
-    - no_external_sales: Product is not available for external sales
-    - no_airmail_shipping: Product is not available for airmail shipping
-    - serial_number_required: Serial number is required for the product
-    - shipped_in_original_packaging: Product is shipped in original packaging
-    - extra_shipping_only: Extra shipping is required for the product
-    - dangerous_goods: Product is classified as dangerous goods
-    - trace_code_required: Trace code is required for the product
-    - refrigerated_product: Product is refrigerated
-    - heat_sensitive: Product is heat sensitive
-    - spedition_shipping_only: Product is only available for spedition shipping
-    - batch_required: Batch is required for the product
-    *
-    * @var list<string>
-    */
+     * Options for the product
+     * - no_external_sales: Product is not available for external sales
+     * - no_airmail_shipping: Product is not available for airmail shipping
+     * - serial_number_required: Serial number is required for the product
+     * - shipped_in_original_packaging: Product is shipped in original packaging
+     * - extra_shipping_only: Extra shipping is required for the product
+     * - dangerous_goods: Product is classified as dangerous goods
+     * - trace_code_required: Trace code is required for the product
+     * - refrigerated_product: Product is refrigerated
+     * - heat_sensitive: Product is heat sensitive
+     * - spedition_shipping_only: Product is only available for spedition shipping
+     * - batch_required: Batch is required for the product
+     *
+     * @var list<string>
+     */
     protected $productOptions;
     /**
      * Status of the article item regarding visibility.
@@ -307,6 +299,16 @@ class Product extends \ArrayObject
      * @var string|null
      */
     protected $articleItemStatus;
+    /**
+     * Minimum available stock level. \
+     * `null` means no value is configured. `0` is a valid value and is distinct from `null`:
+     * - `null`: not configured (cleared)
+     * - `0`: configured at zero units
+     * - positive integer: configured at the given level
+     *
+     * @var int|null
+     */
+    protected $minAvailableStock;
     /**
      * Type of the product.
      *
@@ -418,11 +420,11 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents. \
-    Units can be queried with a GET /product-unit call.
-    *
-    * @return string|null
-    */
+     * Unit of the product contents. \
+     * Units can be queried with a GET /product-unit call.
+     *
+     * @return string|null
+     */
     public function getContentsUnit(): ?string
     {
         return $this->contentsUnit;
@@ -552,8 +554,6 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ProductPurchasePrice>|null
      */
     public function getPurchasePrices(): ?array
@@ -561,8 +561,6 @@ class Product extends \ArrayObject
         return $this->purchasePrices;
     }
     /**
-     * 
-     *
      * @param list<ProductPurchasePrice>|null $purchasePrices
      *
      * @return self
@@ -574,8 +572,6 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ProductBundledProduct>|null
      */
     public function getBundledProducts(): ?array
@@ -583,8 +579,6 @@ class Product extends \ArrayObject
         return $this->bundledProducts;
     }
     /**
-     * 
-     *
      * @param list<ProductBundledProduct>|null $bundledProducts
      *
      * @return self
@@ -684,8 +678,6 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProductNumber(): string
@@ -693,8 +685,6 @@ class Product extends \ArrayObject
         return $this->productNumber;
     }
     /**
-     * 
-     *
      * @param string $productNumber
      *
      * @return self
@@ -728,19 +718,19 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the product regarding sales. \
-    Available values:
-    - enabled: Product is on sale
-    - enabled_external_only: Product is only available in external stores
-    - deleted: Product is deleted
-    - discontinued: Product is discontinued
-    - expired: Product is expired
-    - incorrect: Product was incorrectly created
-    - internal: Product is available for internal sales only
-    - preparation: Product is in preparation for sale
-    *
-    * @return string|null
-    */
+     * Status of the product regarding sales. \
+     * Available values:
+     * - enabled: Product is on sale
+     * - enabled_external_only: Product is only available in external stores
+     * - deleted: Product is deleted
+     * - discontinued: Product is discontinued
+     * - expired: Product is expired
+     * - incorrect: Product was incorrectly created
+     * - internal: Product is available for internal sales only
+     * - preparation: Product is in preparation for sale
+     *
+     * @return string|null
+     */
     public function getProductStatus(): ?string
     {
         return $this->productStatus;
@@ -812,8 +802,6 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return ProductImage
      */
     public function getImage(): ProductImage
@@ -821,8 +809,6 @@ class Product extends \ArrayObject
         return $this->image;
     }
     /**
-     * 
-     *
      * @param ProductImage $image
      *
      * @return self
@@ -944,17 +930,17 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - reduced3: 3rd reduced tax rate (in e.g. Austria 5 %)
-    - none: not taxable (0%)
-    
-    Note: This can be null if the tax code could not be determined.
-    *
-    * @return string|null
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - reduced3: 3rd reduced tax rate (in e.g. Austria 5 %)
+     * - none: not taxable (0%)
+     * 
+     * Note: This can be null if the tax code could not be determined.
+     *
+     * @return string|null
+     */
     public function getTaxCode(): ?string
     {
         return $this->taxCode;
@@ -980,12 +966,12 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the manufacturer. \
-    Manufacturers can be queried with a GET /manufacturer call. \
-    Note: This can be null in some cases (e.g. if the product is a bundle).
-    *
-    * @return string|null
-    */
+     * Number of the manufacturer. \
+     * Manufacturers can be queried with a GET /manufacturer call. \
+     * Note: This can be null in some cases (e.g. if the product is a bundle).
+     *
+     * @return string|null
+     */
     public function getManufacturerNumber(): ?string
     {
         return $this->manufacturerNumber;
@@ -1006,12 +992,12 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the supplier. \
-    Suppliers can be queried with a GET /supplier call. \
-    Note: This can be null in some cases (e.g. if the product is a bundle).
-    *
-    * @return string|null
-    */
+     * Number of the supplier. \
+     * Suppliers can be queried with a GET /supplier call. \
+     * Note: This can be null in some cases (e.g. if the product is a bundle).
+     *
+     * @return string|null
+     */
     public function getSupplierNumber(): ?string
     {
         return $this->supplierNumber;
@@ -1032,13 +1018,13 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * The source of the product.
-    - self: Own product
-    - nice: Product of another supplier
-    - bundle: Product that is composed of individual positions
-    *
-    * @return string
-    */
+     * The source of the product.
+     * - self: Own product
+     * - nice: Product of another supplier
+     * - bundle: Product that is composed of individual positions
+     *
+     * @return string
+     */
     public function getSource(): string
     {
         return $this->source;
@@ -1060,12 +1046,12 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the brand. \
-    Brands can be queried with a GET /brand call. \
-    Note: This can be null in some cases (e.g. if the product is a bundle).
-    *
-    * @return string|null
-    */
+     * Number of the brand. \
+     * Brands can be queried with a GET /brand call. \
+     * Note: This can be null in some cases (e.g. if the product is a bundle).
+     *
+     * @return string|null
+     */
     public function getBrandNumber(): ?string
     {
         return $this->brandNumber;
@@ -1086,11 +1072,11 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Amount stocked in the warehouse
-    - the reserved amount for ongoing orders is NOT subtracted
-    *
-    * @return int
-    */
+     * Amount stocked in the warehouse
+     * - the reserved amount for ongoing orders is NOT subtracted
+     *
+     * @return int
+     */
     public function getStocked(): int
     {
         return $this->stocked;
@@ -1132,12 +1118,12 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Amount available for orders
-    - the reserved amount for ongoing orders is subtracted
-    - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
-    *
-    * @return int
-    */
+     * Amount available for orders
+     * - the reserved amount for ongoing orders is subtracted
+     * - includes the incoming amount if the overbookingPossibilityStatus is 'only_inbound_deliveries'
+     *
+     * @return int
+     */
     public function getAvailable(): int
     {
         return $this->available;
@@ -1202,13 +1188,13 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Status regarding the possibility of overbooking
-    - possible: Overbooking is possible
-    - not_possible: Overbooking is not possible
-    - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
-    *
-    * @return string
-    */
+     * Status regarding the possibility of overbooking
+     * - possible: Overbooking is possible
+     * - not_possible: Overbooking is not possible
+     * - only_inbound_deliveries: Overbooking is only possible for the amount in ongoing inbound deliveries
+     *
+     * @return string
+     */
     public function getOverbookingPossibilityStatus(): string
     {
         return $this->overbookingPossibilityStatus;
@@ -1252,21 +1238,21 @@ class Product extends \ArrayObject
         return $this;
     }
     /**
-    * Options for the product
-    - no_external_sales: Product is not available for external sales
-    - no_airmail_shipping: Product is not available for airmail shipping
-    - serial_number_required: Serial number is required for the product
-    - shipped_in_original_packaging: Product is shipped in original packaging
-    - extra_shipping_only: Extra shipping is required for the product
-    - dangerous_goods: Product is classified as dangerous goods
-    - trace_code_required: Trace code is required for the product
-    - refrigerated_product: Product is refrigerated
-    - heat_sensitive: Product is heat sensitive
-    - spedition_shipping_only: Product is only available for spedition shipping
-    - batch_required: Batch is required for the product
-    *
-    * @return list<string>
-    */
+     * Options for the product
+     * - no_external_sales: Product is not available for external sales
+     * - no_airmail_shipping: Product is not available for airmail shipping
+     * - serial_number_required: Serial number is required for the product
+     * - shipped_in_original_packaging: Product is shipped in original packaging
+     * - extra_shipping_only: Extra shipping is required for the product
+     * - dangerous_goods: Product is classified as dangerous goods
+     * - trace_code_required: Trace code is required for the product
+     * - refrigerated_product: Product is refrigerated
+     * - heat_sensitive: Product is heat sensitive
+     * - spedition_shipping_only: Product is only available for spedition shipping
+     * - batch_required: Batch is required for the product
+     *
+     * @return list<string>
+     */
     public function getProductOptions(): array
     {
         return $this->productOptions;
@@ -1315,6 +1301,36 @@ class Product extends \ArrayObject
     {
         $this->initialized['articleItemStatus'] = true;
         $this->articleItemStatus = $articleItemStatus;
+        return $this;
+    }
+    /**
+     * Minimum available stock level. \
+     * `null` means no value is configured. `0` is a valid value and is distinct from `null`:
+     * - `null`: not configured (cleared)
+     * - `0`: configured at zero units
+     * - positive integer: configured at the given level
+     *
+     * @return int|null
+     */
+    public function getMinAvailableStock(): ?int
+    {
+        return $this->minAvailableStock;
+    }
+    /**
+    * Minimum available stock level. \
+    `null` means no value is configured. `0` is a valid value and is distinct from `null`:
+    - `null`: not configured (cleared)
+    - `0`: configured at zero units
+    - positive integer: configured at the given level
+    *
+    * @param int|null $minAvailableStock
+    *
+    * @return self
+    */
+    public function setMinAvailableStock(?int $minAvailableStock): self
+    {
+        $this->initialized['minAvailableStock'] = true;
+        $this->minAvailableStock = $minAvailableStock;
         return $this;
     }
 }

@@ -19,11 +19,11 @@ class InboundDelivery extends \ArrayObject
      */
     protected $inboundDeliveryName;
     /**
-    * Number of the supplier.\
-    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-    *
-    * @var string
-    */
+     * Number of the supplier.\
+     * Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+     *
+     * @var string
+     */
     protected $supplierNumber;
     /**
      * Expected date of the delivery (timezone CET/CEST)
@@ -38,12 +38,12 @@ class InboundDelivery extends \ArrayObject
      */
     protected $products;
     /**
-    * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was
-    created was created manually by niceshops.
-    *
-    * @var string
-    */
+     * The inbound delivery number.\
+     * Note: If this number is prefixed with 'NICE', it means that the inbound delivery was
+     * created was created manually by niceshops.
+     *
+     * @var string
+     */
     protected $inboundDeliveryNumber;
     /**
      * Notes from the steve warehouse team
@@ -58,15 +58,15 @@ class InboundDelivery extends \ArrayObject
      */
     protected $shopWAWIDeliveryId;
     /**
-    * Status of the inbound delivery.\
-    The status for not yet completed is subject to change. you may poll for changes.
-    - open: The inbound delivery has not yet been delivered.
-    - in_progress: The inbound delivery is being processed in our warehouse.
-    - completed: The inbound delivery has been processed in our warehouse.
-    - deleted: The inbound delivery has been deleted.
-    *
-    * @var string
-    */
+     * Status of the inbound delivery.\
+     * The status for not yet completed is subject to change. you may poll for changes.
+     * - open: The inbound delivery has not yet been delivered.
+     * - in_progress: The inbound delivery is being processed in our warehouse.
+     * - completed: The inbound delivery has been processed in our warehouse.
+     * - deleted: The inbound delivery has been deleted.
+     *
+     * @var string
+     */
     protected $status;
     /**
      * The shopCode used internally to distinguish between clients.
@@ -87,14 +87,14 @@ class InboundDelivery extends \ArrayObject
      */
     protected $endDate;
     /**
-    * Number of the inbound delivery on the delivery slip.\
-    If the field is empty or not set in the database
-    (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
-    If an empty string ("") is returned, it means that no delivery slip number is
-    available for the inbound delivery.
-    *
-    * @var string|null
-    */
+     * Number of the inbound delivery on the delivery slip.\
+     * If the field is empty or not set in the database
+     * (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
+     * If an empty string ("") is returned, it means that no delivery slip number is
+     * available for the inbound delivery.
+     *
+     * @var string|null
+     */
     protected $deliverySlipNumber;
     /**
      * Creation date of the inbound delivery. Format in ISO 8601 (timezone CET/CEST)
@@ -125,11 +125,11 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the supplier.\
-    Available suppliers can be retrieved from the 'GET /supplier' endpoint.
-    *
-    * @return string
-    */
+     * Number of the supplier.\
+     * Available suppliers can be retrieved from the 'GET /supplier' endpoint.
+     *
+     * @return string
+     */
     public function getSupplierNumber(): string
     {
         return $this->supplierNumber;
@@ -193,12 +193,12 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * The inbound delivery number.\
-    Note: If this number is prefixed with 'NICE', it means that the inbound delivery was
-    created was created manually by niceshops.
-    *
-    * @return string
-    */
+     * The inbound delivery number.\
+     * Note: If this number is prefixed with 'NICE', it means that the inbound delivery was
+     * created was created manually by niceshops.
+     *
+     * @return string
+     */
     public function getInboundDeliveryNumber(): string
     {
         return $this->inboundDeliveryNumber;
@@ -263,15 +263,15 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the inbound delivery.\
-    The status for not yet completed is subject to change. you may poll for changes.
-    - open: The inbound delivery has not yet been delivered.
-    - in_progress: The inbound delivery is being processed in our warehouse.
-    - completed: The inbound delivery has been processed in our warehouse.
-    - deleted: The inbound delivery has been deleted.
-    *
-    * @return string
-    */
+     * Status of the inbound delivery.\
+     * The status for not yet completed is subject to change. you may poll for changes.
+     * - open: The inbound delivery has not yet been delivered.
+     * - in_progress: The inbound delivery is being processed in our warehouse.
+     * - completed: The inbound delivery has been processed in our warehouse.
+     * - deleted: The inbound delivery has been deleted.
+     *
+     * @return string
+     */
     public function getStatus(): string
     {
         return $this->status;
@@ -361,14 +361,14 @@ class InboundDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the inbound delivery on the delivery slip.\
-    If the field is empty or not set in the database
-    (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
-    If an empty string ("") is returned, it means that no delivery slip number is
-    available for the inbound delivery.
-    *
-    * @return string|null
-    */
+     * Number of the inbound delivery on the delivery slip.\
+     * If the field is empty or not set in the database
+     * (e.g. the inbound delivery has not yet arrived in our warehouse), null will be returned.\
+     * If an empty string ("") is returned, it means that no delivery slip number is
+     * available for the inbound delivery.
+     *
+     * @return string|null
+     */
     public function getDeliverySlipNumber(): ?string
     {
         return $this->deliverySlipNumber;

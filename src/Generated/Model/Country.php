@@ -37,8 +37,6 @@ class Country extends \ArrayObject
      */
     protected $customsClearanceRequired;
     /**
-     * 
-     *
      * @var list<CountryProvinces>|null
      */
     protected $provinces;
@@ -137,8 +135,6 @@ class Country extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<CountryProvinces>|null
      */
     public function getProvinces(): ?array
@@ -146,8 +142,6 @@ class Country extends \ArrayObject
         return $this->provinces;
     }
     /**
-     * 
-     *
      * @param list<CountryProvinces>|null $provinces
      *
      * @return self

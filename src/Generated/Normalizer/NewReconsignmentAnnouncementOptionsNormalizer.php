@@ -27,15 +27,15 @@ class NewReconsignmentAnnouncementOptionsNormalizer implements DenormalizerInter
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
-        }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions();
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('autoProcessState', $data) && $data['autoProcessState'] !== null) {
             $object->setAutoProcessState($data['autoProcessState']);
@@ -54,7 +54,7 @@ class NewReconsignmentAnnouncementOptionsNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('autoProcessState') && null !== $data->getAutoProcessState()) {
+        if ($data->isInitialized('autoProcessState')) {
             $dataArray['autoProcessState'] = $data->getAutoProcessState();
         }
         foreach ($data as $key => $value) {

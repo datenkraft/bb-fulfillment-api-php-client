@@ -25,11 +25,11 @@ class Delivery extends \ArrayObject
      */
     protected $orderNumber;
     /**
-    * Status of the delivery.
-    - delivered: The delivery is packed and ready to be picked up by the delivery service.
-    *
-    * @var string
-    */
+     * Status of the delivery.
+     * - delivered: The delivery is packed and ready to be picked up by the delivery service.
+     *
+     * @var string
+     */
     protected $status;
     /**
      * List of shipments (= package, parcel, pallet, ...)
@@ -82,11 +82,11 @@ class Delivery extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the delivery.
-    - delivered: The delivery is packed and ready to be picked up by the delivery service.
-    *
-    * @return string
-    */
+     * Status of the delivery.
+     * - delivered: The delivery is packed and ready to be picked up by the delivery service.
+     *
+     * @return string
+     */
     public function getStatus(): string
     {
         return $this->status;

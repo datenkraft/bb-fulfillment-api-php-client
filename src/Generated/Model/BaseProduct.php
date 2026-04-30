@@ -43,11 +43,11 @@ class BaseProduct extends \ArrayObject
      */
     protected $contentsAmount = 1;
     /**
-    * Unit of the product contents. \
-    Units can be queried with a GET /product-unit call.
-    *
-    * @var string|null
-    */
+     * Unit of the product contents. \
+     * Units can be queried with a GET /product-unit call.
+     *
+     * @var string|null
+     */
     protected $contentsUnit = 'piece';
     /**
      * Weight of the product contents in gram.
@@ -80,14 +80,10 @@ class BaseProduct extends \ArrayObject
      */
     protected $suggestedRetailPriceEUR;
     /**
-     * 
-     *
      * @var list<ProductPurchasePrice>|null
      */
     protected $purchasePrices;
     /**
-     * 
-     *
      * @var list<ProductBundledProduct>|null
      */
     protected $bundledProducts;
@@ -226,11 +222,11 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents. \
-    Units can be queried with a GET /product-unit call.
-    *
-    * @return string|null
-    */
+     * Unit of the product contents. \
+     * Units can be queried with a GET /product-unit call.
+     *
+     * @return string|null
+     */
     public function getContentsUnit(): ?string
     {
         return $this->contentsUnit;
@@ -360,8 +356,6 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ProductPurchasePrice>|null
      */
     public function getPurchasePrices(): ?array
@@ -369,8 +363,6 @@ class BaseProduct extends \ArrayObject
         return $this->purchasePrices;
     }
     /**
-     * 
-     *
      * @param list<ProductPurchasePrice>|null $purchasePrices
      *
      * @return self
@@ -382,8 +374,6 @@ class BaseProduct extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ProductBundledProduct>|null
      */
     public function getBundledProducts(): ?array
@@ -391,8 +381,6 @@ class BaseProduct extends \ArrayObject
         return $this->bundledProducts;
     }
     /**
-     * 
-     *
      * @param list<ProductBundledProduct>|null $bundledProducts
      *
      * @return self

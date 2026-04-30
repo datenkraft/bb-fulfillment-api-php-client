@@ -67,35 +67,35 @@ class ProductDraft extends \ArrayObject
      */
     protected $listPriceEUR;
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
-    *
-    * @var string
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - none: not taxable (0%)
+     *
+     * @var string
+     */
     protected $taxCode = 'default';
     /**
-    * Number of the supplier.\
-    Valid suppliers can be queried with a GET /supplier call
-    *
-    * @var string
-    */
+     * Number of the supplier.\
+     * Valid suppliers can be queried with a GET /supplier call
+     *
+     * @var string
+     */
     protected $supplierNumber;
     /**
-    * Number of the manufacturer.\
-    Valid manufacturers can be queried with a GET /manufacturer call
-    *
-    * @var string
-    */
+     * Number of the manufacturer.\
+     * Valid manufacturers can be queried with a GET /manufacturer call
+     *
+     * @var string
+     */
     protected $manufacturerNumber;
     /**
-    * Number of the brand.\
-    Valid brands can be queried with a GET /brand call
-    *
-    * @var string
-    */
+     * Number of the brand.\
+     * Valid brands can be queried with a GET /brand call
+     *
+     * @var string
+     */
     protected $brandNumber;
     /**
      * Dimensions of the product
@@ -116,20 +116,18 @@ class ProductDraft extends \ArrayObject
      */
     protected $source;
     /**
-     * 
-     *
      * @var string
      */
     protected $productDraftId;
     /**
-    * Status of the product draft.\
-    Available values:
-    - pending: The product draft is subject to be checked by the steve team
-    - accepted: The product draft is accepted and the product can be used in the /product endpoints
-    - declined: The product draft is declined by the steve team
-    *
-    * @var string
-    */
+     * Status of the product draft.\
+     * Available values:
+     * - pending: The product draft is subject to be checked by the steve team
+     * - accepted: The product draft is accepted and the product can be used in the /product endpoints
+     * - declined: The product draft is declined by the steve team
+     *
+     * @var string
+     */
     protected $productDraftStatus;
     /**
      * The create date for the product draft. Format in ISO 8601
@@ -138,11 +136,11 @@ class ProductDraft extends \ArrayObject
      */
     protected $productDraftDate;
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
-    *
-    * @var string
-    */
+     * Unit of the product contents.\
+     * All units can be queried with a GET /product-unit call
+     *
+     * @var string
+     */
     protected $contentsUnit;
     /**
      * Product number to be used for the final product
@@ -343,14 +341,14 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
-    *
-    * @return string
-    */
+     * One of the available tax codes.
+     * - default: Default tax rate (in e.g. Austria 20 %)
+     * - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
+     * - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
+     * - none: not taxable (0%)
+     *
+     * @return string
+     */
     public function getTaxCode(): string
     {
         return $this->taxCode;
@@ -373,11 +371,11 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the supplier.\
-    Valid suppliers can be queried with a GET /supplier call
-    *
-    * @return string
-    */
+     * Number of the supplier.\
+     * Valid suppliers can be queried with a GET /supplier call
+     *
+     * @return string
+     */
     public function getSupplierNumber(): string
     {
         return $this->supplierNumber;
@@ -397,11 +395,11 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the manufacturer.\
-    Valid manufacturers can be queried with a GET /manufacturer call
-    *
-    * @return string
-    */
+     * Number of the manufacturer.\
+     * Valid manufacturers can be queried with a GET /manufacturer call
+     *
+     * @return string
+     */
     public function getManufacturerNumber(): string
     {
         return $this->manufacturerNumber;
@@ -421,11 +419,11 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Number of the brand.\
-    Valid brands can be queried with a GET /brand call
-    *
-    * @return string
-    */
+     * Number of the brand.\
+     * Valid brands can be queried with a GET /brand call
+     *
+     * @return string
+     */
     public function getBrandNumber(): string
     {
         return $this->brandNumber;
@@ -511,8 +509,6 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return string
      */
     public function getProductDraftId(): string
@@ -520,8 +516,6 @@ class ProductDraft extends \ArrayObject
         return $this->productDraftId;
     }
     /**
-     * 
-     *
      * @param string $productDraftId
      *
      * @return self
@@ -533,14 +527,14 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the product draft.\
-    Available values:
-    - pending: The product draft is subject to be checked by the steve team
-    - accepted: The product draft is accepted and the product can be used in the /product endpoints
-    - declined: The product draft is declined by the steve team
-    *
-    * @return string
-    */
+     * Status of the product draft.\
+     * Available values:
+     * - pending: The product draft is subject to be checked by the steve team
+     * - accepted: The product draft is accepted and the product can be used in the /product endpoints
+     * - declined: The product draft is declined by the steve team
+     *
+     * @return string
+     */
     public function getProductDraftStatus(): string
     {
         return $this->productDraftStatus;
@@ -585,11 +579,11 @@ class ProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * Unit of the product contents.\
-    All units can be queried with a GET /product-unit call
-    *
-    * @return string
-    */
+     * Unit of the product contents.\
+     * All units can be queried with a GET /product-unit call
+     *
+     * @return string
+     */
     public function getContentsUnit(): string
     {
         return $this->contentsUnit;

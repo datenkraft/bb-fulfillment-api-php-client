@@ -27,18 +27,18 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShipmentLine();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShipmentLine();
         if (\array_key_exists('count', $data) && \is_int($data['count'])) {
             $data['count'] = (double) $data['count'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('productNumber', $data)) {
             $object->setProductNumber($data['productNumber']);
@@ -99,13 +99,13 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
             $dataArray['productNumber'] = $data->getProductNumber();
         }
-        if ($data->isInitialized('productNumberBundle') && null !== $data->getProductNumberBundle()) {
+        if ($data->isInitialized('productNumberBundle')) {
             $dataArray['productNumberBundle'] = $data->getProductNumberBundle();
         }
         if ($data->isInitialized('count') && null !== $data->getCount()) {
             $dataArray['count'] = $data->getCount();
         }
-        if ($data->isInitialized('unit') && null !== $data->getUnit()) {
+        if ($data->isInitialized('unit')) {
             $dataArray['unit'] = $data->getUnit();
         }
         if ($data->isInitialized('serialNumbers') && null !== $data->getSerialNumbers()) {

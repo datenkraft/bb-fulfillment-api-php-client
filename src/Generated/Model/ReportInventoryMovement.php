@@ -49,11 +49,11 @@ class ReportInventoryMovement extends \ArrayObject
      */
     protected $stockSubtracted;
     /**
-    * Stock subtracted in the period.\
-    Note: 'stockSubtracted' already contains 'stockSubtractedExternal'.
-    *
-    * @var int
-    */
+     * Stock subtracted in the period.\
+     * Note: 'stockSubtracted' already contains 'stockSubtractedExternal'.
+     *
+     * @var int
+     */
     protected $stockSubtractedExternal;
     /**
      * Stock corrections in the period
@@ -74,15 +74,13 @@ class ReportInventoryMovement extends \ArrayObject
      */
     protected $stockReturned;
     /**
-    * Stock subtracted in the period.\
-    Note: 'stockReturned' already contains 'stockReturnedExternal'.
-    *
-    * @var int
-    */
+     * Stock subtracted in the period.\
+     * Note: 'stockReturned' already contains 'stockReturnedExternal'.
+     *
+     * @var int
+     */
     protected $stockReturnedExternal;
     /**
-     * 
-     *
      * @var list<ReportInventoryMovementEntry>
      */
     protected $movementEntries;
@@ -219,11 +217,11 @@ class ReportInventoryMovement extends \ArrayObject
         return $this;
     }
     /**
-    * Stock subtracted in the period.\
-    Note: 'stockSubtracted' already contains 'stockSubtractedExternal'.
-    *
-    * @return int
-    */
+     * Stock subtracted in the period.\
+     * Note: 'stockSubtracted' already contains 'stockSubtractedExternal'.
+     *
+     * @return int
+     */
     public function getStockSubtractedExternal(): int
     {
         return $this->stockSubtractedExternal;
@@ -309,11 +307,11 @@ class ReportInventoryMovement extends \ArrayObject
         return $this;
     }
     /**
-    * Stock subtracted in the period.\
-    Note: 'stockReturned' already contains 'stockReturnedExternal'.
-    *
-    * @return int
-    */
+     * Stock subtracted in the period.\
+     * Note: 'stockReturned' already contains 'stockReturnedExternal'.
+     *
+     * @return int
+     */
     public function getStockReturnedExternal(): int
     {
         return $this->stockReturnedExternal;
@@ -333,8 +331,6 @@ class ReportInventoryMovement extends \ArrayObject
         return $this;
     }
     /**
-     * 
-     *
      * @return list<ReportInventoryMovementEntry>
      */
     public function getMovementEntries(): array
@@ -342,8 +338,6 @@ class ReportInventoryMovement extends \ArrayObject
         return $this->movementEntries;
     }
     /**
-     * 
-     *
      * @param list<ReportInventoryMovementEntry> $movementEntries
      *
      * @return self

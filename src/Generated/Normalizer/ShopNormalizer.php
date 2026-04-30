@@ -27,18 +27,18 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        if (isset($data['$ref'])) {
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop();
+        if (null === $data || false === \is_array($data)) {
+            return $object;
+        }
+        if (isset($data['$ref']) && !isset($data['type']) && !isset($data['properties']) && !isset($data['allOf'])) {
             return new Reference($data['$ref'], $context['document-origin']);
         }
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shop();
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
-        }
-        if (null === $data || false === \is_array($data)) {
-            return $object;
         }
         if (\array_key_exists('id', $data)) {
             $object->setId($data['id']);
@@ -57,7 +57,7 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             unset($data['projectId']);
         }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta::class, 'json', $context));
+            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta::class, 'json', $context));
             unset($data['meta']);
         }
         elseif (\array_key_exists('meta', $data) && $data['meta'] === null) {
@@ -93,7 +93,7 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
             $dataArray['projectId'] = $data->getProjectId();
         }
-        if ($data->isInitialized('meta') && null !== $data->getMeta()) {
+        if ($data->isInitialized('meta')) {
             $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
         }
         if ($data->isInitialized('email') && null !== $data->getEmail()) {

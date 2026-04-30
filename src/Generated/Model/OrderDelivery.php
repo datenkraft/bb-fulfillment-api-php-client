@@ -13,17 +13,15 @@ class OrderDelivery extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * 
-     *
      * @var string
      */
     protected $number;
     /**
-    * Status of the delivery.
-    - delivered: The delivery is packed and ready to be picked up by the delivery service.
-    *
-    * @var string
-    */
+     * Status of the delivery.
+     * - delivered: The delivery is packed and ready to be picked up by the delivery service.
+     *
+     * @var string
+     */
     protected $status;
     /**
      * Indicates whether the delivery was delivered partially or not
@@ -32,8 +30,6 @@ class OrderDelivery extends \ArrayObject
      */
     protected $deliveredPartially;
     /**
-     * 
-     *
      * @return string
      */
     public function getNumber(): string
@@ -41,8 +37,6 @@ class OrderDelivery extends \ArrayObject
         return $this->number;
     }
     /**
-     * 
-     *
      * @param string $number
      *
      * @return self
@@ -54,11 +48,11 @@ class OrderDelivery extends \ArrayObject
         return $this;
     }
     /**
-    * Status of the delivery.
-    - delivered: The delivery is packed and ready to be picked up by the delivery service.
-    *
-    * @return string
-    */
+     * Status of the delivery.
+     * - delivered: The delivery is packed and ready to be picked up by the delivery service.
+     *
+     * @return string
+     */
     public function getStatus(): string
     {
         return $this->status;

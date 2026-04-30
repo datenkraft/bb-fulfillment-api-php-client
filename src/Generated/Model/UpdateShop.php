@@ -27,7 +27,7 @@ class UpdateShop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @var UpdateShopmeta|null
+     * @var UpdateShopMeta|null
      */
     protected $meta;
     /**
@@ -77,20 +77,20 @@ class UpdateShop extends \ArrayObject
     /**
      * Meta data of the shop.
      *
-     * @return UpdateShopmeta|null
+     * @return UpdateShopMeta|null
      */
-    public function getMeta(): ?UpdateShopmeta
+    public function getMeta(): ?UpdateShopMeta
     {
         return $this->meta;
     }
     /**
      * Meta data of the shop.
      *
-     * @param UpdateShopmeta|null $meta
+     * @param UpdateShopMeta|null $meta
      *
      * @return self
      */
-    public function setMeta(?UpdateShopmeta $meta): self
+    public function setMeta(?UpdateShopMeta $meta): self
     {
         $this->initialized['meta'] = true;
         $this->meta = $meta;
