@@ -307,6 +307,13 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('articleItemStatus', $data) && $data['articleItemStatus'] === null) {
             $object->setArticleItemStatus(null);
         }
+        if (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] !== null) {
+            $object->setMinAvailableStock($data['minAvailableStock']);
+            unset($data['minAvailableStock']);
+        }
+        elseif (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] === null) {
+            $object->setMinAvailableStock(null);
+        }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_3;
@@ -454,6 +461,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         }
         if ($data->isInitialized('articleItemStatus') && null !== $data->getArticleItemStatus()) {
             $dataArray['articleItemStatus'] = $data->getArticleItemStatus();
+        }
+        if ($data->isInitialized('minAvailableStock') && null !== $data->getMinAvailableStock()) {
+            $dataArray['minAvailableStock'] = $data->getMinAvailableStock();
         }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
