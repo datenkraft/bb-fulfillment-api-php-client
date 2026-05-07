@@ -14,16 +14,16 @@ class PatchProduct extends \ArrayObject
     }
     /**
      * Minimum available stock level. \
-     * Set to `null` to clear, or to a non-negative integer to set the level. \
-     * `0` is a valid value and is distinct from `null`.
+     * Set to "null" to clear, or to a non-negative integer to set the level. \
+     * "0" is a valid value and is distinct from "null".
      *
      * @var int|null
      */
     protected $minAvailableStock;
     /**
      * Minimum available stock level. \
-     * Set to `null` to clear, or to a non-negative integer to set the level. \
-     * `0` is a valid value and is distinct from `null`.
+     * Set to "null" to clear, or to a non-negative integer to set the level. \
+     * "0" is a valid value and is distinct from "null".
      *
      * @return int|null
      */
@@ -33,8 +33,8 @@ class PatchProduct extends \ArrayObject
     }
     /**
     * Minimum available stock level. \
-    Set to `null` to clear, or to a non-negative integer to set the level. \
-    `0` is a valid value and is distinct from `null`.
+    Set to "null" to clear, or to a non-negative integer to set the level. \
+    "0" is a valid value and is distinct from "null".
     *
     * @param int|null $minAvailableStock
     *
