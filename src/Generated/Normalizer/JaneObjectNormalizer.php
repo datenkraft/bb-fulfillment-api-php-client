@@ -108,6 +108,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ErrorResponseNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ExternalListing::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ExternalListingNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\GetAuthPermissionCollectionResponse::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\GetAuthPermissionCollectionResponseNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InboundDeliveryNormalizer::class,
@@ -367,6 +369,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorReferencesItem::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ExternalListing::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\GetAuthPermissionCollectionResponse::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryCollection::class => false,

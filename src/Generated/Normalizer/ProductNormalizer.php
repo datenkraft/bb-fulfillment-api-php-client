@@ -292,12 +292,23 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $object->setReservedFor($this->denormalizer->denormalize($data['reservedFor'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReservedFor::class, 'json', $context));
             unset($data['reservedFor']);
         }
-        if (\array_key_exists('productOptions', $data)) {
+        if (\array_key_exists('externalListings', $data) && $data['externalListings'] !== null) {
             $values_2 = [];
-            foreach ($data['productOptions'] as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data['externalListings'] as $value_2) {
+                $values_2[] = $this->denormalizer->denormalize($value_2, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ExternalListing::class, 'json', $context);
             }
-            $object->setProductOptions($values_2);
+            $object->setExternalListings($values_2);
+            unset($data['externalListings']);
+        }
+        elseif (\array_key_exists('externalListings', $data) && $data['externalListings'] === null) {
+            $object->setExternalListings(null);
+        }
+        if (\array_key_exists('productOptions', $data)) {
+            $values_3 = [];
+            foreach ($data['productOptions'] as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $object->setProductOptions($values_3);
             unset($data['productOptions']);
         }
         if (\array_key_exists('articleItemStatus', $data) && $data['articleItemStatus'] !== null) {
@@ -314,9 +325,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         elseif (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] === null) {
             $object->setMinAvailableStock(null);
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_3;
+                $object[$key] = $value_4;
             }
         }
         return $object;
@@ -452,12 +463,19 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('reservedFor') && null !== $data->getReservedFor()) {
             $dataArray['reservedFor'] = $this->normalizer->normalize($data->getReservedFor(), 'json', $context);
         }
-        if ($data->isInitialized('productOptions') && null !== $data->getProductOptions()) {
+        if ($data->isInitialized('externalListings')) {
             $values_2 = [];
-            foreach ($data->getProductOptions() as $value_2) {
-                $values_2[] = $value_2;
+            foreach ($data->getExternalListings() as $value_2) {
+                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
             }
-            $dataArray['productOptions'] = $values_2;
+            $dataArray['externalListings'] = $values_2;
+        }
+        if ($data->isInitialized('productOptions') && null !== $data->getProductOptions()) {
+            $values_3 = [];
+            foreach ($data->getProductOptions() as $value_3) {
+                $values_3[] = $value_3;
+            }
+            $dataArray['productOptions'] = $values_3;
         }
         if ($data->isInitialized('articleItemStatus')) {
             $dataArray['articleItemStatus'] = $data->getArticleItemStatus();
@@ -465,9 +483,9 @@ class ProductNormalizer implements DenormalizerInterface, NormalizerInterface, D
         if ($data->isInitialized('minAvailableStock')) {
             $dataArray['minAvailableStock'] = $data->getMinAvailableStock();
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data as $key => $value_4) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_3;
+                $dataArray[$key] = $value_4;
             }
         }
         return $dataArray;

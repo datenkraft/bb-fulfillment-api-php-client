@@ -277,6 +277,12 @@ class Product extends \ArrayObject
      */
     protected $reservedFor;
     /**
+     * List of external shops where this product is listed.
+     *
+     * @var list<ExternalListing>|null
+     */
+    protected $externalListings;
+    /**
      * Options for the product
      * - no_external_sales: Product is not available for external sales
      * - no_airmail_shipping: Product is not available for airmail shipping
@@ -1235,6 +1241,28 @@ class Product extends \ArrayObject
     {
         $this->initialized['reservedFor'] = true;
         $this->reservedFor = $reservedFor;
+        return $this;
+    }
+    /**
+     * List of external shops where this product is listed.
+     *
+     * @return list<ExternalListing>|null
+     */
+    public function getExternalListings(): ?array
+    {
+        return $this->externalListings;
+    }
+    /**
+     * List of external shops where this product is listed.
+     *
+     * @param list<ExternalListing>|null $externalListings
+     *
+     * @return self
+     */
+    public function setExternalListings(?array $externalListings): self
+    {
+        $this->initialized['externalListings'] = true;
+        $this->externalListings = $externalListings;
         return $this;
     }
     /**
