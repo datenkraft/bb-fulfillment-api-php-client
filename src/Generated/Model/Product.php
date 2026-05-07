@@ -315,9 +315,9 @@ class Product extends \ArrayObject
     protected $articleItemStatus;
     /**
     * Minimum available stock level. \
-    `null` means no value is configured. `0` is a valid value and is distinct from `null`:
-    - `null`: not configured (cleared)
-    - `0`: configured at zero units
+    "null" means no value is configured. "0" is a valid value and is distinct from "null":
+    - "null": not configured (cleared)
+    - "0": configured at zero units
     - positive integer: configured at the given level
     *
     * @var int|null
@@ -1357,9 +1357,9 @@ class Product extends \ArrayObject
     }
     /**
     * Minimum available stock level. \
-    `null` means no value is configured. `0` is a valid value and is distinct from `null`:
-    - `null`: not configured (cleared)
-    - `0`: configured at zero units
+    "null" means no value is configured. "0" is a valid value and is distinct from "null":
+    - "null": not configured (cleared)
+    - "0": configured at zero units
     - positive integer: configured at the given level
     *
     * @return int|null
@@ -1370,9 +1370,9 @@ class Product extends \ArrayObject
     }
     /**
     * Minimum available stock level. \
-    `null` means no value is configured. `0` is a valid value and is distinct from `null`:
-    - `null`: not configured (cleared)
-    - `0`: configured at zero units
+    "null" means no value is configured. "0" is a valid value and is distinct from "null":
+    - "null": not configured (cleared)
+    - "0": configured at zero units
     - positive integer: configured at the given level
     *
     * @param int|null $minAvailableStock
