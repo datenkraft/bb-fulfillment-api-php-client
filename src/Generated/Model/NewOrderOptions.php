@@ -13,6 +13,14 @@ class NewOrderOptions extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
+     * Whether a delivery slip (Lieferschein) is printed and included with the shipment of this order.
+     * If not provided, the shop `meta.printOrderDocument` value is used; if that is also unset, the default of
+     * `true` applies. Always `true` for deliveries into customs-required countries.
+     *
+     * @var bool|null
+     */
+    protected $printOrderDocument = true;
+    /**
      * By setting this option, the order will be processed into the defined state.\
      * This option is NOT available in the production systems.\
      * The autoprocessing of the state happens after the order has been successfully created.
@@ -31,6 +39,32 @@ class NewOrderOptions extends \ArrayObject
      * @var string
      */
     protected $autoProcessState;
+    /**
+     * Whether a delivery slip (Lieferschein) is printed and included with the shipment of this order.
+     * If not provided, the shop `meta.printOrderDocument` value is used; if that is also unset, the default of
+     * `true` applies. Always `true` for deliveries into customs-required countries.
+     *
+     * @return bool|null
+     */
+    public function getPrintOrderDocument(): ?bool
+    {
+        return $this->printOrderDocument;
+    }
+    /**
+    * Whether a delivery slip (Lieferschein) is printed and included with the shipment of this order.
+    If not provided, the shop `meta.printOrderDocument` value is used; if that is also unset, the default of
+    `true` applies. Always `true` for deliveries into customs-required countries.
+    *
+    * @param bool|null $printOrderDocument
+    *
+    * @return self
+    */
+    public function setPrintOrderDocument(?bool $printOrderDocument): self
+    {
+        $this->initialized['printOrderDocument'] = true;
+        $this->printOrderDocument = $printOrderDocument;
+        return $this;
+    }
     /**
      * By setting this option, the order will be processed into the defined state.\
      * This option is NOT available in the production systems.\

@@ -76,6 +76,15 @@ class UpdateShopMeta extends \ArrayObject
      */
     protected $deliverySlipNotes;
     /**
+     * Default for `options.printOrderDocument` of orders of this shop, controlling whether a
+     * delivery slip (Lieferschein) is printed and included with the shipment. When unset, the
+     * default of `true` applies. Always `true` for orders into customs-required
+     * countries.
+     *
+     * @var bool|null
+     */
+    protected $printOrderDocument = true;
+    /**
      * Domain of the Shopify shop.
      *
      * @return string|null
@@ -299,6 +308,34 @@ class UpdateShopMeta extends \ArrayObject
     {
         $this->initialized['deliverySlipNotes'] = true;
         $this->deliverySlipNotes = $deliverySlipNotes;
+        return $this;
+    }
+    /**
+     * Default for `options.printOrderDocument` of orders of this shop, controlling whether a
+     * delivery slip (Lieferschein) is printed and included with the shipment. When unset, the
+     * default of `true` applies. Always `true` for orders into customs-required
+     * countries.
+     *
+     * @return bool|null
+     */
+    public function getPrintOrderDocument(): ?bool
+    {
+        return $this->printOrderDocument;
+    }
+    /**
+    * Default for `options.printOrderDocument` of orders of this shop, controlling whether a
+    delivery slip (Lieferschein) is printed and included with the shipment. When unset, the
+    default of `true` applies. Always `true` for orders into customs-required
+    countries.
+    *
+    * @param bool|null $printOrderDocument
+    *
+    * @return self
+    */
+    public function setPrintOrderDocument(?bool $printOrderDocument): self
+    {
+        $this->initialized['printOrderDocument'] = true;
+        $this->printOrderDocument = $printOrderDocument;
         return $this;
     }
 }
