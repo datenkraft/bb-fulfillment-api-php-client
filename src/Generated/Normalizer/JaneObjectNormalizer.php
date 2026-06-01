@@ -44,6 +44,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderItem::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseOrderItemNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderOptions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseOrderOptionsNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseProductNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDimensions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BaseProductDimensionsNormalizer::class,
@@ -337,6 +339,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomer::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderCustomerInvoiceAddress::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderItem::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderOptions::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProduct::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDimensions::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraft::class => false,
