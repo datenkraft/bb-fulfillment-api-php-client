@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class BaseOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,11 +19,11 @@ class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInte
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderOptions::class;
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderOptions::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderOptions::class;
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderOptions::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
@@ -33,7 +33,7 @@ class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInte
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderOptions();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderOptions();
         if (\array_key_exists('printOrderDocument', $data) && \is_int($data['printOrderDocument'])) {
             $data['printOrderDocument'] = (bool) $data['printOrderDocument'];
         }
@@ -46,10 +46,6 @@ class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInte
         }
         elseif (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] === null) {
             $object->setPrintOrderDocument(null);
-        }
-        if (\array_key_exists('autoProcessState', $data)) {
-            $object->setAutoProcessState($data['autoProcessState']);
-            unset($data['autoProcessState']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -64,9 +60,6 @@ class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('printOrderDocument') && null !== $data->getPrintOrderDocument()) {
             $dataArray['printOrderDocument'] = $data->getPrintOrderDocument();
         }
-        if ($data->isInitialized('autoProcessState') && null !== $data->getAutoProcessState()) {
-            $dataArray['autoProcessState'] = $data->getAutoProcessState();
-        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
@@ -76,6 +69,6 @@ class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInte
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderOptions::class => false];
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderOptions::class => false];
     }
 }

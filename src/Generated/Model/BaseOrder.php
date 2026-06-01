@@ -86,7 +86,7 @@ class BaseOrder extends \ArrayObject
     /**
      * Additional optional options for the order.
      *
-     * @var mixed|null
+     * @var BaseOrderOptions|null
      */
     protected $options;
     /**
@@ -344,20 +344,20 @@ class BaseOrder extends \ArrayObject
     /**
      * Additional optional options for the order.
      *
-     * @return mixed
+     * @return BaseOrderOptions|null
      */
-    public function getOptions()
+    public function getOptions(): ?BaseOrderOptions
     {
         return $this->options;
     }
     /**
      * Additional optional options for the order.
      *
-     * @param mixed $options
+     * @param BaseOrderOptions|null $options
      *
      * @return self
      */
-    public function setOptions($options): self
+    public function setOptions(?BaseOrderOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
