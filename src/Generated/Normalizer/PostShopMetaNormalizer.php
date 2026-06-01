@@ -52,6 +52,9 @@ class PostShopMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         if (\array_key_exists('overwriteCustomerEmailEnabled', $data) && \is_int($data['overwriteCustomerEmailEnabled'])) {
             $data['overwriteCustomerEmailEnabled'] = (bool) $data['overwriteCustomerEmailEnabled'];
         }
+        if (\array_key_exists('printOrderDocument', $data) && \is_int($data['printOrderDocument'])) {
+            $data['printOrderDocument'] = (bool) $data['printOrderDocument'];
+        }
         if (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] !== null) {
             $object->setShopifyShopDomain($data['shopifyShopDomain']);
             unset($data['shopifyShopDomain']);
@@ -122,6 +125,13 @@ class PostShopMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         elseif (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] === null) {
             $object->setDeliverySlipNotes(null);
         }
+        if (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] !== null) {
+            $object->setPrintOrderDocument($data['printOrderDocument']);
+            unset($data['printOrderDocument']);
+        }
+        elseif (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] === null) {
+            $object->setPrintOrderDocument(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -161,6 +171,9 @@ class PostShopMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if ($data->isInitialized('deliverySlipNotes')) {
             $dataArray['deliverySlipNotes'] = $data->getDeliverySlipNotes();
+        }
+        if ($data->isInitialized('printOrderDocument')) {
+            $dataArray['printOrderDocument'] = $data->getPrintOrderDocument();
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

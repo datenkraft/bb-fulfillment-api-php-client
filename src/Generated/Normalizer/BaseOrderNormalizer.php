@@ -117,7 +117,7 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
             $object->setDeliveryCosts(null);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $object->setOptions($data['options']);
+            $object->setOptions($this->denormalizer->denormalize($data['options'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseOrderOptions::class, 'json', $context));
             unset($data['options']);
         }
         elseif (\array_key_exists('options', $data) && $data['options'] === null) {
@@ -171,7 +171,7 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
             $dataArray['deliveryCosts'] = $values_1;
         }
         if ($data->isInitialized('options')) {
-            $dataArray['options'] = $data->getOptions();
+            $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
         }
         foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
