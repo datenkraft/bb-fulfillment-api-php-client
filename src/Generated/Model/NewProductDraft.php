@@ -108,6 +108,16 @@ class NewProductDraft extends \ArrayObject
      */
     protected $dimensions;
     /**
+     * Minimum available stock level. \
+     * "null" means no value is configured. "0" is a valid value and is distinct from "null":
+     * - "null": not configured (cleared)
+     * - "0": configured at zero units
+     * - positive integer: configured at the given level
+     *
+     * @var int|null
+     */
+    protected $minAvailableStock;
+    /**
      * Unit of the product contents.\
      * Must be one of the available values specified in the enum.
      *
@@ -442,6 +452,36 @@ class NewProductDraft extends \ArrayObject
     {
         $this->initialized['dimensions'] = true;
         $this->dimensions = $dimensions;
+        return $this;
+    }
+    /**
+     * Minimum available stock level. \
+     * "null" means no value is configured. "0" is a valid value and is distinct from "null":
+     * - "null": not configured (cleared)
+     * - "0": configured at zero units
+     * - positive integer: configured at the given level
+     *
+     * @return int|null
+     */
+    public function getMinAvailableStock(): ?int
+    {
+        return $this->minAvailableStock;
+    }
+    /**
+    * Minimum available stock level. \
+    "null" means no value is configured. "0" is a valid value and is distinct from "null":
+    - "null": not configured (cleared)
+    - "0": configured at zero units
+    - positive integer: configured at the given level
+    *
+    * @param int|null $minAvailableStock
+    *
+    * @return self
+    */
+    public function setMinAvailableStock(?int $minAvailableStock): self
+    {
+        $this->initialized['minAvailableStock'] = true;
+        $this->minAvailableStock = $minAvailableStock;
         return $this;
     }
     /**
