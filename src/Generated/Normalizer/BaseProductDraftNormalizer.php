@@ -102,6 +102,13 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
             $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraftDimensions::class, 'json', $context));
             unset($data['dimensions']);
         }
+        if (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] !== null) {
+            $object->setMinAvailableStock($data['minAvailableStock']);
+            unset($data['minAvailableStock']);
+        }
+        elseif (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] === null) {
+            $object->setMinAvailableStock(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -153,6 +160,9 @@ class BaseProductDraftNormalizer implements DenormalizerInterface, NormalizerInt
         }
         if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
             $dataArray['dimensions'] = $this->normalizer->normalize($data->getDimensions(), 'json', $context);
+        }
+        if ($data->isInitialized('minAvailableStock') && null !== $data->getMinAvailableStock()) {
+            $dataArray['minAvailableStock'] = $data->getMinAvailableStock();
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {

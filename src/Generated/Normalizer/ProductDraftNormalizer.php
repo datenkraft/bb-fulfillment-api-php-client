@@ -102,6 +102,13 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraftDimensions::class, 'json', $context));
             unset($data['dimensions']);
         }
+        if (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] !== null) {
+            $object->setMinAvailableStock($data['minAvailableStock']);
+            unset($data['minAvailableStock']);
+        }
+        elseif (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] === null) {
+            $object->setMinAvailableStock(null);
+        }
         if (\array_key_exists('shopCode', $data)) {
             $object->setShopCode($data['shopCode']);
             unset($data['shopCode']);
@@ -177,6 +184,9 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
         }
         if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
             $dataArray['dimensions'] = $this->normalizer->normalize($data->getDimensions(), 'json', $context);
+        }
+        if ($data->isInitialized('minAvailableStock') && null !== $data->getMinAvailableStock()) {
+            $dataArray['minAvailableStock'] = $data->getMinAvailableStock();
         }
         if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
             $dataArray['shopCode'] = $data->getShopCode();
