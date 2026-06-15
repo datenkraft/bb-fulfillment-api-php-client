@@ -276,18 +276,6 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\UpdateShopmetaNormalizer::class,
         
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportInboundDeliveryPostBodyNormalizer::class,
-        
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostResponse207Item::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportInboundDeliveryPostResponse207ItemNormalizer::class,
-        
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostBody::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportOrderPostBodyNormalizer::class,
-        
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostResponse207Item::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportOrderPostResponse207ItemNormalizer::class,
-        
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostBody::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportProductDraftPostBodyNormalizer::class,
-        
-        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\BulkImportProductDraftPostResponse207ItemNormalizer::class,
-        
         \Jane\Component\JsonSchemaRuntime\Reference::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\ReferenceNormalizer::class,
     ], $normalizersCache = [];
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
@@ -455,12 +443,6 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateDeliveryShipment::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostBody::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportInboundDeliveryPostResponse207Item::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostBody::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportOrderPostResponse207Item::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostBody::class => false,
-            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BulkImportProductDraftPostResponse207Item::class => false,
             \Jane\Component\JsonSchemaRuntime\Reference::class => false,
         ];
     }
