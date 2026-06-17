@@ -1122,6 +1122,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftForbiddenException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftNotFoundException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftConflictException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteProductDraftInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
