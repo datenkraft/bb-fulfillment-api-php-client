@@ -5208,7 +5208,7 @@
                         }
                     },
                     "422": {
-                        "description": "Unprocessable Entity\n\nError codes:\n- SUPPLIER_NOT_FOUND: Unknown supplierNumber.",
+                        "description": "Unprocessable Entity\n\nError codes:\n- SUPPLIER_NOT_FOUND: Unknown supplierNumber.\n- SHOP_NOT_ACTIVE: The shop is not active.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -5442,6 +5442,16 @@
                     },
                     "409": {
                         "description": "Conflict\n\nError codes:\n- PRODUCT_DRAFT_NOT_DELETABLE: The state of the product draft does not allow deleting.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/errorResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity\n\nError codes:\n- SHOP_NOT_FOUND: Shop not found.\n- SHOP_NOT_ACTIVE: The shop is not active.",
                         "content": {
                             "application/json": {
                                 "schema": {

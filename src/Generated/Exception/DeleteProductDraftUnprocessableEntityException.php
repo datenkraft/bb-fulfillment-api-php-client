@@ -2,7 +2,7 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
-class PostProductDraftUnprocessableEntityException extends UnprocessableEntityException
+class DeleteProductDraftUnprocessableEntityException extends UnprocessableEntityException
 {
     /**
      * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -17,7 +17,7 @@ class PostProductDraftUnprocessableEntityException extends UnprocessableEntityEx
         parent::__construct('Unprocessable Entity
 
 Error codes:
-- SUPPLIER_NOT_FOUND: Unknown supplierNumber.
+- SHOP_NOT_FOUND: Shop not found.
 - SHOP_NOT_ACTIVE: The shop is not active.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
