@@ -82,9 +82,12 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
             $object->setListPriceEUR($data['listPriceEUR']);
             unset($data['listPriceEUR']);
         }
-        if (\array_key_exists('taxCode', $data)) {
+        if (\array_key_exists('taxCode', $data) && $data['taxCode'] !== null) {
             $object->setTaxCode($data['taxCode']);
             unset($data['taxCode']);
+        }
+        elseif (\array_key_exists('taxCode', $data) && $data['taxCode'] === null) {
+            $object->setTaxCode(null);
         }
         if (\array_key_exists('supplierNumber', $data)) {
             $object->setSupplierNumber($data['supplierNumber']);
@@ -170,7 +173,7 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
         if ($data->isInitialized('listPriceEUR') && null !== $data->getListPriceEUR()) {
             $dataArray['listPriceEUR'] = $data->getListPriceEUR();
         }
-        if ($data->isInitialized('taxCode') && null !== $data->getTaxCode()) {
+        if ($data->isInitialized('taxCode')) {
             $dataArray['taxCode'] = $data->getTaxCode();
         }
         if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
