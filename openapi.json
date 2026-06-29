@@ -8925,17 +8925,10 @@
                         "format": "float"
                     },
                     "taxCode": {
-                        "description": "One of the available tax codes.\n- default: Default tax rate (in e.g. Austria 20 %)\n- reduced1: 1st reduced tax rate (in e.g. Austria 13 %)\n- reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)\n- none: not taxable (0%)",
+                        "description": "Deprecated and obsolete. Any value submitted on input is ignored and this field is always\nreturned as `null`.",
                         "type": "string",
-                        "default": "default",
-                        "enum": [
-                            "default",
-                            "reduced1",
-                            "reduced2",
-                            "reduced3",
-                            "none",
-                            null
-                        ]
+                        "nullable": true,
+                        "deprecated": true
                     },
                     "supplierNumber": {
                         "description": "Number of the supplier.\\\nValid suppliers can be queried with a GET /supplier call",
@@ -10100,7 +10093,6 @@
                     "weightGram",
                     "taricCode",
                     "supplierPurchasePriceEUR",
-                    "taxCode",
                     "supplierNumber",
                     "manufacturerNumber",
                     "brandNumber",
@@ -11043,7 +11035,6 @@
                     "weightGram",
                     "taricCode",
                     "supplierPurchasePriceEUR",
-                    "taxCode",
                     "supplierNumber",
                     "manufacturerNumber",
                     "brandNumber",
