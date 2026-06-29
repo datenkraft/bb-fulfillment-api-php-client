@@ -67,15 +67,14 @@ class BaseProductDraft extends \ArrayObject
      */
     protected $listPriceEUR;
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
+    * Deprecated and obsolete. Any value submitted on input is ignored and this field is always
+    returned as `null`.
     *
-    * @var string
+    * @deprecated
+    *
+    * @var string|null
     */
-    protected $taxCode = 'default';
+    protected $taxCode;
     /**
     * Number of the supplier.\
     Valid suppliers can be queried with a GET /supplier call
@@ -312,30 +311,28 @@ class BaseProductDraft extends \ArrayObject
         return $this;
     }
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
+    * Deprecated and obsolete. Any value submitted on input is ignored and this field is always
+    returned as `null`.
     *
-    * @return string
+    * @deprecated
+    *
+    * @return string|null
     */
-    public function getTaxCode(): string
+    public function getTaxCode(): ?string
     {
         return $this->taxCode;
     }
     /**
-    * One of the available tax codes.
-    - default: Default tax rate (in e.g. Austria 20 %)
-    - reduced1: 1st reduced tax rate (in e.g. Austria 13 %)
-    - reduced2: 2nd reduced tax rate (in e.g. Austria 10 %)
-    - none: not taxable (0%)
+    * Deprecated and obsolete. Any value submitted on input is ignored and this field is always
+    returned as `null`.
     *
-    * @param string $taxCode
+    * @param string|null $taxCode
+    *
+    * @deprecated
     *
     * @return self
     */
-    public function setTaxCode(string $taxCode): self
+    public function setTaxCode(?string $taxCode): self
     {
         $this->initialized['taxCode'] = true;
         $this->taxCode = $taxCode;
