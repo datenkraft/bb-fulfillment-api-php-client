@@ -1313,7 +1313,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     *    "filter[reason]"?: string, //Filter journal entries for one or more reasons
     - expired: Taking an expired product off the books
     - damaged: Taking a damaged product off the books
-    - own_withdrawl: Product taken for own use
+    - own_withdrawal: Product taken for own use
     - correction: Manual correction
     - niceshops_order: Product sold via a shop from niceshops
     - inbound: Restocking the product
