@@ -19,12 +19,6 @@ class BaseShop extends \ArrayObject
      */
     protected $email;
     /**
-     * Is the shop active?
-     *
-     * @var bool
-     */
-    protected $active;
-    /**
      * The email used internally.
      *
      * @return string
@@ -44,28 +38,6 @@ class BaseShop extends \ArrayObject
     {
         $this->initialized['email'] = true;
         $this->email = $email;
-        return $this;
-    }
-    /**
-     * Is the shop active?
-     *
-     * @return bool
-     */
-    public function getActive(): bool
-    {
-        return $this->active;
-    }
-    /**
-     * Is the shop active?
-     *
-     * @param bool $active
-     *
-     * @return self
-     */
-    public function setActive(bool $active): self
-    {
-        $this->initialized['active'] = true;
-        $this->active = $active;
         return $this;
     }
 }
