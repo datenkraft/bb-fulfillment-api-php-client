@@ -37,6 +37,12 @@ class Shop extends \ArrayObject
      */
     protected $projectId;
     /**
+     * Is the shop active? Read-only, controlled by the DISCO.
+     *
+     * @var bool
+     */
+    protected $active;
+    /**
      * Meta data of the shop.
      *
      * @var Shopmeta|null
@@ -48,12 +54,6 @@ class Shop extends \ArrayObject
      * @var string
      */
     protected $email;
-    /**
-     * Is the shop active?
-     *
-     * @var bool
-     */
-    protected $active;
     /**
      * Id
      *
@@ -143,6 +143,28 @@ class Shop extends \ArrayObject
         return $this;
     }
     /**
+     * Is the shop active? Read-only, controlled by the DISCO.
+     *
+     * @return bool
+     */
+    public function getActive(): bool
+    {
+        return $this->active;
+    }
+    /**
+     * Is the shop active? Read-only, controlled by the DISCO.
+     *
+     * @param bool $active
+     *
+     * @return self
+     */
+    public function setActive(bool $active): self
+    {
+        $this->initialized['active'] = true;
+        $this->active = $active;
+        return $this;
+    }
+    /**
      * Meta data of the shop.
      *
      * @return Shopmeta|null
@@ -184,28 +206,6 @@ class Shop extends \ArrayObject
     {
         $this->initialized['email'] = true;
         $this->email = $email;
-        return $this;
-    }
-    /**
-     * Is the shop active?
-     *
-     * @return bool
-     */
-    public function getActive(): bool
-    {
-        return $this->active;
-    }
-    /**
-     * Is the shop active?
-     *
-     * @param bool $active
-     *
-     * @return self
-     */
-    public function setActive(bool $active): self
-    {
-        $this->initialized['active'] = true;
-        $this->active = $active;
         return $this;
     }
 }

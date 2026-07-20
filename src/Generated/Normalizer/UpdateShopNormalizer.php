@@ -34,19 +34,12 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShop();
-        if (\array_key_exists('active', $data) && \is_int($data['active'])) {
-            $data['active'] = (bool) $data['active'];
-        }
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
             unset($data['email']);
-        }
-        if (\array_key_exists('active', $data)) {
-            $object->setActive($data['active']);
-            unset($data['active']);
         }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\UpdateShopmeta::class, 'json', $context));
@@ -67,9 +60,6 @@ class UpdateShopNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray = [];
         if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
-        }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
-            $dataArray['active'] = $data->getActive();
         }
         if ($data->isInitialized('meta') && null !== $data->getMeta()) {
             $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);

@@ -56,6 +56,10 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $object->setProjectId($data['projectId']);
             unset($data['projectId']);
         }
+        if (\array_key_exists('active', $data)) {
+            $object->setActive($data['active']);
+            unset($data['active']);
+        }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
             $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta::class, 'json', $context));
             unset($data['meta']);
@@ -66,10 +70,6 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if (\array_key_exists('email', $data)) {
             $object->setEmail($data['email']);
             unset($data['email']);
-        }
-        if (\array_key_exists('active', $data)) {
-            $object->setActive($data['active']);
-            unset($data['active']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -93,14 +93,14 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
         if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
             $dataArray['projectId'] = $data->getProjectId();
         }
+        if ($data->isInitialized('active') && null !== $data->getActive()) {
+            $dataArray['active'] = $data->getActive();
+        }
         if ($data->isInitialized('meta') && null !== $data->getMeta()) {
             $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
         }
         if ($data->isInitialized('email') && null !== $data->getEmail()) {
             $dataArray['email'] = $data->getEmail();
-        }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
-            $dataArray['active'] = $data->getActive();
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
