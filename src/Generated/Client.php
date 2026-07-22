@@ -1258,6 +1258,48 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductCollection($queryParameters), $fetch);
     }
     /**
+    * Read a journal collection showing the history of stock changes across all products of a shop.
+    Delivers the same data as GET /product/{productNumber}/journal, without being bound to a single product.
+    _Using the date filters is recommended for shops with many products._
+    *
+    * @param array $queryParameters {
+    *     @var int $page The page to read. Default is the first page.
+    *     @var int $pageSize The maximum size per page is 100. Default is 100.
+    *     @var string $paginationMode The paginationMode to use:\
+    - default: The total number of items in the collection will not be calculated.\
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *     @var string $shopCode The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *     @var string $filter[dateFrom] The start date (inclusive) in format Y-m-d (timezone CET/CEST) for which product journal entries should be returned.
+    *     @var string $filter[dateTo] The end date (inclusive) in format Y-m-d (timezone CET/CEST) for which product journal entries should be returned.
+    *     @var string $filter[reason] Filter journal entries for one or more reasons
+    - expired: Taking an expired product off the books
+    - damaged: Taking a damaged product off the books
+    - own_withdrawal: Product taken for own use
+    - correction: Manual correction
+    - niceshops_order: Product sold via a shop from niceshops
+    - inbound: Restocking the product
+    - fulfillment: steve fulfilled an order
+    - return: A customer sent the product back to our warehouse
+    *     @var string $filter[productNumber] Filter for product number(s) (optional).
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopProductJournalCollectionBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopProductJournalCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopProductJournalCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopProductJournalCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetShopProductJournalCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function getShopProductJournalCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetShopProductJournalCollection($queryParameters), $fetch);
+    }
+    /**
     * Get a product by product number.
     *
     * @param string $productNumber The product number as defined during the creation of the product.
