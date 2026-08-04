@@ -31,6 +31,12 @@ class DeliveryShipmentPackaging extends \ArrayObject
      */
     protected $depth;
     /**
+     * All packaging materials used for the shipment
+     *
+     * @var list<DeliveryShipmentPackagingMaterial>
+     */
+    protected $materials;
+    /**
      * Height in cm
      *
      * @return float
@@ -94,6 +100,28 @@ class DeliveryShipmentPackaging extends \ArrayObject
     {
         $this->initialized['depth'] = true;
         $this->depth = $depth;
+        return $this;
+    }
+    /**
+     * All packaging materials used for the shipment
+     *
+     * @return list<DeliveryShipmentPackagingMaterial>
+     */
+    public function getMaterials(): array
+    {
+        return $this->materials;
+    }
+    /**
+     * All packaging materials used for the shipment
+     *
+     * @param list<DeliveryShipmentPackagingMaterial> $materials
+     *
+     * @return self
+     */
+    public function setMaterials(array $materials): self
+    {
+        $this->initialized['materials'] = true;
+        $this->materials = $materials;
         return $this;
     }
 }

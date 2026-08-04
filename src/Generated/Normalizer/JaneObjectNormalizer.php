@@ -100,6 +100,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentJournal::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryShipmentJournalNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackagingMaterial::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DeliveryShipmentPackagingMaterialNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DiscoShopNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShopCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\DiscoShopCollectionNormalizer::class,
@@ -181,6 +183,10 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPrice::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderPriceNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderShipping::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderShippingNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Packaging::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PackagingNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PackagingCollectionNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchInboundDeliveryNormalizer::class,
         
@@ -355,6 +361,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentJournal::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackagingMaterial::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShop::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DiscoShopCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Error::class => false,
@@ -396,6 +403,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPayment::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderPrice::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderShipping::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Packaging::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDeliveryProduct::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchProduct::class => false,
