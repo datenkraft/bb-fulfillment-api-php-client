@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
+class PackagingCollectionNormalizer implements DenormalizerInterface, NormalizerInterface, DenormalizerAwareInterface, NormalizerAwareInterface
 {
     use DenormalizerAwareTrait;
     use NormalizerAwareTrait;
@@ -19,15 +19,15 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
     use ValidatorTrait;
     public function supportsDenormalization(mixed $data, string $type, ?string $format = null, array $context = []): bool
     {
-        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class;
+        return $type === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection::class;
     }
     public function supportsNormalization(mixed $data, ?string $format = null, array $context = []): bool
     {
-        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class;
+        return is_object($data) && get_class($data) === \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection::class;
     }
     public function denormalize(mixed $data, string $type, ?string $format = null, array $context = []): mixed
     {
-        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging();
+        $object = new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection();
         if (null === $data || false === \is_array($data)) {
             return $object;
         }
@@ -37,34 +37,17 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
         if (isset($data['$recursiveRef'])) {
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
-        if (\array_key_exists('height', $data) && \is_int($data['height'])) {
-            $data['height'] = (double) $data['height'];
+        if (\array_key_exists('pagination', $data)) {
+            $object->setPagination($this->denormalizer->denormalize($data['pagination'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CollectionPagination::class, 'json', $context));
+            unset($data['pagination']);
         }
-        if (\array_key_exists('width', $data) && \is_int($data['width'])) {
-            $data['width'] = (double) $data['width'];
-        }
-        if (\array_key_exists('depth', $data) && \is_int($data['depth'])) {
-            $data['depth'] = (double) $data['depth'];
-        }
-        if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
-            unset($data['height']);
-        }
-        if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
-            unset($data['width']);
-        }
-        if (\array_key_exists('depth', $data)) {
-            $object->setDepth($data['depth']);
-            unset($data['depth']);
-        }
-        if (\array_key_exists('materials', $data)) {
+        if (\array_key_exists('data', $data)) {
             $values = [];
-            foreach ($data['materials'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackagingMaterial::class, 'json', $context);
+            foreach ($data['data'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Packaging::class, 'json', $context);
             }
-            $object->setMaterials($values);
-            unset($data['materials']);
+            $object->setData($values);
+            unset($data['data']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -76,21 +59,15 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if ($data->isInitialized('pagination') && null !== $data->getPagination()) {
+            $dataArray['pagination'] = $this->normalizer->normalize($data->getPagination(), 'json', $context);
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
-        }
-        if ($data->isInitialized('depth') && null !== $data->getDepth()) {
-            $dataArray['depth'] = $data->getDepth();
-        }
-        if ($data->isInitialized('materials') && null !== $data->getMaterials()) {
+        if ($data->isInitialized('data') && null !== $data->getData()) {
             $values = [];
-            foreach ($data->getMaterials() as $value) {
+            foreach ($data->getData() as $value) {
                 $values[] = $this->normalizer->normalize($value, 'json', $context);
             }
-            $dataArray['materials'] = $values;
+            $dataArray['data'] = $values;
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -101,6 +78,6 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
     }
     public function getSupportedTypes(?string $format = null): array
     {
-        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class => false];
+        return [\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection::class => false];
     }
 }

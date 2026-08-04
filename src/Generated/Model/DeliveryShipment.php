@@ -73,7 +73,7 @@ class DeliveryShipment extends \ArrayObject
      */
     protected $journal;
     /**
-     * Packaging dimensions
+     * Packaging dimensions and materials
      *
      * @var DeliveryShipmentPackaging
      */
@@ -299,7 +299,7 @@ class DeliveryShipment extends \ArrayObject
         return $this;
     }
     /**
-     * Packaging dimensions
+     * Packaging dimensions and materials
      *
      * @return DeliveryShipmentPackaging
      */
@@ -308,7 +308,7 @@ class DeliveryShipment extends \ArrayObject
         return $this->packaging;
     }
     /**
-     * Packaging dimensions
+     * Packaging dimensions and materials
      *
      * @param DeliveryShipmentPackaging $packaging
      *

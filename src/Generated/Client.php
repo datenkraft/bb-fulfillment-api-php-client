@@ -1038,6 +1038,36 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\RedactOrder($orderNumber, $queryParameters), $fetch);
     }
     /**
+    * Get all packaging materials available for a shop code.
+    * Packaging materials assigned to another company are omitted.
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:
+    - default: The total number of items in the collection will not be calculated.
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *    "filter[shopCode]"?: string, //The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *    "filter[packagingCode]"?: string, //Filter for an exact packagingCode.
+    * } $queryParameters
+    
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetPackagingCollectionBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetPackagingCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetPackagingCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetPackagingCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetPackagingCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
+    */
+    public function getPackagingCollection(array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetPackagingCollection($queryParameters), $fetch);
+    }
+    /**
     * Read a product draft collection. These are read in multiple pages with a defined page size.
     * @param array{
     *    "page"?: int, //The page to read. Default is the first page.
