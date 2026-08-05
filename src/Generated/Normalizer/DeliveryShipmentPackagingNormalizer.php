@@ -58,9 +58,17 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
             $object->setDepth($data['depth']);
             unset($data['depth']);
         }
-        foreach ($data as $key => $value) {
+        if (\array_key_exists('materials', $data)) {
+            $values = [];
+            foreach ($data['materials'] as $value) {
+                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackagingMaterial::class, 'json', $context);
+            }
+            $object->setMaterials($values);
+            unset($data['materials']);
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value;
+                $object[$key] = $value_1;
             }
         }
         return $object;
@@ -77,9 +85,16 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('depth') && null !== $data->getDepth()) {
             $dataArray['depth'] = $data->getDepth();
         }
-        foreach ($data as $key => $value) {
+        if ($data->isInitialized('materials') && null !== $data->getMaterials()) {
+            $values = [];
+            foreach ($data->getMaterials() as $value) {
+                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            }
+            $dataArray['materials'] = $values;
+        }
+        foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value;
+                $dataArray[$key] = $value_1;
             }
         }
         return $dataArray;
