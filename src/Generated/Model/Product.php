@@ -295,7 +295,7 @@ class Product extends \ArrayObject
     - no_external_sales: Product is not available for external sales
     - no_airmail_shipping: Product is not available for airmail shipping
     - serial_number_required: Serial number is required for the product
-    - shipped_in_original_packaging: Product is shipped in original packaging
+    - shipped_in_original_packaging: Single items ship in original packaging; multi-item or mixed orders use outer packaging
     - extra_shipping_only: Extra shipping is required for the product
     - dangerous_goods: Product is classified as dangerous goods
     - trace_code_required: Trace code is required for the product
@@ -1294,7 +1294,7 @@ class Product extends \ArrayObject
     - no_external_sales: Product is not available for external sales
     - no_airmail_shipping: Product is not available for airmail shipping
     - serial_number_required: Serial number is required for the product
-    - shipped_in_original_packaging: Product is shipped in original packaging
+    - shipped_in_original_packaging: Single items ship in original packaging; multi-item or mixed orders use outer packaging
     - extra_shipping_only: Extra shipping is required for the product
     - dangerous_goods: Product is classified as dangerous goods
     - trace_code_required: Trace code is required for the product
@@ -1314,7 +1314,7 @@ class Product extends \ArrayObject
     - no_external_sales: Product is not available for external sales
     - no_airmail_shipping: Product is not available for airmail shipping
     - serial_number_required: Serial number is required for the product
-    - shipped_in_original_packaging: Product is shipped in original packaging
+    - shipped_in_original_packaging: Single items ship in original packaging; multi-item or mixed orders use outer packaging
     - extra_shipping_only: Extra shipping is required for the product
     - dangerous_goods: Product is classified as dangerous goods
     - trace_code_required: Trace code is required for the product
