@@ -192,6 +192,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDeliveryProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchInboundDeliveryProductNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchOrder::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchOrderNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PatchProductNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\PostShopNormalizer::class,
@@ -407,6 +409,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PackagingCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDelivery::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchInboundDeliveryProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchOrder::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchProduct::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShop::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopMeta::class => false,
