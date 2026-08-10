@@ -84,6 +84,13 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
         elseif (\array_key_exists('orderNotes', $data) && $data['orderNotes'] === null) {
             $object->setOrderNotes(null);
         }
+        if (\array_key_exists('desiredShippingDate', $data) && $data['desiredShippingDate'] !== null) {
+            $object->setDesiredShippingDate(\DateTime::createFromFormat('Y-m-d', $data['desiredShippingDate'])->setTime(0, 0, 0));
+            unset($data['desiredShippingDate']);
+        }
+        elseif (\array_key_exists('desiredShippingDate', $data) && $data['desiredShippingDate'] === null) {
+            $object->setDesiredShippingDate(null);
+        }
         if (\array_key_exists('amazonSellerOrderId', $data) && $data['amazonSellerOrderId'] !== null) {
             $object->setAmazonSellerOrderId($data['amazonSellerOrderId']);
             unset($data['amazonSellerOrderId']);
@@ -153,6 +160,9 @@ class BaseOrderNormalizer implements DenormalizerInterface, NormalizerInterface,
         }
         if ($data->isInitialized('orderNotes') && null !== $data->getOrderNotes()) {
             $dataArray['orderNotes'] = $data->getOrderNotes();
+        }
+        if ($data->isInitialized('desiredShippingDate') && null !== $data->getDesiredShippingDate()) {
+            $dataArray['desiredShippingDate'] = $data->getDesiredShippingDate()->format('Y-m-d');
         }
         if ($data->isInitialized('amazonSellerOrderId') && null !== $data->getAmazonSellerOrderId()) {
             $dataArray['amazonSellerOrderId'] = $data->getAmazonSellerOrderId();
