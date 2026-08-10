@@ -54,6 +54,17 @@ class BaseOrder extends \ArrayObject
      */
     protected $orderNotes;
     /**
+     * The desired shipping date of the order. The order will not be shipped before this date.\
+     * Must not be in the past.\
+     * If not set, the order is shipped as soon as possible.\
+     * Stock is reserved immediately regardless of this date.\
+     * Can be updated via PATCH /order/{orderNumber} as long as the order is open.\
+     * Note: while the desired shipping date is in the future, the order is reported with status 'locked'.
+     *
+     * @var \DateTime|null
+     */
+    protected $desiredShippingDate;
+    /**
      * The Amazon seller order id used when the order is coming from the Amazon marketplace.
      *
      * @var string|null
@@ -235,6 +246,38 @@ class BaseOrder extends \ArrayObject
     {
         $this->initialized['orderNotes'] = true;
         $this->orderNotes = $orderNotes;
+        return $this;
+    }
+    /**
+     * The desired shipping date of the order. The order will not be shipped before this date.\
+     * Must not be in the past.\
+     * If not set, the order is shipped as soon as possible.\
+     * Stock is reserved immediately regardless of this date.\
+     * Can be updated via PATCH /order/{orderNumber} as long as the order is open.\
+     * Note: while the desired shipping date is in the future, the order is reported with status 'locked'.
+     *
+     * @return \DateTime|null
+     */
+    public function getDesiredShippingDate(): ?\DateTime
+    {
+        return $this->desiredShippingDate;
+    }
+    /**
+    * The desired shipping date of the order. The order will not be shipped before this date.\
+    Must not be in the past.\
+    If not set, the order is shipped as soon as possible.\
+    Stock is reserved immediately regardless of this date.\
+    Can be updated via PATCH /order/{orderNumber} as long as the order is open.\
+    Note: while the desired shipping date is in the future, the order is reported with status 'locked'.
+    *
+    * @param \DateTime|null $desiredShippingDate
+    *
+    * @return self
+    */
+    public function setDesiredShippingDate(?\DateTime $desiredShippingDate): self
+    {
+        $this->initialized['desiredShippingDate'] = true;
+        $this->desiredShippingDate = $desiredShippingDate;
         return $this;
     }
     /**

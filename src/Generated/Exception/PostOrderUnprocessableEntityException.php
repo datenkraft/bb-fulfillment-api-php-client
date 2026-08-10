@@ -27,6 +27,7 @@ Error codes:
 - ORDER_PHONE_REQUIRED_FOR_COUNTRY_MISSING: The phone number is required for the given country.
 - ORDER_INVOICE_ADDRESS_PROVINCE_CODE_NOT_DETECTED: The province code of the invoice address could not be detected.
 - ORDER_DELIVERY_ADDRESS_PROVINCE_CODE_NOT_DETECTED: The province code of the delivery address could not be detected.
+- ORDER_DESIRED_SHIPPING_DATE_IN_PAST: The given desiredShippingDate is in the past.
 - SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;

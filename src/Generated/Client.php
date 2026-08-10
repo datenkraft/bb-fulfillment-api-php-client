@@ -879,6 +879,34 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetOrder($orderNumber, $queryParameters), $fetch);
     }
     /**
+    * Patch the order specified by the given orderNumber. \
+    * Orders can be updated as long as they are open. \
+    * All fields in the request body are optional. Only provided fields will be updated.
+    * @param string $orderNumber The order number as defined during the creation of the order.
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchOrder $requestBody
+    * @param array{
+    *    "shopCode"?: string, //The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * } $queryParameters
+    
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchOrderBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchOrderUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchOrderForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchOrderNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchOrderConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchOrderUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PatchOrderInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
+    */
+    public function patchOrder(string $orderNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchOrder $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PatchOrder($orderNumber, $requestBody, $queryParameters), $fetch);
+    }
+    /**
     * Add a new order referenced by the given orderNumber.
     * @param string $orderNumber The number the order should be referred by. \
     This number is user defined, must be unique and has a maximum length (check maxLength field). \
