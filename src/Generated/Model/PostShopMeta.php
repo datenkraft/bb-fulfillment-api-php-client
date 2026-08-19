@@ -56,8 +56,7 @@ class PostShopMeta extends \ArrayObject
      */
     protected $defaultCurrency;
     /**
-     * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
-     * If false the shop email will be used as default.
+     * Flag to mark if it is allowed to set a customer's email in a third party app (e.g. Shopify).'
      *
      * @var bool|null
      */
@@ -241,8 +240,7 @@ class PostShopMeta extends \ArrayObject
         return $this;
     }
     /**
-     * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
-     * If false the shop email will be used as default.
+     * Flag to mark if it is allowed to set a customer's email in a third party app (e.g. Shopify).'
      *
      * @return bool|null
      */
@@ -251,13 +249,12 @@ class PostShopMeta extends \ArrayObject
         return $this->overwriteCustomerEmailEnabled;
     }
     /**
-    * Flag to mark if it is allowed to set a customer's email in a third party app or via the API.
-    If false the shop email will be used as default.
-    *
-    * @param bool|null $overwriteCustomerEmailEnabled
-    *
-    * @return self
-    */
+     * Flag to mark if it is allowed to set a customer's email in a third party app (e.g. Shopify).'
+     *
+     * @param bool|null $overwriteCustomerEmailEnabled
+     *
+     * @return self
+     */
     public function setOverwriteCustomerEmailEnabled(?bool $overwriteCustomerEmailEnabled): self
     {
         $this->initialized['overwriteCustomerEmailEnabled'] = true;
