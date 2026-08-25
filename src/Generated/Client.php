@@ -981,6 +981,30 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostOrderCancelOpenOrderItems($orderNumber, $queryParameters), $fetch);
     }
     /**
+    * Cancel all unavailable order items of the order specified by the given order number (set in param orderNumber).
+    * Unavailable order items are the order items that cannot be delivered.
+    * @param string $orderNumber The number the order is referred by.
+    * @param array{
+    *    "shopCode"?: string, //The shopCode used internally to distinguish between clients.\
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * } $queryParameters
+    
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelUnavailableOrderItemsUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelUnavailableOrderItemsForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelUnavailableOrderItemsNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelUnavailableOrderItemsUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostOrderCancelUnavailableOrderItemsInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
+    */
+    public function postOrderCancelUnavailableOrderItems(string $orderNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostOrderCancelUnavailableOrderItems($orderNumber, $queryParameters), $fetch);
+    }
+    /**
     * Trigger partial delivery for the order specified by the given order number (set in param orderNumber).
     * @param string $orderNumber The number the order is referred by.
     * @param array{
