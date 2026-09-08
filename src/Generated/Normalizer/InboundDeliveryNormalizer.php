@@ -108,9 +108,20 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
             $object->setCreateDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['createDate']));
             unset($data['createDate']);
         }
-        foreach ($data as $key => $value_1) {
+        if (\array_key_exists('trackingUrls', $data) && $data['trackingUrls'] !== null) {
+            $values_1 = [];
+            foreach ($data['trackingUrls'] as $value_1) {
+                $values_1[] = $this->denormalizer->denormalize($value_1, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryTrackingUrl::class, 'json', $context);
+            }
+            $object->setTrackingUrls($values_1);
+            unset($data['trackingUrls']);
+        }
+        elseif (\array_key_exists('trackingUrls', $data) && $data['trackingUrls'] === null) {
+            $object->setTrackingUrls(null);
+        }
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_1;
+                $object[$key] = $value_2;
             }
         }
         return $object;
@@ -157,9 +168,16 @@ class InboundDeliveryNormalizer implements DenormalizerInterface, NormalizerInte
         if ($data->isInitialized('createDate') && null !== $data->getCreateDate()) {
             $dataArray['createDate'] = $data->getCreateDate()->format('Y-m-d\TH:i:sP');
         }
-        foreach ($data as $key => $value_1) {
+        if ($data->isInitialized('trackingUrls')) {
+            $values_1 = [];
+            foreach ($data->getTrackingUrls() as $value_1) {
+                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            }
+            $dataArray['trackingUrls'] = $values_1;
+        }
+        foreach ($data as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_1;
+                $dataArray[$key] = $value_2;
             }
         }
         return $dataArray;
