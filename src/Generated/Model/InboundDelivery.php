@@ -103,6 +103,13 @@ class InboundDelivery extends \ArrayObject
      */
     protected $createDate;
     /**
+     * The tracking urls of the inbound delivery, managed via the tracking-url endpoints.\
+     * If the inbound delivery has no tracking urls, null is returned.
+     *
+     * @var list<InboundDeliveryTrackingUrl>|null
+     */
+    protected $trackingUrls;
+    /**
      * Optional free-text reference for inbound delivery.
      *
      * @return string|null
@@ -410,6 +417,30 @@ class InboundDelivery extends \ArrayObject
     {
         $this->initialized['createDate'] = true;
         $this->createDate = $createDate;
+        return $this;
+    }
+    /**
+     * The tracking urls of the inbound delivery, managed via the tracking-url endpoints.\
+     * If the inbound delivery has no tracking urls, null is returned.
+     *
+     * @return list<InboundDeliveryTrackingUrl>|null
+     */
+    public function getTrackingUrls(): ?array
+    {
+        return $this->trackingUrls;
+    }
+    /**
+    * The tracking urls of the inbound delivery, managed via the tracking-url endpoints.\
+    If the inbound delivery has no tracking urls, null is returned.
+    *
+    * @param list<InboundDeliveryTrackingUrl>|null $trackingUrls
+    *
+    * @return self
+    */
+    public function setTrackingUrls(?array $trackingUrls): self
+    {
+        $this->initialized['trackingUrls'] = true;
+        $this->trackingUrls = $trackingUrls;
         return $this;
     }
 }

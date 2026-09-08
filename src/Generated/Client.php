@@ -763,6 +763,65 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetInboundDeliveryDocument($inboundDeliveryNumber, $documentCode, $queryParameters, $accept), $fetch);
     }
     /**
+    * Add a tracking url to the inbound delivery specified by the given inbound delivery number. \
+    * An inbound delivery can have any number of tracking urls. \
+    * Tracking urls can be added as long as the inbound delivery is not completed.
+    *
+    * The tracking urls of an inbound delivery are returned in the `trackingUrls` field of the
+    * inbound delivery resource (`GET /inbound-delivery` and `GET /inbound-delivery/{inboundDeliveryNumber}`).
+    * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryTrackingUrl $requestBody
+    * @param array{
+    *    "shopCode"?: string, //The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * } $queryParameters
+    
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryTrackingUrlBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryTrackingUrlUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryTrackingUrlForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryTrackingUrlNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryTrackingUrlConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryTrackingUrlUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostInboundDeliveryTrackingUrlInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryTrackingUrl|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
+    */
+    public function postInboundDeliveryTrackingUrl(string $inboundDeliveryNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryTrackingUrl $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostInboundDeliveryTrackingUrl($inboundDeliveryNumber, $requestBody, $queryParameters), $fetch);
+    }
+    /**
+    * Delete the tracking url specified by the given trackingUrlId from the inbound delivery \
+    * specified by the given inbound delivery number. \
+    * Tracking urls can be deleted as long as the inbound delivery is not completed.
+    * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
+    * @param int $trackingUrlId The id of the tracking url as returned by the inbound delivery resource.
+    * @param array{
+    *    "shopCode"?: string, //The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * } $queryParameters
+    
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return ($fetch is 'object' ? null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
+    */
+    public function deleteInboundDeliveryTrackingUrl(string $inboundDeliveryNumber, int $trackingUrlId, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\DeleteInboundDeliveryTrackingUrl($inboundDeliveryNumber, $trackingUrlId, $queryParameters), $fetch);
+    }
+    /**
     * Get a list of manufacturers.
     * @param array{
     *    "page"?: int, //The page to read. Default is the first page.

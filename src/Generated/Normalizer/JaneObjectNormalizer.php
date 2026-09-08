@@ -122,6 +122,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InboundDeliveryProductNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryTrackingUrl::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InboundDeliveryTrackingUrlNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Information::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InformationNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InformationResponse::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\InformationResponseNormalizer::class,
@@ -135,6 +137,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewInboundDeliveryNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewInboundDeliveryProductNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryTrackingUrl::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewInboundDeliveryTrackingUrlNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewOrderNormalizer::class,
         
@@ -374,6 +378,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDelivery::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InboundDeliveryTrackingUrl::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Information::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\InformationResponse::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Manufacturer::class => false,
@@ -381,6 +386,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewAuthRoleResource::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDelivery::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryTrackingUrl::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrder::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomer::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewOrderCustomerInvoiceAddress::class => false,
