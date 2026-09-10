@@ -8,10 +8,13 @@ class PostInboundDeliveryTrackingUrl extends \Datenkraft\Backbone\Client\Fulfill
     /**
     * Add a tracking url to the inbound delivery specified by the given inbound delivery number. \
     An inbound delivery can have any number of tracking urls. \
-    Tracking urls can be added as long as the inbound delivery is not completed.
+    Tracking urls can be added while the inbound delivery is in status `open` or `in_progress`. \
+    Once it is `completed` or `deleted`, the request is answered with
+    409 `INBOUND_DELIVERY_NOT_EDITABLE`.
     
     The tracking urls of an inbound delivery are returned in the `trackingUrls` field of the
     inbound delivery resource (`GET /inbound-delivery` and `GET /inbound-delivery/{inboundDeliveryNumber}`).
+    They stay readable in any status.
     *
     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryTrackingUrl $requestBody 

@@ -775,10 +775,13 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Add a tracking url to the inbound delivery specified by the given inbound delivery number. \
     An inbound delivery can have any number of tracking urls. \
-    Tracking urls can be added as long as the inbound delivery is not completed.
+    Tracking urls can be added while the inbound delivery is in status `open` or `in_progress`. \
+    Once it is `completed` or `deleted`, the request is answered with
+    409 `INBOUND_DELIVERY_NOT_EDITABLE`.
     
     The tracking urls of an inbound delivery are returned in the `trackingUrls` field of the
     inbound delivery resource (`GET /inbound-delivery` and `GET /inbound-delivery/{inboundDeliveryNumber}`).
+    They stay readable in any status.
     *
     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryTrackingUrl $requestBody 
@@ -806,7 +809,9 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Delete the tracking url specified by the given trackingUrlId from the inbound delivery \
     specified by the given inbound delivery number. \
-    Tracking urls can be deleted as long as the inbound delivery is not completed.
+    Tracking urls can be deleted while the inbound delivery is in status `open` or `in_progress`. \
+    Once it is `completed` or `deleted`, the request is answered with
+    409 `INBOUND_DELIVERY_NOT_EDITABLE`; existing tracking urls stay readable in any status.
     *
     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
     * @param int $trackingUrlId The id of the tracking url as returned by the inbound delivery resource.
@@ -1530,6 +1535,36 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     public function getProductJournalCollection(string $productNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
     {
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductJournalCollection($productNumber, $queryParameters), $fetch);
+    }
+    /**
+    * Request a warehouse stock check for the product specified by the given product number. \
+    Depending on `type`, an inventory list (`inventory`) or a control list (`expiration_date`, `ean`)
+    is created for the warehouse staff. \
+    Once the list is completed, the result is sent to the steve service team, which forwards it to you. \
+    Only one open stock check per product and type is allowed at a time.
+    *
+    * @param string $productNumber The product number as defined during the creation of the product.
+    * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewStockCheck $requestBody 
+    * @param array $queryParameters {
+    *     @var string $shopCode The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    * }
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductStockCheckBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductStockCheckUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductStockCheckForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductStockCheckNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductStockCheckConflictException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductStockCheckUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\PostProductStockCheckInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheck|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse|\Psr\Http\Message\ResponseInterface
+    */
+    public function postProductStockCheck(string $productNumber, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewStockCheck $requestBody, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\PostProductStockCheck($productNumber, $requestBody, $queryParameters), $fetch);
     }
     /**
     * Get a list of product stock references.

@@ -9,7 +9,9 @@ class DeleteInboundDeliveryTrackingUrl extends \Datenkraft\Backbone\Client\Fulfi
     /**
     * Delete the tracking url specified by the given trackingUrlId from the inbound delivery \
     specified by the given inbound delivery number. \
-    Tracking urls can be deleted as long as the inbound delivery is not completed.
+    Tracking urls can be deleted while the inbound delivery is in status `open` or `in_progress`. \
+    Once it is `completed` or `deleted`, the request is answered with
+    409 `INBOUND_DELIVERY_NOT_EDITABLE`; existing tracking urls stay readable in any status.
     *
     * @param string $inboundDeliveryNumber The inbound delivery number as defined during the creation of the inbound delivery.
     * @param int $trackingUrlId The id of the tracking url as returned by the inbound delivery resource.
