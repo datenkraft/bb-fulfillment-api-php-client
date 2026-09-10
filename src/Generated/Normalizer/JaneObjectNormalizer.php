@@ -164,6 +164,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewReconsignmentAnnouncementOptionsNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewStockCheck::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\NewStockCheckNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\OrderCollectionNormalizer::class,
@@ -275,6 +277,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\ShopCollectionNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockNormalizer::class,
+        
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheck::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockCheckNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockCollectionNormalizer::class,
         
@@ -399,6 +403,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncement::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementLine::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewStockCheck::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Order::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomer::class => false,
@@ -455,6 +460,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Shopmeta::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheck::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Supplier::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\SupplierCollection::class => false,
