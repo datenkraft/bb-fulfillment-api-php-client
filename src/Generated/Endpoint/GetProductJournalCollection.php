@@ -27,6 +27,7 @@ class GetProductJournalCollection extends \Datenkraft\Backbone\Client\Fulfillmen
     - damaged: Taking a damaged product off the books
     - own_withdrawal: Product taken for own use
     - correction: Manual correction
+    - inventory: Correction resulting from a completed inventory (stocktaking)
     - niceshops_order: Product sold via a shop from niceshops
     - inbound: Restocking the product
     - fulfillment: steve fulfilled an order
