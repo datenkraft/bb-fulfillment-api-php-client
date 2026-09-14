@@ -10,7 +10,8 @@ class PostProductStockCheck extends \Datenkraft\Backbone\Client\FulfillmentApi\G
     Depending on `type`, an inventory list (`inventory`) or a control list (`expiration_date`, `ean`)
     is created for the warehouse staff. \
     Once the list is completed, the result is sent to the steve service team, which forwards it to you. \
-    Only one open stock check per product and type is allowed at a time.
+    Only one open stock check per product and type is allowed at a time. \
+    Stock checks can only be requested for products owned by the given shop (product `source` = `self`)
     *
     * @param string $productNumber The product number as defined during the creation of the product.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewStockCheck $requestBody 
