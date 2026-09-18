@@ -57,6 +57,17 @@ class StockCheckNormalizer implements DenormalizerInterface, NormalizerInterface
             $object->setStatus($data['status']);
             unset($data['status']);
         }
+        if (\array_key_exists('createdDate', $data)) {
+            $object->setCreatedDate(\DateTime::createFromFormat('Y-m-d', $data['createdDate'])->setTime(0, 0, 0));
+            unset($data['createdDate']);
+        }
+        if (\array_key_exists('completedAt', $data) && $data['completedAt'] !== null) {
+            $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completedAt']));
+            unset($data['completedAt']);
+        }
+        elseif (\array_key_exists('completedAt', $data) && $data['completedAt'] === null) {
+            $object->setCompletedAt(null);
+        }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value;
@@ -72,6 +83,8 @@ class StockCheckNormalizer implements DenormalizerInterface, NormalizerInterface
         $dataArray['shopCode'] = $data->getShopCode();
         $dataArray['type'] = $data->getType();
         $dataArray['status'] = $data->getStatus();
+        $dataArray['createdDate'] = $data->getCreatedDate()->format('Y-m-d');
+        $dataArray['completedAt'] = $data->getCompletedAt()?->format('Y-m-d\TH:i:sP');
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;

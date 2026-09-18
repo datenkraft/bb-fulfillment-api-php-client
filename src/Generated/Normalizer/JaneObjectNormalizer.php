@@ -280,6 +280,8 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheck::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockCheckNormalizer::class,
         
+        \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheckCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockCheckCollectionNormalizer::class,
+        
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCollection::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\StockCollectionNormalizer::class,
         
         \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Supplier::class => \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Normalizer\SupplierNormalizer::class,
@@ -461,6 +463,7 @@ class JaneObjectNormalizer implements DenormalizerInterface, NormalizerInterface
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Stock::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheck::class => false,
+            \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheckCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCollection::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Supplier::class => false,
             \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\SupplierCollection::class => false,

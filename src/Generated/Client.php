@@ -1526,6 +1526,48 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
         return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductJournalCollection($productNumber, $queryParameters), $fetch);
     }
     /**
+    * Read the warehouse stock checks requested via `POST /product/{productNumber}/stock-check` for the product
+    * specified by the given product number, newest first. \
+    * Open as well as finished and nullified stock checks are returned; use the filters to narrow the result. \
+    * Stock checks can only be read for products owned by the given shop (product `source` = `self`);
+    * products of other shops are not found.
+    * @param string $productNumber The product number as defined during the creation of the product.
+    * @param array{
+    *    "page"?: int, //The page to read. Default is the first page.
+    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+    *    "paginationMode"?: string, //The paginationMode to use:\
+    - default: The total number of items in the collection will not be calculated.\
+    - totalCount: The total number of items in the collection will be calculated.
+    This can mean loss of performance.
+    *    "shopCode"?: string, //The shopCode used internally to distinguish between clients. \
+    _This code is optional, if your identity is assigned to only one shop.
+    Otherwise the response would be a 422 HTTP Error._
+    *    "filter[status]"?: string, //Only return stock checks with one or more of the given statuses (comma separated):
+    - `open`: not yet processed by the warehouse
+    - `finished`: processed by the warehouse
+    - `nullified`: cancelled without processing
+    *    "filter[type]"?: string, //Only return stock checks of one or more of the given types (comma separated):
+    - `inventory`: count the stock of the product (inventory list)
+    - `expiration_date`: check the expiration dates of the stock (control list)
+    - `ean`: check the EAN codes of the stock (control list)
+    * } $queryParameters
+    
+    * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductStockCheckCollectionBadRequestException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductStockCheckCollectionUnauthorizedException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductStockCheckCollectionForbiddenException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductStockCheckCollectionNotFoundException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductStockCheckCollectionUnprocessableEntityException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetProductStockCheckCollectionInternalServerErrorException
+    * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+    *
+    * @return ($fetch is 'object' ? \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\StockCheckCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse : \Psr\Http\Message\ResponseInterface)
+    */
+    public function getProductStockCheckCollection(string $productNumber, array $queryParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint\GetProductStockCheckCollection($productNumber, $queryParameters), $fetch);
+    }
+    /**
     * Request a warehouse stock check for the product specified by the given product number. \
     * Depending on `type`, an inventory list (`inventory`) or a control list (`expiration_date`, `ean`)
     * is created for the warehouse staff. \
