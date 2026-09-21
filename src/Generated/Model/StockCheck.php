@@ -13,7 +13,7 @@ class StockCheck extends \ArrayObject
         return array_key_exists($property, $this->initialized);
     }
     /**
-     * Number of the warehouse list created for the stock check
+     * Number of the warehouse list created for the stock check. Only unique per `type`.
      *
      * @var string
      */
@@ -40,13 +40,28 @@ class StockCheck extends \ArrayObject
      */
     protected $type;
     /**
-     * Status of the stock check. A newly requested stock check is always `open`.
+     * Status of the stock check:
+     * - `open`: not yet processed by the warehouse (a newly requested stock check is always `open`)
+     * - `finished`: processed by the warehouse
+     * - `nullified`: cancelled without processing
      *
      * @var string
      */
     protected $status;
     /**
-     * Number of the warehouse list created for the stock check
+     * The date (Y-m-d) the stock check was requested.
+     *
+     * @var \DateTime
+     */
+    protected $createdDate;
+    /**
+     * The date and time the stock check was finished or nullified. Format in ISO 8601. Null while the stock check is open.
+     *
+     * @var \DateTime|null
+     */
+    protected $completedAt;
+    /**
+     * Number of the warehouse list created for the stock check. Only unique per `type`.
      *
      * @return string
      */
@@ -55,7 +70,7 @@ class StockCheck extends \ArrayObject
         return $this->stockCheckNumber;
     }
     /**
-     * Number of the warehouse list created for the stock check
+     * Number of the warehouse list created for the stock check. Only unique per `type`.
      *
      * @param string $stockCheckNumber
      *
@@ -140,7 +155,10 @@ class StockCheck extends \ArrayObject
         return $this;
     }
     /**
-     * Status of the stock check. A newly requested stock check is always `open`.
+     * Status of the stock check:
+     * - `open`: not yet processed by the warehouse (a newly requested stock check is always `open`)
+     * - `finished`: processed by the warehouse
+     * - `nullified`: cancelled without processing
      *
      * @return string
      */
@@ -149,16 +167,63 @@ class StockCheck extends \ArrayObject
         return $this->status;
     }
     /**
-     * Status of the stock check. A newly requested stock check is always `open`.
-     *
-     * @param string $status
-     *
-     * @return self
-     */
+    * Status of the stock check:
+    - `open`: not yet processed by the warehouse (a newly requested stock check is always `open`)
+    - `finished`: processed by the warehouse
+    - `nullified`: cancelled without processing
+    *
+    * @param string $status
+    *
+    * @return self
+    */
     public function setStatus(string $status): self
     {
         $this->initialized['status'] = true;
         $this->status = $status;
+        return $this;
+    }
+    /**
+     * The date (Y-m-d) the stock check was requested.
+     *
+     * @return \DateTime
+     */
+    public function getCreatedDate(): \DateTime
+    {
+        return $this->createdDate;
+    }
+    /**
+     * The date (Y-m-d) the stock check was requested.
+     *
+     * @param \DateTime $createdDate
+     *
+     * @return self
+     */
+    public function setCreatedDate(\DateTime $createdDate): self
+    {
+        $this->initialized['createdDate'] = true;
+        $this->createdDate = $createdDate;
+        return $this;
+    }
+    /**
+     * The date and time the stock check was finished or nullified. Format in ISO 8601. Null while the stock check is open.
+     *
+     * @return \DateTime|null
+     */
+    public function getCompletedAt(): ?\DateTime
+    {
+        return $this->completedAt;
+    }
+    /**
+     * The date and time the stock check was finished or nullified. Format in ISO 8601. Null while the stock check is open.
+     *
+     * @param \DateTime|null $completedAt
+     *
+     * @return self
+     */
+    public function setCompletedAt(?\DateTime $completedAt): self
+    {
+        $this->initialized['completedAt'] = true;
+        $this->completedAt = $completedAt;
         return $this;
     }
 }
