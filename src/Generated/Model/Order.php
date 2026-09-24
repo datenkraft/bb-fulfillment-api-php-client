@@ -185,6 +185,14 @@ class Order extends \ArrayObject
      */
     protected $orderItemsCancelable;
     /**
+    * Indicates whether the order can currently be updated via PATCH /order/{orderNumber}.
+    It is false as soon as the order is delivered, deleted, canceled or redacted,
+    and as soon as the order is being processed in the warehouse.
+    *
+    * @var bool
+    */
+    protected $editable;
+    /**
     * Indicates whether a partial delivery is pending or not.
     Note: If true, it means that a partial delivery has been requested but not yet processed.
     If false, it means that no partial delivery is currently pending.
@@ -774,6 +782,32 @@ class Order extends \ArrayObject
     {
         $this->initialized['orderItemsCancelable'] = true;
         $this->orderItemsCancelable = $orderItemsCancelable;
+        return $this;
+    }
+    /**
+    * Indicates whether the order can currently be updated via PATCH /order/{orderNumber}.
+    It is false as soon as the order is delivered, deleted, canceled or redacted,
+    and as soon as the order is being processed in the warehouse.
+    *
+    * @return bool
+    */
+    public function getEditable(): bool
+    {
+        return $this->editable;
+    }
+    /**
+    * Indicates whether the order can currently be updated via PATCH /order/{orderNumber}.
+    It is false as soon as the order is delivered, deleted, canceled or redacted,
+    and as soon as the order is being processed in the warehouse.
+    *
+    * @param bool $editable
+    *
+    * @return self
+    */
+    public function setEditable(bool $editable): self
+    {
+        $this->initialized['editable'] = true;
+        $this->editable = $editable;
         return $this;
     }
     /**

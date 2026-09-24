@@ -40,6 +40,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         if (\array_key_exists('orderItemsCancelable', $data) && \is_int($data['orderItemsCancelable'])) {
             $data['orderItemsCancelable'] = (bool) $data['orderItemsCancelable'];
         }
+        if (\array_key_exists('editable', $data) && \is_int($data['editable'])) {
+            $data['editable'] = (bool) $data['editable'];
+        }
         if (\array_key_exists('partialDeliveryPending', $data) && \is_int($data['partialDeliveryPending'])) {
             $data['partialDeliveryPending'] = (bool) $data['partialDeliveryPending'];
         }
@@ -196,6 +199,10 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             $object->setOrderItemsCancelable($data['orderItemsCancelable']);
             unset($data['orderItemsCancelable']);
         }
+        if (\array_key_exists('editable', $data)) {
+            $object->setEditable($data['editable']);
+            unset($data['editable']);
+        }
         if (\array_key_exists('partialDeliveryPending', $data)) {
             $object->setPartialDeliveryPending($data['partialDeliveryPending']);
             unset($data['partialDeliveryPending']);
@@ -293,6 +300,9 @@ class OrderNormalizer implements DenormalizerInterface, NormalizerInterface, Den
         }
         if ($data->isInitialized('orderItemsCancelable') && null !== $data->getOrderItemsCancelable()) {
             $dataArray['orderItemsCancelable'] = $data->getOrderItemsCancelable();
+        }
+        if ($data->isInitialized('editable') && null !== $data->getEditable()) {
+            $dataArray['editable'] = $data->getEditable();
         }
         if ($data->isInitialized('partialDeliveryPending') && null !== $data->getPartialDeliveryPending()) {
             $dataArray['partialDeliveryPending'] = $data->getPartialDeliveryPending();
