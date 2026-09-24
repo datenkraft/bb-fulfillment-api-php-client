@@ -17,7 +17,8 @@ class PatchOrderConflictException extends ConflictException
         parent::__construct('Conflict
 
 Error codes:
-- ORDER_NOT_EDITABLE: The order is not editable.');
+- ORDER_NOT_EDITABLE: The order is not editable.
+- ORDER_NOT_EDITABLE_WAREHOUSE_PROCESSING: The order is not editable because the warehouse has already started processing it.');
         $this->errorResponse = $errorResponse;
         $this->response = $response;
     }
