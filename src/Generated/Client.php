@@ -945,6 +945,7 @@ class Client extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtim
     /**
     * Patch the order specified by the given orderNumber. \
     * Orders can be updated as long as they are open. \
+    * Once the warehouse has started processing the order, it can no longer be updated. \
     * All fields in the request body are optional. Only provided fields will be updated.
     * @param string $orderNumber The order number as defined during the creation of the order.
     * @param \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PatchOrder $requestBody
