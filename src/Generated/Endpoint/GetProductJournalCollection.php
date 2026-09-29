@@ -27,6 +27,11 @@ class GetProductJournalCollection extends \Datenkraft\Backbone\Client\Fulfillmen
     - own_withdrawal: Product taken for own use
     - correction: Manual correction
     - inventory: Correction resulting from a completed inventory (stocktaking)
+    - inventory-stock_correction: Inventory, stock correction (e.g. not found, wrongly booked in)
+    - inventory-quality_expiry: Inventory, quality or expiry date issue
+    - inventory-transfer_billing: Inventory, transfer or billing (e.g. partner billing, bundle, B-grade)
+    - inventory-shipping_return: Inventory, shipping or return
+    - inventory-other: Inventory, other reason
     - niceshops_order: Product sold via a shop from niceshops
     - inbound: Restocking the product
     - fulfillment: steve fulfilled an order
