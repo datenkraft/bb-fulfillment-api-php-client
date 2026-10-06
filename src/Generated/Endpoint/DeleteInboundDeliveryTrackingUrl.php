@@ -62,6 +62,7 @@ class DeleteInboundDeliveryTrackingUrl extends \Datenkraft\Backbone\Client\Fulfi
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlConflictException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlInternalServerErrorException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlServiceUnavailableException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
      *
      * @return null|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
@@ -93,6 +94,9 @@ class DeleteInboundDeliveryTrackingUrl extends \Datenkraft\Backbone\Client\Fulfi
         }
         if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlInternalServerErrorException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
+        }
+        if (is_null($contentType) === false && (503 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+            throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\DeleteInboundDeliveryTrackingUrlServiceUnavailableException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
         }
         if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json');
