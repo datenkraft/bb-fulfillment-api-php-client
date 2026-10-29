@@ -89,12 +89,9 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
             $object->setInvoiceAddress($this->denormalizer->denormalize($data['invoiceAddress'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\OrderCustomerInvoiceAddress::class, 'json', $context));
             unset($data['invoiceAddress']);
         }
-        if (\array_key_exists('deliveryAddress', $data) && $data['deliveryAddress'] !== null) {
+        if (\array_key_exists('deliveryAddress', $data)) {
             $object->setDeliveryAddress($data['deliveryAddress']);
             unset($data['deliveryAddress']);
-        }
-        elseif (\array_key_exists('deliveryAddress', $data) && $data['deliveryAddress'] === null) {
-            $object->setDeliveryAddress(null);
         }
         if (\array_key_exists('number', $data) && $data['number'] !== null) {
             $object->setNumber($data['number']);
@@ -138,7 +135,7 @@ class OrderCustomerNormalizer implements DenormalizerInterface, NormalizerInterf
             $dataArray['companyVatNumber'] = $data->getCompanyVatNumber();
         }
         $dataArray['invoiceAddress'] = $this->normalizer->normalize($data->getInvoiceAddress(), 'json', $context);
-        if ($data->isInitialized('deliveryAddress')) {
+        if ($data->isInitialized('deliveryAddress') && null !== $data->getDeliveryAddress()) {
             $dataArray['deliveryAddress'] = $data->getDeliveryAddress();
         }
         if ($data->isInitialized('number')) {

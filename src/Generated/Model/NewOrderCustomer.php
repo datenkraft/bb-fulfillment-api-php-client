@@ -59,7 +59,7 @@ class NewOrderCustomer extends \ArrayObject
     /**
      * If not given the invoice address is used for delivery.
      *
-     * @var mixed|null
+     * @var mixed
      */
     protected $deliveryAddress;
     /**
