@@ -44,12 +44,9 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
             $object->setReconsignmentReason($data['reconsignmentReason']);
             unset($data['reconsignmentReason']);
         }
-        if (\array_key_exists('options', $data) && $data['options'] !== null) {
+        if (\array_key_exists('options', $data)) {
             $object->setOptions($this->denormalizer->denormalize($data['options'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncementOptions::class, 'json', $context));
             unset($data['options']);
-        }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
         }
         if (\array_key_exists('reconsignmentAnnouncementNumber', $data)) {
             $object->setReconsignmentAnnouncementNumber($data['reconsignmentAnnouncementNumber']);
