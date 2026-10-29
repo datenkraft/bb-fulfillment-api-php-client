@@ -21,7 +21,7 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
     /**
      * Additional options for a reconsignment announcement (optional).
      *
-     * @var BaseReconsignmentAnnouncementOptions|null
+     * @var BaseReconsignmentAnnouncementOptions
      */
     protected $options;
     /**
@@ -49,20 +49,20 @@ class BaseReconsignmentAnnouncement extends \ArrayObject
     /**
      * Additional options for a reconsignment announcement (optional).
      *
-     * @return BaseReconsignmentAnnouncementOptions|null
+     * @return BaseReconsignmentAnnouncementOptions
      */
-    public function getOptions(): ?BaseReconsignmentAnnouncementOptions
+    public function getOptions(): BaseReconsignmentAnnouncementOptions
     {
         return $this->options;
     }
     /**
      * Additional options for a reconsignment announcement (optional).
      *
-     * @param BaseReconsignmentAnnouncementOptions|null $options
+     * @param BaseReconsignmentAnnouncementOptions $options
      *
      * @return self
      */
-    public function setOptions(?BaseReconsignmentAnnouncementOptions $options): self
+    public function setOptions(BaseReconsignmentAnnouncementOptions $options): self
     {
         $this->initialized['options'] = true;
         $this->options = $options;
