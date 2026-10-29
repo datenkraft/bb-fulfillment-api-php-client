@@ -44,12 +44,9 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
             $object->setReconsignmentReason($data['reconsignmentReason']);
             unset($data['reconsignmentReason']);
         }
-        if (\array_key_exists('options', $data) && $data['options'] !== null) {
+        if (\array_key_exists('options', $data)) {
             $object->setOptions($this->denormalizer->denormalize($data['options'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncementOptions::class, 'json', $context));
             unset($data['options']);
-        }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
         }
         if (\array_key_exists('reconsignmentAnnouncementNumber', $data)) {
             $object->setReconsignmentAnnouncementNumber($data['reconsignmentAnnouncementNumber']);
@@ -115,7 +112,7 @@ class ReconsignmentAnnouncementNormalizer implements DenormalizerInterface, Norm
         if ($data->isInitialized('reconsignmentReason') && null !== $data->getReconsignmentReason()) {
             $dataArray['reconsignmentReason'] = $data->getReconsignmentReason();
         }
-        if ($data->isInitialized('options')) {
+        if ($data->isInitialized('options') && null !== $data->getOptions()) {
             $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
         }
         if ($data->isInitialized('reconsignmentAnnouncementNumber') && null !== $data->getReconsignmentAnnouncementNumber()) {
