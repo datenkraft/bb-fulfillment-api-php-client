@@ -38,30 +38,30 @@ class ReconsignmentLineBundledProductNormalizer implements DenormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productWeight', $data) && \is_int($data['productWeight'])) {
-            $data['productWeight'] = (double) $data['productWeight'];
+            $data['productWeight'] = (float) $data['productWeight'];
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('putBackToStockCount', $data)) {
-            $object->setPutBackToStockCount($data['putBackToStockCount']);
+            $object->putBackToStockCount = $data['putBackToStockCount'];
             unset($data['putBackToStockCount']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         if (\array_key_exists('unit', $data)) {
-            $object->setUnit($data['unit']);
+            $object->unit = $data['unit'];
             unset($data['unit']);
         }
         if (\array_key_exists('productWeight', $data)) {
-            $object->setProductWeight($data['productWeight']);
+            $object->productWeight = $data['productWeight'];
             unset($data['productWeight']);
         }
         if (\array_key_exists('productWeightUnit', $data)) {
-            $object->setProductWeightUnit($data['productWeightUnit']);
+            $object->productWeightUnit = $data['productWeightUnit'];
             unset($data['productWeightUnit']);
         }
         foreach ($data as $key => $value) {
@@ -74,25 +74,25 @@ class ReconsignmentLineBundledProductNormalizer implements DenormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
-            $dataArray['productNumber'] = $data->getProductNumber();
+        if (array_key_exists('productNumber', get_object_vars($data)) && null !== ($data->productNumber ?? null)) {
+            $dataArray['productNumber'] = $data->productNumber;
         }
-        if ($data->isInitialized('putBackToStockCount') && null !== $data->getPutBackToStockCount()) {
-            $dataArray['putBackToStockCount'] = $data->getPutBackToStockCount();
+        if (array_key_exists('putBackToStockCount', get_object_vars($data)) && null !== ($data->putBackToStockCount ?? null)) {
+            $dataArray['putBackToStockCount'] = $data->putBackToStockCount;
         }
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count;
         }
-        if ($data->isInitialized('unit') && null !== $data->getUnit()) {
-            $dataArray['unit'] = $data->getUnit();
+        if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
+            $dataArray['unit'] = $data->unit;
         }
-        if ($data->isInitialized('productWeight') && null !== $data->getProductWeight()) {
-            $dataArray['productWeight'] = $data->getProductWeight();
+        if (array_key_exists('productWeight', get_object_vars($data)) && null !== ($data->productWeight ?? null)) {
+            $dataArray['productWeight'] = $data->productWeight;
         }
-        if ($data->isInitialized('productWeightUnit') && null !== $data->getProductWeightUnit()) {
-            $dataArray['productWeightUnit'] = $data->getProductWeightUnit();
+        if (array_key_exists('productWeightUnit', get_object_vars($data)) && null !== ($data->productWeightUnit ?? null)) {
+            $dataArray['productWeightUnit'] = $data->productWeightUnit;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

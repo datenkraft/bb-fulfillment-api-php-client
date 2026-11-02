@@ -38,25 +38,25 @@ class OrderPriceNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('value', $data) && \is_int($data['value'])) {
-            $data['value'] = (double) $data['value'];
+            $data['value'] = (float) $data['value'];
         }
         if (\array_key_exists('vat', $data) && \is_int($data['vat'])) {
-            $data['vat'] = (double) $data['vat'];
+            $data['vat'] = (float) $data['vat'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('vat', $data)) {
-            $object->setVat($data['vat']);
+            $object->vat = $data['vat'];
             unset($data['vat']);
         }
         if (\array_key_exists('currencyCode', $data)) {
-            $object->setCurrencyCode($data['currencyCode']);
+            $object->currencyCode = $data['currencyCode'];
             unset($data['currencyCode']);
         }
         foreach ($data as $key => $value) {
@@ -69,11 +69,11 @@ class OrderPriceNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['value'] = $data->getValue();
-        $dataArray['type'] = $data->getType();
-        $dataArray['vat'] = $data->getVat();
-        $dataArray['currencyCode'] = $data->getCurrencyCode();
-        foreach ($data as $key => $value) {
+        $dataArray['value'] = $data->value;
+        $dataArray['type'] = $data->type;
+        $dataArray['vat'] = $data->vat;
+        $dataArray['currencyCode'] = $data->currencyCode;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

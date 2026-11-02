@@ -2,42 +2,19 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ProductUnit extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ProductUnit implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Code of the product unit
      *
      * @var string
      */
-    protected $code;
-    /**
-     * Code of the product unit
-     *
-     * @return string
-     */
-    public function getCode(): string
+    public string $code;
+    public function definedProperties(): array
     {
-        return $this->code;
-    }
-    /**
-     * Code of the product unit
-     *
-     * @param string $code
-     *
-     * @return self
-     */
-    public function setCode(string $code): self
-    {
-        $this->initialized['code'] = true;
-        $this->code = $code;
-        return $this;
+        return ['code' => 'code'];
     }
 }

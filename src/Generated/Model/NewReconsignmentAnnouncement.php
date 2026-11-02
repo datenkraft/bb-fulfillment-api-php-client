@@ -2,92 +2,29 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewReconsignmentAnnouncement extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class NewReconsignmentAnnouncement implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * The reason for reconsignment.
      *
      * @var string
      */
-    protected $reconsignmentReason;
+    public string $reconsignmentReason;
     /**
      * Additional options for a new reconsignment announcement (optional).
      *
      * @var NewReconsignmentAnnouncementOptions|null
      */
-    protected $options;
+    public ?NewReconsignmentAnnouncementOptions $options;
     /**
      * @var list<NewReconsignmentAnnouncementLine>
      */
-    protected $reconsignmentAnnouncementLines;
-    /**
-     * The reason for reconsignment.
-     *
-     * @return string
-     */
-    public function getReconsignmentReason(): string
+    public array $reconsignmentAnnouncementLines;
+    public function definedProperties(): array
     {
-        return $this->reconsignmentReason;
-    }
-    /**
-     * The reason for reconsignment.
-     *
-     * @param string $reconsignmentReason
-     *
-     * @return self
-     */
-    public function setReconsignmentReason(string $reconsignmentReason): self
-    {
-        $this->initialized['reconsignmentReason'] = true;
-        $this->reconsignmentReason = $reconsignmentReason;
-        return $this;
-    }
-    /**
-     * Additional options for a new reconsignment announcement (optional).
-     *
-     * @return NewReconsignmentAnnouncementOptions|null
-     */
-    public function getOptions(): ?NewReconsignmentAnnouncementOptions
-    {
-        return $this->options;
-    }
-    /**
-     * Additional options for a new reconsignment announcement (optional).
-     *
-     * @param NewReconsignmentAnnouncementOptions|null $options
-     *
-     * @return self
-     */
-    public function setOptions(?NewReconsignmentAnnouncementOptions $options): self
-    {
-        $this->initialized['options'] = true;
-        $this->options = $options;
-        return $this;
-    }
-    /**
-     * @return list<NewReconsignmentAnnouncementLine>
-     */
-    public function getReconsignmentAnnouncementLines(): array
-    {
-        return $this->reconsignmentAnnouncementLines;
-    }
-    /**
-     * @param list<NewReconsignmentAnnouncementLine> $reconsignmentAnnouncementLines
-     *
-     * @return self
-     */
-    public function setReconsignmentAnnouncementLines(array $reconsignmentAnnouncementLines): self
-    {
-        $this->initialized['reconsignmentAnnouncementLines'] = true;
-        $this->reconsignmentAnnouncementLines = $reconsignmentAnnouncementLines;
-        return $this;
+        return ['reconsignmentReason' => 'reconsignmentReason', 'options' => 'options', 'reconsignmentAnnouncementLines' => 'reconsignmentAnnouncementLines'];
     }
 }

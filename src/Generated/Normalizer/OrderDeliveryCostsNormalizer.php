@@ -38,33 +38,34 @@ class OrderDeliveryCostsNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('value', $data) && \is_int($data['value'])) {
-            $data['value'] = (double) $data['value'];
+            $data['value'] = (float) $data['value'];
         }
         if (\array_key_exists('vat', $data) && \is_int($data['vat'])) {
-            $data['vat'] = (double) $data['vat'];
+            $data['vat'] = (float) $data['vat'];
         }
         if (\array_key_exists('value', $data)) {
-            $object->setValue($data['value']);
+            $object->value = $data['value'];
             unset($data['value']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('vat', $data)) {
-            $object->setVat($data['vat']);
+            $object->vat = $data['vat'];
             unset($data['vat']);
         }
         if (\array_key_exists('currencyCode', $data)) {
-            $object->setCurrencyCode($data['currencyCode']);
+            $object->currencyCode = $data['currencyCode'];
             unset($data['currencyCode']);
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
             unset($data['title']);
         }
-        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
-            $object->setTitle(null);
+        elseif (\array_key_exists('title', $data)) {
+            $object->title = null;
+            unset($data['title']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -76,14 +77,14 @@ class OrderDeliveryCostsNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['value'] = $data->getValue();
-        $dataArray['type'] = $data->getType();
-        $dataArray['vat'] = $data->getVat();
-        $dataArray['currencyCode'] = $data->getCurrencyCode();
-        if ($data->isInitialized('title')) {
-            $dataArray['title'] = $data->getTitle();
+        $dataArray['value'] = $data->value;
+        $dataArray['type'] = $data->type;
+        $dataArray['vat'] = $data->vat;
+        $dataArray['currencyCode'] = $data->currencyCode;
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

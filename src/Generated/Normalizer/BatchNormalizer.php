@@ -38,11 +38,15 @@ class BatchNormalizer implements DenormalizerInterface, NormalizerInterface, Den
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('number', $data)) {
-            $object->setNumber($data['number']);
+            $object->number = $data['number'];
             unset($data['number']);
         }
         if (\array_key_exists('expirationDate', $data)) {
-            $object->setExpirationDate(\DateTime::createFromFormat('Y-m-d', $data['expirationDate'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['expirationDate']);
+            if (false === $date) {
+                throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['expirationDate'], 'Y-m-d');
+            }
+            $object->expirationDate = $date->setTime(0, 0, 0);
             unset($data['expirationDate']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +59,9 @@ class BatchNormalizer implements DenormalizerInterface, NormalizerInterface, Den
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['number'] = $data->getNumber();
-        $dataArray['expirationDate'] = $data->getExpirationDate()->format('Y-m-d');
-        foreach ($data as $key => $value) {
+        $dataArray['number'] = $data->number;
+        $dataArray['expirationDate'] = $data->expirationDate->format('Y-m-d');
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

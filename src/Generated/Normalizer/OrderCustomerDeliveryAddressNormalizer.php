@@ -38,52 +38,56 @@ class OrderCustomerDeliveryAddressNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('street', $data)) {
-            $object->setStreet($data['street']);
+            $object->street = $data['street'];
             unset($data['street']);
         }
         if (\array_key_exists('streetNumber', $data) && $data['streetNumber'] !== null) {
-            $object->setStreetNumber($data['streetNumber']);
+            $object->streetNumber = $data['streetNumber'];
             unset($data['streetNumber']);
         }
-        elseif (\array_key_exists('streetNumber', $data) && $data['streetNumber'] === null) {
-            $object->setStreetNumber(null);
+        elseif (\array_key_exists('streetNumber', $data)) {
+            $object->streetNumber = null;
+            unset($data['streetNumber']);
         }
         if (\array_key_exists('zipCode', $data)) {
-            $object->setZipCode($data['zipCode']);
+            $object->zipCode = $data['zipCode'];
             unset($data['zipCode']);
         }
         if (\array_key_exists('district', $data) && $data['district'] !== null) {
-            $object->setDistrict($data['district']);
+            $object->district = $data['district'];
             unset($data['district']);
         }
-        elseif (\array_key_exists('district', $data) && $data['district'] === null) {
-            $object->setDistrict(null);
+        elseif (\array_key_exists('district', $data)) {
+            $object->district = null;
+            unset($data['district']);
         }
         if (\array_key_exists('city', $data)) {
-            $object->setCity($data['city']);
+            $object->city = $data['city'];
             unset($data['city']);
         }
         if (\array_key_exists('provinceCode', $data) && $data['provinceCode'] !== null) {
-            $object->setProvinceCode($data['provinceCode']);
+            $object->provinceCode = $data['provinceCode'];
             unset($data['provinceCode']);
         }
-        elseif (\array_key_exists('provinceCode', $data) && $data['provinceCode'] === null) {
-            $object->setProvinceCode(null);
+        elseif (\array_key_exists('provinceCode', $data)) {
+            $object->provinceCode = null;
+            unset($data['provinceCode']);
         }
         if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
             unset($data['countryCode']);
         }
         if (\array_key_exists('nameLine1', $data)) {
-            $object->setNameLine1($data['nameLine1']);
+            $object->nameLine1 = $data['nameLine1'];
             unset($data['nameLine1']);
         }
         if (\array_key_exists('nameLine2', $data) && $data['nameLine2'] !== null) {
-            $object->setNameLine2($data['nameLine2']);
+            $object->nameLine2 = $data['nameLine2'];
             unset($data['nameLine2']);
         }
-        elseif (\array_key_exists('nameLine2', $data) && $data['nameLine2'] === null) {
-            $object->setNameLine2(null);
+        elseif (\array_key_exists('nameLine2', $data)) {
+            $object->nameLine2 = null;
+            unset($data['nameLine2']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -95,26 +99,26 @@ class OrderCustomerDeliveryAddressNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['street'] = $data->getStreet();
-        if ($data->isInitialized('streetNumber')) {
-            $dataArray['streetNumber'] = $data->getStreetNumber();
+        $dataArray['street'] = $data->street;
+        if (array_key_exists('streetNumber', get_object_vars($data)) && null !== ($data->streetNumber ?? null)) {
+            $dataArray['streetNumber'] = $data->streetNumber;
         }
-        $dataArray['zipCode'] = $data->getZipCode();
-        if ($data->isInitialized('district')) {
-            $dataArray['district'] = $data->getDistrict();
+        $dataArray['zipCode'] = $data->zipCode;
+        if (array_key_exists('district', get_object_vars($data)) && null !== ($data->district ?? null)) {
+            $dataArray['district'] = $data->district;
         }
-        $dataArray['city'] = $data->getCity();
-        if ($data->isInitialized('provinceCode')) {
-            $dataArray['provinceCode'] = $data->getProvinceCode();
+        $dataArray['city'] = $data->city;
+        if (array_key_exists('provinceCode', get_object_vars($data)) && null !== ($data->provinceCode ?? null)) {
+            $dataArray['provinceCode'] = $data->provinceCode;
         }
-        $dataArray['countryCode'] = $data->getCountryCode();
-        if ($data->isInitialized('nameLine1') && null !== $data->getNameLine1()) {
-            $dataArray['nameLine1'] = $data->getNameLine1();
+        $dataArray['countryCode'] = $data->countryCode;
+        if (array_key_exists('nameLine1', get_object_vars($data)) && null !== ($data->nameLine1 ?? null)) {
+            $dataArray['nameLine1'] = $data->nameLine1;
         }
-        if ($data->isInitialized('nameLine2')) {
-            $dataArray['nameLine2'] = $data->getNameLine2();
+        if (array_key_exists('nameLine2', get_object_vars($data)) && null !== ($data->nameLine2 ?? null)) {
+            $dataArray['nameLine2'] = $data->nameLine2;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

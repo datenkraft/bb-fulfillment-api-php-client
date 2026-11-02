@@ -41,35 +41,35 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['reconsignmentWasPreAnnounced'] = (bool) $data['reconsignmentWasPreAnnounced'];
         }
         if (\array_key_exists('reconsignmentNumber', $data)) {
-            $object->setReconsignmentNumber($data['reconsignmentNumber']);
+            $object->reconsignmentNumber = $data['reconsignmentNumber'];
             unset($data['reconsignmentNumber']);
         }
         if (\array_key_exists('reconsignmentDate', $data)) {
-            $object->setReconsignmentDate($data['reconsignmentDate']);
+            $object->reconsignmentDate = $data['reconsignmentDate'];
             unset($data['reconsignmentDate']);
         }
         if (\array_key_exists('reconsignmentReason', $data)) {
-            $object->setReconsignmentReason($data['reconsignmentReason']);
+            $object->reconsignmentReason = $data['reconsignmentReason'];
             unset($data['reconsignmentReason']);
         }
         if (\array_key_exists('orderNumber', $data)) {
-            $object->setOrderNumber($data['orderNumber']);
+            $object->orderNumber = $data['orderNumber'];
             unset($data['orderNumber']);
         }
         if (\array_key_exists('orderDeliveryServiceCode', $data)) {
-            $object->setOrderDeliveryServiceCode($data['orderDeliveryServiceCode']);
+            $object->orderDeliveryServiceCode = $data['orderDeliveryServiceCode'];
             unset($data['orderDeliveryServiceCode']);
         }
         if (\array_key_exists('reconsignmentDeliveryServiceCode', $data)) {
-            $object->setReconsignmentDeliveryServiceCode($data['reconsignmentDeliveryServiceCode']);
+            $object->reconsignmentDeliveryServiceCode = $data['reconsignmentDeliveryServiceCode'];
             unset($data['reconsignmentDeliveryServiceCode']);
         }
         if (\array_key_exists('reconsignmentWasPreAnnounced', $data)) {
-            $object->setReconsignmentWasPreAnnounced($data['reconsignmentWasPreAnnounced']);
+            $object->reconsignmentWasPreAnnounced = $data['reconsignmentWasPreAnnounced'];
             unset($data['reconsignmentWasPreAnnounced']);
         }
         if (\array_key_exists('reconsignmentCountryCode', $data)) {
-            $object->setReconsignmentCountryCode($data['reconsignmentCountryCode']);
+            $object->reconsignmentCountryCode = $data['reconsignmentCountryCode'];
             unset($data['reconsignmentCountryCode']);
         }
         if (\array_key_exists('reconsignmentLines', $data)) {
@@ -77,7 +77,7 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
             foreach ($data['reconsignmentLines'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLine::class, 'json', $context);
             }
-            $object->setReconsignmentLines($values);
+            $object->reconsignmentLines = $values;
             unset($data['reconsignmentLines']);
         }
         foreach ($data as $key => $value_1) {
@@ -90,38 +90,39 @@ class ReconsignmentNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reconsignmentNumber') && null !== $data->getReconsignmentNumber()) {
-            $dataArray['reconsignmentNumber'] = $data->getReconsignmentNumber();
+        if (array_key_exists('reconsignmentNumber', get_object_vars($data)) && null !== ($data->reconsignmentNumber ?? null)) {
+            $dataArray['reconsignmentNumber'] = $data->reconsignmentNumber;
         }
-        if ($data->isInitialized('reconsignmentDate') && null !== $data->getReconsignmentDate()) {
-            $dataArray['reconsignmentDate'] = $data->getReconsignmentDate();
+        if (array_key_exists('reconsignmentDate', get_object_vars($data)) && null !== ($data->reconsignmentDate ?? null)) {
+            $dataArray['reconsignmentDate'] = $data->reconsignmentDate;
         }
-        if ($data->isInitialized('reconsignmentReason') && null !== $data->getReconsignmentReason()) {
-            $dataArray['reconsignmentReason'] = $data->getReconsignmentReason();
+        if (array_key_exists('reconsignmentReason', get_object_vars($data)) && null !== ($data->reconsignmentReason ?? null)) {
+            $dataArray['reconsignmentReason'] = $data->reconsignmentReason;
         }
-        if ($data->isInitialized('orderNumber') && null !== $data->getOrderNumber()) {
-            $dataArray['orderNumber'] = $data->getOrderNumber();
+        if (array_key_exists('orderNumber', get_object_vars($data)) && null !== ($data->orderNumber ?? null)) {
+            $dataArray['orderNumber'] = $data->orderNumber;
         }
-        if ($data->isInitialized('orderDeliveryServiceCode') && null !== $data->getOrderDeliveryServiceCode()) {
-            $dataArray['orderDeliveryServiceCode'] = $data->getOrderDeliveryServiceCode();
+        if (array_key_exists('orderDeliveryServiceCode', get_object_vars($data)) && null !== ($data->orderDeliveryServiceCode ?? null)) {
+            $dataArray['orderDeliveryServiceCode'] = $data->orderDeliveryServiceCode;
         }
-        if ($data->isInitialized('reconsignmentDeliveryServiceCode') && null !== $data->getReconsignmentDeliveryServiceCode()) {
-            $dataArray['reconsignmentDeliveryServiceCode'] = $data->getReconsignmentDeliveryServiceCode();
+        if (array_key_exists('reconsignmentDeliveryServiceCode', get_object_vars($data)) && null !== ($data->reconsignmentDeliveryServiceCode ?? null)) {
+            $dataArray['reconsignmentDeliveryServiceCode'] = $data->reconsignmentDeliveryServiceCode;
         }
-        if ($data->isInitialized('reconsignmentWasPreAnnounced') && null !== $data->getReconsignmentWasPreAnnounced()) {
-            $dataArray['reconsignmentWasPreAnnounced'] = $data->getReconsignmentWasPreAnnounced();
+        if (array_key_exists('reconsignmentWasPreAnnounced', get_object_vars($data)) && null !== ($data->reconsignmentWasPreAnnounced ?? null)) {
+            $dataArray['reconsignmentWasPreAnnounced'] = $data->reconsignmentWasPreAnnounced;
         }
-        if ($data->isInitialized('reconsignmentCountryCode') && null !== $data->getReconsignmentCountryCode()) {
-            $dataArray['reconsignmentCountryCode'] = $data->getReconsignmentCountryCode();
+        if (array_key_exists('reconsignmentCountryCode', get_object_vars($data)) && null !== ($data->reconsignmentCountryCode ?? null)) {
+            $dataArray['reconsignmentCountryCode'] = $data->reconsignmentCountryCode;
         }
-        if ($data->isInitialized('reconsignmentLines') && null !== $data->getReconsignmentLines()) {
+        if (array_key_exists('reconsignmentLines', get_object_vars($data)) && null !== ($data->reconsignmentLines ?? null)) {
             $values = [];
-            foreach ($data->getReconsignmentLines() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->reconsignmentLines as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['reconsignmentLines'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

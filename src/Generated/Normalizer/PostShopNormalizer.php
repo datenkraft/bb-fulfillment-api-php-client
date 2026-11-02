@@ -38,26 +38,27 @@ class PostShopNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('shopCode', $data)) {
-            $object->setShopCode($data['shopCode']);
+            $object->shopCode = $data['shopCode'];
             unset($data['shopCode']);
         }
         if (\array_key_exists('internalReferencePrefix', $data)) {
-            $object->setInternalReferencePrefix($data['internalReferencePrefix']);
+            $object->internalReferencePrefix = $data['internalReferencePrefix'];
             unset($data['internalReferencePrefix']);
         }
         if (\array_key_exists('projectId', $data)) {
-            $object->setProjectId($data['projectId']);
+            $object->projectId = $data['projectId'];
             unset($data['projectId']);
         }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\PostShopMeta::class, 'json', $context);
             unset($data['meta']);
         }
-        elseif (\array_key_exists('meta', $data) && $data['meta'] === null) {
-            $object->setMeta(null);
+        elseif (\array_key_exists('meta', $data)) {
+            $object->meta = null;
+            unset($data['meta']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         foreach ($data as $key => $value) {
@@ -70,16 +71,17 @@ class PostShopNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['shopCode'] = $data->getShopCode();
-        $dataArray['internalReferencePrefix'] = $data->getInternalReferencePrefix();
-        $dataArray['projectId'] = $data->getProjectId();
-        if ($data->isInitialized('meta')) {
-            $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+        $dataArray['shopCode'] = $data->shopCode;
+        $dataArray['internalReferencePrefix'] = $data->internalReferencePrefix;
+        $dataArray['projectId'] = $data->projectId;
+        if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
+            $normalized = $this->normalizer->normalize($data->meta, 'json', $context);
+            $dataArray['meta'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

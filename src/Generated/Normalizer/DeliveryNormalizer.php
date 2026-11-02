@@ -38,18 +38,19 @@ class DeliveryNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('number', $data)) {
-            $object->setNumber($data['number']);
+            $object->number = $data['number'];
             unset($data['number']);
         }
         if (\array_key_exists('orderNumber', $data) && $data['orderNumber'] !== null) {
-            $object->setOrderNumber($data['orderNumber']);
+            $object->orderNumber = $data['orderNumber'];
             unset($data['orderNumber']);
         }
-        elseif (\array_key_exists('orderNumber', $data) && $data['orderNumber'] === null) {
-            $object->setOrderNumber(null);
+        elseif (\array_key_exists('orderNumber', $data)) {
+            $object->orderNumber = null;
+            unset($data['orderNumber']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('shipments', $data)) {
@@ -57,7 +58,7 @@ class DeliveryNormalizer implements DenormalizerInterface, NormalizerInterface, 
             foreach ($data['shipments'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipment::class, 'json', $context);
             }
-            $object->setShipments($values);
+            $object->shipments = $values;
             unset($data['shipments']);
         }
         foreach ($data as $key => $value_1) {
@@ -70,23 +71,24 @@ class DeliveryNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
-            $dataArray['number'] = $data->getNumber();
+        if (array_key_exists('number', get_object_vars($data)) && null !== ($data->number ?? null)) {
+            $dataArray['number'] = $data->number;
         }
-        if ($data->isInitialized('orderNumber')) {
-            $dataArray['orderNumber'] = $data->getOrderNumber();
+        if (array_key_exists('orderNumber', get_object_vars($data)) && null !== ($data->orderNumber ?? null)) {
+            $dataArray['orderNumber'] = $data->orderNumber;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status;
         }
-        if ($data->isInitialized('shipments') && null !== $data->getShipments()) {
+        if (array_key_exists('shipments', get_object_vars($data)) && null !== ($data->shipments ?? null)) {
             $values = [];
-            foreach ($data->getShipments() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->shipments as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['shipments'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

@@ -38,102 +38,116 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentsAmount', $data) && \is_int($data['contentsAmount'])) {
-            $data['contentsAmount'] = (double) $data['contentsAmount'];
+            $data['contentsAmount'] = (float) $data['contentsAmount'];
         }
         if (\array_key_exists('supplierPurchasePriceEUR', $data) && \is_int($data['supplierPurchasePriceEUR'])) {
-            $data['supplierPurchasePriceEUR'] = (double) $data['supplierPurchasePriceEUR'];
+            $data['supplierPurchasePriceEUR'] = (float) $data['supplierPurchasePriceEUR'];
         }
         if (\array_key_exists('listPriceEUR', $data) && \is_int($data['listPriceEUR'])) {
-            $data['listPriceEUR'] = (double) $data['listPriceEUR'];
+            $data['listPriceEUR'] = (float) $data['listPriceEUR'];
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('productTitle', $data)) {
-            $object->setProductTitle($data['productTitle']);
+            $object->productTitle = $data['productTitle'];
             unset($data['productTitle']);
         }
         if (\array_key_exists('contentsAmount', $data)) {
-            $object->setContentsAmount($data['contentsAmount']);
+            $object->contentsAmount = $data['contentsAmount'];
             unset($data['contentsAmount']);
         }
         if (\array_key_exists('contentsWeightGram', $data)) {
-            $object->setContentsWeightGram($data['contentsWeightGram']);
+            $object->contentsWeightGram = $data['contentsWeightGram'];
             unset($data['contentsWeightGram']);
         }
         if (\array_key_exists('weightGram', $data)) {
-            $object->setWeightGram($data['weightGram']);
+            $object->weightGram = $data['weightGram'];
             unset($data['weightGram']);
         }
         if (\array_key_exists('ean', $data)) {
-            $object->setEan($data['ean']);
+            $object->ean = $data['ean'];
             unset($data['ean']);
         }
         if (\array_key_exists('taricCode', $data)) {
-            $object->setTaricCode($data['taricCode']);
+            $object->taricCode = $data['taricCode'];
             unset($data['taricCode']);
         }
         if (\array_key_exists('supplierPurchasePriceEUR', $data)) {
-            $object->setSupplierPurchasePriceEUR($data['supplierPurchasePriceEUR']);
+            $object->supplierPurchasePriceEUR = $data['supplierPurchasePriceEUR'];
             unset($data['supplierPurchasePriceEUR']);
         }
         if (\array_key_exists('listPriceEUR', $data)) {
-            $object->setListPriceEUR($data['listPriceEUR']);
+            $object->listPriceEUR = $data['listPriceEUR'];
             unset($data['listPriceEUR']);
         }
         if (\array_key_exists('taxCode', $data) && $data['taxCode'] !== null) {
-            $object->setTaxCode($data['taxCode']);
+            $object->taxCode = $data['taxCode'];
             unset($data['taxCode']);
         }
-        elseif (\array_key_exists('taxCode', $data) && $data['taxCode'] === null) {
-            $object->setTaxCode(null);
+        elseif (\array_key_exists('taxCode', $data)) {
+            $object->taxCode = null;
+            unset($data['taxCode']);
         }
         if (\array_key_exists('supplierNumber', $data)) {
-            $object->setSupplierNumber($data['supplierNumber']);
+            $object->supplierNumber = $data['supplierNumber'];
             unset($data['supplierNumber']);
         }
         if (\array_key_exists('manufacturerNumber', $data)) {
-            $object->setManufacturerNumber($data['manufacturerNumber']);
+            $object->manufacturerNumber = $data['manufacturerNumber'];
             unset($data['manufacturerNumber']);
         }
         if (\array_key_exists('brandNumber', $data)) {
-            $object->setBrandNumber($data['brandNumber']);
+            $object->brandNumber = $data['brandNumber'];
             unset($data['brandNumber']);
         }
         if (\array_key_exists('dimensions', $data)) {
-            $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraftDimensions::class, 'json', $context));
+            $object->dimensions = $this->denormalizer->denormalize($data['dimensions'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDraftDimensions::class, 'json', $context);
             unset($data['dimensions']);
         }
         if (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] !== null) {
-            $object->setMinAvailableStock($data['minAvailableStock']);
+            $object->minAvailableStock = $data['minAvailableStock'];
             unset($data['minAvailableStock']);
         }
-        elseif (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] === null) {
-            $object->setMinAvailableStock(null);
+        elseif (\array_key_exists('minAvailableStock', $data)) {
+            $object->minAvailableStock = null;
+            unset($data['minAvailableStock']);
         }
         if (\array_key_exists('shopCode', $data)) {
-            $object->setShopCode($data['shopCode']);
+            $object->shopCode = $data['shopCode'];
             unset($data['shopCode']);
         }
         if (\array_key_exists('source', $data)) {
-            $object->setSource($data['source']);
+            $object->source = $data['source'];
             unset($data['source']);
         }
         if (\array_key_exists('productDraftId', $data)) {
-            $object->setProductDraftId($data['productDraftId']);
+            $object->productDraftId = $data['productDraftId'];
             unset($data['productDraftId']);
         }
         if (\array_key_exists('productDraftStatus', $data)) {
-            $object->setProductDraftStatus($data['productDraftStatus']);
+            $object->productDraftStatus = $data['productDraftStatus'];
             unset($data['productDraftStatus']);
         }
         if (\array_key_exists('productDraftDate', $data)) {
-            $object->setProductDraftDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['productDraftDate']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['productDraftDate']);
+            if (false === $date) {
+                if (is_string($data['productDraftDate']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['productDraftDate'])) {
+                    try {
+                        $date = new \DateTime($data['productDraftDate']);
+                    } catch (\Exception) {
+                        throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['productDraftDate'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['productDraftDate'], 'Y-m-d\TH:i:sP');
+                }
+            }
+            $object->productDraftDate = $date;
             unset($data['productDraftDate']);
         }
         if (\array_key_exists('contentsUnit', $data)) {
-            $object->setContentsUnit($data['contentsUnit']);
+            $object->contentsUnit = $data['contentsUnit'];
             unset($data['contentsUnit']);
         }
         foreach ($data as $key => $value) {
@@ -146,70 +160,71 @@ class ProductDraftNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
-            $dataArray['productNumber'] = $data->getProductNumber();
+        if (array_key_exists('productNumber', get_object_vars($data)) && null !== ($data->productNumber ?? null)) {
+            $dataArray['productNumber'] = $data->productNumber;
         }
-        if ($data->isInitialized('productTitle') && null !== $data->getProductTitle()) {
-            $dataArray['productTitle'] = $data->getProductTitle();
+        if (array_key_exists('productTitle', get_object_vars($data)) && null !== ($data->productTitle ?? null)) {
+            $dataArray['productTitle'] = $data->productTitle;
         }
-        if ($data->isInitialized('contentsAmount') && null !== $data->getContentsAmount()) {
-            $dataArray['contentsAmount'] = $data->getContentsAmount();
+        if (array_key_exists('contentsAmount', get_object_vars($data)) && null !== ($data->contentsAmount ?? null)) {
+            $dataArray['contentsAmount'] = $data->contentsAmount;
         }
-        if ($data->isInitialized('contentsWeightGram') && null !== $data->getContentsWeightGram()) {
-            $dataArray['contentsWeightGram'] = $data->getContentsWeightGram();
+        if (array_key_exists('contentsWeightGram', get_object_vars($data)) && null !== ($data->contentsWeightGram ?? null)) {
+            $dataArray['contentsWeightGram'] = $data->contentsWeightGram;
         }
-        if ($data->isInitialized('weightGram') && null !== $data->getWeightGram()) {
-            $dataArray['weightGram'] = $data->getWeightGram();
+        if (array_key_exists('weightGram', get_object_vars($data)) && null !== ($data->weightGram ?? null)) {
+            $dataArray['weightGram'] = $data->weightGram;
         }
-        if ($data->isInitialized('ean') && null !== $data->getEan()) {
-            $dataArray['ean'] = $data->getEan();
+        if (array_key_exists('ean', get_object_vars($data)) && null !== ($data->ean ?? null)) {
+            $dataArray['ean'] = $data->ean;
         }
-        if ($data->isInitialized('taricCode') && null !== $data->getTaricCode()) {
-            $dataArray['taricCode'] = $data->getTaricCode();
+        if (array_key_exists('taricCode', get_object_vars($data)) && null !== ($data->taricCode ?? null)) {
+            $dataArray['taricCode'] = $data->taricCode;
         }
-        if ($data->isInitialized('supplierPurchasePriceEUR') && null !== $data->getSupplierPurchasePriceEUR()) {
-            $dataArray['supplierPurchasePriceEUR'] = $data->getSupplierPurchasePriceEUR();
+        if (array_key_exists('supplierPurchasePriceEUR', get_object_vars($data)) && null !== ($data->supplierPurchasePriceEUR ?? null)) {
+            $dataArray['supplierPurchasePriceEUR'] = $data->supplierPurchasePriceEUR;
         }
-        if ($data->isInitialized('listPriceEUR') && null !== $data->getListPriceEUR()) {
-            $dataArray['listPriceEUR'] = $data->getListPriceEUR();
+        if (array_key_exists('listPriceEUR', get_object_vars($data)) && null !== ($data->listPriceEUR ?? null)) {
+            $dataArray['listPriceEUR'] = $data->listPriceEUR;
         }
-        if ($data->isInitialized('taxCode')) {
-            $dataArray['taxCode'] = $data->getTaxCode();
+        if (array_key_exists('taxCode', get_object_vars($data)) && null !== ($data->taxCode ?? null)) {
+            $dataArray['taxCode'] = $data->taxCode;
         }
-        if ($data->isInitialized('supplierNumber') && null !== $data->getSupplierNumber()) {
-            $dataArray['supplierNumber'] = $data->getSupplierNumber();
+        if (array_key_exists('supplierNumber', get_object_vars($data)) && null !== ($data->supplierNumber ?? null)) {
+            $dataArray['supplierNumber'] = $data->supplierNumber;
         }
-        if ($data->isInitialized('manufacturerNumber') && null !== $data->getManufacturerNumber()) {
-            $dataArray['manufacturerNumber'] = $data->getManufacturerNumber();
+        if (array_key_exists('manufacturerNumber', get_object_vars($data)) && null !== ($data->manufacturerNumber ?? null)) {
+            $dataArray['manufacturerNumber'] = $data->manufacturerNumber;
         }
-        if ($data->isInitialized('brandNumber') && null !== $data->getBrandNumber()) {
-            $dataArray['brandNumber'] = $data->getBrandNumber();
+        if (array_key_exists('brandNumber', get_object_vars($data)) && null !== ($data->brandNumber ?? null)) {
+            $dataArray['brandNumber'] = $data->brandNumber;
         }
-        if ($data->isInitialized('dimensions') && null !== $data->getDimensions()) {
-            $dataArray['dimensions'] = $this->normalizer->normalize($data->getDimensions(), 'json', $context);
+        if (array_key_exists('dimensions', get_object_vars($data)) && null !== ($data->dimensions ?? null)) {
+            $normalized = $this->normalizer->normalize($data->dimensions, 'json', $context);
+            $dataArray['dimensions'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('minAvailableStock')) {
-            $dataArray['minAvailableStock'] = $data->getMinAvailableStock();
+        if (array_key_exists('minAvailableStock', get_object_vars($data)) && null !== ($data->minAvailableStock ?? null)) {
+            $dataArray['minAvailableStock'] = $data->minAvailableStock;
         }
-        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
-            $dataArray['shopCode'] = $data->getShopCode();
+        if (array_key_exists('shopCode', get_object_vars($data)) && null !== ($data->shopCode ?? null)) {
+            $dataArray['shopCode'] = $data->shopCode;
         }
-        if ($data->isInitialized('source') && null !== $data->getSource()) {
-            $dataArray['source'] = $data->getSource();
+        if (array_key_exists('source', get_object_vars($data)) && null !== ($data->source ?? null)) {
+            $dataArray['source'] = $data->source;
         }
-        if ($data->isInitialized('productDraftId') && null !== $data->getProductDraftId()) {
-            $dataArray['productDraftId'] = $data->getProductDraftId();
+        if (array_key_exists('productDraftId', get_object_vars($data)) && null !== ($data->productDraftId ?? null)) {
+            $dataArray['productDraftId'] = $data->productDraftId;
         }
-        if ($data->isInitialized('productDraftStatus') && null !== $data->getProductDraftStatus()) {
-            $dataArray['productDraftStatus'] = $data->getProductDraftStatus();
+        if (array_key_exists('productDraftStatus', get_object_vars($data)) && null !== ($data->productDraftStatus ?? null)) {
+            $dataArray['productDraftStatus'] = $data->productDraftStatus;
         }
-        if ($data->isInitialized('productDraftDate') && null !== $data->getProductDraftDate()) {
-            $dataArray['productDraftDate'] = $data->getProductDraftDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('productDraftDate', get_object_vars($data)) && null !== ($data->productDraftDate ?? null)) {
+            $dataArray['productDraftDate'] = $data->productDraftDate->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('contentsUnit') && null !== $data->getContentsUnit()) {
-            $dataArray['contentsUnit'] = $data->getContentsUnit();
+        if (array_key_exists('contentsUnit', get_object_vars($data)) && null !== ($data->contentsUnit ?? null)) {
+            $dataArray['contentsUnit'] = $data->contentsUnit;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

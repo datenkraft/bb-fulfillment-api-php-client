@@ -38,44 +38,59 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('journalId', $data)) {
-            $object->setJournalId($data['journalId']);
+            $object->journalId = $data['journalId'];
             unset($data['journalId']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
+            if (false === $date) {
+                if (is_string($data['date']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['date'])) {
+                    try {
+                        $date = new \DateTime($data['date']);
+                    } catch (\Exception) {
+                        throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                }
+            }
+            $object->date = $date;
             unset($data['date']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('reason', $data)) {
-            $object->setReason($data['reason']);
+            $object->reason = $data['reason'];
             unset($data['reason']);
         }
         if (\array_key_exists('stockDelta', $data) && $data['stockDelta'] !== null) {
-            $object->setStockDelta($data['stockDelta']);
+            $object->stockDelta = $data['stockDelta'];
             unset($data['stockDelta']);
         }
-        elseif (\array_key_exists('stockDelta', $data) && $data['stockDelta'] === null) {
-            $object->setStockDelta(null);
+        elseif (\array_key_exists('stockDelta', $data)) {
+            $object->stockDelta = null;
+            unset($data['stockDelta']);
         }
         if (\array_key_exists('stockOld', $data) && $data['stockOld'] !== null) {
-            $object->setStockOld($data['stockOld']);
+            $object->stockOld = $data['stockOld'];
             unset($data['stockOld']);
         }
-        elseif (\array_key_exists('stockOld', $data) && $data['stockOld'] === null) {
-            $object->setStockOld(null);
+        elseif (\array_key_exists('stockOld', $data)) {
+            $object->stockOld = null;
+            unset($data['stockOld']);
         }
         if (\array_key_exists('stockNew', $data) && $data['stockNew'] !== null) {
-            $object->setStockNew($data['stockNew']);
+            $object->stockNew = $data['stockNew'];
             unset($data['stockNew']);
         }
-        elseif (\array_key_exists('stockNew', $data) && $data['stockNew'] === null) {
-            $object->setStockNew(null);
+        elseif (\array_key_exists('stockNew', $data)) {
+            $object->stockNew = null;
+            unset($data['stockNew']);
         }
         if (\array_key_exists('reference', $data)) {
-            $object->setReference($this->denormalizer->denormalize($data['reference'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalReference::class, 'json', $context));
+            $object->reference = $this->denormalizer->denormalize($data['reference'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductJournalReference::class, 'json', $context);
             unset($data['reference']);
         }
         foreach ($data as $key => $value) {
@@ -88,31 +103,32 @@ class ProductJournalNormalizer implements DenormalizerInterface, NormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('journalId') && null !== $data->getJournalId()) {
-            $dataArray['journalId'] = $data->getJournalId();
+        if (array_key_exists('journalId', get_object_vars($data)) && null !== ($data->journalId ?? null)) {
+            $dataArray['journalId'] = $data->journalId;
         }
-        if ($data->isInitialized('date') && null !== $data->getDate()) {
-            $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('date', get_object_vars($data)) && null !== ($data->date ?? null)) {
+            $dataArray['date'] = $data->date->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
-            $dataArray['productNumber'] = $data->getProductNumber();
+        if (array_key_exists('productNumber', get_object_vars($data)) && null !== ($data->productNumber ?? null)) {
+            $dataArray['productNumber'] = $data->productNumber;
         }
-        if ($data->isInitialized('reason') && null !== $data->getReason()) {
-            $dataArray['reason'] = $data->getReason();
+        if (array_key_exists('reason', get_object_vars($data)) && null !== ($data->reason ?? null)) {
+            $dataArray['reason'] = $data->reason;
         }
-        if ($data->isInitialized('stockDelta')) {
-            $dataArray['stockDelta'] = $data->getStockDelta();
+        if (array_key_exists('stockDelta', get_object_vars($data)) && null !== ($data->stockDelta ?? null)) {
+            $dataArray['stockDelta'] = $data->stockDelta;
         }
-        if ($data->isInitialized('stockOld')) {
-            $dataArray['stockOld'] = $data->getStockOld();
+        if (array_key_exists('stockOld', get_object_vars($data)) && null !== ($data->stockOld ?? null)) {
+            $dataArray['stockOld'] = $data->stockOld;
         }
-        if ($data->isInitialized('stockNew')) {
-            $dataArray['stockNew'] = $data->getStockNew();
+        if (array_key_exists('stockNew', get_object_vars($data)) && null !== ($data->stockNew ?? null)) {
+            $dataArray['stockNew'] = $data->stockNew;
         }
-        if ($data->isInitialized('reference') && null !== $data->getReference()) {
-            $dataArray['reference'] = $this->normalizer->normalize($data->getReference(), 'json', $context);
+        if (array_key_exists('reference', get_object_vars($data)) && null !== ($data->reference ?? null)) {
+            $normalized = $this->normalizer->normalize($data->reference, 'json', $context);
+            $dataArray['reference'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,42 +2,19 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class UpdateDeliveryShipment extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class UpdateDeliveryShipment implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * External id of the shipment
      *
      * @var string|null
      */
-    protected $externalShipmentId;
-    /**
-     * External id of the shipment
-     *
-     * @return string|null
-     */
-    public function getExternalShipmentId(): ?string
+    public ?string $externalShipmentId;
+    public function definedProperties(): array
     {
-        return $this->externalShipmentId;
-    }
-    /**
-     * External id of the shipment
-     *
-     * @param string|null $externalShipmentId
-     *
-     * @return self
-     */
-    public function setExternalShipmentId(?string $externalShipmentId): self
-    {
-        $this->initialized['externalShipmentId'] = true;
-        $this->externalShipmentId = $externalShipmentId;
-        return $this;
+        return ['externalShipmentId' => 'externalShipmentId'];
     }
 }

@@ -38,11 +38,11 @@ class SupplierNormalizer implements DenormalizerInterface, NormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('supplierNumber', $data)) {
-            $object->setSupplierNumber($data['supplierNumber']);
+            $object->supplierNumber = $data['supplierNumber'];
             unset($data['supplierNumber']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class SupplierNormalizer implements DenormalizerInterface, NormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['supplierNumber'] = $data->getSupplierNumber();
-        $dataArray['name'] = $data->getName();
-        foreach ($data as $key => $value) {
+        $dataArray['supplierNumber'] = $data->supplierNumber;
+        $dataArray['name'] = $data->name;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

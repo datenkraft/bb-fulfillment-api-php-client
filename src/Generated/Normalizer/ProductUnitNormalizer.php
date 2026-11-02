@@ -38,7 +38,7 @@ class ProductUnitNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
             unset($data['code']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class ProductUnitNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['code'] = $data->getCode();
-        foreach ($data as $key => $value) {
+        $dataArray['code'] = $data->code;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

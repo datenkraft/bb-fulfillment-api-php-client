@@ -2,42 +2,19 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewProductStockAdd extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class NewProductStockAdd implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Quantity (greater than zero) to be added to the stock.
      *
      * @var int
      */
-    protected $quantity;
-    /**
-     * Quantity (greater than zero) to be added to the stock.
-     *
-     * @return int
-     */
-    public function getQuantity(): int
+    public int $quantity;
+    public function definedProperties(): array
     {
-        return $this->quantity;
-    }
-    /**
-     * Quantity (greater than zero) to be added to the stock.
-     *
-     * @param int $quantity
-     *
-     * @return self
-     */
-    public function setQuantity(int $quantity): self
-    {
-        $this->initialized['quantity'] = true;
-        $this->quantity = $quantity;
-        return $this;
+        return ['quantity' => 'quantity'];
     }
 }

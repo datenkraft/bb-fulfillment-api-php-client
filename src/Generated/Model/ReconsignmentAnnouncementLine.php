@@ -2,86 +2,27 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ReconsignmentAnnouncementLine extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ReconsignmentAnnouncementLine implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * @var string
      */
-    protected $productNumber;
+    public string $productNumber;
     /**
      * Number of items included in the reconsignment announcement. Null for bundles
      *
      * @var int|null
      */
-    protected $count;
+    public ?int $count;
     /**
      * @var list<ReconsignmentAnnouncementLineBundledProduct>|null
      */
-    protected $bundledProducts;
-    /**
-     * @return string
-     */
-    public function getProductNumber(): string
+    public ?array $bundledProducts;
+    public function definedProperties(): array
     {
-        return $this->productNumber;
-    }
-    /**
-     * @param string $productNumber
-     *
-     * @return self
-     */
-    public function setProductNumber(string $productNumber): self
-    {
-        $this->initialized['productNumber'] = true;
-        $this->productNumber = $productNumber;
-        return $this;
-    }
-    /**
-     * Number of items included in the reconsignment announcement. Null for bundles
-     *
-     * @return int|null
-     */
-    public function getCount(): ?int
-    {
-        return $this->count;
-    }
-    /**
-     * Number of items included in the reconsignment announcement. Null for bundles
-     *
-     * @param int|null $count
-     *
-     * @return self
-     */
-    public function setCount(?int $count): self
-    {
-        $this->initialized['count'] = true;
-        $this->count = $count;
-        return $this;
-    }
-    /**
-     * @return list<ReconsignmentAnnouncementLineBundledProduct>|null
-     */
-    public function getBundledProducts(): ?array
-    {
-        return $this->bundledProducts;
-    }
-    /**
-     * @param list<ReconsignmentAnnouncementLineBundledProduct>|null $bundledProducts
-     *
-     * @return self
-     */
-    public function setBundledProducts(?array $bundledProducts): self
-    {
-        $this->initialized['bundledProducts'] = true;
-        $this->bundledProducts = $bundledProducts;
-        return $this;
+        return ['productNumber' => 'productNumber', 'count' => 'count', 'bundledProducts' => 'bundledProducts'];
     }
 }

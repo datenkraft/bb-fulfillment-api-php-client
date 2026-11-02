@@ -2,49 +2,44 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class NewOrderCustomer extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class NewOrderCustomer implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * @var string
      */
-    protected $gender;
+    public string $gender;
     /**
      * The language code for any customer communications (ISO 639-1). Currently only 'de' is supported
      *
      * @var string
      */
-    protected $languageCode;
+    public string $languageCode;
     /**
      * The external id of the order customer
      *
      * @var string|null
      */
-    protected $externalCustomerId;
+    public ?string $externalCustomerId;
     /**
      * @var OrderCustomerDeliveryAddress
      */
-    protected $deliveryAddress;
+    public OrderCustomerDeliveryAddress $deliveryAddress;
     /**
      * The customer's email
      *
      * @var string|null
      */
-    protected $email;
+    public ?string $email;
     /**
      * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
      * Parenthesis for example are not valid.
      *
      * @var string|null
      */
-    protected $phone;
+    public ?string $phone;
     /**
      * The customer's first name.\
      * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
@@ -54,7 +49,7 @@ class NewOrderCustomer extends \ArrayObject
      *
      * @var string|null
      */
-    protected $firstname;
+    public ?string $firstname;
     /**
      * The customer's last name.\
      * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
@@ -64,7 +59,7 @@ class NewOrderCustomer extends \ArrayObject
      *
      * @var string|null
      */
-    protected $lastname;
+    public ?string $lastname;
     /**
      * The customer's title.\
      * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
@@ -72,7 +67,7 @@ class NewOrderCustomer extends \ArrayObject
      *
      * @var string|null
      */
-    protected $title;
+    public ?string $title;
     /**
      * The customer's company name.\
      * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
@@ -80,7 +75,7 @@ class NewOrderCustomer extends \ArrayObject
      *
      * @var string|null
      */
-    protected $company;
+    public ?string $company;
     /**
      * The customer's company vat number (might be validated).\
      * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
@@ -88,7 +83,7 @@ class NewOrderCustomer extends \ArrayObject
      *
      * @var string|null
      */
-    protected $companyVatNumber;
+    public ?string $companyVatNumber;
     /**
      * The customer's invoice address.\
      * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
@@ -97,297 +92,9 @@ class NewOrderCustomer extends \ArrayObject
      *
      * @var NewOrderCustomerInvoiceAddress|null
      */
-    protected $invoiceAddress;
-    /**
-     * @return string
-     */
-    public function getGender(): string
+    public ?NewOrderCustomerInvoiceAddress $invoiceAddress;
+    public function definedProperties(): array
     {
-        return $this->gender;
-    }
-    /**
-     * @param string $gender
-     *
-     * @return self
-     */
-    public function setGender(string $gender): self
-    {
-        $this->initialized['gender'] = true;
-        $this->gender = $gender;
-        return $this;
-    }
-    /**
-     * The language code for any customer communications (ISO 639-1). Currently only 'de' is supported
-     *
-     * @return string
-     */
-    public function getLanguageCode(): string
-    {
-        return $this->languageCode;
-    }
-    /**
-     * The language code for any customer communications (ISO 639-1). Currently only 'de' is supported
-     *
-     * @param string $languageCode
-     *
-     * @return self
-     */
-    public function setLanguageCode(string $languageCode): self
-    {
-        $this->initialized['languageCode'] = true;
-        $this->languageCode = $languageCode;
-        return $this;
-    }
-    /**
-     * The external id of the order customer
-     *
-     * @return string|null
-     */
-    public function getExternalCustomerId(): ?string
-    {
-        return $this->externalCustomerId;
-    }
-    /**
-     * The external id of the order customer
-     *
-     * @param string|null $externalCustomerId
-     *
-     * @return self
-     */
-    public function setExternalCustomerId(?string $externalCustomerId): self
-    {
-        $this->initialized['externalCustomerId'] = true;
-        $this->externalCustomerId = $externalCustomerId;
-        return $this;
-    }
-    /**
-     * @return OrderCustomerDeliveryAddress
-     */
-    public function getDeliveryAddress(): OrderCustomerDeliveryAddress
-    {
-        return $this->deliveryAddress;
-    }
-    /**
-     * @param OrderCustomerDeliveryAddress $deliveryAddress
-     *
-     * @return self
-     */
-    public function setDeliveryAddress(OrderCustomerDeliveryAddress $deliveryAddress): self
-    {
-        $this->initialized['deliveryAddress'] = true;
-        $this->deliveryAddress = $deliveryAddress;
-        return $this;
-    }
-    /**
-     * The customer's email
-     *
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-    /**
-     * The customer's email
-     *
-     * @param string|null $email
-     *
-     * @return self
-     */
-    public function setEmail(?string $email): self
-    {
-        $this->initialized['email'] = true;
-        $this->email = $email;
-        return $this;
-    }
-    /**
-     * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
-     * Parenthesis for example are not valid.
-     *
-     * @return string|null
-     */
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-    /**
-    * The customer\'s phone number. Note that only the DIN 5008 format is supported.\
-    Parenthesis for example are not valid.
-    *
-    * @param string|null $phone
-    *
-    * @return self
-    */
-    public function setPhone(?string $phone): self
-    {
-        $this->initialized['phone'] = true;
-        $this->phone = $phone;
-        return $this;
-    }
-    /**
-     * The customer's first name.\
-     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
-     * Because of internal requirements, this field may be set with a fallback, if it is not provided.\
-     * If a lastname is provided, this field is required.
-     *
-     * @return string|null
-     */
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-    /**
-    * The customer's first name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
-    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
-    If a lastname is provided, this field is required.
-    *
-    * @param string|null $firstname
-    *
-    * @return self
-    */
-    public function setFirstname(?string $firstname): self
-    {
-        $this->initialized['firstname'] = true;
-        $this->firstname = $firstname;
-        return $this;
-    }
-    /**
-     * The customer's last name.\
-     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
-     * Because of internal requirements, this field may be set with a fallback, if it is not provided.\
-     * If a lastname is provided, this field is required.
-     *
-     * @return string|null
-     */
-    public function getLastname(): ?string
-    {
-        return $this->lastname;
-    }
-    /**
-    * The customer's last name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
-    Because of internal requirements, this field may be set with a fallback, if it is not provided.\
-    If a lastname is provided, this field is required.
-    *
-    * @param string|null $lastname
-    *
-    * @return self
-    */
-    public function setLastname(?string $lastname): self
-    {
-        $this->initialized['lastname'] = true;
-        $this->lastname = $lastname;
-        return $this;
-    }
-    /**
-     * The customer's title.\
-     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-     *
-     * @return string|null
-     */
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-    /**
-    * The customer's title.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @param string|null $title
-    *
-    * @return self
-    */
-    public function setTitle(?string $title): self
-    {
-        $this->initialized['title'] = true;
-        $this->title = $title;
-        return $this;
-    }
-    /**
-     * The customer's company name.\
-     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-     *
-     * @return string|null
-     */
-    public function getCompany(): ?string
-    {
-        return $this->company;
-    }
-    /**
-    * The customer's company name.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @param string|null $company
-    *
-    * @return self
-    */
-    public function setCompany(?string $company): self
-    {
-        $this->initialized['company'] = true;
-        $this->company = $company;
-        return $this;
-    }
-    /**
-     * The customer's company vat number (might be validated).\
-     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-     *
-     * @return string|null
-     */
-    public function getCompanyVatNumber(): ?string
-    {
-        return $this->companyVatNumber;
-    }
-    /**
-    * The customer's company vat number (might be validated).\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.
-    *
-    * @param string|null $companyVatNumber
-    *
-    * @return self
-    */
-    public function setCompanyVatNumber(?string $companyVatNumber): self
-    {
-        $this->initialized['companyVatNumber'] = true;
-        $this->companyVatNumber = $companyVatNumber;
-        return $this;
-    }
-    /**
-     * The customer's invoice address.\
-     * Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-     * Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
-     * Because of internal requirements, fields of this array may be set with a fallback, if it is not provided.
-     *
-     * @return NewOrderCustomerInvoiceAddress|null
-     */
-    public function getInvoiceAddress(): ?NewOrderCustomerInvoiceAddress
-    {
-        return $this->invoiceAddress;
-    }
-    /**
-    * The customer's invoice address.\
-    Note: This field is required for invoicing and whether it is available or not depends on the used shopCode.\
-    Use the GET /shop endpoint to check if the meta.invoiceEnabled of the shop is set to true.\
-    Because of internal requirements, fields of this array may be set with a fallback, if it is not provided.
-    *
-    * @param NewOrderCustomerInvoiceAddress|null $invoiceAddress
-    *
-    * @return self
-    */
-    public function setInvoiceAddress(?NewOrderCustomerInvoiceAddress $invoiceAddress): self
-    {
-        $this->initialized['invoiceAddress'] = true;
-        $this->invoiceAddress = $invoiceAddress;
-        return $this;
+        return ['gender' => 'gender', 'languageCode' => 'languageCode', 'externalCustomerId' => 'externalCustomerId', 'deliveryAddress' => 'deliveryAddress', 'email' => 'email', 'phone' => 'phone', 'firstname' => 'firstname', 'lastname' => 'lastname', 'title' => 'title', 'company' => 'company', 'companyVatNumber' => 'companyVatNumber', 'invoiceAddress' => 'invoiceAddress'];
     }
 }

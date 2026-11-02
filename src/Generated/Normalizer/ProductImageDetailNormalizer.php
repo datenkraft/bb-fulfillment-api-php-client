@@ -38,15 +38,15 @@ class ProductImageDetailNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('url', $data)) {
-            $object->setUrl($data['url']);
+            $object->url = $data['url'];
             unset($data['url']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
         foreach ($data as $key => $value) {
@@ -59,16 +59,16 @@ class ProductImageDetailNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('url') && null !== $data->getUrl()) {
-            $dataArray['url'] = $data->getUrl();
+        if (array_key_exists('url', get_object_vars($data)) && null !== ($data->url ?? null)) {
+            $dataArray['url'] = $data->url;
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width;
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

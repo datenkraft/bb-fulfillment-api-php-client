@@ -38,25 +38,28 @@ class ProductStockReferenceReferenceNormalizer implements DenormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('companyName', $data) && $data['companyName'] !== null) {
-            $object->setCompanyName($data['companyName']);
+            $object->companyName = $data['companyName'];
             unset($data['companyName']);
         }
-        elseif (\array_key_exists('companyName', $data) && $data['companyName'] === null) {
-            $object->setCompanyName(null);
+        elseif (\array_key_exists('companyName', $data)) {
+            $object->companyName = null;
+            unset($data['companyName']);
         }
         if (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] !== null) {
-            $object->setInboundDeliveryNumber($data['inboundDeliveryNumber']);
+            $object->inboundDeliveryNumber = $data['inboundDeliveryNumber'];
             unset($data['inboundDeliveryNumber']);
         }
-        elseif (\array_key_exists('inboundDeliveryNumber', $data) && $data['inboundDeliveryNumber'] === null) {
-            $object->setInboundDeliveryNumber(null);
+        elseif (\array_key_exists('inboundDeliveryNumber', $data)) {
+            $object->inboundDeliveryNumber = null;
+            unset($data['inboundDeliveryNumber']);
         }
         if (\array_key_exists('orderNumber', $data) && $data['orderNumber'] !== null) {
-            $object->setOrderNumber($data['orderNumber']);
+            $object->orderNumber = $data['orderNumber'];
             unset($data['orderNumber']);
         }
-        elseif (\array_key_exists('orderNumber', $data) && $data['orderNumber'] === null) {
-            $object->setOrderNumber(null);
+        elseif (\array_key_exists('orderNumber', $data)) {
+            $object->orderNumber = null;
+            unset($data['orderNumber']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -68,16 +71,16 @@ class ProductStockReferenceReferenceNormalizer implements DenormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('companyName')) {
-            $dataArray['companyName'] = $data->getCompanyName();
+        if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
+            $dataArray['companyName'] = $data->companyName;
         }
-        if ($data->isInitialized('inboundDeliveryNumber')) {
-            $dataArray['inboundDeliveryNumber'] = $data->getInboundDeliveryNumber();
+        if (array_key_exists('inboundDeliveryNumber', get_object_vars($data)) && null !== ($data->inboundDeliveryNumber ?? null)) {
+            $dataArray['inboundDeliveryNumber'] = $data->inboundDeliveryNumber;
         }
-        if ($data->isInitialized('orderNumber')) {
-            $dataArray['orderNumber'] = $data->getOrderNumber();
+        if (array_key_exists('orderNumber', get_object_vars($data)) && null !== ($data->orderNumber ?? null)) {
+            $dataArray['orderNumber'] = $data->orderNumber;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

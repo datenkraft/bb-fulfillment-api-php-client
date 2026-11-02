@@ -38,7 +38,7 @@ class NewProductStockAddNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('quantity', $data)) {
-            $object->setQuantity($data['quantity']);
+            $object->quantity = $data['quantity'];
             unset($data['quantity']);
         }
         foreach ($data as $key => $value) {
@@ -51,10 +51,10 @@ class NewProductStockAddNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('quantity') && null !== $data->getQuantity()) {
-            $dataArray['quantity'] = $data->getQuantity();
+        if (array_key_exists('quantity', get_object_vars($data)) && null !== ($data->quantity ?? null)) {
+            $dataArray['quantity'] = $data->quantity;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

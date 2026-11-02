@@ -38,11 +38,11 @@ class NewReconsignmentAnnouncementLineNormalizer implements DenormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class NewReconsignmentAnnouncementLineNormalizer implements DenormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['productNumber'] = $data->getProductNumber();
-        $dataArray['count'] = $data->getCount();
-        foreach ($data as $key => $value) {
+        $dataArray['productNumber'] = $data->productNumber;
+        $dataArray['count'] = $data->count;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

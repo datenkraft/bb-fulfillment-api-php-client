@@ -2,266 +2,67 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BundledOrderItem extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class BundledOrderItem implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Valid product number
      *
      * @var string
      */
-    protected $productNumber;
+    public string $productNumber;
     /**
      * Item Title (optional)
      *
      * @var string|null
      */
-    protected $title;
+    public ?string $title;
     /**
      * Positive number of items
      *
      * @var int
      */
-    protected $count;
+    public int $count;
     /**
      * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
      *
      * @var string|null
      */
-    protected $externalProductNumber;
+    public ?string $externalProductNumber;
     /**
      * The selling price of the item.
      *
      * @var BundledOrderItemPrice
      */
-    protected $price;
+    public BundledOrderItemPrice $price;
     /**
      * Number of canceled items
      *
      * @var int
      */
-    protected $canceledCount;
+    public int $canceledCount;
     /**
      * Number of available items
      *
      * @var int
      */
-    protected $availableCount;
+    public int $availableCount;
     /**
      * Number of delivered items
      *
      * @var int
      */
-    protected $deliveredCount;
+    public int $deliveredCount;
     /**
      * Number of returned items
      *
      * @var int
      */
-    protected $returnedCount;
-    /**
-     * Valid product number
-     *
-     * @return string
-     */
-    public function getProductNumber(): string
+    public int $returnedCount;
+    public function definedProperties(): array
     {
-        return $this->productNumber;
-    }
-    /**
-     * Valid product number
-     *
-     * @param string $productNumber
-     *
-     * @return self
-     */
-    public function setProductNumber(string $productNumber): self
-    {
-        $this->initialized['productNumber'] = true;
-        $this->productNumber = $productNumber;
-        return $this;
-    }
-    /**
-     * Item Title (optional)
-     *
-     * @return string|null
-     */
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-    /**
-     * Item Title (optional)
-     *
-     * @param string|null $title
-     *
-     * @return self
-     */
-    public function setTitle(?string $title): self
-    {
-        $this->initialized['title'] = true;
-        $this->title = $title;
-        return $this;
-    }
-    /**
-     * Positive number of items
-     *
-     * @return int
-     */
-    public function getCount(): int
-    {
-        return $this->count;
-    }
-    /**
-     * Positive number of items
-     *
-     * @param int $count
-     *
-     * @return self
-     */
-    public function setCount(int $count): self
-    {
-        $this->initialized['count'] = true;
-        $this->count = $count;
-        return $this;
-    }
-    /**
-     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
-     *
-     * @return string|null
-     */
-    public function getExternalProductNumber(): ?string
-    {
-        return $this->externalProductNumber;
-    }
-    /**
-     * Product number of the customer. Not available for order items of type bundle'. Will be dismissed if given.
-     *
-     * @param string|null $externalProductNumber
-     *
-     * @return self
-     */
-    public function setExternalProductNumber(?string $externalProductNumber): self
-    {
-        $this->initialized['externalProductNumber'] = true;
-        $this->externalProductNumber = $externalProductNumber;
-        return $this;
-    }
-    /**
-     * The selling price of the item.
-     *
-     * @return BundledOrderItemPrice
-     */
-    public function getPrice(): BundledOrderItemPrice
-    {
-        return $this->price;
-    }
-    /**
-     * The selling price of the item.
-     *
-     * @param BundledOrderItemPrice $price
-     *
-     * @return self
-     */
-    public function setPrice(BundledOrderItemPrice $price): self
-    {
-        $this->initialized['price'] = true;
-        $this->price = $price;
-        return $this;
-    }
-    /**
-     * Number of canceled items
-     *
-     * @return int
-     */
-    public function getCanceledCount(): int
-    {
-        return $this->canceledCount;
-    }
-    /**
-     * Number of canceled items
-     *
-     * @param int $canceledCount
-     *
-     * @return self
-     */
-    public function setCanceledCount(int $canceledCount): self
-    {
-        $this->initialized['canceledCount'] = true;
-        $this->canceledCount = $canceledCount;
-        return $this;
-    }
-    /**
-     * Number of available items
-     *
-     * @return int
-     */
-    public function getAvailableCount(): int
-    {
-        return $this->availableCount;
-    }
-    /**
-     * Number of available items
-     *
-     * @param int $availableCount
-     *
-     * @return self
-     */
-    public function setAvailableCount(int $availableCount): self
-    {
-        $this->initialized['availableCount'] = true;
-        $this->availableCount = $availableCount;
-        return $this;
-    }
-    /**
-     * Number of delivered items
-     *
-     * @return int
-     */
-    public function getDeliveredCount(): int
-    {
-        return $this->deliveredCount;
-    }
-    /**
-     * Number of delivered items
-     *
-     * @param int $deliveredCount
-     *
-     * @return self
-     */
-    public function setDeliveredCount(int $deliveredCount): self
-    {
-        $this->initialized['deliveredCount'] = true;
-        $this->deliveredCount = $deliveredCount;
-        return $this;
-    }
-    /**
-     * Number of returned items
-     *
-     * @return int
-     */
-    public function getReturnedCount(): int
-    {
-        return $this->returnedCount;
-    }
-    /**
-     * Number of returned items
-     *
-     * @param int $returnedCount
-     *
-     * @return self
-     */
-    public function setReturnedCount(int $returnedCount): self
-    {
-        $this->initialized['returnedCount'] = true;
-        $this->returnedCount = $returnedCount;
-        return $this;
+        return ['productNumber' => 'productNumber', 'title' => 'title', 'count' => 'count', 'externalProductNumber' => 'externalProductNumber', 'price' => 'price', 'canceledCount' => 'canceledCount', 'availableCount' => 'availableCount', 'deliveredCount' => 'deliveredCount', 'returnedCount' => 'returnedCount'];
     }
 }

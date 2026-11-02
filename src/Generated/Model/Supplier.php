@@ -2,64 +2,23 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Supplier extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class Supplier implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * @var string
      */
-    protected $supplierNumber;
+    public string $supplierNumber;
     /**
      * Supplier name
      *
      * @var string
      */
-    protected $name;
-    /**
-     * @return string
-     */
-    public function getSupplierNumber(): string
+    public string $name;
+    public function definedProperties(): array
     {
-        return $this->supplierNumber;
-    }
-    /**
-     * @param string $supplierNumber
-     *
-     * @return self
-     */
-    public function setSupplierNumber(string $supplierNumber): self
-    {
-        $this->initialized['supplierNumber'] = true;
-        $this->supplierNumber = $supplierNumber;
-        return $this;
-    }
-    /**
-     * Supplier name
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * Supplier name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
+        return ['supplierNumber' => 'supplierNumber', 'name' => 'name'];
     }
 }

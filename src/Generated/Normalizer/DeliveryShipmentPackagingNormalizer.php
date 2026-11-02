@@ -38,24 +38,24 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('height', $data) && \is_int($data['height'])) {
-            $data['height'] = (double) $data['height'];
+            $data['height'] = (float) $data['height'];
         }
         if (\array_key_exists('width', $data) && \is_int($data['width'])) {
-            $data['width'] = (double) $data['width'];
+            $data['width'] = (float) $data['width'];
         }
         if (\array_key_exists('depth', $data) && \is_int($data['depth'])) {
-            $data['depth'] = (double) $data['depth'];
+            $data['depth'] = (float) $data['depth'];
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
         if (\array_key_exists('depth', $data)) {
-            $object->setDepth($data['depth']);
+            $object->depth = $data['depth'];
             unset($data['depth']);
         }
         if (\array_key_exists('materials', $data)) {
@@ -63,7 +63,7 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
             foreach ($data['materials'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackagingMaterial::class, 'json', $context);
             }
-            $object->setMaterials($values);
+            $object->materials = $values;
             unset($data['materials']);
         }
         foreach ($data as $key => $value_1) {
@@ -76,23 +76,24 @@ class DeliveryShipmentPackagingNormalizer implements DenormalizerInterface, Norm
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height;
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width;
         }
-        if ($data->isInitialized('depth') && null !== $data->getDepth()) {
-            $dataArray['depth'] = $data->getDepth();
+        if (array_key_exists('depth', get_object_vars($data)) && null !== ($data->depth ?? null)) {
+            $dataArray['depth'] = $data->depth;
         }
-        if ($data->isInitialized('materials') && null !== $data->getMaterials()) {
+        if (array_key_exists('materials', get_object_vars($data)) && null !== ($data->materials ?? null)) {
             $values = [];
-            foreach ($data->getMaterials() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->materials as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['materials'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

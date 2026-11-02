@@ -38,26 +38,28 @@ class ReconsignmentAnnouncementLineNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('count', $data) && $data['count'] !== null) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
-        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
-            $object->setCount(null);
+        elseif (\array_key_exists('count', $data)) {
+            $object->count = null;
+            unset($data['count']);
         }
         if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
             $values = [];
             foreach ($data['bundledProducts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentAnnouncementLineBundledProduct::class, 'json', $context);
             }
-            $object->setBundledProducts($values);
+            $object->bundledProducts = $values;
             unset($data['bundledProducts']);
         }
-        elseif (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] === null) {
-            $object->setBundledProducts(null);
+        elseif (\array_key_exists('bundledProducts', $data)) {
+            $object->bundledProducts = null;
+            unset($data['bundledProducts']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -69,18 +71,19 @@ class ReconsignmentAnnouncementLineNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['productNumber'] = $data->getProductNumber();
-        if ($data->isInitialized('count')) {
-            $dataArray['count'] = $data->getCount();
+        $dataArray['productNumber'] = $data->productNumber;
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count;
         }
-        if ($data->isInitialized('bundledProducts')) {
+        if (array_key_exists('bundledProducts', get_object_vars($data)) && null !== ($data->bundledProducts ?? null)) {
             $values = [];
-            foreach ($data->getBundledProducts() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->bundledProducts as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['bundledProducts'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

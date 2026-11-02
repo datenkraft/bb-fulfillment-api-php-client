@@ -2,42 +2,19 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ReservedFor extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ReservedFor implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Reserved stock of a product for shopify
      *
      * @var int
      */
-    protected $shopify;
-    /**
-     * Reserved stock of a product for shopify
-     *
-     * @return int
-     */
-    public function getShopify(): int
+    public int $shopify;
+    public function definedProperties(): array
     {
-        return $this->shopify;
-    }
-    /**
-     * Reserved stock of a product for shopify
-     *
-     * @param int $shopify
-     *
-     * @return self
-     */
-    public function setShopify(int $shopify): self
-    {
-        $this->initialized['shopify'] = true;
-        $this->shopify = $shopify;
-        return $this;
+        return ['shopify' => 'shopify'];
     }
 }

@@ -2,73 +2,26 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class InboundDeliveryTrackingUrl extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class InboundDeliveryTrackingUrl implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Link to the tracking site of the carrier.\
      * Must be an absolute http or https url.
      *
      * @var string
      */
-    protected $trackingUrl;
+    public string $trackingUrl;
     /**
      * The API internal id of the tracking url
      *
      * @var int
      */
-    protected $trackingUrlId;
-    /**
-     * Link to the tracking site of the carrier.\
-     * Must be an absolute http or https url.
-     *
-     * @return string
-     */
-    public function getTrackingUrl(): string
+    public int $trackingUrlId;
+    public function definedProperties(): array
     {
-        return $this->trackingUrl;
-    }
-    /**
-    * Link to the tracking site of the carrier.\
-    Must be an absolute http or https url.
-    *
-    * @param string $trackingUrl
-    *
-    * @return self
-    */
-    public function setTrackingUrl(string $trackingUrl): self
-    {
-        $this->initialized['trackingUrl'] = true;
-        $this->trackingUrl = $trackingUrl;
-        return $this;
-    }
-    /**
-     * The API internal id of the tracking url
-     *
-     * @return int
-     */
-    public function getTrackingUrlId(): int
-    {
-        return $this->trackingUrlId;
-    }
-    /**
-     * The API internal id of the tracking url
-     *
-     * @param int $trackingUrlId
-     *
-     * @return self
-     */
-    public function setTrackingUrlId(int $trackingUrlId): self
-    {
-        $this->initialized['trackingUrlId'] = true;
-        $this->trackingUrlId = $trackingUrlId;
-        return $this;
+        return ['trackingUrl' => 'trackingUrl', 'trackingUrlId' => 'trackingUrlId'];
     }
 }

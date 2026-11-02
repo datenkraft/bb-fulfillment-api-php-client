@@ -38,11 +38,11 @@ class InboundDeliveryTrackingUrlNormalizer implements DenormalizerInterface, Nor
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('trackingUrl', $data)) {
-            $object->setTrackingUrl($data['trackingUrl']);
+            $object->trackingUrl = $data['trackingUrl'];
             unset($data['trackingUrl']);
         }
         if (\array_key_exists('trackingUrlId', $data)) {
-            $object->setTrackingUrlId($data['trackingUrlId']);
+            $object->trackingUrlId = $data['trackingUrlId'];
             unset($data['trackingUrlId']);
         }
         foreach ($data as $key => $value) {
@@ -55,11 +55,11 @@ class InboundDeliveryTrackingUrlNormalizer implements DenormalizerInterface, Nor
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['trackingUrl'] = $data->getTrackingUrl();
-        if ($data->isInitialized('trackingUrlId') && null !== $data->getTrackingUrlId()) {
-            $dataArray['trackingUrlId'] = $data->getTrackingUrlId();
+        $dataArray['trackingUrl'] = $data->trackingUrl;
+        if (array_key_exists('trackingUrlId', get_object_vars($data)) && null !== ($data->trackingUrlId ?? null)) {
+            $dataArray['trackingUrlId'] = $data->trackingUrlId;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -38,11 +38,11 @@ class ProductImageNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('detail', $data)) {
-            $object->setDetail($this->denormalizer->denormalize($data['detail'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class, 'json', $context));
+            $object->detail = $this->denormalizer->denormalize($data['detail'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class, 'json', $context);
             unset($data['detail']);
         }
         if (\array_key_exists('thumbnail', $data)) {
-            $object->setThumbnail($this->denormalizer->denormalize($data['thumbnail'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class, 'json', $context));
+            $object->thumbnail = $this->denormalizer->denormalize($data['thumbnail'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductImageDetail::class, 'json', $context);
             unset($data['thumbnail']);
         }
         foreach ($data as $key => $value) {
@@ -55,13 +55,15 @@ class ProductImageNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('detail') && null !== $data->getDetail()) {
-            $dataArray['detail'] = $this->normalizer->normalize($data->getDetail(), 'json', $context);
+        if (array_key_exists('detail', get_object_vars($data)) && null !== ($data->detail ?? null)) {
+            $normalized = $this->normalizer->normalize($data->detail, 'json', $context);
+            $dataArray['detail'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('thumbnail') && null !== $data->getThumbnail()) {
-            $dataArray['thumbnail'] = $this->normalizer->normalize($data->getThumbnail(), 'json', $context);
+        if (array_key_exists('thumbnail', get_object_vars($data)) && null !== ($data->thumbnail ?? null)) {
+            $normalized_1 = $this->normalizer->normalize($data->thumbnail, 'json', $context);
+            $dataArray['thumbnail'] = \is_iterable($normalized_1) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized_1) : $normalized_1;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

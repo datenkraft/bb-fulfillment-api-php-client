@@ -44,19 +44,19 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             $data['customsClearanceRequired'] = (bool) $data['customsClearanceRequired'];
         }
         if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
             unset($data['countryCode']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         if (\array_key_exists('phoneRequired', $data)) {
-            $object->setPhoneRequired($data['phoneRequired']);
+            $object->phoneRequired = $data['phoneRequired'];
             unset($data['phoneRequired']);
         }
         if (\array_key_exists('customsClearanceRequired', $data)) {
-            $object->setCustomsClearanceRequired($data['customsClearanceRequired']);
+            $object->customsClearanceRequired = $data['customsClearanceRequired'];
             unset($data['customsClearanceRequired']);
         }
         if (\array_key_exists('provinces', $data) && $data['provinces'] !== null) {
@@ -64,14 +64,15 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
             foreach ($data['provinces'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\CountryProvinces::class, 'json', $context);
             }
-            $object->setProvinces($values);
+            $object->provinces = $values;
             unset($data['provinces']);
         }
-        elseif (\array_key_exists('provinces', $data) && $data['provinces'] === null) {
-            $object->setProvinces(null);
+        elseif (\array_key_exists('provinces', $data)) {
+            $object->provinces = null;
+            unset($data['provinces']);
         }
         if (\array_key_exists('currencyCode', $data)) {
-            $object->setCurrencyCode($data['currencyCode']);
+            $object->currencyCode = $data['currencyCode'];
             unset($data['currencyCode']);
         }
         foreach ($data as $key => $value_1) {
@@ -84,29 +85,30 @@ class CountryNormalizer implements DenormalizerInterface, NormalizerInterface, D
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
-            $dataArray['countryCode'] = $data->getCountryCode();
+        if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
+            $dataArray['countryCode'] = $data->countryCode;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name;
         }
-        if ($data->isInitialized('phoneRequired') && null !== $data->getPhoneRequired()) {
-            $dataArray['phoneRequired'] = $data->getPhoneRequired();
+        if (array_key_exists('phoneRequired', get_object_vars($data)) && null !== ($data->phoneRequired ?? null)) {
+            $dataArray['phoneRequired'] = $data->phoneRequired;
         }
-        if ($data->isInitialized('customsClearanceRequired') && null !== $data->getCustomsClearanceRequired()) {
-            $dataArray['customsClearanceRequired'] = $data->getCustomsClearanceRequired();
+        if (array_key_exists('customsClearanceRequired', get_object_vars($data)) && null !== ($data->customsClearanceRequired ?? null)) {
+            $dataArray['customsClearanceRequired'] = $data->customsClearanceRequired;
         }
-        if ($data->isInitialized('provinces')) {
+        if (array_key_exists('provinces', get_object_vars($data)) && null !== ($data->provinces ?? null)) {
             $values = [];
-            foreach ($data->getProvinces() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->provinces as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['provinces'] = $values;
         }
-        if ($data->isInitialized('currencyCode') && null !== $data->getCurrencyCode()) {
-            $dataArray['currencyCode'] = $data->getCurrencyCode();
+        if (array_key_exists('currencyCode', get_object_vars($data)) && null !== ($data->currencyCode ?? null)) {
+            $dataArray['currencyCode'] = $data->currencyCode;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

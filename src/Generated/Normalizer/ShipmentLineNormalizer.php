@@ -38,36 +38,38 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('count', $data) && \is_int($data['count'])) {
-            $data['count'] = (double) $data['count'];
+            $data['count'] = (float) $data['count'];
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('productNumberBundle', $data) && $data['productNumberBundle'] !== null) {
-            $object->setProductNumberBundle($data['productNumberBundle']);
+            $object->productNumberBundle = $data['productNumberBundle'];
             unset($data['productNumberBundle']);
         }
-        elseif (\array_key_exists('productNumberBundle', $data) && $data['productNumberBundle'] === null) {
-            $object->setProductNumberBundle(null);
+        elseif (\array_key_exists('productNumberBundle', $data)) {
+            $object->productNumberBundle = null;
+            unset($data['productNumberBundle']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         if (\array_key_exists('unit', $data) && $data['unit'] !== null) {
-            $object->setUnit($data['unit']);
+            $object->unit = $data['unit'];
             unset($data['unit']);
         }
-        elseif (\array_key_exists('unit', $data) && $data['unit'] === null) {
-            $object->setUnit(null);
+        elseif (\array_key_exists('unit', $data)) {
+            $object->unit = null;
+            unset($data['unit']);
         }
         if (\array_key_exists('serialNumbers', $data)) {
             $values = [];
             foreach ($data['serialNumbers'] as $value) {
                 $values[] = $value;
             }
-            $object->setSerialNumbers($values);
+            $object->serialNumbers = $values;
             unset($data['serialNumbers']);
         }
         if (\array_key_exists('traceCodes', $data)) {
@@ -75,7 +77,7 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['traceCodes'] as $value_1) {
                 $values_1[] = $value_1;
             }
-            $object->setTraceCodes($values_1);
+            $object->traceCodes = $values_1;
             unset($data['traceCodes']);
         }
         if (\array_key_exists('batches', $data)) {
@@ -83,7 +85,7 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
             foreach ($data['batches'] as $value_2) {
                 $values_2[] = $this->denormalizer->denormalize($value_2, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\Batch::class, 'json', $context);
             }
-            $object->setBatches($values_2);
+            $object->batches = $values_2;
             unset($data['batches']);
         }
         foreach ($data as $key => $value_3) {
@@ -96,40 +98,41 @@ class ShipmentLineNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
-            $dataArray['productNumber'] = $data->getProductNumber();
+        if (array_key_exists('productNumber', get_object_vars($data)) && null !== ($data->productNumber ?? null)) {
+            $dataArray['productNumber'] = $data->productNumber;
         }
-        if ($data->isInitialized('productNumberBundle')) {
-            $dataArray['productNumberBundle'] = $data->getProductNumberBundle();
+        if (array_key_exists('productNumberBundle', get_object_vars($data)) && null !== ($data->productNumberBundle ?? null)) {
+            $dataArray['productNumberBundle'] = $data->productNumberBundle;
         }
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count;
         }
-        if ($data->isInitialized('unit')) {
-            $dataArray['unit'] = $data->getUnit();
+        if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
+            $dataArray['unit'] = $data->unit;
         }
-        if ($data->isInitialized('serialNumbers') && null !== $data->getSerialNumbers()) {
+        if (array_key_exists('serialNumbers', get_object_vars($data)) && null !== ($data->serialNumbers ?? null)) {
             $values = [];
-            foreach ($data->getSerialNumbers() as $value) {
+            foreach ($data->serialNumbers as $value) {
                 $values[] = $value;
             }
             $dataArray['serialNumbers'] = $values;
         }
-        if ($data->isInitialized('traceCodes') && null !== $data->getTraceCodes()) {
+        if (array_key_exists('traceCodes', get_object_vars($data)) && null !== ($data->traceCodes ?? null)) {
             $values_1 = [];
-            foreach ($data->getTraceCodes() as $value_1) {
+            foreach ($data->traceCodes as $value_1) {
                 $values_1[] = $value_1;
             }
             $dataArray['traceCodes'] = $values_1;
         }
-        if ($data->isInitialized('batches') && null !== $data->getBatches()) {
+        if (array_key_exists('batches', get_object_vars($data)) && null !== ($data->batches ?? null)) {
             $values_2 = [];
-            foreach ($data->getBatches() as $value_2) {
-                $values_2[] = $this->normalizer->normalize($value_2, 'json', $context);
+            foreach ($data->batches as $value_2) {
+                $normalized = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_2[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['batches'] = $values_2;
         }
-        foreach ($data as $key => $value_3) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_3;
             }

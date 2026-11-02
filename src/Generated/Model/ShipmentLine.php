@@ -2,210 +2,55 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ShipmentLine extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ShipmentLine implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Product number
      *
      * @var string
      */
-    protected $productNumber;
+    public string $productNumber;
     /**
      * Product number of the bundle which the product of the shipment line is part of.
      *
      * @var string|null
      */
-    protected $productNumberBundle;
+    public ?string $productNumberBundle;
     /**
      * Number of items contained in the delivery
      *
      * @var float
      */
-    protected $count;
+    public float $count;
     /**
      * Product unit
      *
      * @var string|null
      */
-    protected $unit;
+    public ?string $unit;
     /**
      * Serial numbers
      *
      * @var list<string>
      */
-    protected $serialNumbers;
+    public array $serialNumbers;
     /**
      * Allows the traceability of the products in the deliveries.
      *
      * @var list<string>
      */
-    protected $traceCodes;
+    public array $traceCodes;
     /**
      * Batches
      *
      * @var list<Batch>
      */
-    protected $batches;
-    /**
-     * Product number
-     *
-     * @return string
-     */
-    public function getProductNumber(): string
+    public array $batches;
+    public function definedProperties(): array
     {
-        return $this->productNumber;
-    }
-    /**
-     * Product number
-     *
-     * @param string $productNumber
-     *
-     * @return self
-     */
-    public function setProductNumber(string $productNumber): self
-    {
-        $this->initialized['productNumber'] = true;
-        $this->productNumber = $productNumber;
-        return $this;
-    }
-    /**
-     * Product number of the bundle which the product of the shipment line is part of.
-     *
-     * @return string|null
-     */
-    public function getProductNumberBundle(): ?string
-    {
-        return $this->productNumberBundle;
-    }
-    /**
-     * Product number of the bundle which the product of the shipment line is part of.
-     *
-     * @param string|null $productNumberBundle
-     *
-     * @return self
-     */
-    public function setProductNumberBundle(?string $productNumberBundle): self
-    {
-        $this->initialized['productNumberBundle'] = true;
-        $this->productNumberBundle = $productNumberBundle;
-        return $this;
-    }
-    /**
-     * Number of items contained in the delivery
-     *
-     * @return float
-     */
-    public function getCount(): float
-    {
-        return $this->count;
-    }
-    /**
-     * Number of items contained in the delivery
-     *
-     * @param float $count
-     *
-     * @return self
-     */
-    public function setCount(float $count): self
-    {
-        $this->initialized['count'] = true;
-        $this->count = $count;
-        return $this;
-    }
-    /**
-     * Product unit
-     *
-     * @return string|null
-     */
-    public function getUnit(): ?string
-    {
-        return $this->unit;
-    }
-    /**
-     * Product unit
-     *
-     * @param string|null $unit
-     *
-     * @return self
-     */
-    public function setUnit(?string $unit): self
-    {
-        $this->initialized['unit'] = true;
-        $this->unit = $unit;
-        return $this;
-    }
-    /**
-     * Serial numbers
-     *
-     * @return list<string>
-     */
-    public function getSerialNumbers(): array
-    {
-        return $this->serialNumbers;
-    }
-    /**
-     * Serial numbers
-     *
-     * @param list<string> $serialNumbers
-     *
-     * @return self
-     */
-    public function setSerialNumbers(array $serialNumbers): self
-    {
-        $this->initialized['serialNumbers'] = true;
-        $this->serialNumbers = $serialNumbers;
-        return $this;
-    }
-    /**
-     * Allows the traceability of the products in the deliveries.
-     *
-     * @return list<string>
-     */
-    public function getTraceCodes(): array
-    {
-        return $this->traceCodes;
-    }
-    /**
-     * Allows the traceability of the products in the deliveries.
-     *
-     * @param list<string> $traceCodes
-     *
-     * @return self
-     */
-    public function setTraceCodes(array $traceCodes): self
-    {
-        $this->initialized['traceCodes'] = true;
-        $this->traceCodes = $traceCodes;
-        return $this;
-    }
-    /**
-     * Batches
-     *
-     * @return list<Batch>
-     */
-    public function getBatches(): array
-    {
-        return $this->batches;
-    }
-    /**
-     * Batches
-     *
-     * @param list<Batch> $batches
-     *
-     * @return self
-     */
-    public function setBatches(array $batches): self
-    {
-        $this->initialized['batches'] = true;
-        $this->batches = $batches;
-        return $this;
+        return ['productNumber' => 'productNumber', 'productNumberBundle' => 'productNumberBundle', 'count' => 'count', 'unit' => 'unit', 'serialNumbers' => 'serialNumbers', 'traceCodes' => 'traceCodes', 'batches' => 'batches'];
     }
 }

@@ -38,37 +38,38 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('weight', $data) && \is_int($data['weight'])) {
-            $data['weight'] = (double) $data['weight'];
+            $data['weight'] = (float) $data['weight'];
         }
         if (\array_key_exists('number', $data)) {
-            $object->setNumber($data['number']);
+            $object->number = $data['number'];
             unset($data['number']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('deliveryService', $data) && $data['deliveryService'] !== null) {
-            $object->setDeliveryService($data['deliveryService']);
+            $object->deliveryService = $data['deliveryService'];
             unset($data['deliveryService']);
         }
-        elseif (\array_key_exists('deliveryService', $data) && $data['deliveryService'] === null) {
-            $object->setDeliveryService(null);
+        elseif (\array_key_exists('deliveryService', $data)) {
+            $object->deliveryService = null;
+            unset($data['deliveryService']);
         }
         if (\array_key_exists('code', $data)) {
-            $object->setCode($data['code']);
+            $object->code = $data['code'];
             unset($data['code']);
         }
         if (\array_key_exists('link', $data)) {
-            $object->setLink($data['link']);
+            $object->link = $data['link'];
             unset($data['link']);
         }
         if (\array_key_exists('weight', $data)) {
-            $object->setWeight($data['weight']);
+            $object->weight = $data['weight'];
             unset($data['weight']);
         }
         if (\array_key_exists('weightUnit', $data)) {
-            $object->setWeightUnit($data['weightUnit']);
+            $object->weightUnit = $data['weightUnit'];
             unset($data['weightUnit']);
         }
         if (\array_key_exists('shipmentLines', $data)) {
@@ -76,26 +77,27 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
             foreach ($data['shipmentLines'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShipmentLine::class, 'json', $context);
             }
-            $object->setShipmentLines($values);
+            $object->shipmentLines = $values;
             unset($data['shipmentLines']);
         }
         if (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] !== null) {
-            $object->setExternalShipmentId($data['externalShipmentId']);
+            $object->externalShipmentId = $data['externalShipmentId'];
             unset($data['externalShipmentId']);
         }
-        elseif (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] === null) {
-            $object->setExternalShipmentId(null);
+        elseif (\array_key_exists('externalShipmentId', $data)) {
+            $object->externalShipmentId = null;
+            unset($data['externalShipmentId']);
         }
         if (\array_key_exists('journal', $data)) {
             $values_1 = [];
             foreach ($data['journal'] as $value_1) {
                 $values_1[] = $this->denormalizer->denormalize($value_1, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentJournal::class, 'json', $context);
             }
-            $object->setJournal($values_1);
+            $object->journal = $values_1;
             unset($data['journal']);
         }
         if (\array_key_exists('packaging', $data)) {
-            $object->setPackaging($this->denormalizer->denormalize($data['packaging'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class, 'json', $context));
+            $object->packaging = $this->denormalizer->denormalize($data['packaging'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryShipmentPackaging::class, 'json', $context);
             unset($data['packaging']);
         }
         foreach ($data as $key => $value_2) {
@@ -108,48 +110,51 @@ class DeliveryShipmentNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
-            $dataArray['number'] = $data->getNumber();
+        if (array_key_exists('number', get_object_vars($data)) && null !== ($data->number ?? null)) {
+            $dataArray['number'] = $data->number;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status;
         }
-        if ($data->isInitialized('deliveryService')) {
-            $dataArray['deliveryService'] = $data->getDeliveryService();
+        if (array_key_exists('deliveryService', get_object_vars($data)) && null !== ($data->deliveryService ?? null)) {
+            $dataArray['deliveryService'] = $data->deliveryService;
         }
-        if ($data->isInitialized('code') && null !== $data->getCode()) {
-            $dataArray['code'] = $data->getCode();
+        if (array_key_exists('code', get_object_vars($data)) && null !== ($data->code ?? null)) {
+            $dataArray['code'] = $data->code;
         }
-        if ($data->isInitialized('link') && null !== $data->getLink()) {
-            $dataArray['link'] = $data->getLink();
+        if (array_key_exists('link', get_object_vars($data)) && null !== ($data->link ?? null)) {
+            $dataArray['link'] = $data->link;
         }
-        if ($data->isInitialized('weight') && null !== $data->getWeight()) {
-            $dataArray['weight'] = $data->getWeight();
+        if (array_key_exists('weight', get_object_vars($data)) && null !== ($data->weight ?? null)) {
+            $dataArray['weight'] = $data->weight;
         }
-        if ($data->isInitialized('weightUnit') && null !== $data->getWeightUnit()) {
-            $dataArray['weightUnit'] = $data->getWeightUnit();
+        if (array_key_exists('weightUnit', get_object_vars($data)) && null !== ($data->weightUnit ?? null)) {
+            $dataArray['weightUnit'] = $data->weightUnit;
         }
-        if ($data->isInitialized('shipmentLines') && null !== $data->getShipmentLines()) {
+        if (array_key_exists('shipmentLines', get_object_vars($data)) && null !== ($data->shipmentLines ?? null)) {
             $values = [];
-            foreach ($data->getShipmentLines() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->shipmentLines as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['shipmentLines'] = $values;
         }
-        if ($data->isInitialized('externalShipmentId')) {
-            $dataArray['externalShipmentId'] = $data->getExternalShipmentId();
+        if (array_key_exists('externalShipmentId', get_object_vars($data)) && null !== ($data->externalShipmentId ?? null)) {
+            $dataArray['externalShipmentId'] = $data->externalShipmentId;
         }
-        if ($data->isInitialized('journal') && null !== $data->getJournal()) {
+        if (array_key_exists('journal', get_object_vars($data)) && null !== ($data->journal ?? null)) {
             $values_1 = [];
-            foreach ($data->getJournal() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            foreach ($data->journal as $value_1) {
+                $normalized_1 = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['journal'] = $values_1;
         }
-        if ($data->isInitialized('packaging') && null !== $data->getPackaging()) {
-            $dataArray['packaging'] = $this->normalizer->normalize($data->getPackaging(), 'json', $context);
+        if (array_key_exists('packaging', get_object_vars($data)) && null !== ($data->packaging ?? null)) {
+            $normalized_2 = $this->normalizer->normalize($data->packaging, 'json', $context);
+            $dataArray['packaging'] = \is_iterable($normalized_2) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_2) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_2;
             }

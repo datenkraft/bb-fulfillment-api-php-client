@@ -2,45 +2,20 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class OrderShipping extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class OrderShipping implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * The delivery service to recommend for usage.\
      * The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
      *
      * @var string
      */
-    protected $deliveryService;
-    /**
-     * The delivery service to recommend for usage.\
-     * The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
-     *
-     * @return string
-     */
-    public function getDeliveryService(): string
+    public string $deliveryService;
+    public function definedProperties(): array
     {
-        return $this->deliveryService;
-    }
-    /**
-    * The delivery service to recommend for usage.\
-    The codes of supported delivery services can be retrieved from the 'GET /delivery-service' endpoint.
-    *
-    * @param string $deliveryService
-    *
-    * @return self
-    */
-    public function setDeliveryService(string $deliveryService): self
-    {
-        $this->initialized['deliveryService'] = true;
-        $this->deliveryService = $deliveryService;
-        return $this;
+        return ['deliveryService' => 'deliveryService'];
     }
 }

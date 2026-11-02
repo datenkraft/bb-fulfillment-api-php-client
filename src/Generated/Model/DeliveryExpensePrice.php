@@ -2,64 +2,23 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class DeliveryExpensePrice extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class DeliveryExpensePrice implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * The net price.
      *
      * @var float
      */
-    protected $value;
+    public float $value;
     /**
      * @var string
      */
-    protected $currency;
-    /**
-     * The net price.
-     *
-     * @return float
-     */
-    public function getValue(): float
+    public string $currency;
+    public function definedProperties(): array
     {
-        return $this->value;
-    }
-    /**
-     * The net price.
-     *
-     * @param float $value
-     *
-     * @return self
-     */
-    public function setValue(float $value): self
-    {
-        $this->initialized['value'] = true;
-        $this->value = $value;
-        return $this;
-    }
-    /**
-     * @return string
-     */
-    public function getCurrency(): string
-    {
-        return $this->currency;
-    }
-    /**
-     * @param string $currency
-     *
-     * @return self
-     */
-    public function setCurrency(string $currency): self
-    {
-        $this->initialized['currency'] = true;
-        $this->currency = $currency;
-        return $this;
+        return ['value' => 'value', 'currency' => 'currency'];
     }
 }

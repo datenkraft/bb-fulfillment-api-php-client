@@ -41,11 +41,12 @@ class BaseOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInt
             $data['printOrderDocument'] = (bool) $data['printOrderDocument'];
         }
         if (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] !== null) {
-            $object->setPrintOrderDocument($data['printOrderDocument']);
+            $object->printOrderDocument = $data['printOrderDocument'];
             unset($data['printOrderDocument']);
         }
-        elseif (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] === null) {
-            $object->setPrintOrderDocument(null);
+        elseif (\array_key_exists('printOrderDocument', $data)) {
+            $object->printOrderDocument = null;
+            unset($data['printOrderDocument']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -57,10 +58,10 @@ class BaseOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('printOrderDocument')) {
-            $dataArray['printOrderDocument'] = $data->getPrintOrderDocument();
+        if (array_key_exists('printOrderDocument', get_object_vars($data)) && null !== ($data->printOrderDocument ?? null)) {
+            $dataArray['printOrderDocument'] = $data->printOrderDocument;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

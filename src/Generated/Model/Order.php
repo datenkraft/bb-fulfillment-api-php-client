@@ -2,60 +2,55 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class Order extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class Order implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * The shopCode used internally to distinguish between clients.
      *
      * @var string|null
      */
-    protected $shopCode;
+    public ?string $shopCode;
     /**
      * @var OrderCustomer
      */
-    protected $customer;
+    public OrderCustomer $customer;
     /**
      * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
      * together if all orderItem data is the same.
      *
      * @var list<OrderItem>
      */
-    protected $orderItems;
+    public array $orderItems;
     /**
      * A not unique reference for the order which can be used for identifying a specific order or for
      * mapping to a third party app.
      *
      * @var string|null
      */
-    protected $externalOrderId;
+    public ?string $externalOrderId;
     /**
      * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
      * used as a fallback.
      *
      * @var string|null
      */
-    protected $deliverySlipNotes;
+    public ?string $deliverySlipNotes;
     /**
      * External reference for the order
      *
      * @var string|null
      */
-    protected $externalOrderReference;
+    public ?string $externalOrderReference;
     /**
      * Notes for the steve team regarding the fulfillment. \
      * If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
      *
      * @var string|null
      */
-    protected $orderNotes;
+    public ?string $orderNotes;
     /**
      * The desired shipping date of the order. The order will not be shipped before this date.\
      * Must not be in the past.\
@@ -66,25 +61,25 @@ class Order extends \ArrayObject
      *
      * @var \DateTime|null
      */
-    protected $desiredShippingDate;
+    public ?\DateTime $desiredShippingDate;
     /**
      * The Amazon seller order id used when the order is coming from the Amazon marketplace.
      *
      * @var string|null
      */
-    protected $amazonSellerOrderId;
+    public ?string $amazonSellerOrderId;
     /**
      * The Amazon vendor order id when sending orders to an Amazon warehouse for sales by Amazon.
      *
      * @var string|null
      */
-    protected $amazonVendorOrderId;
+    public ?string $amazonVendorOrderId;
     /**
      * The Amazon seller shipment id when sending a delivery to an Amazon warehouse for fulfillment by Amazon.
      *
      * @var string|null
      */
-    protected $amazonFbaShipmentId;
+    public ?string $amazonFbaShipmentId;
     /**
      * The delivery costs of the order, which will be charged to the customer.\
      * Note: This field is required if the delivery address country requires customs clearance
@@ -92,13 +87,13 @@ class Order extends \ArrayObject
      *
      * @var list<OrderDeliveryCosts>|null
      */
-    protected $deliveryCosts;
+    public ?array $deliveryCosts;
     /**
      * Additional optional options for the order.
      *
      * @var BaseOrderOptions|null
      */
-    protected $options;
+    public ?BaseOrderOptions $options;
     /**
      * The order number.\
      * Note: If this number is prefixed with 'NICE', it means that the order was created
@@ -106,7 +101,7 @@ class Order extends \ArrayObject
      *
      * @var mixed
      */
-    protected $orderNumber;
+    public $orderNumber;
     /**
      * The current status of the order.
      * - new: The order was created but not every required information was given.
@@ -124,37 +119,37 @@ class Order extends \ArrayObject
      *
      * @var string
      */
-    protected $status;
+    public string $status;
     /**
      * Describes why the order is locked
      *
      * @var string|null
      */
-    protected $lockReason;
+    public ?string $lockReason;
     /**
      * The create date for the order. Format in ISO 8601
      *
      * @var \DateTime
      */
-    protected $orderDate;
+    public \DateTime $orderDate;
     /**
      * Note that only deliveries with status 'delivered' are shown in this list.
      *
      * @var list<OrderDelivery>|null
      */
-    protected $delivery;
+    public ?array $delivery;
     /**
      * Options regarding the payment of the order
      *
      * @var OrderPayment
      */
-    protected $payment;
+    public OrderPayment $payment;
     /**
      * Options regarding the shipping of the order.
      *
      * @var OrderShipping
      */
-    protected $shipping;
+    public OrderShipping $shipping;
     /**
      * The source of the order.
      * - shopify: This order was created via the steve by niceshops Shopify application
@@ -163,25 +158,25 @@ class Order extends \ArrayObject
      *
      * @var string
      */
-    protected $source;
+    public string $source;
     /**
      * If available, a hyperlink to the application where this order was created is provided
      *
      * @var string|null
      */
-    protected $sourceLink;
+    public ?string $sourceLink;
     /**
      * Indicates whether the order can be canceled or not
      *
      * @var bool
      */
-    protected $cancelable;
+    public bool $cancelable;
     /**
      * Indicates whether orderItems that are not delivered yet can be canceled or not
      *
      * @var bool
      */
-    protected $orderItemsCancelable;
+    public bool $orderItemsCancelable;
     /**
      * Indicates whether the order can currently be updated via PATCH /order/{orderNumber}.
      * It is false as soon as the order is delivered, deleted, canceled or redacted,
@@ -189,7 +184,7 @@ class Order extends \ArrayObject
      *
      * @var bool
      */
-    protected $editable;
+    public bool $editable;
     /**
      * Indicates whether a partial delivery is pending or not.
      * Note: If true, it means that a partial delivery has been requested but not yet processed.
@@ -197,637 +192,9 @@ class Order extends \ArrayObject
      *
      * @var bool
      */
-    protected $partialDeliveryPending;
-    /**
-     * The shopCode used internally to distinguish between clients.
-     *
-     * @return string|null
-     */
-    public function getShopCode(): ?string
+    public bool $partialDeliveryPending;
+    public function definedProperties(): array
     {
-        return $this->shopCode;
-    }
-    /**
-     * The shopCode used internally to distinguish between clients.
-     *
-     * @param string|null $shopCode
-     *
-     * @return self
-     */
-    public function setShopCode(?string $shopCode): self
-    {
-        $this->initialized['shopCode'] = true;
-        $this->shopCode = $shopCode;
-        return $this;
-    }
-    /**
-     * @return OrderCustomer
-     */
-    public function getCustomer(): OrderCustomer
-    {
-        return $this->customer;
-    }
-    /**
-     * @param OrderCustomer $customer
-     *
-     * @return self
-     */
-    public function setCustomer(OrderCustomer $customer): self
-    {
-        $this->initialized['customer'] = true;
-        $this->customer = $customer;
-        return $this;
-    }
-    /**
-     * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
-     * together if all orderItem data is the same.
-     *
-     * @return list<OrderItem>
-     */
-    public function getOrderItems(): array
-    {
-        return $this->orderItems;
-    }
-    /**
-    * Multiple orderItems with the same productNumber are allowed, but note that they will be merged
-    together if all orderItem data is the same.
-    *
-    * @param list<OrderItem> $orderItems
-    *
-    * @return self
-    */
-    public function setOrderItems(array $orderItems): self
-    {
-        $this->initialized['orderItems'] = true;
-        $this->orderItems = $orderItems;
-        return $this;
-    }
-    /**
-     * A not unique reference for the order which can be used for identifying a specific order or for
-     * mapping to a third party app.
-     *
-     * @return string|null
-     */
-    public function getExternalOrderId(): ?string
-    {
-        return $this->externalOrderId;
-    }
-    /**
-    * A not unique reference for the order which can be used for identifying a specific order or for
-    mapping to a third party app.
-    *
-    * @param string|null $externalOrderId
-    *
-    * @return self
-    */
-    public function setExternalOrderId(?string $externalOrderId): self
-    {
-        $this->initialized['externalOrderId'] = true;
-        $this->externalOrderId = $externalOrderId;
-        return $this;
-    }
-    /**
-     * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
-     * used as a fallback.
-     *
-     * @return string|null
-     */
-    public function getDeliverySlipNotes(): ?string
-    {
-        return $this->deliverySlipNotes;
-    }
-    /**
-    * Notes to be printed on the delivery slip. If not provided, the shop meta.deliverySlipNotes value will be
-    used as a fallback.
-    *
-    * @param string|null $deliverySlipNotes
-    *
-    * @return self
-    */
-    public function setDeliverySlipNotes(?string $deliverySlipNotes): self
-    {
-        $this->initialized['deliverySlipNotes'] = true;
-        $this->deliverySlipNotes = $deliverySlipNotes;
-        return $this;
-    }
-    /**
-     * External reference for the order
-     *
-     * @return string|null
-     */
-    public function getExternalOrderReference(): ?string
-    {
-        return $this->externalOrderReference;
-    }
-    /**
-     * External reference for the order
-     *
-     * @param string|null $externalOrderReference
-     *
-     * @return self
-     */
-    public function setExternalOrderReference(?string $externalOrderReference): self
-    {
-        $this->initialized['externalOrderReference'] = true;
-        $this->externalOrderReference = $externalOrderReference;
-        return $this;
-    }
-    /**
-     * Notes for the steve team regarding the fulfillment. \
-     * If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
-     *
-     * @return string|null
-     */
-    public function getOrderNotes(): ?string
-    {
-        return $this->orderNotes;
-    }
-    /**
-    * Notes for the steve team regarding the fulfillment. \
-    If `meta.orderNotesPrecedingText` is set in the `shop` resource, it will be prepended to the notes.
-    *
-    * @param string|null $orderNotes
-    *
-    * @return self
-    */
-    public function setOrderNotes(?string $orderNotes): self
-    {
-        $this->initialized['orderNotes'] = true;
-        $this->orderNotes = $orderNotes;
-        return $this;
-    }
-    /**
-     * The desired shipping date of the order. The order will not be shipped before this date.\
-     * Must not be in the past.\
-     * If not set, the order is shipped as soon as possible.\
-     * Stock is reserved immediately regardless of this date.\
-     * Can be updated via PATCH /order/{orderNumber} as long as the order is open.\
-     * Note: while the desired shipping date is in the future, the order is reported with status 'locked'.
-     *
-     * @return \DateTime|null
-     */
-    public function getDesiredShippingDate(): ?\DateTime
-    {
-        return $this->desiredShippingDate;
-    }
-    /**
-    * The desired shipping date of the order. The order will not be shipped before this date.\
-    Must not be in the past.\
-    If not set, the order is shipped as soon as possible.\
-    Stock is reserved immediately regardless of this date.\
-    Can be updated via PATCH /order/{orderNumber} as long as the order is open.\
-    Note: while the desired shipping date is in the future, the order is reported with status 'locked'.
-    *
-    * @param \DateTime|null $desiredShippingDate
-    *
-    * @return self
-    */
-    public function setDesiredShippingDate(?\DateTime $desiredShippingDate): self
-    {
-        $this->initialized['desiredShippingDate'] = true;
-        $this->desiredShippingDate = $desiredShippingDate;
-        return $this;
-    }
-    /**
-     * The Amazon seller order id used when the order is coming from the Amazon marketplace.
-     *
-     * @return string|null
-     */
-    public function getAmazonSellerOrderId(): ?string
-    {
-        return $this->amazonSellerOrderId;
-    }
-    /**
-     * The Amazon seller order id used when the order is coming from the Amazon marketplace.
-     *
-     * @param string|null $amazonSellerOrderId
-     *
-     * @return self
-     */
-    public function setAmazonSellerOrderId(?string $amazonSellerOrderId): self
-    {
-        $this->initialized['amazonSellerOrderId'] = true;
-        $this->amazonSellerOrderId = $amazonSellerOrderId;
-        return $this;
-    }
-    /**
-     * The Amazon vendor order id when sending orders to an Amazon warehouse for sales by Amazon.
-     *
-     * @return string|null
-     */
-    public function getAmazonVendorOrderId(): ?string
-    {
-        return $this->amazonVendorOrderId;
-    }
-    /**
-     * The Amazon vendor order id when sending orders to an Amazon warehouse for sales by Amazon.
-     *
-     * @param string|null $amazonVendorOrderId
-     *
-     * @return self
-     */
-    public function setAmazonVendorOrderId(?string $amazonVendorOrderId): self
-    {
-        $this->initialized['amazonVendorOrderId'] = true;
-        $this->amazonVendorOrderId = $amazonVendorOrderId;
-        return $this;
-    }
-    /**
-     * The Amazon seller shipment id when sending a delivery to an Amazon warehouse for fulfillment by Amazon.
-     *
-     * @return string|null
-     */
-    public function getAmazonFbaShipmentId(): ?string
-    {
-        return $this->amazonFbaShipmentId;
-    }
-    /**
-     * The Amazon seller shipment id when sending a delivery to an Amazon warehouse for fulfillment by Amazon.
-     *
-     * @param string|null $amazonFbaShipmentId
-     *
-     * @return self
-     */
-    public function setAmazonFbaShipmentId(?string $amazonFbaShipmentId): self
-    {
-        $this->initialized['amazonFbaShipmentId'] = true;
-        $this->amazonFbaShipmentId = $amazonFbaShipmentId;
-        return $this;
-    }
-    /**
-     * The delivery costs of the order, which will be charged to the customer.\
-     * Note: This field is required if the delivery address country requires customs clearance
-     * (see `customsClearanceRequired` on the `country` resource).
-     *
-     * @return list<OrderDeliveryCosts>|null
-     */
-    public function getDeliveryCosts(): ?array
-    {
-        return $this->deliveryCosts;
-    }
-    /**
-    * The delivery costs of the order, which will be charged to the customer.\
-    Note: This field is required if the delivery address country requires customs clearance
-    (see `customsClearanceRequired` on the `country` resource).
-    *
-    * @param list<OrderDeliveryCosts>|null $deliveryCosts
-    *
-    * @return self
-    */
-    public function setDeliveryCosts(?array $deliveryCosts): self
-    {
-        $this->initialized['deliveryCosts'] = true;
-        $this->deliveryCosts = $deliveryCosts;
-        return $this;
-    }
-    /**
-     * Additional optional options for the order.
-     *
-     * @return BaseOrderOptions|null
-     */
-    public function getOptions(): ?BaseOrderOptions
-    {
-        return $this->options;
-    }
-    /**
-     * Additional optional options for the order.
-     *
-     * @param BaseOrderOptions|null $options
-     *
-     * @return self
-     */
-    public function setOptions(?BaseOrderOptions $options): self
-    {
-        $this->initialized['options'] = true;
-        $this->options = $options;
-        return $this;
-    }
-    /**
-     * The order number.\
-     * Note: If this number is prefixed with 'NICE', it means that the order was created
-     * manually by niceshops (see 'source').
-     *
-     * @return mixed
-     */
-    public function getOrderNumber()
-    {
-        return $this->orderNumber;
-    }
-    /**
-    * The order number.\
-    Note: If this number is prefixed with 'NICE', it means that the order was created
-    manually by niceshops (see 'source').
-    *
-    * @param mixed $orderNumber
-    *
-    * @return self
-    */
-    public function setOrderNumber($orderNumber): self
-    {
-        $this->initialized['orderNumber'] = true;
-        $this->orderNumber = $orderNumber;
-        return $this;
-    }
-    /**
-     * The current status of the order.
-     * - new: The order was created but not every required information was given.
-     * The order can not be processed without manual intervention.
-     * - processing: The order is being processed. For split deliveries, some of the shipments might have
-     * already been transferred to the delivery agent.
-     * - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
-     * update to this status might be delayed and not yet reflect the status of the linked deliveries).
-     * - deleted: The order has been marked as deleted.
-     * - canceled: The order has been canceled.
-     * - locked: The order is locked. The order can not be processed without manual intervention.
-     * - examination: The order has been manually locked. The order can not be processed without manual
-     * intervention.
-     * - redacted: The order has been redacted for GDPR reasons.
-     *
-     * @return string
-     */
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    /**
-    * The current status of the order.
-    - new: The order was created but not every required information was given.
-    The order can not be processed without manual intervention.
-    - processing: The order is being processed. For split deliveries, some of the shipments might have
-    already been transferred to the delivery agent.
-    - delivered: The orders shipments have all been transferred to the delivery agent (Note that the
-    update to this status might be delayed and not yet reflect the status of the linked deliveries).
-    - deleted: The order has been marked as deleted.
-    - canceled: The order has been canceled.
-    - locked: The order is locked. The order can not be processed without manual intervention.
-    - examination: The order has been manually locked. The order can not be processed without manual
-    intervention.
-    - redacted: The order has been redacted for GDPR reasons.
-    *
-    * @param string $status
-    *
-    * @return self
-    */
-    public function setStatus(string $status): self
-    {
-        $this->initialized['status'] = true;
-        $this->status = $status;
-        return $this;
-    }
-    /**
-     * Describes why the order is locked
-     *
-     * @return string|null
-     */
-    public function getLockReason(): ?string
-    {
-        return $this->lockReason;
-    }
-    /**
-     * Describes why the order is locked
-     *
-     * @param string|null $lockReason
-     *
-     * @return self
-     */
-    public function setLockReason(?string $lockReason): self
-    {
-        $this->initialized['lockReason'] = true;
-        $this->lockReason = $lockReason;
-        return $this;
-    }
-    /**
-     * The create date for the order. Format in ISO 8601
-     *
-     * @return \DateTime
-     */
-    public function getOrderDate(): \DateTime
-    {
-        return $this->orderDate;
-    }
-    /**
-     * The create date for the order. Format in ISO 8601
-     *
-     * @param \DateTime $orderDate
-     *
-     * @return self
-     */
-    public function setOrderDate(\DateTime $orderDate): self
-    {
-        $this->initialized['orderDate'] = true;
-        $this->orderDate = $orderDate;
-        return $this;
-    }
-    /**
-     * Note that only deliveries with status 'delivered' are shown in this list.
-     *
-     * @return list<OrderDelivery>|null
-     */
-    public function getDelivery(): ?array
-    {
-        return $this->delivery;
-    }
-    /**
-     * Note that only deliveries with status 'delivered' are shown in this list.
-     *
-     * @param list<OrderDelivery>|null $delivery
-     *
-     * @return self
-     */
-    public function setDelivery(?array $delivery): self
-    {
-        $this->initialized['delivery'] = true;
-        $this->delivery = $delivery;
-        return $this;
-    }
-    /**
-     * Options regarding the payment of the order
-     *
-     * @return OrderPayment
-     */
-    public function getPayment(): OrderPayment
-    {
-        return $this->payment;
-    }
-    /**
-     * Options regarding the payment of the order
-     *
-     * @param OrderPayment $payment
-     *
-     * @return self
-     */
-    public function setPayment(OrderPayment $payment): self
-    {
-        $this->initialized['payment'] = true;
-        $this->payment = $payment;
-        return $this;
-    }
-    /**
-     * Options regarding the shipping of the order.
-     *
-     * @return OrderShipping
-     */
-    public function getShipping(): OrderShipping
-    {
-        return $this->shipping;
-    }
-    /**
-     * Options regarding the shipping of the order.
-     *
-     * @param OrderShipping $shipping
-     *
-     * @return self
-     */
-    public function setShipping(OrderShipping $shipping): self
-    {
-        $this->initialized['shipping'] = true;
-        $this->shipping = $shipping;
-        return $this;
-    }
-    /**
-     * The source of the order.
-     * - shopify: This order was created via the steve by niceshops Shopify application
-     * - nice: This order was created manually by niceshops
-     * - api: This order was created via the Fulfillment API
-     *
-     * @return string
-     */
-    public function getSource(): string
-    {
-        return $this->source;
-    }
-    /**
-    * The source of the order.
-    - shopify: This order was created via the steve by niceshops Shopify application
-    - nice: This order was created manually by niceshops
-    - api: This order was created via the Fulfillment API
-    *
-    * @param string $source
-    *
-    * @return self
-    */
-    public function setSource(string $source): self
-    {
-        $this->initialized['source'] = true;
-        $this->source = $source;
-        return $this;
-    }
-    /**
-     * If available, a hyperlink to the application where this order was created is provided
-     *
-     * @return string|null
-     */
-    public function getSourceLink(): ?string
-    {
-        return $this->sourceLink;
-    }
-    /**
-     * If available, a hyperlink to the application where this order was created is provided
-     *
-     * @param string|null $sourceLink
-     *
-     * @return self
-     */
-    public function setSourceLink(?string $sourceLink): self
-    {
-        $this->initialized['sourceLink'] = true;
-        $this->sourceLink = $sourceLink;
-        return $this;
-    }
-    /**
-     * Indicates whether the order can be canceled or not
-     *
-     * @return bool
-     */
-    public function getCancelable(): bool
-    {
-        return $this->cancelable;
-    }
-    /**
-     * Indicates whether the order can be canceled or not
-     *
-     * @param bool $cancelable
-     *
-     * @return self
-     */
-    public function setCancelable(bool $cancelable): self
-    {
-        $this->initialized['cancelable'] = true;
-        $this->cancelable = $cancelable;
-        return $this;
-    }
-    /**
-     * Indicates whether orderItems that are not delivered yet can be canceled or not
-     *
-     * @return bool
-     */
-    public function getOrderItemsCancelable(): bool
-    {
-        return $this->orderItemsCancelable;
-    }
-    /**
-     * Indicates whether orderItems that are not delivered yet can be canceled or not
-     *
-     * @param bool $orderItemsCancelable
-     *
-     * @return self
-     */
-    public function setOrderItemsCancelable(bool $orderItemsCancelable): self
-    {
-        $this->initialized['orderItemsCancelable'] = true;
-        $this->orderItemsCancelable = $orderItemsCancelable;
-        return $this;
-    }
-    /**
-     * Indicates whether the order can currently be updated via PATCH /order/{orderNumber}.
-     * It is false as soon as the order is delivered, deleted, canceled or redacted,
-     * and as soon as the order is being processed in the warehouse.
-     *
-     * @return bool
-     */
-    public function getEditable(): bool
-    {
-        return $this->editable;
-    }
-    /**
-    * Indicates whether the order can currently be updated via PATCH /order/{orderNumber}.
-    It is false as soon as the order is delivered, deleted, canceled or redacted,
-    and as soon as the order is being processed in the warehouse.
-    *
-    * @param bool $editable
-    *
-    * @return self
-    */
-    public function setEditable(bool $editable): self
-    {
-        $this->initialized['editable'] = true;
-        $this->editable = $editable;
-        return $this;
-    }
-    /**
-     * Indicates whether a partial delivery is pending or not.
-     * Note: If true, it means that a partial delivery has been requested but not yet processed.
-     * If false, it means that no partial delivery is currently pending.
-     *
-     * @return bool
-     */
-    public function getPartialDeliveryPending(): bool
-    {
-        return $this->partialDeliveryPending;
-    }
-    /**
-    * Indicates whether a partial delivery is pending or not.
-    Note: If true, it means that a partial delivery has been requested but not yet processed.
-    If false, it means that no partial delivery is currently pending.
-    *
-    * @param bool $partialDeliveryPending
-    *
-    * @return self
-    */
-    public function setPartialDeliveryPending(bool $partialDeliveryPending): self
-    {
-        $this->initialized['partialDeliveryPending'] = true;
-        $this->partialDeliveryPending = $partialDeliveryPending;
-        return $this;
+        return ['shopCode' => 'shopCode', 'customer' => 'customer', 'orderItems' => 'orderItems', 'externalOrderId' => 'externalOrderId', 'deliverySlipNotes' => 'deliverySlipNotes', 'externalOrderReference' => 'externalOrderReference', 'orderNotes' => 'orderNotes', 'desiredShippingDate' => 'desiredShippingDate', 'amazonSellerOrderId' => 'amazonSellerOrderId', 'amazonVendorOrderId' => 'amazonVendorOrderId', 'amazonFbaShipmentId' => 'amazonFbaShipmentId', 'deliveryCosts' => 'deliveryCosts', 'options' => 'options', 'orderNumber' => 'orderNumber', 'status' => 'status', 'lockReason' => 'lockReason', 'orderDate' => 'orderDate', 'delivery' => 'delivery', 'payment' => 'payment', 'shipping' => 'shipping', 'source' => 'source', 'sourceLink' => 'sourceLink', 'cancelable' => 'cancelable', 'orderItemsCancelable' => 'orderItemsCancelable', 'editable' => 'editable', 'partialDeliveryPending' => 'partialDeliveryPending'];
     }
 }

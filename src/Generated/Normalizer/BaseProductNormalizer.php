@@ -38,135 +38,156 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('contentsAmount', $data) && \is_int($data['contentsAmount'])) {
-            $data['contentsAmount'] = (double) $data['contentsAmount'];
+            $data['contentsAmount'] = (float) $data['contentsAmount'];
         }
         if (\array_key_exists('suggestedRetailPriceEUR', $data) && \is_int($data['suggestedRetailPriceEUR'])) {
-            $data['suggestedRetailPriceEUR'] = (double) $data['suggestedRetailPriceEUR'];
+            $data['suggestedRetailPriceEUR'] = (float) $data['suggestedRetailPriceEUR'];
         }
         if (\array_key_exists('productType', $data)) {
-            $object->setProductType($data['productType']);
+            $object->productType = $data['productType'];
             unset($data['productType']);
         }
         if (\array_key_exists('articleVariantTitle', $data) && $data['articleVariantTitle'] !== null) {
-            $object->setArticleVariantTitle($data['articleVariantTitle']);
+            $object->articleVariantTitle = $data['articleVariantTitle'];
             unset($data['articleVariantTitle']);
         }
-        elseif (\array_key_exists('articleVariantTitle', $data) && $data['articleVariantTitle'] === null) {
-            $object->setArticleVariantTitle(null);
+        elseif (\array_key_exists('articleVariantTitle', $data)) {
+            $object->articleVariantTitle = null;
+            unset($data['articleVariantTitle']);
         }
         if (\array_key_exists('articleVariantType', $data) && $data['articleVariantType'] !== null) {
-            $object->setArticleVariantType($data['articleVariantType']);
+            $object->articleVariantType = $data['articleVariantType'];
             unset($data['articleVariantType']);
         }
-        elseif (\array_key_exists('articleVariantType', $data) && $data['articleVariantType'] === null) {
-            $object->setArticleVariantType(null);
+        elseif (\array_key_exists('articleVariantType', $data)) {
+            $object->articleVariantType = null;
+            unset($data['articleVariantType']);
         }
         if (\array_key_exists('articleStatus', $data) && $data['articleStatus'] !== null) {
-            $object->setArticleStatus($data['articleStatus']);
+            $object->articleStatus = $data['articleStatus'];
             unset($data['articleStatus']);
         }
-        elseif (\array_key_exists('articleStatus', $data) && $data['articleStatus'] === null) {
-            $object->setArticleStatus(null);
+        elseif (\array_key_exists('articleStatus', $data)) {
+            $object->articleStatus = null;
+            unset($data['articleStatus']);
         }
         if (\array_key_exists('contentsAmount', $data) && $data['contentsAmount'] !== null) {
-            $object->setContentsAmount($data['contentsAmount']);
+            $object->contentsAmount = $data['contentsAmount'];
             unset($data['contentsAmount']);
         }
-        elseif (\array_key_exists('contentsAmount', $data) && $data['contentsAmount'] === null) {
-            $object->setContentsAmount(null);
+        elseif (\array_key_exists('contentsAmount', $data)) {
+            $object->contentsAmount = null;
+            unset($data['contentsAmount']);
         }
         if (\array_key_exists('contentsUnit', $data) && $data['contentsUnit'] !== null) {
-            $object->setContentsUnit($data['contentsUnit']);
+            $object->contentsUnit = $data['contentsUnit'];
             unset($data['contentsUnit']);
         }
-        elseif (\array_key_exists('contentsUnit', $data) && $data['contentsUnit'] === null) {
-            $object->setContentsUnit(null);
+        elseif (\array_key_exists('contentsUnit', $data)) {
+            $object->contentsUnit = null;
+            unset($data['contentsUnit']);
         }
         if (\array_key_exists('contentsWeightGram', $data) && $data['contentsWeightGram'] !== null) {
-            $object->setContentsWeightGram($data['contentsWeightGram']);
+            $object->contentsWeightGram = $data['contentsWeightGram'];
             unset($data['contentsWeightGram']);
         }
-        elseif (\array_key_exists('contentsWeightGram', $data) && $data['contentsWeightGram'] === null) {
-            $object->setContentsWeightGram(null);
+        elseif (\array_key_exists('contentsWeightGram', $data)) {
+            $object->contentsWeightGram = null;
+            unset($data['contentsWeightGram']);
         }
         if (\array_key_exists('weightGram', $data) && $data['weightGram'] !== null) {
-            $object->setWeightGram($data['weightGram']);
+            $object->weightGram = $data['weightGram'];
             unset($data['weightGram']);
         }
-        elseif (\array_key_exists('weightGram', $data) && $data['weightGram'] === null) {
-            $object->setWeightGram(null);
+        elseif (\array_key_exists('weightGram', $data)) {
+            $object->weightGram = null;
+            unset($data['weightGram']);
         }
         if (\array_key_exists('variantGroup', $data)) {
-            $object->setVariantGroup($data['variantGroup']);
+            $value = $data['variantGroup'];
+            if (is_string($data['variantGroup'])) {
+                $value = $data['variantGroup'];
+            } elseif (is_string($data['variantGroup'])) {
+                $value = $data['variantGroup'];
+            }
+            $object->variantGroup = $value;
             unset($data['variantGroup']);
         }
         if (\array_key_exists('ean', $data) && $data['ean'] !== null) {
-            $object->setEan($data['ean']);
+            $object->ean = $data['ean'];
             unset($data['ean']);
         }
-        elseif (\array_key_exists('ean', $data) && $data['ean'] === null) {
-            $object->setEan(null);
+        elseif (\array_key_exists('ean', $data)) {
+            $object->ean = null;
+            unset($data['ean']);
         }
         if (\array_key_exists('suggestedRetailPriceEUR', $data) && $data['suggestedRetailPriceEUR'] !== null) {
-            $object->setSuggestedRetailPriceEUR($data['suggestedRetailPriceEUR']);
+            $object->suggestedRetailPriceEUR = $data['suggestedRetailPriceEUR'];
             unset($data['suggestedRetailPriceEUR']);
         }
-        elseif (\array_key_exists('suggestedRetailPriceEUR', $data) && $data['suggestedRetailPriceEUR'] === null) {
-            $object->setSuggestedRetailPriceEUR(null);
+        elseif (\array_key_exists('suggestedRetailPriceEUR', $data)) {
+            $object->suggestedRetailPriceEUR = null;
+            unset($data['suggestedRetailPriceEUR']);
         }
         if (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] !== null) {
             $values = [];
-            foreach ($data['purchasePrices'] as $value) {
-                $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductPurchasePrice::class, 'json', $context);
+            foreach ($data['purchasePrices'] as $value_1) {
+                $values[] = $this->denormalizer->denormalize($value_1, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductPurchasePrice::class, 'json', $context);
             }
-            $object->setPurchasePrices($values);
+            $object->purchasePrices = $values;
             unset($data['purchasePrices']);
         }
-        elseif (\array_key_exists('purchasePrices', $data) && $data['purchasePrices'] === null) {
-            $object->setPurchasePrices(null);
+        elseif (\array_key_exists('purchasePrices', $data)) {
+            $object->purchasePrices = null;
+            unset($data['purchasePrices']);
         }
         if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
             $values_1 = [];
-            foreach ($data['bundledProducts'] as $value_1) {
-                $values_1[] = $this->denormalizer->denormalize($value_1, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductBundledProduct::class, 'json', $context);
+            foreach ($data['bundledProducts'] as $value_2) {
+                $values_1[] = $this->denormalizer->denormalize($value_2, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ProductBundledProduct::class, 'json', $context);
             }
-            $object->setBundledProducts($values_1);
+            $object->bundledProducts = $values_1;
             unset($data['bundledProducts']);
         }
-        elseif (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] === null) {
-            $object->setBundledProducts(null);
+        elseif (\array_key_exists('bundledProducts', $data)) {
+            $object->bundledProducts = null;
+            unset($data['bundledProducts']);
         }
         if (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] !== null) {
-            $object->setProductNumberManufacturer($data['productNumberManufacturer']);
+            $object->productNumberManufacturer = $data['productNumberManufacturer'];
             unset($data['productNumberManufacturer']);
         }
-        elseif (\array_key_exists('productNumberManufacturer', $data) && $data['productNumberManufacturer'] === null) {
-            $object->setProductNumberManufacturer(null);
+        elseif (\array_key_exists('productNumberManufacturer', $data)) {
+            $object->productNumberManufacturer = null;
+            unset($data['productNumberManufacturer']);
         }
         if (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] !== null) {
-            $object->setManufacturerCountryCode($data['manufacturerCountryCode']);
+            $object->manufacturerCountryCode = $data['manufacturerCountryCode'];
             unset($data['manufacturerCountryCode']);
         }
-        elseif (\array_key_exists('manufacturerCountryCode', $data) && $data['manufacturerCountryCode'] === null) {
-            $object->setManufacturerCountryCode(null);
+        elseif (\array_key_exists('manufacturerCountryCode', $data)) {
+            $object->manufacturerCountryCode = null;
+            unset($data['manufacturerCountryCode']);
         }
         if (\array_key_exists('languageCode', $data) && $data['languageCode'] !== null) {
-            $object->setLanguageCode($data['languageCode']);
+            $object->languageCode = $data['languageCode'];
             unset($data['languageCode']);
         }
-        elseif (\array_key_exists('languageCode', $data) && $data['languageCode'] === null) {
-            $object->setLanguageCode(null);
+        elseif (\array_key_exists('languageCode', $data)) {
+            $object->languageCode = null;
+            unset($data['languageCode']);
         }
         if (\array_key_exists('dimensions', $data) && $data['dimensions'] !== null) {
-            $object->setDimensions($this->denormalizer->denormalize($data['dimensions'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDimensions::class, 'json', $context));
+            $object->dimensions = $this->denormalizer->denormalize($data['dimensions'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseProductDimensions::class, 'json', $context);
             unset($data['dimensions']);
         }
-        elseif (\array_key_exists('dimensions', $data) && $data['dimensions'] === null) {
-            $object->setDimensions(null);
+        elseif (\array_key_exists('dimensions', $data)) {
+            $object->dimensions = null;
+            unset($data['dimensions']);
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $object[$key] = $value_2;
+                $object[$key] = $value_3;
             }
         }
         return $object;
@@ -174,68 +195,77 @@ class BaseProductNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productType') && null !== $data->getProductType()) {
-            $dataArray['productType'] = $data->getProductType();
+        if (array_key_exists('productType', get_object_vars($data)) && null !== ($data->productType ?? null)) {
+            $dataArray['productType'] = $data->productType;
         }
-        if ($data->isInitialized('articleVariantTitle')) {
-            $dataArray['articleVariantTitle'] = $data->getArticleVariantTitle();
+        if (array_key_exists('articleVariantTitle', get_object_vars($data)) && null !== ($data->articleVariantTitle ?? null)) {
+            $dataArray['articleVariantTitle'] = $data->articleVariantTitle;
         }
-        if ($data->isInitialized('articleVariantType')) {
-            $dataArray['articleVariantType'] = $data->getArticleVariantType();
+        if (array_key_exists('articleVariantType', get_object_vars($data)) && null !== ($data->articleVariantType ?? null)) {
+            $dataArray['articleVariantType'] = $data->articleVariantType;
         }
-        if ($data->isInitialized('articleStatus')) {
-            $dataArray['articleStatus'] = $data->getArticleStatus();
+        if (array_key_exists('articleStatus', get_object_vars($data)) && null !== ($data->articleStatus ?? null)) {
+            $dataArray['articleStatus'] = $data->articleStatus;
         }
-        if ($data->isInitialized('contentsAmount')) {
-            $dataArray['contentsAmount'] = $data->getContentsAmount();
+        if (array_key_exists('contentsAmount', get_object_vars($data)) && null !== ($data->contentsAmount ?? null)) {
+            $dataArray['contentsAmount'] = $data->contentsAmount;
         }
-        if ($data->isInitialized('contentsUnit')) {
-            $dataArray['contentsUnit'] = $data->getContentsUnit();
+        if (array_key_exists('contentsUnit', get_object_vars($data)) && null !== ($data->contentsUnit ?? null)) {
+            $dataArray['contentsUnit'] = $data->contentsUnit;
         }
-        if ($data->isInitialized('contentsWeightGram')) {
-            $dataArray['contentsWeightGram'] = $data->getContentsWeightGram();
+        if (array_key_exists('contentsWeightGram', get_object_vars($data)) && null !== ($data->contentsWeightGram ?? null)) {
+            $dataArray['contentsWeightGram'] = $data->contentsWeightGram;
         }
-        if ($data->isInitialized('weightGram')) {
-            $dataArray['weightGram'] = $data->getWeightGram();
+        if (array_key_exists('weightGram', get_object_vars($data)) && null !== ($data->weightGram ?? null)) {
+            $dataArray['weightGram'] = $data->weightGram;
         }
-        if ($data->isInitialized('variantGroup') && null !== $data->getVariantGroup()) {
-            $dataArray['variantGroup'] = $data->getVariantGroup();
+        if (array_key_exists('variantGroup', get_object_vars($data)) && null !== ($data->variantGroup ?? null)) {
+            $value = $data->variantGroup;
+            if (is_string($data->variantGroup)) {
+                $value = $data->variantGroup;
+            } elseif (is_string($data->variantGroup)) {
+                $value = $data->variantGroup;
+            }
+            $dataArray['variantGroup'] = $value;
         }
-        if ($data->isInitialized('ean')) {
-            $dataArray['ean'] = $data->getEan();
+        if (array_key_exists('ean', get_object_vars($data)) && null !== ($data->ean ?? null)) {
+            $dataArray['ean'] = $data->ean;
         }
-        if ($data->isInitialized('suggestedRetailPriceEUR')) {
-            $dataArray['suggestedRetailPriceEUR'] = $data->getSuggestedRetailPriceEUR();
+        if (array_key_exists('suggestedRetailPriceEUR', get_object_vars($data)) && null !== ($data->suggestedRetailPriceEUR ?? null)) {
+            $dataArray['suggestedRetailPriceEUR'] = $data->suggestedRetailPriceEUR;
         }
-        if ($data->isInitialized('purchasePrices')) {
+        if (array_key_exists('purchasePrices', get_object_vars($data)) && null !== ($data->purchasePrices ?? null)) {
             $values = [];
-            foreach ($data->getPurchasePrices() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->purchasePrices as $value_1) {
+                $normalized = $value_1 === null ? null : $this->normalizer->normalize($value_1, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['purchasePrices'] = $values;
         }
-        if ($data->isInitialized('bundledProducts')) {
+        if (array_key_exists('bundledProducts', get_object_vars($data)) && null !== ($data->bundledProducts ?? null)) {
             $values_1 = [];
-            foreach ($data->getBundledProducts() as $value_1) {
-                $values_1[] = $this->normalizer->normalize($value_1, 'json', $context);
+            foreach ($data->bundledProducts as $value_2) {
+                $normalized_1 = $value_2 === null ? null : $this->normalizer->normalize($value_2, 'json', $context);
+                $values_1[] = \is_iterable($normalized_1) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['bundledProducts'] = $values_1;
         }
-        if ($data->isInitialized('productNumberManufacturer')) {
-            $dataArray['productNumberManufacturer'] = $data->getProductNumberManufacturer();
+        if (array_key_exists('productNumberManufacturer', get_object_vars($data)) && null !== ($data->productNumberManufacturer ?? null)) {
+            $dataArray['productNumberManufacturer'] = $data->productNumberManufacturer;
         }
-        if ($data->isInitialized('manufacturerCountryCode')) {
-            $dataArray['manufacturerCountryCode'] = $data->getManufacturerCountryCode();
+        if (array_key_exists('manufacturerCountryCode', get_object_vars($data)) && null !== ($data->manufacturerCountryCode ?? null)) {
+            $dataArray['manufacturerCountryCode'] = $data->manufacturerCountryCode;
         }
-        if ($data->isInitialized('languageCode')) {
-            $dataArray['languageCode'] = $data->getLanguageCode();
+        if (array_key_exists('languageCode', get_object_vars($data)) && null !== ($data->languageCode ?? null)) {
+            $dataArray['languageCode'] = $data->languageCode;
         }
-        if ($data->isInitialized('dimensions')) {
-            $dataArray['dimensions'] = $this->normalizer->normalize($data->getDimensions(), 'json', $context);
+        if (array_key_exists('dimensions', get_object_vars($data)) && null !== ($data->dimensions ?? null)) {
+            $normalized_2 = $this->normalizer->normalize($data->dimensions, 'json', $context);
+            $dataArray['dimensions'] = \is_iterable($normalized_2) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized_2) : $normalized_2;
         }
-        foreach ($data as $key => $value_2) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
-                $dataArray[$key] = $value_2;
+                $dataArray[$key] = $value_3;
             }
         }
         return $dataArray;

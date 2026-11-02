@@ -2,16 +2,11 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BaseOrderOptions extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class BaseOrderOptions implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Whether a delivery slip (Lieferschein) is printed and included with the shipment of this order.
      * If not provided, the shop `meta.printOrderDocument` value is used; if that is also unset, the default of
@@ -19,31 +14,9 @@ class BaseOrderOptions extends \ArrayObject
      *
      * @var bool|null
      */
-    protected $printOrderDocument = true;
-    /**
-     * Whether a delivery slip (Lieferschein) is printed and included with the shipment of this order.
-     * If not provided, the shop `meta.printOrderDocument` value is used; if that is also unset, the default of
-     * `true` applies. Always `true` for deliveries into customs-required countries.
-     *
-     * @return bool|null
-     */
-    public function getPrintOrderDocument(): ?bool
+    public ?bool $printOrderDocument = true;
+    public function definedProperties(): array
     {
-        return $this->printOrderDocument;
-    }
-    /**
-    * Whether a delivery slip (Lieferschein) is printed and included with the shipment of this order.
-    If not provided, the shop `meta.printOrderDocument` value is used; if that is also unset, the default of
-    `true` applies. Always `true` for deliveries into customs-required countries.
-    *
-    * @param bool|null $printOrderDocument
-    *
-    * @return self
-    */
-    public function setPrintOrderDocument(?bool $printOrderDocument): self
-    {
-        $this->initialized['printOrderDocument'] = true;
-        $this->printOrderDocument = $printOrderDocument;
-        return $this;
+        return ['printOrderDocument' => 'printOrderDocument'];
     }
 }

@@ -38,35 +38,52 @@ class StockCheckNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('stockCheckNumber', $data)) {
-            $object->setStockCheckNumber($data['stockCheckNumber']);
+            $object->stockCheckNumber = $data['stockCheckNumber'];
             unset($data['stockCheckNumber']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('shopCode', $data)) {
-            $object->setShopCode($data['shopCode']);
+            $object->shopCode = $data['shopCode'];
             unset($data['shopCode']);
         }
         if (\array_key_exists('type', $data)) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('createdDate', $data)) {
-            $object->setCreatedDate(\DateTime::createFromFormat('Y-m-d', $data['createdDate'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['createdDate']);
+            if (false === $date) {
+                throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['createdDate'], 'Y-m-d');
+            }
+            $object->createdDate = $date->setTime(0, 0, 0);
             unset($data['createdDate']);
         }
         if (\array_key_exists('completedAt', $data) && $data['completedAt'] !== null) {
-            $object->setCompletedAt(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completedAt']));
+            $date_1 = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['completedAt']);
+            if (false === $date_1) {
+                if (is_string($data['completedAt']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['completedAt'])) {
+                    try {
+                        $date_1 = new \DateTime($data['completedAt']);
+                    } catch (\Exception) {
+                        throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['completedAt'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['completedAt'], 'Y-m-d\TH:i:sP');
+                }
+            }
+            $object->completedAt = $date_1;
             unset($data['completedAt']);
         }
-        elseif (\array_key_exists('completedAt', $data) && $data['completedAt'] === null) {
-            $object->setCompletedAt(null);
+        elseif (\array_key_exists('completedAt', $data)) {
+            $object->completedAt = null;
+            unset($data['completedAt']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -78,14 +95,14 @@ class StockCheckNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['stockCheckNumber'] = $data->getStockCheckNumber();
-        $dataArray['productNumber'] = $data->getProductNumber();
-        $dataArray['shopCode'] = $data->getShopCode();
-        $dataArray['type'] = $data->getType();
-        $dataArray['status'] = $data->getStatus();
-        $dataArray['createdDate'] = $data->getCreatedDate()->format('Y-m-d');
-        $dataArray['completedAt'] = $data->getCompletedAt()?->format('Y-m-d\TH:i:sP');
-        foreach ($data as $key => $value) {
+        $dataArray['stockCheckNumber'] = $data->stockCheckNumber;
+        $dataArray['productNumber'] = $data->productNumber;
+        $dataArray['shopCode'] = $data->shopCode;
+        $dataArray['type'] = $data->type;
+        $dataArray['status'] = $data->status;
+        $dataArray['createdDate'] = $data->createdDate->format('Y-m-d');
+        $dataArray['completedAt'] = $data->completedAt?->format('Y-m-d\TH:i:sP');
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

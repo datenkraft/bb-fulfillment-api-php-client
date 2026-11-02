@@ -2,70 +2,25 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class BaseReconsignmentAnnouncement extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class BaseReconsignmentAnnouncement implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * The reason for reconsignment.
      *
      * @var string
      */
-    protected $reconsignmentReason;
+    public string $reconsignmentReason;
     /**
      * Additional options for a reconsignment announcement (optional).
      *
      * @var BaseReconsignmentAnnouncementOptions
      */
-    protected $options;
-    /**
-     * The reason for reconsignment.
-     *
-     * @return string
-     */
-    public function getReconsignmentReason(): string
+    public BaseReconsignmentAnnouncementOptions $options;
+    public function definedProperties(): array
     {
-        return $this->reconsignmentReason;
-    }
-    /**
-     * The reason for reconsignment.
-     *
-     * @param string $reconsignmentReason
-     *
-     * @return self
-     */
-    public function setReconsignmentReason(string $reconsignmentReason): self
-    {
-        $this->initialized['reconsignmentReason'] = true;
-        $this->reconsignmentReason = $reconsignmentReason;
-        return $this;
-    }
-    /**
-     * Additional options for a reconsignment announcement (optional).
-     *
-     * @return BaseReconsignmentAnnouncementOptions
-     */
-    public function getOptions(): BaseReconsignmentAnnouncementOptions
-    {
-        return $this->options;
-    }
-    /**
-     * Additional options for a reconsignment announcement (optional).
-     *
-     * @param BaseReconsignmentAnnouncementOptions $options
-     *
-     * @return self
-     */
-    public function setOptions(BaseReconsignmentAnnouncementOptions $options): self
-    {
-        $this->initialized['options'] = true;
-        $this->options = $options;
-        return $this;
+        return ['reconsignmentReason' => 'reconsignmentReason', 'options' => 'options'];
     }
 }

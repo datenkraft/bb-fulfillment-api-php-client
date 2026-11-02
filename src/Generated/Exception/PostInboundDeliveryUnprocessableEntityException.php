@@ -4,15 +4,16 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
 class PostInboundDeliveryUnprocessableEntityException extends UnprocessableEntityException
 {
-    /**
-     * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
-     */
-    private $errorResponse;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
+         */
+        private readonly \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse,
+        /**
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
+         */
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
+    )
     {
         parent::__construct('Unprocessable Entity
 
@@ -24,14 +25,12 @@ Error codes:
 - INBOUND_DELIVERY_NOTIFICATION_NOT_SENDABLE: Could not send the delivery notification to the supplier. The inbound delivery has been deleted.
 - INBOUND_DELIVERY_NUMBER_STARTS_WITH_RESERVED_NUMBER_PREFIX: The inboundDeliveryNumber starts with a prefix that is reserved for internal references.
 - SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.');
-        $this->errorResponse = $errorResponse;
-        $this->response = $response;
     }
     public function getErrorResponse(): \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
     {
         return $this->errorResponse;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

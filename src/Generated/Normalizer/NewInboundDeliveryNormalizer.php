@@ -38,18 +38,23 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] !== null) {
-            $object->setInboundDeliveryName($data['inboundDeliveryName']);
+            $object->inboundDeliveryName = $data['inboundDeliveryName'];
             unset($data['inboundDeliveryName']);
         }
-        elseif (\array_key_exists('inboundDeliveryName', $data) && $data['inboundDeliveryName'] === null) {
-            $object->setInboundDeliveryName(null);
+        elseif (\array_key_exists('inboundDeliveryName', $data)) {
+            $object->inboundDeliveryName = null;
+            unset($data['inboundDeliveryName']);
         }
         if (\array_key_exists('supplierNumber', $data)) {
-            $object->setSupplierNumber($data['supplierNumber']);
+            $object->supplierNumber = $data['supplierNumber'];
             unset($data['supplierNumber']);
         }
         if (\array_key_exists('expectedDeliveryDate', $data)) {
-            $object->setExpectedDeliveryDate(\DateTime::createFromFormat('Y-m-d', $data['expectedDeliveryDate'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['expectedDeliveryDate']);
+            if (false === $date) {
+                throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['expectedDeliveryDate'], 'Y-m-d');
+            }
+            $object->expectedDeliveryDate = $date->setTime(0, 0, 0);
             unset($data['expectedDeliveryDate']);
         }
         if (\array_key_exists('products', $data)) {
@@ -57,7 +62,7 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
             foreach ($data['products'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewInboundDeliveryProduct::class, 'json', $context);
             }
-            $object->setProducts($values);
+            $object->products = $values;
             unset($data['products']);
         }
         foreach ($data as $key => $value_1) {
@@ -70,17 +75,18 @@ class NewInboundDeliveryNormalizer implements DenormalizerInterface, NormalizerI
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('inboundDeliveryName')) {
-            $dataArray['inboundDeliveryName'] = $data->getInboundDeliveryName();
+        if (array_key_exists('inboundDeliveryName', get_object_vars($data)) && null !== ($data->inboundDeliveryName ?? null)) {
+            $dataArray['inboundDeliveryName'] = $data->inboundDeliveryName;
         }
-        $dataArray['supplierNumber'] = $data->getSupplierNumber();
-        $dataArray['expectedDeliveryDate'] = $data->getExpectedDeliveryDate()->format('Y-m-d');
+        $dataArray['supplierNumber'] = $data->supplierNumber;
+        $dataArray['expectedDeliveryDate'] = $data->expectedDeliveryDate->format('Y-m-d');
         $values = [];
-        foreach ($data->getProducts() as $value) {
-            $values[] = $this->normalizer->normalize($value, 'json', $context);
+        foreach ($data->products as $value) {
+            $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+            $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
         $dataArray['products'] = $values;
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }
