@@ -38,18 +38,18 @@ class ProductPurchasePriceNormalizer implements DenormalizerInterface, Normalize
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('pricePerUnit', $data) && \is_int($data['pricePerUnit'])) {
-            $data['pricePerUnit'] = (double) $data['pricePerUnit'];
+            $data['pricePerUnit'] = (float) $data['pricePerUnit'];
         }
         if (\array_key_exists('currencyCode', $data)) {
-            $object->setCurrencyCode($data['currencyCode']);
+            $object->currencyCode = $data['currencyCode'];
             unset($data['currencyCode']);
         }
         if (\array_key_exists('amount', $data)) {
-            $object->setAmount($data['amount']);
+            $object->amount = $data['amount'];
             unset($data['amount']);
         }
         if (\array_key_exists('pricePerUnit', $data)) {
-            $object->setPricePerUnit($data['pricePerUnit']);
+            $object->pricePerUnit = $data['pricePerUnit'];
             unset($data['pricePerUnit']);
         }
         foreach ($data as $key => $value) {
@@ -62,10 +62,10 @@ class ProductPurchasePriceNormalizer implements DenormalizerInterface, Normalize
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['currencyCode'] = $data->getCurrencyCode();
-        $dataArray['amount'] = $data->getAmount();
-        $dataArray['pricePerUnit'] = $data->getPricePerUnit();
-        foreach ($data as $key => $value) {
+        $dataArray['currencyCode'] = $data->currencyCode;
+        $dataArray['amount'] = $data->amount;
+        $dataArray['pricePerUnit'] = $data->pricePerUnit;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

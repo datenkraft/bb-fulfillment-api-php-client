@@ -41,15 +41,15 @@ class OrderDeliveryNormalizer implements DenormalizerInterface, NormalizerInterf
             $data['deliveredPartially'] = (bool) $data['deliveredPartially'];
         }
         if (\array_key_exists('number', $data)) {
-            $object->setNumber($data['number']);
+            $object->number = $data['number'];
             unset($data['number']);
         }
         if (\array_key_exists('status', $data)) {
-            $object->setStatus($data['status']);
+            $object->status = $data['status'];
             unset($data['status']);
         }
         if (\array_key_exists('deliveredPartially', $data)) {
-            $object->setDeliveredPartially($data['deliveredPartially']);
+            $object->deliveredPartially = $data['deliveredPartially'];
             unset($data['deliveredPartially']);
         }
         foreach ($data as $key => $value) {
@@ -62,16 +62,16 @@ class OrderDeliveryNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('number') && null !== $data->getNumber()) {
-            $dataArray['number'] = $data->getNumber();
+        if (array_key_exists('number', get_object_vars($data)) && null !== ($data->number ?? null)) {
+            $dataArray['number'] = $data->number;
         }
-        if ($data->isInitialized('status') && null !== $data->getStatus()) {
-            $dataArray['status'] = $data->getStatus();
+        if (array_key_exists('status', get_object_vars($data)) && null !== ($data->status ?? null)) {
+            $dataArray['status'] = $data->status;
         }
-        if ($data->isInitialized('deliveredPartially') && null !== $data->getDeliveredPartially()) {
-            $dataArray['deliveredPartially'] = $data->getDeliveredPartially();
+        if (array_key_exists('deliveredPartially', get_object_vars($data)) && null !== ($data->deliveredPartially ?? null)) {
+            $dataArray['deliveredPartially'] = $data->deliveredPartially;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

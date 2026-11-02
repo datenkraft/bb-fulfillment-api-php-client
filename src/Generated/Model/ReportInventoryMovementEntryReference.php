@@ -2,42 +2,19 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ReportInventoryMovementEntryReference extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ReportInventoryMovementEntryReference implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Name of the Company
      *
      * @var string|null
      */
-    protected $companyName;
-    /**
-     * Name of the Company
-     *
-     * @return string|null
-     */
-    public function getCompanyName(): ?string
+    public ?string $companyName;
+    public function definedProperties(): array
     {
-        return $this->companyName;
-    }
-    /**
-     * Name of the Company
-     *
-     * @param string|null $companyName
-     *
-     * @return self
-     */
-    public function setCompanyName(?string $companyName): self
-    {
-        $this->initialized['companyName'] = true;
-        $this->companyName = $companyName;
-        return $this;
+        return ['companyName' => 'companyName'];
     }
 }

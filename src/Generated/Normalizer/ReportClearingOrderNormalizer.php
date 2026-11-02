@@ -38,19 +38,19 @@ class ReportClearingOrderNormalizer implements DenormalizerInterface, Normalizer
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('orderNumber', $data)) {
-            $object->setOrderNumber($data['orderNumber']);
+            $object->orderNumber = $data['orderNumber'];
             unset($data['orderNumber']);
         }
         if (\array_key_exists('shopOrderId', $data)) {
-            $object->setShopOrderId($data['shopOrderId']);
+            $object->shopOrderId = $data['shopOrderId'];
             unset($data['shopOrderId']);
         }
         if (\array_key_exists('deliveryZipCode', $data)) {
-            $object->setDeliveryZipCode($data['deliveryZipCode']);
+            $object->deliveryZipCode = $data['deliveryZipCode'];
             unset($data['deliveryZipCode']);
         }
         if (\array_key_exists('deliveryCountryCode', $data)) {
-            $object->setDeliveryCountryCode($data['deliveryCountryCode']);
+            $object->deliveryCountryCode = $data['deliveryCountryCode'];
             unset($data['deliveryCountryCode']);
         }
         foreach ($data as $key => $value) {
@@ -63,19 +63,19 @@ class ReportClearingOrderNormalizer implements DenormalizerInterface, Normalizer
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('orderNumber') && null !== $data->getOrderNumber()) {
-            $dataArray['orderNumber'] = $data->getOrderNumber();
+        if (array_key_exists('orderNumber', get_object_vars($data)) && null !== ($data->orderNumber ?? null)) {
+            $dataArray['orderNumber'] = $data->orderNumber;
         }
-        if ($data->isInitialized('shopOrderId') && null !== $data->getShopOrderId()) {
-            $dataArray['shopOrderId'] = $data->getShopOrderId();
+        if (array_key_exists('shopOrderId', get_object_vars($data)) && null !== ($data->shopOrderId ?? null)) {
+            $dataArray['shopOrderId'] = $data->shopOrderId;
         }
-        if ($data->isInitialized('deliveryZipCode') && null !== $data->getDeliveryZipCode()) {
-            $dataArray['deliveryZipCode'] = $data->getDeliveryZipCode();
+        if (array_key_exists('deliveryZipCode', get_object_vars($data)) && null !== ($data->deliveryZipCode ?? null)) {
+            $dataArray['deliveryZipCode'] = $data->deliveryZipCode;
         }
-        if ($data->isInitialized('deliveryCountryCode') && null !== $data->getDeliveryCountryCode()) {
-            $dataArray['deliveryCountryCode'] = $data->getDeliveryCountryCode();
+        if (array_key_exists('deliveryCountryCode', get_object_vars($data)) && null !== ($data->deliveryCountryCode ?? null)) {
+            $dataArray['deliveryCountryCode'] = $data->deliveryCountryCode;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

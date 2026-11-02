@@ -38,45 +38,47 @@ class BundledOrderItemNormalizer implements DenormalizerInterface, NormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('title', $data) && $data['title'] !== null) {
-            $object->setTitle($data['title']);
+            $object->title = $data['title'];
             unset($data['title']);
         }
-        elseif (\array_key_exists('title', $data) && $data['title'] === null) {
-            $object->setTitle(null);
+        elseif (\array_key_exists('title', $data)) {
+            $object->title = null;
+            unset($data['title']);
         }
         if (\array_key_exists('count', $data)) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
         if (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] !== null) {
-            $object->setExternalProductNumber($data['externalProductNumber']);
+            $object->externalProductNumber = $data['externalProductNumber'];
             unset($data['externalProductNumber']);
         }
-        elseif (\array_key_exists('externalProductNumber', $data) && $data['externalProductNumber'] === null) {
-            $object->setExternalProductNumber(null);
+        elseif (\array_key_exists('externalProductNumber', $data)) {
+            $object->externalProductNumber = null;
+            unset($data['externalProductNumber']);
         }
         if (\array_key_exists('price', $data)) {
-            $object->setPrice($this->denormalizer->denormalize($data['price'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItemPrice::class, 'json', $context));
+            $object->price = $this->denormalizer->denormalize($data['price'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BundledOrderItemPrice::class, 'json', $context);
             unset($data['price']);
         }
         if (\array_key_exists('canceledCount', $data)) {
-            $object->setCanceledCount($data['canceledCount']);
+            $object->canceledCount = $data['canceledCount'];
             unset($data['canceledCount']);
         }
         if (\array_key_exists('availableCount', $data)) {
-            $object->setAvailableCount($data['availableCount']);
+            $object->availableCount = $data['availableCount'];
             unset($data['availableCount']);
         }
         if (\array_key_exists('deliveredCount', $data)) {
-            $object->setDeliveredCount($data['deliveredCount']);
+            $object->deliveredCount = $data['deliveredCount'];
             unset($data['deliveredCount']);
         }
         if (\array_key_exists('returnedCount', $data)) {
-            $object->setReturnedCount($data['returnedCount']);
+            $object->returnedCount = $data['returnedCount'];
             unset($data['returnedCount']);
         }
         foreach ($data as $key => $value) {
@@ -89,34 +91,35 @@ class BundledOrderItemNormalizer implements DenormalizerInterface, NormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
-            $dataArray['productNumber'] = $data->getProductNumber();
+        if (array_key_exists('productNumber', get_object_vars($data)) && null !== ($data->productNumber ?? null)) {
+            $dataArray['productNumber'] = $data->productNumber;
         }
-        if ($data->isInitialized('title')) {
-            $dataArray['title'] = $data->getTitle();
+        if (array_key_exists('title', get_object_vars($data)) && null !== ($data->title ?? null)) {
+            $dataArray['title'] = $data->title;
         }
-        if ($data->isInitialized('count') && null !== $data->getCount()) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count;
         }
-        if ($data->isInitialized('externalProductNumber')) {
-            $dataArray['externalProductNumber'] = $data->getExternalProductNumber();
+        if (array_key_exists('externalProductNumber', get_object_vars($data)) && null !== ($data->externalProductNumber ?? null)) {
+            $dataArray['externalProductNumber'] = $data->externalProductNumber;
         }
-        if ($data->isInitialized('price') && null !== $data->getPrice()) {
-            $dataArray['price'] = $this->normalizer->normalize($data->getPrice(), 'json', $context);
+        if (array_key_exists('price', get_object_vars($data)) && null !== ($data->price ?? null)) {
+            $normalized = $this->normalizer->normalize($data->price, 'json', $context);
+            $dataArray['price'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('canceledCount') && null !== $data->getCanceledCount()) {
-            $dataArray['canceledCount'] = $data->getCanceledCount();
+        if (array_key_exists('canceledCount', get_object_vars($data)) && null !== ($data->canceledCount ?? null)) {
+            $dataArray['canceledCount'] = $data->canceledCount;
         }
-        if ($data->isInitialized('availableCount') && null !== $data->getAvailableCount()) {
-            $dataArray['availableCount'] = $data->getAvailableCount();
+        if (array_key_exists('availableCount', get_object_vars($data)) && null !== ($data->availableCount ?? null)) {
+            $dataArray['availableCount'] = $data->availableCount;
         }
-        if ($data->isInitialized('deliveredCount') && null !== $data->getDeliveredCount()) {
-            $dataArray['deliveredCount'] = $data->getDeliveredCount();
+        if (array_key_exists('deliveredCount', get_object_vars($data)) && null !== ($data->deliveredCount ?? null)) {
+            $dataArray['deliveredCount'] = $data->deliveredCount;
         }
-        if ($data->isInitialized('returnedCount') && null !== $data->getReturnedCount()) {
-            $dataArray['returnedCount'] = $data->getReturnedCount();
+        if (array_key_exists('returnedCount', get_object_vars($data)) && null !== ($data->returnedCount ?? null)) {
+            $dataArray['returnedCount'] = $data->returnedCount;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -2,70 +2,25 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class CountryProvinces extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class CountryProvinces implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * The code of the province (ISO 3166-2)
      *
      * @var string
      */
-    protected $provinceCode;
+    public string $provinceCode;
     /**
      * The name of the province
      *
      * @var string
      */
-    protected $name;
-    /**
-     * The code of the province (ISO 3166-2)
-     *
-     * @return string
-     */
-    public function getProvinceCode(): string
+    public string $name;
+    public function definedProperties(): array
     {
-        return $this->provinceCode;
-    }
-    /**
-     * The code of the province (ISO 3166-2)
-     *
-     * @param string $provinceCode
-     *
-     * @return self
-     */
-    public function setProvinceCode(string $provinceCode): self
-    {
-        $this->initialized['provinceCode'] = true;
-        $this->provinceCode = $provinceCode;
-        return $this;
-    }
-    /**
-     * The name of the province
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * The name of the province
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
+        return ['provinceCode' => 'provinceCode', 'name' => 'name'];
     }
 }

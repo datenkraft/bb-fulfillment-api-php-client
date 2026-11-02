@@ -38,7 +38,7 @@ class ReservedForNormalizer implements DenormalizerInterface, NormalizerInterfac
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('shopify', $data)) {
-            $object->setShopify($data['shopify']);
+            $object->shopify = $data['shopify'];
             unset($data['shopify']);
         }
         foreach ($data as $key => $value) {
@@ -51,10 +51,10 @@ class ReservedForNormalizer implements DenormalizerInterface, NormalizerInterfac
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shopify') && null !== $data->getShopify()) {
-            $dataArray['shopify'] = $data->getShopify();
+        if (array_key_exists('shopify', get_object_vars($data)) && null !== ($data->shopify ?? null)) {
+            $dataArray['shopify'] = $data->shopify;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

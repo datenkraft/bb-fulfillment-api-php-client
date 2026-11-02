@@ -2,58 +2,21 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ProductImage extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ProductImage implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * @var ProductImageDetail
      */
-    protected $detail;
+    public ProductImageDetail $detail;
     /**
      * @var ProductImageDetail
      */
-    protected $thumbnail;
-    /**
-     * @return ProductImageDetail
-     */
-    public function getDetail(): ProductImageDetail
+    public ProductImageDetail $thumbnail;
+    public function definedProperties(): array
     {
-        return $this->detail;
-    }
-    /**
-     * @param ProductImageDetail $detail
-     *
-     * @return self
-     */
-    public function setDetail(ProductImageDetail $detail): self
-    {
-        $this->initialized['detail'] = true;
-        $this->detail = $detail;
-        return $this;
-    }
-    /**
-     * @return ProductImageDetail
-     */
-    public function getThumbnail(): ProductImageDetail
-    {
-        return $this->thumbnail;
-    }
-    /**
-     * @param ProductImageDetail $thumbnail
-     *
-     * @return self
-     */
-    public function setThumbnail(ProductImageDetail $thumbnail): self
-    {
-        $this->initialized['thumbnail'] = true;
-        $this->thumbnail = $thumbnail;
-        return $this;
+        return ['detail' => 'detail', 'thumbnail' => 'thumbnail'];
     }
 }

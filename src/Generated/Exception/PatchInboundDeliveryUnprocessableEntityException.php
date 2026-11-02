@@ -4,15 +4,16 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
 class PatchInboundDeliveryUnprocessableEntityException extends UnprocessableEntityException
 {
-    /**
-     * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
-     */
-    private $errorResponse;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
+         */
+        private readonly \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse,
+        /**
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
+         */
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
+    )
     {
         parent::__construct('Unprocessable Entity
 
@@ -21,14 +22,12 @@ Error codes:
 - DUPLICATED_PRODUCT: There are multiple products with the same productNumber.
 - PRODUCT_COULD_NOT_BE_ADDED_FOR_SUPPLIER: At least one of the the given products could not be added for the supplier.
 - SHOP_NOT_FOUND: Shop not found.');
-        $this->errorResponse = $errorResponse;
-        $this->response = $response;
     }
     public function getErrorResponse(): \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
     {
         return $this->errorResponse;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

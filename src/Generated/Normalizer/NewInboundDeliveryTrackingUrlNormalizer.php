@@ -38,7 +38,7 @@ class NewInboundDeliveryTrackingUrlNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('trackingUrl', $data)) {
-            $object->setTrackingUrl($data['trackingUrl']);
+            $object->trackingUrl = $data['trackingUrl'];
             unset($data['trackingUrl']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class NewInboundDeliveryTrackingUrlNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['trackingUrl'] = $data->getTrackingUrl();
-        foreach ($data as $key => $value) {
+        $dataArray['trackingUrl'] = $data->trackingUrl;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

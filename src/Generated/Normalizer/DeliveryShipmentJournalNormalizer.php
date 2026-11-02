@@ -38,11 +38,23 @@ class DeliveryShipmentJournalNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('date', $data)) {
-            $object->setDate(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['date']);
+            if (false === $date) {
+                if (is_string($data['date']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['date'])) {
+                    try {
+                        $date = new \DateTime($data['date']);
+                    } catch (\Exception) {
+                        throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['date'], 'Y-m-d\TH:i:sP');
+                }
+            }
+            $object->date = $date;
             unset($data['date']);
         }
         if (\array_key_exists('typeCode', $data)) {
-            $object->setTypeCode($data['typeCode']);
+            $object->typeCode = $data['typeCode'];
             unset($data['typeCode']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +67,9 @@ class DeliveryShipmentJournalNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['date'] = $data->getDate()->format('Y-m-d\TH:i:sP');
-        $dataArray['typeCode'] = $data->getTypeCode();
-        foreach ($data as $key => $value) {
+        $dataArray['date'] = $data->date->format('Y-m-d\TH:i:sP');
+        $dataArray['typeCode'] = $data->typeCode;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

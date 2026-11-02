@@ -38,11 +38,12 @@ class PatchProductNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] !== null) {
-            $object->setMinAvailableStock($data['minAvailableStock']);
+            $object->minAvailableStock = $data['minAvailableStock'];
             unset($data['minAvailableStock']);
         }
-        elseif (\array_key_exists('minAvailableStock', $data) && $data['minAvailableStock'] === null) {
-            $object->setMinAvailableStock(null);
+        elseif (\array_key_exists('minAvailableStock', $data)) {
+            $object->minAvailableStock = null;
+            unset($data['minAvailableStock']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -54,10 +55,10 @@ class PatchProductNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('minAvailableStock')) {
-            $dataArray['minAvailableStock'] = $data->getMinAvailableStock();
+        if (array_key_exists('minAvailableStock', get_object_vars($data)) && null !== ($data->minAvailableStock ?? null)) {
+            $dataArray['minAvailableStock'] = $data->minAvailableStock;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

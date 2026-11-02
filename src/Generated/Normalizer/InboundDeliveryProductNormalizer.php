@@ -38,19 +38,19 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('announcedCount', $data)) {
-            $object->setAnnouncedCount($data['announcedCount']);
+            $object->announcedCount = $data['announcedCount'];
             unset($data['announcedCount']);
         }
         if (\array_key_exists('productTitle', $data)) {
-            $object->setProductTitle($data['productTitle']);
+            $object->productTitle = $data['productTitle'];
             unset($data['productTitle']);
         }
         if (\array_key_exists('deliveredCount', $data)) {
-            $object->setDeliveredCount($data['deliveredCount']);
+            $object->deliveredCount = $data['deliveredCount'];
             unset($data['deliveredCount']);
         }
         foreach ($data as $key => $value) {
@@ -63,15 +63,15 @@ class InboundDeliveryProductNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['productNumber'] = $data->getProductNumber();
-        $dataArray['announcedCount'] = $data->getAnnouncedCount();
-        if ($data->isInitialized('productTitle') && null !== $data->getProductTitle()) {
-            $dataArray['productTitle'] = $data->getProductTitle();
+        $dataArray['productNumber'] = $data->productNumber;
+        $dataArray['announcedCount'] = $data->announcedCount;
+        if (array_key_exists('productTitle', get_object_vars($data)) && null !== ($data->productTitle ?? null)) {
+            $dataArray['productTitle'] = $data->productTitle;
         }
-        if ($data->isInitialized('deliveredCount') && null !== $data->getDeliveredCount()) {
-            $dataArray['deliveredCount'] = $data->getDeliveredCount();
+        if (array_key_exists('deliveredCount', get_object_vars($data)) && null !== ($data->deliveredCount ?? null)) {
+            $dataArray['deliveredCount'] = $data->deliveredCount;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -38,11 +38,12 @@ class NewReconsignmentAnnouncementOptionsNormalizer implements DenormalizerInter
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('autoProcessState', $data) && $data['autoProcessState'] !== null) {
-            $object->setAutoProcessState($data['autoProcessState']);
+            $object->autoProcessState = $data['autoProcessState'];
             unset($data['autoProcessState']);
         }
-        elseif (\array_key_exists('autoProcessState', $data) && $data['autoProcessState'] === null) {
-            $object->setAutoProcessState(null);
+        elseif (\array_key_exists('autoProcessState', $data)) {
+            $object->autoProcessState = null;
+            unset($data['autoProcessState']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -54,10 +55,10 @@ class NewReconsignmentAnnouncementOptionsNormalizer implements DenormalizerInter
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('autoProcessState')) {
-            $dataArray['autoProcessState'] = $data->getAutoProcessState();
+        if (array_key_exists('autoProcessState', get_object_vars($data)) && null !== ($data->autoProcessState ?? null)) {
+            $dataArray['autoProcessState'] = $data->autoProcessState;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

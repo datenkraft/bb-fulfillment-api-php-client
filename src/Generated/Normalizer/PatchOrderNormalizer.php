@@ -38,11 +38,16 @@ class PatchOrderNormalizer implements DenormalizerInterface, NormalizerInterface
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('desiredShippingDate', $data) && $data['desiredShippingDate'] !== null) {
-            $object->setDesiredShippingDate(\DateTime::createFromFormat('Y-m-d', $data['desiredShippingDate'])->setTime(0, 0, 0));
+            $date = \DateTime::createFromFormat('Y-m-d', $data['desiredShippingDate']);
+            if (false === $date) {
+                throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['desiredShippingDate'], 'Y-m-d');
+            }
+            $object->desiredShippingDate = $date->setTime(0, 0, 0);
             unset($data['desiredShippingDate']);
         }
-        elseif (\array_key_exists('desiredShippingDate', $data) && $data['desiredShippingDate'] === null) {
-            $object->setDesiredShippingDate(null);
+        elseif (\array_key_exists('desiredShippingDate', $data)) {
+            $object->desiredShippingDate = null;
+            unset($data['desiredShippingDate']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -54,10 +59,10 @@ class PatchOrderNormalizer implements DenormalizerInterface, NormalizerInterface
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('desiredShippingDate')) {
-            $dataArray['desiredShippingDate'] = $data->getDesiredShippingDate()?->format('Y-m-d');
+        if (array_key_exists('desiredShippingDate', get_object_vars($data)) && null !== ($data->desiredShippingDate ?? null)) {
+            $dataArray['desiredShippingDate'] = $data->desiredShippingDate?->format('Y-m-d');
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

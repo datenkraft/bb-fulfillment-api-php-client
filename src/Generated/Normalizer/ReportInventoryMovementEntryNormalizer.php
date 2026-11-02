@@ -38,15 +38,15 @@ class ReportInventoryMovementEntryNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('typeCode', $data)) {
-            $object->setTypeCode($data['typeCode']);
+            $object->typeCode = $data['typeCode'];
             unset($data['typeCode']);
         }
         if (\array_key_exists('stock', $data)) {
-            $object->setStock($data['stock']);
+            $object->stock = $data['stock'];
             unset($data['stock']);
         }
         if (\array_key_exists('reference', $data)) {
-            $object->setReference($this->denormalizer->denormalize($data['reference'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryReference::class, 'json', $context));
+            $object->reference = $this->denormalizer->denormalize($data['reference'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntryReference::class, 'json', $context);
             unset($data['reference']);
         }
         foreach ($data as $key => $value) {
@@ -59,16 +59,17 @@ class ReportInventoryMovementEntryNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('typeCode') && null !== $data->getTypeCode()) {
-            $dataArray['typeCode'] = $data->getTypeCode();
+        if (array_key_exists('typeCode', get_object_vars($data)) && null !== ($data->typeCode ?? null)) {
+            $dataArray['typeCode'] = $data->typeCode;
         }
-        if ($data->isInitialized('stock') && null !== $data->getStock()) {
-            $dataArray['stock'] = $data->getStock();
+        if (array_key_exists('stock', get_object_vars($data)) && null !== ($data->stock ?? null)) {
+            $dataArray['stock'] = $data->stock;
         }
-        if ($data->isInitialized('reference') && null !== $data->getReference()) {
-            $dataArray['reference'] = $this->normalizer->normalize($data->getReference(), 'json', $context);
+        if (array_key_exists('reference', get_object_vars($data)) && null !== ($data->reference ?? null)) {
+            $normalized = $this->normalizer->normalize($data->reference, 'json', $context);
+            $dataArray['reference'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

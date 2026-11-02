@@ -2,126 +2,37 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class DeliveryShipmentPackaging extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class DeliveryShipmentPackaging implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Height in cm
      *
      * @var float
      */
-    protected $height;
+    public float $height;
     /**
      * Width in cm
      *
      * @var float
      */
-    protected $width;
+    public float $width;
     /**
      * Depth in cm
      *
      * @var float
      */
-    protected $depth;
+    public float $depth;
     /**
      * All packaging materials used for the shipment
      *
      * @var list<DeliveryShipmentPackagingMaterial>
      */
-    protected $materials;
-    /**
-     * Height in cm
-     *
-     * @return float
-     */
-    public function getHeight(): float
+    public array $materials;
+    public function definedProperties(): array
     {
-        return $this->height;
-    }
-    /**
-     * Height in cm
-     *
-     * @param float $height
-     *
-     * @return self
-     */
-    public function setHeight(float $height): self
-    {
-        $this->initialized['height'] = true;
-        $this->height = $height;
-        return $this;
-    }
-    /**
-     * Width in cm
-     *
-     * @return float
-     */
-    public function getWidth(): float
-    {
-        return $this->width;
-    }
-    /**
-     * Width in cm
-     *
-     * @param float $width
-     *
-     * @return self
-     */
-    public function setWidth(float $width): self
-    {
-        $this->initialized['width'] = true;
-        $this->width = $width;
-        return $this;
-    }
-    /**
-     * Depth in cm
-     *
-     * @return float
-     */
-    public function getDepth(): float
-    {
-        return $this->depth;
-    }
-    /**
-     * Depth in cm
-     *
-     * @param float $depth
-     *
-     * @return self
-     */
-    public function setDepth(float $depth): self
-    {
-        $this->initialized['depth'] = true;
-        $this->depth = $depth;
-        return $this;
-    }
-    /**
-     * All packaging materials used for the shipment
-     *
-     * @return list<DeliveryShipmentPackagingMaterial>
-     */
-    public function getMaterials(): array
-    {
-        return $this->materials;
-    }
-    /**
-     * All packaging materials used for the shipment
-     *
-     * @param list<DeliveryShipmentPackagingMaterial> $materials
-     *
-     * @return self
-     */
-    public function setMaterials(array $materials): self
-    {
-        $this->initialized['materials'] = true;
-        $this->materials = $materials;
-        return $this;
+        return ['height' => 'height', 'width' => 'width', 'depth' => 'depth', 'materials' => 'materials'];
     }
 }

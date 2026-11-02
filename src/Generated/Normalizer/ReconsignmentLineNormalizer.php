@@ -38,57 +38,63 @@ class ReconsignmentLineNormalizer implements DenormalizerInterface, NormalizerIn
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productWeight', $data) && \is_int($data['productWeight'])) {
-            $data['productWeight'] = (double) $data['productWeight'];
+            $data['productWeight'] = (float) $data['productWeight'];
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('putBackToStockCount', $data) && $data['putBackToStockCount'] !== null) {
-            $object->setPutBackToStockCount($data['putBackToStockCount']);
+            $object->putBackToStockCount = $data['putBackToStockCount'];
             unset($data['putBackToStockCount']);
         }
-        elseif (\array_key_exists('putBackToStockCount', $data) && $data['putBackToStockCount'] === null) {
-            $object->setPutBackToStockCount(null);
+        elseif (\array_key_exists('putBackToStockCount', $data)) {
+            $object->putBackToStockCount = null;
+            unset($data['putBackToStockCount']);
         }
         if (\array_key_exists('count', $data) && $data['count'] !== null) {
-            $object->setCount($data['count']);
+            $object->count = $data['count'];
             unset($data['count']);
         }
-        elseif (\array_key_exists('count', $data) && $data['count'] === null) {
-            $object->setCount(null);
+        elseif (\array_key_exists('count', $data)) {
+            $object->count = null;
+            unset($data['count']);
         }
         if (\array_key_exists('unit', $data) && $data['unit'] !== null) {
-            $object->setUnit($data['unit']);
+            $object->unit = $data['unit'];
             unset($data['unit']);
         }
-        elseif (\array_key_exists('unit', $data) && $data['unit'] === null) {
-            $object->setUnit(null);
+        elseif (\array_key_exists('unit', $data)) {
+            $object->unit = null;
+            unset($data['unit']);
         }
         if (\array_key_exists('productWeight', $data) && $data['productWeight'] !== null) {
-            $object->setProductWeight($data['productWeight']);
+            $object->productWeight = $data['productWeight'];
             unset($data['productWeight']);
         }
-        elseif (\array_key_exists('productWeight', $data) && $data['productWeight'] === null) {
-            $object->setProductWeight(null);
+        elseif (\array_key_exists('productWeight', $data)) {
+            $object->productWeight = null;
+            unset($data['productWeight']);
         }
         if (\array_key_exists('productWeightUnit', $data) && $data['productWeightUnit'] !== null) {
-            $object->setProductWeightUnit($data['productWeightUnit']);
+            $object->productWeightUnit = $data['productWeightUnit'];
             unset($data['productWeightUnit']);
         }
-        elseif (\array_key_exists('productWeightUnit', $data) && $data['productWeightUnit'] === null) {
-            $object->setProductWeightUnit(null);
+        elseif (\array_key_exists('productWeightUnit', $data)) {
+            $object->productWeightUnit = null;
+            unset($data['productWeightUnit']);
         }
         if (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] !== null) {
             $values = [];
             foreach ($data['bundledProducts'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentLineBundledProduct::class, 'json', $context);
             }
-            $object->setBundledProducts($values);
+            $object->bundledProducts = $values;
             unset($data['bundledProducts']);
         }
-        elseif (\array_key_exists('bundledProducts', $data) && $data['bundledProducts'] === null) {
-            $object->setBundledProducts(null);
+        elseif (\array_key_exists('bundledProducts', $data)) {
+            $object->bundledProducts = null;
+            unset($data['bundledProducts']);
         }
         foreach ($data as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
@@ -100,32 +106,33 @@ class ReconsignmentLineNormalizer implements DenormalizerInterface, NormalizerIn
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
-            $dataArray['productNumber'] = $data->getProductNumber();
+        if (array_key_exists('productNumber', get_object_vars($data)) && null !== ($data->productNumber ?? null)) {
+            $dataArray['productNumber'] = $data->productNumber;
         }
-        if ($data->isInitialized('putBackToStockCount')) {
-            $dataArray['putBackToStockCount'] = $data->getPutBackToStockCount();
+        if (array_key_exists('putBackToStockCount', get_object_vars($data)) && null !== ($data->putBackToStockCount ?? null)) {
+            $dataArray['putBackToStockCount'] = $data->putBackToStockCount;
         }
-        if ($data->isInitialized('count')) {
-            $dataArray['count'] = $data->getCount();
+        if (array_key_exists('count', get_object_vars($data)) && null !== ($data->count ?? null)) {
+            $dataArray['count'] = $data->count;
         }
-        if ($data->isInitialized('unit')) {
-            $dataArray['unit'] = $data->getUnit();
+        if (array_key_exists('unit', get_object_vars($data)) && null !== ($data->unit ?? null)) {
+            $dataArray['unit'] = $data->unit;
         }
-        if ($data->isInitialized('productWeight')) {
-            $dataArray['productWeight'] = $data->getProductWeight();
+        if (array_key_exists('productWeight', get_object_vars($data)) && null !== ($data->productWeight ?? null)) {
+            $dataArray['productWeight'] = $data->productWeight;
         }
-        if ($data->isInitialized('productWeightUnit')) {
-            $dataArray['productWeightUnit'] = $data->getProductWeightUnit();
+        if (array_key_exists('productWeightUnit', get_object_vars($data)) && null !== ($data->productWeightUnit ?? null)) {
+            $dataArray['productWeightUnit'] = $data->productWeightUnit;
         }
-        if ($data->isInitialized('bundledProducts')) {
+        if (array_key_exists('bundledProducts', get_object_vars($data)) && null !== ($data->bundledProducts ?? null)) {
             $values = [];
-            foreach ($data->getBundledProducts() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->bundledProducts as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['bundledProducts'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

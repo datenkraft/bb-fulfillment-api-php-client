@@ -2,16 +2,11 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class PatchProduct extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class PatchProduct implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Minimum available stock level. \
      * Set to "null" to clear, or to a non-negative integer to set the level. \
@@ -19,31 +14,9 @@ class PatchProduct extends \ArrayObject
      *
      * @var int|null
      */
-    protected $minAvailableStock;
-    /**
-     * Minimum available stock level. \
-     * Set to "null" to clear, or to a non-negative integer to set the level. \
-     * "0" is a valid value and is distinct from "null".
-     *
-     * @return int|null
-     */
-    public function getMinAvailableStock(): ?int
+    public ?int $minAvailableStock;
+    public function definedProperties(): array
     {
-        return $this->minAvailableStock;
-    }
-    /**
-    * Minimum available stock level. \
-    Set to "null" to clear, or to a non-negative integer to set the level. \
-    "0" is a valid value and is distinct from "null".
-    *
-    * @param int|null $minAvailableStock
-    *
-    * @return self
-    */
-    public function setMinAvailableStock(?int $minAvailableStock): self
-    {
-        $this->initialized['minAvailableStock'] = true;
-        $this->minAvailableStock = $minAvailableStock;
-        return $this;
+        return ['minAvailableStock' => 'minAvailableStock'];
     }
 }

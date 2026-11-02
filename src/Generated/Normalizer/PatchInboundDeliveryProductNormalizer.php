@@ -38,11 +38,11 @@ class PatchInboundDeliveryProductNormalizer implements DenormalizerInterface, No
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('announcedCount', $data)) {
-            $object->setAnnouncedCount($data['announcedCount']);
+            $object->announcedCount = $data['announcedCount'];
             unset($data['announcedCount']);
         }
         foreach ($data as $key => $value) {
@@ -55,9 +55,9 @@ class PatchInboundDeliveryProductNormalizer implements DenormalizerInterface, No
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['productNumber'] = $data->getProductNumber();
-        $dataArray['announcedCount'] = $data->getAnnouncedCount();
-        foreach ($data as $key => $value) {
+        $dataArray['productNumber'] = $data->productNumber;
+        $dataArray['announcedCount'] = $data->announcedCount;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

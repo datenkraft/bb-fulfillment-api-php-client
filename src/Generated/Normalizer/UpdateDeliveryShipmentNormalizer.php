@@ -38,11 +38,12 @@ class UpdateDeliveryShipmentNormalizer implements DenormalizerInterface, Normali
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] !== null) {
-            $object->setExternalShipmentId($data['externalShipmentId']);
+            $object->externalShipmentId = $data['externalShipmentId'];
             unset($data['externalShipmentId']);
         }
-        elseif (\array_key_exists('externalShipmentId', $data) && $data['externalShipmentId'] === null) {
-            $object->setExternalShipmentId(null);
+        elseif (\array_key_exists('externalShipmentId', $data)) {
+            $object->externalShipmentId = null;
+            unset($data['externalShipmentId']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -54,8 +55,8 @@ class UpdateDeliveryShipmentNormalizer implements DenormalizerInterface, Normali
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['externalShipmentId'] = $data->getExternalShipmentId();
-        foreach ($data as $key => $value) {
+        $dataArray['externalShipmentId'] = $data->externalShipmentId;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

@@ -38,24 +38,24 @@ class BaseProductDimensionsNormalizer implements DenormalizerInterface, Normaliz
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('width', $data) && \is_int($data['width'])) {
-            $data['width'] = (double) $data['width'];
+            $data['width'] = (float) $data['width'];
         }
         if (\array_key_exists('height', $data) && \is_int($data['height'])) {
-            $data['height'] = (double) $data['height'];
+            $data['height'] = (float) $data['height'];
         }
         if (\array_key_exists('depth', $data) && \is_int($data['depth'])) {
-            $data['depth'] = (double) $data['depth'];
+            $data['depth'] = (float) $data['depth'];
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
         if (\array_key_exists('depth', $data)) {
-            $object->setDepth($data['depth']);
+            $object->depth = $data['depth'];
             unset($data['depth']);
         }
         foreach ($data as $key => $value) {
@@ -68,10 +68,10 @@ class BaseProductDimensionsNormalizer implements DenormalizerInterface, Normaliz
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['width'] = $data->getWidth();
-        $dataArray['height'] = $data->getHeight();
-        $dataArray['depth'] = $data->getDepth();
-        foreach ($data as $key => $value) {
+        $dataArray['width'] = $data->width;
+        $dataArray['height'] = $data->height;
+        $dataArray['depth'] = $data->depth;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

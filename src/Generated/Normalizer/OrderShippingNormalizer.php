@@ -38,7 +38,7 @@ class OrderShippingNormalizer implements DenormalizerInterface, NormalizerInterf
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('deliveryService', $data)) {
-            $object->setDeliveryService($data['deliveryService']);
+            $object->deliveryService = $data['deliveryService'];
             unset($data['deliveryService']);
         }
         foreach ($data as $key => $value) {
@@ -51,8 +51,8 @@ class OrderShippingNormalizer implements DenormalizerInterface, NormalizerInterf
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['deliveryService'] = $data->getDeliveryService();
-        foreach ($data as $key => $value) {
+        $dataArray['deliveryService'] = $data->deliveryService;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

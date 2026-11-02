@@ -41,34 +41,35 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
             $data['active'] = (bool) $data['active'];
         }
         if (\array_key_exists('id', $data)) {
-            $object->setId($data['id']);
+            $object->id = $data['id'];
             unset($data['id']);
         }
         if (\array_key_exists('shopCode', $data)) {
-            $object->setShopCode($data['shopCode']);
+            $object->shopCode = $data['shopCode'];
             unset($data['shopCode']);
         }
         if (\array_key_exists('internalReferencePrefix', $data)) {
-            $object->setInternalReferencePrefix($data['internalReferencePrefix']);
+            $object->internalReferencePrefix = $data['internalReferencePrefix'];
             unset($data['internalReferencePrefix']);
         }
         if (\array_key_exists('projectId', $data)) {
-            $object->setProjectId($data['projectId']);
+            $object->projectId = $data['projectId'];
             unset($data['projectId']);
         }
         if (\array_key_exists('active', $data)) {
-            $object->setActive($data['active']);
+            $object->active = $data['active'];
             unset($data['active']);
         }
         if (\array_key_exists('meta', $data) && $data['meta'] !== null) {
-            $object->setMeta($this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta::class, 'json', $context));
+            $object->meta = $this->denormalizer->denormalize($data['meta'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ShopMeta::class, 'json', $context);
             unset($data['meta']);
         }
-        elseif (\array_key_exists('meta', $data) && $data['meta'] === null) {
-            $object->setMeta(null);
+        elseif (\array_key_exists('meta', $data)) {
+            $object->meta = null;
+            unset($data['meta']);
         }
         if (\array_key_exists('email', $data)) {
-            $object->setEmail($data['email']);
+            $object->email = $data['email'];
             unset($data['email']);
         }
         foreach ($data as $key => $value) {
@@ -81,28 +82,29 @@ class ShopNormalizer implements DenormalizerInterface, NormalizerInterface, Deno
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('id') && null !== $data->getId()) {
-            $dataArray['id'] = $data->getId();
+        if (array_key_exists('id', get_object_vars($data)) && null !== ($data->id ?? null)) {
+            $dataArray['id'] = $data->id;
         }
-        if ($data->isInitialized('shopCode') && null !== $data->getShopCode()) {
-            $dataArray['shopCode'] = $data->getShopCode();
+        if (array_key_exists('shopCode', get_object_vars($data)) && null !== ($data->shopCode ?? null)) {
+            $dataArray['shopCode'] = $data->shopCode;
         }
-        if ($data->isInitialized('internalReferencePrefix') && null !== $data->getInternalReferencePrefix()) {
-            $dataArray['internalReferencePrefix'] = $data->getInternalReferencePrefix();
+        if (array_key_exists('internalReferencePrefix', get_object_vars($data)) && null !== ($data->internalReferencePrefix ?? null)) {
+            $dataArray['internalReferencePrefix'] = $data->internalReferencePrefix;
         }
-        if ($data->isInitialized('projectId') && null !== $data->getProjectId()) {
-            $dataArray['projectId'] = $data->getProjectId();
+        if (array_key_exists('projectId', get_object_vars($data)) && null !== ($data->projectId ?? null)) {
+            $dataArray['projectId'] = $data->projectId;
         }
-        if ($data->isInitialized('active') && null !== $data->getActive()) {
-            $dataArray['active'] = $data->getActive();
+        if (array_key_exists('active', get_object_vars($data)) && null !== ($data->active ?? null)) {
+            $dataArray['active'] = $data->active;
         }
-        if ($data->isInitialized('meta')) {
-            $dataArray['meta'] = $this->normalizer->normalize($data->getMeta(), 'json', $context);
+        if (array_key_exists('meta', get_object_vars($data)) && null !== ($data->meta ?? null)) {
+            $normalized = $this->normalizer->normalize($data->meta, 'json', $context);
+            $dataArray['meta'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('email') && null !== $data->getEmail()) {
-            $dataArray['email'] = $data->getEmail();
+        if (array_key_exists('email', get_object_vars($data)) && null !== ($data->email ?? null)) {
+            $dataArray['email'] = $data->email;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

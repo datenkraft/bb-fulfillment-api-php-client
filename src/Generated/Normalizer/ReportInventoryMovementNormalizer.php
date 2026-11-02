@@ -38,50 +38,51 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('productNumber', $data)) {
-            $object->setProductNumber($data['productNumber']);
+            $object->productNumber = $data['productNumber'];
             unset($data['productNumber']);
         }
         if (\array_key_exists('productTitle', $data) && $data['productTitle'] !== null) {
-            $object->setProductTitle($data['productTitle']);
+            $object->productTitle = $data['productTitle'];
             unset($data['productTitle']);
         }
-        elseif (\array_key_exists('productTitle', $data) && $data['productTitle'] === null) {
-            $object->setProductTitle(null);
+        elseif (\array_key_exists('productTitle', $data)) {
+            $object->productTitle = null;
+            unset($data['productTitle']);
         }
         if (\array_key_exists('stockStart', $data)) {
-            $object->setStockStart($data['stockStart']);
+            $object->stockStart = $data['stockStart'];
             unset($data['stockStart']);
         }
         if (\array_key_exists('stockEnd', $data)) {
-            $object->setStockEnd($data['stockEnd']);
+            $object->stockEnd = $data['stockEnd'];
             unset($data['stockEnd']);
         }
         if (\array_key_exists('stockAdded', $data)) {
-            $object->setStockAdded($data['stockAdded']);
+            $object->stockAdded = $data['stockAdded'];
             unset($data['stockAdded']);
         }
         if (\array_key_exists('stockSubtracted', $data)) {
-            $object->setStockSubtracted($data['stockSubtracted']);
+            $object->stockSubtracted = $data['stockSubtracted'];
             unset($data['stockSubtracted']);
         }
         if (\array_key_exists('stockSubtractedExternal', $data)) {
-            $object->setStockSubtractedExternal($data['stockSubtractedExternal']);
+            $object->stockSubtractedExternal = $data['stockSubtractedExternal'];
             unset($data['stockSubtractedExternal']);
         }
         if (\array_key_exists('stockCorrected', $data)) {
-            $object->setStockCorrected($data['stockCorrected']);
+            $object->stockCorrected = $data['stockCorrected'];
             unset($data['stockCorrected']);
         }
         if (\array_key_exists('stockUsedForOwnPurposes', $data)) {
-            $object->setStockUsedForOwnPurposes($data['stockUsedForOwnPurposes']);
+            $object->stockUsedForOwnPurposes = $data['stockUsedForOwnPurposes'];
             unset($data['stockUsedForOwnPurposes']);
         }
         if (\array_key_exists('stockReturned', $data)) {
-            $object->setStockReturned($data['stockReturned']);
+            $object->stockReturned = $data['stockReturned'];
             unset($data['stockReturned']);
         }
         if (\array_key_exists('stockReturnedExternal', $data)) {
-            $object->setStockReturnedExternal($data['stockReturnedExternal']);
+            $object->stockReturnedExternal = $data['stockReturnedExternal'];
             unset($data['stockReturnedExternal']);
         }
         if (\array_key_exists('movementEntries', $data)) {
@@ -89,7 +90,7 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
             foreach ($data['movementEntries'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReportInventoryMovementEntry::class, 'json', $context);
             }
-            $object->setMovementEntries($values);
+            $object->movementEntries = $values;
             unset($data['movementEntries']);
         }
         foreach ($data as $key => $value_1) {
@@ -102,47 +103,48 @@ class ReportInventoryMovementNormalizer implements DenormalizerInterface, Normal
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('productNumber') && null !== $data->getProductNumber()) {
-            $dataArray['productNumber'] = $data->getProductNumber();
+        if (array_key_exists('productNumber', get_object_vars($data)) && null !== ($data->productNumber ?? null)) {
+            $dataArray['productNumber'] = $data->productNumber;
         }
-        if ($data->isInitialized('productTitle')) {
-            $dataArray['productTitle'] = $data->getProductTitle();
+        if (array_key_exists('productTitle', get_object_vars($data)) && null !== ($data->productTitle ?? null)) {
+            $dataArray['productTitle'] = $data->productTitle;
         }
-        if ($data->isInitialized('stockStart') && null !== $data->getStockStart()) {
-            $dataArray['stockStart'] = $data->getStockStart();
+        if (array_key_exists('stockStart', get_object_vars($data)) && null !== ($data->stockStart ?? null)) {
+            $dataArray['stockStart'] = $data->stockStart;
         }
-        if ($data->isInitialized('stockEnd') && null !== $data->getStockEnd()) {
-            $dataArray['stockEnd'] = $data->getStockEnd();
+        if (array_key_exists('stockEnd', get_object_vars($data)) && null !== ($data->stockEnd ?? null)) {
+            $dataArray['stockEnd'] = $data->stockEnd;
         }
-        if ($data->isInitialized('stockAdded') && null !== $data->getStockAdded()) {
-            $dataArray['stockAdded'] = $data->getStockAdded();
+        if (array_key_exists('stockAdded', get_object_vars($data)) && null !== ($data->stockAdded ?? null)) {
+            $dataArray['stockAdded'] = $data->stockAdded;
         }
-        if ($data->isInitialized('stockSubtracted') && null !== $data->getStockSubtracted()) {
-            $dataArray['stockSubtracted'] = $data->getStockSubtracted();
+        if (array_key_exists('stockSubtracted', get_object_vars($data)) && null !== ($data->stockSubtracted ?? null)) {
+            $dataArray['stockSubtracted'] = $data->stockSubtracted;
         }
-        if ($data->isInitialized('stockSubtractedExternal') && null !== $data->getStockSubtractedExternal()) {
-            $dataArray['stockSubtractedExternal'] = $data->getStockSubtractedExternal();
+        if (array_key_exists('stockSubtractedExternal', get_object_vars($data)) && null !== ($data->stockSubtractedExternal ?? null)) {
+            $dataArray['stockSubtractedExternal'] = $data->stockSubtractedExternal;
         }
-        if ($data->isInitialized('stockCorrected') && null !== $data->getStockCorrected()) {
-            $dataArray['stockCorrected'] = $data->getStockCorrected();
+        if (array_key_exists('stockCorrected', get_object_vars($data)) && null !== ($data->stockCorrected ?? null)) {
+            $dataArray['stockCorrected'] = $data->stockCorrected;
         }
-        if ($data->isInitialized('stockUsedForOwnPurposes') && null !== $data->getStockUsedForOwnPurposes()) {
-            $dataArray['stockUsedForOwnPurposes'] = $data->getStockUsedForOwnPurposes();
+        if (array_key_exists('stockUsedForOwnPurposes', get_object_vars($data)) && null !== ($data->stockUsedForOwnPurposes ?? null)) {
+            $dataArray['stockUsedForOwnPurposes'] = $data->stockUsedForOwnPurposes;
         }
-        if ($data->isInitialized('stockReturned') && null !== $data->getStockReturned()) {
-            $dataArray['stockReturned'] = $data->getStockReturned();
+        if (array_key_exists('stockReturned', get_object_vars($data)) && null !== ($data->stockReturned ?? null)) {
+            $dataArray['stockReturned'] = $data->stockReturned;
         }
-        if ($data->isInitialized('stockReturnedExternal') && null !== $data->getStockReturnedExternal()) {
-            $dataArray['stockReturnedExternal'] = $data->getStockReturnedExternal();
+        if (array_key_exists('stockReturnedExternal', get_object_vars($data)) && null !== ($data->stockReturnedExternal ?? null)) {
+            $dataArray['stockReturnedExternal'] = $data->stockReturnedExternal;
         }
-        if ($data->isInitialized('movementEntries') && null !== $data->getMovementEntries()) {
+        if (array_key_exists('movementEntries', get_object_vars($data)) && null !== ($data->movementEntries ?? null)) {
             $values = [];
-            foreach ($data->getMovementEntries() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->movementEntries as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['movementEntries'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

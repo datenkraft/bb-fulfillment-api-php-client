@@ -38,11 +38,11 @@ class ManufacturerNormalizer implements DenormalizerInterface, NormalizerInterfa
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('manufacturerNumber', $data)) {
-            $object->setManufacturerNumber($data['manufacturerNumber']);
+            $object->manufacturerNumber = $data['manufacturerNumber'];
             unset($data['manufacturerNumber']);
         }
         if (\array_key_exists('name', $data)) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
         foreach ($data as $key => $value) {
@@ -55,13 +55,13 @@ class ManufacturerNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('manufacturerNumber') && null !== $data->getManufacturerNumber()) {
-            $dataArray['manufacturerNumber'] = $data->getManufacturerNumber();
+        if (array_key_exists('manufacturerNumber', get_object_vars($data)) && null !== ($data->manufacturerNumber ?? null)) {
+            $dataArray['manufacturerNumber'] = $data->manufacturerNumber;
         }
-        if ($data->isInitialized('name') && null !== $data->getName()) {
-            $dataArray['name'] = $data->getName();
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

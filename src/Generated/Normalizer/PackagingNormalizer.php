@@ -38,68 +38,74 @@ class PackagingNormalizer implements DenormalizerInterface, NormalizerInterface,
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('height', $data) && \is_int($data['height'])) {
-            $data['height'] = (double) $data['height'];
+            $data['height'] = (float) $data['height'];
         }
         if (\array_key_exists('width', $data) && \is_int($data['width'])) {
-            $data['width'] = (double) $data['width'];
+            $data['width'] = (float) $data['width'];
         }
         if (\array_key_exists('depth', $data) && \is_int($data['depth'])) {
-            $data['depth'] = (double) $data['depth'];
+            $data['depth'] = (float) $data['depth'];
         }
         if (\array_key_exists('weight', $data) && \is_int($data['weight'])) {
-            $data['weight'] = (double) $data['weight'];
+            $data['weight'] = (float) $data['weight'];
         }
         if (\array_key_exists('active', $data) && \is_int($data['active'])) {
             $data['active'] = (bool) $data['active'];
         }
         if (\array_key_exists('packagingCode', $data)) {
-            $object->setPackagingCode($data['packagingCode']);
+            $object->packagingCode = $data['packagingCode'];
             unset($data['packagingCode']);
         }
         if (\array_key_exists('name', $data) && $data['name'] !== null) {
-            $object->setName($data['name']);
+            $object->name = $data['name'];
             unset($data['name']);
         }
-        elseif (\array_key_exists('name', $data) && $data['name'] === null) {
-            $object->setName(null);
+        elseif (\array_key_exists('name', $data)) {
+            $object->name = null;
+            unset($data['name']);
         }
         if (\array_key_exists('type', $data) && $data['type'] !== null) {
-            $object->setType($data['type']);
+            $object->type = $data['type'];
             unset($data['type']);
         }
-        elseif (\array_key_exists('type', $data) && $data['type'] === null) {
-            $object->setType(null);
+        elseif (\array_key_exists('type', $data)) {
+            $object->type = null;
+            unset($data['type']);
         }
         if (\array_key_exists('height', $data) && $data['height'] !== null) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
-        elseif (\array_key_exists('height', $data) && $data['height'] === null) {
-            $object->setHeight(null);
+        elseif (\array_key_exists('height', $data)) {
+            $object->height = null;
+            unset($data['height']);
         }
         if (\array_key_exists('width', $data) && $data['width'] !== null) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
-        elseif (\array_key_exists('width', $data) && $data['width'] === null) {
-            $object->setWidth(null);
+        elseif (\array_key_exists('width', $data)) {
+            $object->width = null;
+            unset($data['width']);
         }
         if (\array_key_exists('depth', $data) && $data['depth'] !== null) {
-            $object->setDepth($data['depth']);
+            $object->depth = $data['depth'];
             unset($data['depth']);
         }
-        elseif (\array_key_exists('depth', $data) && $data['depth'] === null) {
-            $object->setDepth(null);
+        elseif (\array_key_exists('depth', $data)) {
+            $object->depth = null;
+            unset($data['depth']);
         }
         if (\array_key_exists('weight', $data) && $data['weight'] !== null) {
-            $object->setWeight($data['weight']);
+            $object->weight = $data['weight'];
             unset($data['weight']);
         }
-        elseif (\array_key_exists('weight', $data) && $data['weight'] === null) {
-            $object->setWeight(null);
+        elseif (\array_key_exists('weight', $data)) {
+            $object->weight = null;
+            unset($data['weight']);
         }
         if (\array_key_exists('active', $data)) {
-            $object->setActive($data['active']);
+            $object->active = $data['active'];
             unset($data['active']);
         }
         foreach ($data as $key => $value) {
@@ -112,27 +118,27 @@ class PackagingNormalizer implements DenormalizerInterface, NormalizerInterface,
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        $dataArray['packagingCode'] = $data->getPackagingCode();
-        if ($data->isInitialized('name')) {
-            $dataArray['name'] = $data->getName();
+        $dataArray['packagingCode'] = $data->packagingCode;
+        if (array_key_exists('name', get_object_vars($data)) && null !== ($data->name ?? null)) {
+            $dataArray['name'] = $data->name;
         }
-        if ($data->isInitialized('type')) {
-            $dataArray['type'] = $data->getType();
+        if (array_key_exists('type', get_object_vars($data)) && null !== ($data->type ?? null)) {
+            $dataArray['type'] = $data->type;
         }
-        if ($data->isInitialized('height')) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height;
         }
-        if ($data->isInitialized('width')) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width;
         }
-        if ($data->isInitialized('depth')) {
-            $dataArray['depth'] = $data->getDepth();
+        if (array_key_exists('depth', get_object_vars($data)) && null !== ($data->depth ?? null)) {
+            $dataArray['depth'] = $data->depth;
         }
-        if ($data->isInitialized('weight')) {
-            $dataArray['weight'] = $data->getWeight();
+        if (array_key_exists('weight', get_object_vars($data)) && null !== ($data->weight ?? null)) {
+            $dataArray['weight'] = $data->weight;
         }
-        $dataArray['active'] = $data->getActive();
-        foreach ($data as $key => $value) {
+        $dataArray['active'] = $data->active;
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

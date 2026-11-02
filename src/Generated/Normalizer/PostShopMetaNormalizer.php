@@ -56,81 +56,104 @@ class PostShopMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
             $data['printOrderDocument'] = (bool) $data['printOrderDocument'];
         }
         if (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] !== null) {
-            $object->setShopifyShopDomain($data['shopifyShopDomain']);
+            $object->shopifyShopDomain = $data['shopifyShopDomain'];
             unset($data['shopifyShopDomain']);
         }
-        elseif (\array_key_exists('shopifyShopDomain', $data) && $data['shopifyShopDomain'] === null) {
-            $object->setShopifyShopDomain(null);
+        elseif (\array_key_exists('shopifyShopDomain', $data)) {
+            $object->shopifyShopDomain = null;
+            unset($data['shopifyShopDomain']);
         }
         if (\array_key_exists('testShop', $data) && $data['testShop'] !== null) {
-            $object->setTestShop($data['testShop']);
+            $object->testShop = $data['testShop'];
             unset($data['testShop']);
         }
-        elseif (\array_key_exists('testShop', $data) && $data['testShop'] === null) {
-            $object->setTestShop(null);
+        elseif (\array_key_exists('testShop', $data)) {
+            $object->testShop = null;
+            unset($data['testShop']);
         }
         if (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] !== null) {
-            $object->setTestShopResetNotBefore(\DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['testShopResetNotBefore']));
+            $date = \DateTime::createFromFormat('Y-m-d\TH:i:sP', $data['testShopResetNotBefore']);
+            if (false === $date) {
+                if (is_string($data['testShopResetNotBefore']) and 1 === preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/', $data['testShopResetNotBefore'])) {
+                    try {
+                        $date = new \DateTime($data['testShopResetNotBefore']);
+                    } catch (\Exception) {
+                        throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['testShopResetNotBefore'], 'Y-m-d\TH:i:sP');
+                    }
+                } else {
+                    throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Normalizer\InvalidDateException($data['testShopResetNotBefore'], 'Y-m-d\TH:i:sP');
+                }
+            }
+            $object->testShopResetNotBefore = $date;
             unset($data['testShopResetNotBefore']);
         }
-        elseif (\array_key_exists('testShopResetNotBefore', $data) && $data['testShopResetNotBefore'] === null) {
-            $object->setTestShopResetNotBefore(null);
+        elseif (\array_key_exists('testShopResetNotBefore', $data)) {
+            $object->testShopResetNotBefore = null;
+            unset($data['testShopResetNotBefore']);
         }
         if (\array_key_exists('sandboxMode', $data) && $data['sandboxMode'] !== null) {
-            $object->setSandboxMode($data['sandboxMode']);
+            $object->sandboxMode = $data['sandboxMode'];
             unset($data['sandboxMode']);
         }
-        elseif (\array_key_exists('sandboxMode', $data) && $data['sandboxMode'] === null) {
-            $object->setSandboxMode(null);
+        elseif (\array_key_exists('sandboxMode', $data)) {
+            $object->sandboxMode = null;
+            unset($data['sandboxMode']);
         }
         if (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] !== null) {
-            $object->setAddTestSuffixToInternalReference($data['addTestSuffixToInternalReference']);
+            $object->addTestSuffixToInternalReference = $data['addTestSuffixToInternalReference'];
             unset($data['addTestSuffixToInternalReference']);
         }
-        elseif (\array_key_exists('addTestSuffixToInternalReference', $data) && $data['addTestSuffixToInternalReference'] === null) {
-            $object->setAddTestSuffixToInternalReference(null);
+        elseif (\array_key_exists('addTestSuffixToInternalReference', $data)) {
+            $object->addTestSuffixToInternalReference = null;
+            unset($data['addTestSuffixToInternalReference']);
         }
         if (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] !== null) {
-            $object->setInvoiceEnabled($data['invoiceEnabled']);
+            $object->invoiceEnabled = $data['invoiceEnabled'];
             unset($data['invoiceEnabled']);
         }
-        elseif (\array_key_exists('invoiceEnabled', $data) && $data['invoiceEnabled'] === null) {
-            $object->setInvoiceEnabled(null);
+        elseif (\array_key_exists('invoiceEnabled', $data)) {
+            $object->invoiceEnabled = null;
+            unset($data['invoiceEnabled']);
         }
         if (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] !== null) {
-            $object->setDefaultCurrency($data['defaultCurrency']);
+            $object->defaultCurrency = $data['defaultCurrency'];
             unset($data['defaultCurrency']);
         }
-        elseif (\array_key_exists('defaultCurrency', $data) && $data['defaultCurrency'] === null) {
-            $object->setDefaultCurrency(null);
+        elseif (\array_key_exists('defaultCurrency', $data)) {
+            $object->defaultCurrency = null;
+            unset($data['defaultCurrency']);
         }
         if (\array_key_exists('overwriteCustomerEmailEnabled', $data) && $data['overwriteCustomerEmailEnabled'] !== null) {
-            $object->setOverwriteCustomerEmailEnabled($data['overwriteCustomerEmailEnabled']);
+            $object->overwriteCustomerEmailEnabled = $data['overwriteCustomerEmailEnabled'];
             unset($data['overwriteCustomerEmailEnabled']);
         }
-        elseif (\array_key_exists('overwriteCustomerEmailEnabled', $data) && $data['overwriteCustomerEmailEnabled'] === null) {
-            $object->setOverwriteCustomerEmailEnabled(null);
+        elseif (\array_key_exists('overwriteCustomerEmailEnabled', $data)) {
+            $object->overwriteCustomerEmailEnabled = null;
+            unset($data['overwriteCustomerEmailEnabled']);
         }
         if (\array_key_exists('orderNotesPrecedingText', $data) && $data['orderNotesPrecedingText'] !== null) {
-            $object->setOrderNotesPrecedingText($data['orderNotesPrecedingText']);
+            $object->orderNotesPrecedingText = $data['orderNotesPrecedingText'];
             unset($data['orderNotesPrecedingText']);
         }
-        elseif (\array_key_exists('orderNotesPrecedingText', $data) && $data['orderNotesPrecedingText'] === null) {
-            $object->setOrderNotesPrecedingText(null);
+        elseif (\array_key_exists('orderNotesPrecedingText', $data)) {
+            $object->orderNotesPrecedingText = null;
+            unset($data['orderNotesPrecedingText']);
         }
         if (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] !== null) {
-            $object->setDeliverySlipNotes($data['deliverySlipNotes']);
+            $object->deliverySlipNotes = $data['deliverySlipNotes'];
             unset($data['deliverySlipNotes']);
         }
-        elseif (\array_key_exists('deliverySlipNotes', $data) && $data['deliverySlipNotes'] === null) {
-            $object->setDeliverySlipNotes(null);
+        elseif (\array_key_exists('deliverySlipNotes', $data)) {
+            $object->deliverySlipNotes = null;
+            unset($data['deliverySlipNotes']);
         }
         if (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] !== null) {
-            $object->setPrintOrderDocument($data['printOrderDocument']);
+            $object->printOrderDocument = $data['printOrderDocument'];
             unset($data['printOrderDocument']);
         }
-        elseif (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] === null) {
-            $object->setPrintOrderDocument(null);
+        elseif (\array_key_exists('printOrderDocument', $data)) {
+            $object->printOrderDocument = null;
+            unset($data['printOrderDocument']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -142,40 +165,40 @@ class PostShopMetaNormalizer implements DenormalizerInterface, NormalizerInterfa
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('shopifyShopDomain')) {
-            $dataArray['shopifyShopDomain'] = $data->getShopifyShopDomain();
+        if (array_key_exists('shopifyShopDomain', get_object_vars($data)) && null !== ($data->shopifyShopDomain ?? null)) {
+            $dataArray['shopifyShopDomain'] = $data->shopifyShopDomain;
         }
-        if ($data->isInitialized('testShop')) {
-            $dataArray['testShop'] = $data->getTestShop();
+        if (array_key_exists('testShop', get_object_vars($data)) && null !== ($data->testShop ?? null)) {
+            $dataArray['testShop'] = $data->testShop;
         }
-        if ($data->isInitialized('testShopResetNotBefore')) {
-            $dataArray['testShopResetNotBefore'] = $data->getTestShopResetNotBefore()?->format('Y-m-d\TH:i:sP');
+        if (array_key_exists('testShopResetNotBefore', get_object_vars($data)) && null !== ($data->testShopResetNotBefore ?? null)) {
+            $dataArray['testShopResetNotBefore'] = $data->testShopResetNotBefore?->format('Y-m-d\TH:i:sP');
         }
-        if ($data->isInitialized('sandboxMode')) {
-            $dataArray['sandboxMode'] = $data->getSandboxMode();
+        if (array_key_exists('sandboxMode', get_object_vars($data)) && null !== ($data->sandboxMode ?? null)) {
+            $dataArray['sandboxMode'] = $data->sandboxMode;
         }
-        if ($data->isInitialized('addTestSuffixToInternalReference')) {
-            $dataArray['addTestSuffixToInternalReference'] = $data->getAddTestSuffixToInternalReference();
+        if (array_key_exists('addTestSuffixToInternalReference', get_object_vars($data)) && null !== ($data->addTestSuffixToInternalReference ?? null)) {
+            $dataArray['addTestSuffixToInternalReference'] = $data->addTestSuffixToInternalReference;
         }
-        if ($data->isInitialized('invoiceEnabled')) {
-            $dataArray['invoiceEnabled'] = $data->getInvoiceEnabled();
+        if (array_key_exists('invoiceEnabled', get_object_vars($data)) && null !== ($data->invoiceEnabled ?? null)) {
+            $dataArray['invoiceEnabled'] = $data->invoiceEnabled;
         }
-        if ($data->isInitialized('defaultCurrency')) {
-            $dataArray['defaultCurrency'] = $data->getDefaultCurrency();
+        if (array_key_exists('defaultCurrency', get_object_vars($data)) && null !== ($data->defaultCurrency ?? null)) {
+            $dataArray['defaultCurrency'] = $data->defaultCurrency;
         }
-        if ($data->isInitialized('overwriteCustomerEmailEnabled')) {
-            $dataArray['overwriteCustomerEmailEnabled'] = $data->getOverwriteCustomerEmailEnabled();
+        if (array_key_exists('overwriteCustomerEmailEnabled', get_object_vars($data)) && null !== ($data->overwriteCustomerEmailEnabled ?? null)) {
+            $dataArray['overwriteCustomerEmailEnabled'] = $data->overwriteCustomerEmailEnabled;
         }
-        if ($data->isInitialized('orderNotesPrecedingText')) {
-            $dataArray['orderNotesPrecedingText'] = $data->getOrderNotesPrecedingText();
+        if (array_key_exists('orderNotesPrecedingText', get_object_vars($data)) && null !== ($data->orderNotesPrecedingText ?? null)) {
+            $dataArray['orderNotesPrecedingText'] = $data->orderNotesPrecedingText;
         }
-        if ($data->isInitialized('deliverySlipNotes')) {
-            $dataArray['deliverySlipNotes'] = $data->getDeliverySlipNotes();
+        if (array_key_exists('deliverySlipNotes', get_object_vars($data)) && null !== ($data->deliverySlipNotes ?? null)) {
+            $dataArray['deliverySlipNotes'] = $data->deliverySlipNotes;
         }
-        if ($data->isInitialized('printOrderDocument')) {
-            $dataArray['printOrderDocument'] = $data->getPrintOrderDocument();
+        if (array_key_exists('printOrderDocument', get_object_vars($data)) && null !== ($data->printOrderDocument ?? null)) {
+            $dataArray['printOrderDocument'] = $data->printOrderDocument;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

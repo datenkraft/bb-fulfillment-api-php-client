@@ -38,11 +38,11 @@ class DeliveryExpenseNormalizer implements DenormalizerInterface, NormalizerInte
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('deliveryServiceCode', $data)) {
-            $object->setDeliveryServiceCode($data['deliveryServiceCode']);
+            $object->deliveryServiceCode = $data['deliveryServiceCode'];
             unset($data['deliveryServiceCode']);
         }
         if (\array_key_exists('countryCode', $data)) {
-            $object->setCountryCode($data['countryCode']);
+            $object->countryCode = $data['countryCode'];
             unset($data['countryCode']);
         }
         if (\array_key_exists('price', $data)) {
@@ -50,23 +50,23 @@ class DeliveryExpenseNormalizer implements DenormalizerInterface, NormalizerInte
             foreach ($data['price'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\DeliveryExpensePrice::class, 'json', $context);
             }
-            $object->setPrice($values);
+            $object->price = $values;
             unset($data['price']);
         }
         if (\array_key_exists('weight', $data)) {
-            $object->setWeight($data['weight']);
+            $object->weight = $data['weight'];
             unset($data['weight']);
         }
         if (\array_key_exists('height', $data)) {
-            $object->setHeight($data['height']);
+            $object->height = $data['height'];
             unset($data['height']);
         }
         if (\array_key_exists('length', $data)) {
-            $object->setLength($data['length']);
+            $object->length = $data['length'];
             unset($data['length']);
         }
         if (\array_key_exists('width', $data)) {
-            $object->setWidth($data['width']);
+            $object->width = $data['width'];
             unset($data['width']);
         }
         foreach ($data as $key => $value_1) {
@@ -79,32 +79,33 @@ class DeliveryExpenseNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('deliveryServiceCode') && null !== $data->getDeliveryServiceCode()) {
-            $dataArray['deliveryServiceCode'] = $data->getDeliveryServiceCode();
+        if (array_key_exists('deliveryServiceCode', get_object_vars($data)) && null !== ($data->deliveryServiceCode ?? null)) {
+            $dataArray['deliveryServiceCode'] = $data->deliveryServiceCode;
         }
-        if ($data->isInitialized('countryCode') && null !== $data->getCountryCode()) {
-            $dataArray['countryCode'] = $data->getCountryCode();
+        if (array_key_exists('countryCode', get_object_vars($data)) && null !== ($data->countryCode ?? null)) {
+            $dataArray['countryCode'] = $data->countryCode;
         }
-        if ($data->isInitialized('price') && null !== $data->getPrice()) {
+        if (array_key_exists('price', get_object_vars($data)) && null !== ($data->price ?? null)) {
             $values = [];
-            foreach ($data->getPrice() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->price as $value) {
+                $normalized = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
             }
             $dataArray['price'] = $values;
         }
-        if ($data->isInitialized('weight') && null !== $data->getWeight()) {
-            $dataArray['weight'] = $data->getWeight();
+        if (array_key_exists('weight', get_object_vars($data)) && null !== ($data->weight ?? null)) {
+            $dataArray['weight'] = $data->weight;
         }
-        if ($data->isInitialized('height') && null !== $data->getHeight()) {
-            $dataArray['height'] = $data->getHeight();
+        if (array_key_exists('height', get_object_vars($data)) && null !== ($data->height ?? null)) {
+            $dataArray['height'] = $data->height;
         }
-        if ($data->isInitialized('length') && null !== $data->getLength()) {
-            $dataArray['length'] = $data->getLength();
+        if (array_key_exists('length', get_object_vars($data)) && null !== ($data->length ?? null)) {
+            $dataArray['length'] = $data->length;
         }
-        if ($data->isInitialized('width') && null !== $data->getWidth()) {
-            $dataArray['width'] = $data->getWidth();
+        if (array_key_exists('width', get_object_vars($data)) && null !== ($data->width ?? null)) {
+            $dataArray['width'] = $data->width;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }

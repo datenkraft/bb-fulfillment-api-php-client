@@ -5,42 +5,42 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Endpoint;
 class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\BaseEndpoint implements \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\Client\Endpoint
 {
     /**
-    * Read the reconsignments in the given dateRange.
-    * @param array{
-    *    "page"?: int, //The page to read. Default is the first page.
-    *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
-    *    "paginationMode"?: string, //The paginationMode to use:
-    - default: The total number of items in the collection will not be calculated.
-    - totalCount: The total number of items in the collection will be calculated.
-    This can mean loss of performance.
-    *    "sortBy"?: string, //Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
-    priority.
-    
-    Available sort orders:
-    - asc: ascending order
-    - desc: descending order
-    
-    Available fields for sorting:
-    - reconsignmentDate
-    
-    The default sort order is reconsignmentDate:desc.
-    *    "filter[shopCode]"?: string, //The shop to which the reconsignments belongs to.
-    *    "filter[orderNumber]"?: string, //The order number which the reconsignments belong to.
-    *    "filter[reconsignmentWasPreAnnounced]"?: bool, //Filter for reconsignments that were pre-announced (true) or not (false).
-    *    "filter[search]"?: string, //Filter for reconsignment search.
-    
-    Usage:
-    - Provide one or multiple search terms (min. 2 characters) to filter results.
-    - Multiple search terms are separated by spaces.
-    - The search is not case sensitive.
-    - The search is enabled for the fields 'reconsignmentNumber' and 'orderNumber'.
-    - Each search term filters the response for reconsignment announcements where at least one of the fields contains the search term.
-    - For example, filter[search]='term1 term2' will filter the result for reconsignment announcements where 'term1' is found in any field and 'term2' is also found in any field.\
-    If only 'term1' or 'term2' is found in the fields, the reconsignment announcement is not included in the results.
-    *    "filter[reconsignmentDateFrom]"?: string, //filter for reconsignmentDate format in ISO 8601 with UTC offsets
-    *    "filter[reconsignmentDateTo]"?: string, //filter for reconsignmentDate format in ISO 8601 with UTC offsets
-    * } $queryParameters
-    */
+     * Read the reconsignments in the given dateRange.
+     * @param array{
+     *    "page"?: int, //The page to read. Default is the first page.
+     *    "pageSize"?: int, //The maximum size per page is 100. Default is 100.
+     *    "paginationMode"?: string, //The paginationMode to use:
+     *                               //- default: The total number of items in the collection will not be calculated.
+     *                               //- totalCount: The total number of items in the collection will be calculated.
+     *                               //This can mean loss of performance.
+     *    "sortBy"?: string, //Sort the results by one or more comma-separated sort criteria, with the criterion specified first having
+     *                       //priority.
+     *                       //
+     *                       //Available sort orders:
+     *                       //- asc: ascending order
+     *                       //- desc: descending order
+     *                       //
+     *                       //Available fields for sorting:
+     *                       //- reconsignmentDate
+     *                       //
+     *                       //The default sort order is reconsignmentDate:desc.
+     *    "filter[shopCode]"?: string, //The shop to which the reconsignments belongs to.
+     *    "filter[orderNumber]"?: string, //The order number which the reconsignments belong to.
+     *    "filter[reconsignmentWasPreAnnounced]"?: bool, //Filter for reconsignments that were pre-announced (true) or not (false).
+     *    "filter[search]"?: string, //Filter for reconsignment search.
+     *                               //
+     *                               //Usage:
+     *                               //- Provide one or multiple search terms (min. 2 characters) to filter results.
+     *                               //- Multiple search terms are separated by spaces.
+     *                               //- The search is not case sensitive.
+     *                               //- The search is enabled for the fields 'reconsignmentNumber' and 'orderNumber'.
+     *                               //- Each search term filters the response for reconsignment announcements where at least one of the fields contains the search term.
+     *                               //- For example, filter[search]='term1 term2' will filter the result for reconsignment announcements where 'term1' is found in any field and 'term2' is also found in any field.\
+     *                               //If only 'term1' or 'term2' is found in the fields, the reconsignment announcement is not included in the results.
+     *    "filter[reconsignmentDateFrom]"?: string, //filter for reconsignmentDate format in ISO 8601 with UTC offsets
+     *    "filter[reconsignmentDateTo]"?: string, //filter for reconsignmentDate format in ISO 8601 with UTC offsets
+     * } $queryParameters
+     */
     public function __construct(array $queryParameters = [])
     {
         $this->queryParameters = $queryParameters;
@@ -54,7 +54,7 @@ class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\Fulfillment
     {
         return '/reconsignment';
     }
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer): array
     {
         return [[], null];
     }
@@ -89,42 +89,50 @@ class GetReconsignmentCollection extends \Datenkraft\Backbone\Client\Fulfillment
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionUnprocessableEntityException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionInternalServerErrorException
      * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionServiceUnavailableException
-     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException
+     * @throws \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\BadResponseException
      *
      * @return \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentCollection|\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
      */
-    protected function transformResponseBody(\Psr\Http\Message\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
+    protected function transformResponseBody(\Symfony\Contracts\HttpClient\ResponseInterface $response, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType = null)
     {
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
-        if (is_null($contentType) === false && (200 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        $body = $response->getContent(false);
+        if ($contentType !== null && (200 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             return $serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ReconsignmentCollection', 'json');
         }
-        if (is_null($contentType) === false && (400 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (400 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionBadRequestException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
         }
-        if (is_null($contentType) === false && (401 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (401 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionUnauthorizedException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
         }
-        if (is_null($contentType) === false && (403 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (403 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionForbiddenException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
         }
-        if (is_null($contentType) === false && (422 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (422 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionUnprocessableEntityException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
         }
-        if (is_null($contentType) === false && (500 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (500 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionInternalServerErrorException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
         }
-        if (is_null($contentType) === false && (503 === $status && mb_strpos(strtolower($contentType), 'application/json') !== false)) {
+        if ($contentType !== null && (503 === $status && stripos(strtolower($contentType), 'application/json') !== false)) {
             throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\GetReconsignmentCollectionServiceUnavailableException($serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json'), $response);
         }
-        if (mb_strpos(strtolower($contentType), 'application/json') !== false) {
+        if (stripos(strtolower((string) $contentType), 'application/json') !== false) {
             return $serializer->deserialize($body, 'Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse', 'json');
         }
-        throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\UnexpectedStatusCodeException($status, $body);
+        throw new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception\BadResponseException($status, $body, $response);
     }
     public function getAuthenticationScopes(): array
     {
         return ['oAuthAuthorization', 'bearerAuth'];
+    }
+    public function getFetchMode(): string
+    {
+        return \Jane\Component\OpenApiRuntime\Client\FetchMode::Eager->value;
+    }
+    public function getTargetClass(): ?string
+    {
+        return null;
     }
 }

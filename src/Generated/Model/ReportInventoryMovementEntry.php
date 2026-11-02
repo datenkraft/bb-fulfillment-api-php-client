@@ -2,98 +2,31 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ReportInventoryMovementEntry extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ReportInventoryMovementEntry implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * The type code of the movement entry
      *
      * @var string
      */
-    protected $typeCode;
+    public string $typeCode;
     /**
      * The amount of moved stock
      *
      * @var int
      */
-    protected $stock;
+    public int $stock;
     /**
      * The reference of the movement entry
      *
      * @var ReportInventoryMovementEntryReference
      */
-    protected $reference;
-    /**
-     * The type code of the movement entry
-     *
-     * @return string
-     */
-    public function getTypeCode(): string
+    public ReportInventoryMovementEntryReference $reference;
+    public function definedProperties(): array
     {
-        return $this->typeCode;
-    }
-    /**
-     * The type code of the movement entry
-     *
-     * @param string $typeCode
-     *
-     * @return self
-     */
-    public function setTypeCode(string $typeCode): self
-    {
-        $this->initialized['typeCode'] = true;
-        $this->typeCode = $typeCode;
-        return $this;
-    }
-    /**
-     * The amount of moved stock
-     *
-     * @return int
-     */
-    public function getStock(): int
-    {
-        return $this->stock;
-    }
-    /**
-     * The amount of moved stock
-     *
-     * @param int $stock
-     *
-     * @return self
-     */
-    public function setStock(int $stock): self
-    {
-        $this->initialized['stock'] = true;
-        $this->stock = $stock;
-        return $this;
-    }
-    /**
-     * The reference of the movement entry
-     *
-     * @return ReportInventoryMovementEntryReference
-     */
-    public function getReference(): ReportInventoryMovementEntryReference
-    {
-        return $this->reference;
-    }
-    /**
-     * The reference of the movement entry
-     *
-     * @param ReportInventoryMovementEntryReference $reference
-     *
-     * @return self
-     */
-    public function setReference(ReportInventoryMovementEntryReference $reference): self
-    {
-        $this->initialized['reference'] = true;
-        $this->reference = $reference;
-        return $this;
+        return ['typeCode' => 'typeCode', 'stock' => 'stock', 'reference' => 'reference'];
     }
 }

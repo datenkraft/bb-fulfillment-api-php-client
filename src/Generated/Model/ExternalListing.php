@@ -2,70 +2,25 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class ExternalListing extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class ExternalListing implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Type of the external listing.
      *
      * @var string
      */
-    protected $type;
+    public string $type;
     /**
      * Value of the external listing.
      *
      * @var string
      */
-    protected $value;
-    /**
-     * Type of the external listing.
-     *
-     * @return string
-     */
-    public function getType(): string
+    public string $value;
+    public function definedProperties(): array
     {
-        return $this->type;
-    }
-    /**
-     * Type of the external listing.
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType(string $type): self
-    {
-        $this->initialized['type'] = true;
-        $this->type = $type;
-        return $this;
-    }
-    /**
-     * Value of the external listing.
-     *
-     * @return string
-     */
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    /**
-     * Value of the external listing.
-     *
-     * @param string $value
-     *
-     * @return self
-     */
-    public function setValue(string $value): self
-    {
-        $this->initialized['value'] = true;
-        $this->value = $value;
-        return $this;
+        return ['type' => 'type', 'value' => 'value'];
     }
 }

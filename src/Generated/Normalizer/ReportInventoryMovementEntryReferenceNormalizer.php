@@ -38,11 +38,12 @@ class ReportInventoryMovementEntryReferenceNormalizer implements DenormalizerInt
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('companyName', $data) && $data['companyName'] !== null) {
-            $object->setCompanyName($data['companyName']);
+            $object->companyName = $data['companyName'];
             unset($data['companyName']);
         }
-        elseif (\array_key_exists('companyName', $data) && $data['companyName'] === null) {
-            $object->setCompanyName(null);
+        elseif (\array_key_exists('companyName', $data)) {
+            $object->companyName = null;
+            unset($data['companyName']);
         }
         foreach ($data as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
@@ -54,10 +55,10 @@ class ReportInventoryMovementEntryReferenceNormalizer implements DenormalizerInt
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('companyName')) {
-            $dataArray['companyName'] = $data->getCompanyName();
+        if (array_key_exists('companyName', get_object_vars($data)) && null !== ($data->companyName ?? null)) {
+            $dataArray['companyName'] = $data->companyName;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

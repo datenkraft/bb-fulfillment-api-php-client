@@ -41,14 +41,15 @@ class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInte
             $data['printOrderDocument'] = (bool) $data['printOrderDocument'];
         }
         if (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] !== null) {
-            $object->setPrintOrderDocument($data['printOrderDocument']);
+            $object->printOrderDocument = $data['printOrderDocument'];
             unset($data['printOrderDocument']);
         }
-        elseif (\array_key_exists('printOrderDocument', $data) && $data['printOrderDocument'] === null) {
-            $object->setPrintOrderDocument(null);
+        elseif (\array_key_exists('printOrderDocument', $data)) {
+            $object->printOrderDocument = null;
+            unset($data['printOrderDocument']);
         }
         if (\array_key_exists('autoProcessState', $data)) {
-            $object->setAutoProcessState($data['autoProcessState']);
+            $object->autoProcessState = $data['autoProcessState'];
             unset($data['autoProcessState']);
         }
         foreach ($data as $key => $value) {
@@ -61,13 +62,13 @@ class NewOrderOptionsNormalizer implements DenormalizerInterface, NormalizerInte
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('printOrderDocument')) {
-            $dataArray['printOrderDocument'] = $data->getPrintOrderDocument();
+        if (array_key_exists('printOrderDocument', get_object_vars($data)) && null !== ($data->printOrderDocument ?? null)) {
+            $dataArray['printOrderDocument'] = $data->printOrderDocument;
         }
-        if ($data->isInitialized('autoProcessState') && null !== $data->getAutoProcessState()) {
-            $dataArray['autoProcessState'] = $data->getAutoProcessState();
+        if (array_key_exists('autoProcessState', get_object_vars($data)) && null !== ($data->autoProcessState ?? null)) {
+            $dataArray['autoProcessState'] = $data->autoProcessState;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

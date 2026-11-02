@@ -4,15 +4,16 @@ namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Exception;
 
 class PostOrderUnprocessableEntityException extends UnprocessableEntityException
 {
-    /**
-     * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
-     */
-    private $errorResponse;
-    /**
-     * @var \Psr\Http\Message\ResponseInterface
-     */
-    private $response;
-    public function __construct(\Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse, \Psr\Http\Message\ResponseInterface $response)
+    public function __construct(
+        /**
+         * @var \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
+         */
+        private readonly \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse $errorResponse,
+        /**
+         * @var \Symfony\Contracts\HttpClient\ResponseInterface
+         */
+        private readonly \Symfony\Contracts\HttpClient\ResponseInterface $response
+    )
     {
         parent::__construct('Unprocessable Entity
 
@@ -29,14 +30,12 @@ Error codes:
 - ORDER_DELIVERY_ADDRESS_PROVINCE_CODE_NOT_DETECTED: The province code of the delivery address could not be detected.
 - ORDER_DESIRED_SHIPPING_DATE_IN_PAST: The given desiredShippingDate is in the past.
 - SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.');
-        $this->errorResponse = $errorResponse;
-        $this->response = $response;
     }
     public function getErrorResponse(): \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
     {
         return $this->errorResponse;
     }
-    public function getResponse(): \Psr\Http\Message\ResponseInterface
+    public function getResponse(): \Symfony\Contracts\HttpClient\ResponseInterface
     {
         return $this->response;
     }

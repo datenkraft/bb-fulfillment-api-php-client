@@ -38,11 +38,11 @@ class BaseReconsignmentAnnouncementNormalizer implements DenormalizerInterface, 
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('reconsignmentReason', $data)) {
-            $object->setReconsignmentReason($data['reconsignmentReason']);
+            $object->reconsignmentReason = $data['reconsignmentReason'];
             unset($data['reconsignmentReason']);
         }
         if (\array_key_exists('options', $data)) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncementOptions::class, 'json', $context));
+            $object->options = $this->denormalizer->denormalize($data['options'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\BaseReconsignmentAnnouncementOptions::class, 'json', $context);
             unset($data['options']);
         }
         foreach ($data as $key => $value) {
@@ -55,13 +55,14 @@ class BaseReconsignmentAnnouncementNormalizer implements DenormalizerInterface, 
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reconsignmentReason') && null !== $data->getReconsignmentReason()) {
-            $dataArray['reconsignmentReason'] = $data->getReconsignmentReason();
+        if (array_key_exists('reconsignmentReason', get_object_vars($data)) && null !== ($data->reconsignmentReason ?? null)) {
+            $dataArray['reconsignmentReason'] = $data->reconsignmentReason;
         }
-        if ($data->isInitialized('options') && null !== $data->getOptions()) {
-            $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
+            $normalized = $this->normalizer->normalize($data->options, 'json', $context);
+            $dataArray['options'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        foreach ($data as $key => $value) {
+        foreach ($data->additionalPropertyEntries() as $key => $value) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value;
             }

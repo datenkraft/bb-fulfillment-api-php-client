@@ -2,70 +2,25 @@
 
 namespace Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model;
 
-class DeliveryService extends \ArrayObject
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalAndPatternProperties;
+use Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\AdditionalPropertiesInterface;
+class DeliveryService implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array
-     */
-    protected $initialized = [];
-    public function isInitialized($property): bool
-    {
-        return array_key_exists($property, $this->initialized);
-    }
+    use AdditionalAndPatternProperties;
     /**
      * Code of the delivery service
      *
      * @var string
      */
-    protected $code;
+    public string $code;
     /**
      * Name of the delivery service
      *
      * @var string
      */
-    protected $name;
-    /**
-     * Code of the delivery service
-     *
-     * @return string
-     */
-    public function getCode(): string
+    public string $name;
+    public function definedProperties(): array
     {
-        return $this->code;
-    }
-    /**
-     * Code of the delivery service
-     *
-     * @param string $code
-     *
-     * @return self
-     */
-    public function setCode(string $code): self
-    {
-        $this->initialized['code'] = true;
-        $this->code = $code;
-        return $this;
-    }
-    /**
-     * Name of the delivery service
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    /**
-     * Name of the delivery service
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName(string $name): self
-    {
-        $this->initialized['name'] = true;
-        $this->name = $name;
-        return $this;
+        return ['code' => 'code', 'name' => 'name'];
     }
 }

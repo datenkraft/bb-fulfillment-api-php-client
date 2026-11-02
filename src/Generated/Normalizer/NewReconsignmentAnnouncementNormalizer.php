@@ -38,22 +38,23 @@ class NewReconsignmentAnnouncementNormalizer implements DenormalizerInterface, N
             return new Reference($data['$recursiveRef'], $context['document-origin']);
         }
         if (\array_key_exists('reconsignmentReason', $data)) {
-            $object->setReconsignmentReason($data['reconsignmentReason']);
+            $object->reconsignmentReason = $data['reconsignmentReason'];
             unset($data['reconsignmentReason']);
         }
         if (\array_key_exists('options', $data) && $data['options'] !== null) {
-            $object->setOptions($this->denormalizer->denormalize($data['options'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions::class, 'json', $context));
+            $object->options = $this->denormalizer->denormalize($data['options'], \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementOptions::class, 'json', $context);
             unset($data['options']);
         }
-        elseif (\array_key_exists('options', $data) && $data['options'] === null) {
-            $object->setOptions(null);
+        elseif (\array_key_exists('options', $data)) {
+            $object->options = null;
+            unset($data['options']);
         }
         if (\array_key_exists('reconsignmentAnnouncementLines', $data)) {
             $values = [];
             foreach ($data['reconsignmentAnnouncementLines'] as $value) {
                 $values[] = $this->denormalizer->denormalize($value, \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\NewReconsignmentAnnouncementLine::class, 'json', $context);
             }
-            $object->setReconsignmentAnnouncementLines($values);
+            $object->reconsignmentAnnouncementLines = $values;
             unset($data['reconsignmentAnnouncementLines']);
         }
         foreach ($data as $key => $value_1) {
@@ -66,20 +67,22 @@ class NewReconsignmentAnnouncementNormalizer implements DenormalizerInterface, N
     public function normalize(mixed $data, ?string $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
     {
         $dataArray = [];
-        if ($data->isInitialized('reconsignmentReason') && null !== $data->getReconsignmentReason()) {
-            $dataArray['reconsignmentReason'] = $data->getReconsignmentReason();
+        if (array_key_exists('reconsignmentReason', get_object_vars($data)) && null !== ($data->reconsignmentReason ?? null)) {
+            $dataArray['reconsignmentReason'] = $data->reconsignmentReason;
         }
-        if ($data->isInitialized('options')) {
-            $dataArray['options'] = $this->normalizer->normalize($data->getOptions(), 'json', $context);
+        if (array_key_exists('options', get_object_vars($data)) && null !== ($data->options ?? null)) {
+            $normalized = $this->normalizer->normalize($data->options, 'json', $context);
+            $dataArray['options'] = \is_iterable($normalized) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized) : $normalized;
         }
-        if ($data->isInitialized('reconsignmentAnnouncementLines') && null !== $data->getReconsignmentAnnouncementLines()) {
+        if (array_key_exists('reconsignmentAnnouncementLines', get_object_vars($data)) && null !== ($data->reconsignmentAnnouncementLines ?? null)) {
             $values = [];
-            foreach ($data->getReconsignmentAnnouncementLines() as $value) {
-                $values[] = $this->normalizer->normalize($value, 'json', $context);
+            foreach ($data->reconsignmentAnnouncementLines as $value) {
+                $normalized_1 = $value === null ? null : $this->normalizer->normalize($value, 'json', $context);
+                $values[] = \is_iterable($normalized_1) ? new \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Runtime\JsonObject($normalized_1) : $normalized_1;
             }
             $dataArray['reconsignmentAnnouncementLines'] = $values;
         }
-        foreach ($data as $key => $value_1) {
+        foreach ($data->additionalPropertyEntries() as $key => $value_1) {
             if (preg_match('/.*/', (string) $key)) {
                 $dataArray[$key] = $value_1;
             }
