@@ -29,7 +29,8 @@ Error codes:
 - ORDER_INVOICE_ADDRESS_PROVINCE_CODE_NOT_DETECTED: The province code of the invoice address could not be detected.
 - ORDER_DELIVERY_ADDRESS_PROVINCE_CODE_NOT_DETECTED: The province code of the delivery address could not be detected.
 - ORDER_DESIRED_SHIPPING_DATE_IN_PAST: The given desiredShippingDate is in the past.
-- SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.');
+- SHOP_NOT_ACTIVE: The shop is not active. Please contact the steve team.
+- ORDER_AUTO_PROCESS_NO_DELIVERABLE_ITEMS: The order was created, but the autoProcessState could not be applied because no order item is deliverable (e.g. out of stock).');
     }
     public function getErrorResponse(): \Datenkraft\Backbone\Client\FulfillmentApi\Generated\Model\ErrorResponse
     {
